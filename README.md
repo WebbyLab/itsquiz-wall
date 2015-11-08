@@ -1,5 +1,5 @@
 # itsquiz-wall
-Isomorphic application written in React (SOON) 
+Isomorphic application written in React (CODE WILL BE AVAILABLE SOON) 
 
 
 ## Motivation
