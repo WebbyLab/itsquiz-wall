@@ -1,0 +1,154 @@
+@import "../../assets/mixins.less";
+@import "../../assets/palette.less";
+@import "../../assets/media.less";
+
+.ActivationPage {
+    margin: 0 auto;
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: @background-color;
+}
+
+.ActivationPage__content {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-width: 300px;
+    max-width: 800px;
+}
+
+.ActivationPage__span-divider {
+    margin: 0 10px;
+}
+
+.ActivationPage__Paper {
+    align-self: center;
+    margin: 8px;
+    margin-top: 150px;
+    width: calc(~"100% - 32px");
+    padding: 16px;
+
+    .ActivationPage__actions {
+        margin: 16px 0;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .ActivationPage__head {
+        padding: 0;
+        display: flex;
+        align-items: flex-start;
+
+        @media @phone {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .ActivationPage__picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 150px;
+            flex-shrink: 0;
+        }
+
+        .ActivationPage__info {
+            margin-left: 16px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            width: 100%;
+            height: 150px;
+
+            @media @phone {
+                margin-left: 0;
+                margin-top: 24px;
+                align-items: center;
+            }
+
+            .ActivationPage__name {
+                font-size: 25px;
+                font-weight: 300;
+            }
+
+            .ActivationPage__author-name {
+                margin-top: 5px;
+                font-weight: bold;
+                font-size: 15px;
+                color: @secondary-text-color;
+            }
+
+            .ActivationPage__price {
+                margin: 0 20px;
+                font-weight: bold;
+                font-size: 16px;
+                color: @green-200;
+                text-transform: uppercase;
+            }
+
+            .ActivationPage__pass-info {
+                margin-top: 10px;
+                font-size: 15px;
+                color: @secondary-text-color;
+                font-weight: 200;
+            }
+
+            .ActivationPage__actions {
+                position: absolute;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                right: 0;
+                bottom: 0;
+            }
+
+            .ActivationPage__pass-btn {
+                background-color: @green-app;
+                color: @white-darker;
+            }
+        }
+    }
+
+    .ActivationPage__divider {
+        width: 100%;
+        height: 1px;
+        background-color: @white-lighter;
+        margin: 0 auto;
+    }
+
+    .ActivationPage__author {
+        margin-top: 10px;
+
+    }
+
+    .ActivationPage__details {
+        padding: 24px;
+        font-weight: 200;
+
+        .ActivationPage__message {
+            white-space: pre-wrap;
+        }
+    }
+}
+
+.ActivationPage__subheader {
+    font-weight: bold;
+    align-self: flex-start;
+    margin: 32px 18px -8px 18px;
+}
+
+.ActivationPage__author-activations-grid {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.ActivationPage__activations-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}

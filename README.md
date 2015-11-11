@@ -1,16 +1,34 @@
-# itsquiz-wall
-Isomorphic application written in React (CODE WILL BE AVAILABLE SOON) 
-
+Isomorphic "Quiz Wall" for itsquiz.com
+------------------------------------
 
 ## Motivation
 
-There are a lot of tutorials and boilerplates showing how to write isomorphic ReactJs applications. 
+There are a lot of tutorials and boilerplates showing how to write isomorphic ReactJs applications.
 But when it comes to real world apps, you'll find that all the turorials do not cover problems that you face in productions apps.
 
-In WebbyLab, we have a lot of projects written in react and several isomorphic projects. So, it was decides 
+In WebbyLab, we have a lot of projects written in react and several isomorphic projects. So, it was decides
 develop one of these projects on github. So, everyone can see how real-world production isomorphic app can be implmemented.
 
 **IMPORTANT**: This is producation app, and we develop it in this repo. So, it is always evolving.
+
+## Installation (development)
+
+1. npm install 
+2. cp etc/client-config.json.sample etc/client-config.json (by default connect to production REST API)
+3. npm run server 
+4. npm run devserver (in another terminal, and wait until build is ready)
+5. open http://localhost:3000
+
+## About the application
+
+Watch the video:
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=ZLzrZtAIEps
+" target="_blank"><img src="http://img.youtube.com/vi/ZLzrZtAIEps/0.jpg"
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
+
+## Architecture description
 
 
 ## Solved problems:
@@ -19,5 +37,47 @@ develop one of these projects on github. So, everyone can see how real-world pro
 2. How do we deal with data fetching?
 3. How to share the same configuration? (And do not bundle it)
 4. How to import css in your react components?  Inline CSS (why not Radium, Material-UI)
-5. How to deal with css. It should be loaded before html and splitted out. 
+5. How to deal with css. It should be loaded before html and splitted out.
 6. Working with history (Invariant Violation: Browser history needs a DOM)
+
+
+You can find post from Viktor Turskyi (aka koorchik) [here](http://blog.koorchik.com). Post describes all the ideas details.
+
+## Releases
+
+## Instructions
+
+1. Clone this repository
+2. Fill config ```etc/client-config.json``` as in sample
+3. ```npm install```
+4. ```npm run devserver```
+5. ```npm run server```
+
+## How to contribute?
+
+1. Bug reports (pull requests) and ideas how to deal with isomorphic issues are welcome.
+
+2. We were early adopters of ReactJs and use it from the moment facebook opensourced it. So, almost every project in our company is written in ReactJs.
+Contact us if you need help.
+
+3. [It's Quiz](http://itsquiz.com)  is a great service and we use it in WebbyLab. Just give us feedback on it.
+
+### Development guide and conventions
+
+Async actions:
+
+    { type: 'FETCH_POSTS_REQUEST' }
+    { type: 'FETCH_POSTS_FAILURE', error: 'Oops' }
+    { type: 'FETCH_POSTS_SUCCESS', response: { ... } }
+
+## License
+
+## Thanks
+
+Thanks for http://itsquiz.com (our customer) for allowing opensourcing of this app.
+
+* WebbyLab https://webbylab.com/contacts
+* It's Quiz
+
+## Contacts
+

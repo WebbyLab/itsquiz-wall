@@ -1,0 +1,73 @@
+@import "../assets/mixins.less";
+@import "../assets/palette.less";
+
+.QuizCard {
+    width: 100%;
+}
+
+.QuizCard__head {
+    color: @text-color;
+    height: 60px;
+    display: flex;
+
+    .mdl-card__title-text {
+        marhin: auto 0;
+        font-size: 19px;
+    }
+}
+
+.QuizCard__media {
+    height: 180px;
+    padding: 0;
+}
+
+.QuizCard__title {
+    color: @text-color;
+    font-size: 19px;
+}
+
+.QuizCard__info {
+    display: flex;
+    align-items: center;
+
+    .QuizCard__avatar {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+    }
+
+    .QuizCard__name-author {
+        margin-left: 10px;
+    }
+
+    .QuizCard__name {
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+
+        .text-ellipsis;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .QuizCard__author {
+        margin-top: 3px;
+        font-size: 12px;
+        color: @secondary-text-color;
+        font-weight: 500;
+
+        .text-ellipsis;
+    }
+}
+
+.QuizCard__details {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.QuizCard__actions {
+    display: flex;
+    justify-content: space-between;
+}

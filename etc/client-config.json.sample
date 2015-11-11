@@ -1,0 +1,5 @@
+{
+    "apiPrefix": "http://itsquiz.com/api/v1",
+    "backgroundImagesPrefix": "http://app.qas.itsquiz.com/be/static/images/backgrounds/",
+    "staticUrl": "http://localhost:8050"
+}

@@ -1,0 +1,87 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-11-06 20:56+0200\n"
+"PO-Revision-Date: 2015-11-06 21:02+0200\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.6\n"
+
+#: /Users/koorchik/work/itsquiz/itsquiz-wall/bin/../src_es5/components/QuizCard.js:106
+#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/QuizCard.js:114
+#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/QuizCard.js:113
+msgid "View details"
+msgstr "Детальнее"
+
+#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:118
+#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:145
+msgid "FREE"
+msgstr "Бесплатно"
+
+#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:123
+msgid " question"
+msgid_plural " questions"
+msgstr[0] " вопрос"
+msgstr[1] " вопроса"
+msgstr[2] " вопросов"
+
+#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:125
+msgid " minute"
+msgid_plural " minutes"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] " минуты"
+
+#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:133
+#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:154
+msgid "Pass this test"
+msgstr "Сдать этот тест"
+
+#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:123
+#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:126
+#, javascript-format
+msgid "%d question"
+msgid_plural "%d questions"
+msgstr[0] "%d вопрос"
+msgstr[1] "%d вопроса"
+msgstr[2] "%d вопросов"
+
+#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:172
+#, javascript-format
+msgid "More tests by %s"
+msgstr "Еще тесты от %s"
+
+#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:62
+msgid "Quizzes"
+msgstr "Тесты"
+
+#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/SearchBox.js:99
+msgid "Search"
+msgstr "Поиск"
+
+#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/i18n/Tools.js:49
+#, javascript-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d час"
+msgstr[1] "%d часа"
+msgstr[2] "%d часов"
+
+#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/i18n/Tools.js:52
+#, javascript-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d минута"
+msgstr[1] "%d минуты"
+msgstr[2] "%d минут"

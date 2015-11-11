@@ -1,0 +1,63 @@
+@import "../assets/mixins.less";
+@import "../assets/palette.less";
+@import "../assets/media.less";
+
+.AppBar {
+    height: 65px;
+    max-width: 100vw;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px;
+    background-color: @primary-1-color;
+    color: @white-darker;
+    position: fixed;
+    z-index: 99;
+    transition-duration: .3s;
+    display: flex;
+    top: 0;
+    align-items: center;
+
+    @media @phone {
+        justify-content: space-between;
+    }
+
+    &.AppBar--with-search {
+        .AppBar__left {
+            width: 25%;
+
+            @media @phone {
+                width: auto;
+                max-width: 50%;
+            }
+        }
+    }
+}
+
+.AppBar__title {
+    font-size: 20px;
+    margin-left: 16px;
+    font-weight: 400;
+
+    .text-ellipsis;
+}
+
+.AppBar__left {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.AppBar__center {
+    display: flex;
+    align-items: center;
+    width: 50%;
+
+    @media @phone {
+        width: auto;
+        max-width: 50%;
+    }
+}
+
+&.AppBar--fixed {
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,.14),0 3px 3px -2px rgba(0,0,0,.2),0 1px 8px 0 rgba(0,0,0,.12);
+}
