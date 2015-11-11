@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/WebbyLab/itsquiz-wall.svg)](https://travis-ci.org/WebbyLab/itsquiz-wall)
+
 Isomorphic "Quiz Wall" for itsquiz.com
 ------------------------------------
 
