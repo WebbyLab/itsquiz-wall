@@ -14,7 +14,7 @@
     "server": "nodemon --exec babel-node -- server/app.js",
     "devserver": "webpack-dev-server --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 8050 --host 0.0.0.0",
     "extract_lang": "./bin/extract_lang.sh",
-    "lint": "eslint src",
+    "lint": "eslint shared client server",
     "test": "npm run lint",
     "po2json": "./bin/po2json.sh"
   },
