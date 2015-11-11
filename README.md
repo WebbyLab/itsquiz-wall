@@ -13,10 +13,10 @@ develop one of these projects on github. So, everyone can see how real-world pro
 
 ## Installation (development)
 
-1. npm install 
-2. cp etc/client-config.json.sample etc/client-config.json (by default connect to production REST API)
-3. npm run server 
-4. npm run devserver (in another terminal, and wait until build is ready)
+1. ```npm install``` 
+2. ```cp etc/client-config.json.sample etc/client-config.json``` (by default connect to production REST API)
+3. ```npm run server```
+4. ```npm run devserver``` (in another terminal, and wait until build is ready)
 5. open http://localhost:3000
 
 ## About the application
@@ -43,15 +43,6 @@ alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 You can find post from Viktor Turskyi (aka koorchik) [here](http://blog.koorchik.com). Post describes all the ideas details.
 
-## Releases
-
-## Instructions
-
-1. Clone this repository
-2. Fill config ```etc/client-config.json``` as in sample
-3. ```npm install```
-4. ```npm run devserver```
-5. ```npm run server```
 
 ## How to contribute?
 
