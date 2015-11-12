@@ -38,10 +38,11 @@ export default class AppBar extends React.Component {
     handleScroll = (e) => {
         const body = document.getElementsByTagName('body')[0];
         const scrollTop = $(window).scrollTop();
+        const isFixedToTop = scrollTop > this.props.scrollOffset;
 
-        this.setState({
-            isFixedToTop : scrollTop > this.props.scrollOffset
-        });
+        if (isFixedToTop !== this.state.isFixedToTop) {
+            this.setState({ isFixedToTop });
+        }
     };
 
     componentDidMount() {
@@ -50,14 +51,6 @@ export default class AppBar extends React.Component {
 
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return nextProps.title !== this.props.title
-            || nextProps.displaySearch !== this.props.displaySearch
-            || nextProps.rightIconName !== this.props.rightIconName
-            || nextProps.search !== this.props.search
-            || nextState.isFixedToTop !== this.state.isFixedToTop;
     }
 
     render() {
