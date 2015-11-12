@@ -3,6 +3,7 @@
 import React from 'react';
 import cx from 'classnames';
 
+import $ from 'jquery';
 import SearchBox from './SearchBox.jsx';
 
 import IconButton from 'react-mdl/lib/IconButton';
@@ -34,12 +35,13 @@ export default class AppBar extends React.Component {
         isFixedToTop : false
     };
 
-    handleScroll = (e) => {
-        const scrollTop = event.srcElement.body.scrollTop;
+    handleScroll = () => {
+        const scrollTop = $(window).scrollTop();
+        const isFixedToTop = scrollTop > this.props.scrollOffset;
 
-        this.setState({
-            isFixedToTop : scrollTop > this.props.scrollOffset
-        });
+        if (isFixedToTop !== this.state.isFixedToTop) {
+            this.setState({ isFixedToTop });
+        }
     };
 
     componentDidMount() {
