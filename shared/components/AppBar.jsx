@@ -35,8 +35,7 @@ export default class AppBar extends React.Component {
         isFixedToTop : false
     };
 
-    handleScroll = (e) => {
-        const body = document.getElementsByTagName('body')[0];
+    handleScroll = () => {
         const scrollTop = $(window).scrollTop();
         const isFixedToTop = scrollTop > this.props.scrollOffset;
 
