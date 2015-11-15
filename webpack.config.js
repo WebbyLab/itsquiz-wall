@@ -1,3 +1,5 @@
+global.Promise = require('bluebird'); // for node 0.10
+
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
