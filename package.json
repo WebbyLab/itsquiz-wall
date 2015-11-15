@@ -9,9 +9,9 @@
   },
   "private": true,
   "scripts": {
-    "build": "webpack -p",
+    "build": "NODE_ENV='production' webpack -p",
     "start": "webpack -d --watch --colors",
-    "server": "nodemon --exec babel-node -- server/app.js",
+    "server": "NODE_ENV='production' nodemon --exec babel-node -- server/app.js",
     "devserver": "webpack-dev-server --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 8050 --host 0.0.0.0",
     "extract_lang": "./bin/extract_lang.sh",
     "lint": "eslint shared client server",
