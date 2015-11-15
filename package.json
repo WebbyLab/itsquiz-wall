@@ -11,12 +11,14 @@
   "scripts": {
     "build": "NODE_ENV='production' webpack -p",
     "start": "webpack -d --watch --colors",
-    "server": "NODE_ENV='production' nodemon --exec babel-node -- server/app.js",
+    "server": "nodemon --exec babel-node -- server/app.js",
     "devserver": "webpack-dev-server --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 8050 --host 0.0.0.0",
     "extract_lang": "./bin/extract_lang.sh",
     "lint": "eslint shared client server",
     "test": "npm run lint",
-    "po2json": "./bin/po2json.sh"
+    "po2json": "./bin/po2json.sh",
+    "start": "NODE_ENV='production' pm2 start app.js --interpreter node_modules/babel/bin/babel-node.js --name itsquiz-wall",
+    "stop": "NODE_ENV='production' pm2 delete itsquiz-wall -s &> /dev/null"
   },
   "dependencies": {
     "bluebird": "^3.0.5",
