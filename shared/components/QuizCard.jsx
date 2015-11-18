@@ -28,7 +28,7 @@ export default class QuizCard extends React.Component {
         const { l } = this.context.i18n;
 
         return (
-            <Card className='QuizCard' shadowLevel={1}>
+            <Card className='QuizCard' shadow={1}>
                 <CardTitle className='QuizCard__head'>
                     <div className='QuizCard__info'>
                         <img className='QuizCard__avatar' src={author.avatar} />
@@ -55,14 +55,15 @@ export default class QuizCard extends React.Component {
                     className='QuizCard__actions'>
                     <div>
                         <IconButton
-                            colored={true}
-                            name="share"
+                            colored = {true}
+                            name    = 'share'
                         />
                     </div>
 
                     <Button
-                        colored={true}
-                        onClick={onClick}>
+                        colored = {true}
+                        ripple  = {true}
+                        onClick = {onClick}>
                         {l('View details')}
                     </Button>
                 </CardActions>

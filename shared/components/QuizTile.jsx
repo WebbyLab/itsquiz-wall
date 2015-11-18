@@ -30,7 +30,7 @@ export default class QuizTile extends React.Component {
         const {l} = this.context.i18n;
 
         return (
-            <Card className='QuizTile' shadowLevel={1}>
+            <Card className='QuizTile' shadow={1}>
                 <CardTitle
                     className='QuizTile__title'>
                     <img src={pictureURL} width='100%' onClick={onClick}/>
