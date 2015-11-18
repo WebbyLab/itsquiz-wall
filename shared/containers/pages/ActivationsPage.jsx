@@ -5,10 +5,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { loadActivations, searchActivations } from '../../actions/activations';
-import connectDataFetchers from '../../lib/connectDataFetchers.jsx';
-import history from '../../history';
+import connectDataFetchers                    from '../../lib/connectDataFetchers.jsx';
+import history                                from '../../history';
 
 import ActivationsPage from '../../components/pages/ActivationsPage.jsx';
+
+import { ACTIVATION_CATEGORIES } from '../../constants';
 
 class ActivationsPageContainer extends React.Component {
     handleQuizCardClick = (activation) => {
@@ -22,24 +24,34 @@ class ActivationsPageContainer extends React.Component {
         });
     };
 
-    handleTabChange = (a) => {
-        console.log(a);
+    handleTabChange = (category) => {
+        this.props.history.pushState(null, this.props.location.pathname, {
+            ...this.props.location.query,
+            category : ACTIVATION_CATEGORIES[category]
+        });
     };
 
     componentWillReceiveProps(nextProps) {
-        if (this.props.location.query.search !== nextProps.location.query.search) {
-            this.props.dispatch(loadActivations(nextProps.params, nextProps.location.query) );
+        const currentQuery = this.props.location.query;
+        const nextQuery = nextProps.location.query;
+
+        const needToReloadData = currentQuery.search !== nextQuery.search
+            || currentQuery.category !== nextQuery.category;
+
+        if (needToReloadData) {
+            this.props.dispatch( loadActivations(nextProps.params, nextQuery) );
         }
     }
 
     render() {
         return (
             <ActivationsPage
-                activations = {this.props.activations}
-                search      = {this.props.search}
-                onItemClick = {this.handleQuizCardClick}
-                onSearch    = {this.handleSearch}
-                onTabChange = {this.handleTabChange}
+                activations      = {this.props.activations}
+                search           = {this.props.search}
+                selectedCategory = {this.props.category}
+                onItemClick      = {this.handleQuizCardClick}
+                onSearch         = {this.handleSearch}
+                onTabChange      = {this.handleTabChange}
             />
         );
     }
@@ -48,7 +60,8 @@ class ActivationsPageContainer extends React.Component {
 function mapStateToProps(state) {
     return {
         activations : state.activations.entities || [],
-        search      : state.activations.search
+        search      : state.activations.search,
+        category    : state.activations.category
     };
 }
 

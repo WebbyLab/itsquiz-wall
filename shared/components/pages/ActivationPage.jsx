@@ -44,7 +44,7 @@ export default class ActivationPage extends React.Component {
                 />
 
                 <div className='ActivationPage__content'>
-                    <Card className='ActivationPage__Paper' shadowLevel={2}>
+                    <Card className='ActivationPage__Paper' shadow={1}>
                         <CardTitle className='ActivationPage__head'>
                             <img className='ActivationPage__picture' src={activation.pictureURL} />
                             <div className='ActivationPage__info'>
@@ -78,6 +78,7 @@ export default class ActivationPage extends React.Component {
                                 <div className='ActivationPage__actions'>
                                     <Button
                                         colored   = {true}
+                                        ripple    = {true}
                                         onClick   = {onPass.bind(null, activation)}
                                         className = 'ActivationPage__pass-btn'
                                         raised    = {true}>

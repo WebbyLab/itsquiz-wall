@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { Layout, Header, Navigation, HeaderRow, HeaderTabs, Drawer, Content } from 'react-mdl/lib/layout';
-import { Tab } from 'react-mdl/lib/Tabs';
+import { Tab, Tabs } from 'react-mdl/lib/tabs';
 import Grid, { Cell } from 'react-mdl/lib/Grid';
 
 import QuizCard from '../QuizCard.jsx';
@@ -10,6 +9,8 @@ import AppBar   from '../AppBar.jsx';
 if ( process.env.BROWSER ) {
     require('./ActivationsPage.less');
 }
+
+const CATEGORIES = ['ALL', 'VACANCY', 'EDUCATION', 'ENTERTAINMENT'];
 
 export default class ActivationsPage extends React.Component {
     static contextTypes = { i18n: React.PropTypes.object };
@@ -30,18 +31,24 @@ export default class ActivationsPage extends React.Component {
                 <AppBar
                     title         = {l('Quizzes')}
                     search        = {search}
-                    scrollOffset  = {0}
+                    scrollOffset  = {65}
                     displaySearch = {true}
                     onSearch      = {onSearch}
                 />
 
-                <Header className='ActivationsPage__tab-bar'>
-                    <HeaderTabs activeTab={1} onChange={onTabChange} ripple={true}>
+                <div className='ActivationsPage__tab-bar'>
+                    <Tabs
+                        ripple    = {true}
+                        activeTab = {1}
+                        className = 'ActivationsPage__tabs'
+                        onChange  = {(idx) => onTabChange(CATEGORIES[idx])}>
+
+                        <Tab>{l('All tests')}</Tab>
                         <Tab>{l('Vacancies')}</Tab>
-                        <Tab>{l('Educational')}</Tab>
+                        <Tab>{l('Education')}</Tab>
                         <Tab>{l('Entertainment')}</Tab>
-                    </HeaderTabs>
-                </Header>
+                    </Tabs>
+                </div>
 
                 <Grid className='ActivationsPage__list'>
                     {activations.map( activation =>
