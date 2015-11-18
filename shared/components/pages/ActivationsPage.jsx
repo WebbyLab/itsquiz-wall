@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Layout, Header, Navigation, HeaderRow, HeaderTabs, Drawer, Content } from 'react-mdl/lib/layout';
+import { Tab } from 'react-mdl/lib/Tabs';
 import Grid, { Cell } from 'react-mdl/lib/Grid';
 
 import QuizCard from '../QuizCard.jsx';
@@ -32,6 +34,14 @@ export default class ActivationsPage extends React.Component {
                     displaySearch = {true}
                     onSearch      = {onSearch}
                 />
+
+                <Header>
+                    <HeaderTabs activeTab={1} onChange={this.props.onTabChange} ripple={true}>
+                        <Tab>Tab1</Tab>
+                        <Tab>Tab2</Tab>
+                        <Tab>Tab3</Tab>
+                    </HeaderTabs>
+                </Header>
 
                 <Grid className='ActivationsPage__list'>
                     {activations.map( activation =>

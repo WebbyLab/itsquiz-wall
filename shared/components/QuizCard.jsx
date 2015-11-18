@@ -4,16 +4,10 @@ if ( process.env.BROWSER ) {
     require('./QuizCard.less');
 }
 
-import Card, {
-    CardTitle,
-    CardText,
-    CardActions,
-    CardMenu
-} from 'react-mdl/lib/card/Card';
-
-import Button     from 'react-mdl/lib/Button';
+import { Card, CardTitle, CardActions } from 'react-mdl/lib/card';
+import Button from 'react-mdl/lib/Button';
 import IconButton from 'react-mdl/lib/IconButton';
-import Icon       from 'react-mdl/lib/Icon';
+import Icon from 'react-mdl/lib/Icon';
 
 export default class QuizCard extends React.Component {
     static contextTypes = { i18n: React.PropTypes.object };
