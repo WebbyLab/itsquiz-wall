@@ -23,7 +23,7 @@ export default class ActivationsPage extends React.Component {
     };
 
     render() {
-        const { activations, search, onItemClick, onSearch, onTabChange } = this.props;
+        const { activations, search, selectedCategory, onItemClick, onSearch, onTabChange } = this.props;
         const { l } = this.context.i18n;
 
         return (
@@ -39,9 +39,9 @@ export default class ActivationsPage extends React.Component {
                 <div className='ActivationsPage__tab-bar'>
                     <Tabs
                         ripple    = {true}
-                        activeTab = {1}
+                        activeTab = {selectedCategory ? CATEGORIES.indexOf(selectedCategory) : 0}
                         className = 'ActivationsPage__tabs'
-                        onChange  = {(idx) => onTabChange(CATEGORIES[idx])}>
+                        onChange  = {(index) => onTabChange(CATEGORIES[index])}>
 
                         <Tab>{l('All tests')}</Tab>
                         <Tab>{l('Vacancies')}</Tab>
