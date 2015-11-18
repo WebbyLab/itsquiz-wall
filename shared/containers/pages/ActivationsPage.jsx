@@ -10,8 +10,6 @@ import history                                from '../../history';
 
 import ActivationsPage from '../../components/pages/ActivationsPage.jsx';
 
-import { ACTIVATION_CATEGORIES } from '../../constants';
-
 class ActivationsPageContainer extends React.Component {
     handleQuizCardClick = (activation) => {
         this.props.history.pushState(null, `/${this.props.params.lang}/activations/${activation.id}`);
@@ -27,7 +25,7 @@ class ActivationsPageContainer extends React.Component {
     handleTabChange = (category) => {
         this.props.history.pushState(null, this.props.location.pathname, {
             ...this.props.location.query,
-            category : ACTIVATION_CATEGORIES[category]
+            category : category !== 'ALL' ? category : undefined
         });
     };
 
