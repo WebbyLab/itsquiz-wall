@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Tab, Tabs }  from 'react-mdl/lib/tabs';
 import Grid, { Cell } from 'react-mdl/lib/Grid';
 
 import QuizCard from '../QuizCard.jsx';
@@ -8,6 +9,8 @@ import AppBar   from '../AppBar.jsx';
 if ( process.env.BROWSER ) {
     require('./ActivationsPage.less');
 }
+
+const CATEGORIES = ['ALL', 'VACANCY', 'EDUCATION', 'ENTERTAINMENT'];
 
 export default class ActivationsPage extends React.Component {
     static contextTypes = { i18n: React.PropTypes.object };
@@ -20,7 +23,7 @@ export default class ActivationsPage extends React.Component {
     };
 
     render() {
-        const { activations, search, onItemClick, onSearch } = this.props;
+        const { activations, search, selectedCategory, onItemClick, onSearch, onTabChange } = this.props;
         const { l } = this.context.i18n;
 
         return (
@@ -28,10 +31,24 @@ export default class ActivationsPage extends React.Component {
                 <AppBar
                     title         = {l('Quizzes')}
                     search        = {search}
-                    scrollOffset  = {0}
+                    scrollOffset  = {65}
                     displaySearch = {true}
                     onSearch      = {onSearch}
                 />
+
+                <div className='ActivationsPage__tab-bar'>
+                    <Tabs
+                        ripple    = {true}
+                        activeTab = {selectedCategory ? CATEGORIES.indexOf(selectedCategory) : 0}
+                        className = 'ActivationsPage__tabs'
+                        onChange  = {(index) => onTabChange(CATEGORIES[index])}>
+
+                        <Tab>{l('All tests')}</Tab>
+                        <Tab>{l('Vacancies')}</Tab>
+                        <Tab>{l('Education')}</Tab>
+                        <Tab>{l('Entertainment')}</Tab>
+                    </Tabs>
+                </div>
 
                 <Grid className='ActivationsPage__list'>
                     {activations.map( activation =>

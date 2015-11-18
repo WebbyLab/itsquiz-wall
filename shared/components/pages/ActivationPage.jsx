@@ -1,12 +1,6 @@
 import React from 'react';
 
-import Card, {
-    CardTitle,
-    CardText,
-    CardActions,
-    CardMenu
-} from 'react-mdl/lib/card/Card';
-
+import { Card, CardTitle, CardActions } from 'react-mdl/lib/card';
 import Grid, { Cell } from 'react-mdl/lib/Grid';
 import Button         from 'react-mdl/lib/Button';
 import IconButton     from 'react-mdl/lib/IconButton';
@@ -50,14 +44,7 @@ export default class ActivationPage extends React.Component {
                 />
 
                 <div className='ActivationPage__content'>
-                    <Card className='ActivationPage__Paper' shadowLevel={1}>
-                        <CardMenu>
-                            <IconButton
-                                colored={false}
-                                name='share'
-                            />
-                        </CardMenu>
-
+                    <Card className='ActivationPage__Paper' shadow={1}>
                         <CardTitle className='ActivationPage__head'>
                             <img className='ActivationPage__picture' src={activation.pictureURL} />
                             <div className='ActivationPage__info'>
@@ -91,6 +78,7 @@ export default class ActivationPage extends React.Component {
                                 <div className='ActivationPage__actions'>
                                     <Button
                                         colored   = {true}
+                                        ripple    = {true}
                                         onClick   = {onPass.bind(null, activation)}
                                         className = 'ActivationPage__pass-btn'
                                         raised    = {true}>

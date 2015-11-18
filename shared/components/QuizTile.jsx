@@ -4,12 +4,10 @@ if ( process.env.BROWSER ) {
     require('./QuizTile.less');
 }
 
-import Card, {
+import { Card,
     CardTitle,
-    CardText,
-    CardActions,
-    CardMenu
-} from 'react-mdl/lib/card/Card';
+    CardActions
+} from 'react-mdl/lib/card';
 
 import Button     from 'react-mdl/lib/Button';
 import IconButton from 'react-mdl/lib/IconButton';
@@ -32,7 +30,7 @@ export default class QuizTile extends React.Component {
         const {l} = this.context.i18n;
 
         return (
-            <Card className='QuizTile' shadowLevel={1}>
+            <Card className='QuizTile' shadow={1}>
                 <CardTitle
                     className='QuizTile__title'>
                     <img src={pictureURL} width='100%' onClick={onClick}/>

@@ -4,16 +4,10 @@ if ( process.env.BROWSER ) {
     require('./QuizCard.less');
 }
 
-import Card, {
-    CardTitle,
-    CardText,
-    CardActions,
-    CardMenu
-} from 'react-mdl/lib/card/Card';
-
-import Button     from 'react-mdl/lib/Button';
-import IconButton from 'react-mdl/lib/IconButton';
-import Icon       from 'react-mdl/lib/Icon';
+import { Card, CardTitle, CardActions } from 'react-mdl/lib/card';
+import Button                           from 'react-mdl/lib/Button';
+import IconButton                       from 'react-mdl/lib/IconButton';
+import Icon                             from 'react-mdl/lib/Icon';
 
 export default class QuizCard extends React.Component {
     static contextTypes = { i18n: React.PropTypes.object };
@@ -34,7 +28,7 @@ export default class QuizCard extends React.Component {
         const { l } = this.context.i18n;
 
         return (
-            <Card className='QuizCard' shadowLevel={1}>
+            <Card className='QuizCard' shadow={1}>
                 <CardTitle className='QuizCard__head'>
                     <div className='QuizCard__info'>
                         <img className='QuizCard__avatar' src={author.avatar} />
@@ -61,14 +55,15 @@ export default class QuizCard extends React.Component {
                     className='QuizCard__actions'>
                     <div>
                         <IconButton
-                            colored={true}
-                            name="share"
+                            colored = {true}
+                            name    = 'share'
                         />
                     </div>
 
                     <Button
-                        colored={true}
-                        onClick={onClick}>
+                        colored = {true}
+                        ripple  = {true}
+                        onClick = {onClick}>
                         {l('View details')}
                     </Button>
                 </CardActions>

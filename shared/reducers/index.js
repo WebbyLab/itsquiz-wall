@@ -26,7 +26,8 @@ function activations(state = [], action) {
 
             return {
                 entities,
-                search : action.search
+                search : action.search,
+                category : action.category
             };
 
         default:

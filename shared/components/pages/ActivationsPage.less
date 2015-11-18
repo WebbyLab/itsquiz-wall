@@ -6,11 +6,53 @@
     width: 100vw;
     overflow: hidden;
     box-sizing: border-box;
-    padding-top: 100px;
+
     display: flex;
     flex-direction: column;
 
+    .ActivationsPage__tab-bar {
+        height: 50px;
+        margin-top: 65px;
+        background-color: @primary-1-color;
+        display: flex;
+
+        .mdl-tabs__tab-bar {
+            justify-content: flex-start;
+            position: relative;
+            top: 1px;
+        }
+
+        .mdl-tabs__tab {
+            color: @white-dark;
+            font-weight: regular;
+            font-size: 14px;
+
+
+
+            &::after {
+                background: @accent-1-color;
+            }
+
+            &.is-active {
+                color: @white-darker;
+            }
+
+            .mdl-ripple {
+                background: white;
+            }
+        }
+
+        .mdl-tabs__tab.is-active::after {
+            background: @accent-1-color;
+        }
+    }
+
+    .ActivationsPage__tabs {
+
+    }
+
     .ActivationsPage__list {
+        padding-top: 20px;
         max-width: 1200px;
         width: 100%;
         justify-content: center;

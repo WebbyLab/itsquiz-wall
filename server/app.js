@@ -87,12 +87,12 @@ function renderHTML({componentHTML, title, initialState, config}) {
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>${title}</title>
-            <script src="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js"></script>
             <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
             <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.cyan-pink.min.css" />
             <link rel="stylesheet" href="//cdn.materialdesignicons.com/1.2.65/css/materialdesignicons.min.css">
             <link rel="stylesheet" href="${config.staticUrl}/static/build/main.css">
+            <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
         </head>
         <body>
         <div id="react-view">${componentHTML}</div>

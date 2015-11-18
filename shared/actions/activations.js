@@ -8,13 +8,15 @@ export const LOAD_ACTIVATIONS_FAIL = 'LOAD_ACTIVATIONS_FAIL';
 export function loadActivations(params = {}, query = {}) {
     return (dispatch) => {
         return api.activations.list({
-            include : 'users',
-            search  : query.search || ''
+            include  : 'users',
+            search   : query.search || '',
+            category : query.category
         }).then( ({data, linked} ) => {
             dispatch({
                 type        : LOAD_ACTIVATIONS_SUCCESS,
                 activations : data.entities,
                 search      : query.search,
+                category    : query.category,
                 users       : linked.users
             });
         });
