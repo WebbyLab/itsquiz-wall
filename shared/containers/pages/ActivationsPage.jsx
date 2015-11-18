@@ -20,7 +20,7 @@ class ActivationsPageContainer extends React.Component {
     handleSearch = (searchText) => {
         this.props.history.pushState(null, this.props.location.pathname, {
             ...this.props.location.query,
-            search : searchText
+            search : searchText || undefined
         });
     };
 
