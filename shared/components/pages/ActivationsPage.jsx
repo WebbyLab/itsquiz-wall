@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Tab, Tabs } from 'react-mdl/lib/tabs';
+import { Tab, Tabs }  from 'react-mdl/lib/tabs';
 import Grid, { Cell } from 'react-mdl/lib/Grid';
 
 import QuizCard from '../QuizCard.jsx';

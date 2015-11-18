@@ -5,9 +5,9 @@ if ( process.env.BROWSER ) {
 }
 
 import { Card, CardTitle, CardActions } from 'react-mdl/lib/card';
-import Button from 'react-mdl/lib/Button';
-import IconButton from 'react-mdl/lib/IconButton';
-import Icon from 'react-mdl/lib/Icon';
+import Button                           from 'react-mdl/lib/Button';
+import IconButton                       from 'react-mdl/lib/IconButton';
+import Icon                             from 'react-mdl/lib/Icon';
 
 export default class QuizCard extends React.Component {
     static contextTypes = { i18n: React.PropTypes.object };
