@@ -4,12 +4,10 @@ if ( process.env.BROWSER ) {
     require('./QuizTile.less');
 }
 
-import Card, {
+import { Card,
     CardTitle,
-    CardText,
-    CardActions,
-    CardMenu
-} from 'react-mdl/lib/card/Card';
+    CardActions
+} from 'react-mdl/lib/card';
 
 import Button     from 'react-mdl/lib/Button';
 import IconButton from 'react-mdl/lib/IconButton';

@@ -22,7 +22,7 @@ export default class ActivationsPage extends React.Component {
     };
 
     render() {
-        const { activations, search, onItemClick, onSearch } = this.props;
+        const { activations, search, onItemClick, onSearch, onTabChange } = this.props;
         const { l } = this.context.i18n;
 
         return (
@@ -35,11 +35,11 @@ export default class ActivationsPage extends React.Component {
                     onSearch      = {onSearch}
                 />
 
-                <Header>
-                    <HeaderTabs activeTab={1} onChange={this.props.onTabChange} ripple={true}>
-                        <Tab>Tab1</Tab>
-                        <Tab>Tab2</Tab>
-                        <Tab>Tab3</Tab>
+                <Header className='ActivationsPage__tab-bar'>
+                    <HeaderTabs activeTab={1} onChange={onTabChange} ripple={true}>
+                        <Tab>{l('Vacancies')}</Tab>
+                        <Tab>{l('Educational')}</Tab>
+                        <Tab>{l('Entertainment')}</Tab>
                     </HeaderTabs>
                 </Header>
 

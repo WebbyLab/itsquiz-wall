@@ -22,6 +22,10 @@ class ActivationsPageContainer extends React.Component {
         });
     };
 
+    handleTabChange = (a) => {
+        console.log(a);
+    };
+
     componentWillReceiveProps(nextProps) {
         if (this.props.location.query.search !== nextProps.location.query.search) {
             this.props.dispatch(loadActivations(nextProps.params, nextProps.location.query) );
@@ -35,6 +39,7 @@ class ActivationsPageContainer extends React.Component {
                 search      = {this.props.search}
                 onItemClick = {this.handleQuizCardClick}
                 onSearch    = {this.handleSearch}
+                onTabChange = {this.handleTabChange}
             />
         );
     }
