@@ -10,7 +10,7 @@ import ActivationPage from '../../components/pages/ActivationPage.jsx';
 
 class ActivationPageContainer extends React.Component {
     handlePassActivationClick = (activation) => {
-        window.open(activation.sharedLink, '_blank');
+        window.open(activation.linkToPass, '_self');
     };
 
     handleGoBack = () => {
