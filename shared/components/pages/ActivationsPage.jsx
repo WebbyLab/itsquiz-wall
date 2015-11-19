@@ -1,4 +1,5 @@
 import React from 'react';
+import cx    from 'classnames';
 
 import { Tab, Tabs }  from 'react-mdl/lib/tabs';
 import Grid, { Cell } from 'react-mdl/lib/Grid';
@@ -23,18 +24,26 @@ export default class ActivationsPage extends React.Component {
     };
 
     render() {
-        const { activations, search, selectedCategory, onItemClick, onSearch, onTabChange } = this.props;
+        const { activations, search, selectedCategory, isEmbedded, onItemClick, onSearch, onTabChange } = this.props;
         const { l } = this.context.i18n;
 
+        const classes = cx('ActivationsPage', {
+            'ActivationsPage--embedded' : isEmbedded
+        });
+
         return (
-            <div className='ActivationsPage'>
-                <AppBar
-                    title         = {l('Quizzes')}
-                    search        = {search}
-                    scrollOffset  = {65}
-                    displaySearch = {true}
-                    onSearch      = {onSearch}
-                />
+            <div className={classes}>
+                {
+                    !isEmbedded
+                    ? <AppBar
+                        title         = {l('Quizzes')}
+                        search        = {search}
+                        scrollOffset  = {65}
+                        displaySearch = {true}
+                        onSearch      = {onSearch}
+                    />
+                    : null
+                }
 
                 <div className='ActivationsPage__tab-bar'>
                     <Tabs

@@ -47,6 +47,7 @@ class ActivationsPageContainer extends React.Component {
                 activations      = {this.props.activations}
                 search           = {this.props.search}
                 selectedCategory = {this.props.category}
+                isEmbedded       = {this.props.location.query.embed}
                 onItemClick      = {this.handleQuizCardClick}
                 onSearch         = {this.handleSearch}
                 onTabChange      = {this.handleTabChange}
