@@ -4,7 +4,7 @@ if ( process.env.BROWSER ) {
     require('./QuizCard.less');
 }
 
-import { Card, CardTitle, CardActions } from 'react-mdl/lib/card';
+import { Card, CardTitle, CardActions } from 'react-mdl/lib/Card';
 import Button                           from 'react-mdl/lib/Button';
 import IconButton                       from 'react-mdl/lib/IconButton';
 import Icon                             from 'react-mdl/lib/Icon';
