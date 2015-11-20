@@ -10,13 +10,16 @@ import ActivationPage from '../../components/pages/ActivationPage.jsx';
 
 class ActivationPageContainer extends React.Component {
     handlePassActivationClick = (activation) => {
-        if (this.props.location.query.embed) {
+        const isEmbedded = this.props.location.query.embed;
+        const { linkToPass } = activation;
+
+        if (isEmbedded) {
             window.parent.postMessage({
                 type : 'PASS_TEST',
-                link : activation.linkToPass
-            }, activation.linkToPass);
+                link : linkToPass
+            }, linkToPass);
         } else {
-            window.open(activation.linkToPass, '_self');
+            window.open(linkToPass, '_self');
         }
     };
 
