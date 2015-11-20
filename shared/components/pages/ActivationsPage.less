@@ -9,16 +9,22 @@
     display: flex;
     flex-direction: column;
 
+    .ActivationsPage__header {
+        box-shadow: 0 3px 4px 0 rgba(0,0,0,.14),0 3px 3px -2px rgba(0,0,0,.2),0 1px 8px 0 rgba(0,0,0,.12);
+        position: fixed;
+        z-index: 999;
+        width: 100%;
+        top: 0;
+    }
+
     .ActivationsPage__tab-bar {
-        height: 50px;
-        margin-top: 65px;
+        height: 48px;
         background-color: @primary-1-color;
         display: flex;
 
         .mdl-tabs__tab-bar {
-            justify-content: flex-start;
-            position: relative;
-            top: 1px;
+            justify-content: center;
+            border-bottom: none;
         }
 
         .mdl-tabs__tab {
@@ -45,7 +51,7 @@
     }
 
     .ActivationsPage__list {
-        padding-top: 20px;
+        margin-top: 120px;
         max-width: 1200px;
         width: 100%;
         justify-content: center;
@@ -60,12 +66,8 @@
     }
 
     .ActivationsPage__tab-bar {
-        width: 100%;
         background-color: @white-darker;
-        z-index: 999;
-        margin-top: 0;
-        position: fixed;
-        top:0;
+        top: 0;
 
         .mdl-tabs__tab {
             color: @black-dark;
@@ -85,7 +87,7 @@
     }
 
     .ActivationsPage__list {
-        padding-top: 60px;
+        margin-top: 60px;
         max-width: 1000px;
     }
 }

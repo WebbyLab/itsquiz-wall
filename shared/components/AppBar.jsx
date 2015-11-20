@@ -17,6 +17,7 @@ export default class AppBar extends React.Component {
         search           : React.PropTypes.string,
         displaySearch    : React.PropTypes.bool,
         rightIconName    : React.PropTypes.string,
+        fixOnScroll      : React.PropTypes.bool,
         scrollOffset     : React.PropTypes.number,
         onRightIconClick : React.PropTypes.func,
         onSearch         : React.PropTypes.func
@@ -25,6 +26,7 @@ export default class AppBar extends React.Component {
     static defaultProps = {
         title         : '',
         search        : '',
+        fixOnScroll   : true,
         displaySearch : false,
         rightIconName : 'menu',
         scrollOffset  : 0
@@ -47,11 +49,15 @@ export default class AppBar extends React.Component {
     };
 
     componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll);
+        if (this.props.fixOnScroll) {
+            window.addEventListener('scroll', this.handleScroll);
+        }
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
+        if (this.props.fixOnScroll) {
+            window.removeEventListener('scroll', this.handleScroll);
+        }
     }
 
     render() {

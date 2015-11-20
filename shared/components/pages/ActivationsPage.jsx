@@ -33,27 +33,30 @@ export default class ActivationsPage extends React.Component {
 
         return (
             <div className={classes}>
-                <AppBar
-                    title         = {l('Quizzes')}
-                    search        = {search}
-                    className     = 'ActivationsPage__app-bar'
-                    scrollOffset  = {65}
-                    displaySearch = {true}
-                    onSearch      = {onSearch}
-                />
+                <div className='ActivationsPage__header'>
+                    <AppBar
+                        title         = {l('Quizzes')}
+                        search        = {search}
+                        className     = 'ActivationsPage__app-bar'
+                        fixOnScroll   = {false}
+                        scrollOffset  = {65}
+                        displaySearch = {true}
+                        onSearch      = {onSearch}
+                    />
 
-                <div className='ActivationsPage__tab-bar'>
-                    <Tabs
-                        ripple    = {true}
-                        activeTab = {selectedCategory ? CATEGORIES.indexOf(selectedCategory) : 0}
-                        className = 'ActivationsPage__tabs'
-                        onChange  = {(index) => onTabChange(CATEGORIES[index])}>
+                    <div className='ActivationsPage__tab-bar'>
+                        <Tabs
+                            ripple    = {true}
+                            activeTab = {selectedCategory ? CATEGORIES.indexOf(selectedCategory) : 0}
+                            className = 'ActivationsPage__tabs'
+                            onChange  = {(index) => onTabChange(CATEGORIES[index])}>
 
-                        <Tab>{l('All tests')}</Tab>
-                        <Tab>{l('Vacancies')}</Tab>
-                        <Tab>{l('Education')}</Tab>
-                        <Tab>{l('Entertainment')}</Tab>
-                    </Tabs>
+                            <Tab>{l('All tests')}</Tab>
+                            <Tab>{l('Vacancies')}</Tab>
+                            <Tab>{l('Education')}</Tab>
+                            <Tab>{l('Entertainment')}</Tab>
+                        </Tabs>
+                    </div>
                 </div>
 
                 <Grid className='ActivationsPage__list'>
