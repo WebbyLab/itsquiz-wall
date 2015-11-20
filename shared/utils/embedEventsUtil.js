@@ -1,12 +1,11 @@
-import { embedOrigin } from '../config';
-
 export default class embedEventsUtil {
-    constructor(isParent) {
+    constructor({ embedOrigin }) {
         this.events = {};
+        this.embedOrigin = embedOrigin;
     }
 
     send(data) {
-        window.parent.postMessage(data, embedOrigin);
+        window.parent.postMessage(data, this.embedOrigin);
     }
 
     handleEvents = ({ isTrusted, data }) => {
