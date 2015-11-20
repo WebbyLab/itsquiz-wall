@@ -1,6 +1,8 @@
 @import "../assets/mixins.less";
 @import "../assets/palette.less";
 
+@AVATAR_SIZE : 45px;
+
 .QuizCard {
     width: 100%;
 }
@@ -8,6 +10,7 @@
 .QuizCard__head {
     color: @text-color;
     height: 60px;
+    padding: 10px;
     display: flex;
 
     .mdl-card__title-text {
@@ -28,20 +31,23 @@
 
 .QuizCard__info {
     display: flex;
+    width: 100%;
     align-items: center;
 
     .QuizCard__avatar {
-        width: 45px;
-        height: 45px;
+        width: @AVATAR_SIZE;
+        height: @AVATAR_SIZE;
         border-radius: 50%;
     }
 
     .QuizCard__name-author {
         margin-left: 10px;
+        width: calc(~"100% -" @AVATAR_SIZE ~"- 20px");
     }
 
     .QuizCard__name {
         font-size: 14px;
+        width: 100%;
         font-weight: 600;
         cursor: pointer;
 
