@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { loadActivation }  from '../../actions/activations';
 import connectDataFetchers from '../../lib/connectDataFetchers.jsx';
-import EmbedEvents         from '../../utils/embedEventsUtil';
+import EmbedEvents         from '../../utils/EmbedEventsUtil';
 import config              from '../../config';
 
 import ActivationPage from '../../components/pages/ActivationPage.jsx';

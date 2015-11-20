@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { loadActivations, searchActivations } from '../../actions/activations';
 import connectDataFetchers                    from '../../lib/connectDataFetchers.jsx';
 import history                                from '../../history';
-import EmbedEvents                            from '../../utils/embedEventsUtil';
+import EmbedEvents                            from '../../utils/EmbedEventsUtil';
 import config                                 from '../../config';
 
 import ActivationsPage from '../../components/pages/ActivationsPage.jsx';

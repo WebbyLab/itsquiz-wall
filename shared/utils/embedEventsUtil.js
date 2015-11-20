@@ -1,4 +1,4 @@
-export default class embedEventsUtil {
+export default class EmbedEventsUtil {
     constructor({ embedOrigin }) {
         this.events = {};
         this.embedOrigin = embedOrigin;
