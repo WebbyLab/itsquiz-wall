@@ -2,25 +2,28 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Oleg <cbetjiomyp@mail.com>, 2015.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-06 20:56+0200\n"
-"PO-Revision-Date: 2015-11-06 21:01+0200\n"
-"Language: uk\n"
+"POT-Creation-Date: 2015-11-20 11:54+0200\n"
+"PO-Revision-Date: 2015-11-20 12:02+0200\n"
+"Last-Translator: Oleg <cbetjiomyp@mail.com>\n"
+"Language-Team: русский <>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"X-Generator: Poedit 1.8.6\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Gtranslator 2.91.6\n"
 
 #: /Users/koorchik/work/itsquiz/itsquiz-wall/bin/../src_es5/components/QuizCard.js:106
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/QuizCard.js:114
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/QuizCard.js:113
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:112
 msgid "View details"
 msgstr "Докладніше"
 
@@ -32,9 +35,9 @@ msgstr "Безкоштовно"
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:123
 msgid " question"
 msgid_plural " questions"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "питання"
+msgstr[1] "питання"
+msgstr[2] "питань"
 
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:125
 msgid " minute"
@@ -45,11 +48,13 @@ msgstr[2] ""
 
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:133
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:154
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:143
 msgid "Pass this test"
 msgstr "Скласти цей тест"
 
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:123
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:126
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:119
 #, javascript-format
 msgid "%d question"
 msgid_plural "%d questions"
@@ -58,19 +63,24 @@ msgstr[1] "%d питання"
 msgstr[2] "%d питань"
 
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:172
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:161
 #, javascript-format
 msgid "More tests by %s"
 msgstr "Більше тестів %s"
 
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:62
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:77
 msgid "Quizzes"
 msgstr "Тести"
 
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/SearchBox.js:99
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/SearchBox.js:99
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/SearchBox.js:116
 msgid "Search"
 msgstr "Пошук"
 
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/i18n/Tools.js:49
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/i18n/Tools.js:49
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -79,9 +89,26 @@ msgstr[1] "%d години"
 msgstr[2] "%d годин"
 
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/i18n/Tools.js:52
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/i18n/Tools.js:52
 #, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d хвилина"
 msgstr[1] "%d хвилини"
 msgstr[2] "%d хвилин"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:99
+msgid "All tests"
+msgstr "Всі тести"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:104
+msgid "Vacancies"
+msgstr "Вакансії"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:109
+msgid "Education"
+msgstr "Освіта"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:114
+msgid "Entertainment"
+msgstr "Розваги"
