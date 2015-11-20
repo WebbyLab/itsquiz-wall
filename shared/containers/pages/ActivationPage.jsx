@@ -14,11 +14,15 @@ class ActivationPageContainer extends React.Component {
     };
 
     handleGoBack = () => {
-        this.props.history.pushState(null, `/${this.props.params.lang}/activations`);
+        this.props.history.pushState(null, `/${this.props.params.lang}/activations`, {
+            embed : this.props.location.query.embed
+        });
     };
 
     handleActivationClick = (activation) => {
-        this.props.history.pushState(null, `/${this.props.params.lang}/activations/${activation.id}`);
+        this.props.history.pushState(null, `/${this.props.params.lang}/activations/${activation.id}`, {
+            embed : this.props.location.query.embed
+        });
     };
 
     componentWillReceiveProps(nextProps) {

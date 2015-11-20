@@ -12,7 +12,9 @@ import ActivationsPage from '../../components/pages/ActivationsPage.jsx';
 
 class ActivationsPageContainer extends React.Component {
     handleQuizCardClick = (activation) => {
-        this.props.history.pushState(null, `/${this.props.params.lang}/activations/${activation.id}`);
+        this.props.history.pushState(null, `/${this.props.params.lang}/activations/${activation.id}`, {
+            embed : this.props.location.query.embed
+        });
     };
 
     handleSearch = (searchText) => {
