@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { Card, CardTitle, CardActions } from 'react-mdl/lib/Card';
-import Grid, { Cell } from 'react-mdl/lib/Grid';
-import Button         from 'react-mdl/lib/Button';
-import IconButton     from 'react-mdl/lib/IconButton';
-import Icon           from 'react-mdl/lib/Icon';
-
-import QuizTile             from '../QuizTile.jsx';
-import AppBarWithBackground from '../AppBarWithBackground.jsx';
+import Grid, { Cell }                   from 'react-mdl/lib/Grid';
+import Button                           from 'react-mdl/lib/Button';
+import IconButton                       from 'react-mdl/lib/IconButton';
+import Icon                             from 'react-mdl/lib/Icon';
+import QuizTile                         from '../QuizTile.jsx';
+import ShareDialog                      from '../ShareDialog.jsx';
+import AppBarWithBackground             from '../AppBarWithBackground.jsx';
 
 import { sprintf } from '../../utils';
 
@@ -25,7 +25,7 @@ export default class ActivationPage extends React.Component {
     };
 
     render() {
-        const {activation, onPass, onActivationClick, onGoBack} = this.props;
+        const {activation, isSharing, onPass, onShare, onStopSharing, onActivationClick, onGoBack} = this.props;
         const {l, ngettext, humanizeDuration} = this.context.i18n;
 
         // TODO : make isLoading prop and display spinner if it is true
@@ -35,6 +35,12 @@ export default class ActivationPage extends React.Component {
 
         return (
             <div className='ActivationPage'>
+                <ShareDialog
+                    isOpen         = {isSharing}
+                    linkToShare    = {activation.publicLink}
+                    onRequestClose = {onStopSharing}
+                />
+
                 <AppBarWithBackground
                     backgroundURL    = {activation.backgroundURL}
                     rightIconName    = 'arrow_back'
@@ -85,6 +91,14 @@ export default class ActivationPage extends React.Component {
                                         {l('Pass this test')}
                                     </Button>
                                 </div>
+                            </div>
+
+                            <div className='ActivationPage__menu'>
+                                <IconButton
+                                    name    = 'share'
+                                    ripple  = {true}
+                                    onClick = {onShare}
+                                />
                             </div>
                         </CardTitle>
 

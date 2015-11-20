@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom/server';
 
 import { RoutingContext, match } from 'react-router';
 
-import fetchComponentsData from './fetchComponentsData';
+import { fetchComponentsData,  getOGDataFromState } from './utils';
 
 import routes from '../shared/routes.jsx';
 import configureStore from '../shared/store/configureStore';
@@ -15,7 +15,7 @@ import api from '../shared/apiSingleton';
 import i18n from '../shared/i18n';
 import { extractSupportedLocaleFromPathname } from '../shared/utils';
 
-import clientConfig from '../etc/client-config.json';
+import config from '../etc/client-config.json';
 
 import ruLocaleData from '../public/static/lang/ru.json';
 import ukLocaleData from '../public/static/lang/uk.json';
@@ -64,13 +64,16 @@ app.use((req, res) => {
                 );
 
                 const initialState = store.getState();
-                const title = 'Quiz Wall';
+                const OGData = getOGDataFromState({
+                    route : renderProps.routes[renderProps.routes.length - 1].path,
+                    state : initialState
+                });
 
                 return renderHTML({
                     componentHTML,
-                    title,
                     initialState,
-                    config: clientConfig
+                    OGData,
+                    config
                 });
             })
             .then(html => res.end(html))
@@ -79,14 +82,24 @@ app.use((req, res) => {
     });
 });
 
-function renderHTML({componentHTML, title, initialState, config}) {
+function renderHTML({componentHTML, initialState, OGData, config}) {
     return `
         <!DOCTYPE html>
         <html>
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>${title}</title>
+            <title>Quiz Wall</title>
+
+            <meta property="og:title" content="${OGData.title}" />
+            <meta property="og:site_name" content="${OGData.siteName}"/>
+            <meta property="og:image" content="${OGData.image}" />
+            <meta property="og:description" content="${OGData.description}" />
+            <meta property="og:type" content="test" />
+            <meta property="og:locale" content="en_US" />
+            <meta property="og:locale:alternate" content="ru_RU" />
+            <meta property="og:locale:alternate" content="uk_UA" />
+
             <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
             <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.cyan-pink.min.css" />

@@ -16,6 +16,10 @@ const embedEvents = new EmbedEvents({
 
 class ActivationPageContainer extends React.Component {
 
+    state = {
+        isSharing : false
+    };
+
     handlePassActivationClick = (activation) => {
         const isEmbedded = this.props.location.query.embed;
         const { linkToPass, actionId } = activation;
@@ -42,6 +46,18 @@ class ActivationPageContainer extends React.Component {
         });
     };
 
+    handleShare = () => {
+        this.setState({
+            isSharing : true
+        });
+    };
+
+    handleStopSharing = () => {
+        this.setState({
+            isSharing : false
+        });
+    };
+
     componentWillReceiveProps(nextProps) {
         if (this.props.params.id !== nextProps.params.id) {
             this.props.dispatch(loadActivation(nextProps.params, nextProps.location.query) );
@@ -49,14 +65,15 @@ class ActivationPageContainer extends React.Component {
     }
 
     render() {
-        const activation = this.props.activation || {};
-
         return (
             <ActivationPage
-                activation        = {activation}
+                activation        = {this.props.activation || {}}
+                isSharing         = {this.state.isSharing}
                 onPass            = {this.handlePassActivationClick}
                 onActivationClick = {this.handleActivationClick}
                 onGoBack          = {this.handleGoBack}
+                onShare           = {this.handleShare}
+                onStopSharing     = {this.handleStopSharing}
             />
         );
     }

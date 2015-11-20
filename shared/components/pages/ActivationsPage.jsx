@@ -4,8 +4,9 @@ import cx    from 'classnames';
 import { Tab, Tabs }  from 'react-mdl/lib/Tabs';
 import Grid, { Cell } from 'react-mdl/lib/Grid';
 
-import QuizCard from '../QuizCard.jsx';
-import AppBar   from '../AppBar.jsx';
+import QuizCard    from '../QuizCard.jsx';
+import AppBar      from '../AppBar.jsx';
+import ShareDialog from '../ShareDialog.jsx';
 
 if ( process.env.BROWSER ) {
     require('./ActivationsPage.less');
@@ -17,14 +18,28 @@ export default class ActivationsPage extends React.Component {
     static contextTypes = { i18n: React.PropTypes.object };
 
     static propTypes = {
-        activations: React.PropTypes.arrayOf(React.PropTypes.object),
-        search:      React.PropTypes.string,
-        onItemClick: React.PropTypes.func,
-        onSearch:    React.PropTypes.func
+        activations : React.PropTypes.arrayOf(React.PropTypes.object),
+        search      : React.PropTypes.string,
+        onItemClick : React.PropTypes.func,
+        onShare     : React.PropTypes.func,
+        onSearch    : React.PropTypes.func
     };
 
     render() {
-        const { activations, search, selectedCategory, isEmbedded, onItemClick, onSearch, onTabChange } = this.props;
+        const {
+            activations,
+            search,
+            selectedCategory,
+            isSharing,
+            linkToShare,
+            isEmbedded,
+            onItemClick,
+            onSearch,
+            onShare,
+            onTabChange,
+            onStopSharing
+        } = this.props;
+
         const { l } = this.context.i18n;
 
         const classes = cx('ActivationsPage', {
@@ -33,6 +48,12 @@ export default class ActivationsPage extends React.Component {
 
         return (
             <div className={classes}>
+                <ShareDialog
+                    isOpen         = {isSharing}
+                    linkToShare    = {linkToShare}
+                    onRequestClose = {onStopSharing}
+                />
+
                 <div className='ActivationsPage__header'>
                     <AppBar
                         title         = {l('Quizzes')}
@@ -74,6 +95,7 @@ export default class ActivationsPage extends React.Component {
                                 timeToPass        = {activation.timeToPass}
                                 pictureURL        = {activation.pictureURL}
                                 author            = {activation.author}
+                                onShare           = {onShare.bind(this, activation)}
                                 onClick           = {onItemClick.bind(this, activation)}
                             />
                         </Cell>
@@ -83,4 +105,3 @@ export default class ActivationsPage extends React.Component {
         );
     }
 }
-

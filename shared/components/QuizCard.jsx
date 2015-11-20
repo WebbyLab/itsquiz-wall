@@ -24,7 +24,7 @@ export default class QuizCard extends React.Component {
     };
 
     render() {
-        const { id, name, message, timeToPass, numberOfQuestions, pictureURL, author, onClick } = this.props;
+        const { id, name, message, timeToPass, numberOfQuestions, pictureURL, author, onClick, onShare } = this.props;
         const { l } = this.context.i18n;
 
         return (
@@ -57,6 +57,7 @@ export default class QuizCard extends React.Component {
                         <IconButton
                             colored = {true}
                             name    = 'share'
+                            onClick = {onShare}
                         />
                     </div>
 

@@ -17,6 +17,11 @@ const embedEvents = new EmbedEvents({
 
 class ActivationsPageContainer extends React.Component {
 
+    state = {
+        linkToShare : '',
+        isSharing   : false
+    };
+
     componentDidMount() {
         embedEvents.subscribe({
             'SEARCH_QUIZ_WALL' : this.handleSearch
@@ -36,10 +41,24 @@ class ActivationsPageContainer extends React.Component {
         });
     };
 
+    handleShare = (activation) => {
+        this.setState({
+            linkToShare : activation.publicLink,
+            isSharing   : true
+        });
+    };
+
     handleTabChange = (category) => {
         this.props.history.pushState(null, this.props.location.pathname, {
             ...this.props.location.query,
             category : category !== 'ALL' ? category : undefined
+        });
+    };
+
+    handleStopSharing = () => {
+        this.setState({
+            linkToShare : '',
+            isSharing   : false
         });
     };
 
@@ -64,11 +83,15 @@ class ActivationsPageContainer extends React.Component {
             <ActivationsPage
                 activations      = {this.props.activations}
                 search           = {this.props.search}
+                linkToShare      = {this.state.linkToShare}
+                isSharing        = {this.state.isSharing}
                 selectedCategory = {this.props.category}
                 isEmbedded       = {this.props.location.query.embed}
                 onItemClick      = {this.handleQuizCardClick}
                 onSearch         = {this.handleSearch}
+                onShare          = {this.handleShare}
                 onTabChange      = {this.handleTabChange}
+                onStopSharing    = {this.handleStopSharing}
             />
         );
     }
