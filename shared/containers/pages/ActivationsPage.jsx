@@ -1,16 +1,28 @@
 'use strict';
 
-import React from 'react';
-
+import React       from 'react';
 import { connect } from 'react-redux';
 
 import { loadActivations, searchActivations } from '../../actions/activations';
 import connectDataFetchers                    from '../../lib/connectDataFetchers.jsx';
 import history                                from '../../history';
+import EmbedEvents                            from '../../utils/embedEventsUtil';
+import config                                 from '../../config';
 
 import ActivationsPage from '../../components/pages/ActivationsPage.jsx';
 
+const embedEvents = new EmbedEvents({
+    embedOrigin: config.embedOrigin
+});
+
 class ActivationsPageContainer extends React.Component {
+
+    componentDidMount() {
+        embedEvents.subscribe({
+            'SEARCH_QUIZ_WALL' : this.handleSearch
+        });
+    }
+
     handleQuizCardClick = (activation) => {
         this.props.history.pushState(null, `/${this.props.params.lang}/activations/${activation.id}`, {
             embed : this.props.location.query.embed
@@ -41,6 +53,10 @@ class ActivationsPageContainer extends React.Component {
         if (needToReloadData) {
             this.props.dispatch( loadActivations(nextProps.params, nextQuery) );
         }
+    }
+
+    componentWillUnmount() {
+        embedEvents.unsubscribe();
     }
 
     render() {

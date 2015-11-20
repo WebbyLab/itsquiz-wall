@@ -1,23 +1,30 @@
 'use strict';
 
-import React from 'react';
+import React       from 'react';
 import { connect } from 'react-redux';
 
 import { loadActivation }  from '../../actions/activations';
 import connectDataFetchers from '../../lib/connectDataFetchers.jsx';
+import EmbedEvents         from '../../utils/embedEventsUtil';
+import config              from '../../config';
 
 import ActivationPage from '../../components/pages/ActivationPage.jsx';
 
+const embedEvents = new EmbedEvents({
+    embedOrigin: config.embedOrigin
+});
+
 class ActivationPageContainer extends React.Component {
+
     handlePassActivationClick = (activation) => {
         const isEmbedded = this.props.location.query.embed;
-        const { linkToPass } = activation;
+        const { linkToPass, actionId } = activation;
 
         if (isEmbedded) {
-            window.parent.postMessage({
+            embedEvents.send({
                 type : 'PASS_TEST',
-                link : linkToPass
-            }, linkToPass);
+                actionId
+            });
         } else {
             window.open(linkToPass, '_self');
         }
