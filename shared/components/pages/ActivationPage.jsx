@@ -19,9 +19,9 @@ export default class ActivationPage extends React.Component {
     static contextTypes = { i18n: React.PropTypes.object };
 
     static propTypes = {
-        activation: React.PropTypes.object,
-        onPass: React.PropTypes.func,
-        onActivationClick: React.PropTypes.func
+        activation        : React.PropTypes.object,
+        onPass            : React.PropTypes.func,
+        onActivationClick : React.PropTypes.func
     };
 
     render() {
