@@ -33,17 +33,14 @@ export default class ActivationsPage extends React.Component {
 
         return (
             <div className={classes}>
-                {
-                    !isEmbedded
-                    ? <AppBar
-                        title         = {l('Quizzes')}
-                        search        = {search}
-                        scrollOffset  = {65}
-                        displaySearch = {true}
-                        onSearch      = {onSearch}
-                    />
-                    : null
-                }
+                <AppBar
+                    title         = {l('Quizzes')}
+                    search        = {search}
+                    className     = 'ActivationsPage__app-bar'
+                    scrollOffset  = {65}
+                    displaySearch = {true}
+                    onSearch      = {onSearch}
+                />
 
                 <div className='ActivationsPage__tab-bar'>
                     <Tabs
