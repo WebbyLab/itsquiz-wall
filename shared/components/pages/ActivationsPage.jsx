@@ -53,6 +53,7 @@ export default class ActivationsPage extends React.Component {
                     linkToShare    = {linkToShare}
                     onRequestClose = {onStopSharing}
                 />
+
                 <div className='ActivationsPage__header'>
                     <AppBar
                         title         = {l('Quizzes')}

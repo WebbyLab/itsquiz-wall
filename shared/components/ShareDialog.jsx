@@ -4,6 +4,8 @@ import Dialog    from './Dialog.jsx';
 import Button    from 'react-mdl/lib/Button';
 import Icon      from './Icon.jsx';
 
+import { facebookAppId } from '../config';
+
 if ( process.env.BROWSER ) {
     require('./ShareDialog.less');
 }
@@ -13,33 +15,36 @@ export default class ShareDialog extends React.Component {
     static contextTypes = { i18n: React.PropTypes.object };
 
     static propTypes = {
-    };
-
-    static defaultProps = {
+        linkToShare    : React.PropTypes.string.isRequired,
+        onRequestClose : React.PropTypes.func.isRequired
     };
 
     postOnTwitter = () => {
-        window.open(`https://twitter.com/intent/tweet?text=${this.props.linkToShare}`, '', 'width=500, height=500');
+        this.openLinkInPopup(`https://twitter.com/intent/tweet?text=${this.props.linkToShare}`);
     };
 
     postOnGooglePlus = () => {
-        window.open(`https://plus.google.com/share?url=${this.props.linkToShare}`, '', 'width=500, height=500');
+        this.openLinkInPopup(`https://plus.google.com/share?url=${this.props.linkToShare}`);
     };
 
     postOnFacebook = () => {
-        window.open(`https://www.facebook.com/dialog/share?app_id=91c5e258ac327601d50538b3578af343&&display=popup&href=${this.props.linkToShare}&redirect_uri=${this.props.linkToShare}`, '', 'width=500, height=500');
+        this.openLinkInPopup(`https://www.facebook.com/dialog/share?app_id=${facebookAppId}&&display=popup`
+            + `&href=${this.props.linkToShare}&redirect_uri=${this.props.linkToShare}`);
     };
 
     postOnLinkedin = () => {
-        window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${this.props.linkToShare}`, '', 'width=500, height=500');
+        this.openLinkInPopup(`https://www.linkedin.com/shareArticle?mini=true&url=${this.props.linkToShare}`);
     };
 
     postOnVK = () => {
-        window.open(`http://vk.com/share.php?url=${this.props.linkToShare}`, '', 'width=500, height=500');
+        this.openLinkInPopup(`http://vk.com/share.php?url=${this.props.linkToShare}`);
+    };
+
+    openLinkInPopup = (URL) => {
+        window.open(URL, '', 'width=500, height=500');
     };
 
     render() {
-        const { katya, ...otherProps } = this.props;
         const { l } = this.context.i18n;
 
         return (
@@ -47,7 +52,7 @@ export default class ShareDialog extends React.Component {
                 <Dialog
                     className = 'ShareDialog__dialog'
                     title     = {l('Share test')}
-                    {...otherProps}>
+                    {...this.props}>
                     <div className='ShareDialog__buttons-container'>
                         <div className='ShareDialog__button ShareDialog__button--facebook' onClick={this.postOnFacebook}>
                             <Icon type='facebook' className='ShareDialog__icon'/>

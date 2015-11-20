@@ -79,7 +79,6 @@ class ActivationsPageContainer extends React.Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <ActivationsPage
                 activations      = {this.props.activations}
