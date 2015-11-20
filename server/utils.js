@@ -25,8 +25,9 @@ export function getOGDataFromState({ route, state }) {
         default:
             return {
                 title       : 'Quiz Wall',
-                image       : 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRpiqzxnmi6UvHXQmo8NHV5sfB9kQ1eJRxQHKtXCX5qxwRvkiIlet07uI4',
-                description : 'Vivamus aliquet elit ac nisl Vivamus aliquet elit ac nisl Vivamus aliquet elit ac nisl'
+                siteName    : 'It\'s quiz',
+                image       : 'http://qas.itsquiz.com/static/images/logo.png',
+                description : 'Discover tons of different vacancies, tests, quizzes, questionnaires and more...'
             };
     }
 }
