@@ -10,14 +10,13 @@
   "private": true,
   "scripts": {
     "build": "NODE_ENV='production' webpack -p",
-    "start": "webpack -d --watch --colors",
+    "start": "NODE_ENV='production' pm2 start server/app.js --interpreter node_modules/babel/bin/babel-node.js --name itsquiz-wall",
     "server": "nodemon --exec babel-node -- server/app.js",
     "devserver": "webpack-dev-server --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 8050 --host 0.0.0.0",
     "extract_lang": "./bin/extract_lang.sh",
     "lint": "eslint shared client server",
     "test": "npm run lint",
     "po2json": "./bin/po2json.sh",
-    "start": "NODE_ENV='production' pm2 start server/app.js --interpreter node_modules/babel/bin/babel-node.js --name itsquiz-wall",
     "stop": "NODE_ENV='production' pm2 delete itsquiz-wall -s &> /dev/null"
   },
   "dependencies": {
@@ -32,6 +31,7 @@
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-mdl": "^1.0.1",
+    "react-modal": "^0.6.1",
     "react-redux": "^3.1.0",
     "react-router": "^1.0.0-rc3",
     "redux": "^3.0.2",

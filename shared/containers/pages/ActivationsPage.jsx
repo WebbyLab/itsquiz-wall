@@ -11,6 +11,12 @@ import history                                from '../../history';
 import ActivationsPage from '../../components/pages/ActivationsPage.jsx';
 
 class ActivationsPageContainer extends React.Component {
+
+    state = {
+        linkToShare : '',
+        isSharing   : false
+    };
+
     handleQuizCardClick = (activation) => {
         this.props.history.pushState(null, `/${this.props.params.lang}/activations/${activation.id}`, {
             embed : this.props.location.query.embed
@@ -21,6 +27,13 @@ class ActivationsPageContainer extends React.Component {
         this.props.history.pushState(null, this.props.location.pathname, {
             ...this.props.location.query,
             search : searchText || undefined
+        });
+    };
+
+    handleShare = (activation) => {
+        this.setState({
+            linkToShare : activation.publicLink,
+            isSharing   : true
         });
     };
 
@@ -48,10 +61,13 @@ class ActivationsPageContainer extends React.Component {
             <ActivationsPage
                 activations      = {this.props.activations}
                 search           = {this.props.search}
+                linkToShare      = {this.state.linkToShare}
+                isSharing        = {this.state.isSharing}
                 selectedCategory = {this.props.category}
                 isEmbedded       = {this.props.location.query.embed}
                 onItemClick      = {this.handleQuizCardClick}
                 onSearch         = {this.handleSearch}
+                onShare          = {this.handleShare}
                 onTabChange      = {this.handleTabChange}
             />
         );
