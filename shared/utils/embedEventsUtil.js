@@ -10,8 +10,8 @@ export default class embedEventsUtil {
 
     handleEvents = ({ isTrusted, data }) => {
         if (isTrusted) {
-            const {type, ...params} = data;
-            const args = Object.keys(params).map(key => params[key]);
+            const {type, ...otherParams} = data;
+            const args = Object.keys(otherParams).map(key => otherParams[key]);
             return this.events[type] ? this.events[type](...args) : null;
         }
     };
