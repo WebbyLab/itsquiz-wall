@@ -50,7 +50,7 @@ class ActivationPageContainer extends React.Component {
 
     render() {
         const activation = this.props.activation || {};
-
+        console.log(this.props);
         return (
             <ActivationPage
                 activation        = {activation}

@@ -15,7 +15,7 @@ import api from '../shared/apiSingleton';
 import i18n from '../shared/i18n';
 import { extractSupportedLocaleFromPathname } from '../shared/utils';
 
-import clientConfig from '../etc/client-config.json';
+import config from '../etc/client-config.json';
 
 import ruLocaleData from '../public/static/lang/ru.json';
 import ukLocaleData from '../public/static/lang/uk.json';
@@ -64,12 +64,16 @@ app.use((req, res) => {
                 );
 
                 const initialState = store.getState();
-                const OGData = getOGDataFromState(initialState);
+                const OGData = getOGDataFromState({
+                    route : renderProps.routes[renderProps.routes.length - 1].path,
+                    state : initialState
+                });
 
                 return renderHTML({
                     componentHTML,
                     initialState,
-                    config: clientConfig
+                    OGData,
+                    config
                 });
             })
             .then(html => res.end(html))
@@ -78,7 +82,7 @@ app.use((req, res) => {
     });
 });
 
-function renderHTML({componentHTML, initialState, config}) {
+function renderHTML({componentHTML, initialState, OGData, config}) {
     return `
         <!DOCTYPE html>
         <html>
@@ -87,11 +91,10 @@ function renderHTML({componentHTML, initialState, config}) {
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Quiz Wall</title>
 
-            <meta property="og:title" content="Workday Sets Price Range for I.P.O." />
-            <meta property="og:site_name" content="My Favorite News"/>
-            <meta property="og:url" content="http://www.myfavnews.com/2013/1/1/workday-price-range" />
-            <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg" />
-            <meta property="og:description" content="Workday, a provider of cloud-based" />
+            <meta property="og:title" content="${OGData.title}" />
+            <meta property="og:site_name" content="${OGData.siteName}"/>
+            <meta property="og:image" content="${OGData.image}" />
+            <meta property="og:description" content="${OGData.description}" />
             <meta property="og:type" content="test" />
             <meta property="og:locale" content="en_US" />
             <meta property="og:locale:alternate" content="ru_RU" />
