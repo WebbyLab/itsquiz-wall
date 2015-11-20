@@ -27,7 +27,7 @@ export default class ShareDialog extends React.Component {
     };
 
     postOnFacebook = () => {
-        window.open(`https://twitter.com/intent/tweet?text=${this.props.linkToShare}`, '', 'width=500, height=500');
+        window.open(`https://www.facebook.com/dialog/share?app_id=91c5e258ac327601d50538b3578af343&&display=popup&href=${this.props.linkToShare}&redirect_uri=${this.props.linkToShare}`, '', 'width=500, height=500');
     };
 
     postOnLinkedin = () => {

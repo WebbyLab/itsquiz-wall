@@ -18,15 +18,28 @@ export default class ActivationsPage extends React.Component {
     static contextTypes = { i18n: React.PropTypes.object };
 
     static propTypes = {
-        activations: React.PropTypes.arrayOf(React.PropTypes.object),
-        search:      React.PropTypes.string,
-        onItemClick: React.PropTypes.func,
+        activations : React.PropTypes.arrayOf(React.PropTypes.object),
+        search      : React.PropTypes.string,
+        onItemClick : React.PropTypes.func,
         onShare     : React.PropTypes.func,
-        onSearch:    React.PropTypes.func
+        onSearch    : React.PropTypes.func
     };
 
     render() {
-        const { activations, search, selectedCategory, isSharing, linkToShare, isEmbedded, onItemClick, onSearch, onShare, onTabChange } = this.props;
+        const {
+            activations,
+            search,
+            selectedCategory,
+            isSharing,
+            linkToShare,
+            isEmbedded,
+            onItemClick,
+            onSearch,
+            onShare,
+            onTabChange,
+            onStopSharing
+        } = this.props;
+
         const { l } = this.context.i18n;
 
         const classes = cx('ActivationsPage', {
@@ -36,8 +49,9 @@ export default class ActivationsPage extends React.Component {
         return (
             <div className={classes}>
                 <ShareDialog
-                    isOpen      = {isSharing}
-                    linkToShare = {linkToShare}
+                    isOpen         = {isSharing}
+                    linkToShare    = {linkToShare}
+                    onRequestClose = {onStopSharing}
                 />
                 <div className='ActivationsPage__header'>
                     <AppBar

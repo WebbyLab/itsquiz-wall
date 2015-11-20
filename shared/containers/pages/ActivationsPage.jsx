@@ -44,6 +44,13 @@ class ActivationsPageContainer extends React.Component {
         });
     };
 
+    handleStopSharing = () => {
+        this.setState({
+            linkToShare : '',
+            isSharing   : false
+        });
+    };
+
     componentWillReceiveProps(nextProps) {
         const currentQuery = this.props.location.query;
         const nextQuery = nextProps.location.query;
@@ -57,6 +64,7 @@ class ActivationsPageContainer extends React.Component {
     }
 
     render() {
+        console.log(this.state)
         return (
             <ActivationsPage
                 activations      = {this.props.activations}
@@ -69,6 +77,7 @@ class ActivationsPageContainer extends React.Component {
                 onSearch         = {this.handleSearch}
                 onShare          = {this.handleShare}
                 onTabChange      = {this.handleTabChange}
+                onStopSharing    = {this.handleStopSharing}
             />
         );
     }

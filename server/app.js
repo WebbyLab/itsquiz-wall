@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom/server';
 
 import { RoutingContext, match } from 'react-router';
 
-import fetchComponentsData from './fetchComponentsData';
+import { fetchComponentsData,  getOGDataFromState } from './utils';
 
 import routes from '../shared/routes.jsx';
 import configureStore from '../shared/store/configureStore';
@@ -64,11 +64,10 @@ app.use((req, res) => {
                 );
 
                 const initialState = store.getState();
-                const title = 'Quiz Wall';
+                const OGData = getOGDataFromState(initialState);
 
                 return renderHTML({
                     componentHTML,
-                    title,
                     initialState,
                     config: clientConfig
                 });
@@ -79,14 +78,25 @@ app.use((req, res) => {
     });
 });
 
-function renderHTML({componentHTML, title, initialState, config}) {
+function renderHTML({componentHTML, initialState, config}) {
     return `
         <!DOCTYPE html>
         <html>
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>${title}</title>
+            <title>Quiz Wall</title>
+
+            <meta property="og:title" content="Workday Sets Price Range for I.P.O." />
+            <meta property="og:site_name" content="My Favorite News"/>
+            <meta property="og:url" content="http://www.myfavnews.com/2013/1/1/workday-price-range" />
+            <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg" />
+            <meta property="og:description" content="Workday, a provider of cloud-based" />
+            <meta property="og:type" content="test" />
+            <meta property="og:locale" content="en_US" />
+            <meta property="og:locale:alternate" content="ru_RU" />
+            <meta property="og:locale:alternate" content="uk_UA" />
+
             <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
             <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.cyan-pink.min.css" />
