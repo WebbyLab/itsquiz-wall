@@ -9,6 +9,7 @@ export default {
             name                 : activation.name,
             linkToPass           : activation.linkToPass,
             publicLink           : activation.publicLink,
+            actionId             : activation.links ? activation.links.action.id : '',
             numberOfQuestions    : activation.numberOfQuestions,
             numberOfUsersPassed  : activation.numberOfPeople,
             dueTime              : activation.dueTime,
