@@ -3,14 +3,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { loadActivation } from '../../actions/activations';
+import { loadActivation }  from '../../actions/activations';
 import connectDataFetchers from '../../lib/connectDataFetchers.jsx';
 
 import ActivationPage from '../../components/pages/ActivationPage.jsx';
 
 class ActivationPageContainer extends React.Component {
     handlePassActivationClick = (activation) => {
-        window.open(activation.linkToPass, '_self');
+        if (this.props.location.query.embed) {
+            window.parent.postMessage({
+                type : 'PASS_TEST',
+                link : activation.linkToPass
+            }, activation.linkToPass);
+        } else {
+            window.open(activation.linkToPass, '_self');
+        }
     };
 
     handleGoBack = () => {
