@@ -54,23 +54,33 @@ export default class ShareDialog extends React.Component {
                     title     = {l('Share test')}
                     {...this.props}>
                     <div className='ShareDialog__buttons-container'>
-                        <div className='ShareDialog__button ShareDialog__button--facebook' onClick={this.postOnFacebook}>
+                        <div
+                            className='ShareDialog__button ShareDialog__button--facebook'
+                            onClick={this.postOnFacebook}>
                             <Icon type='facebook' className='ShareDialog__icon'/>
                         </div>
 
-                        <div className='ShareDialog__button ShareDialog__button--google' onClick={this.postOnGooglePlus}>
+                        <div
+                            className='ShareDialog__button ShareDialog__button--google'
+                            onClick={this.postOnGooglePlus}>
                             <Icon type='google-plus' className='ShareDialog__icon'/>
                         </div>
 
-                        <div className='ShareDialog__button ShareDialog__button--twitter' onClick={this.postOnTwitter}>
+                        <div
+                            className='ShareDialog__button ShareDialog__button--twitter'
+                            onClick={this.postOnTwitter}>
                             <Icon type='twitter' className='ShareDialog__icon'/>
                         </div>
 
-                        <div className='ShareDialog__button ShareDialog__button--vk'  onClick={this.postOnVK}>
+                        <div
+                            className='ShareDialog__button ShareDialog__button--vk'
+                            onClick={this.postOnVK}>
                             <Icon type='vk' className='ShareDialog__icon'/>
                         </div>
 
-                        <div className='ShareDialog__button ShareDialog__button--linkedin' onClick={this.postOnLinkedin}>
+                        <div
+                            className='ShareDialog__button ShareDialog__button--linkedin'
+                            onClick={this.postOnLinkedin}>
                             <Icon type='linkedin' className='ShareDialog__icon'/>
                         </div>
                     </div>
