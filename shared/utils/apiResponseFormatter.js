@@ -7,7 +7,7 @@ export default {
         return {
             id                   : activation.id,
             name                 : activation.name,
-            sharedLink           : activation.sharedLink,
+            linkToPass           : activation.linkToPass,
             numberOfQuestions    : activation.numberOfQuestions,
             numberOfUsersPassed  : activation.numberOfPeople,
             dueTime              : activation.dueTime,

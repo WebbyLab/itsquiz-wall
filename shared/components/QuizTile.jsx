@@ -7,7 +7,7 @@ if ( process.env.BROWSER ) {
 import { Card,
     CardTitle,
     CardActions
-} from 'react-mdl/lib/card';
+} from 'react-mdl/lib/Card';
 
 import Button     from 'react-mdl/lib/Button';
 import IconButton from 'react-mdl/lib/IconButton';

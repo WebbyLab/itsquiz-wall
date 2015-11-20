@@ -1,7 +1,7 @@
 import React from 'react';
 import cx    from 'classnames';
 
-import { Tab, Tabs }  from 'react-mdl/lib/tabs';
+import { Tab, Tabs }  from 'react-mdl/lib/Tabs';
 import Grid, { Cell } from 'react-mdl/lib/Grid';
 
 import QuizCard from '../QuizCard.jsx';
