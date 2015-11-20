@@ -16,11 +16,12 @@ export function getOGDataFromState({ route, state }) {
 
     switch(route) {
         case '/:lang/activations/:id':
+            const { name, message, pictureURL } = state.currentActivation;
             return {
-                title       : state.currentActivation.name,
+                title       : name,
                 siteName    : 'It\'s quiz',
-                image       : state.currentActivation.pictureURL,
-                description : state.currentActivation.message
+                image       : pictureURL ? pictureURL.replace('svg', 'png') : '',
+                description : message
             };
         default:
             return {
