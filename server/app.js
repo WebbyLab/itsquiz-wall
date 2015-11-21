@@ -15,7 +15,7 @@ import api from '../shared/apiSingleton';
 import i18n from '../shared/i18n';
 import { extractSupportedLocaleFromPathname } from '../shared/utils';
 
-import config from '../etc/client-config.json';
+import clientConfig from '../etc/client-config.json';
 
 import ruLocaleData from '../public/static/lang/ru.json';
 import ukLocaleData from '../public/static/lang/uk.json';
@@ -73,7 +73,7 @@ app.use((req, res) => {
                     componentHTML,
                     initialState,
                     OGData,
-                    config
+                    clientConfig
                 });
             })
             .then(html => res.end(html))

@@ -14,7 +14,7 @@ export function fetchComponentsData(dispatch, components, params, query) {
 
 export function getOGDataFromState({ route, state }) {
 
-    switch(route) {
+    switch (route) {
         case '/:lang/activations/:id':
             const { name, message, pictureURL } = state.currentActivation;
             return {
