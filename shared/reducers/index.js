@@ -18,8 +18,8 @@ import {
 
 
 function activations(state = { entitiesByCategory: {} }, action) {
-    switch (action.type) {
-        case LOAD_ACTIVATIONS_SUCCESS:
+    const handler = {
+        [LOAD_ACTIVATIONS_SUCCESS]() {
             const entities = action.activations.map(activation => {
                 const author = action.users.find(user => user.id === activation.links.owner.id);
                 return apiResponseFormatter.formatActivation(activation, author);
@@ -32,15 +32,18 @@ function activations(state = { entitiesByCategory: {} }, action) {
                 search : action.search,
                 category : state.category
             };
-        case CHANGE_ACTIVATIONS_CATEGORY:
+        },
+
+        [CHANGE_ACTIVATIONS_CATEGORY]() {
             return {
                 entitiesByCategory: state.entitiesByCategory,
                 search : state.search,
                 category : action.category
             };
-        default:
-            return state;
-    }
+        }
+    }[action.type];
+
+    return handler ? handler() : state;
 }
 
 function currentActivation(state = {}, action) {
