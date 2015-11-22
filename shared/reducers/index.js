@@ -6,7 +6,8 @@ import apiResponseFormatter from '../utils/apiResponseFormatter';
 import {
     LOAD_ACTIVATIONS_SUCCESS,
     LOAD_ACTIVATION_SUCCESS,
-    LOAD_ACTIVATION_FAIL
+    LOAD_ACTIVATION_FAIL,
+    CHANGE_ACTIVATIONS_CATEGORY
 } from '../actions/activations';
 
 import {
@@ -16,7 +17,7 @@ import {
 } from '../actions/users';
 
 
-function activations(state = [], action) {
+function activations(state = { entitiesByCategory: {} }, action) {
     switch (action.type) {
         case LOAD_ACTIVATIONS_SUCCESS:
             const entities = action.activations.map(activation => {
@@ -24,12 +25,19 @@ function activations(state = [], action) {
                 return apiResponseFormatter.formatActivation(activation, author);
             });
 
+            const entitiesByCategory = { ...state.entitiesByCategory, [action.category]: entities };
+
             return {
-                entities,
+                entitiesByCategory,
                 search : action.search,
+                category : state.category
+            };
+        case CHANGE_ACTIVATIONS_CATEGORY:
+            return {
+                entitiesByCategory: state.entitiesByCategory,
+                search : state.search,
                 category : action.category
             };
-
         default:
             return state;
     }
