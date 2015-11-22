@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 
 import Textfield from 'react-mdl/lib/Textfield';
 import history   from '../../history';
 
-export default class MainLayout extends React.Component {
+export default class MainLayout extends Component {
     state = {
         search: ''
     };

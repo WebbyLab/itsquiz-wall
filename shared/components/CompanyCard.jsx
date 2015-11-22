@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 import Button from 'react-mdl/lib/Button';
 
-export class CompanyCard extends React.Component {
+export class CompanyCard extends Component {
     render() {
         const { id, pictureURL, companyName, country, city, onClick } = this.props;
 

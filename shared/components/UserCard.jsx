@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 
 import Button from 'react-mdl/lib/Button';
 

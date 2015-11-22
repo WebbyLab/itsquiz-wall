@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 
 import { connect } from 'react-redux';
 
@@ -7,7 +7,7 @@ import connectDataFetchers from '../../lib/connectDataFetchers.jsx';
 
 import UsersPage from '../../components/pages/UsersPage.jsx';
 
-class UsersPageContainer extends React.Component {
+class UsersPageContainer extends Component {
     handleUserCardClick = (user) => {
         this.props.history.pushState(null, `/users/${user.id}`);
     };
