@@ -24,14 +24,12 @@ export default class SearchBox extends Component {
     };
 
     handleKeyDown = (e) => {
-        console.log(e);
         if (e.keyCode === 13) {
             this.props.onSearch(e.target.value);
         }
     };
 
     handleSearchChange = (value) => {
-        console.log('handleSearchChange', value);
         if (!value) {
             this.props.onSearch(value);
         }
