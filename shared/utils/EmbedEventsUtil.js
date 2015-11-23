@@ -8,9 +8,9 @@ export default class EmbedEventsUtil {
         window.parent.postMessage(data, this.embedOrigin);
     }
 
-    handleEvents = ({ isTrusted, data }) => {
-        if (isTrusted) {
-            const {type, ...otherParams} = data;
+    handleEvents = (event) => {
+        if (event.origin === this.embedOrigin) {
+            const {type, ...otherParams} = event.data;
             const args = Object.keys(otherParams).map(key => otherParams[key]);
             return this.events[type] ? this.events[type](...args) : null;
         }
