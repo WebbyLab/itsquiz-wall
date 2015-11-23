@@ -1,11 +1,10 @@
 'use strict';
 
-import React       from 'react';
+import React, {Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
 
 import { loadActivations, searchActivations } from '../../actions/activations';
 import connectDataFetchers                    from '../../lib/connectDataFetchers.jsx';
-import history                                from '../../history';
 import EmbedEvents                            from '../../utils/EmbedEventsUtil';
 import config                                 from '../../config';
 
@@ -15,18 +14,11 @@ const embedEvents = new EmbedEvents({
     embedOrigin: config.embedOrigin
 });
 
-class ActivationsPageContainer extends React.Component {
-
+class ActivationsPageContainer extends Component {
     state = {
         linkToShare : '',
         isSharing   : false
     };
-
-    componentDidMount() {
-        embedEvents.subscribe({
-            'SEARCH_QUIZ_WALL' : this.handleSearch
-        });
-    }
 
     handleQuizCardClick = (activation) => {
         this.props.history.pushState(null, `/${this.props.params.lang}/activations/${activation.id}`, {
@@ -61,6 +53,12 @@ class ActivationsPageContainer extends React.Component {
             isSharing   : false
         });
     };
+
+    componentDidMount() {
+        embedEvents.subscribe({
+            'SEARCH_QUIZ_WALL' : this.handleSearch
+        });
+    }
 
     componentWillReceiveProps(nextProps) {
         const currentQuery = this.props.location.query;
@@ -97,11 +95,11 @@ class ActivationsPageContainer extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({ activations: {entitiesByCategory, search, category} }) {
     return {
-        activations : state.activations.entities || [],
-        search      : state.activations.search,
-        category    : state.activations.category
+        activations : entitiesByCategory[category] || [],
+        search,
+        category
     };
 }
 

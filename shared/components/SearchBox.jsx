@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 import cx from 'classnames';
 
 if ( process.env.BROWSER ) {
@@ -11,12 +11,12 @@ import IconButton from 'react-mdl/lib/IconButton';
 import Icon from 'react-mdl/lib/Icon';
 import Textfield from 'react-mdl/lib/Textfield';
 
-export default class SearchBox extends React.Component {
-    static contextTypes = { i18n: React.PropTypes.object };
+export default class SearchBox extends Component {
+    static contextTypes = { i18n: PropTypes.object };
 
     static propTypes = {
-        search   : React.PropTypes.string,
-        onSearch : React.PropTypes.func
+        search   : PropTypes.string,
+        onSearch : PropTypes.func
     };
 
     state = {

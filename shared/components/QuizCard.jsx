@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 
 if ( process.env.BROWSER ) {
     require('./QuizCard.less');
@@ -9,18 +9,18 @@ import Button                           from 'react-mdl/lib/Button';
 import IconButton                       from 'react-mdl/lib/IconButton';
 import Icon                             from 'react-mdl/lib/Icon';
 
-export default class QuizCard extends React.Component {
-    static contextTypes = { i18n: React.PropTypes.object };
+export default class QuizCard extends Component {
+    static contextTypes = { i18n: PropTypes.object };
 
     static propTypes = {
-        id                : React.PropTypes.string,
-        name              : React.PropTypes.string,
-        message           : React.PropTypes.string,
-        timeToPass        : React.PropTypes.number,
-        numberOfQuestions : React.PropTypes.number,
-        pictureURL        : React.PropTypes.string,
-        author            : React.PropTypes.object,
-        onClick           : React.PropTypes.func
+        id                : PropTypes.string,
+        name              : PropTypes.string,
+        message           : PropTypes.string,
+        timeToPass        : PropTypes.number,
+        numberOfQuestions : PropTypes.number,
+        pictureURL        : PropTypes.string,
+        author            : PropTypes.object,
+        onClick           : PropTypes.func
     };
 
     render() {

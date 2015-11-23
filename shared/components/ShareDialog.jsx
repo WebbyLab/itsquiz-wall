@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 
 import Dialog    from './Dialog.jsx';
 import Button    from 'react-mdl/lib/Button';
@@ -10,13 +10,13 @@ if ( process.env.BROWSER ) {
     require('./ShareDialog.less');
 }
 
-export default class ShareDialog extends React.Component {
+export default class ShareDialog extends Component {
 
-    static contextTypes = { i18n: React.PropTypes.object };
+    static contextTypes = { i18n: PropTypes.object };
 
     static propTypes = {
-        linkToShare    : React.PropTypes.string.isRequired,
-        onRequestClose : React.PropTypes.func.isRequired
+        linkToShare    : PropTypes.string.isRequired,
+        onRequestClose : PropTypes.func.isRequired
     };
 
     postOnTwitter = () => {

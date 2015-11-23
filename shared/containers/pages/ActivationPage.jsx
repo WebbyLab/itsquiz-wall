@@ -1,6 +1,6 @@
 'use strict';
 
-import React       from 'react';
+import React, {Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
 
 import { loadActivation }  from '../../actions/activations';
@@ -14,8 +14,7 @@ const embedEvents = new EmbedEvents({
     embedOrigin: config.embedOrigin
 });
 
-class ActivationPageContainer extends React.Component {
-
+class ActivationPageContainer extends Component {
     state = {
         isSharing : false
     };

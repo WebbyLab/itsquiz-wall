@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 import cx from 'classnames';
 
 import SearchBox from './SearchBox.jsx';
@@ -11,16 +11,16 @@ if ( process.env.BROWSER ) {
     require('./AppBar.less');
 }
 
-export default class AppBar extends React.Component {
+export default class AppBar extends Component {
     static propTypes = {
-        title            : React.PropTypes.string,
-        search           : React.PropTypes.string,
-        displaySearch    : React.PropTypes.bool,
-        rightIconName    : React.PropTypes.string,
-        fixOnScroll      : React.PropTypes.bool,
-        scrollOffset     : React.PropTypes.number,
-        onRightIconClick : React.PropTypes.func,
-        onSearch         : React.PropTypes.func
+        title            : PropTypes.string,
+        search           : PropTypes.string,
+        displaySearch    : PropTypes.bool,
+        rightIconName    : PropTypes.string,
+        fixOnScroll      : PropTypes.bool,
+        scrollOffset     : PropTypes.number,
+        onRightIconClick : PropTypes.func,
+        onSearch         : PropTypes.func
     };
 
     static defaultProps = {

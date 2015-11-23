@@ -1,3 +1,5 @@
 language: node_js
+notifications:
+  slack: itsquiz:qw9Fg9RSN0kDTuI7KN8nSMyN
 node_js:
   - "5.0"

@@ -2,11 +2,17 @@
 
 import api                  from '../apiSingleton';
 
-export const LOAD_ACTIVATIONS_SUCCESS = 'LOAD_ACTIVATIONS_SUCCESS';
-export const LOAD_ACTIVATIONS_FAIL = 'LOAD_ACTIVATIONS_FAIL';
+export const LOAD_ACTIVATIONS_SUCCESS    = 'LOAD_ACTIVATIONS_SUCCESS';
+export const LOAD_ACTIVATIONS_FAIL       = 'LOAD_ACTIVATIONS_FAIL';
+export const CHANGE_ACTIVATIONS_CATEGORY = 'CHANGE_ACTIVATIONS_CATEGORY';
 
 export function loadActivations(params = {}, query = {}) {
     return (dispatch) => {
+        dispatch({
+            type      : CHANGE_ACTIVATIONS_CATEGORY,
+            category  : query.category
+        });
+
         return api.activations.list({
             include  : 'users',
             search   : query.search || '',

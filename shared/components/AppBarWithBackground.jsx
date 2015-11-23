@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 
 import IconButton from 'react-mdl/lib/IconButton';
 
@@ -9,10 +9,10 @@ if ( process.env.BROWSER ) {
     require('./AppBarWithBackground.less');
 }
 
-export default class AppBarWithBackground extends React.Component {
+export default class AppBarWithBackground extends Component {
     static propTypes = {
-        backgroundURL : React.PropTypes.string,
-        height        : React.PropTypes.number
+        backgroundURL : PropTypes.string,
+        height        : PropTypes.number
     };
 
     static defaultProps = {
