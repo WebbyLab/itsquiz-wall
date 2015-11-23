@@ -85,6 +85,7 @@ class ActivationsPageContainer extends Component {
                 isSharing        = {this.state.isSharing}
                 selectedCategory = {this.props.category}
                 isEmbedded       = {this.props.location.query.embed}
+                isLoading        = {this.props.isLoading}
                 onItemClick      = {this.handleQuizCardClick}
                 onSearch         = {this.handleSearch}
                 onShare          = {this.handleShare}
@@ -95,9 +96,10 @@ class ActivationsPageContainer extends Component {
     }
 }
 
-function mapStateToProps({ activations: {entitiesByCategory, search, category} }) {
+function mapStateToProps({ activations: {entitiesByCategory, search, category, isLoading} }) {
     return {
         activations : entitiesByCategory[category] || [],
+        isLoading,
         search,
         category
     };
