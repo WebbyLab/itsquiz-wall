@@ -10,8 +10,8 @@
   "private": true,
   "scripts": {
     "build": "NODE_ENV='production' webpack -p",
-    "start": "NODE_ENV='production' pm2 start server/app.js --interpreter node_modules/babel/bin/babel-node.js --name itsquiz-wall",
-    "server": "nodemon --exec babel-node -- server/app.js",
+    "start": "NODE_ENV='production' pm2 start server/runner.js --name itsquiz-wall",
+    "server": "nodemon --exec babel-node -- server/runner.js",
     "devserver": "webpack-dev-server --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 8050 --host 0.0.0.0",
     "extract_lang": "./bin/extract_lang.sh",
     "lint": "eslint shared client server",
