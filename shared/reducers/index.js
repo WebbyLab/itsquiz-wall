@@ -17,8 +17,9 @@ import {
     LOAD_USER_FAIL
 } from '../actions/users';
 
+const DEFAULT_ACTIVATIONS_STATE = { entitiesByCategory: [], isLoading : true };
 
-function activations(state = { entitiesByCategory: [] }, action) {
+function activations(state = DEFAULT_ACTIVATIONS_STATE, action) {
     switch (action.type) {
         case LOAD_ACTIVATIONS_SUCCESS:
             const entities = action.activations.map(activation => {
@@ -46,17 +47,17 @@ function activations(state = { entitiesByCategory: [] }, action) {
     }
 }
 
-function currentActivation(state = {}, action) {
+const DEFAULT_CURRENT_ACTIVATION_STATE = { activation : {}, isLoading : true };
+
+function currentActivation(state = DEFAULT_CURRENT_ACTIVATION_STATE, action) {
     // TODO normalize data. in currentActivation save only id. It will allow:
     // 1. Intant activation loading from activations list
     // 2. No activations blinking while you switch between them. From loaded activation to not loaded one.
     switch (action.type) {
         case LOAD_ACTIVATION_REQUEST:
-            const isActivationChanged = !state.activation || state.activation.id !== action.activationId;
-
             return {
                 activation : state.activation,
-                isLoading  : isActivationChanged
+                isLoading  : state.activation.id !== action.activationId
             };
 
         case LOAD_ACTIVATION_SUCCESS:

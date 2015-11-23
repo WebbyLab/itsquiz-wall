@@ -120,25 +120,27 @@ export default class ActivationsPage extends React.Component {
 
                 <div className='ActivationsPage__content'>
                     <Grid className='ActivationsPage__list'>
-                        {activations.map( activation =>
-                            <Cell
-                                key    = {activation.id}
-                                align  = 'stretch'
-                                col    = {3}
-                                tablet = {6}
-                                phone  = {12}>
-                                <QuizCard
-                                    name              = {activation.name}
-                                    message           = {activation.message}
-                                    numberOfQuestions = {activation.numberOfQuestions}
-                                    timeToPass        = {activation.timeToPass}
-                                    pictureURL        = {activation.pictureURL}
-                                    author            = {activation.author}
-                                    onShare           = {onShare.bind(this, activation)}
-                                    onClick           = {onItemClick.bind(this, activation)}
-                                />
-                            </Cell>
-                        )}
+                        {
+                            activations.map( activation =>
+                                <Cell
+                                    key    = {activation.id}
+                                    align  = 'stretch'
+                                    col    = {3}
+                                    tablet = {6}
+                                    phone  = {12}>
+                                    <QuizCard
+                                        name              = {activation.name}
+                                        message           = {activation.message}
+                                        numberOfQuestions = {activation.numberOfQuestions}
+                                        timeToPass        = {activation.timeToPass}
+                                        pictureURL        = {activation.pictureURL}
+                                        author            = {activation.author}
+                                        onShare           = {onShare.bind(this, activation)}
+                                        onClick           = {onItemClick.bind(this, activation)}
+                                    />
+                                </Cell>
+                            )
+                        }
                     </Grid>
                 </div>
             </div>
