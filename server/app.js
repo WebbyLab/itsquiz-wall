@@ -73,7 +73,7 @@ app.use((req, res) => {
                     componentHTML,
                     initialState,
                     OGData,
-                    config: clientConfig
+                    config : clientConfig
                 });
             })
             .then(html => res.end(html))
