@@ -67,6 +67,7 @@ class ActivationPageContainer extends Component {
         return (
             <ActivationPage
                 activation        = {this.props.activation || {}}
+                isLoading         = {this.props.isLoading}
                 isSharing         = {this.state.isSharing}
                 onPass            = {this.handlePassActivationClick}
                 onActivationClick = {this.handleActivationClick}
@@ -78,6 +79,13 @@ class ActivationPageContainer extends Component {
     }
 }
 
-export default connect( state => ({ activation: state.currentActivation }) )(
+function mapStateToProps({ currentActivation: {activation, isLoading} }) {
+    return {
+        activation,
+        isLoading
+    };
+}
+
+export default connect( mapStateToProps )(
     connectDataFetchers(ActivationPageContainer, [ loadActivation ])
 );
