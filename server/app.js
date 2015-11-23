@@ -73,7 +73,7 @@ app.use((req, res) => {
                     componentHTML,
                     initialState,
                     OGData,
-                    config: clientConfig
+                    config : clientConfig
                 });
             })
             .then(html => res.end(html))
@@ -82,7 +82,7 @@ app.use((req, res) => {
     });
 });
 
-function renderHTML({componentHTML, initialState, OGData, clientConfig}) {
+function renderHTML({componentHTML, initialState, OGData, config}) {
     return `
         <!DOCTYPE html>
         <html>
@@ -104,17 +104,17 @@ function renderHTML({componentHTML, initialState, OGData, clientConfig}) {
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
             <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.cyan-pink.min.css" />
             <link rel="stylesheet" href="//cdn.materialdesignicons.com/1.2.65/css/materialdesignicons.min.css">
-            <link rel="stylesheet" href="${clientConfig.staticUrl}/static/build/main.css">
+            <link rel="stylesheet" href="${config.staticUrl}/static/build/main.css">
             <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
         </head>
         <body>
         <div id="react-view">${componentHTML}</div>
           <script type="application/javascript">
-            window.__CONFIG__ = ${JSON.stringify(clientConfig)};
+            window.__CONFIG__ = ${JSON.stringify(config)};
             window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
           </script>
 
-          <script type="application/javascript" src="${clientConfig.staticUrl}/static/build/main.js"></script>
+          <script type="application/javascript" src="${config.staticUrl}/static/build/main.js"></script>
         </body>
         </html>
     `;
