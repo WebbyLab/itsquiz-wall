@@ -11,6 +11,8 @@ import IconButton from 'react-mdl/lib/IconButton';
 import Icon from 'react-mdl/lib/Icon';
 import Textfield from 'react-mdl/lib/Textfield';
 
+const ENTER_KEY = 13;
+
 export default class SearchBox extends Component {
     static contextTypes = { i18n: PropTypes.object };
 
@@ -24,7 +26,7 @@ export default class SearchBox extends Component {
     };
 
     handleKeyDown = (e) => {
-        if (e.keyCode === 13) {
+        if (e.keyCode === ENTER_KEY) {
             this.props.onSearch(e.target.value);
         }
     };
