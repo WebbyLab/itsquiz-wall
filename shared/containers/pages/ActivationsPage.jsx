@@ -86,6 +86,7 @@ class ActivationsPageContainer extends Component {
                 isSharing        = {this.state.isSharing}
                 isEmbedded       = {this.props.location.query.embed}
                 isLoading        = {this.props.isLoading}
+                isEmpty          = {this.props.activations.length === 0}
                 onItemClick      = {this.handleQuizCardClick}
                 onSearch         = {this.handleSearch}
                 onShare          = {this.handleShare}
