@@ -25,7 +25,7 @@ develop one of these projects on github. So, everyone can see how real-world pro
 
 Watch the video:
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=ZLzrZtAIEps
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=eiougg2UhYA
 " target="_blank"><img src="http://img.youtube.com/vi/eiougg2UhYA/0.jpg"
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
