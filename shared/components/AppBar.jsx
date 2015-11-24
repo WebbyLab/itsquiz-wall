@@ -70,8 +70,6 @@ export default class AppBar extends Component {
             'AppBar--with-search' : displaySearch
         });
 
-        console.log(rightIconName);
-
         return (
             <div className={rootClassNames}>
                 <div className='AppBar__left'>
