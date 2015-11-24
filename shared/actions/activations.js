@@ -29,12 +29,14 @@ export function loadActivations(params = {}, query = {}) {
     };
 }
 
+export const LOAD_ACTIVATION_REQUEST = 'LOAD_ACTIVATION_REQUEST';
 export const LOAD_ACTIVATION_SUCCESS = 'LOAD_ACTIVATION_SUCCESS';
 export const LOAD_ACTIVATION_FAIL    = 'LOAD_ACTIVATION_FAIL';
-export const LOAD_ACTIVATION_REQUEST = 'LOAD_ACTIVATION_REQUEST';
 
 export function loadActivation({id}) {
     return (dispatch) => {
+        dispatch({ type : LOAD_ACTIVATION_REQUEST, activationId : id });
+
         return api.activations.show(id).then( (response) => {
             const authorId = response.data.links.owner.id;
 

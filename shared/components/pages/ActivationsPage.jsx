@@ -3,6 +3,7 @@ import cx    from 'classnames';
 
 import { Tab, Tabs }  from 'react-mdl/lib/Tabs';
 import Grid, { Cell } from 'react-mdl/lib/Grid';
+import Spinner        from 'react-mdl/lib/Spinner';
 
 import QuizCard    from '../QuizCard.jsx';
 import AppBar      from '../AppBar.jsx';
@@ -31,8 +32,9 @@ export default class ActivationsPage extends React.Component {
             search,
             selectedCategory,
             isSharing,
-            linkToShare,
+            isLoading,
             isEmbedded,
+            linkToShare,
             onItemClick,
             onSearch,
             onShare,
@@ -43,8 +45,44 @@ export default class ActivationsPage extends React.Component {
         const { l } = this.context.i18n;
 
         const classes = cx('ActivationsPage', {
-            'ActivationsPage--embedded' : isEmbedded
+            'ActivationsPage--embedded' : isEmbedded,
+            'ActivationsPage--loading'  : isLoading
         });
+
+        if (isLoading) {
+            return (
+                <div className={classes}>
+                    <div className='ActivationsPage__header'>
+                        <AppBar
+                            title         = {l('Quizzes')}
+                            search        = {search}
+                            className     = 'ActivationsPage__app-bar'
+                            fixOnScroll   = {false}
+                            scrollOffset  = {65}
+                            displaySearch = {true}
+                            onSearch      = {onSearch}
+                        />
+
+                        <div className='ActivationsPage__tab-bar'>
+                            <Tabs
+                                ripple    = {true}
+                                activeTab = {selectedCategory ? CATEGORIES.indexOf(selectedCategory) : 0}
+                                className = 'ActivationsPage__tabs'
+                                onChange  = {(index) => onTabChange(CATEGORIES[index])}>
+
+                                <Tab>{l('All tests')}</Tab>
+                                <Tab>{l('Vacancies')}</Tab>
+                                <Tab>{l('Education')}</Tab>
+                                <Tab>{l('Entertainment')}</Tab>
+                            </Tabs>
+                        </div>
+                    </div>
+                    <div className='ActivationsPage__content'>
+                        <Spinner className='ActivationsPage__spinner' />
+                    </div>
+                </div>
+            );
+        }
 
         return (
             <div className={classes}>
@@ -80,27 +118,31 @@ export default class ActivationsPage extends React.Component {
                     </div>
                 </div>
 
-                <Grid className='ActivationsPage__list'>
-                    {activations.map( activation =>
-                        <Cell
-                            key    = {activation.id}
-                            align  = 'stretch'
-                            col    = {3}
-                            tablet = {6}
-                            phone  = {12}>
-                            <QuizCard
-                                name              = {activation.name}
-                                message           = {activation.message}
-                                numberOfQuestions = {activation.numberOfQuestions}
-                                timeToPass        = {activation.timeToPass}
-                                pictureURL        = {activation.pictureURL}
-                                author            = {activation.author}
-                                onShare           = {onShare.bind(this, activation)}
-                                onClick           = {onItemClick.bind(this, activation)}
-                            />
-                        </Cell>
-                    )}
-                </Grid>
+                <div className='ActivationsPage__content'>
+                    <Grid className='ActivationsPage__list'>
+                        {
+                            activations.map( activation =>
+                                <Cell
+                                    key    = {activation.id}
+                                    align  = 'stretch'
+                                    col    = {3}
+                                    tablet = {6}
+                                    phone  = {12}>
+                                    <QuizCard
+                                        name              = {activation.name}
+                                        message           = {activation.message}
+                                        numberOfQuestions = {activation.numberOfQuestions}
+                                        timeToPass        = {activation.timeToPass}
+                                        pictureURL        = {activation.pictureURL}
+                                        author            = {activation.author}
+                                        onShare           = {onShare.bind(this, activation)}
+                                        onClick           = {onItemClick.bind(this, activation)}
+                                    />
+                                </Cell>
+                            )
+                        }
+                    </Grid>
+                </div>
             </div>
         );
     }

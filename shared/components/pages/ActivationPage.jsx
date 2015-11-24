@@ -5,6 +5,8 @@ import Grid, { Cell }                   from 'react-mdl/lib/Grid';
 import Button                           from 'react-mdl/lib/Button';
 import IconButton                       from 'react-mdl/lib/IconButton';
 import Icon                             from 'react-mdl/lib/Icon';
+import Spinner                          from 'react-mdl/lib/Spinner';
+
 import QuizTile                         from '../QuizTile.jsx';
 import ShareDialog                      from '../ShareDialog.jsx';
 import AppBarWithBackground             from '../AppBarWithBackground.jsx';
@@ -25,12 +27,35 @@ export default class ActivationPage extends React.Component {
     };
 
     render() {
-        const {activation, isSharing, onPass, onShare, onStopSharing, onActivationClick, onGoBack} = this.props;
+        const {
+            activation,
+            isSharing,
+            isLoading,
+            onPass,
+            onShare,
+            onStopSharing,
+            onActivationClick,
+            onGoBack
+        } = this.props;
+
         const {l, ngettext, humanizeDuration} = this.context.i18n;
 
-        // TODO : make isLoading prop and display spinner if it is true
-        if (!activation.name) {
-            return <div />;
+        if (isLoading) {
+            return (
+                <div className='ActivationPage'>
+                    <AppBarWithBackground
+                        backgroundURL    = {''}
+                        rightIconName    = 'arrow_back'
+                        onRightIconClick = {onGoBack}
+                        title            = {''}
+                        height           = {200}
+                    />
+
+                    <div className='ActivationPage__content'>
+                        <Spinner className='ActivationPage__spinner'/>
+                    </div>
+                </div>
+            );
         }
 
         return (
