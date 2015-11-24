@@ -2,16 +2,16 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# Oleg <cbetjiomyp@mail.com>, 2015.
+# Oleg <CBETJIOMYP@gmail.com>, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-20 11:54+0200\n"
-"PO-Revision-Date: 2015-11-20 12:02+0200\n"
-"Last-Translator: Oleg <cbetjiomyp@mail.com>\n"
-"Language-Team: русский <>\n"
+"POT-Creation-Date: 2015-11-24 10:31-0800\n"
+"PO-Revision-Date: 2015-11-24 10:53-0800\n"
+"Last-Translator: Oleg <CBETJIOMYP@gmail.com>\n"
+"Language-Team: English <>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,6 +24,7 @@ msgstr ""
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/QuizCard.js:114
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/QuizCard.js:113
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:112
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:114
 msgid "View details"
 msgstr "Детальнее"
 
@@ -49,12 +50,14 @@ msgstr[2] " минуты"
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:133
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:154
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:143
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:174
 msgid "Pass this test"
 msgstr "Сдать этот тест"
 
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:123
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:126
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:119
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:150
 #, javascript-format
 msgid "%d question"
 msgid_plural "%d questions"
@@ -64,12 +67,14 @@ msgstr[2] "%d вопросов"
 
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:172
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:161
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:201
 #, javascript-format
 msgid "More tests by %s"
 msgstr "Еще тесты от %s"
 
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:62
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:77
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:161
 msgid "Quizzes"
 msgstr "Тесты"
 
@@ -98,17 +103,33 @@ msgstr[1] "%d минуты"
 msgstr[2] "%d минут"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:99
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:184
 msgid "All tests"
 msgstr "Все тесты"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:104
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:189
 msgid "Vacancies"
 msgstr "Вакансии"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:109
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:194
 msgid "Education"
 msgstr "Образование"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:114
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:199
 msgid "Entertainment"
 msgstr "Развлечения"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:81
+msgid "Sorry, we couldn't find any tests for "
+msgstr "К сожалению, по вашему запросу тестов не найдено "
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:97
+msgid "There are no activations in this category yet"
+msgstr "В этой категории тестов пока что нет"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/ShareDialog.js:88
+msgid "Share test"
+msgstr "Поделиться тестом"
