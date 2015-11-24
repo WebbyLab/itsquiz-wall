@@ -5,6 +5,7 @@ import apiResponseFormatter from '../utils/apiResponseFormatter';
 
 import {
     LOAD_ACTIVATIONS_SUCCESS,
+    LOAD_ACTIVATION_REQUEST,
     LOAD_ACTIVATION_SUCCESS,
     LOAD_ACTIVATION_FAIL,
     CHANGE_ACTIVATIONS_CATEGORY
@@ -17,7 +18,7 @@ import {
 } from '../actions/users';
 
 
-function activations(state = { entitiesByCategory: {} }, action) {
+function activations(state = { entitiesByCategory: [], isLoading : true }, action) {
     switch (action.type) {
         case LOAD_ACTIVATIONS_SUCCESS:
             const entities = action.activations.map(activation => {
@@ -30,11 +31,13 @@ function activations(state = { entitiesByCategory: {} }, action) {
             return {
                 entitiesByCategory,
                 search : action.search,
+                isLoading : false,
                 category : state.category
             };
         case CHANGE_ACTIVATIONS_CATEGORY:
             return {
                 entitiesByCategory: state.entitiesByCategory,
+                isLoading : !state.entitiesByCategory[action.category],
                 search : state.search,
                 category : action.category
             };
@@ -43,19 +46,28 @@ function activations(state = { entitiesByCategory: {} }, action) {
     }
 }
 
-function currentActivation(state = {}, action) {
+
+function currentActivation(state = { activation : {}, isLoading : true }, action) {
     // TODO normalize data. in currentActivation save only id. It will allow:
     // 1. Intant activation loading from activations list
     // 2. No activations blinking while you switch between them. From loaded activation to not loaded one.
     switch (action.type) {
+        case LOAD_ACTIVATION_REQUEST:
+            return {
+                activation : state.activation,
+                isLoading  : state.activation.id !== action.activationId
+            };
+
         case LOAD_ACTIVATION_SUCCESS:
+            const data = apiResponseFormatter.formatActivation(action.activation, action.author);
 
-            const newState = apiResponseFormatter.formatActivation(action.activation, action.author);
-
-            newState.authorActivations = action.authorActivations.map( authorActivation => {
+            data.authorActivations = action.authorActivations.map( authorActivation => {
                 return apiResponseFormatter.formatActivation(authorActivation);
             });
-            return newState;
+            return {
+                activation : data,
+                isLoading  : false
+            };
 
         default:
             return state;
