@@ -61,6 +61,15 @@
          ],
          "Entertainment": [
             "Развлечения"
+         ],
+         "Sorry, we couldn't find any tests for ": [
+            "К сожалению, по вашему запросу тестов не найдено "
+         ],
+         "There are no activations in this category yet": [
+            "В этой категории тестов пока что нет"
+         ],
+         "Share test": [
+            "Поделиться тестом"
          ]
       }
    }
