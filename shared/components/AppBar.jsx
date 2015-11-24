@@ -11,6 +11,8 @@ if ( process.env.BROWSER ) {
     require('./AppBar.less');
 }
 
+const LOGO_SRC = '/static/logo.png';
+
 export default class AppBar extends Component {
     static propTypes = {
         title            : PropTypes.string,
@@ -28,7 +30,7 @@ export default class AppBar extends Component {
         search        : '',
         fixOnScroll   : true,
         displaySearch : false,
-        rightIconName : 'menu',
+        rightIconName : '',
         scrollOffset  : 0
     };
 
@@ -68,10 +70,17 @@ export default class AppBar extends Component {
             'AppBar--with-search' : displaySearch
         });
 
+        console.log(rightIconName);
+
         return (
             <div className={rootClassNames}>
                 <div className='AppBar__left'>
-                    <IconButton name={rightIconName} onClick={onRightIconClick} />
+                    {
+                        rightIconName
+                        ? <IconButton name={rightIconName} onClick={onRightIconClick} />
+                        : <img width='40px' height='40px' src={LOGO_SRC} className='AppBar__logo'/>
+                    }
+
                     <h2 className='AppBar__title'> {title} </h2>
                 </div>
                 {
