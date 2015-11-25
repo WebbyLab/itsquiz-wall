@@ -4,10 +4,10 @@ import { Card, CardTitle, CardActions } from 'react-mdl/lib/Card';
 import Grid, { Cell }                   from 'react-mdl/lib/Grid';
 import Button                           from 'react-mdl/lib/Button';
 import IconButton                       from 'react-mdl/lib/IconButton';
-import Icon                             from 'react-mdl/lib/Icon';
 import Spinner                          from 'react-mdl/lib/Spinner';
 
 import QuizTile                         from '../QuizTile.jsx';
+import Icon                             from '../Icon.jsx';
 import ShareDialog                      from '../ShareDialog.jsx';
 import AppBarWithBackground             from '../AppBarWithBackground.jsx';
 
@@ -81,11 +81,20 @@ export default class ActivationPage extends React.Component {
                             <div className='ActivationPage__info'>
                                 <div className='ActivationPage__name'>
                                     {activation.name}
+                                    {
+                                        activation.isPrivate
+                                        ? <span className='ActivationPage__private-tag'>
+                                            <Icon type='lock' className='ActivationPage__lock' />{l('private')}
+                                        </span>
+                                        : null
+                                    }
                                 </div>
 
                                 <div className='ActivationPage__author-name'>
                                     {activation.author.fullName}
                                 </div>
+
+
 
                                 <div className='ActivationPage__pass-info'>
                                     <span className='ActivationPage__number-of-questions'>
@@ -119,11 +128,15 @@ export default class ActivationPage extends React.Component {
                             </div>
 
                             <div className='ActivationPage__menu'>
-                                <IconButton
-                                    name    = 'share'
-                                    ripple  = {true}
-                                    onClick = {onShare}
-                                />
+                                {
+                                    !activation.isPrivate
+                                    ? <IconButton
+                                        name    = 'share'
+                                        ripple  = {true}
+                                        onClick = {onShare}
+                                    />
+                                    : null
+                                }
                             </div>
                         </CardTitle>
 
