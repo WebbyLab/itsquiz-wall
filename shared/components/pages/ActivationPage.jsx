@@ -94,8 +94,6 @@ export default class ActivationPage extends React.Component {
                                     {activation.author.fullName}
                                 </div>
 
-
-
                                 <div className='ActivationPage__pass-info'>
                                     <span className='ActivationPage__number-of-questions'>
                                         {
