@@ -12,7 +12,7 @@ export function fetchComponentsData(dispatch, components, params, query) {
     return Promise.all(promises);
 }
 
-export function getOGDataFromState({ route, state }) {
+export function getMetaDataFromState({ route, state }) {
 
     switch (route) {
         case '/:lang/activations/:id':

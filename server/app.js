@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom/server';
 
 import { RoutingContext, match } from 'react-router';
 
-import { fetchComponentsData,  getOGDataFromState } from './utils';
+import { fetchComponentsData,  getMetaDataFromState } from './utils';
 
 import routes from '../shared/routes.jsx';
 import configureStore from '../shared/store/configureStore';
@@ -64,7 +64,7 @@ app.use((req, res) => {
                 );
 
                 const initialState = store.getState();
-                const OGData = getOGDataFromState({
+                const metaData = getMetaDataFromState({
                     route : renderProps.routes[renderProps.routes.length - 1].path,
                     state : initialState
                 });
@@ -72,7 +72,7 @@ app.use((req, res) => {
                 return renderHTML({
                     componentHTML,
                     initialState,
-                    OGData,
+                    metaData,
                     config : clientConfig
                 });
             })
@@ -82,7 +82,7 @@ app.use((req, res) => {
     });
 });
 
-function renderHTML({componentHTML, initialState, OGData, config}) {
+function renderHTML({componentHTML, initialState, metaData, config}) {
     return `
         <!DOCTYPE html>
         <html>
@@ -92,14 +92,22 @@ function renderHTML({componentHTML, initialState, OGData, config}) {
             <link rel="shortcut icon" href="/static/favicon.ico"/>
             <title>Quiz Wall</title>
 
-            <meta property="og:title" content="${OGData.title}" />
-            <meta property="og:site_name" content="${OGData.siteName}"/>
-            <meta property="og:image" content="${OGData.image}" />
-            <meta property="og:description" content="${OGData.description}" />
+            <meta name="description" content="${metaData.description}">
+            <meta property="og:title" content="${metaData.title}" />
+            <meta property="og:site_name" content="${metaData.siteName}"/>
+            <meta property="og:image" content="${metaData.image}" />
+            <meta property="og:description" content="${metaData.description}" />
             <meta property="og:type" content="test" />
             <meta property="og:locale" content="en_US" />
             <meta property="og:locale:alternate" content="ru_RU" />
             <meta property="og:locale:alternate" content="uk_UA" />
+            <meta name="twitter:card" content="summary" />
+            <meta name="twitter:site" content="@itsquizcom" />
+            <meta name="twitter:title" content="${metaData.title}" />
+            <meta name="twitter:description" content="${metaData.description}" />
+            <meta name="twitter:image" content="${metaData.image}" />
+            <meta property="fb:app_id" content="${config.facebookAppId}" />
+
 
             <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
