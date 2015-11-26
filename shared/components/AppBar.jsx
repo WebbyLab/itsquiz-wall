@@ -15,6 +15,8 @@ if ( process.env.BROWSER ) {
 const LOGO_SRC = '/static/logo.png';
 
 export default class AppBar extends Component {
+    static contextTypes = { i18n: PropTypes.object };
+
     static propTypes = {
         title            : PropTypes.string,
         search           : PropTypes.string,
@@ -64,7 +66,8 @@ export default class AppBar extends Component {
     }
 
     render() {
-        const { title, search, displaySearch, rightIconName, onRightIconClick, onSearch } = this.props;
+        const { title, search, displaySearch, rightIconName, onRightIconClick, onSearch, onLogin } = this.props;
+        const { l } = this.context.i18n;
 
         const rootClassNames = cx('AppBar', this.props.className, {
             'AppBar--fixed'       : this.state.isFixedToTop,
@@ -76,8 +79,8 @@ export default class AppBar extends Component {
                 <div className='AppBar__left'>
                     {
                         rightIconName
-                        ? <IconButton name={rightIconName} onClick={onRightIconClick} />
-                        : <img width='40px' height='40px' src={LOGO_SRC} className='AppBar__logo'/>
+                            ? <IconButton name={rightIconName} onClick={onRightIconClick} />
+                            : <img width='40px' height='40px' src={LOGO_SRC} className='AppBar__logo'/>
                     }
 
                     <h2 className='AppBar__title'> {title} </h2>
@@ -96,7 +99,10 @@ export default class AppBar extends Component {
                         : null
                 }
                 <div className='AppBar__right'>
-                    <LanguageSwitch />
+                    <LanguageSwitch className='AppBar__lang' />
+                    <span className='AppBar__menu-item' onClick={onLogin}>
+                        {l('Sign in')}
+                    </span>
                 </div>
             </div>
         );
