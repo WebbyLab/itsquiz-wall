@@ -2,6 +2,7 @@
     "apiPrefix": "http://itsquiz.com/api/v1",
     "backgroundImagesPrefix": "http://app.itsquiz.com/be/static/images/backgrounds/",
     "staticUrl": "http://localhost:8050",
+    "loginUrl": "http://localhost:8090/{lang}/login",
     "embedOrigin": "http://localhost:8090",
     "facebookAppId": "XXX"
 }
