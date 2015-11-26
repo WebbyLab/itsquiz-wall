@@ -18,6 +18,10 @@ export default class Tools {
         return this.jed.ngettext(singular, plural, amount);
     }
 
+    getLocale = () => {
+        return this.locale.toLowerCase();
+    }
+
     getTimeFromNow = (date) => {
         moment.locale(this.locale);
 
