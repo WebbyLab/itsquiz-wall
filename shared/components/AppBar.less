@@ -25,8 +25,7 @@
             flex: 1;
 
             @media @phone {
-                width: auto;
-                max-width: 50%;
+                flex: 3;
             }
         }
     }
@@ -55,6 +54,12 @@
     align-items: center;
     justify-content: flex-end;
     flex: 1;
+
+    @media @phone {
+        .AppBar__menu-item {
+            display: none;
+        }
+    }
 }
 
 .AppBar__center {
@@ -63,8 +68,7 @@
     flex: 2;
 
     @media @phone {
-        width: auto;
-        flex: 2;
+        justify-content: flex-end;
     }
 }
 
