@@ -1,7 +1,8 @@
 'use strict';
 
 import React, {Component, PropTypes} from 'react';
-import { connect } from 'react-redux';
+import { connect }                   from 'react-redux';
+import strformat                     from 'strformat';
 
 import { loadActivation }  from '../../actions/activations';
 import connectDataFetchers from '../../lib/connectDataFetchers.jsx';
@@ -39,6 +40,13 @@ class ActivationPageContainer extends Component {
         });
     };
 
+    handleLogin = () => {
+        const loginUrl = strformat(config.loginUrl, {
+            lang: this.props.params.lang
+        });
+        window.open(loginUrl, '_self');
+    };
+
     handleActivationClick = (activation) => {
         this.props.history.pushState(null, `/${this.props.params.lang}/activations/${activation.id}`, {
             embed : this.props.location.query.embed
@@ -74,6 +82,7 @@ class ActivationPageContainer extends Component {
                 onActivationClick = {this.handleActivationClick}
                 onGoBack          = {this.handleGoBack}
                 onShare           = {this.handleShare}
+                onLogin           = {this.handleLogin}
                 onStopSharing     = {this.handleStopSharing}
             />
         );

@@ -22,9 +22,9 @@ import ukLocaleData from '../public/static/lang/uk.json';
 import enLocaleData from '../public/static/lang/en.json';
 
 const i18nToolsRegistry = {
-    ru: new i18n.Tools({ localeData: ruLocaleData }),
-    en: new i18n.Tools({ localeData: enLocaleData }),
-    uk: new i18n.Tools({ localeData: ukLocaleData })
+    ru: new i18n.Tools({ localeData: ruLocaleData, locale: 'ru' }),
+    en: new i18n.Tools({ localeData: enLocaleData, locale: 'en' }),
+    uk: new i18n.Tools({ localeData: ukLocaleData, locale: 'uk' })
 };
 
 const app = express();
