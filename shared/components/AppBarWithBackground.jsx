@@ -21,7 +21,7 @@ export default class AppBarWithBackground extends Component {
     };
 
     render() {
-        const { backgroundURL, height, onSearch } = this.props;
+        const { backgroundURL, height, onSearch, onLogin } = this.props;
 
         const appBarStyle = {
             background: `url(${backgroundURL}) center / cover`
@@ -33,6 +33,7 @@ export default class AppBarWithBackground extends Component {
                     className='AppBarWithBackground__fixed'
                     displaySearch={false}
                     scrollOffset={height / 2}
+                    onLogin={onLogin}
                     {...this.props}
                 />
             </div>

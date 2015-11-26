@@ -6,10 +6,10 @@ import Button                           from 'react-mdl/lib/Button';
 import IconButton                       from 'react-mdl/lib/IconButton';
 import Spinner                          from 'react-mdl/lib/Spinner';
 
-import QuizTile                         from '../QuizTile.jsx';
-import Icon                             from '../Icon.jsx';
-import ShareDialog                      from '../ShareDialog.jsx';
-import AppBarWithBackground             from '../AppBarWithBackground.jsx';
+import QuizTile             from '../QuizTile.jsx';
+import Icon                 from '../Icon.jsx';
+import ShareDialog          from '../ShareDialog.jsx';
+import AppBarWithBackground from '../AppBarWithBackground.jsx';
 
 import { sprintf } from '../../utils';
 
@@ -36,6 +36,7 @@ export default class ActivationPage extends React.Component {
             onShare,
             onStopSharing,
             onActivationClick,
+            onLogin,
             onGoBack
         } = this.props;
 
@@ -48,6 +49,7 @@ export default class ActivationPage extends React.Component {
                         backgroundURL    = {''}
                         rightIconName    = 'arrow_back'
                         onRightIconClick = {onGoBack}
+                        onLogin          = {onLogin}
                         title            = {''}
                         height           = {200}
                     />
@@ -72,6 +74,7 @@ export default class ActivationPage extends React.Component {
                     rightIconName    = 'arrow_back'
                     onRightIconClick = {onGoBack}
                     title            = {activation.name}
+                    onLogin          = {onLogin}
                     height           = {200}
                 />
 
