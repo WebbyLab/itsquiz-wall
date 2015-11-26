@@ -1,7 +1,8 @@
 'use strict';
 
 import React, {Component, PropTypes} from 'react';
-import { connect } from 'react-redux';
+import { connect }                   from 'react-redux';
+import strformat                     from 'strformat';
 
 import { loadActivations, searchActivations } from '../../actions/activations';
 import connectDataFetchers                    from '../../lib/connectDataFetchers.jsx';
@@ -31,6 +32,13 @@ class ActivationsPageContainer extends Component {
             ...this.props.location.query,
             search : searchText || undefined
         });
+    };
+
+    handleLogin = () => {
+        const loginUrl = strformat(config.loginUrl, {
+            lang: this.props.params.lang
+        });
+        window.open(loginUrl, '_self');
     };
 
     handleShare = (activation) => {
@@ -92,6 +100,7 @@ class ActivationsPageContainer extends Component {
                 onShare          = {this.handleShare}
                 onTabChange      = {this.handleTabChange}
                 onStopSharing    = {this.handleStopSharing}
+                onLogin          = {this.handleLogin}
             />
         );
     }
