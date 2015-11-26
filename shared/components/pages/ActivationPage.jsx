@@ -4,10 +4,10 @@ import { Card, CardTitle, CardActions } from 'react-mdl/lib/Card';
 import Grid, { Cell }                   from 'react-mdl/lib/Grid';
 import Button                           from 'react-mdl/lib/Button';
 import IconButton                       from 'react-mdl/lib/IconButton';
-import Icon                             from 'react-mdl/lib/Icon';
 import Spinner                          from 'react-mdl/lib/Spinner';
 
 import QuizTile                         from '../QuizTile.jsx';
+import Icon                             from '../Icon.jsx';
 import ShareDialog                      from '../ShareDialog.jsx';
 import AppBarWithBackground             from '../AppBarWithBackground.jsx';
 
@@ -29,6 +29,7 @@ export default class ActivationPage extends React.Component {
     render() {
         const {
             activation,
+            authorActivations,
             isSharing,
             isLoading,
             onPass,
@@ -81,6 +82,13 @@ export default class ActivationPage extends React.Component {
                             <div className='ActivationPage__info'>
                                 <div className='ActivationPage__name'>
                                     {activation.name}
+                                    {
+                                        activation.isPrivate
+                                        ? <span className='ActivationPage__private-tag'>
+                                            <Icon type='lock' className='ActivationPage__lock' />{l('private')}
+                                        </span>
+                                        : null
+                                    }
                                 </div>
 
                                 <div className='ActivationPage__author-name'>
@@ -119,11 +127,15 @@ export default class ActivationPage extends React.Component {
                             </div>
 
                             <div className='ActivationPage__menu'>
-                                <IconButton
-                                    name    = 'share'
-                                    ripple  = {true}
-                                    onClick = {onShare}
-                                />
+                                {
+                                    !activation.isPrivate
+                                    ? <IconButton
+                                        name    = 'share'
+                                        ripple  = {true}
+                                        onClick = {onShare}
+                                    />
+                                    : null
+                                }
                             </div>
                         </CardTitle>
 
@@ -134,17 +146,17 @@ export default class ActivationPage extends React.Component {
                         </div>
                     </Card>
 
-                    <div className='ActivationPage__subheader'>
-                        {
-                            sprintf(
-                                l('More tests by %s'),
-                                activation.author.fullName
-                            )
-                        }
-                    </div>
+                    {
+                        authorActivations.length !== 0
+                        ? <div className='ActivationPage__subheader'>
+                            {sprintf(l('More tests by %s'), activation.author.fullName)}
+                        </div>
+                        : null
+                    }
+
                     <Grid className='ActivationPage__author-activations-grid'>
                     {
-                        activation.authorActivations.map((authorActivation, i) =>
+                        authorActivations.map((authorActivation, i) =>
                             <Cell
                                 key    = {authorActivation.id}
                                 align  = 'stretch'

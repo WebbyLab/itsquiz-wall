@@ -3,7 +3,8 @@
 import React, {Component, PropTypes} from 'react';
 import cx from 'classnames';
 
-import SearchBox from './SearchBox.jsx';
+import SearchBox      from './SearchBox.jsx';
+import LanguageSwitch from '../containers/LanguageSwitch.jsx';
 
 import IconButton from 'react-mdl/lib/IconButton';
 
@@ -94,6 +95,9 @@ export default class AppBar extends Component {
                         )
                         : null
                 }
+                <div className='AppBar__right'>
+                    <LanguageSwitch />
+                </div>
             </div>
         );
     }

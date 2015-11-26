@@ -14,6 +14,7 @@ export default {
             numberOfUsersPassed  : activation.numberOfPeople,
             dueTime              : activation.dueTime,
             message              : activation.message,
+            isPrivate            : activation.isPublic === false,
             pictureURL           : activation.pictureURL,
             backgroundURL        : this._getBackgpoundURLById(activation.id),
             tags                 : activation.tags,

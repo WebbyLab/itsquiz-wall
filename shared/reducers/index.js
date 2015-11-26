@@ -36,7 +36,7 @@ function activations(state = { entitiesByCategory: [], isLoading : true }, actio
             };
         case CHANGE_ACTIVATIONS_CATEGORY:
             return {
-                entitiesByCategory: state.entitiesByCategory,
+                entitiesByCategory : state.entitiesByCategory,
                 isLoading : !state.entitiesByCategory[action.category],
                 search : state.search,
                 category : action.category
@@ -47,7 +47,7 @@ function activations(state = { entitiesByCategory: [], isLoading : true }, actio
 }
 
 
-function currentActivation(state = { activation : {}, isLoading : true }, action) {
+function currentActivation(state = { activation : {}, authorActivations: [], isLoading : true }, action) {
     // TODO normalize data. in currentActivation save only id. It will allow:
     // 1. Intant activation loading from activations list
     // 2. No activations blinking while you switch between them. From loaded activation to not loaded one.
@@ -55,18 +55,25 @@ function currentActivation(state = { activation : {}, isLoading : true }, action
         case LOAD_ACTIVATION_REQUEST:
             return {
                 activation : state.activation,
-                isLoading  : state.activation.id !== action.activationId
+                isLoading : state.activation.id !== action.activationId,
+                authorActivations : state.authorActivations
             };
 
         case LOAD_ACTIVATION_SUCCESS:
-            const data = apiResponseFormatter.formatActivation(action.activation, action.author);
+            const openedActivation = apiResponseFormatter.formatActivation(action.activation, action.author);
 
-            data.authorActivations = action.authorActivations.map( authorActivation => {
-                return apiResponseFormatter.formatActivation(authorActivation);
-            });
+            const otherAuthorActivations = action.authorActivations.filter( authorActivation =>
+                authorActivation.id !== openedActivation.id
+            );
+
+            const authorActivations = otherAuthorActivations.map( authorActivation =>
+                apiResponseFormatter.formatActivation(authorActivation)
+            );
+
             return {
-                activation : data,
-                isLoading  : false
+                activation : openedActivation,
+                isLoading : false,
+                authorActivations
             };
 
         default:

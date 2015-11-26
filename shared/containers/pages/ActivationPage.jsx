@@ -66,7 +66,8 @@ class ActivationPageContainer extends Component {
     render() {
         return (
             <ActivationPage
-                activation        = {this.props.activation || {}}
+                activation        = {this.props.activation}
+                authorActivations = {this.props.authorActivations}
                 isLoading         = {this.props.isLoading}
                 isSharing         = {this.state.isSharing}
                 onPass            = {this.handlePassActivationClick}
@@ -79,9 +80,10 @@ class ActivationPageContainer extends Component {
     }
 }
 
-function mapStateToProps({ currentActivation: {activation, isLoading} }) {
+function mapStateToProps({ currentActivation: {activation, authorActivations, isLoading} }) {
     return {
         activation,
+        authorActivations,
         isLoading
     };
 }
