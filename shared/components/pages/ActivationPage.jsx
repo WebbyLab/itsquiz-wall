@@ -29,6 +29,7 @@ export default class ActivationPage extends React.Component {
     render() {
         const {
             activation,
+            authorActivations,
             isSharing,
             isLoading,
             onPass,
@@ -145,17 +146,17 @@ export default class ActivationPage extends React.Component {
                         </div>
                     </Card>
 
-                    <div className='ActivationPage__subheader'>
-                        {
-                            sprintf(
-                                l('More tests by %s'),
-                                activation.author.fullName
-                            )
-                        }
-                    </div>
+                    {
+                        authorActivations.length !== 0
+                        ? <div className='ActivationPage__subheader'>
+                            {sprintf(l('More tests by %s'), activation.author.fullName)}
+                        </div>
+                        : null
+                    }
+
                     <Grid className='ActivationPage__author-activations-grid'>
                     {
-                        activation.authorActivations.map((authorActivation, i) =>
+                        authorActivations.map((authorActivation, i) =>
                             <Cell
                                 key    = {authorActivation.id}
                                 align  = 'stretch'
