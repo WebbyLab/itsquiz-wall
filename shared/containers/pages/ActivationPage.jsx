@@ -77,6 +77,7 @@ class ActivationPageContainer extends Component {
                 activation        = {this.props.activation}
                 authorActivations = {this.props.authorActivations}
                 isLoading         = {this.props.isLoading}
+                isEmbedded        = {this.props.location.query.embed}
                 isSharing         = {this.state.isSharing}
                 onPass            = {this.handlePassActivationClick}
                 onActivationClick = {this.handleActivationClick}
