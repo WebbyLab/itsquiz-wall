@@ -14,7 +14,9 @@ export default ({ selectedLanguage, languages, onSelect, className }) => {
                 onChange={(e) => onSelect(e.target.value)}>
                 {
                     languages.map(lang =>
-                        <option key={lang} value={lang}> {lang.toUpperCase()} </option>
+                        <option key={lang} value={lang} className='LanguageSwitch__option'>
+                            {lang.toUpperCase()}
+                        </option>
                     )
                 }
             </select>
