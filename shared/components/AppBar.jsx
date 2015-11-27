@@ -121,7 +121,6 @@ export default class AppBar extends Component {
                     </div>
                     : null
                 }
-
             </div>
         );
     }
