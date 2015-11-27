@@ -20,6 +20,7 @@ export default class AppBar extends Component {
     static propTypes = {
         title            : PropTypes.string,
         search           : PropTypes.string,
+        displayRightMenu : PropTypes.bool,
         displaySearch    : PropTypes.bool,
         rightIconName    : PropTypes.string,
         fixOnScroll      : PropTypes.bool,
@@ -29,12 +30,13 @@ export default class AppBar extends Component {
     };
 
     static defaultProps = {
-        title         : '',
-        search        : '',
-        fixOnScroll   : true,
-        displaySearch : false,
-        rightIconName : '',
-        scrollOffset  : 0
+        title            : '',
+        search           : '',
+        fixOnScroll      : true,
+        displaySearch    : false,
+        displayRightMenu : true,
+        rightIconName    : '',
+        scrollOffset     : 0
     };
 
     state = {
@@ -66,7 +68,17 @@ export default class AppBar extends Component {
     }
 
     render() {
-        const { title, search, displaySearch, rightIconName, onRightIconClick, onSearch, onLogin } = this.props;
+        const {
+            title,
+            search,
+            displaySearch,
+            displayRightMenu,
+            rightIconName,
+            onRightIconClick,
+            onSearch,
+            onLogin
+        } = this.props;
+
         const { l } = this.context.i18n;
 
         const rootClassNames = cx('AppBar', this.props.className, {
@@ -98,12 +110,17 @@ export default class AppBar extends Component {
                         )
                         : null
                 }
-                <div className='AppBar__right'>
-                    <LanguageSwitch className='AppBar__lang' />
-                    <span className='AppBar__menu-item' onClick={onLogin}>
-                        {l('Sign in')}
-                    </span>
-                </div>
+
+                {
+                    displayRightMenu
+                    ? <div className='AppBar__right'>
+                        <LanguageSwitch className='AppBar__lang' />
+                        <span className='AppBar__menu-item' onClick={onLogin}>
+                            {l('Sign in')}
+                        </span>
+                    </div>
+                    : null
+                }
             </div>
         );
     }
