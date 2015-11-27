@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-24 10:31-0800\n"
-"PO-Revision-Date: 2015-11-24 10:53-0800\n"
+"POT-Creation-Date: 2015-11-27 11:04+0200\n"
+"PO-Revision-Date: 2015-11-27 11:12+0200\n"
 "Last-Translator: Oleg <CBETJIOMYP@gmail.com>\n"
-"Language-Team: English <>\n"
+"Language-Team: русский <>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -51,6 +51,7 @@ msgstr[2] ""
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:154
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:143
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:174
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:184
 msgid "Pass this test"
 msgstr "Скласти цей тест"
 
@@ -58,6 +59,7 @@ msgstr "Скласти цей тест"
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:126
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:119
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:150
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:160
 #, javascript-format
 msgid "%d question"
 msgid_plural "%d questions"
@@ -68,6 +70,7 @@ msgstr[2] "%d питань"
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:172
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:161
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:201
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:211
 #, javascript-format
 msgid "More tests by %s"
 msgstr "Більше тестів %s"
@@ -75,6 +78,7 @@ msgstr "Більше тестів %s"
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:62
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:77
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:161
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:162
 msgid "Quizzes"
 msgstr "Тести"
 
@@ -86,6 +90,7 @@ msgstr "Пошук"
 
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/i18n/Tools.js:49
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/i18n/Tools.js:49
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/i18n/Tools.js:53
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -95,6 +100,7 @@ msgstr[2] "%d годин"
 
 #: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/i18n/Tools.js:52
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/i18n/Tools.js:52
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/i18n/Tools.js:56
 #, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -104,21 +110,25 @@ msgstr[2] "%d хвилин"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:99
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:184
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:186
 msgid "All tests"
 msgstr "Всі тести"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:104
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:189
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:191
 msgid "Vacancies"
 msgstr "Вакансії"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:109
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:194
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:196
 msgid "Education"
 msgstr "Освіта"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:114
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:199
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:201
 msgid "Entertainment"
 msgstr "Розваги"
 
@@ -133,3 +143,11 @@ msgstr "У цій категорії тестів поки що немає"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/ShareDialog.js:88
 msgid "Share test"
 msgstr "Поділитися тестом"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:146
+msgid "private"
+msgstr "приватний"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/AppBar.js:131
+msgid "Sign in"
+msgstr "Увійти"
