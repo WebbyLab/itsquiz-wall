@@ -86,8 +86,6 @@ export default class AppBar extends Component {
             'AppBar--with-search' : displaySearch
         });
 
-        console.log('displayRightMenu', displayRightMenu);
-
         return (
             <div className={rootClassNames}>
                 <div className='AppBar__left'>
@@ -113,16 +111,16 @@ export default class AppBar extends Component {
                         : null
                 }
 
-                    {
-                        displayRightMenu
-                        ?  <div className='AppBar__right'>
-                        <LanguageSwitch className='AppBar__lang' />
-                            <span className='AppBar__menu-item' onClick={onLogin}>
-                                {l('Sign in')}
-                            </span>
-                        </div>
-                        : null
-                    }
+                {
+                    displayRightMenu
+                    ?  <div className='AppBar__right'>
+                    <LanguageSwitch className='AppBar__lang' />
+                        <span className='AppBar__menu-item' onClick={onLogin}>
+                            {l('Sign in')}
+                        </span>
+                    </div>
+                    : null
+                }
 
             </div>
         );
