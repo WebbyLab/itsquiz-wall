@@ -1,18 +1,19 @@
 'use strict';
 
 import express from 'express';
-import React from 'react';
-import { Provider } from 'react-redux';
-import ReactDOM from 'react-dom/server';
 
+import React                     from 'react';
+import ReactDOM                  from 'react-dom/server';
+import { Provider }              from 'react-redux';
 import { RoutingContext, match } from 'react-router';
+import escapeHTML                from 'lodash/string/escape';
 
 import { fetchComponentsData,  getMetaDataFromState } from './utils';
 
-import routes from '../shared/routes.jsx';
+import routes         from '../shared/routes.jsx';
 import configureStore from '../shared/store/configureStore';
-import api from '../shared/apiSingleton';
-import i18n from '../shared/i18n';
+import api            from '../shared/apiSingleton';
+import i18n           from '../shared/i18n';
 import { extractSupportedLocaleFromPathname } from '../shared/utils';
 
 import clientConfig from '../etc/client-config.json';
@@ -92,21 +93,21 @@ function renderHTML({componentHTML, initialState, metaData, config}) {
             <link rel="shortcut icon" href="/static/favicon.ico"/>
             <title>Quiz Wall</title>
 
-            <meta name="description" content="${metaData.description}">
-            <meta property="og:title" content="${metaData.title}" />
-            <meta property="og:site_name" content="${metaData.siteName}"/>
-            <meta property="og:image" content="${metaData.image}" />
-            <meta property="og:description" content="${metaData.description}" />
+            <meta name="description" content="${escapeHTML( metaData.description )}">
+            <meta property="og:title" content="${escapeHTML( metaData.title )}" />
+            <meta property="og:site_name" content="${escapeHTML( metaData.siteName )}"/>
+            <meta property="og:image" content="${escapeHTML( metaData.image )}" />
+            <meta property="og:description" content="${escapeHTML( metaData.description )}" />
             <meta property="og:type" content="test" />
             <meta property="og:locale" content="en_US" />
             <meta property="og:locale:alternate" content="ru_RU" />
             <meta property="og:locale:alternate" content="uk_UA" />
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:site" content="@itsquizcom" />
-            <meta name="twitter:title" content="${metaData.title}" />
-            <meta name="twitter:description" content="${metaData.description}" />
-            <meta name="twitter:image" content="${metaData.image}" />
-            <meta property="fb:app_id" content="${config.facebookAppId}" />
+            <meta name="twitter:title" content="${escapeHTML( metaData.title )}" />
+            <meta name="twitter:description" content="${escapeHTML( metaData.description )}" />
+            <meta name="twitter:image" content="${escapeHTML( metaData.image )}" />
+            <meta property="fb:app_id" content="${escapeHTML( config.facebookAppId )}" />
 
 
             <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900&subset=latin,cyrillic' rel='stylesheet' type='text/css'>

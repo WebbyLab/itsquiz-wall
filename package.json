@@ -26,6 +26,7 @@
     "history": "^1.12.4",
     "isomorphic-fetch": "^2.1.1",
     "jed": "^1.1.0",
+    "lodash": "^3.10.1",
     "moment": "^2.10.6",
     "query-string": "^3.0.0",
     "react": "^0.14.0",
