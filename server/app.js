@@ -108,7 +108,7 @@ function renderHTML({componentHTML, initialState, metaData, config}) {
             <meta name="twitter:image" content="${metaData.image}" />
             <meta property="fb:app_id" content="${config.facebookAppId}" />
 
-
+            <link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
             <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
             <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.cyan-pink.min.css" />
