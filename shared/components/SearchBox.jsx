@@ -1,15 +1,15 @@
 'use strict';
 
 import React, {Component, PropTypes} from 'react';
-import cx from 'classnames';
+import cx                            from 'classnames';
 
 if ( process.env.BROWSER ) {
     require('./SearchBox.less');
 }
 
 import IconButton from 'react-mdl/lib/IconButton';
-import Icon from 'react-mdl/lib/Icon';
-import Textfield from 'react-mdl/lib/Textfield';
+import Icon       from 'react-mdl/lib/Icon';
+import Textfield  from 'react-mdl/lib/Textfield';
 
 const ENTER_KEY = 13;
 

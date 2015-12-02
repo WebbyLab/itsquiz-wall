@@ -55,9 +55,9 @@ export default class ActivationsPage extends React.Component {
                 {activations.map( activation =>
                     <Cell
                         key    = {activation.id}
-                        align  = 'stretch'
+                        align  = 'top'
                         col    = {3}
-                        tablet = {6}
+                        tablet = {4}
                         phone  = {12}>
                         <QuizCard
                             name              = {activation.name}

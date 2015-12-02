@@ -16,7 +16,7 @@
     top: 0;
     align-items: center;
 
-    @media @phone {
+    @media @phone, @tablet {
         justify-content: space-between;
     }
 
@@ -31,8 +31,9 @@
 
         .AppBar__right {
             @media @phone {
-                flex: 1;
+                flex: auto !important;
             }
+
         }
     }
 }
@@ -77,6 +78,7 @@
 
     @media @phone {
         justify-content: flex-end;
+        flex: 1;
     }
 
     @media @large {

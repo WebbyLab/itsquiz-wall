@@ -158,4 +158,4 @@ msgstr "Увійти"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/AppBar.js:132
 msgid "Sign up / Sign in"
-msgstr "Зареєструватися / Увійти"
+msgstr "Реєстрація / Вхід"
