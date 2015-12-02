@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 
 import { getSupportedLocales } from '../utils';
+import { sendEvent }           from '../utils/googleAnalytics';
 
 import LanguageSwitch from '../components/LanguageSwitch.jsx';
 
@@ -15,6 +16,8 @@ export default class LanguageSwitchContainer extends Component {
         const { getLocale } = this.context.i18n;
         const newUrl = url.replace(`/${getLocale()}/`, `/${newLocale}/`);
         window.open(newUrl, '_self');
+
+        sendEvent('language', 'change', newLocale);
     };
 
     render() {

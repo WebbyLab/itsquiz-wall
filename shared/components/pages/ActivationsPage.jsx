@@ -7,7 +7,7 @@ import Spinner        from 'react-mdl/lib/Spinner';
 
 import QuizCard    from '../QuizCard.jsx';
 import AppBar      from '../AppBar.jsx';
-import ShareDialog from '../ShareDialog.jsx';
+import ShareDialog from '../../containers/ShareDialog.jsx';
 
 if ( process.env.BROWSER ) {
     require('./ActivationsPage.less');

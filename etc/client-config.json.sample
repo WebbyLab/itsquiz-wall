@@ -4,5 +4,6 @@
     "staticUrl": "http://localhost:8050",
     "loginUrl": "http://app.itsquiz.com/{lang}/login",
     "embedOrigin": "http://app.itsquiz.com/",
-    "facebookAppId": "XXX"
+    "facebookAppId": "XXX",
+    "gaTrackingCode": "XXX"
 }

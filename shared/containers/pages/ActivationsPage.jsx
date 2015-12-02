@@ -8,6 +8,7 @@ import { loadActivations, searchActivations } from '../../actions/activations';
 import connectDataFetchers                    from '../../lib/connectDataFetchers.jsx';
 import EmbedEvents                            from '../../utils/EmbedEventsUtil';
 import config                                 from '../../config';
+import { sendEvent }                          from '../../utils/googleAnalytics';
 
 import ActivationsPage from '../../components/pages/ActivationsPage.jsx';
 
@@ -25,6 +26,8 @@ class ActivationsPageContainer extends Component {
         this.props.history.pushState(null, `/${this.props.params.lang}/activations/${activation.id}`, {
             embed : this.props.location.query.embed
         });
+
+        sendEvent('activation card', 'view details', 'click');
     };
 
     handleSearch = (searchText) => {
@@ -32,6 +35,8 @@ class ActivationsPageContainer extends Component {
             ...this.props.location.query,
             search : searchText || undefined
         });
+
+        sendEvent('activations page', 'search');
     };
 
     handleLogin = () => {
@@ -39,6 +44,8 @@ class ActivationsPageContainer extends Component {
             lang: this.props.params.lang
         });
         window.open(loginUrl, '_self');
+
+        sendEvent('activations page', 'login', 'click');
     };
 
     handleShare = (activation) => {
@@ -46,6 +53,8 @@ class ActivationsPageContainer extends Component {
             linkToShare : activation.publicLink,
             isSharing   : true
         });
+
+        sendEvent('activation card', 'share', 'click');
     };
 
     handleTabChange = (category) => {
@@ -53,6 +62,8 @@ class ActivationsPageContainer extends Component {
             ...this.props.location.query,
             category : category !== 'ALL' ? category : undefined
         });
+
+        sendEvent('activatios page', 'category', category);
     };
 
     handleStopSharing = () => {
