@@ -9,7 +9,7 @@ import Spinner                          from 'react-mdl/lib/Spinner';
 
 import QuizTile             from '../QuizTile.jsx';
 import Icon                 from '../Icon.jsx';
-import ShareDialog          from '../ShareDialog.jsx';
+import ShareDialog          from '../../containers/ShareDialog.jsx';
 import AppBarWithBackground from '../AppBarWithBackground.jsx';
 
 import { sprintf } from '../../utils';

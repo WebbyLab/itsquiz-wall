@@ -8,6 +8,7 @@ import { loadActivation }  from '../../actions/activations';
 import connectDataFetchers from '../../lib/connectDataFetchers.jsx';
 import EmbedEvents         from '../../utils/EmbedEventsUtil';
 import config              from '../../config';
+import { sendEvent }       from '../../utils/googleAnalytics';
 
 import ActivationPage from '../../components/pages/ActivationPage.jsx';
 
@@ -32,6 +33,8 @@ class ActivationPageContainer extends Component {
         } else {
             window.open(linkToPass, '_self');
         }
+
+        sendEvent('activation', 'pass', 'click');
     };
 
     handleGoBack = () => {
@@ -45,18 +48,24 @@ class ActivationPageContainer extends Component {
             lang: this.props.params.lang
         });
         window.open(loginUrl, '_self');
+
+        sendEvent('user', 'login', 'click');
     };
 
     handleActivationClick = (activation) => {
         this.props.history.pushState(null, `/${this.props.params.lang}/activations/${activation.id}`, {
             embed : this.props.location.query.embed
         });
+
+        sendEvent('activation', 'author activations', 'click');
     };
 
     handleShare = () => {
         this.setState({
             isSharing : true
         });
+
+        sendEvent('activation', 'share', 'click');
     };
 
     handleStopSharing = () => {
