@@ -22,10 +22,16 @@
 
     &.AppBar--with-search {
         .AppBar__left {
-            flex: 1;
+            flex: 2;
 
             @media @phone {
                 flex: 3;
+            }
+        }
+
+        .AppBar__right {
+            @media @phone {
+                flex: 1;
             }
         }
     }
@@ -42,10 +48,11 @@
 .AppBar__left {
     display: flex;
     align-items: center;
-    flex: 3;
+    flex: 4;
 
     .AppBar__logo {
         vertical-align: initial;
+        min-width: 40px;
     }
 }
 
@@ -54,7 +61,7 @@
     height: 40px;
     align-items: center;
     justify-content: flex-end;
-    flex: 1;
+    flex: 2;
 
     @media @phone {
         .AppBar__menu-item {
@@ -66,27 +73,24 @@
 .AppBar__center {
     display: flex;
     align-items: center;
-    flex: 2;
+    flex: 3;
 
     @media @phone {
         justify-content: flex-end;
     }
-}
 
-// hack for FF
-@-moz-document url-prefix() {
-    .AppBar__menu-item {
-        position: relative;
-        top: 3px;
+    @media @large {
+        flex: 4;
     }
 }
 
 .AppBar__menu-item {
     padding: 10px;
-    margin-left: 10px;
+    margin-left: 5px;
     height: 20px;
     cursor: pointer;
-    font-size: 16px;
+    font-weight: 400;
+    font-size: 14px;
     color: @white-darker;
 }
 

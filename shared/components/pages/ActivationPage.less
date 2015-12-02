@@ -104,12 +104,24 @@
                 align-items: center;
             }
 
-            .ActivationPage__name {
-                font-size: 25px;
+            .ActivationPage__heading {
                 width: calc(~"100% - 40px");
-                font-weight: 300;
-                display: flex;
-                align-items: center;
+
+                .ActivationPage__name {
+                    font-size: 25px;
+                    font-weight: 300;
+
+                    @media @phone {
+                        width: 100%;
+                        text-align: center;
+                    }
+                }
+
+                @media @phone {
+                    width: 100%;
+                    text-align: center;
+                    margin-bottom: 10px;
+                }
             }
 
             .ActivationPage__author-name {
@@ -141,6 +153,10 @@
                 align-items: center;
                 right: 0;
                 bottom: 0;
+
+                @media @phone {
+                    position: relative;
+                }
             }
 
             .ActivationPage__pass-btn {
@@ -165,6 +181,11 @@
     .ActivationPage__details {
         padding: 24px;
         font-weight: 200;
+
+        @media @phone {
+            margin-top: 20px;
+            padding: 16px;
+        }
 
         .ActivationPage__message {
             white-space: pre-wrap;

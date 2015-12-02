@@ -116,7 +116,7 @@ export default class AppBar extends Component {
                     ? <div className='AppBar__right'>
                         <LanguageSwitch className='AppBar__lang' />
                         <span className='AppBar__menu-item' onClick={onLogin}>
-                            {l('Sign in')}
+                            {l('Sign up / Sign in')}
                         </span>
                     </div>
                     : null

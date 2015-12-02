@@ -50,8 +50,8 @@ export default class ActivationPage extends React.Component {
                     <CardTitle className='ActivationPage__head'>
                         <img className='ActivationPage__picture' src={activation.pictureURL} />
                         <div className='ActivationPage__info'>
-                            <div className='ActivationPage__name'>
-                                {activation.name}
+                            <div className='ActivationPage__heading'>
+                                <span className='ActivationPage__name'>{activation.name}</span>
                                 {
                                     activation.isPrivate
                                     ? <span className='ActivationPage__private-tag'>
