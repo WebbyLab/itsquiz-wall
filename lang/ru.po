@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-27 11:04+0200\n"
-"PO-Revision-Date: 2015-11-27 11:12+0200\n"
+"POT-Creation-Date: 2015-12-02 12:48+0200\n"
+"PO-Revision-Date: 2015-12-02 12:52+0200\n"
 "Last-Translator: Oleg <CBETJIOMYP@gmail.com>\n"
 "Language-Team: русский <>\n"
 "Language: \n"
@@ -52,6 +52,7 @@ msgstr[2] " минуты"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:143
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:174
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:184
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:156
 msgid "Pass this test"
 msgstr "Сдать этот тест"
 
@@ -60,6 +61,7 @@ msgstr "Сдать этот тест"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:119
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:150
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:160
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:132
 #, javascript-format
 msgid "%d question"
 msgid_plural "%d questions"
@@ -71,6 +73,7 @@ msgstr[2] "%d вопросов"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:161
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:201
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:211
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:183
 #, javascript-format
 msgid "More tests by %s"
 msgstr "Еще тесты от %s"
@@ -145,9 +148,14 @@ msgid "Share test"
 msgstr "Поделиться тестом"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:146
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:118
 msgid "private"
 msgstr "приватный"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/AppBar.js:131
 msgid "Sign in"
 msgstr "Войти"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/AppBar.js:132
+msgid "Sign up / Sign in"
+msgstr "Зарегистрироваться / Войти"
