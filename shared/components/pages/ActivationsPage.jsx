@@ -56,7 +56,7 @@ export default class ActivationsPage extends React.Component {
                     <Cell
                         key    = {activation.id}
                         align  = 'stretch'
-                        col    = {4}
+                        col    = {3}
                         tablet = {6}
                         phone  = {12}>
                         <QuizCard
