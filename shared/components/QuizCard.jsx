@@ -9,6 +9,8 @@ import Button                           from 'react-mdl/lib/Button';
 import IconButton                       from 'react-mdl/lib/IconButton';
 import Icon                             from 'react-mdl/lib/Icon';
 
+import { sprintf } from '../utils';
+
 export default class QuizCard extends Component {
     static contextTypes = { i18n: PropTypes.object };
 
@@ -25,7 +27,7 @@ export default class QuizCard extends Component {
 
     render() {
         const { id, name, message, timeToPass, numberOfQuestions, pictureURL, author, onClick, onShare } = this.props;
-        const { l } = this.context.i18n;
+        const { l, ngettext, humanizeDuration } = this.context.i18n;
 
         return (
             <Card className='QuizCard' shadow={1}>
@@ -33,11 +35,11 @@ export default class QuizCard extends Component {
                     <div className='QuizCard__info'>
                         <img className='QuizCard__avatar' src={author.avatar} />
                         <div className='QuizCard__name-author'>
-                            <div className='QuizCard__name' onClick={onClick}>
+                            <div className='QuizCard__name' onClick={onClick} title={name}>
                                 {name}
                             </div>
 
-                            <div className='QuizCard__author'>
+                            <div className='QuizCard__author' title={author.fullName}>
                                 {author.fullName}
                             </div>
                         </div>
@@ -49,6 +51,22 @@ export default class QuizCard extends Component {
                     onClick={onClick}
                     style={{background: `url(${pictureURL}) center / cover`}}
                 />
+
+                <div className='QuizCard__content'>
+                    <div className='QuizCard__details'>
+                        <span>
+                            {
+                                sprintf(
+                                    ngettext('%d question', '%d questions', numberOfQuestions),
+                                    numberOfQuestions
+                                )
+                            }
+                        </span>
+                        <span className='QuizCard__span-divider'>•</span>
+                        <span>{ humanizeDuration(timeToPass, 'second') }</span>
+                    </div>
+                    <p className='QuizCard__text'> {message} </p>
+                </div>
 
                 <CardActions
                     border={true}

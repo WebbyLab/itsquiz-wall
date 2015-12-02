@@ -20,8 +20,32 @@
 }
 
 .QuizCard__media {
-    height: 180px;
+    min-height: 250px;
     padding: 0;
+}
+
+@font-size: 14px;
+@line-height: 1.4;
+@lines-to-show: 2;
+
+.QuizCard__content {
+    margin: 0;
+    padding: 8px;
+}
+
+.QuizCard__text {
+    color: @secondary-text-color;
+    display: block;
+    display: -webkit-box;
+    max-width: 400px;
+    height: @font-size*@line-height*@lines-to-show;
+    margin: 0 auto;
+    font-size: @font-size;
+    line-height: @line-height;
+    -webkit-line-clamp: @lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .QuizCard__title {
@@ -69,8 +93,12 @@
 }
 
 .QuizCard__details {
-    margin-top: 10px;
     font-size: 14px;
+    margin-bottom: 5px;
+
+    .QuizCard__span-divider {
+        margin: 0 5px;
+    }
 }
 
 .QuizCard__actions {
