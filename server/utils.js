@@ -35,7 +35,7 @@ export function getMetaDataFromState({ route, state }) {
 
 export function makeRedirectUrl({originalUrl}) {
     const noLangUrl = originalUrl.replace(/^\/[^\/]+/, '');
-    const UIWallPath = `${clientConfig.embedOrigin}quizwall`;
+    const UIWallPath = `${clientConfig.embedOrigin}/quizwall`;
     return `${UIWallPath}${noLangUrl}`;
 }
 
