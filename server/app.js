@@ -39,7 +39,7 @@ app.use(cookieParser());
 app.use((req, res) => {
     if ( req.cookies.authenticated && !req.url.match('embed') ) {
         const redirectUrl = makeRedirectUrl({originalUrl: req.url});
-        return res.redirect(301, redirectUrl);
+        return res.redirect(302, redirectUrl);
     }
 
     const store = configureStore();
