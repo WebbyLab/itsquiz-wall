@@ -1,6 +1,7 @@
 'use strict';
 
 import express from 'express';
+import cookieParser from 'cookie-parser';
 
 import React                     from 'react';
 import ReactDOM                  from 'react-dom/server';
@@ -8,7 +9,9 @@ import { Provider }              from 'react-redux';
 import { RoutingContext, match } from 'react-router';
 import escapeHTML                from 'lodash/string/escape';
 
-import { fetchComponentsData,  getMetaDataFromState } from './utils';
+import { fetchComponentsData,
+         getMetaDataFromState,
+         makeRedirectUrl } from './utils';
 
 import routes         from '../shared/routes.jsx';
 import configureStore from '../shared/store/configureStore';
@@ -31,8 +34,14 @@ const i18nToolsRegistry = {
 const app = express();
 
 app.use('/static', express.static('public/static'));
+app.use(cookieParser());
 
 app.use((req, res) => {
+    if ( req.cookies.authenticated && !req.url.match('embed') ) {
+        const redirectUrl = makeRedirectUrl({originalUrl: req.url});
+        return res.redirect(301, redirectUrl);
+    }
+
     const store = configureStore();
     const locale = extractSupportedLocaleFromPathname(req.url);
 

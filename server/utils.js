@@ -1,5 +1,6 @@
 'use strict';
 import Promise from 'bluebird';
+import clientConfig from '../etc/client-config.json';
 
 export function fetchComponentsData(dispatch, components, params, query) {
     const promises = components.map(current => {
@@ -13,13 +14,12 @@ export function fetchComponentsData(dispatch, components, params, query) {
 }
 
 export function getMetaDataFromState({ route, state }) {
-
     switch (route) {
         case '/:lang/activations/:id':
             const { name, message, pictureURL } = state.currentActivation.activation;
             return {
                 title       : name,
-                siteName    : 'It\'s quiz',
+                siteName    : "It's quiz",
                 image       : pictureURL ? pictureURL.replace('svg', 'png') : '',
                 description : message
             };
@@ -32,3 +32,10 @@ export function getMetaDataFromState({ route, state }) {
             };
     }
 }
+
+export function makeRedirectUrl({originalUrl}) {
+    const noLangUrl = originalUrl.replace(/^\/[^\/]+/, '');
+    const UIWallPath = `${clientConfig.embedOrigin}quizwall`;
+    return `${UIWallPath}${noLangUrl}`;
+}
+
