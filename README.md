@@ -8,10 +8,11 @@ Isomorphic "Quiz Wall" for itsquiz.com
 There are a lot of tutorials and boilerplates showing how to write isomorphic ReactJs applications.
 But when it comes to real world apps, you'll find that all the turorials do not cover problems that you face in productions apps.
 
-In WebbyLab, we have a lot of projects written in react and several isomorphic projects. So, it was decides
-develop one of these projects on github. So, everyone can see how real-world production isomorphic app can be implmemented.
+In WebbyLab, we have a lot of projects written in react and several isomorphic projects. So, it was decides to develop one of these projects on github. So, everyone can see how real-world production isomorphic app can be implmemented.
 
 **IMPORTANT**: This is producation app, and we develop it in this repo. So, it is always evolving.
+
+You can find [post from Viktor Turskyi (aka koorchik)](http://blog.koorchik.com/isomorphic-react/). Post describes all the ideas in details.
 
 ## Installation (development)
 
@@ -27,10 +28,7 @@ Watch the video:
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=eiougg2UhYA
 " target="_blank"><img src="http://img.youtube.com/vi/eiougg2UhYA/0.jpg"
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
-
-
-## Architecture description
+alt="IMAGE ALT TEXT HERE" width="480" height="320" border="10" /></a>
 
 
 ## Solved problems:
@@ -43,7 +41,7 @@ alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 6. Working with history (Invariant Violation: Browser history needs a DOM)
 
 
-You can find post from Viktor Turskyi (aka koorchik) [here](http://blog.koorchik.com). Post describes all the ideas details.
+[Post from Viktor Turskyi (aka koorchik) which describes all the ideas in details](http://blog.koorchik.com/isomorphic-react/).
 
 
 ## How to contribute?
@@ -55,7 +53,9 @@ Contact us if you need help.
 
 3. [It's Quiz](http://itsquiz.com)  is a great service and we use it in WebbyLab. Just give us feedback on it.
 
-### Development guide and conventions
+## Architecture description (TODO)
+
+### Development guide and conventions (TODO)
 
 Async actions:
 
@@ -72,5 +72,4 @@ Thanks for http://itsquiz.com (our customer) for allowing opensourcing of this a
 * WebbyLab https://webbylab.com/contacts
 * It's Quiz
 
-## Contacts
 
