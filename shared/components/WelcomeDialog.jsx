@@ -4,6 +4,7 @@ import cx                            from 'classnames';
 import Dialog      from './Dialog.jsx';
 import Button      from 'react-mdl/lib/Button';
 import IconButton  from 'react-mdl/lib/IconButton';
+import Checkbox    from 'react-mdl/lib/Checkbox';
 
 if ( process.env.BROWSER ) {
     require('./WelcomeDialog.less');
@@ -19,7 +20,8 @@ export default class WelcomeDialog extends Component {
     };
 
     state = {
-        currentSlide: 0
+        currentSlide: 0,
+        needToSkip: false
     };
 
     handleNextSlide = () => {
@@ -38,10 +40,24 @@ export default class WelcomeDialog extends Component {
         });
     };
 
+    handleSkipToggle = () => {
+        const { needToSkip } = this.state;
+
+        this.setState({
+            needToSkip: !needToSkip
+        });
+    };
+
+    handleClose = () => {
+        const { needToSkip } = this.state;
+
+        this.props.onDismiss(needToSkip);
+    };
+
     render() {
         const { l } = this.context.i18n;
-        const { onDismiss, onCreateTest, onDiscoverTests, onLearnMoreAboutItsquiz } = this.props;
-        const { currentSlide } = this.state;
+        const { onCreateTest, onDiscoverTests, onLearnMoreAboutItsquiz } = this.props;
+        const { currentSlide, needToSkip } = this.state;
 
         const slides = [
             <div className='WelcomeDialog__slide'>
@@ -109,7 +125,7 @@ export default class WelcomeDialog extends Component {
             <div className='WelcomeDialog'>
                 <Dialog
                     className = 'WelcomeDialog__dialog'
-                    onRequestClose={onDismiss}
+                    onRequestClose={this.handleClose}
                     {...this.props}>
                     <div className='WelcomeDialog__content'>
                         <div className='WelcomeDialog__carousel'>
@@ -130,8 +146,12 @@ export default class WelcomeDialog extends Component {
                             />
                         </div>
 
-                        <span className='WelcomeDialog__skip' onClick={onDismiss}>
-                            {l('Skip this message')}
+                        <span className='WelcomeDialog__skip'>
+                            <Checkbox ripple
+                                label={l('Do not show me this message again')}
+                                checked={needToSkip}
+                                onChange={this.handleSkipToggle}
+                            />
                         </span>
                     </div>
                 </Dialog>
