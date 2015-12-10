@@ -5,5 +5,9 @@
     "loginUrl": "http://app.itsquiz.com/{lang}/login",
     "embedOrigin": "http://app.itsquiz.com/",
     "facebookAppId": "XXX",
-    "gaTrackingCode": "XXX"
+    "gaTrackingCode": "XXX",
+    "welcomeLinks": {
+        "createTest": "http://app.itsquiz.com/{lang}/login?continue=%2Fquestions",
+        "aboutItsquiz": "http://itsquiz.com/about/"
+    }
 }
