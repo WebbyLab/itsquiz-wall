@@ -1,0 +1,77 @@
+@import "../assets/mixins.less";
+@import "../assets/palette.less";
+
+@button-area: 64px;
+
+.WelcomeDialog {
+
+}
+
+.WelcomeDialog__content {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.WelcomeDialog__carousel {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+}
+
+.WelcomeDialog__slide-wrapper {
+    box-sizing: border-box;
+    min-width: 200px;
+    width: calc(~"100% - "@button-area);
+    padding: 10px;
+    display: flex;
+    min-height: 300px;
+}
+
+.WelcomeDialog__slide {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.WelcomeDialog__slide-image {
+    padding: 10px;
+    flex: 1;
+    min-width: 200px;
+
+    img {
+        max-width: 100%;
+    }
+}
+
+.WelcomeDialog__btn {
+    color: white !important;
+}
+
+.WelcomeDialog__skip {
+    color: @hint-text-color;
+    margin: 0 auto;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.WelcomeDialog__slide-content {
+    padding: 10px;
+    flex: 1;
+    min-width: 200px;
+
+    h1 {
+        font-size: 20px;
+        color: @text-color;
+    }
+
+    p {
+        font-size: 14px;
+        color: @additional-text-color;
+    }
+}
