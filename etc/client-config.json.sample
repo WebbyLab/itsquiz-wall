@@ -9,6 +9,6 @@
     "welcomeLinks": {
         "createTest": "http://app.itsquiz.com/{lang}/login?continue=%2Fquestions",
         "aboutItsquiz": "http://itsquiz.com/about/",
-        "discoverTests": "http://itsquiz.com/{lang}/activations"
+        "discoverTests": "http://itsquiz.com/{lang}/activations?skipWelcomeDialog=true"
     }
 }
