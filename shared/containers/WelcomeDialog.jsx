@@ -21,7 +21,12 @@ export default class WelcomeDialogContainer extends Component {
     };
 
     handleDiscoverTests = () => {
-        this.props.onDismiss();
+        const { getLocale } = this.context.i18n;
+        const linkToOpen = strformat(welcomeLinks.discoverTests, {
+            lang: getLocale()
+        });
+
+        window.open(linkToOpen, '_blank');
     };
 
     handleCreateTest = () => {
@@ -34,7 +39,7 @@ export default class WelcomeDialogContainer extends Component {
     };
 
     render() {
-        const { isOpen, onDismiss } = this.props;
+        const { isOpen, onDismiss, onClose } = this.props;
 
         return (
             <WelcomeDialog

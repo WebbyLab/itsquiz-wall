@@ -17,9 +17,12 @@ export default class MainLayoutContainer extends Component {
         }
     }
 
-    handleWelcomeScreenDismiss = () => {
-        localStorage.setItem('skipWelcomeScreen', 'true');
+    handleWelcomeScreenDismiss = (needToSkip) => {
         this.setState({ isWelcomeScreenShown: false });
+
+        if (needToSkip) {
+            localStorage.setItem('skipWelcomeScreen', 'true');
+        }
     };
 
     render() {
