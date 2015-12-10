@@ -1,10 +1,11 @@
 import React from 'react';
 import cx from 'classnames';
 
-export default ({type, className}) => {
+export default (props) => {
     return (
         <i
-            className={cx(`Icon mdi mdi-${type}`, className)}
+            {...props}
+            className={cx(`Icon mdi mdi-${props.type}`, props.className)}
         />
     );
 };
