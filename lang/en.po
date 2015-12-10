@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-10 18:45+0200\n"
+"POT-Creation-Date: 2015-12-10 21:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -157,24 +157,29 @@ msgid "Sign up / Sign in"
 msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:100
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:120
 msgid "Welcome to It's quiz!"
 msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:107
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:127
 msgid ""
 "Cloud platform for knowledge monitoring, creating quizzes, tests and "
 "questionnaires, search and identification of talented people"
 msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:113
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:133
 msgid "Learn more"
 msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:130
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:150
 msgid "Check your knowledge"
 msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:136
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:156
 msgid ""
 "Explore hundreds of open tests on Quiz Wall, check your knowledge, explore "
 "new topics, share your achievements with friends"
@@ -182,11 +187,13 @@ msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:154
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:159
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:179
 msgid "You can create a test"
 msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:161
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:166
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:186
 msgid ""
 "Everyone can create a test on It's quiz! Simply add new questions, compose a "
 "quiz and share with your friends."
@@ -194,16 +201,19 @@ msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:167
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:172
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:192
 msgid "Create a test"
 msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:185
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:190
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:210
 msgid "Find best ever employees"
 msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:191
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:196
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:216
 msgid ""
 "Filter out candidates who don’t meet your standards before you interview "
 "them. Create test for a position, publish on Quiz Wall, enjoy interviewing "
@@ -212,6 +222,7 @@ msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:196
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:201
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:221
 msgid "Create a vacancy"
 msgstr ""
 
@@ -221,5 +232,10 @@ msgid "Skip this message"
 msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:141
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:161
 msgid "Discover tests"
+msgstr ""
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:261
+msgid "Do not show me this message again"
 msgstr ""
