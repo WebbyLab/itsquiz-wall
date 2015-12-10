@@ -79,6 +79,45 @@
          ],
          "Sign up / Sign in": [
             "Регистрация / Вход"
+         ],
+         "Welcome to It's quiz!": [
+            "Добро пожаловать в It's quiz!"
+         ],
+         "Cloud platform for knowledge monitoring, creating quizzes, tests and questionnaires, search and identification of talented people": [
+            "Облачная платформа для мониторинга знаний, создания тестов, опросов и анкет, поиска и выявления талантливых людей"
+         ],
+         "Learn more": [
+            "Узнать больше"
+         ],
+         "Check your knowledge": [
+            "Проверьте свои знания"
+         ],
+         "Explore hundreds of open tests on Quiz Wall, check your knowledge, explore new topics, share your achievements with friends": [
+            "Исследуйте сотни тестов, проверьте свои знания, изучайте новые темы, делитесь своими достижениями с друзьями"
+         ],
+         "You can create a test": [
+            "Вы можете создать тест"
+         ],
+         "Everyone can create a test on It's quiz! Simply add new questions, compose a quiz and share with your friends.": [
+            "Каждый может создать тест на It's quiz! Просто добавьте новые вопросы, составьте из них тест и поделитесь им с друзьями."
+         ],
+         "Create a test": [
+            "Создать тест"
+         ],
+         "Find best ever employees": [
+            "Отберите лучших сотрудников"
+         ],
+         "Filter out candidates who don’t meet your standards before you interview them. Create test for a position, publish on Quiz Wall, enjoy interviewing only the best.": [
+            "Отсейте кандидатов которые не отвечают вашим требованиям, прежде чем пригласить их на собеседование. Создайте тест на вакансию, опубликуйте на стене, собеседуйте наилучших."
+         ],
+         "Create a vacancy": [
+            "Создать вакансию"
+         ],
+         "Skip this message": [
+            "Пропустить это сообщение"
+         ],
+         "Discover tests": [
+            "Исследовать тесты"
          ]
       }
    }

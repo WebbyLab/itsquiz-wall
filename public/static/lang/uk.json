@@ -79,6 +79,45 @@
          ],
          "Sign up / Sign in": [
             "Реєстрація / Вхід"
+         ],
+         "Welcome to It's quiz!": [
+            "Ласкаво просимо до It's quiz!"
+         ],
+         "Cloud platform for knowledge monitoring, creating quizzes, tests and questionnaires, search and identification of talented people": [
+            "Хмарна платформа для моніторингу знань, створення тестів, опитувань та анкетування, пошуку та виявлення талановитих людей"
+         ],
+         "Learn more": [
+            "Дізнатися більше"
+         ],
+         "Check your knowledge": [
+            "Перевірте свої знання"
+         ],
+         "Explore hundreds of open tests on Quiz Wall, check your knowledge, explore new topics, share your achievements with friends": [
+            "Дослідіть сотні тестів, перевірте свої знання, вивчайте нові теми, діліться своїми досягненнями з друзями"
+         ],
+         "You can create a test": [
+            "Ви можете створити тест"
+         ],
+         "Everyone can create a test on It's quiz! Simply add new questions, compose a quiz and share with your friends.": [
+            "Кожен може створити тест на It's quiz! Просто додайте нові питання, складіть з них тест і поділіться ним з друзями."
+         ],
+         "Create a test": [
+            "Створити тест"
+         ],
+         "Find best ever employees": [
+            "Відберіть кращих співробітників"
+         ],
+         "Filter out candidates who don’t meet your standards before you interview them. Create test for a position, publish on Quiz Wall, enjoy interviewing only the best.": [
+            "Відсійте кандидатів, які не відповідають вашим вимогам, перш ніж запросити їх на співбесіду. Створіть тест на вакансію, опублікуйте на стіні, проводьте співбесіду з найкращими."
+         ],
+         "Create a vacancy": [
+            "Створити вакансію"
+         ],
+         "Skip this message": [
+            "Пропустити це повідомлення"
+         ],
+         "Discover tests": [
+            "Дослідити тести"
          ]
       }
    }
