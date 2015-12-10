@@ -23,11 +23,12 @@ export default class MainLayoutContainer extends Component {
     };
 
     render() {
+        const { isWelcomeScreenShown } = this.state;
         const isEmbedded = this.props.location.query.embed;
 
         return (
             <MainLayout
-                showWelcomeScreen={this.state.isWelcomeScreenShown}
+                showWelcomeScreen={!isEmbedded && isWelcomeScreenShown}
                 onWelcomeScreenDismiss={this.handleWelcomeScreenDismiss}
                 showFooter={!isEmbedded}
                 footerLinks={footerLinks}>

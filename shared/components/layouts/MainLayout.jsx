@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 
-import WelcomeDialog from '../WelcomeDialog.jsx';
+import WelcomeDialog from '../../containers/WelcomeDialog.jsx';
 
 export default class MainLayout extends Component {
 

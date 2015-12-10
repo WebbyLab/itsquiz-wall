@@ -1,9 +1,8 @@
 import React, {Component, PropTypes} from 'react';
-import cx from 'classnames';
+import cx                            from 'classnames';
 
-import Dialog    from './Dialog.jsx';
-import Button    from 'react-mdl/lib/Button';
-import Icon      from './Icon.jsx';
+import Dialog      from './Dialog.jsx';
+import Button      from 'react-mdl/lib/Button';
 import IconButton  from 'react-mdl/lib/IconButton';
 
 if ( process.env.BROWSER ) {
@@ -16,8 +15,7 @@ export default class WelcomeDialog extends Component {
 
     static propTypes = {
         isOpen         : PropTypes.bool.isRequired,
-        onDismiss      : PropTypes.func.isRequired,
-        onRequestClose : PropTypes.func.isRequired
+        onDismiss      : PropTypes.func.isRequired
     };
 
     state = {
@@ -42,7 +40,7 @@ export default class WelcomeDialog extends Component {
 
     render() {
         const { l } = this.context.i18n;
-        const { onDismiss } = this.props;
+        const { onDismiss, onCreateTest, onDiscoverTests, onLearnMoreAboutItsquiz } = this.props;
         const { currentSlide } = this.state;
 
         const slides = [
@@ -55,7 +53,9 @@ export default class WelcomeDialog extends Component {
                     <h1> {l('Welcome to It\'s quiz!')} </h1>
                     <p> {l('Cloud platform for knowledge monitoring, creating quizzes, tests and questionnaires, '
                         + 'search and identification of talented people')} </p>
-                    <Button className='WelcomeDialog__btn' raised colored>{l('Learn more')}</Button>
+                    <Button className='WelcomeDialog__btn' raised colored onClick={onLearnMoreAboutItsquiz}>
+                        {l('Learn more')}
+                    </Button>
                 </div>
             </div>,
 
@@ -68,6 +68,9 @@ export default class WelcomeDialog extends Component {
                     <h1>{l('Check your knowledge')}</h1>
                     <p> {l('Explore hundreds of open tests on Quiz Wall, check your knowledge, explore new topics, '
                         + 'share your achievements with friends')}</p>
+                    <Button className='WelcomeDialog__btn' raised colored onClick={onDiscoverTests}>
+                        {l('Discover tests')}
+                    </Button>
                 </div>
             </div>,
 
@@ -80,7 +83,9 @@ export default class WelcomeDialog extends Component {
                     <h1> {l('You can create a test')} </h1>
                     <p> {l('Everyone can create a test on It\'s quiz! Simply add new questions, compose a quiz'
                         + ' and share with your friends.')} </p>
-                    <Button className='WelcomeDialog__btn' raised colored>{l('Create a test')}</Button>
+                    <Button className='WelcomeDialog__btn' raised colored onClick={onCreateTest}>
+                        {l('Create a test')}
+                    </Button>
                 </div>
             </div>,
 
@@ -93,7 +98,9 @@ export default class WelcomeDialog extends Component {
                     <h1> {l('Find best ever employees')} </h1>
                     <p>{l('Filter out candidates who don’t meet your standards before you interview them. '
                         + 'Create test for a position, publish on Quiz Wall, enjoy interviewing only the best.')}</p>
-                    <Button className='WelcomeDialog__btn' raised colored>{l('Create a vacancy')}</Button>
+                    <Button className='WelcomeDialog__btn' raised colored onClick={onCreateTest}>
+                        {l('Create a vacancy')}
+                    </Button>
                 </div>
             </div>
         ];
