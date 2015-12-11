@@ -9,17 +9,17 @@
     "quizwallShareLink": "http://itsquiz.com/{lang}/activations",
     "welcomeLinks": {
         "createTest": "http://app.itsquiz.com/{lang}/login?continue=%2Fquestions",
-        "aboutItsquiz": "http://itsquiz.com/about/"
+        "aboutItsquiz": "http://itsquiz.com/about/",
+        "discoverTests": "http://itsquiz.com/{lang}/activations?skipWelcomeDialog=true"
     },
     "footerLinks": {
         "twitter": "http://twitter.com/itsquizcom",
         "facebook": "https://www.facebook.com/itsquiz",
+        "youtube": "https://www.youtube.com/channel/UClU6b5mtTVPPAv_L9dUzl_g",
         "supportPage": "http://itsquiz.userecho.com/",
+        "suggestIdea": "http://itsquiz.userecho.com/",
         "aboutItsquiz": "http://itsquiz.com/about/",
         "ourTeam": "http://itsquiz.com/about/#team",
-        "watchVideo": "http://itsquiz.com/about/#watch",
-        "login": "http://app.itsquiz.com/{lang}/login",
-        "signUp": "http://app.itsquiz.com/{lang}/login",
         "helpMe": "mailto:support@itsquiz.com"
     }
 }

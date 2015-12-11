@@ -99,6 +99,7 @@ export default class ActivationsPage extends React.Component {
         return (
             <div className={classes}>
                 <ShareDialog
+                    title          = {l('Share this test')}
                     isOpen         = {isSharing}
                     linkToShare    = {linkToShare}
                     onRequestClose = {onStopSharing}
@@ -122,7 +123,6 @@ export default class ActivationsPage extends React.Component {
                             activeTab = {selectedCategory ? CATEGORIES.indexOf(selectedCategory) : 0}
                             className = 'ActivationsPage__tabs'
                             onChange  = {(index) => onTabChange(CATEGORIES[index])}>
-
                             <Tab>{l('All tests')}</Tab>
                             <Tab>{l('Vacancies')}</Tab>
                             <Tab>{l('Education')}</Tab>

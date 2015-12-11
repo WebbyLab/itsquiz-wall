@@ -35,10 +35,11 @@ export default class ShareDialogContainer extends Component {
     };
 
     render() {
-        const { isOpen, onRequestClose } = this.props;
+        const { title, isOpen, onRequestClose } = this.props;
 
         return (
             <ShareDialog
+                title          = {title}
                 isOpen         = {isOpen}
                 onShare        = {this.handleShare}
                 onRequestClose = {onRequestClose}

@@ -118,6 +118,9 @@
          ],
          "Discover tests": [
             "Исследовать тесты"
+         ],
+         "Do not show me this message again": [
+            "Больше не показывать это сообщение"
          ]
       }
    }

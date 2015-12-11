@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 
 import Icon from './Icon.jsx';
+import ShareDialog from '../containers/ShareDialog.jsx';
 
 if ( process.env.BROWSER ) {
     require('./Footer.less');
@@ -11,66 +12,72 @@ export default class Footer extends Component {
 
     render() {
         const { l } = this.context.i18n;
-        const { onLinkClick, onShareClick } = this.props;
+        const { links, linkToShare, showShareDialog, onLinkClick, onShareClick, onShareClose } = this.props;
 
         return (
             <div className='Footer'>
+                <ShareDialog
+                    title = {l('Share this page')}
+                    isOpen = {showShareDialog}
+                    linkToShare = {linkToShare}
+                    onRequestClose = {onShareClose}
+                />
                 <div className="Footer__content">
-                    <div className="Footer__socials">
-                        <Icon
-                            type='facebook-box'
-                            className='Footer__social-icon Footer__social-icon--facebook'
-                            onClick={onShareClick.bind(null, 'facebook')}
-                        />
-                        <Icon
-                            type='google-plus-box'
-                            className='Footer__social-icon Footer__social-icon--google-plus'
-                            onClick={onShareClick.bind(null, 'google')}
-                        />
-                        <Icon
-                            type='linkedin-box'
-                            className='Footer__social-icon Footer__social-icon--linkedin'
-                            onClick={onShareClick.bind(null, 'linkedin')}
-                        />
-                        <Icon
-                            type='twitter-box'
-                            className='Footer__social-icon Footer__social-icon--twitter'
-                            onClick={onShareClick.bind(null, 'twitter')}
-                        />
-                        <Icon
-                            type='vk-box'
-                            className='Footer__social-icon Footer__social-icon--vk'
-                            onClick={onShareClick.bind(null, 'vk')}
-                        />
-                    </div>
-
                     <div className="Footer__menus-container">
                         <div className="Footer__menu">
                             <h3 className="Footer__menu-header">{l('Keep in touch')}</h3>
                             <ul className="Footer__menu-items">
                                 <li>
-                                    <a onClick={onLinkClick.bind(null, 'twitter')}>
+                                    <a
+                                        href={links.twitter}
+                                        target='_blank'
+                                        onClick={onLinkClick.bind(null, 'twitter')}>
                                         {l('Twitter')}
                                     </a>
                                 </li>
                                 <li>
-                                    <a onClick={onLinkClick.bind(null, 'facebook')}>
+                                    <a
+                                        href={links.facebook}
+                                        target='_blank'
+                                        onClick={onLinkClick.bind(null, 'facebook')}>
                                         {l('Facebook')}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href={links.youtube}
+                                        target='_blank'
+                                        onClick={onLinkClick.bind(null, 'youtube')}>
+                                        {l('Videos on Youtube')}
                                     </a>
                                 </li>
                             </ul>
                         </div>
 
                         <div className="Footer__menu">
-                            <h3 className="Footer__menu-header">{l('Help center')}</h3>
+                            <h3 className="Footer__menu-header">{l('Support')}</h3>
                             <ul className="Footer__menu-items">
                                 <li>
-                                    <a onClick={onLinkClick.bind(null, 'supportPage')}>
+                                    <a
+                                        href={links.supportPage}
+                                        target='_blank'
+                                        onClick={onLinkClick.bind(null, 'supportPage')}>
                                         {l('Support page')}
                                     </a>
                                 </li>
                                 <li>
-                                    <a onClick={onLinkClick.bind(null, 'helpMe')} >
+                                    <a
+                                        href={links.suggestIdea}
+                                        target='_blank'
+                                        onClick={onLinkClick.bind(null, 'suggestIdea')}>
+                                        {l('Suggest an idea')}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href={links.helpMe}
+                                        target='_blank'
+                                        onClick={onLinkClick.bind(null, 'helpMe')} >
                                         {l('Need help?')}
                                     </a>
                                 </li>
@@ -78,21 +85,28 @@ export default class Footer extends Component {
                         </div>
 
                         <div className="Footer__menu">
-                            <h3 className="Footer__menu-header">{l('Learn more')}</h3>
+                            <h3 className="Footer__menu-header">{l('Do you like It\'s quiz?')}</h3>
                             <ul className="Footer__menu-items">
                                 <li>
-                                    <a onClick={onLinkClick.bind(null, 'aboutItsquiz')}>
-                                        {l('About It\'s quiz')}
+                                    <a
+                                        href={links.aboutItsquiz}
+                                        target='_blank'
+                                        onClick={onLinkClick.bind(null, 'aboutItsquiz')}>
+                                        {l('Read more')}
                                     </a>
                                 </li>
                                 <li>
-                                    <a onClick={onLinkClick.bind(null, 'features')}>
-                                        {l('Features')}
+                                    <a
+                                        href={links.ourTeam}
+                                        target='_blank'
+                                        onClick={onLinkClick.bind(null, 'ourTeam')}>
+                                        {l('Meet our team')}
                                     </a>
                                 </li>
                                 <li>
-                                    <a onClick={onLinkClick.bind(null, 'team')}>
-                                        {l('Our team')}
+                                    <a
+                                        onClick={onShareClick}>
+                                        {l('Share this page')}
                                     </a>
                                 </li>
                             </ul>
@@ -103,4 +117,3 @@ export default class Footer extends Component {
         );
     }
 }
-

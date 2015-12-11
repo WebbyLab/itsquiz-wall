@@ -3,7 +3,7 @@ import strformat          from 'strformat';
 
 import Footer from '../components/Footer.jsx';
 
-import { footerLinks, quizwallShareLink, facebookAppId } from '../config';
+import { footerLinks, quizwallShareLink } from '../config';
 
 import { sendEvent } from '../utils/googleAnalytics';
 
@@ -11,42 +11,47 @@ export default class FooterContainer extends Component {
 
     static contextTypes = { i18n: PropTypes.object };
 
-    handleLinkClick = (type) => {
+    state = {
+        showShareDialog: false
+    };
+
+    componentWillMount() {
         const { getLocale } = this.context.i18n;
-        const linkToOpen = strformat(footerLinks[type], {
+        this.links = {};
+
+        for (const linkType in footerLinks) {
+            this.links[linkType] = strformat(footerLinks[linkType], {
+                lang: getLocale()
+            });
+        }
+
+        this.linkToShare = strformat(quizwallShareLink, {
             lang: getLocale()
         });
+    }
 
-        this.openLinkInNewTab(linkToOpen);
-
+    handleLinkClick = (type) => {
         sendEvent('footer', 'click', type);
     };
 
-    handleShare = (type) => {
-        const { getLocale } = this.context.i18n;
-        const linkToShare = strformat(quizwallShareLink, {
-            lang: getLocale()
-        });
+    handleShare = () => {
+        this.setState({ showShareDialog: true });
+        sendEvent('footer', 'share');
+    };
 
-        const linksHash = {
-            'google': `https://plus.google.com/share?url=${linkToShare}`,
-            'facebook': `https://www.facebook.com/dialog/share?app_id=${facebookAppId}&&display=popup`
-                + `&href=${linkToShare}&redirect_uri=${linkToShare}`,
-            'twitter': `https://twitter.com/intent/tweet?text=${linkToShare}`,
-            'linkedin': `https://www.linkedin.com/shareArticle?mini=true&url=${linkToShare}`,
-            'vk': `http://vk.com/share.php?url=${linkToShare}`
-        };
-
-        this.openLinkInPopup(linksHash[type]);
-
-        sendEvent('footer', 'share', type);
+    handleShareClose = () => {
+        this.setState({ showShareDialog: false });
     };
 
     render() {
         return (
             <Footer
+                links={this.links}
+                showShareDialog={this.state.showShareDialog}
+                linkToShare={this.linkToShare}
                 onLinkClick={this.handleLinkClick}
                 onShareClick={this.handleShare}
+                onShareClose={this.handleShareClose}
             />
         );
     }
