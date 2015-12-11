@@ -152,6 +152,7 @@ export default class ActivationPage extends React.Component {
     }
 
     render() {
+        const { l } = this.context.i18n;
         const {
             activation,
             isSharing,
@@ -171,6 +172,7 @@ export default class ActivationPage extends React.Component {
         return (
             <div className={classes}>
                 <ShareDialog
+                    title          = {l('Share this test')}
                     isOpen         = {isSharing}
                     linkToShare    = {activation.publicLink}
                     onRequestClose = {onStopSharing}

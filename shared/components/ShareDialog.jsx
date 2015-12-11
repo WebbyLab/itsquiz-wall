@@ -15,6 +15,7 @@ export default class ShareDialog extends Component {
     static contextTypes = { i18n: PropTypes.object };
 
     static propTypes = {
+        title          : PropTypes.string.isRequired,
         isOpen         : PropTypes.bool.isRequired,
         onShare        : PropTypes.func.isRequired,
         onRequestClose : PropTypes.func.isRequired
@@ -22,13 +23,13 @@ export default class ShareDialog extends Component {
 
     render() {
         const { l } = this.context.i18n;
-        const { onShare } = this.props;
+        const { title, onShare } = this.props;
 
         return (
             <div className='ShareDialog'>
                 <Dialog
                     className = 'ShareDialog__dialog'
-                    title     = {l('Share test')}
+                    title     = {title}
                     {...this.props}>
                     <div className='ShareDialog__buttons-container'>
                         <div

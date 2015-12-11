@@ -1,6 +1,11 @@
 import React, {Component, PropTypes} from 'react';
 
 import WelcomeDialog from '../../containers/WelcomeDialog.jsx';
+import Footer        from '../../containers/Footer.jsx';
+
+if ( process.env.BROWSER ) {
+    require('./MainLayout.less');
+}
 
 export default class MainLayout extends Component {
 
@@ -16,18 +21,19 @@ export default class MainLayout extends Component {
 
         return (
             <div className='MainLayout'>
-                <WelcomeDialog
-                    isOpen={showWelcomeScreen}
-                    onDismiss={onWelcomeScreenDismiss}
-                />
-
                 <div className='MainLayout__content'>
+                    <WelcomeDialog
+                        isOpen={showWelcomeScreen}
+                        onDismiss={onWelcomeScreenDismiss}
+                    />
                     {this.props.children}
                 </div>
 
-                <div className='MainLayout__footer'>
-
-                </div>
+                {
+                    showFooter
+                    ? <Footer />
+                    : null
+                }
             </div>
         );
     }
