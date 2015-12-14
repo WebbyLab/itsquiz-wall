@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-10 21:12+0200\n"
-"PO-Revision-Date: 2015-12-10 21:14+0200\n"
+"POT-Creation-Date: 2015-12-14 13:57+0200\n"
+"PO-Revision-Date: 2015-12-14 15:06+0200\n"
 "Last-Translator: Oleg <CBETJIOMYP@gmail.com>\n"
-"Language-Team: English <>\n"
+"Language-Team: русский <>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -84,6 +84,7 @@ msgstr "Еще тесты от %s"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:77
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:161
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:162
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:163
 msgid "Quizzes"
 msgstr "Тесты"
 
@@ -116,24 +117,28 @@ msgstr[2] "%d минут"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:99
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:184
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:186
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:187
 msgid "All tests"
 msgstr "Все тесты"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:104
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:189
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:191
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:192
 msgid "Vacancies"
 msgstr "Вакансии"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:109
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:194
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:196
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:197
 msgid "Education"
 msgstr "Образование"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:114
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:199
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:201
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:202
 msgid "Entertainment"
 msgstr "Развлечения"
 
@@ -255,3 +260,57 @@ msgstr "Исследовать тесты"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:261
 msgid "Do not show me this message again"
 msgstr "Больше не показывать это сообщение"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:154
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:236
+msgid "Share this test"
+msgstr "Поделиться тестом"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/Footer.js:58
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/Footer.js:209
+msgid "Share this page"
+msgstr "Поделиться страницей"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/Footer.js:75
+msgid "Keep in touch"
+msgstr "Оставайтесь на связи"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/Footer.js:89
+msgid "Twitter"
+msgstr "Twitter"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/Footer.js:101
+msgid "Facebook"
+msgstr "Facebook"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/Footer.js:113
+msgid "Videos on Youtube"
+msgstr "Видео на Youtube"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/Footer.js:124
+msgid "Support"
+msgstr "Помощь"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/Footer.js:138
+msgid "Support page"
+msgstr "Поддержка"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/Footer.js:150
+msgid "Suggest an idea"
+msgstr "Предложить идею"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/Footer.js:162
+msgid "Need help?"
+msgstr "Нужна помощь?"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/Footer.js:173
+msgid "Do you like It's quiz?"
+msgstr "Нравится ли вам It's quiz?"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/Footer.js:187
+msgid "Read more"
+msgstr "Узнать больше"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/Footer.js:199
+msgid "Meet our team"
+msgstr "Наша команда"

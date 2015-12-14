@@ -121,6 +121,45 @@
          ],
          "Do not show me this message again": [
             "Больше не показывать это сообщение"
+         ],
+         "Share this test": [
+            "Поделиться тестом"
+         ],
+         "Share this page": [
+            "Поделиться страницей"
+         ],
+         "Keep in touch": [
+            "Оставайтесь на связи"
+         ],
+         "Twitter": [
+            "Twitter"
+         ],
+         "Facebook": [
+            "Facebook"
+         ],
+         "Videos on Youtube": [
+            "Видео на Youtube"
+         ],
+         "Support": [
+            "Помощь"
+         ],
+         "Support page": [
+            "Поддержка"
+         ],
+         "Suggest an idea": [
+            "Предложить идею"
+         ],
+         "Need help?": [
+            "Нужна помощь?"
+         ],
+         "Do you like It's quiz?": [
+            "Нравится ли вам It's quiz?"
+         ],
+         "Read more": [
+            "Узнать больше"
+         ],
+         "Meet our team": [
+            "Наша команда"
          ]
       }
    }

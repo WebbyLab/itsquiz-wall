@@ -121,6 +121,45 @@
          ],
          "Do not show me this message again": [
             "Більше не показувати це повідомлення"
+         ],
+         "Share this test": [
+            "Поділитися тестом"
+         ],
+         "Share this page": [
+            "Поділитися сторінкою"
+         ],
+         "Keep in touch": [
+            "Залишайтеся на зв'язку"
+         ],
+         "Twitter": [
+            "Twitter"
+         ],
+         "Facebook": [
+            "Facebook"
+         ],
+         "Videos on Youtube": [
+            "Відео на Youtube"
+         ],
+         "Support": [
+            "Допомога"
+         ],
+         "Support page": [
+            "Підтримка"
+         ],
+         "Suggest an idea": [
+            "Запропонувати ідею"
+         ],
+         "Need help?": [
+            "Потрібна допомога?"
+         ],
+         "Do you like It's quiz?": [
+            "Чи подобається вам It's quiz?"
+         ],
+         "Read more": [
+            "Дізнатися більше"
+         ],
+         "Meet our team": [
+            "Наша команда"
          ]
       }
    }
