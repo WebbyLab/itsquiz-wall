@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-14 13:57+0200\n"
-"PO-Revision-Date: 2015-12-14 15:06+0200\n"
+"POT-Creation-Date: 2015-12-14 17:57+0200\n"
+"PO-Revision-Date: 2015-12-14 17:58+0200\n"
 "Last-Translator: Oleg <CBETJIOMYP@gmail.com>\n"
 "Language-Team: русский <>\n"
 "Language: \n"
@@ -305,7 +305,7 @@ msgstr "Нужна помощь?"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/Footer.js:173
 msgid "Do you like It's quiz?"
-msgstr "Нравится ли вам It's quiz?"
+msgstr "Понравился It's quiz?"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/Footer.js:187
 msgid "Read more"
