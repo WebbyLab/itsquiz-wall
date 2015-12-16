@@ -1,4 +1,5 @@
 @import '../assets/palette.less';
+@import "../assets/media.less";
 
 .ReactModalPortal {
     .ReactModal__Overlay {
@@ -14,7 +15,7 @@
         padding-left: 16px;
         padding-bottom: 8px;
         margin: auto;
-        border: none;
+        border: 0;
         border-radius: 2px !important;
         max-width: 800px;
         overflow: visible !important;
@@ -24,6 +25,12 @@
         opacity: 0;
         transition: all 0.2s ease-in-out;
         transform: scale(0.6);
+        display: flex;
+        flex-direction: column;
+
+        @media @phone {
+            border-radius: 0 !important;
+        }
 
         &.ReactModal__Content--after-open {
             opacity: 1;
@@ -42,4 +49,3 @@
     color: black;
     font-weight: 500;
 }
-

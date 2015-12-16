@@ -128,6 +128,12 @@ export default class WelcomeDialog extends Component {
                     onRequestClose={this.handleClose}
                     {...this.props}>
                     <div className='WelcomeDialog__content'>
+                        <IconButton ripple
+                            className = 'WelcomeDialog__close'
+                            name      = 'close'
+                            onClick   = {this.handleClose}
+                        />
+
                         <div className='WelcomeDialog__carousel'>
                             <IconButton ripple
                                 name     = 'keyboard_arrow_left'
