@@ -4,7 +4,9 @@ if ( process.env.BROWSER ) {
     require('./Dialog.less');
 }
 
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
+import cx from 'classnames';
+
 import ReactModal from 'react-modal';
 
 export default class Dialog extends Component {
@@ -19,7 +21,7 @@ export default class Dialog extends Component {
     };
 
     render() {
-        const { isOpen, title, children, onRequestClose } = this.props;
+        const { isOpen, title, children, className, onRequestClose } = this.props;
 
         const styles = {
             overlay : {
@@ -33,16 +35,16 @@ export default class Dialog extends Component {
 
         return (
             <ReactModal
-                className      = 'Dialog'
+                className      = {cx('Dialog', className)}
                 isOpen         = {isOpen}
                 style          = {styles}
                 onRequestClose = {onRequestClose}>
-                <h1 className = 'Dialog__title'>
-                    {title}
-                </h1>
-                <div className = 'Dialog__body'>
+                    {
+                        title
+                        ? <h1 className = 'Dialog__title'>{title}</h1>
+                        : null
+                    }
                     {children}
-                </div>
             </ReactModal>
         );
     }
