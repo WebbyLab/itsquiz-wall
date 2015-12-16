@@ -67,9 +67,10 @@ export default class WelcomeDialog extends Component {
 
                 <div className='WelcomeDialog__slide-content'>
                     <h1> {l('Welcome to It\'s quiz!')} </h1>
-                    <p> {l('Cloud platform for knowledge monitoring, creating quizzes, tests and questionnaires, '
-                        + 'search and identification of talented people')} </p>
-                    <Button className='WelcomeDialog__btn' raised colored onClick={onLearnMoreAboutItsquiz}>
+                    <p> {l('Explore hundreds of open tests on Quiz Wall, check your knowledge, explore new topics, '
+                        + 'share your achievements with friends!')}
+                    </p>
+                    <Button className='WelcomeDialog__btn' raised colored onClick={this.handleNextSlide}>
                         {l('Learn more')}
                     </Button>
                 </div>
@@ -82,8 +83,8 @@ export default class WelcomeDialog extends Component {
 
                 <div className='WelcomeDialog__slide-content'>
                     <h1>{l('Check your knowledge')}</h1>
-                    <p> {l('Explore hundreds of open tests on Quiz Wall, check your knowledge, explore new topics, '
-                        + 'share your achievements with friends')}</p>
+                    <p> {l('Find out your language level, check knowledge of proffessional topics, pass entertainment '
+                        + 'tests or even find a new job! Everything absolutely free!')}</p>
                     <Button className='WelcomeDialog__btn' raised colored onClick={onDiscoverTests}>
                         {l('Discover tests')}
                     </Button>
@@ -96,9 +97,9 @@ export default class WelcomeDialog extends Component {
                 </div>
 
                 <div className='WelcomeDialog__slide-content'>
-                    <h1> {l('You can create a test')} </h1>
-                    <p> {l('Everyone can create a test on It\'s quiz! Simply add new questions, compose a quiz'
-                        + ' and share with your friends.')} </p>
+                    <h1> {l('Create your own tests!')} </h1>
+                    <p> {l('Everyone can create a test on It\'s quiz! Simply add new questions, compose a quiz, '
+                        + 'activate and share with your friends.')} </p>
                     <Button className='WelcomeDialog__btn' raised colored onClick={onCreateTest}>
                         {l('Create a test')}
                     </Button>
@@ -113,13 +114,15 @@ export default class WelcomeDialog extends Component {
                 <div className='WelcomeDialog__slide-content'>
                     <h1> {l('Find best ever employees')} </h1>
                     <p>{l('Filter out candidates who don’t meet your standards before you interview them. '
-                        + 'Create test for a position, publish on Quiz Wall, enjoy interviewing only the best.')}</p>
+                        + 'Create test for a position, publish on Quiz Wall, enjoy interviewing only the best!')}</p>
                     <Button className='WelcomeDialog__btn' raised colored onClick={onCreateTest}>
                         {l('Create a vacancy')}
                     </Button>
                 </div>
             </div>
         ];
+
+        const currentSlideIndex = currentSlide % slides.length;
 
         return (
             <div className='WelcomeDialog'>
@@ -142,12 +145,11 @@ export default class WelcomeDialog extends Component {
                             />
 
                             <div className='WelcomeDialog__slide-wrapper'>
-                                {slides[currentSlide]}
+                                {slides[currentSlideIndex]}
                             </div>
 
                             <IconButton ripple
                                 name     = 'keyboard_arrow_right'
-                                disabled = {currentSlide === slides.length - 1}
                                 onClick  = {this.handleNextSlide}
                             />
                         </div>
