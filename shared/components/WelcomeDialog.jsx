@@ -83,7 +83,7 @@ export default class WelcomeDialog extends Component {
 
                 <div className='WelcomeDialog__slide-content'>
                     <h1>{l('Check your knowledge')}</h1>
-                    <p> {l('Find out your language level, check knowledge of proffessional topics, pass entertainment '
+                    <p> {l('Find out your language level, check knowledge of professional topics, pass entertainment '
                         + 'tests or even find a new job! Everything absolutely free!')}</p>
                     <Button className='WelcomeDialog__btn' raised colored onClick={onDiscoverTests}>
                         {l('Discover tests')}
@@ -99,7 +99,7 @@ export default class WelcomeDialog extends Component {
                 <div className='WelcomeDialog__slide-content'>
                     <h1> {l('Create your own tests!')} </h1>
                     <p> {l('Everyone can create a test on It\'s quiz! Simply add new questions, compose a quiz, '
-                        + 'activate and share with your friends.')} </p>
+                        + 'activate and share with your friends!')} </p>
                     <Button className='WelcomeDialog__btn' raised colored onClick={onCreateTest}>
                         {l('Create a test')}
                     </Button>

@@ -98,7 +98,7 @@
          "You can create a test": [
             "Вы можете создать тест"
          ],
-         "Everyone can create a test on It's quiz! Simply add new questions, compose a quiz and share with your friends.": [
+         "Everyone can create a test on It's quiz! Simply add new questions, compose a quiz and share with your friends!": [
             "Каждый может создать тест на It's quiz! Просто добавьте новые вопросы, составьте из них тест и поделитесь им с друзьями."
          ],
          "Create a test": [
@@ -160,6 +160,21 @@
          ],
          "Meet our team": [
             "Наша команда"
+         ],
+         "Explore hundreds of open tests on Quiz Wall, check your knowledge, explore new topics, share your achievements with friends!": [
+            "Исследуйте сотни тестов, проверьте свои знания, изучайте новые темы, делитесь своими достижениями с друзьями!"
+         ],
+         "Find out your language level, check knowledge of professional topics, pass entertainment tests or even find a new job! Everything absolutely free!": [
+            "Узнайте свой уровень владения языком, проверьте свои знания по профессиональным темам, пройдите развлекательные тесты или даже найдите новую работу!"
+         ],
+         "Create your own tests!": [
+            "Создайте свои собственные тесты!"
+         ],
+         "Everyone can create a test on It's quiz! Simply add new questions, compose a quiz, activate and share with your friends!": [
+            "Каждый может создать тест на It's quiz! Просто добавьте новые вопросы, составьте из них тест, активируйте и поделитесь им с друзьями!"
+         ],
+         "Filter out candidates who don’t meet your standards before you interview them. Create test for a position, publish on Quiz Wall, enjoy interviewing only the best!": [
+            "Отсейте кандидатов которые не отвечают вашим требованиям, прежде чем пригласить их на собеседование. Создайте тест на вакансию, опубликуйте на стене, собеседуйте наилучших!"
          ]
       }
    }
