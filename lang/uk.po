@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-17 11:42+0200\n"
-"PO-Revision-Date: 2015-12-17 12:21+0200\n"
+"PO-Revision-Date: 2015-12-17 17:52+0200\n"
 "Last-Translator: Oleg <CBETJIOMYP@gmail.com>\n"
 "Language-Team: русский <>\n"
 "Language: \n"
@@ -231,7 +231,7 @@ msgstr "Створити тест"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:210
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:209
 msgid "Find best ever employees"
-msgstr "Відберіть кращих співробітників"
+msgstr "Знайдіть кращих співробітників"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:191
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:196
@@ -327,16 +327,16 @@ msgid ""
 "Explore hundreds of open tests on Quiz Wall, check your knowledge, explore "
 "new topics, share your achievements with friends!"
 msgstr ""
-"Дослідіть сотні тестів, перевірте свої знання, вивчайте нові теми, діліться "
-"своїми досягненнями з друзями!"
+"Перевірте свої професійні знання, визначте рівень володіння іноземними "
+"мовами, пройдіть розважальні тести, знайдіть нову роботу!"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:155
 msgid ""
 "Find out your language level, check knowledge of professional topics, pass "
 "entertainment tests or even find a new job! Everything absolutely free!"
 msgstr ""
-"Дізнайтеся свій рівень володіння мовою, перевірте свої знання з фахових тем, "
-"пройдіть розважальні тести або навіть знайдіть нову роботу!"
+"Вивчайте нові теми, розширюйте кругозір, набирайтеся досвіду, діліться "
+"своїми досягненнями в соціальних мережах!"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:178
 msgid "Create your own tests!"
@@ -356,6 +356,6 @@ msgid ""
 "them. Create test for a position, publish on Quiz Wall, enjoy interviewing "
 "only the best!"
 msgstr ""
-"Виключіть кандидатів, які не відповідають вашим вимогам, перш ніж запросити "
-"їх на співбесіду. Створіть тест на вакансію, опублікуйте на стіні, проводьте "
-"співбесіду з найкращими."
+"Створіть тест для вакансії, публікуйте його на стіні. Протестуйте професійні "
+"знання претендента, перш ніж запросити на співбесіду. Проводьте співбесіду з "
+"кращими!"

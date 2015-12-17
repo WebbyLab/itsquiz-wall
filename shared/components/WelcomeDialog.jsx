@@ -93,21 +93,6 @@ export default class WelcomeDialog extends Component {
 
             <div className='WelcomeDialog__slide'>
                 <div className='WelcomeDialog__slide-image'>
-                    <img src="/static/images/welcome/02.png" />
-                </div>
-
-                <div className='WelcomeDialog__slide-content'>
-                    <h1> {l('Create your own tests!')} </h1>
-                    <p> {l('Everyone can create a test on It\'s quiz! Simply add new questions, compose a quiz, '
-                        + 'activate and share with your friends!')} </p>
-                    <Button className='WelcomeDialog__btn' raised colored onClick={onCreateTest}>
-                        {l('Create a test')}
-                    </Button>
-                </div>
-            </div>,
-
-            <div className='WelcomeDialog__slide'>
-                <div className='WelcomeDialog__slide-image'>
                     <img src="/static/images/welcome/04.png" />
                 </div>
 
@@ -117,6 +102,21 @@ export default class WelcomeDialog extends Component {
                         + 'Create test for a position, publish on Quiz Wall, enjoy interviewing only the best!')}</p>
                     <Button className='WelcomeDialog__btn' raised colored onClick={onCreateTest}>
                         {l('Create a vacancy')}
+                    </Button>
+                </div>
+            </div>,
+
+            <div className='WelcomeDialog__slide'>
+                <div className='WelcomeDialog__slide-image'>
+                    <img src="/static/images/welcome/02.png" />
+                </div>
+
+                <div className='WelcomeDialog__slide-content'>
+                    <h1> {l('Create your own tests!')} </h1>
+                    <p> {l('Everyone can create a test on It\'s quiz! Simply add new questions, compose a quiz, '
+                        + 'activate and share with your friends!')} </p>
+                    <Button className='WelcomeDialog__btn' raised colored onClick={onCreateTest}>
+                        {l('Create a test')}
                     </Button>
                 </div>
             </div>
