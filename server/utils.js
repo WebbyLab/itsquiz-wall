@@ -5,8 +5,6 @@ import geoip   from 'geoip-lite';
 import clientConfig from '../etc/client-config.json';
 import { getSupportedLocales } from '../shared/utils';
 
-const DEFAULT_LOCALE = 'en';
-
 export function fetchComponentsData(dispatch, components, params, query) {
     const promises = components.map(current => {
         const component = current.WrappedComponent ? current.WrappedComponent : current;
@@ -44,26 +42,20 @@ export function makeRedirectUrl({originalUrl}) {
 }
 
 export function detectLocale(req) {
-    const defaultLocale = 'en';
-    let locale = req.query.locale || req.cookies.locale;
-
-    if (!locale) {
-        const ip = req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || req.connection.remoteAddress;
-        const geo = geoip.lookup(ip);
-
-        if (geo && geo.country) {
-            locale = {
-                'UA': 'uk',
-                'RU': 'ru'
-            }[geo.country] || 'en';
-        } else {
-            locale = defaultLocale;
-        }
+    // Take locale passed by user
+    const passedLocale = ( req.query.locale || req.cookies.locale || '' ).toLowerCase();
+    if ( getSupportedLocales().indexOf(passedLocale) >= 0 ) {
+        return passedLocale;
     }
 
-    locale = locale.toLowerCase();
+    // Detect locale by ip
+    const ip = req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || req.connection.remoteAddress;
+    const geo = geoip.lookup(ip);
+    const country = ( geo && geo.country );
 
-    const isLocaleSupported = getSupportedLocales().indexOf(locale) >= 0;
-    return isLocaleSupported ? locale : DEFAULT_LOCALE;
+    return {
+        'UA': 'uk',
+        'RU': 'ru'
+    }[country] || 'en';
 }
 
