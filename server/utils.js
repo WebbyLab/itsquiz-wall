@@ -51,7 +51,7 @@ export function detectLocale(req) {
     } else if (req.cookies.locale ) {
         locale = req.cookies.locale;
     } else {
-        const ip = req.headers['X-Real-IP'] || req.headers['X-Forwarded-For'] || req.connection.remoteAddress;
+        const ip = req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || req.connection.remoteAddress;
         const geo = geoip.lookup(ip);
 
         if (geo && geo.country) {
