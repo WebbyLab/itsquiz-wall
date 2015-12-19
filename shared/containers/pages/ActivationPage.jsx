@@ -17,6 +17,8 @@ const embedEvents = new EmbedEvents({
 });
 
 class ActivationPageContainer extends Component {
+    static contextTypes = { i18n: PropTypes.object };
+
     state = {
         isSharing : false
     };
@@ -44,12 +46,14 @@ class ActivationPageContainer extends Component {
     };
 
     handleLogin = () => {
+        const { getLocale } = this.context.i18n;
+
         const loginUrl = strformat(config.loginUrl, {
-            lang: this.props.params.lang
+            lang: getLocale()
         });
-        window.open(loginUrl, '_self');
 
         sendEvent('user', 'login', 'click');
+        window.open(loginUrl, '_self');
     };
 
     handleActivationClick = (activation) => {
