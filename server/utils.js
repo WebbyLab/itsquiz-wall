@@ -56,6 +56,8 @@ export function detectLocale(req) {
                 'UA': 'uk',
                 'RU': 'ru'
             }[geo.country] || 'en';
+        } else {
+            locale = defaultLocale;
         }
     }
 
