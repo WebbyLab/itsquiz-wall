@@ -59,6 +59,8 @@ export function detectLocale(req) {
         }
     }
 
+    locale = locale.toLowerCase();
+
     const isLocaleSupported = getSupportedLocales().indexOf(locale) >= 0;
     return isLocaleSupported ? locale : DEFAULT_LOCALE;
 }
