@@ -25,9 +25,7 @@ export default class FooterContainer extends Component {
             });
         }
 
-        this.linkToShare = strformat(quizwallShareLink, {
-            lang: getLocale()
-        });
+        this.linkToShare = quizwallShareLink;
     }
 
     handleLinkClick = (type) => {

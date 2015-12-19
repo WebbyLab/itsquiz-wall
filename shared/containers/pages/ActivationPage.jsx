@@ -38,7 +38,7 @@ class ActivationPageContainer extends Component {
     };
 
     handleGoBack = () => {
-        this.props.history.pushState(null, `/${this.props.params.lang}/activations`, {
+        this.props.history.pushState(null, `/activations`, {
             embed : this.props.location.query.embed
         });
     };
@@ -53,7 +53,7 @@ class ActivationPageContainer extends Component {
     };
 
     handleActivationClick = (activation) => {
-        this.props.history.pushState(null, `/${this.props.params.lang}/activations/${activation.id}`, {
+        this.props.history.pushState(null, `/activations/${activation.id}`, {
             embed : this.props.location.query.embed
         });
 

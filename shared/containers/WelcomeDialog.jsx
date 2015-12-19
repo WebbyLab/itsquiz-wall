@@ -22,9 +22,7 @@ export default class WelcomeDialogContainer extends Component {
 
     handleDiscoverTests = () => {
         const { getLocale } = this.context.i18n;
-        const linkToOpen = strformat(welcomeLinks.discoverTests, {
-            lang: getLocale()
-        });
+        const linkToOpen = welcomeLinks.discoverTests;
 
         window.open(linkToOpen, '_blank');
     };

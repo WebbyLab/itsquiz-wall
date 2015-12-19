@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import cookie from 'cookie';
 
 import { getSupportedLocales } from '../utils';
 import { sendEvent }           from '../utils/googleAnalytics';
@@ -11,13 +12,10 @@ export default class LanguageSwitchContainer extends Component {
     static contextTypes = { i18n: PropTypes.object };
 
     handleSelectLanguage = (newLocale) => {
-        // TODO : Make locale be changed dynamically without page reload
-        const url = window.location.href.toLowerCase();
-        const { getLocale } = this.context.i18n;
-        const newUrl = url.replace(`/${getLocale()}/`, `/${newLocale}/`);
-        window.open(newUrl, '_self');
+        document.cookie = cookie.serialize('locale', newLocale, { path: '/', maxAge: 900000 });
 
         sendEvent('language', 'change', newLocale);
+        window.location.reload();
     };
 
     render() {

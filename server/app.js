@@ -11,16 +11,17 @@ import escapeHTML                from 'lodash/string/escape';
 
 import { fetchComponentsData,
          getMetaDataFromState,
-         makeRedirectUrl } from './utils';
+         makeRedirectUrl,
+         detectLocale } from './utils';
 
 import routes         from '../shared/routes.jsx';
 import configureStore from '../shared/store/configureStore';
 import api            from '../shared/apiSingleton';
 import i18n           from '../shared/i18n';
-import { extractSupportedLocaleFromPathname } from '../shared/utils';
 
 import clientConfig from '../etc/client-config.json';
 
+// Initializa localization
 import ruLocaleData from '../public/static/lang/ru.json';
 import ukLocaleData from '../public/static/lang/uk.json';
 import enLocaleData from '../public/static/lang/en.json';
@@ -37,19 +38,26 @@ app.use('/static', express.static('public/static'));
 app.use(cookieParser());
 
 app.use((req, res) => {
+    // Process old links like /en/activations
+    if (req.url.match(/\/[a-z]{2}\//)) {
+        const noLangUrl = req.url.replace(/^\/[a-z]{2}/, '');
+        return res.redirect(302, noLangUrl);
+    }
+
+    // If user is authenticated redirect him to the wall embedded into the main app
     if ( req.cookies.authenticated && !req.url.match('embed') ) {
         const redirectUrl = makeRedirectUrl({originalUrl: req.url});
         return res.redirect(302, redirectUrl);
     }
 
+    const locale = detectLocale(req);
     const store = configureStore();
-    const locale = extractSupportedLocaleFromPathname(req.url);
 
     const i18nTools = i18nToolsRegistry[locale];
 
     match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
         if (req.url === '/') {
-            res.redirect(302, '/ru/activations');
+            res.redirect(302, '/activations');
         }
         if (redirectLocation) {
             res.redirect(301, redirectLocation.pathname + redirectLocation.search);
@@ -86,7 +94,10 @@ app.use((req, res) => {
                     config : clientConfig
                 });
             })
-            .then(html => res.end(html))
+            .then(html => {
+                res.cookie('locale', locale, { maxAge: 900000 });
+                res.end(html);
+            })
             .catch(err => res.end(err.message));
         }
     });

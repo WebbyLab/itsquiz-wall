@@ -18,11 +18,11 @@ export default (
         <Route component={MainLayout} path='/'>
             <Redirect from='/' to='/ru/activations' />
 
-            <Route component={ActivationsPageContainer} path='/:lang/activations' />
-            <Route component={ActivationPageContainer} path='/:lang/activations/:id' />
+            <Route component={ActivationsPageContainer} path='/activations' />
+            <Route component={ActivationPageContainer} path='/activations/:id' />
 
-            <Route component={UsersPageContainer} path='/:lang/users' />
-            <Route component={UserPageContainer} path='/:lang/users/:id' />
+            <Route component={UsersPageContainer} path='/users' />
+            <Route component={UserPageContainer} path='/users/:id' />
         </Route>
     </Route>
 );

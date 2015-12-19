@@ -6,11 +6,11 @@
     "embedOrigin": "http://app.itsquiz.com/",
     "facebookAppId": "XXX",
     "gaTrackingCode": "XXX",
-    "quizwallShareLink": "http://itsquiz.com/{lang}/activations",
+    "quizwallShareLink": "http://itsquiz.com/activations",
     "welcomeLinks": {
         "createTest": "http://app.itsquiz.com/{lang}/login?continue=%2Fquestions",
         "aboutItsquiz": "http://itsquiz.com/about/",
-        "discoverTests": "http://itsquiz.com/{lang}/activations?skipWelcomeDialog=true"
+        "discoverTests": "http://itsquiz.com/activations?skipWelcomeDialog=true"
     },
     "footerLinks": {
         "twitter": "http://twitter.com/itsquizcom",

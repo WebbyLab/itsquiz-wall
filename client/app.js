@@ -2,13 +2,15 @@
 
 import 'babel-core/polyfill';
 
+const DEFAULT_LOCALE = 'en';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 import fetch from 'isomorphic-fetch';
+import cookie from 'cookie';
 
-import { extractSupportedLocaleFromPathname } from '../shared/utils';
 import configureStore from '../shared/store/configureStore';
 import routes from '../shared/routes.jsx';
 import history from '../shared/history.js';
@@ -16,7 +18,7 @@ import i18n from '../shared/i18n';
 
 const initialState = window.__INITIAL_STATE__ || {};
 const store = configureStore(initialState);
-const locale = extractSupportedLocaleFromPathname(window.location.pathname);
+const locale = cookie.parse(document.cookie).locale || DEFAULT_LOCALE;
 
 fetch(`/static/lang/${locale}.json`).then( res => {
     if (res.status >= 400) {
@@ -39,7 +41,3 @@ fetch(`/static/lang/${locale}.json`).then( res => {
 }).catch( error => {
     console.error(error);
 });
-
-
-
-
