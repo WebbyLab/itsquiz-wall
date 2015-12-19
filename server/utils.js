@@ -5,7 +5,7 @@ import geoip   from 'geoip-lite';
 import clientConfig from '../etc/client-config.json';
 import { getSupportedLocales } from '../shared/utils';
 
-const DEFAULT_LOCALE='en';
+const DEFAULT_LOCALE = 'en';
 
 export function fetchComponentsData(dispatch, components, params, query) {
     const promises = components.map(current => {
