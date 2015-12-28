@@ -29,7 +29,7 @@ class ActivationsPageContainer extends Component {
             embed : this.props.location.query.embed
         });
 
-        sendEvent('activation card', 'view details', 'click');
+        sendEvent('activation card', 'view details');
     };
 
     handleSearch = (searchText) => {
