@@ -1,10 +1,11 @@
 'use strict';
 
-import React, {Component, PropTypes} from 'react';
-import cx from 'classnames';
+import React, { Component, PropTypes } from 'react';
+import cx                              from 'classnames';
 
 import SearchBox      from './SearchBox.jsx';
 import LanguageSwitch from '../containers/LanguageSwitch.jsx';
+import LoginDialog    from '../containers/LoginDialog.jsx';
 
 import IconButton from 'react-mdl/lib/IconButton';
 
@@ -40,7 +41,8 @@ export default class AppBar extends Component {
     };
 
     state = {
-        isFixedToTop : false
+        isFixedToTop : false,
+        isLoggingIn  : false
     };
 
     handleScroll = () => {
@@ -53,6 +55,18 @@ export default class AppBar extends Component {
         if (isFixedToTop !== this.state.isFixedToTop) {
             this.setState({ isFixedToTop });
         }
+    };
+
+    handleLogin = () => {
+        this.setState({
+            isLoggingIn: true
+        });
+    };
+
+    handleLoginDialogClose = () => {
+        this.setState({
+            isLoggingIn: false
+        });
     };
 
     componentDidMount() {
@@ -75,19 +89,26 @@ export default class AppBar extends Component {
             displayRightMenu,
             rightIconName,
             onRightIconClick,
-            onSearch,
-            onLogin
+            onSearch
         } = this.props;
 
         const { l } = this.context.i18n;
 
+        const { isLoggingIn, isFixedToTop } = this.state;
+
         const rootClassNames = cx('AppBar', this.props.className, {
-            'AppBar--fixed'       : this.state.isFixedToTop,
+            'AppBar--fixed'       : isFixedToTop,
             'AppBar--with-search' : displaySearch
         });
 
         return (
             <div className={rootClassNames}>
+
+                <LoginDialog
+                    isOpen={isLoggingIn}
+                    onRequestClose={this.handleLoginDialogClose}
+                />
+
                 <div className='AppBar__left'>
                     {
                         rightIconName
@@ -115,7 +136,7 @@ export default class AppBar extends Component {
                     displayRightMenu
                     ? <div className='AppBar__right'>
                         <LanguageSwitch className='AppBar__lang' />
-                        <span className='AppBar__menu-item' onClick={onLogin}>
+                        <span className='AppBar__menu-item' onClick={this.handleLogin}>
                             {l('Sign up / Sign in')}
                         </span>
                     </div>

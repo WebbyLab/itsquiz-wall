@@ -14,7 +14,7 @@ export default {
             numberOfUsersPassed  : activation.numberOfPeople,
             dueTime              : activation.dueTime,
             message              : activation.message,
-            isSponsored           : activation.isSponsored || true,
+            isSponsored           : activation.isSponsored || true, // TEMPORARY
             isPrivate            : activation.isPublic === false,
             pictureURL           : activation.pictureURL,
             backgroundURL        : activation.backgroundURL || this._getBackgpoundURLById(activation.id),

@@ -39,6 +39,10 @@ class ActivationPageContainer extends Component {
         sendEvent('activation', 'pass', 'click');
     };
 
+    handleSponsoredClick = (activation) => {
+
+    };
+
     handleGoBack = () => {
         this.props.history.pushState(null, `/activations`, {
             embed : this.props.location.query.embed
@@ -93,7 +97,7 @@ class ActivationPageContainer extends Component {
                 isEmbedded        = {this.props.location.query.embed}
                 isSharing         = {this.state.isSharing}
                 onPass            = {this.handlePassActivationClick}
-                onSponsoredClick  = {this.handlePassActivationClick}
+                onSponsoredClick  = {this.handleSponsoredClick}
                 onActivationClick = {this.handleActivationClick}
                 onGoBack          = {this.handleGoBack}
                 onShare           = {this.handleShare}
