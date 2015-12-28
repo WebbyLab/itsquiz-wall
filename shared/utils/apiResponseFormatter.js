@@ -14,9 +14,10 @@ export default {
             numberOfUsersPassed  : activation.numberOfPeople,
             dueTime              : activation.dueTime,
             message              : activation.message,
+            isSponsored           : activation.isSponsored || true,
             isPrivate            : activation.isPublic === false,
             pictureURL           : activation.pictureURL,
-            backgroundURL        : this._getBackgpoundURLById(activation.id),
+            backgroundURL        : activation.backgroundURL || this._getBackgpoundURLById(activation.id),
             tags                 : activation.tags,
             timeToPass           : activation.timeToPass,
             author               : author ? this.formatUserInfo(author) : {}

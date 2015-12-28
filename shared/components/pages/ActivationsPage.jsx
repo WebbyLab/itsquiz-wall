@@ -66,6 +66,7 @@ export default class ActivationsPage extends React.Component {
                             timeToPass        = {activation.timeToPass}
                             pictureURL        = {activation.pictureURL}
                             author            = {activation.author}
+                            isSponsored       = {activation.isSponsored}
                             onShare           = {onShare.bind(this, activation)}
                             onClick           = {onItemClick.bind(this, activation)}
                         />

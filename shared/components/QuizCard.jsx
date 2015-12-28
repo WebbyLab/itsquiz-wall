@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
+import cx                              from 'classnames';
 
 if ( process.env.BROWSER ) {
     require('./QuizCard.less');
@@ -22,15 +23,31 @@ export default class QuizCard extends Component {
         numberOfQuestions : PropTypes.number,
         pictureURL        : PropTypes.string,
         author            : PropTypes.object,
+        isSponsored       : PropTypes.bool,
         onClick           : PropTypes.func
     };
 
     render() {
-        const { id, name, message, timeToPass, numberOfQuestions, pictureURL, author, onClick, onShare } = this.props;
+        const {
+            id,
+            name,
+            message,
+            timeToPass,
+            numberOfQuestions,
+            pictureURL,
+            author,
+            isSponsored,
+            onClick,
+            onShare
+        } = this.props;
         const { l, ngettext, humanizeDuration } = this.context.i18n;
 
+        const classes = cx('QuizCard', {
+            'QuizCard--sponsored': isSponsored
+        });
+
         return (
-            <Card className='QuizCard' shadow={1}>
+            <Card className={classes} shadow={1}>
                 <CardTitle className='QuizCard__head'>
                     <div className='QuizCard__info'>
                         <img className='QuizCard__avatar' src={author.avatar} />
@@ -53,18 +70,25 @@ export default class QuizCard extends Component {
                 />
 
                 <div className='QuizCard__content'>
-                    <div className='QuizCard__details'>
-                        <span>
-                            {
-                                sprintf(
-                                    ngettext('%d question', '%d questions', numberOfQuestions),
-                                    numberOfQuestions
-                                )
-                            }
-                        </span>
-                        <span className='QuizCard__span-divider'>•</span>
-                        <span>{ humanizeDuration(timeToPass, 'second') }</span>
-                    </div>
+                    {
+                        isSponsored
+                        ? <div className='QuizCard__special'>
+                            {l('Special proposition!')}
+                        </div>
+                        : <div className='QuizCard__details'>
+                            <span>
+                                {
+                                    sprintf(
+                                        ngettext('%d question', '%d questions', numberOfQuestions),
+                                        numberOfQuestions
+                                    )
+                                }
+                            </span>
+                            <span className='QuizCard__span-divider'>•</span>
+                            <span>{ humanizeDuration(timeToPass, 'second') }</span>
+                        </div>
+                    }
+
                     <p className='QuizCard__text'> {message} </p>
                 </div>
 
@@ -73,16 +97,19 @@ export default class QuizCard extends Component {
                     className='QuizCard__actions'>
                     <div>
                         <IconButton
-                            colored = {true}
-                            name    = 'share'
-                            onClick = {onShare}
+                            className = 'QuizCard__share-button'
+                            colored   = {true}
+                            name      = 'share'
+                            onClick   = {onShare}
                         />
                     </div>
 
                     <Button
-                        colored = {true}
-                        ripple  = {true}
-                        onClick = {onClick}>
+                        className = 'QuizCard__more-button'
+                        raised    = {isSponsored}
+                        colored   = {true}
+                        ripple    = {true}
+                        onClick   = {onClick}>
                         {l('View details')}
                     </Button>
                 </CardActions>
