@@ -35,6 +35,7 @@ export default class ActivationPage extends React.Component {
             onPass,
             onShare,
             onStopSharing,
+            onSponsoredClick,
             onActivationClick
         } = this.props;
 
@@ -84,17 +85,36 @@ export default class ActivationPage extends React.Component {
                                     { humanizeDuration(activation.timeToPass, 'second') }
                                 </span>
                             </div>
+                            {
+                                activation.isSponsored
+                                ? <div className='ActivationPage__actions'>
+                                    <Button
+                                        ripple    = {true}
+                                        onClick   = {onPass.bind(null, activation)}
+                                        className = 'ActivationPage__sponsored-pass-btn'>
+                                        {l('Pass the test')}
+                                    </Button>
+                                    <Button
+                                        colored   = {true}
+                                        ripple    = {true}
+                                        onClick   = {onSponsoredClick.bind(null, activation)}
+                                        className = 'ActivationPage__pass-btn ActivationPage__offer-btn'
+                                        raised    = {true}>
+                                        {l('Use this offer')}
+                                    </Button>
+                                </div>
+                                : <div className='ActivationPage__actions'>
+                                    <Button
+                                        colored   = {true}
+                                        ripple    = {true}
+                                        onClick   = {onPass.bind(null, activation)}
+                                        className = 'ActivationPage__pass-btn'
+                                        raised    = {true}>
+                                        {l('Pass this test')}
+                                    </Button>
+                                </div>
+                            }
 
-                            <div className='ActivationPage__actions'>
-                                <Button
-                                    colored   = {true}
-                                    ripple    = {true}
-                                    onClick   = {onPass.bind(null, activation)}
-                                    className = 'ActivationPage__pass-btn'
-                                    raised    = {true}>
-                                    {l('Pass this test')}
-                                </Button>
-                            </div>
                         </div>
 
                         <div className='ActivationPage__menu'>

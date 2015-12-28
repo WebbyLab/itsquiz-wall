@@ -93,6 +93,7 @@ class ActivationPageContainer extends Component {
                 isEmbedded        = {this.props.location.query.embed}
                 isSharing         = {this.state.isSharing}
                 onPass            = {this.handlePassActivationClick}
+                onSponsoredClick  = {this.handlePassActivationClick}
                 onActivationClick = {this.handleActivationClick}
                 onGoBack          = {this.handleGoBack}
                 onShare           = {this.handleShare}
