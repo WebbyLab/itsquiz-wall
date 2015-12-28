@@ -42,17 +42,19 @@ class ActivationPageContainer extends Component {
 
     handleSponsoredClick = (activation) => {
         const isEmbedded = this.props.location.query.embed;
-        const { actionId } = activation;
+        const { id } = activation;
+
+        console.log('handleSponsoredClick', id);
 
         if (isEmbedded) {
             embedEvents.send({
-                type : 'PASS_TEST',
-                actionId
+                type         : 'COURSE_REQUEST',
+                activationId : id
             });
         } else {
             this.setState({ isLoggingIn: true });
             this.props.history.pushState(null, this.props.location.pathname, {
-                showApplicationDialog: true
+                requestActivationId: id
             });
         }
 
