@@ -99,6 +99,7 @@
 
             @media @phone {
                 margin-left: 0;
+                height: auto;
                 margin-top: 24px;
                 align-items: center;
             }
@@ -155,6 +156,13 @@
 
                 @media @phone {
                     position: relative;
+                    margin-bottom: 10px;
+                    margin-top: 20px;
+                    flex-direction: column;
+
+                    .ActivationPage__pass-btn {
+                        order: 1;
+                    }
                 }
             }
 
@@ -194,6 +202,12 @@
 
 .ActivationPage__sponsored-pass-btn {
     margin-right: 10px;
+
+    @media @phone {
+        order: 2;
+        margin-right: 0;
+        margin-top: 10px;
+    }
 }
 
 .ActivationPage__subheader {
