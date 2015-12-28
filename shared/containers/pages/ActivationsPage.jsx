@@ -47,7 +47,7 @@ class ActivationsPageContainer extends Component {
             isSharing   : true
         });
 
-        sendEvent('activation card', 'share', 'click');
+        sendEvent('activation card', 'share');
     };
 
     handleTabChange = (category) => {
