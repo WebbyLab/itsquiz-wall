@@ -10,6 +10,7 @@ import Spinner                          from 'react-mdl/lib/Spinner';
 import QuizTile             from '../QuizTile.jsx';
 import Icon                 from '../Icon.jsx';
 import ShareDialog          from '../../containers/ShareDialog.jsx';
+import LoginDialog          from '../../containers/LoginDialog.jsx';
 import AppBarWithBackground from '../AppBarWithBackground.jsx';
 
 import { sprintf } from '../../utils';
@@ -177,10 +178,11 @@ export default class ActivationPage extends React.Component {
             activation,
             isSharing,
             isLoading,
+            isLoggingIn,
             isEmbedded,
             onShare,
+            onLoginDialogClose,
             onStopSharing,
-            onLogin,
             onGoBack
         } = this.props;
 
@@ -198,13 +200,17 @@ export default class ActivationPage extends React.Component {
                     onRequestClose = {onStopSharing}
                 />
 
+                <LoginDialog
+                    isOpen         = {isLoggingIn}
+                    onRequestClose = {onLoginDialogClose}
+                />
+
                 <AppBarWithBackground
                     backgroundURL    = {activation.backgroundURL}
                     displayRightMenu = {!isEmbedded}
                     rightIconName    = 'arrow_back'
                     onRightIconClick = {onGoBack}
                     title            = {activation.name}
-                    onLogin          = {onLogin}
                     height           = {200}
                 />
 

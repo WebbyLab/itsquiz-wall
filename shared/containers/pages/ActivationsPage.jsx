@@ -41,17 +41,6 @@ class ActivationsPageContainer extends Component {
         sendEvent('activations page', 'search');
     };
 
-    handleLogin = () => {
-        const { getLocale } = this.context.i18n;
-
-        const loginUrl = strformat(config.loginUrl, {
-            lang: getLocale()
-        });
-
-        sendEvent('activations page', 'login', 'click');
-        window.open(loginUrl, '_self');
-    };
-
     handleShare = (activation) => {
         this.setState({
             linkToShare : activation.publicLink,
@@ -115,7 +104,6 @@ class ActivationsPageContainer extends Component {
                 onShare          = {this.handleShare}
                 onTabChange      = {this.handleTabChange}
                 onStopSharing    = {this.handleStopSharing}
-                onLogin          = {this.handleLogin}
             />
         );
     }

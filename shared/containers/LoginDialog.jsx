@@ -22,7 +22,7 @@ export default class LoginDialogContainer extends Component {
 
         const redirectURL = strformat(socialAuthURL, {
             lang: getLocale().toUpperCase(),
-            continueRoute: escapeHTML(`/quizwall${window.location.pathname}`),
+            continueRoute: escapeHTML(`/quizwall${window.location.pathname + window.location.search}`),
             socialType: type
         });
 
