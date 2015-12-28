@@ -26,7 +26,23 @@ class ActivationPageContainer extends Component {
 
     handlePassActivationClick = (activation) => {
         const isEmbedded = this.props.location.query.embed;
-        const { linkToPass, actionId } = activation;
+        const { actionId } = activation;
+
+        if (isEmbedded) {
+            embedEvents.send({
+                type : 'PASS_TEST',
+                actionId
+            });
+        } else {
+            this.setState({ isLoggingIn: true });
+        }
+
+        sendEvent('activation', 'pass', 'click');
+    };
+
+    handleSponsoredClick = (activation) => {
+        const isEmbedded = this.props.location.query.embed;
+        const { actionId } = activation;
 
         if (isEmbedded) {
             embedEvents.send({
@@ -40,11 +56,7 @@ class ActivationPageContainer extends Component {
             });
         }
 
-        sendEvent('activation', 'pass', 'click');
-    };
-
-    handleSponsoredClick = (activation) => {
-
+        sendEvent('activation', 'sponsored', 'click');
     };
 
     handleGoBack = () => {
