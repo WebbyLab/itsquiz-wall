@@ -20,12 +20,13 @@ class ActivationPageContainer extends Component {
     static contextTypes = { i18n: PropTypes.object };
 
     state = {
-        isSharing : false
+        isSharing   : false,
+        isLoggingIn : false
     };
 
     handlePassActivationClick = (activation) => {
         const isEmbedded = this.props.location.query.embed;
-        const { linkToPass, actionId } = activation;
+        const { actionId, isSponsored } = activation;
 
         if (isEmbedded) {
             embedEvents.send({
@@ -33,27 +34,41 @@ class ActivationPageContainer extends Component {
                 actionId
             });
         } else {
-            window.open(linkToPass, '_self');
+            this.setState({ isLoggingIn: true });
         }
 
-        sendEvent('activation', 'pass', 'click');
+        if (isSponsored) {
+            sendEvent('sponsored activation', 'pass click');
+        } else {
+            sendEvent('activation', 'pass');
+        }
+    };
+
+    handleSponsoredClick = (activation) => {
+        const isEmbedded = this.props.location.query.embed;
+        const { id } = activation;
+
+        console.log('handleSponsoredClick', id);
+
+        if (isEmbedded) {
+            embedEvents.send({
+                type         : 'COURSE_REQUEST',
+                activationId : id
+            });
+        } else {
+            this.setState({ isLoggingIn: true });
+            this.props.history.pushState(null, this.props.location.pathname, {
+                requestActivationId: id
+            });
+        }
+
+        sendEvent('sponsored activation', 'request click');
     };
 
     handleGoBack = () => {
         this.props.history.pushState(null, `/activations`, {
             embed : this.props.location.query.embed
         });
-    };
-
-    handleLogin = () => {
-        const { getLocale } = this.context.i18n;
-
-        const loginUrl = strformat(config.loginUrl, {
-            lang: getLocale()
-        });
-
-        sendEvent('user', 'login', 'click');
-        window.open(loginUrl, '_self');
     };
 
     handleActivationClick = (activation) => {
@@ -78,6 +93,12 @@ class ActivationPageContainer extends Component {
         });
     };
 
+    handleLoginClose = () => {
+        this.setState({
+            isLoggingIn : false
+        });
+    };
+
     componentWillReceiveProps(nextProps) {
         if (this.props.params.id !== nextProps.params.id) {
             this.props.dispatch(loadActivation(nextProps.params, nextProps.location.query) );
@@ -87,17 +108,19 @@ class ActivationPageContainer extends Component {
     render() {
         return (
             <ActivationPage
-                activation        = {this.props.activation}
-                authorActivations = {this.props.authorActivations}
-                isLoading         = {this.props.isLoading}
-                isEmbedded        = {this.props.location.query.embed}
-                isSharing         = {this.state.isSharing}
-                onPass            = {this.handlePassActivationClick}
-                onActivationClick = {this.handleActivationClick}
-                onGoBack          = {this.handleGoBack}
-                onShare           = {this.handleShare}
-                onLogin           = {this.handleLogin}
-                onStopSharing     = {this.handleStopSharing}
+                activation         = {this.props.activation}
+                authorActivations  = {this.props.authorActivations}
+                isLoading          = {this.props.isLoading}
+                isEmbedded         = {this.props.location.query.embed}
+                isSharing          = {this.state.isSharing}
+                isLoggingIn        = {this.state.isLoggingIn}
+                onPass             = {this.handlePassActivationClick}
+                onSponsoredClick   = {this.handleSponsoredClick}
+                onActivationClick  = {this.handleActivationClick}
+                onGoBack           = {this.handleGoBack}
+                onShare            = {this.handleShare}
+                onStopSharing      = {this.handleStopSharing}
+                onLoginDialogClose = {this.handleLoginClose}
             />
         );
     }

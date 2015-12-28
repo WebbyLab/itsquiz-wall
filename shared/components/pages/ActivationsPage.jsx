@@ -66,6 +66,7 @@ export default class ActivationsPage extends React.Component {
                             timeToPass        = {activation.timeToPass}
                             pictureURL        = {activation.pictureURL}
                             author            = {activation.author}
+                            isSponsored       = {activation.isSponsored}
                             onShare           = {onShare.bind(this, activation)}
                             onClick           = {onItemClick.bind(this, activation)}
                         />
@@ -85,7 +86,6 @@ export default class ActivationsPage extends React.Component {
             linkToShare,
             onSearch,
             onTabChange,
-            onLogin,
             onStopSharing
         } = this.props;
 
@@ -114,7 +114,6 @@ export default class ActivationsPage extends React.Component {
                         scrollOffset  = {65}
                         displaySearch = {true}
                         onSearch      = {onSearch}
-                        onLogin       = {onLogin}
                     />
 
                     <div className='ActivationsPage__tab-bar'>

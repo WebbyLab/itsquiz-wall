@@ -29,7 +29,7 @@ class ActivationsPageContainer extends Component {
             embed : this.props.location.query.embed
         });
 
-        sendEvent('activation card', 'view details', 'click');
+        sendEvent('activation card', 'view details');
     };
 
     handleSearch = (searchText) => {
@@ -41,24 +41,13 @@ class ActivationsPageContainer extends Component {
         sendEvent('activations page', 'search');
     };
 
-    handleLogin = () => {
-        const { getLocale } = this.context.i18n;
-
-        const loginUrl = strformat(config.loginUrl, {
-            lang: getLocale()
-        });
-
-        sendEvent('activations page', 'login', 'click');
-        window.open(loginUrl, '_self');
-    };
-
     handleShare = (activation) => {
         this.setState({
             linkToShare : activation.publicLink,
             isSharing   : true
         });
 
-        sendEvent('activation card', 'share', 'click');
+        sendEvent('activation card', 'share');
     };
 
     handleTabChange = (category) => {
@@ -115,7 +104,6 @@ class ActivationsPageContainer extends Component {
                 onShare          = {this.handleShare}
                 onTabChange      = {this.handleTabChange}
                 onStopSharing    = {this.handleStopSharing}
-                onLogin          = {this.handleLogin}
             />
         );
     }
