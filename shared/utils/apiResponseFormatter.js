@@ -54,7 +54,7 @@ export default {
     },
 
     formatUserQuizSession(session) {
-        if (!session.createdAt) {
+        if (!session || !session.createdAt) {
             return null;
         }
 

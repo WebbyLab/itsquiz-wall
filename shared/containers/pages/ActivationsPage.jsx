@@ -26,7 +26,8 @@ class ActivationsPageContainer extends Component {
 
     handleQuizCardClick = (activation) => {
         this.props.history.pushState(null, `/activations/${activation.id}`, {
-            embed : this.props.location.query.embed
+            embed : this.props.location.query.embed,
+            assigneeId : this.props.location.query.assigneeId
         });
 
         sendEvent('activation card', 'view details');

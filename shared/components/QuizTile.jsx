@@ -26,7 +26,7 @@ export default class QuizTile extends Component {
     };
 
     render() {
-        const {id, name, pictureURL, author, onClick} = this.props;
+        const {id, name, pictureURL, author, userQuizSession, isPassed, onClick} = this.props;
         const {l} = this.context.i18n;
 
         return (
@@ -34,6 +34,15 @@ export default class QuizTile extends Component {
                 <CardTitle
                     className='QuizTile__title'>
                     <img src={pictureURL} width='100%' onClick={onClick}/>
+                    {
+                        isPassed
+                        ? <div className='QuizTile__overlay'>
+                            <span className='QuizTile__user-score'>
+                                {userQuizSession.score}%
+                            </span>
+                        </div>
+                        : null
+                    }
                 </CardTitle>
 
                 <CardActions className='QuizTile__text'>

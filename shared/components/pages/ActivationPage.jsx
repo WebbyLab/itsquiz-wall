@@ -162,6 +162,8 @@ export default class ActivationPage extends React.Component {
                                 numberOfQuestions = {authorActivation.numberOfQuestions}
                                 pictureURL        = {authorActivation.pictureURL}
                                 author            = {activation.author}
+                                isPassed          = {authorActivation.isPassed}
+                                userQuizSession   = {authorActivation.userQuizSession}
                                 onClick           = {onActivationClick.bind(null, authorActivation)}
                             />
                         </Cell>
