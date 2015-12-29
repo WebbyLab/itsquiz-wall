@@ -48,8 +48,6 @@ class ActivationPageContainer extends Component {
         const isEmbedded = this.props.location.query.embed;
         const { id } = activation;
 
-        console.log('handleSponsoredClick', id);
-
         if (isEmbedded) {
             embedEvents.send({
                 type         : 'COURSE_REQUEST',
