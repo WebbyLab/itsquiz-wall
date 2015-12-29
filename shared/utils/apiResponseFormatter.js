@@ -4,6 +4,7 @@ const NUMBER_OF_BACKGROUNDS = 12;
 
 export default {
     formatActivation(activation, author) {
+        console.log(activation);
         return {
             id                   : activation.id,
             name                 : activation.name,
@@ -16,6 +17,8 @@ export default {
             message              : activation.message,
             isSponsored          : activation.isSponsored,
             isPrivate            : activation.isPublic === false,
+            isPassed             : activation.assigneeQuizSession && activation.assigneeQuizSession.finishedAt,
+            userQuizSession      : this.formatUserQuizSession(activation.assigneeQuizSession),
             pictureURL           : activation.pictureURL,
             backgroundURL        : activation.backgroundURL || this._getBackgpoundURLById(activation.id),
             tags                 : activation.tags,
@@ -47,6 +50,23 @@ export default {
             lastName    : user.lastName,
             companyName : user.companyName,
             pictureURL  : user.image
+        };
+    },
+
+    formatUserQuizSession(session) {
+        if (!session.createdAt) {
+            return null;
+        }
+
+        return {
+            canViewAnswers : session.canAssigneeViewQuestions,
+            startedAt      : session.startedAt,
+            finishedAt     : session.finishedAt,
+            score          : Math.ceil(+session.gainedPoints * 100 / +session.maxPoints),
+            gainedPoints   : session.gainedPoints,
+            maxPoints      : session.maxPoints,
+            status         : session.status,
+            id             : session.id
         };
     },
 
