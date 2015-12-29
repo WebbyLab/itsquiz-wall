@@ -14,9 +14,10 @@ export function loadActivations(params = {}, query = {}) {
         });
 
         return api.activations.list({
-            include  : 'users',
-            search   : query.search || '',
-            category : query.category
+            include    : 'users',
+            search     : query.search || '',
+            category   : query.category,
+            assigneeId : query.assigneeId || ''
         }).then( ({data, linked} ) => {
             dispatch({
                 type        : LOAD_ACTIVATIONS_SUCCESS,
@@ -33,11 +34,13 @@ export const LOAD_ACTIVATION_REQUEST = 'LOAD_ACTIVATION_REQUEST';
 export const LOAD_ACTIVATION_SUCCESS = 'LOAD_ACTIVATION_SUCCESS';
 export const LOAD_ACTIVATION_FAIL    = 'LOAD_ACTIVATION_FAIL';
 
-export function loadActivation({id}) {
+export function loadActivation({ id }, query = {}) {
     return (dispatch) => {
         dispatch({ type : LOAD_ACTIVATION_REQUEST, activationId : id });
 
-        return api.activations.show(id).then( (response) => {
+        return api.activations.show(id, {
+            assigneeId : query.assigneeId || ''
+        }).then( (response) => {
             const authorId = response.data.links.owner.id;
 
             return api.users.show(authorId, {include: 'activations'}).then( (response2) => {
