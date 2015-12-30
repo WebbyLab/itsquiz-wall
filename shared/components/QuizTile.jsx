@@ -4,7 +4,8 @@ if ( process.env.BROWSER ) {
     require('./QuizTile.less');
 }
 
-import { Card,
+import {
+    Card,
     CardTitle,
     CardActions
 } from 'react-mdl/lib/Card';
@@ -26,8 +27,8 @@ export default class QuizTile extends Component {
     };
 
     render() {
-        const {id, name, pictureURL, author, userQuizSession, isPassed, onClick} = this.props;
-        const {l} = this.context.i18n;
+        const { id, name, pictureURL, author, userQuizSession, isPassed, onClick } = this.props;
+        const { l } = this.context.i18n;
 
         return (
             <Card className='QuizTile' shadow={1}>
@@ -36,7 +37,7 @@ export default class QuizTile extends Component {
                     <img src={pictureURL} width='100%' onClick={onClick}/>
                     {
                         isPassed
-                        ? <div className='QuizTile__overlay'>
+                        ? <div className='QuizTile__overlay' onClick={onClick}>
                             <span className='QuizTile__user-score'>
                                 {userQuizSession.score}%
                             </span>

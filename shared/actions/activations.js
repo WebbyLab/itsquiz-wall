@@ -34,13 +34,14 @@ export const LOAD_ACTIVATION_REQUEST = 'LOAD_ACTIVATION_REQUEST';
 export const LOAD_ACTIVATION_SUCCESS = 'LOAD_ACTIVATION_SUCCESS';
 export const LOAD_ACTIVATION_FAIL    = 'LOAD_ACTIVATION_FAIL';
 
-export function loadActivation({ id }, query = {}) {
-    const assigneeId = query.assigneeId || '';
+export function loadActivation(params = {}, query = {}) {
+    const assigneeId = query.assigneeId || params.userId || '';
 
     return dispatch => {
-        dispatch({ type : LOAD_ACTIVATION_REQUEST, activationId : id });
+        dispatch({ type : LOAD_ACTIVATION_REQUEST, activationId : params.id });
 
-        return api.activations.show(id, { assigneeId, include: 'users' }).then( response => {
+
+        return api.activations.show(params.id, { assigneeId, include: 'users' }).then( response => {
             const userId = response.data.links.owner.id;
 
             return api.activations.list({ userId, assigneeId }).then( response2 => {

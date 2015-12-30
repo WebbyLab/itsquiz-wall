@@ -33,8 +33,10 @@ export default class ActivationPage extends React.Component {
             activation,
             authorActivations,
             isLoading,
+            showUserResult,
             onPass,
             onShare,
+            onShareResult,
             onStopSharing,
             onSponsoredClick,
             onActivationClick,
@@ -45,7 +47,6 @@ export default class ActivationPage extends React.Component {
             pictureURL,
             name,
             isPrivate,
-            isPassed,
             userQuizSession,
             numberOfQuestions,
             timeToPass,
@@ -61,7 +62,7 @@ export default class ActivationPage extends React.Component {
 
         const classes = cx('ActivationPage__activation', {
             'ActivationPage__activation--sponsored': isSponsored,
-            'ActivationPage__activation--passed': isPassed
+            'ActivationPage__activation--passed': showUserResult
         });
 
         return (
@@ -106,7 +107,7 @@ export default class ActivationPage extends React.Component {
                             </div>
                             <div className='ActivationPage__actions'>
                                 {
-                                    !isPassed
+                                    !showUserResult
                                     ? <Button
                                         ripple    = {true}
                                         raised    = {!isSponsored}
@@ -138,7 +139,7 @@ export default class ActivationPage extends React.Component {
                                 ? <IconButton
                                     name    = 'share'
                                     ripple  = {true}
-                                    onClick = {onShare}
+                                    onClick = {onShare.bind(null, activation)}
                                 />
                                 : null
                             }
@@ -146,7 +147,7 @@ export default class ActivationPage extends React.Component {
                     </CardTitle>
 
                     {
-                        isPassed
+                        showUserResult
                         ? <div className={'ActivationPage__results-container ' + userQuizSession.grade}>
                             <div className='ActivationPage__overlay'>
                                 <div className='ActivationPage__results-text'>
@@ -173,7 +174,7 @@ export default class ActivationPage extends React.Component {
                                 <div className='ActivationPage__results-actions'>
                                     <Button
                                         ripple    = {true}
-                                        onClick   = {onShare.bind(null, activation)}
+                                        onClick   = {onShareResult.bind(null, activation)}
                                         className = 'ActivationPage__result-share-btn'
                                         raised    = {true}>
                                         {l('Share result with friends')}
@@ -222,7 +223,7 @@ export default class ActivationPage extends React.Component {
                                 numberOfQuestions = {authorActivation.numberOfQuestions}
                                 pictureURL        = {authorActivation.pictureURL}
                                 author            = {activation.author}
-                                isPassed          = {authorActivation.isPassed}
+                                isPassed          = {showUserResult && authorActivation.isPassed}
                                 userQuizSession   = {authorActivation.userQuizSession}
                                 onClick           = {onActivationClick.bind(null, authorActivation)}
                             />
@@ -238,7 +239,8 @@ export default class ActivationPage extends React.Component {
         const { l } = this.context.i18n;
         const {
             activation,
-            isSharing,
+            showUserResult,
+            sharingLink,
             isLoading,
             isLoggingIn,
             isEmbedded,
@@ -256,9 +258,9 @@ export default class ActivationPage extends React.Component {
         return (
             <div className={classes}>
                 <ShareDialog
-                    title          = {l('Share this test')}
-                    isOpen         = {isSharing}
-                    linkToShare    = {activation.publicLink}
+                    title          = {l('Share')}
+                    isOpen         = {!!sharingLink}
+                    linkToShare    = {sharingLink}
                     onRequestClose = {onStopSharing}
                 />
 
