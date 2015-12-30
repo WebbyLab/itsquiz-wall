@@ -291,10 +291,9 @@ export default class ActivationPage extends React.Component {
             'bad'       : l('You could do better!'),
             'normal'    : l('Good job!'),
             'good'      : l('Great result!'),
-            'excellent' : l('Amazing result!')
+            'excellent' : l('You rock! Excellent job!')
         };
 
         return phrases[grade];
     }
 }
-
