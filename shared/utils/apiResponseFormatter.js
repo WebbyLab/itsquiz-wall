@@ -57,14 +57,15 @@ export default {
             return null;
         }
 
-        const userScore = Math.ceil(+session.gainedPoints * 100 / +session.maxPoints);
+        const gainedPoints = Math.ceil(+session.gainedPoints * 100) / 100 || 0;
+        const userScore = Math.ceil(+gainedPoints * 100 / +session.maxPoints);
 
         return {
             canViewAnswers : session.canAssigneeViewQuestions,
             startedAt      : session.startedAt,
             finishedAt     : session.finishedAt,
             score          : userScore,
-            gainedPoints   : session.gainedPoints,
+            gainedPoints   : gainedPoints,
             maxPoints      : session.maxPoints,
             status         : session.status,
             id             : session.id,
