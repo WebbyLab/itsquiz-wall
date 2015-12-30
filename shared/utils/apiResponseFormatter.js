@@ -4,7 +4,6 @@ const NUMBER_OF_BACKGROUNDS = 12;
 
 export default {
     formatActivation(activation, author) {
-        console.log(activation);
         return {
             id                   : activation.id,
             name                 : activation.name,
@@ -58,20 +57,43 @@ export default {
             return null;
         }
 
+        const userScore = Math.ceil(+session.gainedPoints * 100 / +session.maxPoints);
+
         return {
             canViewAnswers : session.canAssigneeViewQuestions,
             startedAt      : session.startedAt,
             finishedAt     : session.finishedAt,
-            score          : Math.ceil(+session.gainedPoints * 100 / +session.maxPoints),
+            score          : userScore,
             gainedPoints   : session.gainedPoints,
             maxPoints      : session.maxPoints,
             status         : session.status,
-            id             : session.id
+            id             : session.id,
+            grade          : this._getResultGrade(userScore)
         };
     },
 
     _getUserFullName(user) {
         return user.type === 'COMPANY' ? user.companyName : `${user.firstName} ${user.secondName}`;
+    },
+
+    _getResultGrade(score) {
+        if (score > 95) {
+            return 'excellent';
+        }
+
+        if (score > 75) {
+            return 'good';
+        }
+
+        if (score > 50) {
+            return 'normal';
+        }
+
+        if (score > 30) {
+            return 'bad';
+        }
+
+        return 'verybad';
     },
 
     _getBackgpoundURLById(id) {
