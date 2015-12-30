@@ -63,7 +63,7 @@ export default {
         return {
             canViewAnswers  : session.canAssigneeViewQuestions,
             startedAt       : session.startedAt,
-            shareResultLink : session.shareResultLink || '',
+            shareResultLink : session.resultShareLink || '',
             finishedAt      : session.finishedAt,
             score           : userScore,
             gainedPoints    : userGainedPoints,
