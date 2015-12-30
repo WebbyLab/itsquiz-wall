@@ -180,12 +180,16 @@ export default class ActivationPage extends React.Component {
                                         {l('Share result with friends')}
                                     </Button>
 
-                                    <Button
-                                        ripple    = {true}
-                                        onClick   = {onViewAnswers.bind(null, activation)}
-                                        className = 'ActivationPage__result-answers-btn'>
-                                        {l('View my answers')}
-                                    </Button>
+                                    {
+                                        userQuizSession.canViewAnswers
+                                        ? <Button
+                                            ripple    = {true}
+                                            onClick   = {onViewAnswers.bind(null, activation)}
+                                            className = 'ActivationPage__result-answers-btn'>
+                                            {l('View my answers')}
+                                        </Button>
+                                        : null
+                                    }
                                 </div>
                             </div>
                         </div>
