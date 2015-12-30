@@ -36,7 +36,7 @@ export default class QuizTile extends Component {
                     <img src={pictureURL} width='100%' onClick={onClick}/>
                     {
                         isPassed
-                        ? <div className='QuizTile__overlay'>
+                        ? <div className='QuizTile__overlay' onClick={onClick}>
                             <span className='QuizTile__user-score'>
                                 {userQuizSession.score}%
                             </span>
