@@ -12,10 +12,14 @@ class ShareResultPageContainer extends Component {
         const { id, userId } = this.props.params;
         const { activation } = this.props;
 
-        if (activation.isPublic) {
-            this.props.history.replaceState(null, `/activations/${id}`);
+        if (activation.isPrivate) {
+            this.props.history.replaceState(null, `/activations`, {
+                ...this.props.location.query
+            });
         } else {
-            this.props.history.replaceState(null, `/activations`);
+            this.props.history.replaceState(null, `/activations/${id}`, {
+                ...this.props.location.query
+            });
         }
     }
 
