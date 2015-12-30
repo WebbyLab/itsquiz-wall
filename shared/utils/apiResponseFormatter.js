@@ -61,15 +61,16 @@ export default {
         const userScore = Math.ceil(+userGainedPoints * 100 / +session.maxPoints);
 
         return {
-            canViewAnswers : session.canAssigneeViewQuestions,
-            startedAt      : session.startedAt,
-            finishedAt     : session.finishedAt,
-            score          : userScore,
-            gainedPoints   : userGainedPoints,
-            maxPoints      : session.maxPoints,
-            status         : session.status,
-            id             : session.id,
-            grade          : this._getResultGrade(userScore)
+            canViewAnswers  : session.canAssigneeViewQuestions,
+            startedAt       : session.startedAt,
+            shareResultLink : session.shareResultLink || '',
+            finishedAt      : session.finishedAt,
+            score           : userScore,
+            gainedPoints    : userGainedPoints,
+            maxPoints       : session.maxPoints,
+            status          : session.status,
+            id              : session.id,
+            grade           : this._getResultGrade(userScore)
         };
     },
 
