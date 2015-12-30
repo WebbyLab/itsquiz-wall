@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-17 11:42+0200\n"
-"PO-Revision-Date: 2015-12-17 17:52+0200\n"
+"POT-Creation-Date: 2015-12-30 13:39+0200\n"
+"PO-Revision-Date: 2015-12-30 14:51+0200\n"
 "Last-Translator: Oleg <CBETJIOMYP@gmail.com>\n"
 "Language-Team: русский <>\n"
 "Language: \n"
@@ -26,6 +26,8 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:112
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:114
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:149
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:165
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:179
 msgid "View details"
 msgstr "Детальнее"
 
@@ -54,6 +56,7 @@ msgstr[2] " минуты"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:174
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:184
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:156
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:182
 msgid "Pass this test"
 msgstr "Сдать этот тест"
 
@@ -64,6 +67,10 @@ msgstr "Сдать этот тест"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:160
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:132
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:108
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:137
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:121
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:152
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:135
 #, javascript-format
 msgid "%d question"
 msgid_plural "%d questions"
@@ -76,6 +83,8 @@ msgstr[2] "%d вопросов"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:201
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:211
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:183
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:209
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:263
 #, javascript-format
 msgid "More tests by %s"
 msgstr "Еще тесты от %s"
@@ -85,6 +94,7 @@ msgstr "Еще тесты от %s"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:161
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:162
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:163
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:165
 msgid "Quizzes"
 msgstr "Тесты"
 
@@ -118,6 +128,7 @@ msgstr[2] "%d минут"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:184
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:186
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:187
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:188
 msgid "All tests"
 msgstr "Все тесты"
 
@@ -125,6 +136,7 @@ msgstr "Все тесты"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:189
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:191
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:192
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:193
 msgid "Vacancies"
 msgstr "Вакансии"
 
@@ -132,6 +144,7 @@ msgstr "Вакансии"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:194
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:196
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:197
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:198
 msgid "Education"
 msgstr "Образование"
 
@@ -139,6 +152,7 @@ msgstr "Образование"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:199
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:201
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:202
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:203
 msgid "Entertainment"
 msgstr "Развлечения"
 
@@ -157,6 +171,8 @@ msgstr "Поделиться тестом"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:146
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:118
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:123
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:138
 msgid "private"
 msgstr "приватный"
 
@@ -165,6 +181,7 @@ msgid "Sign in"
 msgstr "Войти"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/AppBar.js:132
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/AppBar.js:155
 msgid "Sign up / Sign in"
 msgstr "Регистрация / Вход"
 
@@ -223,6 +240,7 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:172
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:192
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:191
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:220
 msgid "Create a test"
 msgstr "Создать тест"
 
@@ -230,6 +248,7 @@ msgstr "Создать тест"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:190
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:210
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:209
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:178
 msgid "Find best ever employees"
 msgstr "Найдите лучших сотрудников"
 
@@ -249,6 +268,7 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:201
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:221
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:220
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:189
 msgid "Create a vacancy"
 msgstr "Создать вакансию"
 
@@ -270,6 +290,9 @@ msgstr "Больше не показывать это сообщение"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:154
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:236
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:263
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:156
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:333
 msgid "Share this test"
 msgstr "Поделиться тестом"
 
@@ -339,10 +362,12 @@ msgstr ""
 "достижениями в социальных сетях!"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:178
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:207
 msgid "Create your own tests!"
 msgstr "Создайте свои собственные тесты!"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:185
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:214
 msgid ""
 "Everyone can create a test on It's quiz! Simply add new questions, compose a "
 "quiz, activate and share with your friends!"
@@ -351,6 +376,7 @@ msgstr ""
 "составьте из них тест, активируйте и поделитесь им с друзьями!"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:215
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:184
 msgid ""
 "Filter out candidates who don’t meet your standards before you interview "
 "them. Create test for a position, publish on Quiz Wall, enjoy interviewing "
@@ -359,3 +385,59 @@ msgstr ""
 "Создайте тест для вакансии, публикуйте его на стене. Протестируйте "
 "профессиональные знания соискателя, прежде чем пригласить на собеседование. "
 "Собеседуйте лучших!"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:159
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:175
+msgid "Pass the test"
+msgstr "Пройти тест"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:169
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:185
+msgid "Use this offer"
+msgstr "Воспользоваться данным предложением"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:114
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:128
+msgid "Special proposition!"
+msgstr "Специальное предложение!"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/LoginDialog.js:71
+msgid "Sign in with your social network account"
+msgstr "Войдите с помощью акаунта социальной сети"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/LoginDialog.js:115
+msgid "or use your e-mail"
+msgstr "или используйте ваш e-mail"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:223
+#, javascript-format
+msgid "%s of %s point"
+msgid_plural "%s of %s points"
+msgstr[0] "%s из %s балла"
+msgstr[1] "%s из %s баллов"
+msgstr[2] "%s из %s баллов"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:237
+msgid "Share result with friends"
+msgstr "Поделиться результатом с друзьями"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:245
+msgid "View my answers"
+msgstr "Просмотреть мои ответы"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:298
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:299
+msgid "You could do better!"
+msgstr "Вы могли бы сдать лучше!"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:300
+msgid "Good job!"
+msgstr "Хорошая работа!"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:301
+msgid "Great result!"
+msgstr "Прекрасный результат!"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:302
+msgid "You rock! Excellent job!"
+msgstr "Вау! Отличная работа!"

@@ -175,6 +175,44 @@
          ],
          "Filter out candidates who don’t meet your standards before you interview them. Create test for a position, publish on Quiz Wall, enjoy interviewing only the best!": [
             "Створіть тест для вакансії, публікуйте його на стіні. Протестуйте професійні знання претендента, перш ніж запросити на співбесіду. Проводьте співбесіду з кращими!"
+         ],
+         "Pass the test": [
+            "Скласти тест"
+         ],
+         "Use this offer": [
+            "Скористатися цією пропозицією"
+         ],
+         "Special proposition!": [
+            "Спеціальна пропозиція!"
+         ],
+         "Sign in with your social network account": [
+            "Увійдіть за допомогою аккаунта соціальної мережі"
+         ],
+         "or use your e-mail": [
+            "або використовуйте ваш e-mail"
+         ],
+         "%s of %s point": [
+            "%s з %s бала",
+            "%s з %s балів",
+            "%s з %s балів"
+         ],
+         "Share result with friends": [
+            "Поділитися результатом з друзями"
+         ],
+         "View my answers": [
+            "Переглянути мої відповіді"
+         ],
+         "You could do better!": [
+            "Ви могли б скласти краще!"
+         ],
+         "Good job!": [
+            "Гарна робота!"
+         ],
+         "Great result!": [
+            "Прекрасний результат!"
+         ],
+         "You rock! Excellent job!": [
+            "Вау! Відмінна робота!"
          ]
       }
    }

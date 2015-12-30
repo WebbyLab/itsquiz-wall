@@ -175,6 +175,44 @@
          ],
          "Filter out candidates who don’t meet your standards before you interview them. Create test for a position, publish on Quiz Wall, enjoy interviewing only the best!": [
             "Создайте тест для вакансии, публикуйте его на стене. Протестируйте профессиональные знания соискателя, прежде чем пригласить на собеседование. Собеседуйте лучших!"
+         ],
+         "Pass the test": [
+            "Пройти тест"
+         ],
+         "Use this offer": [
+            "Воспользоваться данным предложением"
+         ],
+         "Special proposition!": [
+            "Специальное предложение!"
+         ],
+         "Sign in with your social network account": [
+            "Войдите с помощью акаунта социальной сети"
+         ],
+         "or use your e-mail": [
+            "или используйте ваш e-mail"
+         ],
+         "%s of %s point": [
+            "%s из %s балла",
+            "%s из %s баллов",
+            "%s из %s баллов"
+         ],
+         "Share result with friends": [
+            "Поделиться результатом с друзьями"
+         ],
+         "View my answers": [
+            "Просмотреть мои ответы"
+         ],
+         "You could do better!": [
+            "Вы могли бы сдать лучше!"
+         ],
+         "Good job!": [
+            "Хорошая работа!"
+         ],
+         "Great result!": [
+            "Прекрасный результат!"
+         ],
+         "You rock! Excellent job!": [
+            "Вау! Отличная работа!"
          ]
       }
    }
