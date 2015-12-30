@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import escapeHTML                      from 'lodash/string/escape';
 
 import ShareDialog from '../components/ShareDialog.jsx';
 
