@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-30 13:39+0200\n"
-"PO-Revision-Date: 2015-12-30 14:51+0200\n"
+"POT-Creation-Date: 2015-12-30 17:12+0200\n"
+"PO-Revision-Date: 2015-12-30 17:15+0200\n"
 "Last-Translator: Oleg <CBETJIOMYP@gmail.com>\n"
 "Language-Team: русский <>\n"
 "Language: \n"
@@ -71,6 +71,7 @@ msgstr "Сдать этот тест"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:121
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:152
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:135
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:153
 #, javascript-format
 msgid "%d question"
 msgid_plural "%d questions"
@@ -85,6 +86,7 @@ msgstr[2] "%d вопросов"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:183
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:209
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:263
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:264
 #, javascript-format
 msgid "More tests by %s"
 msgstr "Еще тесты от %s"
@@ -173,6 +175,7 @@ msgstr "Поделиться тестом"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:118
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:123
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:138
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:139
 msgid "private"
 msgstr "приватный"
 
@@ -388,11 +391,13 @@ msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:159
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:175
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:176
 msgid "Pass the test"
 msgstr "Пройти тест"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:169
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:185
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:186
 msgid "Use this offer"
 msgstr "Воспользоваться данным предложением"
 
@@ -410,6 +415,7 @@ msgid "or use your e-mail"
 msgstr "или используйте ваш e-mail"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:223
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:224
 #, javascript-format
 msgid "%s of %s point"
 msgid_plural "%s of %s points"
@@ -418,26 +424,36 @@ msgstr[1] "%s из %s баллов"
 msgstr[2] "%s из %s баллов"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:237
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:238
 msgid "Share result with friends"
 msgstr "Поделиться результатом с друзьями"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:245
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:246
 msgid "View my answers"
 msgstr "Просмотреть мои ответы"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:298
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:299
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:300
 msgid "You could do better!"
 msgstr "Вы могли бы сдать лучше!"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:300
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:301
 msgid "Good job!"
 msgstr "Хорошая работа!"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:301
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:302
 msgid "Great result!"
 msgstr "Прекрасный результат!"
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:302
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:303
 msgid "You rock! Excellent job!"
 msgstr "Вау! Отличная работа!"
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:335
+msgid "Share"
+msgstr "Поделиться"
