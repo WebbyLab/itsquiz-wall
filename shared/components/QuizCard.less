@@ -21,7 +21,31 @@
 
 .QuizCard__media {
     min-height: 200px;
+    cursor: default;
     padding: 0;
+    position: relative;
+}
+
+.QuizCard__overlay {
+    opacity: 1;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left:0;
+    background-color: rgba(0, 0, 0, 0.35);
+    display: flex;
+    transition: .3s;
+
+    &:hover {
+        opacity: 0;
+    }
+}
+
+.QuizCard__user-score {
+    margin: auto;
+    font-size: 60px;
+    color: white;
 }
 
 @font-size: 14px;

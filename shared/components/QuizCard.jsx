@@ -37,6 +37,8 @@ export default class QuizCard extends Component {
             pictureURL,
             author,
             isSponsored,
+            isPassed,
+            userQuizSession,
             onClick,
             onShare
         } = this.props;
@@ -66,8 +68,17 @@ export default class QuizCard extends Component {
                 <div
                     className='QuizCard__media'
                     onClick={onClick}
-                    style={{background: `url(${pictureURL}) center / cover`}}
-                />
+                    style={{background: `url(${pictureURL}) center / cover`}}>
+                    {
+                        isPassed
+                        ? <div className='QuizCard__overlay'>
+                            <span className='QuizCard__user-score'>
+                                {userQuizSession.score}%
+                            </span>
+                        </div>
+                        : null
+                    }
+                </div>
 
                 <div className='QuizCard__content'>
                     {

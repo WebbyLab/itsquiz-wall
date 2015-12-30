@@ -14,9 +14,10 @@ export function loadActivations(params = {}, query = {}) {
         });
 
         return api.activations.list({
-            include  : 'users',
-            search   : query.search || '',
-            category : query.category
+            include    : 'users',
+            search     : query.search || '',
+            category   : query.category,
+            assigneeId : query.assigneeId || ''
         }).then( ({data, linked} ) => {
             dispatch({
                 type        : LOAD_ACTIVATIONS_SUCCESS,
@@ -33,22 +34,23 @@ export const LOAD_ACTIVATION_REQUEST = 'LOAD_ACTIVATION_REQUEST';
 export const LOAD_ACTIVATION_SUCCESS = 'LOAD_ACTIVATION_SUCCESS';
 export const LOAD_ACTIVATION_FAIL    = 'LOAD_ACTIVATION_FAIL';
 
-export function loadActivation({id}) {
-    return (dispatch) => {
+export function loadActivation({ id }, query = {}) {
+    const assigneeId = query.assigneeId || '';
+
+    return dispatch => {
         dispatch({ type : LOAD_ACTIVATION_REQUEST, activationId : id });
 
-        return api.activations.show(id).then( (response) => {
-            const authorId = response.data.links.owner.id;
+        return api.activations.show(id, { assigneeId, include: 'users' }).then( response => {
+            const userId = response.data.links.owner.id;
 
-            return api.users.show(authorId, {include: 'activations'}).then( (response2) => {
+            return api.activations.list({ userId, assigneeId }).then( response2 => {
                 dispatch({
                     type              : LOAD_ACTIVATION_SUCCESS,
                     activation        : response.data,
-                    author            : response2.data,
-                    authorActivations : response2.linked.activations
+                    author            : response.linked.users.find(user => user.id === userId),
+                    authorActivations : response2.data.entities
                 });
             });
-
         }).catch( error => {
             dispatch({
                 type: LOAD_ACTIVATION_FAIL,

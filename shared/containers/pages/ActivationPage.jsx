@@ -44,11 +44,22 @@ class ActivationPageContainer extends Component {
         }
     };
 
+    handleViewAnswers = (activation) => {
+        const isEmbedded = this.props.location.query.embed;
+
+        if (isEmbedded && activation.isPassed) {
+            const quizSessionId = activation.userQuizSession.id;
+
+            embedEvents.send({
+                type : 'VIEW_ANSWERS',
+                quizSessionId
+            });
+        }
+    };
+
     handleSponsoredClick = (activation) => {
         const isEmbedded = this.props.location.query.embed;
         const { id } = activation;
-
-        console.log('handleSponsoredClick', id);
 
         if (isEmbedded) {
             embedEvents.send({
@@ -67,13 +78,15 @@ class ActivationPageContainer extends Component {
 
     handleGoBack = () => {
         this.props.history.pushState(null, `/activations`, {
-            embed : this.props.location.query.embed
+            embed      : this.props.location.query.embed,
+            assigneeId : this.props.location.query.assigneeId
         });
     };
 
     handleActivationClick = (activation) => {
         this.props.history.pushState(null, `/activations/${activation.id}`, {
-            embed : this.props.location.query.embed
+            embed      : this.props.location.query.embed,
+            assigneeId : this.props.location.query.assigneeId
         });
 
         sendEvent('activation', 'author activations', 'click');
@@ -116,6 +129,7 @@ class ActivationPageContainer extends Component {
                 isLoggingIn        = {this.state.isLoggingIn}
                 onPass             = {this.handlePassActivationClick}
                 onSponsoredClick   = {this.handleSponsoredClick}
+                onViewAnswers      = {this.handleViewAnswers}
                 onActivationClick  = {this.handleActivationClick}
                 onGoBack           = {this.handleGoBack}
                 onShare            = {this.handleShare}
