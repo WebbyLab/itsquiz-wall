@@ -248,6 +248,7 @@ export default class ActivationPage extends React.Component {
             isLoading,
             isLoggingIn,
             isEmbedded,
+            userQuizSession,
             onShare,
             onLoginDialogClose,
             onStopSharing,
@@ -259,11 +260,17 @@ export default class ActivationPage extends React.Component {
             'ActivationPage--embedded' : isEmbedded
         });
 
+        console.log(showUserResult, userQuizSession);
+
         return (
             <div className={classes}>
                 <ShareDialog
                     title          = {l('Share')}
                     isOpen         = {!!sharingLink}
+                    twitterMessage = {showUserResult
+                        ? sprintf(l('My result is %d%%'), activation.userQuizSession.score)
+                        : l('Check out this test')
+                    }
                     linkToShare    = {sharingLink}
                     onRequestClose = {onStopSharing}
                 />
