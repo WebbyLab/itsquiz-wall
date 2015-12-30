@@ -20,9 +20,17 @@ class ActivationPageContainer extends Component {
     static contextTypes = { i18n: PropTypes.object };
 
     state = {
-        isSharing   : false,
-        isLoggingIn : false
+        sharingLink     : '',
+        isLoggingIn     : false
     };
+
+    componentWillMount() {
+        const { id, userId } = this.props.params;
+
+        if (userId) {
+            this.props.history.replaceState(null, `/activations/${id}`);
+        }
+    }
 
     handlePassActivationClick = (activation) => {
         const isEmbedded = this.props.location.query.embed;
@@ -92,17 +100,25 @@ class ActivationPageContainer extends Component {
         sendEvent('activation', 'author activations', 'click');
     };
 
-    handleShare = () => {
+    handleShare = (activation) => {
         this.setState({
-            isSharing : true
+            sharingLink : activation.publicLink
         });
 
         sendEvent('activation', 'share', 'click');
     };
 
+    handleShareResult = (activation) => {
+        this.setState({
+            sharingLink : activation.userQuizSession.shareResultLink
+        });
+
+        sendEvent('activation', 'share result', 'click');
+    };
+
     handleStopSharing = () => {
         this.setState({
-            isSharing : false
+            sharingLink : ''
         });
     };
 
@@ -119,20 +135,27 @@ class ActivationPageContainer extends Component {
     }
 
     render() {
+        const { activation, authorActivations, isLoading } = this.props;
+        const { sharingLink, isLoggingIn } = this.state;
+        const { embed, assigneeId } = this.props.location.query;
+
         return (
             <ActivationPage
-                activation         = {this.props.activation}
-                authorActivations  = {this.props.authorActivations}
-                isLoading          = {this.props.isLoading}
-                isEmbedded         = {this.props.location.query.embed}
-                isSharing          = {this.state.isSharing}
-                isLoggingIn        = {this.state.isLoggingIn}
+                activation         = {activation}
+                authorActivations  = {authorActivations}
+                sharingLink        = {sharingLink}
+                isLoading          = {isLoading}
+                isEmbedded         = {embed}
+                isLoggingIn        = {isLoggingIn}
+                showUserResult     = {activation.isPassed && assigneeId}
+
                 onPass             = {this.handlePassActivationClick}
                 onSponsoredClick   = {this.handleSponsoredClick}
                 onViewAnswers      = {this.handleViewAnswers}
                 onActivationClick  = {this.handleActivationClick}
                 onGoBack           = {this.handleGoBack}
                 onShare            = {this.handleShare}
+                onShareResult      = {this.handleShareResult}
                 onStopSharing      = {this.handleStopSharing}
                 onLoginDialogClose = {this.handleLoginClose}
             />
