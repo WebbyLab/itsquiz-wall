@@ -1,9 +1,10 @@
 'use strict';
-import Promise from 'bluebird';
-import geoip   from 'geoip-lite';
+import Promise     from 'bluebird';
+import geoip       from 'geoip-lite';
+import strformat   from 'strformat';
 
-import clientConfig from '../etc/client-config.json';
-import { getSupportedLocales } from '../shared/utils';
+import clientConfig                     from '../etc/client-config.json';
+import { getSupportedLocales, sprintf } from '../shared/utils';
 
 export function fetchComponentsData(dispatch, components, params, query) {
     const promises = components.map(current => {
@@ -16,24 +17,40 @@ export function fetchComponentsData(dispatch, components, params, query) {
     return Promise.all(promises);
 }
 
-export function getMetaDataFromState({ route, state }) {
-    switch (route) {
-        case '/activations/:id':
-            const { name, message, pictureURL } = state.currentActivation.activation;
-            return {
-                title       : name,
-                siteName    : "It's quiz",
-                image       : pictureURL ? pictureURL.replace('svg', 'png') : '',
-                description : message
-            };
-        default:
-            return {
-                title       : 'Quiz Wall',
-                siteName    : 'It\'s quiz',
-                image       : 'http://app.itsquiz.com/be/static/images/logo.png',
-                description : 'Discover tons of different vacancies, tests, quizzes, questionnaires and more...'
-            };
+export function getMetaDataFromState({ route, state, lang = 'en' }) {
+    if (route === '/activations/:id') {
+        const { name, message, pictureURL } = state.currentActivation.activation;
+        return {
+            title       : name,
+            siteName    : "It's quiz",
+            image       : pictureURL ? pictureURL.replace('svg', 'png') : '',
+            description : message
+        };
     }
+
+    if (route === '/result/:id/:userId' && state.currentActivation.activation) {
+        const sharePhrases = {
+            ru: 'Я сдал тест {name} на {score}%',
+            uk: 'Я склав тест {name} на {score}%',
+            en: 'I have passed test {name} and gained {score}%'
+        };
+
+        const { isPassed, name, pictureURL, message, userQuizSession } = state.currentActivation.activation;
+
+        return {
+            title       : strformat(sharePhrases[lang], { name, score: userQuizSession.score }),
+            siteName    : "It's quiz",
+            image       : pictureURL ? pictureURL.replace('svg', 'png') : '',
+            description : message
+        };
+    }
+
+    return {
+        title       : 'Quiz Wall',
+        siteName    : 'It\'s quiz',
+        image       : 'http://app.itsquiz.com/be/static/images/logo.png',
+        description : 'Discover tons of different vacancies, tests, quizzes, questionnaires and more...'
+    };
 }
 
 export function makeRedirectUrl({originalUrl}) {
