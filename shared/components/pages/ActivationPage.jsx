@@ -37,8 +37,21 @@ export default class ActivationPage extends React.Component {
             onShare,
             onStopSharing,
             onSponsoredClick,
-            onActivationClick
+            onActivationClick,
+            onViewAnswers
         } = this.props;
+
+        const {
+            pictureURL,
+            name,
+            isPrivate,
+            isPassed,
+            userQuizSession,
+            numberOfQuestions,
+            timeToPass,
+            author,
+            isSponsored
+        } = activation;
 
         const {l, ngettext, humanizeDuration} = this.context.i18n;
 
@@ -46,16 +59,21 @@ export default class ActivationPage extends React.Component {
             return <Spinner className='ActivationPage__spinner' />;
         }
 
+        const classes = cx('ActivationPage__activation', {
+            'ActivationPage__activation--sponsored': isSponsored,
+            'ActivationPage__activation--passed': isPassed
+        });
+
         return (
             <div className='ActivationPage__activation'>
                 <Card className='ActivationPage__paper' shadow={1}>
                     <CardTitle className='ActivationPage__head'>
-                        <img className='ActivationPage__picture' src={activation.pictureURL} />
+                        <img className='ActivationPage__picture' src={pictureURL} />
                         <div className='ActivationPage__info'>
                             <div className='ActivationPage__heading'>
-                                <span className='ActivationPage__name'>{activation.name}</span>
+                                <span className='ActivationPage__name'>{name}</span>
                                 {
-                                    activation.isPrivate
+                                    isPrivate
                                     ? <span className='ActivationPage__private-tag'>
                                         <Icon type='lock' className='ActivationPage__lock' />
                                         {l('private')}
@@ -65,15 +83,15 @@ export default class ActivationPage extends React.Component {
                             </div>
 
                             <div className='ActivationPage__author-name'>
-                                {activation.author.fullName}
+                                {author.fullName}
                             </div>
 
                             <div className='ActivationPage__pass-info'>
                                 <span className='ActivationPage__number-of-questions'>
                                     {
                                         sprintf(
-                                            ngettext('%d question', '%d questions', activation.numberOfQuestions),
-                                            activation.numberOfQuestions
+                                            ngettext('%d question', '%d questions', numberOfQuestions),
+                                            numberOfQuestions
                                         )
                                     }
                                 </span>
@@ -83,19 +101,25 @@ export default class ActivationPage extends React.Component {
                                 </span>
 
                                 <span className='ActivationPage__time-to-pass'>
-                                    { humanizeDuration(activation.timeToPass, 'second') }
+                                    { humanizeDuration(timeToPass, 'second') }
                                 </span>
                             </div>
-                            {
-                                activation.isSponsored
-                                ? <div className='ActivationPage__actions'>
-                                    <Button
+                            <div className='ActivationPage__actions'>
+                                {
+                                    !isPassed
+                                    ? <Button
                                         ripple    = {true}
+                                        raised    = {!isSponsored}
                                         onClick   = {onPass.bind(null, activation)}
-                                        className = 'ActivationPage__sponsored-pass-btn'>
+                                        className = 'ActivationPage__pass-btn'>
                                         {l('Pass the test')}
                                     </Button>
-                                    <Button
+                                    : null
+                                }
+
+                                {
+                                    isSponsored
+                                    ? <Button
                                         colored   = {true}
                                         ripple    = {true}
                                         onClick   = {onSponsoredClick.bind(null, activation)}
@@ -103,19 +127,9 @@ export default class ActivationPage extends React.Component {
                                         raised    = {true}>
                                         {l('Use this offer')}
                                     </Button>
-                                </div>
-                                : <div className='ActivationPage__actions'>
-                                    <Button
-                                        colored   = {true}
-                                        ripple    = {true}
-                                        onClick   = {onPass.bind(null, activation)}
-                                        className = 'ActivationPage__pass-btn'
-                                        raised    = {true}>
-                                        {l('Pass this test')}
-                                    </Button>
-                                </div>
-                            }
-
+                                    : null
+                                }
+                            </div>
                         </div>
 
                         <div className='ActivationPage__menu'>
@@ -130,6 +144,52 @@ export default class ActivationPage extends React.Component {
                             }
                         </div>
                     </CardTitle>
+
+                    {
+                        isPassed
+                        ? <div className={'ActivationPage__results-container ' + userQuizSession.grade}>
+                            <div className='ActivationPage__overlay'>
+                                <div className='ActivationPage__results-text'>
+                                    <h4 className='ActivationPage__greeting'>
+                                        {this.getGreetingPhrase(userQuizSession.grade)}
+                                    </h4>
+                                    <div className='ActivationPage__score'>
+                                        {userQuizSession.score}%
+                                    </div>
+                                    <div className='ActivationPage__points'>
+                                        ({
+                                            sprintf(
+                                                ngettext(
+                                                    '%s of %s point',
+                                                    '%s of %s points',
+                                                    userQuizSession.maxPoints
+                                                ),
+                                                userQuizSession.gainedPoints,
+                                                userQuizSession.maxPoints
+                                            )
+                                        })
+                                    </div>
+                                </div>
+                                <div className='ActivationPage__results-actions'>
+                                    <Button
+                                        ripple    = {true}
+                                        onClick   = {onShare.bind(null, activation)}
+                                        className = 'ActivationPage__result-share-btn'
+                                        raised    = {true}>
+                                        {l('Share result with friends')}
+                                    </Button>
+
+                                    <Button
+                                        ripple    = {true}
+                                        onClick   = {onViewAnswers.bind(null, activation)}
+                                        className = 'ActivationPage__result-answers-btn'>
+                                        {l('View my answers')}
+                                    </Button>
+                                </div>
+                            </div>
+                        </div>
+                        : null
+                    }
 
                     <div className='ActivationPage__details'>
                         <p className='ActivationPage__message'>
@@ -221,6 +281,20 @@ export default class ActivationPage extends React.Component {
                 </div>
             </div>
         );
+    }
+
+    getGreetingPhrase = (grade) => {
+        const { l } = this.context.i18n;
+
+        const phrases = {
+            'verybad'   : l('You could do better!'),
+            'bad'       : l('You could do better!'),
+            'normal'    : l('Good job!'),
+            'good'      : l('Great result!'),
+            'excellent' : l('Amazing result!')
+        };
+
+        return phrases[grade];
     }
 }
 

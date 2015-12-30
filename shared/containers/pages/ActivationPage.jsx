@@ -44,6 +44,19 @@ class ActivationPageContainer extends Component {
         }
     };
 
+    handleViewAnswers = (activation) => {
+        const isEmbedded = this.props.location.query.embed;
+
+        if (isEmbedded && activation.isPassed) {
+            const quizSessionId = activation.userQuizSession.id;
+
+            embedEvents.send({
+                type : 'VIEW_ANSWERS',
+                quizSessionId
+            });
+        }
+    };
+
     handleSponsoredClick = (activation) => {
         const isEmbedded = this.props.location.query.embed;
         const { id } = activation;
@@ -116,6 +129,7 @@ class ActivationPageContainer extends Component {
                 isLoggingIn        = {this.state.isLoggingIn}
                 onPass             = {this.handlePassActivationClick}
                 onSponsoredClick   = {this.handleSponsoredClick}
+                onViewAnswers      = {this.handleViewAnswers}
                 onActivationClick  = {this.handleActivationClick}
                 onGoBack           = {this.handleGoBack}
                 onShare            = {this.handleShare}
