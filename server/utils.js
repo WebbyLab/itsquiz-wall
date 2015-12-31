@@ -30,9 +30,9 @@ export function getMetaDataFromState({ route, state, lang = 'en' }) {
 
     if (route === '/result/:id/:userId' && state.currentActivation.activation) {
         const sharePhrases = {
-            ru: 'Я сдал тест {name} на {score}%',
-            uk: 'Я склав тест {name} на {score}%',
-            en: 'I have passed test {name} and gained {score}%'
+            ru: 'Я сдал тест "{name}" на {score}%',
+            uk: 'Я склав тест "{name}" на {score}%',
+            en: 'I have passed test "{name}" and gained {score}%'
         };
 
         const { isPassed, name, pictureURL, message, userQuizSession } = state.currentActivation.activation;
