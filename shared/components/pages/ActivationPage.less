@@ -161,13 +161,13 @@
                     margin-top: 20px;
                     flex-direction: column;
 
-                    .ActivationPage__pass-btn {
+                    .ActivationPage__btn {
                         order: 1;
                     }
                 }
             }
 
-            .ActivationPage__pass-btn {
+            .ActivationPage__btn {
                 background-color: @green-app;
                 color: @white-darker;
             }
@@ -299,18 +299,6 @@
     }
 }
 
-.ActivationPage__sponsored-pass-btn {
-    .ActivationPage__pass-btn {
-        margin-right: 10px;
-
-        @media @phone {
-            order: 2;
-            margin-right: 0;
-            margin-top: 10px;
-        }
-    }
-}
-
 .ActivationPage__subheader {
     font-weight: bold;
     align-self: flex-start;
@@ -326,4 +314,19 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+}
+
+.ActivationPage__activation--sponsored {
+
+    .ActivationPage__pass-btn {
+        margin-right: 10px;
+        background-color: transparent !important;
+        color: black !important;
+
+        @media @phone {
+            order: 2;
+            margin-right: 0;
+            margin-top: 10px;
+        }
+    }
 }
