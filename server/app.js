@@ -83,9 +83,11 @@ app.use((req, res) => {
 
                 const initialState = store.getState();
                 const metaData = getMetaDataFromState({
-                    lang: locale,
-                    route : renderProps.routes[renderProps.routes.length - 1].path,
-                    state : initialState
+                    params : renderProps.params,
+                    query  : renderProps.location.query,
+                    lang   : locale,
+                    route  : renderProps.routes[renderProps.routes.length - 1].path,
+                    state  : initialState
                 });
 
                 return renderHTML({
