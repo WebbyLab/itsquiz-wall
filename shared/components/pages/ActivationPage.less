@@ -299,19 +299,6 @@
     }
 }
 
-.ActivationPage__sponsored-pass-btn {
-    .ActivationPage__pass-btn {
-        margin-right: 10px;
-
-
-        @media @phone {
-            order: 2;
-            margin-right: 0;
-            margin-top: 10px;
-        }
-    }
-}
-
 .ActivationPage__subheader {
     font-weight: bold;
     align-self: flex-start;
@@ -330,9 +317,16 @@
 }
 
 .ActivationPage__activation--sponsored {
+
     .ActivationPage__pass-btn {
         margin-right: 10px;
         background-color: transparent !important;
         color: black !important;
+
+        @media @phone {
+            order: 2;
+            margin-right: 0;
+            margin-top: 10px;
+        }
     }
 }
