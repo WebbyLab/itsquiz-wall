@@ -66,7 +66,7 @@ export default class ActivationPage extends React.Component {
         });
 
         return (
-            <div className='ActivationPage__activation'>
+            <div className={classes}>
                 <Card className='ActivationPage__paper' shadow={1}>
                     <CardTitle className='ActivationPage__head'>
                         <img className='ActivationPage__picture' src={pictureURL} />
@@ -112,7 +112,7 @@ export default class ActivationPage extends React.Component {
                                         ripple    = {true}
                                         raised    = {!isSponsored}
                                         onClick   = {onPass.bind(null, activation)}
-                                        className = 'ActivationPage__pass-btn'>
+                                        className = 'ActivationPage__btn ActivationPage__pass-btn'>
                                         {l('Pass the test')}
                                     </Button>
                                     : null
@@ -124,7 +124,7 @@ export default class ActivationPage extends React.Component {
                                         colored   = {true}
                                         ripple    = {true}
                                         onClick   = {onSponsoredClick.bind(null, activation)}
-                                        className = 'ActivationPage__pass-btn ActivationPage__offer-btn'
+                                        className = 'ActivationPage__btn ActivationPage__offer-btn'
                                         raised    = {true}>
                                         {l('Use this offer')}
                                     </Button>
