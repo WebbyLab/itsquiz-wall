@@ -17,7 +17,7 @@ export function fetchComponentsData(dispatch, components, params, query) {
     return Promise.all(promises);
 }
 
-export function getMetaDataFromState({ route, state, lang = 'en' }) {
+export function getMetaDataFromState({ route, state, lang = 'en', params = {}, query = {} }) {
     if (route === '/activations/:id') {
         const { name, message, pictureURL } = state.currentActivation.activation;
         return {
@@ -43,6 +43,22 @@ export function getMetaDataFromState({ route, state, lang = 'en' }) {
             image       : pictureURL ? pictureURL.replace('svg', 'png') : '',
             description : message
         };
+    }
+
+    if (route === '/share/:key') {
+        const { customShareInfo } = clientConfig;
+        const { key } = params;
+
+        if (key && customShareInfo[key]) {
+            const { title, pictureURL, description } = customShareInfo[key];
+
+            return {
+                title       : strformat(title, query),
+                siteName    : 'It\'s quiz',
+                image       : pictureURL,
+                description : strformat(description, query)
+            };
+        }
     }
 
     return {
