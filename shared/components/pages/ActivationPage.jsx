@@ -260,8 +260,6 @@ export default class ActivationPage extends React.Component {
             'ActivationPage--embedded' : isEmbedded
         });
 
-        console.log(showUserResult, userQuizSession);
-
         return (
             <div className={classes}>
                 <ShareDialog
