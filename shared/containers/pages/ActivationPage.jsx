@@ -113,7 +113,7 @@ class ActivationPageContainer extends Component {
             sharingLink : activation.userQuizSession.shareResultLink
         });
 
-        sendEvent('activation', 'share result', 'click');
+        sendEvent('activation', 'share result', activation.name);
     };
 
     handleStopSharing = () => {
