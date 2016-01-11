@@ -49,7 +49,7 @@ export function getMetaDataFromState({ route, state, lang = 'en', params = {}, q
         const { customShareInfo } = clientConfig;
         const { key } = params;
 
-        if (key && customShareInfo[key]) {
+        if (key && customShareInfo && customShareInfo[key]) {
             const { title, pictureURL, description } = customShareInfo[key];
 
             return {

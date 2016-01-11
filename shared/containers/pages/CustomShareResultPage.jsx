@@ -1,14 +1,11 @@
 'use strict';
 
 import React, { Component, PropTypes } from 'react';
-import { connect }                     from 'react-redux';
+import strformat                       from 'strformat';
 
 import BasicSharePage from '../../components/pages/BasicSharePage.jsx';
 
 import { customShareInfo } from '../../config';
-import { loadActivation }  from '../../actions/activations';
-import connectDataFetchers from '../../lib/connectDataFetchers.jsx';
-import { sendEvent }       from '../../utils/googleAnalytics';
 
 class CustomShareResultPageContainer extends Component {
     componentDidMount() {
@@ -23,13 +20,14 @@ class CustomShareResultPageContainer extends Component {
 
     render() {
         const { key } = this.props.params;
-        const { title, description, pictureURL } = customShareInfo && customShareInfo[key] ? customShareInfo[key] : {};
+        const shareInfo = customShareInfo && customShareInfo[key] ? customShareInfo[key] : {};
+        const { query } = this.props.location;
 
         return (
             <BasicSharePage
-                title={title}
-                text={description}
-                picture={pictureURL}
+                title   = {shareInfo.title ? strformat(shareInfo.title, query) : ''}
+                text    = {shareInfo.description ? strformat(shareInfo.description, query) : ''}
+                picture = {shareInfo.pictureURL}
             />
         );
     }
