@@ -13,7 +13,6 @@ export default class App extends Component {
             page  : this.props.location.pathname,
             title : this.props.routes[this.props.routes.length - 1].path
         });
-
     }
 
     componentWillReceiveProps(nextProps) {
