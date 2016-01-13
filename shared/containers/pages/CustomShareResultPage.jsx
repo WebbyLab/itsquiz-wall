@@ -12,9 +12,13 @@ class CustomShareResultPageContainer extends Component {
         const { key } = this.props.params;
 
         if (customShareInfo && customShareInfo[key] && customShareInfo[key].redirectRoute) {
-            this.props.history.replaceState(null, customShareInfo[key].redirectRoute);
+            this.props.history.replaceState(null, customShareInfo[key].redirectRoute, {
+                ...this.props.location.query
+            });
         } else {
-            this.props.history.replaceState(null, `/activations`);
+            this.props.history.replaceState(null, `/activations`, {
+                ...this.props.location.query
+            });
         }
     }
 

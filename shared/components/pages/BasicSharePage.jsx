@@ -15,10 +15,10 @@ export default class BasicSharePage extends React.Component {
         } = this.props;
 
         return (
-            <div className='BasicSharePage' style={{ display: 'none' }}>
-                <h1>{title}</h1>
-                <img src={picture} />
-                <p>{text}</p>
+            <div className='BasicSharePage' style={{ height: 0 }}>
+                <h1 itemprop="name">{title}</h1>
+                <img src={picture} itemprop="image"/>
+                <p itemprop="description">{text}</p>
             </div>
         );
     }
