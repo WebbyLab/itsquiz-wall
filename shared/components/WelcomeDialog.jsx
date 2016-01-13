@@ -62,6 +62,22 @@ export default class WelcomeDialog extends Component {
         const slides = [
             <div className='WelcomeDialog__slide'>
                 <div className='WelcomeDialog__slide-image'>
+                    <img src="/static/images/welcome/06.png" />
+                </div>
+
+                <div className='WelcomeDialog__slide-content'>
+                    <h1> {l('Weeks of English language!')} </h1>
+                    <p> {l('In the next 2 weeks you can get gifts from our friends - exclusive discounts on courses of '
+                        + 'English language!')}
+                    </p>
+                    <Button className='WelcomeDialog__btn' raised colored onClick={this.handleNextSlide}>
+                        {l('Get exclusive discount')}
+                    </Button>
+                </div>
+            </div>,
+
+            <div className='WelcomeDialog__slide'>
+                <div className='WelcomeDialog__slide-image'>
                     <img src="/static/images/welcome/01.png" />
                 </div>
 

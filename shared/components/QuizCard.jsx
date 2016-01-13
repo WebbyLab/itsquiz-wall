@@ -9,6 +9,7 @@ import { Card, CardTitle, CardActions } from 'react-mdl/lib/Card';
 import Button                           from 'react-mdl/lib/Button';
 import IconButton                       from 'react-mdl/lib/IconButton';
 import Icon                             from 'react-mdl/lib/Icon';
+import MdiIcon                          from './Icon.jsx';
 
 import { sprintf } from '../utils';
 
@@ -84,7 +85,7 @@ export default class QuizCard extends Component {
                     {
                         isSponsored
                         ? <div className='QuizCard__special'>
-                            {l('Special proposition!')}
+                            <MdiIcon type='gift' /> {l('Special proposition!')}
                         </div>
                         : <div className='QuizCard__details'>
                             <span>
