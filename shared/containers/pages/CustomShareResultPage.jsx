@@ -6,10 +6,13 @@ import strformat                       from 'strformat';
 import BasicSharePage from '../../components/pages/BasicSharePage.jsx';
 
 import { customShareInfo } from '../../config';
+import { sendEvent }       from '../../utils/googleAnalytics';
 
 class CustomShareResultPageContainer extends Component {
     componentDidMount() {
         const { key } = this.props.params;
+
+        sendEvent('custom share result', 'direct open', key);
 
         if (customShareInfo && customShareInfo[key] && customShareInfo[key].redirectRoute) {
             this.props.history.replaceState(null, customShareInfo[key].redirectRoute, {
