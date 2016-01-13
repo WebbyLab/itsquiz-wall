@@ -30,7 +30,7 @@ class ActivationsPageContainer extends Component {
             assigneeId : this.props.location.query.assigneeId
         });
 
-        sendEvent('activation card', 'view details');
+        sendEvent('activation card', 'view details', activation.name);
     };
 
     handleSearch = (searchText) => {
@@ -48,7 +48,7 @@ class ActivationsPageContainer extends Component {
             isSharing   : true
         });
 
-        sendEvent('activation card', 'share');
+        sendEvent('activation card', 'share', activation.name);
     };
 
     handleTabChange = (category) => {
@@ -57,7 +57,7 @@ class ActivationsPageContainer extends Component {
             category : category !== 'ALL' ? category : undefined
         });
 
-        sendEvent('activatios page', 'category', category);
+        sendEvent('activations page', 'category change', category);
     };
 
     handleStopSharing = () => {

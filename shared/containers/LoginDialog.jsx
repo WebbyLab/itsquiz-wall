@@ -17,6 +17,10 @@ export default class LoginDialogContainer extends Component {
 
     static contextTypes = { i18n: PropTypes.object };
 
+    componentDidMount() {
+        sendEvent('login dialog', 'view');
+    }
+
     handleSocialLogin = (type) => {
         const { getLocale } = this.context.i18n;
 
@@ -29,7 +33,7 @@ export default class LoginDialogContainer extends Component {
 
         this.openLink(redirectURL);
 
-        sendEvent('user', 'login', type);
+        sendEvent('login dialog', 'login', type);
     };
 
     handleEmailLogin = (type) => {
@@ -43,7 +47,7 @@ export default class LoginDialogContainer extends Component {
 
         this.openLink(redirectURL);
 
-        sendEvent('user', 'login', type);
+        sendEvent('login dialog', 'login', 'email');
     };
 
     openLink = (URL) => {

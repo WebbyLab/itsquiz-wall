@@ -32,9 +32,18 @@ class ActivationPageContainer extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (this.props.isLoading && !nextProps.isLoading && nextProps.activation) {
+            if (nextProps.activation.isSponsored) {
+                sendEvent('sponsored activation', 'view', nextProps.activation.name);
+            }
+            sendEvent('activation', 'view', nextProps.activation.name);
+        }
+    }
+
     handlePassActivationClick = (activation) => {
         const isEmbedded = this.props.location.query.embed;
-        const { actionId, isSponsored } = activation;
+        const { actionId, isSponsored, name } = activation;
 
         if (isEmbedded) {
             embedEvents.send({
@@ -46,10 +55,9 @@ class ActivationPageContainer extends Component {
         }
 
         if (isSponsored) {
-            sendEvent('sponsored activation', 'pass click');
-        } else {
-            sendEvent('activation', 'pass');
+            sendEvent('sponsored activation', 'pass', name);
         }
+        sendEvent('activation', 'pass', name);
     };
 
     handleViewAnswers = (activation) => {
@@ -63,6 +71,8 @@ class ActivationPageContainer extends Component {
                 quizSessionId
             });
         }
+
+        sendEvent('activation', 'view answers', activation.name);
     };
 
     handleSponsoredClick = (activation) => {
@@ -81,7 +91,7 @@ class ActivationPageContainer extends Component {
             });
         }
 
-        sendEvent('sponsored activation', 'request click');
+        sendEvent('sponsored activation', 'request', activation.name);
     };
 
     handleGoBack = () => {
@@ -97,7 +107,7 @@ class ActivationPageContainer extends Component {
             assigneeId : this.props.location.query.assigneeId
         });
 
-        sendEvent('activation', 'author activations', 'click');
+        sendEvent('activation', 'author activation view');
     };
 
     handleShare = (activation) => {

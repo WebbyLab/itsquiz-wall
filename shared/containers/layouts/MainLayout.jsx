@@ -3,6 +3,7 @@ import React, {Component, PropTypes} from 'react';
 import MainLayout from '../../components/layouts/MainLayout.jsx';
 
 import {footerLinks} from '../../config';
+import { sendEvent } from '../../utils/googleAnalytics';
 
 export default class MainLayoutContainer extends Component {
     state = {
@@ -17,10 +18,9 @@ export default class MainLayoutContainer extends Component {
             this.setState({ isWelcomeScreenShown: true });
         }
 
-        console.log(ref, localStorage.getItem('ref'));
-
         if (ref && !localStorage.getItem('ref')) {
             localStorage.setItem('ref', ref);
+            sendEvent('initial', 'ref', ref);
         }
     }
 
