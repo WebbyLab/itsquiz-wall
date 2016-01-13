@@ -17,12 +17,16 @@ export default class LoginDialogContainer extends Component {
 
     static contextTypes = { i18n: PropTypes.object };
 
-    componentDidMount() {
-        sendEvent('login dialog', 'view');
+    componentWillReceiveProps(nextProps) {
+        if (!this.props.isOpen && nextProps.isOpen) {
+            sendEvent('login dialog', 'view');
+        }
     }
 
     handleSocialLogin = (type) => {
         const { getLocale } = this.context.i18n;
+
+        sendEvent('login dialog', 'login', type);
 
         const redirectURL = strformat(socialAuthURL, {
             lang: getLocale().toUpperCase(),
@@ -32,12 +36,12 @@ export default class LoginDialogContainer extends Component {
         });
 
         this.openLink(redirectURL);
-
-        sendEvent('login dialog', 'login', type);
     };
 
     handleEmailLogin = (type) => {
         const { getLocale } = this.context.i18n;
+
+        sendEvent('login dialog', 'login', 'email');
 
         const redirectURL = strformat(emailAuthURL, {
             lang: getLocale().toLowerCase(),
@@ -46,8 +50,6 @@ export default class LoginDialogContainer extends Component {
         });
 
         this.openLink(redirectURL);
-
-        sendEvent('login dialog', 'login', 'email');
     };
 
     openLink = (URL) => {
