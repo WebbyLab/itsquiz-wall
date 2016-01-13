@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-05 11:49+0200\n"
+"POT-Creation-Date: 2016-01-13 20:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,6 +26,7 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:149
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:165
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:179
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:185
 msgid "View details"
 msgstr ""
 
@@ -68,6 +69,7 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:152
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:135
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:153
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:141
 #, javascript-format
 msgid "%d question"
 msgid_plural "%d questions"
@@ -183,6 +185,7 @@ msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:100
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:120
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:151
 msgid "Welcome to It's quiz!"
 msgstr ""
 
@@ -196,12 +199,14 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:113
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:133
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:132
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:163
 msgid "Learn more"
 msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:130
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:150
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:149
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:180
 msgid "Check your knowledge"
 msgstr ""
 
@@ -231,6 +236,7 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:192
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:191
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:220
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:251
 msgid "Create a test"
 msgstr ""
 
@@ -267,11 +273,13 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:141
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:161
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:160
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:191
 msgid "Discover tests"
 msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:261
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:266
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:297
 msgid "Do not show me this message again"
 msgstr ""
 
@@ -333,12 +341,14 @@ msgid "Meet our team"
 msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:127
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:158
 msgid ""
 "Explore hundreds of open tests on Quiz Wall, check your knowledge, explore "
 "new topics, share your achievements with friends!"
 msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:155
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:186
 msgid ""
 "Find out your language level, check knowledge of professional topics, pass "
 "entertainment tests or even find a new job! Everything absolutely free!"
@@ -346,11 +356,13 @@ msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:178
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:207
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:238
 msgid "Create your own tests!"
 msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:185
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:214
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:245
 msgid ""
 "Everyone can create a test on It's quiz! Simply add new questions, compose a "
 "quiz, activate and share with your friends!"
@@ -378,6 +390,7 @@ msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:114
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:128
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:134
 msgid "Special proposition!"
 msgstr ""
 
@@ -430,14 +443,31 @@ msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:335
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:338
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:336
 msgid "Share"
 msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:340
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:338
 #, javascript-format
 msgid "My result is %d%%"
 msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:340
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:338
 msgid "Check out this test"
+msgstr ""
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:121
+msgid "Weeks of English language!"
+msgstr ""
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:128
+msgid ""
+"In the next 2 weeks you can get gifts from our friends - exclusive discounts "
+"on courses of English language!"
+msgstr ""
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:133
+msgid "Get exclusive discount"
 msgstr ""
