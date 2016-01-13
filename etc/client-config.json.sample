@@ -12,7 +12,8 @@
     "welcomeLinks": {
         "createTest": "http://app.itsquiz.com/{lang}/login?continue=%2Fquestions",
         "aboutItsquiz": "http://itsquiz.com/about/",
-        "discoverTests": "http://itsquiz.com/activations?skipWelcomeDialog=true"
+        "discoverTests": "http://itsquiz.com/activations?skipWelcomeDialog=true",
+        "englishCampaign": "http://itsquiz.com/activations?skipWelcomeDialog=true&search=специальное+предложение"
     },
     "footerLinks": {
         "twitter": "http://twitter.com/itsquizcom",

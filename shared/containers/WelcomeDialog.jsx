@@ -36,6 +36,15 @@ export default class WelcomeDialogContainer extends Component {
         window.open(linkToOpen, '_blank');
     };
 
+    handleEnglishCampaign = () => {
+        const { getLocale } = this.context.i18n;
+        const linkToOpen = strformat(welcomeLinks.englishCampaign, {
+            lang: getLocale()
+        });
+
+        window.open(linkToOpen, '_blank');
+    };
+
     render() {
         const { isOpen, onDismiss, onClose } = this.props;
 
@@ -45,6 +54,7 @@ export default class WelcomeDialogContainer extends Component {
                 onLearnMoreAboutItsquiz = {this.handleLearnMoreAboutItsquz}
                 onDiscoverTests = {this.handleDiscoverTests}
                 onCreateTest = {this.handleCreateTest}
+                onEnglishCampaign = {this.handleEnglishCampaign}
                 onDismiss = {onDismiss}
             />
         );

@@ -56,7 +56,7 @@ export default class WelcomeDialog extends Component {
 
     render() {
         const { l } = this.context.i18n;
-        const { onCreateTest, onDiscoverTests, onLearnMoreAboutItsquiz } = this.props;
+        const { onCreateTest, onDiscoverTests, onEnglishCampaign, onLearnMoreAboutItsquiz } = this.props;
         const { currentSlide, needToSkip } = this.state;
 
         const slides = [
@@ -70,7 +70,7 @@ export default class WelcomeDialog extends Component {
                     <p> {l('In the next 2 weeks you can get gifts from our friends - exclusive discounts on courses of '
                         + 'English language!')}
                     </p>
-                    <Button className='WelcomeDialog__btn' raised colored onClick={this.handleNextSlide}>
+                    <Button className='WelcomeDialog__btn' raised colored onClick={onEnglishCampaign}>
                         {l('Get exclusive discount')}
                     </Button>
                 </div>
