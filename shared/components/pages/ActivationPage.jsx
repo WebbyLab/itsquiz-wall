@@ -126,7 +126,7 @@ export default class ActivationPage extends React.Component {
                                         onClick   = {onSponsoredClick.bind(null, activation)}
                                         className = 'ActivationPage__btn ActivationPage__offer-btn'
                                         raised    = {true}>
-                                        <Icon type='gift' />  {l('Use this offer')}
+                                        <Icon type='gift' />  {l('Contact me')}
                                     </Button>
                                     : null
                                 }
