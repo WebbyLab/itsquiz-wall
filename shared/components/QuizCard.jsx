@@ -84,7 +84,7 @@ export default class QuizCard extends Component {
                 <div className='QuizCard__content'>
                     {
                         isSponsored
-                        ? <div className='QuizCard__special'>
+                        ? <div className='QuizCard__special' onClick = {onClick}>
                             <MdiIcon type='gift' /> {l('Special proposition!')}
                         </div>
                         : <div className='QuizCard__details'>
