@@ -234,6 +234,18 @@
          ],
          "Contact me": [
             "Свяжитесь со мной"
+         ],
+         "Special offer": [
+            "Акции"
+         ],
+         "I want to receive new special offers": [
+            "Я хочу получать новые специальные предложения"
+         ],
+         "Get the gift": [
+            "Получить подарок"
+         ],
+         "Sign in with your social network account to continue": [
+            "Для продолжения войдите с помощью аккаунта социальной сети"
          ]
       }
    }
