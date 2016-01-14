@@ -75,7 +75,7 @@ class ActivationPageContainer extends Component {
         sendEvent('activation', 'view answers', activation.name);
     };
 
-    handleSponsoredClick = (activation) => {
+    handleSponsoredClick = (activation, buttonLabelForResearch) => {
         const isEmbedded = this.props.location.query.embed;
         const { id } = activation;
 
@@ -92,6 +92,9 @@ class ActivationPageContainer extends Component {
         }
 
         sendEvent('sponsored activation', 'request', activation.name);
+
+        // We conduct research which button label works better
+        sendEvent('sponsored request button', 'click', buttonLabelForResearch);
     };
 
     handleGoBack = () => {
@@ -161,6 +164,7 @@ class ActivationPageContainer extends Component {
 
                 onPass             = {this.handlePassActivationClick}
                 onSponsoredClick   = {this.handleSponsoredClick}
+                onSubscribe        = {this.handleSubscribeClick}
                 onViewAnswers      = {this.handleViewAnswers}
                 onActivationClick  = {this.handleActivationClick}
                 onGoBack           = {this.handleGoBack}
