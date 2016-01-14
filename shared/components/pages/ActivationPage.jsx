@@ -108,7 +108,7 @@ export default class ActivationPage extends React.Component {
                             <div className='ActivationPage__actions'>
                                 {
                                     !showUserResult
-                                    ? <Button
+                                    ? <Button colored
                                         ripple    = {true}
                                         raised    = {!isSponsored}
                                         onClick   = {onPass.bind(null, activation)}
