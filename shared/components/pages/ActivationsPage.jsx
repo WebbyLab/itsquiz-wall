@@ -8,12 +8,13 @@ import Spinner        from 'react-mdl/lib/Spinner';
 import QuizCard    from '../QuizCard.jsx';
 import AppBar      from '../AppBar.jsx';
 import ShareDialog from '../../containers/ShareDialog.jsx';
+import Icon        from '../Icon.jsx';
 
 if ( process.env.BROWSER ) {
     require('./ActivationsPage.less');
 }
 
-const CATEGORIES = ['ALL', 'VACANCY', 'EDUCATION', 'ENTERTAINMENT'];
+const CATEGORIES = ['ALL', 'VACANCY', 'EDUCATION', 'ENTERTAINMENT', 'SPECIAL'];
 
 export default class ActivationsPage extends React.Component {
     static contextTypes = { i18n: React.PropTypes.object };
@@ -128,6 +129,9 @@ export default class ActivationsPage extends React.Component {
                             <Tab>{l('Vacancies')}</Tab>
                             <Tab>{l('Education')}</Tab>
                             <Tab>{l('Entertainment')}</Tab>
+                            <Tab className='ActivationsPage__special-tab'>
+                                <Icon type='gift' />  {l('Special offer')}
+                            </Tab>
                         </Tabs>
                     </div>
                 </div>

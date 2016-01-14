@@ -1,6 +1,6 @@
 'use strict';
 
-import api                  from '../apiSingleton';
+import api from '../apiSingleton';
 
 export const LOAD_ACTIVATIONS_SUCCESS    = 'LOAD_ACTIVATIONS_SUCCESS';
 export const LOAD_ACTIVATIONS_FAIL       = 'LOAD_ACTIVATIONS_FAIL';
@@ -14,10 +14,11 @@ export function loadActivations(params = {}, query = {}) {
         });
 
         return api.activations.list({
-            include    : 'users',
-            search     : query.search || '',
-            category   : query.category,
-            assigneeId : query.assigneeId || ''
+            include     : 'users',
+            search      : query.search || '',
+            category    : query.category !== 'SPECIAL' ? query.category : '',
+            isSponsored : query.category === 'SPECIAL' ? true : '',
+            assigneeId  : query.assigneeId || ''
         }).then( ({data, linked} ) => {
             dispatch({
                 type        : LOAD_ACTIVATIONS_SUCCESS,
