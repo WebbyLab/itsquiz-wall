@@ -28,6 +28,12 @@ export default class ActivationPage extends React.Component {
         onActivationClick : React.PropTypes.func
     };
 
+    componentWillMount() {
+        const { l } = this.context.i18n;
+
+        this.sponsoredButtonLabel = Math.random() < 0.5 ? l('Contact me') : l('Get the gift');
+    }
+
     renderContent = () => {
         const {
             activation,
@@ -108,7 +114,7 @@ export default class ActivationPage extends React.Component {
                             <div className='ActivationPage__actions'>
                                 {
                                     !showUserResult
-                                    ? <Button colored
+                                    ? <Button
                                         ripple    = {true}
                                         raised    = {!isSponsored}
                                         onClick   = {onPass.bind(null, activation)}
@@ -123,10 +129,10 @@ export default class ActivationPage extends React.Component {
                                     ? <Button
                                         colored   = {true}
                                         ripple    = {true}
-                                        onClick   = {onSponsoredClick.bind(null, activation)}
+                                        onClick   = {onSponsoredClick.bind(null, activation, this.sponsoredButtonLabel)}
                                         className = 'ActivationPage__btn ActivationPage__offer-btn'
                                         raised    = {true}>
-                                        <Icon type='gift' />  {l('Contact me')}
+                                        <Icon type='gift' />  {this.sponsoredButtonLabel}
                                     </Button>
                                     : null
                                 }

@@ -21,7 +21,8 @@ class ActivationsPageContainer extends Component {
 
     state = {
         linkToShare : '',
-        isSharing   : false
+        isSharing   : false,
+        isLoggingIn : false
     };
 
     handleQuizCardClick = (activation) => {
@@ -49,6 +50,18 @@ class ActivationsPageContainer extends Component {
         });
 
         sendEvent('activation card', 'share', activation.name);
+    };
+
+    handleSpecialsSubscribe = () => {
+        this.setState({
+            isLoggingIn : true
+        });
+    };
+
+    handleLoginClose = () => {
+        this.setState({
+            isLoggingIn : false
+        });
     };
 
     handleTabChange = (category) => {
@@ -92,19 +105,22 @@ class ActivationsPageContainer extends Component {
     render() {
         return (
             <ActivationsPage
-                activations      = {this.props.activations}
-                search           = {this.props.search}
-                linkToShare      = {this.state.linkToShare}
-                selectedCategory = {this.props.category}
-                isSharing        = {this.state.isSharing}
-                isEmbedded       = {this.props.location.query.embed}
-                isLoading        = {this.props.isLoading}
-                isEmpty          = {this.props.activations.length === 0}
-                onItemClick      = {this.handleQuizCardClick}
-                onSearch         = {this.handleSearch}
-                onShare          = {this.handleShare}
-                onTabChange      = {this.handleTabChange}
-                onStopSharing    = {this.handleStopSharing}
+                activations         = {this.props.activations}
+                search              = {this.props.search}
+                linkToShare         = {this.state.linkToShare}
+                selectedCategory    = {this.props.category}
+                isSharing           = {this.state.isSharing}
+                isLoggingIn         = {this.state.isLoggingIn}
+                isEmbedded          = {this.props.location.query.embed}
+                isLoading           = {this.props.isLoading}
+                isEmpty             = {this.props.activations.length === 0}
+                onItemClick         = {this.handleQuizCardClick}
+                onSearch            = {this.handleSearch}
+                onShare             = {this.handleShare}
+                onLoginClose        = {this.handleLoginClose}
+                onSpecialsSubscribe = {this.handleSpecialsSubscribe}
+                onTabChange         = {this.handleTabChange}
+                onStopSharing       = {this.handleStopSharing}
             />
         );
     }

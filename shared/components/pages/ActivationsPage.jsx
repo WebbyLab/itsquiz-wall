@@ -4,10 +4,12 @@ import cx    from 'classnames';
 import { Tab, Tabs }  from 'react-mdl/lib/Tabs';
 import Grid, { Cell } from 'react-mdl/lib/Grid';
 import Spinner        from 'react-mdl/lib/Spinner';
+import Button         from 'react-mdl/lib/Button';
 
 import QuizCard    from '../QuizCard.jsx';
 import AppBar      from '../AppBar.jsx';
 import ShareDialog from '../../containers/ShareDialog.jsx';
+import LoginDialog from '../../containers/LoginDialog.jsx';
 import Icon        from '../Icon.jsx';
 
 if ( process.env.BROWSER ) {
@@ -23,13 +25,14 @@ export default class ActivationsPage extends React.Component {
         activations : React.PropTypes.arrayOf(React.PropTypes.object),
         search      : React.PropTypes.string,
         onItemClick : React.PropTypes.func,
+        onSubscribe : React.PropTypes.func,
         onShare     : React.PropTypes.func,
         onSearch    : React.PropTypes.func
     };
 
     renderContent = () => {
         const { l } = this.context.i18n;
-        const { activations, search, isLoading, isEmpty, onItemClick, onShare } = this.props;
+        const { activations, search, isLoading, isEmpty, onItemClick, onSubscribe, onShare } = this.props;
 
         if (isLoading) {
             return <Spinner className='ActivationsPage__spinner' />;
@@ -85,10 +88,13 @@ export default class ActivationsPage extends React.Component {
             selectedCategory,
             isSharing,
             isEmbedded,
+            isLoggingIn,
             isLoading,
             linkToShare,
             onSearch,
+            onSpecialsSubscribe,
             onTabChange,
+            onLoginClose,
             onStopSharing
         } = this.props;
 
@@ -106,6 +112,11 @@ export default class ActivationsPage extends React.Component {
                     isOpen         = {isSharing}
                     linkToShare    = {linkToShare}
                     onRequestClose = {onStopSharing}
+                />
+
+                <LoginDialog
+                    isOpen         = {isLoggingIn}
+                    onRequestClose = {onLoginClose}
                 />
 
                 <div className='ActivationsPage__header'>
@@ -137,6 +148,17 @@ export default class ActivationsPage extends React.Component {
                 </div>
 
                 <div className='ActivationsPage__content'>
+                    {
+                        selectedCategory === 'SPECIAL' && !isEmbedded
+                        ? <Button colored raised ripple
+                            className='ActivationsPage__subscribe-btn'
+                            onClick={onSpecialsSubscribe}>
+                            {l('I want to receive new special offers')}
+                        </Button>
+                        : null
+
+                    }
+
                     {this.renderContent()}
                 </div>
             </div>
