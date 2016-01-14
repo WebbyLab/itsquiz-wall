@@ -56,6 +56,12 @@ class ActivationsPageContainer extends Component {
         this.setState({
             isLoggingIn : true
         });
+
+        sendEvent('specials subscribe', 'click');
+
+        if (!localStorage.getItem('ref')) {
+            localStorage.setItem('ref', 'new_offers');
+        }
     };
 
     handleLoginClose = () => {
