@@ -32,7 +32,7 @@ export default class LoginDialog extends Component {
                     title     = {title}
                     {...this.props}>
                     <h4 className='LoginDialog__title'>
-                        {l('Sign in with your social network account')}
+                        {l('Sign in with your social network account to continue')}
                     </h4>
 
                     <div className='LoginDialog__buttons-container'>
