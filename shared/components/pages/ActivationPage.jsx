@@ -72,8 +72,6 @@ export default class ActivationPage extends React.Component {
             'ActivationPage__activation--passed': showUserResult
         });
 
-        console.log(activation);
-
         return (
             <div className={classes}>
                 <Card className='ActivationPage__paper' shadow={1}>

@@ -4,8 +4,6 @@ const NUMBER_OF_BACKGROUNDS = 12;
 
 export default {
     formatActivation(activation, author) {
-        console.log(activation);
-
         return {
             id                   : activation.id,
             name                 : activation.name,
