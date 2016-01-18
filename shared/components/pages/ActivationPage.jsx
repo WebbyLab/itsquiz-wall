@@ -44,6 +44,7 @@ export default class ActivationPage extends React.Component {
             onShare,
             onShareResult,
             onStopSharing,
+            onFillProfile,
             onSponsoredClick,
             onActivationClick,
             onViewAnswers
@@ -194,6 +195,22 @@ export default class ActivationPage extends React.Component {
                                             className = 'ActivationPage__result-answers-btn'>
                                             {l('View my answers')}
                                         </Button>
+                                        : null
+                                    }
+
+                                    {
+                                        activation.category === 'VACANCY'
+                                        ? <div>
+                                            <Button
+                                                ripple    = {true}
+                                                onClick   = {onFillProfile.bind(null, activation)}
+                                                className = 'ActivationPage__fill-profile-btn'>
+                                                {l('Fill in your resume')}
+                                            </Button>
+                                            <div className='ActivationPage__tip'>
+                                                {l('Filled profiles receive 70% more views')}
+                                            </div>
+                                        </div>
                                         : null
                                     }
                                 </div>

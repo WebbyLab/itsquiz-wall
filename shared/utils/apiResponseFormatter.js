@@ -14,6 +14,7 @@ export default {
             numberOfUsersPassed  : activation.numberOfPeople,
             dueTime              : activation.dueTime,
             message              : activation.message,
+            category             : activation.category,
             isSponsored          : activation.isSponsored,
             isPrivate            : activation.isPublic === false,
             isPassed             : activation.assigneeQuizSession && activation.assigneeQuizSession.finishedAt,
