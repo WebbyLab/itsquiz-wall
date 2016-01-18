@@ -75,6 +75,20 @@ class ActivationPageContainer extends Component {
         sendEvent('activation', 'view answers', activation.name);
     };
 
+    handleFillProfile = (activation) => {
+        const isEmbedded = this.props.location.query.embed;
+
+        if (isEmbedded && activation.isPassed) {
+            const quizSessionId = activation.userQuizSession.id;
+
+            embedEvents.send({
+                type : 'FILL_PROFILE'
+            });
+        }
+
+        sendEvent('activation', 'fill profile click', activation.name);
+    };
+
     handleSponsoredClick = (activation, buttonLabelForResearch) => {
         const isEmbedded = this.props.location.query.embed;
         const { id } = activation;
@@ -166,6 +180,7 @@ class ActivationPageContainer extends Component {
                 onSponsoredClick   = {this.handleSponsoredClick}
                 onSubscribe        = {this.handleSubscribeClick}
                 onViewAnswers      = {this.handleViewAnswers}
+                onFillProfile      = {this.handleFillProfile}
                 onActivationClick  = {this.handleActivationClick}
                 onGoBack           = {this.handleGoBack}
                 onShare            = {this.handleShare}

@@ -60,6 +60,7 @@ function currentActivation(state = { activation : {}, authorActivations: [], isL
             };
 
         case LOAD_ACTIVATION_SUCCESS:
+            console.log('LOAD_ACTIVATION_SUCCESS', action);
             const openedActivation = apiResponseFormatter.formatActivation(action.activation, action.author);
 
             const otherAuthorActivations = action.authorActivations.filter( authorActivation =>
