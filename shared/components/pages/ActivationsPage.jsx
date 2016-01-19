@@ -64,6 +64,7 @@ export default class ActivationsPage extends React.Component {
                         tablet = {4}
                         phone  = {12}>
                         <QuizCard
+                            id                = {activation.id}
                             name              = {activation.name}
                             message           = {activation.message}
                             numberOfQuestions = {activation.numberOfQuestions}
@@ -136,11 +137,19 @@ export default class ActivationsPage extends React.Component {
                             activeTab = {selectedCategory ? CATEGORIES.indexOf(selectedCategory) : 0}
                             className = 'ActivationsPage__tabs'
                             onChange  = {(index) => onTabChange(CATEGORIES[index])}>
-                            <Tab>{l('All tests')}</Tab>
-                            <Tab>{l('Vacancies')}</Tab>
-                            <Tab>{l('Education')}</Tab>
-                            <Tab>{l('Entertainment')}</Tab>
-                            <Tab className='ActivationsPage__special-tab'>
+                            <Tab href='/activations'>
+                                {l('All tests')}
+                            </Tab>
+                            <Tab href='/activations?category=vacancy'>
+                                {l('Vacancies')}
+                            </Tab>
+                            <Tab href='/activations?category=education'>
+                                {l('Education')}
+                            </Tab>
+                            <Tab href='/activations?category=entertainment'>
+                                {l('Entertainment')}
+                            </Tab>
+                            <Tab href='/activations?category=special' className='ActivationsPage__special-tab'>
                                 <Icon type='gift' />  {l('Special offer')}
                             </Tab>
                         </Tabs>
