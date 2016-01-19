@@ -28,6 +28,11 @@ export default class QuizCard extends Component {
         onClick           : PropTypes.func
     };
 
+    handleClick = (e) => {
+        e.preventDefault();
+        this.props.onClick();
+    };
+
     render() {
         const {
             id,
@@ -50,14 +55,18 @@ export default class QuizCard extends Component {
         });
 
         return (
-            <Card className={classes} shadow={1}>
+            <Card shadow={1} className={classes}>
                 <CardTitle className='QuizCard__head'>
                     <div className='QuizCard__info'>
                         <img className='QuizCard__avatar' src={author.avatar} />
                         <div className='QuizCard__name-author'>
-                            <div className='QuizCard__name' onClick={onClick} title={name}>
+                            <a
+                                href={`/activations/${id}`}
+                                className='QuizCard__name'
+                                onClick={this.handleClick}
+                                title={name}>
                                 {name}
-                            </div>
+                            </a>
 
                             <div className='QuizCard__author' title={author.fullName}>
                                 {author.fullName}
