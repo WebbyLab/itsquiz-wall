@@ -26,6 +26,11 @@ export default class QuizTile extends Component {
         onClick           : PropTypes.func
     };
 
+    handleClick = (e) => {
+        e.preventDefault();
+        this.props.onClick();
+    };
+
     render() {
         const { id, name, pictureURL, author, userQuizSession, isPassed, onClick } = this.props;
         const { l } = this.context.i18n;
@@ -47,9 +52,13 @@ export default class QuizTile extends Component {
                 </CardTitle>
 
                 <CardActions className='QuizTile__text'>
-                    <div className='QuizTile__name' onClick={onClick}>
+                    <a
+                        href={`/activations/${id}`}
+                        title={name}
+                        className='QuizTile__name'
+                        onClick={this.handleClick}>
                         {name}
-                    </div>
+                    </a>
 
                     <div className='QuizTile__author'>
                         {author.fullName}
