@@ -17,7 +17,8 @@ import UserPageContainer              from './containers/pages/UserPage.jsx';
 export default (
     <Route component={App} >
         <Route component={MainLayout} path='/'>
-            <Redirect from='/' to='/ru/activations' />
+            <Redirect from='/' to='/activations' />
+            <Redirect from='/kmda/start' to='/activations?search=english' />
 
             <Route component={ActivationsPageContainer} path='/activations' />
             <Route component={ActivationPageContainer} path='/activations/:id' />
@@ -27,6 +28,8 @@ export default (
 
             <Route component={UsersPageContainer} path='/users' />
             <Route component={UserPageContainer} path='/users/:id' />
+
+            <Redirect from='*' to='/activations' />
         </Route>
     </Route>
 );
