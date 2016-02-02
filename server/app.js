@@ -143,6 +143,7 @@ function renderHTML({componentHTML, initialState, metaData, config}) {
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
                 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
             </script>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         </head>
         <body>
         <div id="react-view">${componentHTML}</div>

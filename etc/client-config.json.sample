@@ -32,5 +32,12 @@
             "pictureURL": "",
             "redirectRoute": "/activations"
         }
+    },
+    "ads": {
+        "activationPage": {
+            "client": "XXX",
+            "slot": "XXX",
+            "format": "auto"
+        }
     }
 }
