@@ -19,7 +19,7 @@ export function loadActivations(params = {}, query = {}) {
             category    : query.category !== 'SPECIAL' ? query.category : '',
             isSponsored : query.category === 'SPECIAL' ? true : '',
             assigneeId  : query.assigneeId || ''
-        }).then( ({data, linked} ) => {
+        }).then( ({ data, linked } ) => {
             dispatch({
                 type        : LOAD_ACTIVATIONS_SUCCESS,
                 activations : data.entities,
@@ -41,7 +41,6 @@ export function loadActivation(params = {}, query = {}) {
     return dispatch => {
         dispatch({ type : LOAD_ACTIVATION_REQUEST, activationId : params.id });
 
-
         return api.activations.show(params.id, { assigneeId, include: 'users' }).then( response => {
             const userId = response.data.links.owner.id;
 
@@ -56,6 +55,34 @@ export function loadActivation(params = {}, query = {}) {
         }).catch( error => {
             dispatch({
                 type: LOAD_ACTIVATION_FAIL,
+                error
+            });
+        });
+    };
+}
+
+export const LOAD_SIMILAR_ACTIVATIONS_REQUEST = 'LOAD_SIMILAR_ACTIVATIONS_REQUEST';
+export const LOAD_SIMILAR_ACTIVATIONS_SUCCESS = 'LOAD_SIMILAR_ACTIVATIONS_SUCCESS';
+export const LOAD_SIMILAR_ACTIVATIONS_FAIL    = 'LOAD_SIMILAR_ACTIVATIONS_FAIL';
+
+export function loadSimilarActivations(params = {}, query = {}) {
+    const assigneeId = query.assigneeId || params.userId || '';
+    const similarTo = params.id;
+
+
+    return dispatch => {
+        dispatch({ type : LOAD_SIMILAR_ACTIVATIONS_REQUEST });
+
+        return api.activations.list({ similarTo, assigneeId, limit: 8, include: 'users' }).then( ({ data, linked }) => {
+            dispatch({
+                similarTo,
+                type         : LOAD_SIMILAR_ACTIVATIONS_SUCCESS,
+                users        : linked.users,
+                activations  : data.entities
+            });
+        }).catch( error => {
+            dispatch({
+                type: LOAD_SIMILAR_ACTIVATIONS_FAIL,
                 error
             });
         });
