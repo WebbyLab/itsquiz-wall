@@ -4,7 +4,7 @@ import React, {Component, PropTypes} from 'react';
 import { connect }                   from 'react-redux';
 import strformat                     from 'strformat';
 
-import { loadActivation }  from '../../actions/activations';
+import { loadActivation, loadSimilarActivations }  from '../../actions/activations';
 import connectDataFetchers from '../../lib/connectDataFetchers.jsx';
 import EmbedEvents         from '../../utils/EmbedEventsUtil';
 import config              from '../../config';
@@ -38,6 +38,11 @@ class ActivationPageContainer extends Component {
                 sendEvent('sponsored activation', 'view', nextProps.activation.name);
             }
             sendEvent('activation', 'view', nextProps.activation.name);
+        }
+
+        if (this.props.params.id !== nextProps.params.id) {
+            this.props.dispatch( loadActivation(nextProps.params, nextProps.location.query) );
+            this.props.dispatch( loadSimilarActivations(nextProps.params, nextProps.location.query) );
         }
     }
 
@@ -155,14 +160,8 @@ class ActivationPageContainer extends Component {
         });
     };
 
-    componentWillReceiveProps(nextProps) {
-        if (this.props.params.id !== nextProps.params.id) {
-            this.props.dispatch(loadActivation(nextProps.params, nextProps.location.query) );
-        }
-    }
-
     render() {
-        const { activation, authorActivations, isLoading } = this.props;
+        const { activation, authorActivations, similarActivations, isLoading } = this.props;
         const { sharingLink, isLoggingIn } = this.state;
         const { embed, assigneeId } = this.props.location.query;
 
@@ -170,6 +169,7 @@ class ActivationPageContainer extends Component {
             <ActivationPage
                 activation         = {activation}
                 authorActivations  = {authorActivations}
+                similarActivations  = {similarActivations}
                 sharingLink        = {sharingLink}
                 isLoading          = {isLoading}
                 isEmbedded         = {embed}
@@ -192,14 +192,15 @@ class ActivationPageContainer extends Component {
     }
 }
 
-function mapStateToProps({ currentActivation: {activation, authorActivations, isLoading} }) {
+function mapStateToProps({ currentActivation: {activation, authorActivations, similarActivations, isLoading} }) {
     return {
         activation,
         authorActivations,
+        similarActivations,
         isLoading
     };
 }
 
 export default connect( mapStateToProps )(
-    connectDataFetchers(ActivationPageContainer, [ loadActivation ])
+    connectDataFetchers(ActivationPageContainer, [ loadActivation, loadSimilarActivations ])
 );
