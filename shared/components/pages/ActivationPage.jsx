@@ -45,38 +45,43 @@ export default class ActivationPage extends React.Component {
 
         const { l } = this.context.i18n;
 
-        return (
-            <div className='ActivationPage__author-activations'>
-                <div className='ActivationPage__subheader'>
-                    {sprintf(l('More tests by %s'), activation.author.fullName)}
-                </div>
+        if (authorActivations && authorActivations.length) {
+            return (
+                <div className='ActivationPage__author-activations'>
+                    <div className='ActivationPage__subheader'>
+                        {sprintf(l('More tests by %s'), activation.author.fullName)}
+                    </div>
 
-                <Grid className='ActivationPage__author-activations-grid'>
-                {
-                    authorActivations.map((authorActivation, i) =>
-                        <Cell
-                            key    = {authorActivation.id}
-                            align  = 'stretch'
-                            col    = {3}
-                            phone  = {2}
-                            tablet = {3}>
-                            <QuizTile
-                                id                = {authorActivation.id}
-                                name              = {authorActivation.name}
-                                timeToPass        = {authorActivation.timeToPass}
-                                numberOfQuestions = {authorActivation.numberOfQuestions}
-                                pictureURL        = {authorActivation.pictureURL}
-                                author            = {activation.author}
-                                isPassed          = {showUserResult && authorActivation.isPassed}
-                                userQuizSession   = {authorActivation.userQuizSession}
-                                onClick           = {onActivationClick.bind(null, authorActivation)}
-                            />
-                        </Cell>
-                    )
-                }
-                </Grid>
-            </div>
-        );
+                    <Grid className='ActivationPage__author-activations-grid'>
+                    {
+                        authorActivations.map((authorActivation, i) =>
+                            <Cell
+                                key    = {authorActivation.id}
+                                align  = 'stretch'
+                                col    = {3}
+                                phone  = {2}
+                                tablet = {3}>
+                                <QuizTile
+                                    id                = {authorActivation.id}
+                                    name              = {authorActivation.name}
+                                    timeToPass        = {authorActivation.timeToPass}
+                                    numberOfQuestions = {authorActivation.numberOfQuestions}
+                                    pictureURL        = {authorActivation.pictureURL}
+                                    author            = {activation.author}
+                                    isPassed          = {showUserResult && authorActivation.isPassed}
+                                    userQuizSession   = {authorActivation.userQuizSession}
+                                    onClick           = {onActivationClick.bind(null, authorActivation)}
+                                />
+                            </Cell>
+                        )
+                    }
+                    </Grid>
+                </div>
+            );
+        }
+
+        return null;
+
     };
 
     renderSimilarActivations = () => {
@@ -88,38 +93,42 @@ export default class ActivationPage extends React.Component {
 
         const { l } = this.context.i18n;
 
-        return (
-            <div className='ActivationPage__similar-activations'>
-                <div className='ActivationPage__subheader'>
-                    {l('Similar tests')}
-                </div>
+        if (similarActivations && similarActivations.length) {
+            return (
+                <div className='ActivationPage__similar-activations'>
+                    <div className='ActivationPage__subheader'>
+                        {l('Similar tests')}
+                    </div>
 
-                <Grid className='ActivationPage__similar-activations-grid'>
-                {
-                    similarActivations.map((similarActivation, i) =>
-                        <Cell
-                            key    = {similarActivation.id}
-                            align  = 'stretch'
-                            col    = {3}
-                            phone  = {2}
-                            tablet = {3}>
-                            <QuizTile
-                                id                = {similarActivation.id}
-                                name              = {similarActivation.name}
-                                timeToPass        = {similarActivation.timeToPass}
-                                numberOfQuestions = {similarActivation.numberOfQuestions}
-                                pictureURL        = {similarActivation.pictureURL}
-                                author            = {similarActivation.author}
-                                isPassed          = {showUserResult && similarActivation.isPassed}
-                                userQuizSession   = {similarActivation.userQuizSession}
-                                onClick           = {onActivationClick.bind(null, similarActivation)}
-                            />
-                        </Cell>
-                    )
-                }
-                </Grid>
-            </div>
-        );
+                    <Grid className='ActivationPage__similar-activations-grid'>
+                    {
+                        similarActivations.map((similarActivation, i) =>
+                            <Cell
+                                key    = {similarActivation.id}
+                                align  = 'stretch'
+                                col    = {3}
+                                phone  = {2}
+                                tablet = {3}>
+                                <QuizTile
+                                    id                = {similarActivation.id}
+                                    name              = {similarActivation.name}
+                                    timeToPass        = {similarActivation.timeToPass}
+                                    numberOfQuestions = {similarActivation.numberOfQuestions}
+                                    pictureURL        = {similarActivation.pictureURL}
+                                    author            = {similarActivation.author}
+                                    isPassed          = {showUserResult && similarActivation.isPassed}
+                                    userQuizSession   = {similarActivation.userQuizSession}
+                                    onClick           = {onActivationClick.bind(null, similarActivation)}
+                                />
+                            </Cell>
+                        )
+                    }
+                    </Grid>
+                </div>
+            );
+        }
+
+        return null;
     };
 
     renderContent = () => {
