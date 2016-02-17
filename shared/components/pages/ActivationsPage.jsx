@@ -140,7 +140,7 @@ export default class ActivationsPage extends React.Component {
     render() {
         const {
             search,
-            sortBy,
+            sortType,
             selectedCategory,
             isSharing,
             isEmbedded,
@@ -211,13 +211,16 @@ export default class ActivationsPage extends React.Component {
                                 </Tab>
                             </Tabs>
 
-                            <select value={sortBy} onChange={onChangeSortType} className='ActivationPage__select'>
-                                <option value='popular'>
-                                    {l('Show popular first')}
-                                </option>
-
+                            <select
+                                defaultValue={sortType}
+                                onChange={onChangeSortType}
+                                className='ActivationPage__select'>
                                 <option value='new'>
                                     {l('Show new first')}
+                                </option>
+
+                                <option value='popular'>
+                                    {l('Show popular first')}
                                 </option>
                             </select>
                         </div>
