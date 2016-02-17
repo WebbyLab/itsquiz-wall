@@ -13,7 +13,7 @@
         height: 48px;
         background-color: @primary-1-color;
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
 
         @media @phone {
             width: 100%;
@@ -26,6 +26,10 @@
             &::-webkit-scrollbar {
                 display: none;
             }
+        }
+
+        .mdl-tabs {
+            width: auto;
         }
 
         .mdl-tabs__tab-bar {
@@ -64,7 +68,7 @@
         width: 100%;
         max-width: 1300px;
         box-sizing: border-box;
-        justify-content: space-between;
+        justify-content: center;
     }
 }
 
@@ -179,13 +183,13 @@
     text-transform: uppercase;
     cursor: pointer;
     border: none;
-    height: 46px;
+    height: 49px;
     font-size: 14px;
     padding: 0 5px;
     font-weight: 500;
     color: @white-darker;
-    -webkit-appearance: none;
-    appearance: none;
+    // -webkit-appearance: none;
+    // appearance: none;
     margin: 0 10px;
 
     &:focus{
@@ -198,10 +202,6 @@
     margin-top: 70px;
     display: flex;
     justify-content: center;
-}
-
-.ActivationsPage__loading-next-spinner {
-
 }
 
 .ActivationsPage__quiz-card {
