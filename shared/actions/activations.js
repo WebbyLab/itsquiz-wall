@@ -4,25 +4,33 @@ import api from '../apiSingleton';
 
 export const LOAD_ACTIVATIONS_SUCCESS    = 'LOAD_ACTIVATIONS_SUCCESS';
 export const LOAD_ACTIVATIONS_FAIL       = 'LOAD_ACTIVATIONS_FAIL';
-export const CHANGE_ACTIVATIONS_CATEGORY = 'CHANGE_ACTIVATIONS_CATEGORY';
+export const LOAD_ACTIVATIONS_REQUEST = 'LOAD_ACTIVATIONS_REQUEST';
 
-export function loadActivations(params = {}, query = {}) {
+const LIMIT_PER_QUERY = 24;
+
+export function loadActivations(params = {}, query = {}, offset = 0) {
     return (dispatch) => {
         dispatch({
-            type      : CHANGE_ACTIVATIONS_CATEGORY,
-            category  : query.category
+            type      : LOAD_ACTIVATIONS_REQUEST,
+            category  : query.category,
+            sortType  : query.sortType
         });
 
         return api.activations.list({
+            offset,
             include     : 'users',
+            limit       : LIMIT_PER_QUERY,
             search      : query.search || '',
             category    : query.category !== 'SPECIAL' ? query.category : '',
             isSponsored : query.category === 'SPECIAL' ? true : '',
+            sortBy      : query.sortType || '',
             assigneeId  : query.assigneeId || ''
         }).then( ({ data, linked } ) => {
             dispatch({
+                offset,
                 type        : LOAD_ACTIVATIONS_SUCCESS,
                 activations : data.entities,
+                totalAmount : data.total,
                 search      : query.search,
                 category    : query.category,
                 users       : linked.users

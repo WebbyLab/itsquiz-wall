@@ -3,6 +3,7 @@
 import React, {Component, PropTypes} from 'react';
 import { connect }                   from 'react-redux';
 import strformat                     from 'strformat';
+import debounce                      from 'lodash/function/debounce';
 
 import { loadActivations, searchActivations } from '../../actions/activations';
 import connectDataFetchers                    from '../../lib/connectDataFetchers.jsx';
@@ -52,6 +53,15 @@ class ActivationsPageContainer extends Component {
         sendEvent('activation card', 'share', activation.name);
     };
 
+    handleChangeSortType = (e) => {
+        const newSortType = e.target.value;
+
+        this.props.history.pushState(null, this.props.location.pathname, {
+            ...this.props.location.query,
+            sortType : newSortType
+        });
+    };
+
     handleSpecialsSubscribe = () => {
         this.setState({
             isLoggingIn : true
@@ -86,6 +96,14 @@ class ActivationsPageContainer extends Component {
         });
     };
 
+    handleItemRenderRequest = (index) => {
+        const { activations, totalActivationsAmount } = this.props;
+
+        if (index + 1 < totalActivationsAmount && index + 1 >= activations.length) {
+            this.props.dispatch( loadActivations(this.props.params, this.props.location.query, activations.length) );
+        }
+    };
+
     componentDidMount() {
         embedEvents.subscribe({
             'SEARCH_QUIZ_WALL' : this.handleSearch
@@ -97,7 +115,8 @@ class ActivationsPageContainer extends Component {
         const nextQuery = nextProps.location.query;
 
         const needToReloadData = currentQuery.search !== nextQuery.search
-            || currentQuery.category !== nextQuery.category;
+            || currentQuery.category !== nextQuery.category
+            || currentQuery.sortType !== nextQuery.sortType;
 
         if (needToReloadData) {
             this.props.dispatch( loadActivations(nextProps.params, nextQuery) );
@@ -111,33 +130,41 @@ class ActivationsPageContainer extends Component {
     render() {
         return (
             <ActivationsPage
-                activations         = {this.props.activations}
-                search              = {this.props.search}
-                linkToShare         = {this.state.linkToShare}
-                selectedCategory    = {this.props.category}
-                isSharing           = {this.state.isSharing}
-                isLoggingIn         = {this.state.isLoggingIn}
-                isEmbedded          = {this.props.location.query.embed}
-                isLoading           = {this.props.isLoading}
-                isEmpty             = {this.props.activations.length === 0}
-                onItemClick         = {this.handleQuizCardClick}
-                onSearch            = {this.handleSearch}
-                onShare             = {this.handleShare}
-                onLoginClose        = {this.handleLoginClose}
-                onSpecialsSubscribe = {this.handleSpecialsSubscribe}
-                onTabChange         = {this.handleTabChange}
-                onStopSharing       = {this.handleStopSharing}
+                activations            = {this.props.activations}
+                totalActivationsAmount = {this.props.totalActivationsAmount}
+                search                 = {this.props.search}
+                linkToShare            = {this.state.linkToShare}
+                sortType               = {this.props.sortType}
+                selectedCategory       = {this.props.category}
+                isSharing              = {this.state.isSharing}
+                isLoggingIn            = {this.state.isLoggingIn}
+                isEmbedded             = {this.props.location.query.embed}
+                isLoading              = {this.props.isLoading}
+                isEmpty                = {this.props.activations.length === 0}
+                onItemClick            = {this.handleQuizCardClick}
+                onSearch               = {this.handleSearch}
+                onShare                = {this.handleShare}
+                onLoginClose           = {this.handleLoginClose}
+                onSpecialsSubscribe    = {this.handleSpecialsSubscribe}
+                onTabChange            = {this.handleTabChange}
+                onItemRenderRequest    = {this.handleItemRenderRequest}
+                onChangeSortType       = {this.handleChangeSortType}
+                onStopSharing          = {this.handleStopSharing}
             />
         );
     }
 }
 
-function mapStateToProps({ activations: {entitiesByCategory, search, category, isLoading} }) {
+function mapStateToProps({ activations }) {
+    const { entitiesByCategory, sortType, search, category, isLoading, totalActivationsAmount } = activations;
+
     return {
-        activations : entitiesByCategory[category] || [],
+        totalActivationsAmount,
         isLoading,
         search,
-        category
+        category,
+        sortType: sortType || 'new',
+        activations: entitiesByCategory[category] || []
     };
 }
 

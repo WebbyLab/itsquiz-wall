@@ -33,11 +33,25 @@ export default class QuizCard extends Component {
         this.props.onClick();
     };
 
+    getCategoryLabel = (category) => {
+        const { l } = this.context.i18n;
+
+        const categoryLabels = {
+            'EDUCATION': l('Education'),
+            'ENTERTAINMENT': l('Entertainment'),
+            'VACANCY': l('Vacancy')
+        };
+
+        return categoryLabels[category];
+    };
+
     render() {
         const {
             id,
             name,
             message,
+            className,
+            category,
             timeToPass,
             numberOfQuestions,
             pictureURL,
@@ -48,9 +62,10 @@ export default class QuizCard extends Component {
             onClick,
             onShare
         } = this.props;
+
         const { l, ngettext, humanizeDuration } = this.context.i18n;
 
-        const classes = cx('QuizCard', {
+        const classes = cx('QuizCard', className, {
             'QuizCard--sponsored': isSponsored
         });
 
@@ -88,6 +103,10 @@ export default class QuizCard extends Component {
                         </div>
                         : null
                     }
+
+                    <div className='QuizCard__category'>
+                        {this.getCategoryLabel(category)}
+                    </div>
                 </div>
 
                 <div className='QuizCard__content'>
