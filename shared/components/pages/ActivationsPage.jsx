@@ -81,6 +81,7 @@ export default class ActivationsPage extends React.Component {
 
     renderContent = () => {
         const { l } = this.context.i18n;
+
         const {
             activations,
             totalActivationsAmount,
@@ -208,7 +209,7 @@ export default class ActivationsPage extends React.Component {
                             </Tabs>
 
                             <select
-                                defaultValue={sortType}
+                                value={sortType}
                                 onChange={onChangeSortType}
                                 className='ActivationPage__select'>
                                 <option value='new'>
