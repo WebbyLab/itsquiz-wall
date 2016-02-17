@@ -2,7 +2,8 @@ import React from 'react';
 import cx    from 'classnames';
 
 import { Tab, Tabs }  from 'react-mdl/lib/Tabs';
-import Grid, { Cell } from 'react-mdl/lib/Grid';
+import ReactList      from 'react-list';
+import { Card }           from 'react-mdl/lib/Card';
 import Spinner        from 'react-mdl/lib/Spinner';
 import Button         from 'react-mdl/lib/Button';
 
@@ -30,9 +31,65 @@ export default class ActivationsPage extends React.Component {
         onSearch    : React.PropTypes.func
     };
 
+    componentWillUpdate() {
+        console.log('componentWillUpdate');
+    }
+
+    renderQuizItem = (index, key) => {
+        const { onShare, onItemClick, onItemRenderRequest, activations } = this.props;
+
+        const activation = activations[index];
+
+        onItemRenderRequest(index);
+
+        if (!activation) {
+            return (
+                <Card className='ActivationsPage__loading-card' key={key}>
+                    <Spinner className='ActivationsPage__card-spinner' />
+                </Card>
+            );
+        }
+
+        return (
+            <QuizCard
+                id                = {activation.id}
+                key               = {key}
+                className         = 'ActivationsPage__quiz-card'
+                name              = {activation.name}
+                message           = {activation.message}
+                numberOfQuestions = {activation.numberOfQuestions}
+                timeToPass        = {activation.timeToPass}
+                userQuizSession   = {activation.userQuizSession}
+                pictureURL        = {activation.pictureURL}
+                author            = {activation.author}
+                isSponsored       = {activation.isSponsored}
+                isPassed          = {activation.isPassed}
+                onShare           = {onShare.bind(this, activation)}
+                onClick           = {onItemClick.bind(this, activation)}
+            />
+        );
+    };
+
+    renderQuizItemsGrid = (items, ref) => {
+        return (
+            <div className='ActivationsPage__grid' ref={ref}>
+                {items}
+            </div>
+        );
+    };
+
     renderContent = () => {
         const { l } = this.context.i18n;
-        const { activations, search, isLoading, isEmpty, onItemClick, onSubscribe, onShare } = this.props;
+        const {
+            activations,
+            totalActivationsAmount,
+            search,
+            isLoading,
+            isEmpty,
+            onItemClick,
+            onSubscribe,
+            onShare
+        } = this.props;
 
         if (isLoading) {
             return <Spinner className='ActivationsPage__spinner' />;
@@ -54,32 +111,26 @@ export default class ActivationsPage extends React.Component {
             );
         }
 
+        console.log(activations.length, totalActivationsAmount, activations.length < totalActivationsAmount);
+
         return (
-            <Grid className='ActivationsPage__list'>
-                {activations.map( activation =>
-                    <Cell
-                        key    = {activation.id}
-                        align  = 'top'
-                        col    = {3}
-                        tablet = {4}
-                        phone  = {12}>
-                        <QuizCard
-                            id                = {activation.id}
-                            name              = {activation.name}
-                            message           = {activation.message}
-                            numberOfQuestions = {activation.numberOfQuestions}
-                            timeToPass        = {activation.timeToPass}
-                            userQuizSession   = {activation.userQuizSession}
-                            pictureURL        = {activation.pictureURL}
-                            author            = {activation.author}
-                            isSponsored       = {activation.isSponsored}
-                            isPassed          = {activation.isPassed}
-                            onShare           = {onShare.bind(this, activation)}
-                            onClick           = {onItemClick.bind(this, activation)}
-                        />
-                    </Cell>
-                )}
-            </Grid>
+            <div className='ActivationsPage__activations'>
+                <ReactList
+                    itemRenderer={this.renderQuizItem}
+                    itemsRenderer={this.renderQuizItemsGrid}
+                    length={activations.length}
+                    threshold={200}
+                    type='uniform'
+                />
+
+                {
+                    activations.length < totalActivationsAmount
+                    ? <div className='ActivationsPage__loading-next-spinner-container'>
+                        <Spinner className='ActivationsPage__loading-next-spinner' />
+                    </div>
+                    : null
+                }
+            </div>
         );
     };
 

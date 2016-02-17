@@ -1,0 +1,43 @@
+{
+    "apiPrefix": "http://localhost:8080/api/v1",
+    "backgroundImagesPrefix": "http://app.qas.itsquiz.com/be/static/images/backgrounds/",
+    "staticUrl": "http://localhost:8050",
+    "loginUrl": "http://localhost:8090/{lang}/login",
+    "embedOrigin": "http://localhost:8090",
+    "socialAuthURL": "http://localhost:8080/api/v1/auth/{socialType}?lang={lang}&continue={continueRoute}&ref={ref}",
+    "emailAuthURL": "http://localhost:8090/{lang}/login?opened=true&continue={continueRoute}&ref={ref}",
+    "facebookAppId": "XXX",
+    "gaTrackingCode": "XXX",
+    "quizwallShareLink": "http://itsquiz.com/{lang}/activations",
+    "welcomeLinks": {
+        "createTest": "http://localhost:8080/{lang}/login?continue=%2Fquestions",
+        "aboutItsquiz": "http://itsquiz.com/about/",
+        "discoverTests": "http://localhost:3001/{lang}/activations?skipWelcomeDialog=true",
+        "englishCampaign": "http://itsquiz.com/activations?skipWelcomeDialog=true&search=специальное+предложение"
+    },
+    "footerLinks": {
+        "twitter": "http://twitter.com/itsquizcom",
+        "facebook": "https://www.facebook.com/itsquiz",
+        "youtube": "https://www.youtube.com/channel/UClU6b5mtTVPPAv_L9dUzl_g",
+        "supportPage": "http://itsquiz.userecho.com/",
+        "suggestIdea": "http://itsquiz.userecho.com/",
+        "aboutItsquiz": "http://itsquiz.com/about/",
+        "ourTeam": "http://itsquiz.com/about/#team",
+        "helpMe": "mailto:support@itsquiz.com"
+    },
+    "customShareInfo": {
+        "kmda": {
+            "title": "Я склав тест з Англійської мови та набрав {score} балів",
+            "description": "Cras sagittis. Sed aliquam ultrices mauris. Quisque malesuada placerat nisl. Vestibulum volutpat pretium libero.",
+            "pictureURL": "http://i.telegraph.co.uk/multimedia/archive/02690/Anne-Guichard_2690182k.jpg",
+            "redirectRoute": "/activations?search=english"
+        }
+    },
+    "ads": {
+        "activationPage": {
+            "client": "ca-pub-1021334165202417",
+            "slot": "6202399281",
+            "format": "auto"
+        }
+    }
+}

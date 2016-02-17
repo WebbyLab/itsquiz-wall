@@ -38,6 +38,7 @@ export default class QuizCard extends Component {
             id,
             name,
             message,
+            className,
             timeToPass,
             numberOfQuestions,
             pictureURL,
@@ -50,7 +51,7 @@ export default class QuizCard extends Component {
         } = this.props;
         const { l, ngettext, humanizeDuration } = this.context.i18n;
 
-        const classes = cx('QuizCard', {
+        const classes = cx('QuizCard', className, {
             'QuizCard--sponsored': isSponsored
         });
 

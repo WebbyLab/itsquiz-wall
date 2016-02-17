@@ -3,6 +3,7 @@
 import React, {Component, PropTypes} from 'react';
 import { connect }                   from 'react-redux';
 import strformat                     from 'strformat';
+import debounce                      from 'lodash/function/debounce';
 
 import { loadActivations, searchActivations } from '../../actions/activations';
 import connectDataFetchers                    from '../../lib/connectDataFetchers.jsx';
@@ -24,6 +25,15 @@ class ActivationsPageContainer extends Component {
         isSharing   : false,
         isLoggingIn : false
     };
+
+    constructor() {
+        super();
+
+        this.handleItemRenderRequest = debounce(this.handleItemRenderRequest, 100, {
+            leading  : true,
+            trailing : false
+        });
+    }
 
     handleQuizCardClick = (activation) => {
         this.props.history.pushState(null, `/activations/${activation.id}`, {
@@ -86,6 +96,15 @@ class ActivationsPageContainer extends Component {
         });
     };
 
+    handleItemRenderRequest = (index) => {
+        const { activations, totalActivationsAmount } = this.props;
+
+        if (index + 30 < totalActivationsAmount && index + 30 >= activations.length) {
+            console.log('load', activations.length);
+            this.props.dispatch( loadActivations(this.props.params, this.props.location.query, activations.length) );
+        }
+    };
+
     componentDidMount() {
         embedEvents.subscribe({
             'SEARCH_QUIZ_WALL' : this.handleSearch
@@ -93,6 +112,8 @@ class ActivationsPageContainer extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        console.log('componentWillReceiveProps');
+
         const currentQuery = this.props.location.query;
         const nextQuery = nextProps.location.query;
 
@@ -111,33 +132,38 @@ class ActivationsPageContainer extends Component {
     render() {
         return (
             <ActivationsPage
-                activations         = {this.props.activations}
-                search              = {this.props.search}
-                linkToShare         = {this.state.linkToShare}
-                selectedCategory    = {this.props.category}
-                isSharing           = {this.state.isSharing}
-                isLoggingIn         = {this.state.isLoggingIn}
-                isEmbedded          = {this.props.location.query.embed}
-                isLoading           = {this.props.isLoading}
-                isEmpty             = {this.props.activations.length === 0}
-                onItemClick         = {this.handleQuizCardClick}
-                onSearch            = {this.handleSearch}
-                onShare             = {this.handleShare}
-                onLoginClose        = {this.handleLoginClose}
-                onSpecialsSubscribe = {this.handleSpecialsSubscribe}
-                onTabChange         = {this.handleTabChange}
-                onStopSharing       = {this.handleStopSharing}
+                activations            = {this.props.activations}
+                totalActivationsAmount = {this.props.totalActivationsAmount}
+                search                 = {this.props.search}
+                linkToShare            = {this.state.linkToShare}
+                selectedCategory       = {this.props.category}
+                isSharing              = {this.state.isSharing}
+                isLoggingIn            = {this.state.isLoggingIn}
+                isEmbedded             = {this.props.location.query.embed}
+                isLoading              = {this.props.isLoading}
+                isEmpty                = {this.props.activations.length === 0}
+                onItemClick            = {this.handleQuizCardClick}
+                onSearch               = {this.handleSearch}
+                onShare                = {this.handleShare}
+                onLoginClose           = {this.handleLoginClose}
+                onSpecialsSubscribe    = {this.handleSpecialsSubscribe}
+                onTabChange            = {this.handleTabChange}
+                onItemRenderRequest    = {this.handleItemRenderRequest}
+                onStopSharing          = {this.handleStopSharing}
             />
         );
     }
 }
 
-function mapStateToProps({ activations: {entitiesByCategory, search, category, isLoading} }) {
+function mapStateToProps({ activations: { entitiesByCategory, search, category, isLoading, totalActivationsAmount } }) {
+    const activations = entitiesByCategory[category] || [];
+
     return {
-        activations : entitiesByCategory[category] || [],
+        totalActivationsAmount,
         isLoading,
         search,
-        category
+        category,
+        activations
     };
 }
 
