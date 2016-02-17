@@ -31,10 +31,6 @@ export default class ActivationsPage extends React.Component {
         onSearch    : React.PropTypes.func
     };
 
-    componentWillUpdate() {
-        console.log('componentWillUpdate');
-    }
-
     renderQuizItem = (index, key) => {
         const { onShare, onItemClick, onItemRenderRequest, activations } = this.props;
 
@@ -216,11 +212,11 @@ export default class ActivationsPage extends React.Component {
                                 onChange={onChangeSortType}
                                 className='ActivationPage__select'>
                                 <option value='new'>
-                                    {l('Show new first')}
+                                    {l('Newest first')}
                                 </option>
 
                                 <option value='popular'>
-                                    {l('Show popular first')}
+                                    {l('Popular first')}
                                 </option>
                             </select>
                         </div>

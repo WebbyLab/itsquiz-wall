@@ -158,8 +158,6 @@ class ActivationsPageContainer extends Component {
 function mapStateToProps({ activations }) {
     const { entitiesByCategory, sortType, search, category, isLoading, totalActivationsAmount } = activations;
 
-    console.log(activations);
-
     return {
         totalActivationsAmount,
         isLoading,
