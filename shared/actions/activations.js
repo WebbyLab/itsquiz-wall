@@ -7,7 +7,7 @@ export const LOAD_ACTIVATIONS_FAIL       = 'LOAD_ACTIVATIONS_FAIL';
 export const LOAD_ACTIVATIONS_REQUEST = 'LOAD_ACTIVATIONS_REQUEST';
 export const LOAD_NEXT_ACTIVATIONS       = 'LOAD_NEXT_ACTIVATIONS';
 
-const LIMIT_PER_QUERY = 60;
+const LIMIT_PER_QUERY = 24;
 
 export function loadActivations(params = {}, query = {}, offset = 0) {
     return (dispatch) => {

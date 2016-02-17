@@ -1,11 +1,11 @@
 import React from 'react';
 import cx    from 'classnames';
 
-import { Tab, Tabs }  from 'react-mdl/lib/Tabs';
-import ReactList      from 'react-list';
-import { Card }           from 'react-mdl/lib/Card';
-import Spinner        from 'react-mdl/lib/Spinner';
-import Button         from 'react-mdl/lib/Button';
+import { Tab, Tabs } from 'react-mdl/lib/Tabs';
+import ReactList     from 'react-list';
+import { Card }      from 'react-mdl/lib/Card';
+import Spinner       from 'react-mdl/lib/Spinner';
+import Button        from 'react-mdl/lib/Button';
 
 import QuizCard    from '../QuizCard.jsx';
 import AppBar      from '../AppBar.jsx';
@@ -119,7 +119,7 @@ export default class ActivationsPage extends React.Component {
                     itemRenderer={this.renderQuizItem}
                     itemsRenderer={this.renderQuizItemsGrid}
                     length={activations.length}
-                    pageSize={60}
+                    pageSize={24}
                     type='simple'
                 />
 
