@@ -21,8 +21,14 @@ import {
     LOAD_USER_FAIL
 } from '../actions/users';
 
+const DEFAULT_STATE_1 = {
+    entitiesByCategory: {},
+    totalActivationsAmount: 0,
+    isLoadingNextActivations: false,
+    isLoading : true
+};
 
-function activations(state = { entitiesByCategory: {}, totalActivationsAmount: 0, isLoadingNextActivations: false, isLoading : true }, action) {
+function activations(state = DEFAULT_STATE_1, action) {
     switch (action.type) {
         case LOAD_ACTIVATIONS_SUCCESS: {
             const newActivations = action.activations.map(activation => {
