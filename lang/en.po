@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-11 18:05+0200\n"
+"POT-Creation-Date: 2016-02-17 16:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,6 +28,7 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:179
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:185
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:196
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:215
 msgid "View details"
 msgstr ""
 
@@ -74,6 +75,7 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:154
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:152
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:256
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:171
 #, javascript-format
 msgid "%d question"
 msgid_plural "%d questions"
@@ -104,6 +106,7 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:169
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:185
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:186
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:230
 msgid "Quizzes"
 msgstr ""
 
@@ -139,6 +142,7 @@ msgstr[1] ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:192
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:208
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:209
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:256
 msgid "All tests"
 msgstr ""
 
@@ -150,6 +154,7 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:197
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:213
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:214
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:261
 msgid "Vacancies"
 msgstr ""
 
@@ -161,6 +166,8 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:202
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:218
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:219
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:266
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:68
 msgid "Education"
 msgstr ""
 
@@ -172,18 +179,22 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:207
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:223
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:224
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:271
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:69
 msgid "Entertainment"
 msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:81
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:85
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:94
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:149
 msgid "Sorry, we couldn't find any tests for "
 msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:97
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:101
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:110
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:165
 msgid "There are no activations in this category yet"
 msgstr ""
 
@@ -319,6 +330,7 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:160
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:172
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:173
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:217
 msgid "Share this test"
 msgstr ""
 
@@ -425,6 +437,7 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:128
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:134
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:145
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:164
 msgid "Special proposition!"
 msgstr ""
 
@@ -549,11 +562,13 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:214
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:230
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:231
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:278
 msgid "Special offer"
 msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:243
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:244
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:309
 msgid "I want to receive new special offers"
 msgstr ""
 
@@ -579,4 +594,16 @@ msgstr ""
 
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:146
 msgid "Similar tests"
+msgstr ""
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:290
+msgid "Newest first"
+msgstr ""
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:295
+msgid "Popular first"
+msgstr ""
+
+#: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:70
+msgid "Vacancy"
 msgstr ""
