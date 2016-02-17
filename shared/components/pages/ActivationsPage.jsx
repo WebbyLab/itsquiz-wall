@@ -120,7 +120,7 @@ export default class ActivationsPage extends React.Component {
                     itemsRenderer={this.renderQuizItemsGrid}
                     length={activations.length}
                     threshold={200}
-                    type='uniform'
+                    type='simple'
                 />
 
                 {

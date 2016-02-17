@@ -29,7 +29,7 @@ class ActivationsPageContainer extends Component {
     constructor() {
         super();
 
-        this.handleItemRenderRequest = debounce(this.handleItemRenderRequest, 100, {
+        this.handleItemRenderRequest = debounce(this.handleItemRenderRequest, 50, {
             leading  : true,
             trailing : false
         });
