@@ -158,12 +158,14 @@ class ActivationsPageContainer extends Component {
 function mapStateToProps({ activations }) {
     const { entitiesByCategory, sortType, search, category, isLoading, totalActivationsAmount } = activations;
 
+    console.log(activations);
+
     return {
         totalActivationsAmount,
         isLoading,
         search,
         category,
-        sortType,
+        sortType: sortType || 'new',
         activations: entitiesByCategory[category] || []
     };
 }

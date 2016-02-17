@@ -122,7 +122,8 @@ export default class ActivationsPage extends React.Component {
                     itemRenderer={this.renderQuizItem}
                     itemsRenderer={this.renderQuizItemsGrid}
                     length={activations.length}
-                    type='uniform'
+                    pageSize={60}
+                    type='simple'
                 />
 
                 {
