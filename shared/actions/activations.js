@@ -25,7 +25,7 @@ export function loadActivations(params = {}, query = {}, offset = 0) {
             search      : query.search || '',
             category    : query.category !== 'SPECIAL' ? query.category : '',
             isSponsored : query.category === 'SPECIAL' ? true : '',
-            sortBy      : 'popular',
+            sortBy      : query.sortBy || '',
             assigneeId  : query.assigneeId || ''
         }).then( ({ data, linked } ) => {
             dispatch({

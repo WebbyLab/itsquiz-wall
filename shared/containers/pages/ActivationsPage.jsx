@@ -53,6 +53,15 @@ class ActivationsPageContainer extends Component {
         sendEvent('activation card', 'share', activation.name);
     };
 
+    handleChangeSortType = (e) => {
+        const newSortType = e.target.value;
+
+        this.props.history.pushState(null, this.props.location.pathname, {
+            ...this.props.location.query,
+            sortBy : newSortType
+        });
+    };
+
     handleSpecialsSubscribe = () => {
         this.setState({
             isLoggingIn : true
@@ -102,13 +111,12 @@ class ActivationsPageContainer extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('componentWillReceiveProps');
-
         const currentQuery = this.props.location.query;
         const nextQuery = nextProps.location.query;
 
         const needToReloadData = currentQuery.search !== nextQuery.search
-            || currentQuery.category !== nextQuery.category;
+            || currentQuery.category !== nextQuery.category
+            || currentQuery.sortBy !== nextQuery.sortBy;
 
         if (needToReloadData) {
             this.props.dispatch( loadActivations(nextProps.params, nextQuery) );
@@ -126,6 +134,7 @@ class ActivationsPageContainer extends Component {
                 totalActivationsAmount = {this.props.totalActivationsAmount}
                 search                 = {this.props.search}
                 linkToShare            = {this.state.linkToShare}
+                sortType               = {this.props.location.query.sortBy || 'new'}
                 selectedCategory       = {this.props.category}
                 isSharing              = {this.state.isSharing}
                 isLoggingIn            = {this.state.isLoggingIn}
@@ -139,6 +148,7 @@ class ActivationsPageContainer extends Component {
                 onSpecialsSubscribe    = {this.handleSpecialsSubscribe}
                 onTabChange            = {this.handleTabChange}
                 onItemRenderRequest    = {this.handleItemRenderRequest}
+                onChangeSortType       = {this.handleChangeSortType}
                 onStopSharing          = {this.handleStopSharing}
             />
         );

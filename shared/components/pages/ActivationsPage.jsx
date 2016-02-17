@@ -75,8 +75,8 @@ export default class ActivationsPage extends React.Component {
         const { l } = this.context.i18n;
 
         return (
-            <div className='ActivationsPage__grid-container' ref={ref}>
-                <div className='ActivationsPage__grid'>
+            <div className='ActivationsPage__grid-container'>
+                <div className='ActivationsPage__grid' ref={ref}>
                     {items}
                 </div>
             </div>
@@ -122,7 +122,6 @@ export default class ActivationsPage extends React.Component {
                     itemRenderer={this.renderQuizItem}
                     itemsRenderer={this.renderQuizItemsGrid}
                     length={activations.length}
-                    threshold={200}
                     type='uniform'
                 />
 
@@ -140,6 +139,7 @@ export default class ActivationsPage extends React.Component {
     render() {
         const {
             search,
+            sortBy,
             selectedCategory,
             isSharing,
             isEmbedded,
@@ -148,6 +148,7 @@ export default class ActivationsPage extends React.Component {
             linkToShare,
             onSearch,
             onSpecialsSubscribe,
+            onChangeSortType,
             onTabChange,
             onLoginClose,
             onStopSharing
@@ -209,7 +210,7 @@ export default class ActivationsPage extends React.Component {
                                 </Tab>
                             </Tabs>
 
-                            <select className='ActivationPage__select'>
+                            <select value={sortBy} onChange={onChangeSortType} className='ActivationPage__select'>
                                 <option value='popular'>
                                     {l('Show popular first')}
                                 </option>
