@@ -9,14 +9,16 @@
     display: flex;
     flex-direction: column;
 
-    .ActivationsPage__tab-bar {
+    .ActivationsPage__toolbar-container {
         height: 48px;
         background-color: @primary-1-color;
         display: flex;
+        justify-content: flex-start;
 
         @media @phone {
             width: 100%;
             overflow: auto;
+
             .mdl-tabs {
                 width: 500px;
             }
@@ -53,6 +55,16 @@
         .mdl-tabs__tab.is-active::after {
             background: @accent-1-color;
         }
+    }
+
+    .ActivationsPage__toolbar {
+        display: flex;
+        padding-left: 50px;
+        padding-right: 50px;
+        width: 100%;
+        max-width: 1300px;
+        box-sizing: border-box;
+        justify-content: space-between;
     }
 }
 
@@ -111,7 +123,7 @@
         display: none;
     }
 
-    .ActivationsPage__tab-bar {
+    .ActivationsPage__toolbar-container {
         background-color: @white-darker;
         top: 0;
 
@@ -138,12 +150,47 @@
     }
 }
 
-.ActivationsPage__grid {
+.ActivationsPage__grid-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     max-width: 1300px;
     align-items: center;
     justify-content: center;
+}
+
+.ActivationsPage__grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.ActivationsPage__grid-toolbar {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.ActivationPage__select {
+    background-color: transparent;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    height: 46px;
+    font-size: 14px;
+    padding: 0 5px;
+    font-weight: 500;
+    color: @white-darker;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0 10px;
+
+    &:focus{
+        outline: 0;
+    }
 }
 
 .ActivationsPage__loading-next-spinner-container {

@@ -26,15 +26,6 @@ class ActivationsPageContainer extends Component {
         isLoggingIn : false
     };
 
-    constructor() {
-        super();
-
-        this.handleItemRenderRequest = debounce(this.handleItemRenderRequest, 50, {
-            leading  : true,
-            trailing : false
-        });
-    }
-
     handleQuizCardClick = (activation) => {
         this.props.history.pushState(null, `/activations/${activation.id}`, {
             embed : this.props.location.query.embed,
@@ -99,8 +90,7 @@ class ActivationsPageContainer extends Component {
     handleItemRenderRequest = (index) => {
         const { activations, totalActivationsAmount } = this.props;
 
-        if (index + 30 < totalActivationsAmount && index + 30 >= activations.length) {
-            console.log('load', activations.length);
+        if (index + 1 < totalActivationsAmount && index + 1 >= activations.length) {
             this.props.dispatch( loadActivations(this.props.params, this.props.location.query, activations.length) );
         }
     };

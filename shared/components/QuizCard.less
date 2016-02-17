@@ -35,13 +35,25 @@
     position: absolute;
     top: 0;
     left:0;
-    background-color: rgba(0, 0, 0, 0.35);
     display: flex;
     transition: .3s;
+    background-color: rgba(0, 0, 0, 0.35);
 
     &:hover {
         opacity: 0;
     }
+}
+
+.QuizCard__category {
+    background-color: @black-dark;
+    color: @white-darker;
+    padding: 3px 5px;
+    position: absolute;
+    bottom: 4px;
+    left: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 2px;
 }
 
 .QuizCard__user-score {

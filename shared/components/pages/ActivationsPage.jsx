@@ -62,6 +62,7 @@ export default class ActivationsPage extends React.Component {
                 userQuizSession   = {activation.userQuizSession}
                 pictureURL        = {activation.pictureURL}
                 author            = {activation.author}
+                category          = {activation.category}
                 isSponsored       = {activation.isSponsored}
                 isPassed          = {activation.isPassed}
                 onShare           = {onShare.bind(this, activation)}
@@ -71,9 +72,13 @@ export default class ActivationsPage extends React.Component {
     };
 
     renderQuizItemsGrid = (items, ref) => {
+        const { l } = this.context.i18n;
+
         return (
-            <div className='ActivationsPage__grid' ref={ref}>
-                {items}
+            <div className='ActivationsPage__grid-container' ref={ref}>
+                <div className='ActivationsPage__grid'>
+                    {items}
+                </div>
             </div>
         );
     };
@@ -111,8 +116,6 @@ export default class ActivationsPage extends React.Component {
             );
         }
 
-        console.log(activations.length, totalActivationsAmount, activations.length < totalActivationsAmount);
-
         return (
             <div className='ActivationsPage__activations'>
                 <ReactList
@@ -120,7 +123,7 @@ export default class ActivationsPage extends React.Component {
                     itemsRenderer={this.renderQuizItemsGrid}
                     length={activations.length}
                     threshold={200}
-                    type='simple'
+                    type='uniform'
                 />
 
                 {
@@ -182,28 +185,40 @@ export default class ActivationsPage extends React.Component {
                         onSearch      = {onSearch}
                     />
 
-                    <div className='ActivationsPage__tab-bar'>
-                        <Tabs
-                            ripple    = {true}
-                            activeTab = {selectedCategory ? CATEGORIES.indexOf(selectedCategory) : 0}
-                            className = 'ActivationsPage__tabs'
-                            onChange  = {(index) => onTabChange(CATEGORIES[index])}>
-                            <Tab href='/activations'>
-                                {l('All tests')}
-                            </Tab>
-                            <Tab href='/activations?category=vacancy'>
-                                {l('Vacancies')}
-                            </Tab>
-                            <Tab href='/activations?category=education'>
-                                {l('Education')}
-                            </Tab>
-                            <Tab href='/activations?category=entertainment'>
-                                {l('Entertainment')}
-                            </Tab>
-                            <Tab href='/activations?category=special' className='ActivationsPage__special-tab'>
-                                <Icon type='gift' />  {l('Special offer')}
-                            </Tab>
-                        </Tabs>
+                    <div className='ActivationsPage__toolbar-container'>
+                        <div className='ActivationsPage__toolbar'>
+                            <Tabs
+                                ripple    = {true}
+                                activeTab = {selectedCategory ? CATEGORIES.indexOf(selectedCategory) : 0}
+                                className = 'ActivationsPage__tabs'
+                                onChange  = {(index) => onTabChange(CATEGORIES[index])}>
+                                <Tab href='/activations'>
+                                    {l('All tests')}
+                                </Tab>
+                                <Tab href='/activations?category=vacancy'>
+                                    {l('Vacancies')}
+                                </Tab>
+                                <Tab href='/activations?category=education'>
+                                    {l('Education')}
+                                </Tab>
+                                <Tab href='/activations?category=entertainment'>
+                                    {l('Entertainment')}
+                                </Tab>
+                                <Tab href='/activations?category=special' className='ActivationsPage__special-tab'>
+                                    <Icon type='gift' />  {l('Special offer')}
+                                </Tab>
+                            </Tabs>
+
+                            <select className='ActivationPage__select'>
+                                <option value='popular'>
+                                    {l('Show popular first')}
+                                </option>
+
+                                <option value='new'>
+                                    {l('Show new first')}
+                                </option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
