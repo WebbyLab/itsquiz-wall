@@ -4,7 +4,7 @@ import api from '../apiSingleton';
 
 export const LOAD_ACTIVATIONS_SUCCESS    = 'LOAD_ACTIVATIONS_SUCCESS';
 export const LOAD_ACTIVATIONS_FAIL       = 'LOAD_ACTIVATIONS_FAIL';
-export const CHANGE_ACTIVATIONS_CATEGORY = 'CHANGE_ACTIVATIONS_CATEGORY';
+export const LOAD_ACTIVATIONS_REQUEST = 'LOAD_ACTIVATIONS_REQUEST';
 export const LOAD_NEXT_ACTIVATIONS       = 'LOAD_NEXT_ACTIVATIONS';
 
 const LIMIT_PER_QUERY = 60;
@@ -12,11 +12,10 @@ const LIMIT_PER_QUERY = 60;
 export function loadActivations(params = {}, query = {}, offset = 0) {
     return (dispatch) => {
         dispatch({
-            type      : CHANGE_ACTIVATIONS_CATEGORY,
-            category  : query.category
+            type      : LOAD_ACTIVATIONS_REQUEST,
+            category  : query.category,
+            sortType  : query.sortType
         });
-
-        console.log('offset', offset);
 
         return api.activations.list({
             offset,
@@ -25,7 +24,7 @@ export function loadActivations(params = {}, query = {}, offset = 0) {
             search      : query.search || '',
             category    : query.category !== 'SPECIAL' ? query.category : '',
             isSponsored : query.category === 'SPECIAL' ? true : '',
-            sortBy      : query.sortBy || '',
+            sortBy      : query.sortType || '',
             assigneeId  : query.assigneeId || ''
         }).then( ({ data, linked } ) => {
             dispatch({

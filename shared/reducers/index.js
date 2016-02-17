@@ -1,6 +1,6 @@
 'use strict';
 
-import { combineReducers } from 'redux';
+import { combineReducers }  from 'redux';
 import apiResponseFormatter from '../utils/apiResponseFormatter';
 
 import {
@@ -8,7 +8,7 @@ import {
     LOAD_ACTIVATION_REQUEST,
     LOAD_ACTIVATION_SUCCESS,
     LOAD_ACTIVATION_FAIL,
-    CHANGE_ACTIVATIONS_CATEGORY,
+    LOAD_ACTIVATIONS_REQUEST,
     LOAD_NEXT_ACTIVATIONS,
     LOAD_SIMILAR_ACTIVATIONS_REQUEST,
     LOAD_SIMILAR_ACTIVATIONS_SUCCESS,
@@ -25,7 +25,9 @@ const DEFAULT_STATE_1 = {
     entitiesByCategory: {},
     totalActivationsAmount: 0,
     isLoadingNextActivations: false,
-    isLoading : true
+    isLoading : true,
+    category : 'all',
+    sortType : 'new'
 };
 
 function activations(state = DEFAULT_STATE_1, action) {
@@ -62,18 +64,18 @@ function activations(state = DEFAULT_STATE_1, action) {
             };
         }
 
-        case CHANGE_ACTIVATIONS_CATEGORY: {
-            return {
-                ...state,
-                isLoading : !state.entitiesByCategory[action.category],
-                category : action.category
-            };
-        }
+        case LOAD_ACTIVATIONS_REQUEST: {
+            const isSortTypeChanged = state.sortType !== action.sortType;
 
-        case LOAD_NEXT_ACTIVATIONS: {
+            const isLoading = !state.entitiesByCategory[action.category]
+                || isSortTypeChanged;
+
             return {
                 ...state,
-                isLoadingNextActivations : !state.entitiesByCategory[action.category]
+                isLoading,
+                entitiesByCategory : isSortTypeChanged ? {} : state.entitiesByCategory,
+                category           : action.category,
+                sortType           : action.sortType
             };
         }
 

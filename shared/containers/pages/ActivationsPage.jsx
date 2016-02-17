@@ -58,7 +58,7 @@ class ActivationsPageContainer extends Component {
 
         this.props.history.pushState(null, this.props.location.pathname, {
             ...this.props.location.query,
-            sortBy : newSortType
+            sortType : newSortType
         });
     };
 
@@ -116,7 +116,7 @@ class ActivationsPageContainer extends Component {
 
         const needToReloadData = currentQuery.search !== nextQuery.search
             || currentQuery.category !== nextQuery.category
-            || currentQuery.sortBy !== nextQuery.sortBy;
+            || currentQuery.sortType !== nextQuery.sortType;
 
         if (needToReloadData) {
             this.props.dispatch( loadActivations(nextProps.params, nextQuery) );
@@ -134,7 +134,7 @@ class ActivationsPageContainer extends Component {
                 totalActivationsAmount = {this.props.totalActivationsAmount}
                 search                 = {this.props.search}
                 linkToShare            = {this.state.linkToShare}
-                sortType               = {this.props.location.query.sortBy || 'new'}
+                sortType               = {this.props.sortType}
                 selectedCategory       = {this.props.category}
                 isSharing              = {this.state.isSharing}
                 isLoggingIn            = {this.state.isLoggingIn}
@@ -155,15 +155,16 @@ class ActivationsPageContainer extends Component {
     }
 }
 
-function mapStateToProps({ activations: { entitiesByCategory, search, category, isLoading, totalActivationsAmount } }) {
-    const activations = entitiesByCategory[category] || [];
+function mapStateToProps({ activations }) {
+    const { entitiesByCategory, sortType, search, category, isLoading, totalActivationsAmount } = activations;
 
     return {
         totalActivationsAmount,
         isLoading,
         search,
         category,
-        activations
+        sortType,
+        activations: entitiesByCategory[category] || []
     };
 }
 
