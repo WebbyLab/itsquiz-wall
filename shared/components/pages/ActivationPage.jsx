@@ -2,10 +2,10 @@ import React from 'react';
 import cx    from 'classnames';
 
 import { Card, CardTitle } from 'react-mdl/lib/Card';
-import Grid, { Cell }                   from 'react-mdl/lib/Grid';
-import Button                           from 'react-mdl/lib/Button';
-import IconButton                       from 'react-mdl/lib/IconButton';
-import Spinner                          from 'react-mdl/lib/Spinner';
+import Grid, { Cell }      from 'react-mdl/lib/Grid';
+import Button              from 'react-mdl/lib/Button';
+import IconButton          from 'react-mdl/lib/IconButton';
+import Spinner             from 'react-mdl/lib/Spinner';
 
 import QuizTile             from '../QuizTile.jsx';
 import Icon                 from '../Icon.jsx';
