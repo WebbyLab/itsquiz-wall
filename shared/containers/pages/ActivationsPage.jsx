@@ -111,6 +111,7 @@ class ActivationsPageContainer extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        console.log('componentWillReceiveProps', nextProps.activations);
         const currentQuery = this.props.location.query;
         const nextQuery = nextProps.location.query;
 

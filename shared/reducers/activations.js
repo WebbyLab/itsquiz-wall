@@ -38,7 +38,7 @@ export default function activations(state = DEFAULT_STATE, action) {
 
             const entitiesByCategory = {
                 ...entitiesByCategory,
-                [action.category]: loadedActivations
+                [state.category]: loadedActivations
             };
 
             return {

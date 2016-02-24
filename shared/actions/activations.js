@@ -81,7 +81,6 @@ export function loadSimilarActivations(params = {}, query = {}) {
     const assigneeId = query.assigneeId || params.userId || '';
     const similarTo = params.id;
 
-
     return dispatch => {
         dispatch({ type : LOAD_SIMILAR_ACTIVATIONS_REQUEST });
 
