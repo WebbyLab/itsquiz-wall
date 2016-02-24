@@ -1,3 +1,5 @@
+/* eslint react/no-did-mount-set-state: 0 */
+
 import React, { Component, PropTypes } from 'react';
 
 import MainLayout from '../../components/layouts/MainLayout.jsx';
@@ -17,7 +19,7 @@ export default class MainLayoutContainer extends Component {
         isWelcomeScreenShown: false
     };
 
-    componentWillMount() {
+    componentDidMount() {
         const skipWelcomeScreen = localStorage.getItem('skipWelcomeScreen');
         const { skipWelcomeDialog, ref } = this.props.location.query;
 
