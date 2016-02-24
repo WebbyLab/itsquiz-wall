@@ -2,17 +2,21 @@ import api from '../apiSingleton';
 
 export const LOAD_ACTIVATIONS_SUCCESS    = 'LOAD_ACTIVATIONS_SUCCESS';
 export const LOAD_ACTIVATIONS_FAIL       = 'LOAD_ACTIVATIONS_FAIL';
-export const LOAD_ACTIVATIONS_REQUEST = 'LOAD_ACTIVATIONS_REQUEST';
+export const LOAD_ACTIVATIONS_REQUEST    = 'LOAD_ACTIVATIONS_REQUEST';
 
 const LIMIT_PER_QUERY = 24;
 
 export function loadActivations(params = {}, query = {}, offset = 0) {
+    console.log('loadActivations', query);
+
     return (dispatch) => {
         dispatch({
             type      : LOAD_ACTIVATIONS_REQUEST,
             category  : query.category,
             sortType  : query.sortType
         });
+
+        console.log('dispatch');
 
         return api.activations.list({
             offset,
@@ -23,7 +27,9 @@ export function loadActivations(params = {}, query = {}, offset = 0) {
             isSponsored : query.category === 'SPECIAL' ? true : '',
             sortBy      : query.sortType || '',
             assigneeId  : query.assigneeId || ''
+
         }).then(({ data, linked }) => {
+            console.log('then', data);
             dispatch({
                 offset,
                 type        : LOAD_ACTIVATIONS_SUCCESS,

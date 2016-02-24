@@ -15,6 +15,7 @@ const DEFAULT_STATE = {
 };
 
 export default function activations(state = DEFAULT_STATE, action) {
+    console.log('activations', action);
     switch (action.type) {
         case LOAD_ACTIVATIONS_SUCCESS: {
             const newActivations = action.activations.map(activation => {

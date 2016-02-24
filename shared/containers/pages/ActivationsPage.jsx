@@ -118,6 +118,8 @@ class ActivationsPageContainer extends Component {
             || currentQuery.category !== nextQuery.category
             || currentQuery.sortType !== nextQuery.sortType;
 
+        console.log(currentQuery.search, nextQuery.search);
+
         if (needToReloadData) {
             this.props.dispatch( loadActivations(nextProps.params, nextQuery) );
         }

@@ -4,11 +4,11 @@ import React, {Component, PropTypes} from 'react';
 import { connect }                   from 'react-redux';
 import strformat                     from 'strformat';
 
-import { loadActivation, loadSimilarActivations }  from '../../actions/activations';
-import connectDataFetchers from '../../lib/connectDataFetchers.jsx';
-import EmbedEvents         from '../../utils/EmbedEventsUtil';
-import config              from '../../config';
-import { sendEvent }       from '../../utils/googleAnalytics';
+import { loadActivation, loadSimilarActivations } from '../../actions/activations';
+import connectDataFetchers                        from '../../lib/connectDataFetchers.jsx';
+import EmbedEvents                                from '../../utils/EmbedEventsUtil';
+import config                                     from '../../config';
+import { sendEvent }                              from '../../utils/googleAnalytics';
 
 import ActivationPage from '../../components/pages/ActivationPage.jsx';
 
