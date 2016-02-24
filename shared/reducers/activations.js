@@ -24,8 +24,8 @@ export default function activations(state = DEFAULT_STATE, action) {
                 return apiResponseFormatter.formatActivation(activation, author);
             });
 
-            const loadedActivations = state.entitiesByCategory[action.category]
-                ? state.entitiesByCategory[action.category].slice(0)
+            const loadedActivations = state.entitiesByCategory[state.category]
+                ? state.entitiesByCategory[state.category].slice(0)
                 : [];
 
             for (let i = 0; i < newActivations.length; i++) {
@@ -60,6 +60,7 @@ export default function activations(state = DEFAULT_STATE, action) {
             return {
                 ...state,
                 isLoading,
+                search             : action.search,
                 entitiesByCategory : isSortTypeChanged || isSearchChanged ? {} : state.entitiesByCategory,
                 category           : action.category,
                 sortType           : action.sortType

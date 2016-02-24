@@ -12,7 +12,7 @@ import Icon                 from '../Icon.jsx';
 import ShareDialog          from '../../containers/ShareDialog.jsx';
 import LoginDialog          from '../../containers/LoginDialog.jsx';
 import AppBarWithBackground from '../AppBarWithBackground.jsx';
-import GoogleAd             from '../../containers/GoogleAd.jsx'
+import GoogleAd             from '../../containers/GoogleAd.jsx';
 
 import { sprintf } from '../../utils';
 
