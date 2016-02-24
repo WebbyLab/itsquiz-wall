@@ -11,7 +11,7 @@ export function loadActivations(params = {}, query = {}, offset = 0) {
         dispatch({
             type      : LOAD_ACTIVATIONS_REQUEST,
             category  : query.category || 'all',
-            sortType  : query.sortType,
+            sortType  : query.sortType || 'new',
             search    : query.search || ''
         });
 
@@ -31,8 +31,6 @@ export function loadActivations(params = {}, query = {}, offset = 0) {
                 type        : LOAD_ACTIVATIONS_SUCCESS,
                 activations : data.entities,
                 totalAmount : data.total,
-                search      : query.search,
-                category    : query.category || 'all',
                 users       : linked.users
             });
         });

@@ -11,12 +11,11 @@ const DEFAULT_STATE = {
     isLoadingNextActivations: false,
     isLoading : true,
     category : 'all',
+    search: '',
     sortType : 'new'
 };
 
 export default function activations(state = DEFAULT_STATE, action) {
-    console.info(action.type, state);
-
     switch (action.type) {
         case LOAD_ACTIVATIONS_SUCCESS: {
             const newActivations = action.activations.map(activation => {
@@ -25,13 +24,9 @@ export default function activations(state = DEFAULT_STATE, action) {
                 return apiResponseFormatter.formatActivation(activation, author);
             });
 
-            console.log('loadedActivations1', newActivations, action.offset);
-
             const loadedActivations = state.entitiesByCategory[action.category]
                 ? state.entitiesByCategory[action.category].slice(0)
                 : [];
-
-            console.log('loadedActivations2', loadedActivations);
 
             for (let i = 0; i < newActivations.length; i++) {
                 if (action.offset + i < loadedActivations.length) {
@@ -41,20 +36,15 @@ export default function activations(state = DEFAULT_STATE, action) {
                 }
             }
 
-            console.log('loadedActivations3', loadedActivations);
-
             const entitiesByCategory = {
                 ...entitiesByCategory,
                 [state.category]: loadedActivations
             };
 
-            console.log(entitiesByCategory);
-
             return {
                 ...state,
                 entitiesByCategory,
                 totalActivationsAmount : action.totalAmount,
-                search                 : action.search,
                 isLoading              : false
             };
         }
