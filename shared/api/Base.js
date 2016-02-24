@@ -1,8 +1,6 @@
-'use strict';
-
 export default class Base {
-    constructor({apiClient}) {
-        if (!apiClient) throw '[apiClient] required';
+    constructor({ apiClient }) {
+        if (!apiClient) throw new Error('[apiClient] required');
         this.apiClient = apiClient;
     }
 }

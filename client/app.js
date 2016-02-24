@@ -1,5 +1,3 @@
-'use strict';
-
 import 'babel-core/polyfill';
 
 const DEFAULT_LOCALE = 'en';

@@ -1,14 +1,14 @@
-'use strict';
 import Promise     from 'bluebird';
 import geoip       from 'geoip-lite';
 import strformat   from 'strformat';
 
 import clientConfig                     from '../etc/client-config.json';
-import { getSupportedLocales, sprintf } from '../shared/utils';
+import { getSupportedLocales } from '../shared/utils';
 
 export function fetchComponentsData(dispatch, components, params, query) {
     const promises = components.map(current => {
         const component = current.WrappedComponent ? current.WrappedComponent : current;
+
         return component.fetchData
             ? component.fetchData(dispatch, params, query)
             : null;
@@ -20,6 +20,7 @@ export function fetchComponentsData(dispatch, components, params, query) {
 export function getMetaDataFromState({ route, state, lang = 'en', params = {}, query = {} }) {
     if (route === '/activations/:id') {
         const { name, message, pictureURL } = state.currentActivation.activation;
+
         return {
             title       : name,
             siteName    : "It's quiz",
@@ -35,7 +36,7 @@ export function getMetaDataFromState({ route, state, lang = 'en', params = {}, q
             en: 'I have passed test "{name}" and gained {score}%'
         };
 
-        const { isPassed, name, pictureURL, message, userQuizSession } = state.currentActivation.activation;
+        const { name, pictureURL, message, userQuizSession } = state.currentActivation.activation;
 
         return {
             title       : strformat(sharePhrases[lang], { name, score: userQuizSession.score }),
@@ -69,14 +70,16 @@ export function getMetaDataFromState({ route, state, lang = 'en', params = {}, q
     };
 }
 
-export function makeRedirectUrl({originalUrl}) {
+export function makeRedirectUrl({ originalUrl }) {
     const UIWallPath = `${clientConfig.embedOrigin}/quizwall`;
+
     return `${UIWallPath}${originalUrl}`;
 }
 
 export function detectLocale(req) {
     // Take locale passed by user
     const passedLocale = ( req.query.locale || req.cookies.locale || '' ).toLowerCase();
+
     if ( getSupportedLocales().indexOf(passedLocale) >= 0 ) {
         return passedLocale;
     }
@@ -87,8 +90,7 @@ export function detectLocale(req) {
     const country = ( geo && geo.country );
 
     return {
-        'UA': 'uk',
-        'RU': 'ru'
+        UA: 'uk',
+        RU: 'ru'
     }[country] || 'en';
 }
-

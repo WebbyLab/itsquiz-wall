@@ -1,8 +1,6 @@
-'use strict';
-
 import Jed from 'jed';
 
-export function getSupportedLocales(text, ...params) {
+export function getSupportedLocales() {
     return ['ru', 'en', 'uk'];
 }
 

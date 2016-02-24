@@ -10,8 +10,9 @@ export default class EmbedEventsUtil {
 
     handleEvents = (event) => {
         if (event.origin === this.embedOrigin) {
-            const {type, ...otherParams} = event.data;
+            const { type, ...otherParams } = event.data;
             const args = Object.keys(otherParams).map(key => otherParams[key]);
+
             return this.events[type] ? this.events[type](...args) : null;
         }
     };

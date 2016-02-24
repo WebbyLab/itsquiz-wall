@@ -1,5 +1,3 @@
-'use strict';
-
 import { gaTrackingCode } from '../config.js';
 
 export function initialize() {

@@ -1,12 +1,10 @@
-'use strict';
-
 import ApiClient      from './ApiClient';
 import ActivationsAPI from './Activations';
 import UsersAPI       from './Users';
 
-export default function({apiPrefix} = {}) {
+export default function ({ apiPrefix } = {}) {
     if (!apiPrefix) {
-        throw '[apiPrefix] required';
+        throw new Error('[apiPrefix] required');
     }
 
     const api = new ApiClient({ prefix: apiPrefix });

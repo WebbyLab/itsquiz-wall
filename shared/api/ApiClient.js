@@ -1,11 +1,9 @@
-'use strict';
-
 import fetch       from 'isomorphic-fetch';
 import queryString from 'query-string';
 import Promise     from 'bluebird';
 
 export default class ApiClient {
-    constructor( {prefix = 'api/v1'} = {} ) {
+    constructor( { prefix = 'api/v1' } = {} ) {
         this.prefix = prefix;
     }
 
@@ -51,7 +49,9 @@ export default class ApiClient {
 
     request({ url, method, params = {}, body }) {
         if (this.authToken) {
+            /* eslint-disable */
             params.token = this.authToken;
+            /* eslint-enable */
         }
 
         const urlWithQuery = `${url}?${queryString.stringify(params)}`;
@@ -59,7 +59,7 @@ export default class ApiClient {
         const init = {
             method,
             headers: {
-                'Accept': 'application/json',
+                Accept: 'application/json',
                 'Content-Type': 'application/json'
             }
         };

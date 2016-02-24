@@ -1,5 +1,3 @@
-'use strict';
-
 import { combineReducers } from 'redux';
 
 import activations       from './activations';

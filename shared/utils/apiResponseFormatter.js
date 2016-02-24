@@ -102,6 +102,7 @@ export default {
     _getBackgpoundURLById(id) {
         const number = parseInt(id, 16);
         const backgroundNumber = number % NUMBER_OF_BACKGROUNDS + 1;
+
         return `${backgroundImagesPrefix}${backgroundNumber}.jpg`;
     }
 };

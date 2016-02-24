@@ -1,5 +1,3 @@
-'use strict';
-
 import Provider from './Provider.jsx';
 import Tools    from './Tools';
 

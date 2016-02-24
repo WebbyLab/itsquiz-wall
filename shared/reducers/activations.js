@@ -2,8 +2,7 @@ import apiResponseFormatter from '../utils/apiResponseFormatter';
 
 import {
     LOAD_ACTIVATIONS_SUCCESS,
-    LOAD_ACTIVATIONS_REQUEST,
-    LOAD_NEXT_ACTIVATIONS
+    LOAD_ACTIVATIONS_REQUEST
 } from '../actions/activations';
 
 const DEFAULT_STATE = {
@@ -20,6 +19,7 @@ export default function activations(state = DEFAULT_STATE, action) {
         case LOAD_ACTIVATIONS_SUCCESS: {
             const newActivations = action.activations.map(activation => {
                 const author = action.users.find(user => user.id === activation.links.owner.id);
+
                 return apiResponseFormatter.formatActivation(activation, author);
             });
 

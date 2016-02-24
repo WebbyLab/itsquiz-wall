@@ -1,11 +1,9 @@
-'use strict';
-
 import Jed from 'jed';
 import moment from 'moment';
 import { sprintf } from '../utils';
 
 export default class Tools {
-    constructor({localeData, locale}) {
+    constructor({ localeData, locale }) {
         this.jed = new Jed(localeData);
         this.locale = locale;
     }

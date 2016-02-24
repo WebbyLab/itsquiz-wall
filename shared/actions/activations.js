@@ -1,5 +1,3 @@
-'use strict';
-
 import api from '../apiSingleton';
 
 export const LOAD_ACTIVATIONS_SUCCESS    = 'LOAD_ACTIVATIONS_SUCCESS';
@@ -25,7 +23,7 @@ export function loadActivations(params = {}, query = {}, offset = 0) {
             isSponsored : query.category === 'SPECIAL' ? true : '',
             sortBy      : query.sortType || '',
             assigneeId  : query.assigneeId || ''
-        }).then( ({ data, linked } ) => {
+        }).then(({ data, linked }) => {
             dispatch({
                 offset,
                 type        : LOAD_ACTIVATIONS_SUCCESS,
@@ -96,4 +94,3 @@ export function loadSimilarActivations(params = {}, query = {}) {
         });
     };
 }
-

@@ -1,5 +1,3 @@
-'use strict';
-
 import express from 'express';
 import cookieParser from 'cookie-parser';
 
@@ -16,7 +14,6 @@ import { fetchComponentsData,
 
 import routes         from '../shared/routes.jsx';
 import configureStore from '../shared/store/configureStore';
-import api            from '../shared/apiSingleton';
 import i18n           from '../shared/i18n';
 
 import clientConfig from '../etc/client-config.json';
@@ -41,12 +38,14 @@ app.use((req, res) => {
     // Process old links like /en/activations
     if (req.url.match(/\/[a-z]{2}\//i)) {
         const noLangUrl = req.url.replace(/^\/[a-z]{2}/i, '');
+
         return res.redirect(302, noLangUrl);
     }
 
     // If user is authenticated redirect him to the wall embedded into the main app
     if ( req.cookies.authenticated && !req.url.match('embed') ) {
-        const redirectUrl = makeRedirectUrl({originalUrl: req.url});
+        const redirectUrl = makeRedirectUrl({ originalUrl: req.url });
+
         return res.redirect(302, redirectUrl);
     }
 
@@ -106,7 +105,7 @@ app.use((req, res) => {
     });
 });
 
-function renderHTML({componentHTML, initialState, metaData, config}) {
+function renderHTML({ componentHTML, initialState, metaData, config }) {
     return `
         <!DOCTYPE html>
         <html>
@@ -161,5 +160,5 @@ function renderHTML({componentHTML, initialState, metaData, config}) {
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
-    console.log('Server listening on: ' + PORT);
+    console.log(`Server listening on: ${PORT}`);
 });
