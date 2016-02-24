@@ -15,6 +15,8 @@ const DEFAULT_STATE = {
 };
 
 export default function activations(state = DEFAULT_STATE, action) {
+    console.info(action.type, state);
+
     switch (action.type) {
         case LOAD_ACTIVATIONS_SUCCESS: {
             const newActivations = action.activations.map(activation => {
@@ -23,9 +25,13 @@ export default function activations(state = DEFAULT_STATE, action) {
                 return apiResponseFormatter.formatActivation(activation, author);
             });
 
+            console.log('loadedActivations1', newActivations, action.offset);
+
             const loadedActivations = state.entitiesByCategory[action.category]
                 ? state.entitiesByCategory[action.category].slice(0)
                 : [];
+
+            console.log('loadedActivations2', loadedActivations);
 
             for (let i = 0; i < newActivations.length; i++) {
                 if (action.offset + i < loadedActivations.length) {
@@ -35,10 +41,14 @@ export default function activations(state = DEFAULT_STATE, action) {
                 }
             }
 
+            console.log('loadedActivations3', loadedActivations);
+
             const entitiesByCategory = {
                 ...entitiesByCategory,
                 [state.category]: loadedActivations
             };
+
+            console.log(entitiesByCategory);
 
             return {
                 ...state,
@@ -51,14 +61,16 @@ export default function activations(state = DEFAULT_STATE, action) {
 
         case LOAD_ACTIVATIONS_REQUEST: {
             const isSortTypeChanged = state.sortType !== action.sortType;
+            const isSearchChanged = state.search !== action.search;
 
             const isLoading = !state.entitiesByCategory[action.category]
-                || isSortTypeChanged;
+                || isSortTypeChanged
+                || isSearchChanged;
 
             return {
                 ...state,
                 isLoading,
-                entitiesByCategory : isSortTypeChanged ? {} : state.entitiesByCategory,
+                entitiesByCategory : isSortTypeChanged || isSearchChanged ? {} : state.entitiesByCategory,
                 category           : action.category,
                 sortType           : action.sortType
             };
