@@ -8,7 +8,7 @@ if (process.env.BROWSER) {
 
 export default class Footer extends Component {
     static propTypes = {
-        links           : PropTypes.array,
+        links           : PropTypes.object,
         linkToShare     : PropTypes.string,
         showShareDialog : PropTypes.bool,
         onLinkClick     : PropTypes.func,

@@ -24,7 +24,7 @@ class ActivationsPageContainer extends Component {
         search                 : PropTypes.string,
         category               : PropTypes.string,
         sortType               : PropTypes.string,
-        activations            : PropTypes.arrayOf(PropTypes.object),
+        activations            : PropTypes.array,
         isLoading              : PropTypes.bool
     };
 

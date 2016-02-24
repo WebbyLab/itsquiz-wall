@@ -21,8 +21,8 @@ class ActivationPageContainer extends Component {
         params    : PropTypes.object,
 
         activation         : PropTypes.object,
-        authorActivations  : PropTypes.arrayOf(PropTypes.object),
-        similarActivations : PropTypes.arrayOf(PropTypes.object),
+        authorActivations  : PropTypes.array,
+        similarActivations : PropTypes.array,
         isLoading          : PropTypes.bool
     };
 
@@ -179,7 +179,7 @@ class ActivationPageContainer extends Component {
                 similarActivations  = {similarActivations}
                 sharingLink        = {sharingLink}
                 isLoading          = {isLoading}
-                isEmbedded         = {embed}
+                isEmbedded         = {Boolean(embed)}
                 isLoggingIn        = {isLoggingIn}
                 showUserResult     = {activation.isPassed && assigneeId}
 
