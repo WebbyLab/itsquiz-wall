@@ -10,7 +10,7 @@ export function loadActivations(params = {}, query = {}, offset = 0) {
     return (dispatch) => {
         dispatch({
             type      : LOAD_ACTIVATIONS_REQUEST,
-            category  : query.category,
+            category  : query.category || 'all',
             sortType  : query.sortType
         });
 

@@ -40,6 +40,8 @@ export default function activations(state = DEFAULT_STATE, action) {
                 [state.category]: loadedActivations
             };
 
+            console.log(entitiesByCategory);
+
             return {
                 ...state,
                 entitiesByCategory,
