@@ -1,5 +1,3 @@
-'use strict';
-
 import React, { Component, PropTypes } from 'react';
 import cx                              from 'classnames';
 
@@ -9,16 +7,15 @@ import LoginDialog    from '../containers/LoginDialog.jsx';
 
 import IconButton from 'react-mdl/lib/IconButton';
 
-if ( process.env.BROWSER ) {
+if (process.env.BROWSER) {
     require('./AppBar.less');
 }
 
 const LOGO_SRC = '/static/logo.png';
 
 export default class AppBar extends Component {
-    static contextTypes = { i18n: PropTypes.object };
-
     static propTypes = {
+        className        : PropTypes.string,
         title            : PropTypes.string,
         search           : PropTypes.string,
         displayRightMenu : PropTypes.bool,
@@ -29,6 +26,8 @@ export default class AppBar extends Component {
         onRightIconClick : PropTypes.func,
         onSearch         : PropTypes.func
     };
+
+    static contextTypes = { i18n: PropTypes.object };
 
     static defaultProps = {
         title            : '',
@@ -44,6 +43,18 @@ export default class AppBar extends Component {
         isFixedToTop : false,
         isLoggingIn  : false
     };
+
+    componentDidMount() {
+        if (this.props.fixOnScroll) {
+            window.addEventListener('scroll', this.handleScroll);
+        }
+    }
+
+    componentWillUnmount() {
+        if (this.props.fixOnScroll) {
+            window.removeEventListener('scroll', this.handleScroll);
+        }
+    }
 
     handleScroll = () => {
         const scrollTop = (window.pageYOffset !== undefined)
@@ -69,22 +80,11 @@ export default class AppBar extends Component {
         });
     };
 
-    componentDidMount() {
-        if (this.props.fixOnScroll) {
-            window.addEventListener('scroll', this.handleScroll);
-        }
-    }
-
-    componentWillUnmount() {
-        if (this.props.fixOnScroll) {
-            window.removeEventListener('scroll', this.handleScroll);
-        }
-    }
-
     render() {
         const {
             title,
             search,
+            className,
             displaySearch,
             displayRightMenu,
             rightIconName,
@@ -96,7 +96,7 @@ export default class AppBar extends Component {
 
         const { isLoggingIn, isFixedToTop } = this.state;
 
-        const rootClassNames = cx('AppBar', this.props.className, {
+        const rootClassNames = cx('AppBar', className, {
             'AppBar--fixed'       : isFixedToTop,
             'AppBar--with-search' : displaySearch
         });
@@ -113,22 +113,25 @@ export default class AppBar extends Component {
                     {
                         rightIconName
                             ? <IconButton name={rightIconName} onClick={onRightIconClick} />
-                            : <img width='40px' height='40px' src={LOGO_SRC} className='AppBar__logo'/>
+                            : <img
+                                width='40px'
+                                height='40px'
+                                src={LOGO_SRC}
+                                className='AppBar__logo'
+                              />
                     }
 
                     <h2 className='AppBar__title'> {title} </h2>
                 </div>
                 {
                     displaySearch
-                        ? (
-                            <div className='AppBar__center'>
-                                <SearchBox
-                                    className = 'AppBar__search'
-                                    search    = {search}
-                                    onSearch  = {onSearch}
-                                />
-                            </div>
-                        )
+                        ? <div className='AppBar__center'>
+                            <SearchBox
+                                className = 'AppBar__search'
+                                search    = {search}
+                                onSearch  = {onSearch}
+                            />
+                        </div>
                         : null
                 }
 
@@ -146,4 +149,3 @@ export default class AppBar extends Component {
         );
     }
 }
-

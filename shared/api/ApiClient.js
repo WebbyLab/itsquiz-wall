@@ -3,11 +3,11 @@ import queryString from 'query-string';
 import Promise     from 'bluebird';
 
 export default class ApiClient {
-    constructor( { prefix = 'api/v1' } = {} ) {
+    constructor({ prefix = 'api/v1' } = {}) {
         this.prefix = prefix;
     }
 
-    get(requestUrl, payload = {}, params = {} ) {
+    get(requestUrl, payload = {}, params = {}) {
         return this.request({
             url: requestUrl,
             method: 'get',
@@ -68,13 +68,13 @@ export default class ApiClient {
             init.body = body;
         }
 
-        return fetch(`${this.prefix}/${urlWithQuery}`, init).then( res => {
+        return fetch(`${this.prefix}/${urlWithQuery}`, init).then(res => {
             if (res.status >= 400) {
                 throw new Error('Bad response from server');
             }
 
             return res.json();
-        }).then( data => {
+        }).then(data => {
             if (data && data.status === 1) {
                 return data;
             }

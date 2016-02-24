@@ -1,27 +1,23 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import strformat                     from 'strformat';
 
 import WelcomeDialog from '../components/WelcomeDialog.jsx';
 
 import { welcomeLinks } from '../config';
 
-import { sendEvent } from '../utils/googleAnalytics';
-
 export default class WelcomeDialogContainer extends Component {
-
-    static contextTypes = { i18n: PropTypes.object };
-
     static propTypes = {
         isOpen         : PropTypes.bool.isRequired,
         onDismiss      : PropTypes.func.isRequired
     };
+
+    static contextTypes = { i18n: PropTypes.object };
 
     handleLearnMoreAboutItsquz = () => {
         window.open(welcomeLinks.aboutItsquiz, '_blank');
     };
 
     handleDiscoverTests = () => {
-        const { getLocale } = this.context.i18n;
         const linkToOpen = welcomeLinks.discoverTests;
 
         window.open(linkToOpen, '_blank');
@@ -46,7 +42,7 @@ export default class WelcomeDialogContainer extends Component {
     };
 
     render() {
-        const { isOpen, onDismiss, onClose } = this.props;
+        const { isOpen, onDismiss } = this.props;
 
         return (
             <WelcomeDialog
@@ -60,4 +56,3 @@ export default class WelcomeDialogContainer extends Component {
         );
     }
 }
-

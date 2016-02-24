@@ -1,6 +1,11 @@
 import React from 'react';
 
 export default class Provider extends React.Component {
+    static propTypes = {
+        i18n     : React.PropTypes.object.isRequired,
+        children : React.PropTypes.object.isRequired
+    };
+
     static childContextTypes = { i18n: React.PropTypes.object };
 
     getChildContext() {
@@ -11,4 +16,3 @@ export default class Provider extends React.Component {
         return React.Children.only(this.props.children);
     }
 }
-

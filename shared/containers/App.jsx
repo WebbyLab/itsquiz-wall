@@ -1,12 +1,18 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import { initialize, navigate } from '../utils/googleAnalytics';
 
-if ( process.env.BROWSER ) {
+if (process.env.BROWSER) {
     require('../assets');
 }
 
 export default class App extends Component {
+    static propTypes = {
+        location : PropTypes.object,
+        routes   : PropTypes.array,
+        children : PropTypes.object
+    };
+
     componentDidMount() {
         initialize();
         navigate({
@@ -26,7 +32,7 @@ export default class App extends Component {
 
     render() {
         return (
-            <div id="app-view">
+            <div id='app-view'>
                 {this.props.children}
             </div>
         );

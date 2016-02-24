@@ -18,13 +18,13 @@ const initialState = window.__INITIAL_STATE__ || {};
 const store = configureStore(initialState);
 const locale = cookie.parse(document.cookie).locale || DEFAULT_LOCALE;
 
-fetch(`/static/lang/${locale}.json`).then( res => {
+fetch(`/static/lang/${locale}.json`).then(res => {
     if (res.status >= 400) {
         throw new Error('Bad response from server');
     }
 
     return res.json();
-}).then( localeData => {
+}).then(localeData => {
     const i18nTools = new i18n.Tools({ localeData, locale });
 
     ReactDOM.render(
@@ -36,6 +36,6 @@ fetch(`/static/lang/${locale}.json`).then( res => {
 
         document.getElementById('react-view')
     );
-}).catch( error => {
+}).catch(error => {
     console.error(error);
 });

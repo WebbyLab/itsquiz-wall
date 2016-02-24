@@ -38,7 +38,7 @@ export default class LoginDialogContainer extends Component {
         this.openLink(redirectURL);
     };
 
-    handleEmailLogin = (type) => {
+    handleEmailLogin = () => {
         const { getLocale } = this.context.i18n;
 
         sendEvent('login dialog', 'login', 'email');
@@ -57,7 +57,7 @@ export default class LoginDialogContainer extends Component {
     };
 
     render() {
-        const { title, isOpen, onRequestClose } = this.props;
+        const { isOpen, onRequestClose } = this.props;
 
         return (
             <LoginDialog

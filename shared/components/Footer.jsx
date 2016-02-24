@@ -1,17 +1,26 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 
-import Icon from './Icon.jsx';
 import ShareDialog from '../containers/ShareDialog.jsx';
 
-if ( process.env.BROWSER ) {
+if (process.env.BROWSER) {
     require('./Footer.less');
 }
 
 export default class Footer extends Component {
+    static propTypes = {
+        links           : PropTypes.array,
+        linkToShare     : PropTypes.string,
+        showShareDialog : PropTypes.bool,
+        onLinkClick     : PropTypes.func,
+        onShareClick    : PropTypes.func,
+        onShareClose    : PropTypes.func
+    };
+
     static contextTypes = { i18n: PropTypes.object };
 
     render() {
         const { l } = this.context.i18n;
+
         const { links, linkToShare, showShareDialog, onLinkClick, onShareClick, onShareClose } = this.props;
 
         return (
@@ -22,16 +31,17 @@ export default class Footer extends Component {
                     linkToShare = {linkToShare}
                     onRequestClose = {onShareClose}
                 />
-                <div className="Footer__content">
-                    <div className="Footer__menus-container">
-                        <div className="Footer__menu">
-                            <h3 className="Footer__menu-header">{l('Keep in touch')}</h3>
-                            <ul className="Footer__menu-items">
+                <div className='Footer__content'>
+                    <div className='Footer__menus-container'>
+                        <div className='Footer__menu'>
+                            <h3 className='Footer__menu-header'>{l('Keep in touch')}</h3>
+                            <ul className='Footer__menu-items'>
                                 <li>
                                     <a
                                         href={links.twitter}
                                         target='_blank'
-                                        onClick={onLinkClick.bind(null, 'twitter')}>
+                                        onClick={onLinkClick.bind(null, 'twitter')}
+                                    >
                                         {l('Twitter')}
                                     </a>
                                 </li>
@@ -39,7 +49,8 @@ export default class Footer extends Component {
                                     <a
                                         href={links.facebook}
                                         target='_blank'
-                                        onClick={onLinkClick.bind(null, 'facebook')}>
+                                        onClick={onLinkClick.bind(null, 'facebook')}
+                                    >
                                         {l('Facebook')}
                                     </a>
                                 </li>
@@ -47,21 +58,23 @@ export default class Footer extends Component {
                                     <a
                                         href={links.youtube}
                                         target='_blank'
-                                        onClick={onLinkClick.bind(null, 'youtube')}>
+                                        onClick={onLinkClick.bind(null, 'youtube')}
+                                    >
                                         {l('Videos on Youtube')}
                                     </a>
                                 </li>
                             </ul>
                         </div>
 
-                        <div className="Footer__menu">
-                            <h3 className="Footer__menu-header">{l('Support')}</h3>
-                            <ul className="Footer__menu-items">
+                        <div className='Footer__menu'>
+                            <h3 className='Footer__menu-header'>{l('Support')}</h3>
+                            <ul className='Footer__menu-items'>
                                 <li>
                                     <a
                                         href={links.supportPage}
                                         target='_blank'
-                                        onClick={onLinkClick.bind(null, 'supportPage')}>
+                                        onClick={onLinkClick.bind(null, 'supportPage')}
+                                    >
                                         {l('Support page')}
                                     </a>
                                 </li>
@@ -69,7 +82,8 @@ export default class Footer extends Component {
                                     <a
                                         href={links.suggestIdea}
                                         target='_blank'
-                                        onClick={onLinkClick.bind(null, 'suggestIdea')}>
+                                        onClick={onLinkClick.bind(null, 'suggestIdea')}
+                                    >
                                         {l('Suggest an idea')}
                                     </a>
                                 </li>
@@ -77,21 +91,23 @@ export default class Footer extends Component {
                                     <a
                                         href={links.helpMe}
                                         target='_blank'
-                                        onClick={onLinkClick.bind(null, 'helpMe')} >
+                                        onClick={onLinkClick.bind(null, 'helpMe')}
+                                    >
                                         {l('Need help?')}
                                     </a>
                                 </li>
                             </ul>
                         </div>
 
-                        <div className="Footer__menu">
-                            <h3 className="Footer__menu-header">{l('Do you like It\'s quiz?')}</h3>
-                            <ul className="Footer__menu-items">
+                        <div className='Footer__menu'>
+                            <h3 className='Footer__menu-header'>{l('Do you like It\'s quiz?')}</h3>
+                            <ul className='Footer__menu-items'>
                                 <li>
                                     <a
                                         href={links.aboutItsquiz}
                                         target='_blank'
-                                        onClick={onLinkClick.bind(null, 'aboutItsquiz')}>
+                                        onClick={onLinkClick.bind(null, 'aboutItsquiz')}
+                                    >
                                         {l('Read more')}
                                     </a>
                                 </li>
@@ -99,13 +115,15 @@ export default class Footer extends Component {
                                     <a
                                         href={links.ourTeam}
                                         target='_blank'
-                                        onClick={onLinkClick.bind(null, 'ourTeam')}>
+                                        onClick={onLinkClick.bind(null, 'ourTeam')}
+                                    >
                                         {l('Meet our team')}
                                     </a>
                                 </li>
                                 <li>
                                     <a
-                                        onClick={onShareClick}>
+                                        onClick={onShareClick}
+                                    >
                                         {l('Share this page')}
                                     </a>
                                 </li>

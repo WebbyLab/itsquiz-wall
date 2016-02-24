@@ -1,23 +1,24 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import WelcomeDialog from '../../containers/WelcomeDialog.jsx';
 import Footer        from '../../containers/Footer.jsx';
 
-if ( process.env.BROWSER ) {
+if (process.env.BROWSER) {
     require('./MainLayout.less');
 }
 
 export default class MainLayout extends Component {
 
     static propTypes = {
-        showWelcomeScreen: PropTypes.bool,
-        showFooter: PropTypes.bool,
-        footerLinks: PropTypes.object,
-        onWelcomeScreenClose: PropTypes.func
+        showWelcomeScreen      : PropTypes.bool,
+        showFooter             : PropTypes.bool,
+        children               : PropTypes.object,
+        footerLinks            : PropTypes.object,
+        onWelcomeScreenDismiss : PropTypes.func
     };
 
     render() {
-        const {showWelcomeScreen, showFooter, footerLinks, onWelcomeScreenDismiss} = this.props;
+        const { showWelcomeScreen, showFooter, children, onWelcomeScreenDismiss } = this.props;
 
         return (
             <div className='MainLayout'>
@@ -26,7 +27,7 @@ export default class MainLayout extends Component {
                         isOpen={showWelcomeScreen}
                         onDismiss={onWelcomeScreenDismiss}
                     />
-                    {this.props.children}
+                    {children}
                 </div>
 
                 {

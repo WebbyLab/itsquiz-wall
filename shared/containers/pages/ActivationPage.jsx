@@ -1,8 +1,5 @@
-'use strict';
-
-import React, {Component, PropTypes} from 'react';
-import { connect }                   from 'react-redux';
-import strformat                     from 'strformat';
+import React, { Component, PropTypes } from 'react';
+import { connect }                     from 'react-redux';
 
 import { loadActivation, loadSimilarActivations } from '../../actions/activations';
 import connectDataFetchers                        from '../../lib/connectDataFetchers.jsx';
@@ -17,6 +14,18 @@ const embedEvents = new EmbedEvents({
 });
 
 class ActivationPageContainer extends Component {
+    static propTypes = {
+        history   : PropTypes.object,
+        dispatch  : PropTypes.func,
+        location  : PropTypes.object,
+        params    : PropTypes.object,
+
+        activation         : PropTypes.object,
+        authorActivations  : PropTypes.arrayOf(PropTypes.object),
+        similarActivations : PropTypes.arrayOf(PropTypes.object),
+        isLoading          : PropTypes.bool
+    };
+
     static contextTypes = { i18n: PropTypes.object };
 
     state = {
@@ -41,8 +50,8 @@ class ActivationPageContainer extends Component {
         }
 
         if (this.props.params.id !== nextProps.params.id) {
-            this.props.dispatch( loadActivation(nextProps.params, nextProps.location.query) );
-            this.props.dispatch( loadSimilarActivations(nextProps.params, nextProps.location.query) );
+            this.props.dispatch(loadActivation(nextProps.params, nextProps.location.query));
+            this.props.dispatch(loadSimilarActivations(nextProps.params, nextProps.location.query));
         }
     }
 
@@ -84,8 +93,6 @@ class ActivationPageContainer extends Component {
         const isEmbedded = this.props.location.query.embed;
 
         if (isEmbedded && activation.isPassed) {
-            const quizSessionId = activation.userQuizSession.id;
-
             embedEvents.send({
                 type : 'FILL_PROFILE'
             });
@@ -192,7 +199,7 @@ class ActivationPageContainer extends Component {
     }
 }
 
-function mapStateToProps({ currentActivation: {activation, authorActivations, similarActivations, isLoading} }) {
+function mapStateToProps({ currentActivation: { activation, authorActivations, similarActivations, isLoading } }) {
     return {
         activation,
         authorActivations,
@@ -201,6 +208,6 @@ function mapStateToProps({ currentActivation: {activation, authorActivations, si
     };
 }
 
-export default connect( mapStateToProps )(
-    connectDataFetchers(ActivationPageContainer, [ loadActivation, loadSimilarActivations ])
+export default connect(mapStateToProps)(
+    connectDataFetchers(ActivationPageContainer, [loadActivation, loadSimilarActivations])
 );

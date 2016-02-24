@@ -1,5 +1,5 @@
-import React, {Component, PropTypes} from 'react';
-import strformat          from 'strformat';
+import React, { Component, PropTypes } from 'react';
+import strformat                       from 'strformat';
 
 import Footer from '../components/Footer.jsx';
 
@@ -17,12 +17,15 @@ export default class FooterContainer extends Component {
 
     componentWillMount() {
         const { getLocale } = this.context.i18n;
+
         this.links = {};
 
         for (const linkType in footerLinks) {
-            this.links[linkType] = strformat(footerLinks[linkType], {
-                lang: getLocale()
-            });
+            if ({}.hasOwnProperty.call(footerLinks, linkType)) {
+                this.links[linkType] = strformat(footerLinks[linkType], {
+                    lang: getLocale()
+                });
+            }
         }
 
         this.linkToShare = quizwallShareLink;
@@ -41,6 +44,14 @@ export default class FooterContainer extends Component {
         this.setState({ showShareDialog: false });
     };
 
+    openLinkInPopup = (URL) => {
+        window.open(URL, '', 'width=500, height=500');
+    };
+
+    openLinkInNewTab = (URL) => {
+        window.open(URL, '_blank');
+    };
+
     render() {
         return (
             <Footer
@@ -53,13 +64,4 @@ export default class FooterContainer extends Component {
             />
         );
     }
-
-    openLinkInPopup(URL) {
-        window.open(URL, '', 'width=500, height=500');
-    }
-
-    openLinkInNewTab(URL) {
-        window.open(URL, '_blank');
-    }
 }
-

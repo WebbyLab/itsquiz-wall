@@ -63,7 +63,6 @@
         // Best Practices
         "block-scoped-var": 2,
         "complexity": [2, 40],
-        "consistent-return": 2, // ?????
         "curly": [2, "multi-line"],
         "default-case": 2,
         "dot-notation": [2, { "allowKeywords": true }],
@@ -74,7 +73,6 @@
         "no-case-declarations": 2,
         "no-div-regex": 0,
         "no-else-return": 2,
-        "no-empty-label": 2,
         "no-eq-null": 2,
         "no-eval": 2,
         "no-extend-native": 2,
@@ -86,7 +84,7 @@
         "no-labels": 2,
         "no-lone-blocks": 2,
         "no-loop-func": 2,
-        "no-multi-spaces": [2, { exceptions: { "VariableDeclarator": true, "ImportDeclaration": true } }],
+        // "no-multi-spaces": [2, { exceptions: { "VariableDeclarator": true, "ImportDeclaration": true } }],
         "no-multi-str": 2,
         "no-native-reassign": 2,
         "no-new": 2,
@@ -97,7 +95,6 @@
         "no-param-reassign": [2, { "props": true }],
         "no-proto": 2,
         "no-redeclare": 2,
-        "no-return-assign": 2,
         "no-script-url": 2,
         "no-self-compare": 2,
         "no-sequences": 2,
@@ -110,7 +107,6 @@
         "yoda": 2,
 
         // ES2015
-        // "arrow-body-style": [2, "as-needed"], // TODO not convinient in some cases
         "arrow-parens": 0,
         "arrow-spacing": [2, { "before": true, "after": true }],
         "constructor-super": 2,
@@ -151,6 +147,7 @@
             "objectsInArrays": true,
             "arraysInArrays": true
         }],
+        "newline-after-var": [1, "always"],
         "brace-style": [2, "1tbs"],
         "camelcase": [2, { "properties": "always" }],
         "comma-spacing": [2, { "before": false, "after": true }],
@@ -179,7 +176,6 @@
         }],
         "max-nested-callbacks": [2, 4],
         "new-parens": 2,
-        "newline-after-var": 1, //????
         "no-array-constructor": 2,
         "no-lonely-if": 2,
         "no-mixed-spaces-and-tabs": 2,
@@ -192,17 +188,14 @@
         "object-curly-spacing": [2, "always"],
         "one-var": [2, "never"],
         "padded-blocks": [2, "never"],
-        "quote-props": [2, "as-needed"],
-        "quotes": [2, "single", "avoid-escape"],
+        "quotes": [1, "single", "avoid-escape"],
         "semi-spacing": [2, { "before": false, "after": true }],
         "semi": [2, "always"],
-        "space-before-keywords": [2, "always"],
-        "space-after-keywords": [2, "always"],
+        "keyword-spacing": 2,
         "space-before-blocks": 2,
         "space-before-function-paren": [2, { "anonymous": "always", "named": "never" }],
-        //"space-in-parens": [2, "never"], // TODO set custom rules
+        "space-in-parens": [2, "never"],
         "space-infix-ops": 2,
-        "space-return-throw-case": 2,
         "space-unary-ops": [2, { "words": true, "nonwords": false }],
         "spaced-comment": [2, "always", {
             "exceptions": ["-", "+"],
@@ -218,7 +211,10 @@
         "react/jsx-indent": [2, 4],
         "react/jsx-key": 2,
         "react/jsx-max-props-per-line": [2, {maximum: 3}],
-        "react/jsx-no-bind": 2,
+        "react/jsx-no-bind": [2, {
+            "ignoreRefs": true,
+            "allowBind": true
+        }],
         "react/jsx-no-duplicate-props": 2,
         "react/jsx-no-undef": 2,
         "react/jsx-pascal-case": 2,
@@ -257,12 +253,6 @@
 
      "globals":{
         "$": true,
-        "Sortable": true,
-        "APP_CONFIG": true,
-        "d3": true,
-        "nv": true,
-        "jsPlumb": true,
-        "_": true,
         "ga": true
     }
 }

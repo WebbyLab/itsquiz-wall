@@ -1,23 +1,25 @@
-import React, {Component, PropTypes} from 'react';
-import cx                            from 'classnames';
+import React, { Component, PropTypes } from 'react';
 
 import Dialog      from './Dialog.jsx';
 import Button      from 'react-mdl/lib/Button';
 import IconButton  from 'react-mdl/lib/IconButton';
 import Checkbox    from 'react-mdl/lib/Checkbox';
 
-if ( process.env.BROWSER ) {
+if (process.env.BROWSER) {
     require('./WelcomeDialog.less');
 }
 
 export default class WelcomeDialog extends Component {
+    static propTypes = {
+        isOpen                  : PropTypes.bool.isRequired,
+        onCreateTest            : PropTypes.func,
+        onDiscoverTests         : PropTypes.func,
+        onEnglishCampaign       : PropTypes.func,
+        onLearnMoreAboutItsquiz : PropTypes.func,
+        onDismiss               : PropTypes.func.isRequired
+    };
 
     static contextTypes = { i18n: PropTypes.object };
-
-    static propTypes = {
-        isOpen         : PropTypes.bool.isRequired,
-        onDismiss      : PropTypes.func.isRequired
-    };
 
     state = {
         currentSlide: 0,
@@ -56,29 +58,13 @@ export default class WelcomeDialog extends Component {
 
     render() {
         const { l } = this.context.i18n;
-        const { onCreateTest, onDiscoverTests, onEnglishCampaign, onLearnMoreAboutItsquiz } = this.props;
+        const { onCreateTest, onDiscoverTests } = this.props;
         const { currentSlide, needToSkip } = this.state;
 
         const slides = [
-            <div className='WelcomeDialog__slide'>
+            <div key={1} className='WelcomeDialog__slide'>
                 <div className='WelcomeDialog__slide-image'>
-                    <img src="/static/images/welcome/06.png" />
-                </div>
-
-                <div className='WelcomeDialog__slide-content'>
-                    <h1> {l('Weeks of English language!')} </h1>
-                    <p> {l('In the next 2 weeks you can get gifts from our friends - exclusive discounts on courses of '
-                        + 'English language!')}
-                    </p>
-                    <Button className='WelcomeDialog__btn' raised colored onClick={onEnglishCampaign}>
-                        {l('Get exclusive discount')}
-                    </Button>
-                </div>
-            </div>,
-
-            <div className='WelcomeDialog__slide'>
-                <div className='WelcomeDialog__slide-image'>
-                    <img src="/static/images/welcome/01.png" />
+                    <img src='/static/images/welcome/01.png' />
                 </div>
 
                 <div className='WelcomeDialog__slide-content'>
@@ -86,52 +72,72 @@ export default class WelcomeDialog extends Component {
                     <p> {l('Explore hundreds of open tests on Quiz Wall, check your knowledge, explore new topics, '
                         + 'share your achievements with friends!')}
                     </p>
-                    <Button className='WelcomeDialog__btn' raised colored onClick={this.handleNextSlide}>
+                    <Button
+                        colored
+                        raised
+                        className='WelcomeDialog__btn'
+                        onClick={this.handleNextSlide}
+                    >
                         {l('Learn more')}
                     </Button>
                 </div>
             </div>,
 
-            <div className='WelcomeDialog__slide'>
+            <div key={2} className='WelcomeDialog__slide'>
                 <div className='WelcomeDialog__slide-image'>
-                    <img src="/static/images/welcome/03.png" />
+                    <img src='/static/images/welcome/03.png' />
                 </div>
 
                 <div className='WelcomeDialog__slide-content'>
                     <h1>{l('Check your knowledge')}</h1>
                     <p> {l('Find out your language level, check knowledge of professional topics, pass entertainment '
                         + 'tests or even find a new job! Everything absolutely free!')}</p>
-                    <Button className='WelcomeDialog__btn' raised colored onClick={onDiscoverTests}>
+                    <Button
+                        colored
+                        raised
+                        className='WelcomeDialog__btn'
+                        onClick={onDiscoverTests}
+                    >
                         {l('Discover tests')}
                     </Button>
                 </div>
             </div>,
 
-            <div className='WelcomeDialog__slide'>
+            <div key={3} className='WelcomeDialog__slide'>
                 <div className='WelcomeDialog__slide-image'>
-                    <img src="/static/images/welcome/04.png" />
+                    <img src='/static/images/welcome/04.png' />
                 </div>
 
                 <div className='WelcomeDialog__slide-content'>
                     <h1> {l('Find best ever employees')} </h1>
                     <p>{l('Filter out candidates who don’t meet your standards before you interview them. '
                         + 'Create test for a position, publish on Quiz Wall, enjoy interviewing only the best!')}</p>
-                    <Button className='WelcomeDialog__btn' raised colored onClick={onCreateTest}>
+                    <Button
+                        colored
+                        raised
+                        className='WelcomeDialog__btn'
+                        onClick={onCreateTest}
+                    >
                         {l('Create a vacancy')}
                     </Button>
                 </div>
             </div>,
 
-            <div className='WelcomeDialog__slide'>
+            <div key={4} className='WelcomeDialog__slide'>
                 <div className='WelcomeDialog__slide-image'>
-                    <img src="/static/images/welcome/02.png" />
+                    <img src='/static/images/welcome/02.png' />
                 </div>
 
                 <div className='WelcomeDialog__slide-content'>
                     <h1> {l('Create your own tests!')} </h1>
                     <p> {l('Everyone can create a test on It\'s quiz! Simply add new questions, compose a quiz, '
                         + 'activate and share with your friends!')} </p>
-                    <Button className='WelcomeDialog__btn' raised colored onClick={onCreateTest}>
+                    <Button
+                        colored
+                        raised
+                        className='WelcomeDialog__btn'
+                        onClick={onCreateTest}
+                    >
                         {l('Create a test')}
                     </Button>
                 </div>
@@ -145,7 +151,8 @@ export default class WelcomeDialog extends Component {
                 <Dialog
                     className = 'WelcomeDialog__dialog'
                     onRequestClose={this.handleClose}
-                    {...this.props}>
+                    {...this.props}
+                >
                     <div className='WelcomeDialog__content'>
                         <IconButton ripple
                             className = 'WelcomeDialog__close'

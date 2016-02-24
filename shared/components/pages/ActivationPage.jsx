@@ -1,7 +1,7 @@
 import React from 'react';
 import cx    from 'classnames';
 
-import { Card, CardTitle, CardActions } from 'react-mdl/lib/Card';
+import { Card, CardTitle } from 'react-mdl/lib/Card';
 import Grid, { Cell }                   from 'react-mdl/lib/Grid';
 import Button                           from 'react-mdl/lib/Button';
 import IconButton                       from 'react-mdl/lib/IconButton';
@@ -16,24 +16,54 @@ import GoogleAd             from '../../containers/GoogleAd.jsx';
 
 import { sprintf } from '../../utils';
 
-if ( process.env.BROWSER ) {
+if (process.env.BROWSER) {
     require('./ActivationPage.less');
 }
 
 export default class ActivationPage extends React.Component {
-    static contextTypes = { i18n: React.PropTypes.object };
-
     static propTypes = {
-        activation        : React.PropTypes.object,
-        onPass            : React.PropTypes.func,
-        onActivationClick : React.PropTypes.func
+        activation         : React.PropTypes.object,
+        authorActivations  : React.PropTypes.array(React.PropTypes.object),
+        similarActivations : React.PropTypes.array(React.PropTypes.object),
+        showUserResult     : React.PropTypes.bool,
+        sharingLink        : React.PropTypes.string,
+        userQuizSession    : React.PropTypes.object,
+        isLoading          : React.PropTypes.bool,
+        isLoggingIn        : React.PropTypes.bool,
+        isEmbedded         : React.PropTypes.bool,
+        onPass             : React.PropTypes.func,
+        onShare            : React.PropTypes.func,
+        onLoginDialogClose : React.PropTypes.func,
+        onStopSharing      : React.PropTypes.func,
+        onGoBack           : React.PropTypes.func,
+        onShareResult      : React.PropTypes.func,
+        onFillProfile      : React.PropTypes.func,
+        onSponsoredClick   : React.PropTypes.func,
+        onViewAnswers      : React.PropTypes.func,
+        onActivationClick  : React.PropTypes.func
     };
+
+    static contextTypes = { i18n: React.PropTypes.object };
 
     componentWillMount() {
         const { l } = this.context.i18n;
 
         this.sponsoredButtonLabel = Math.random() < 0.5 ? l('Contact me') : l('Get the gift');
     }
+
+    getGreetingPhrase = (grade) => {
+        const { l } = this.context.i18n;
+
+        const phrases = {
+            'verybad'   : l('You could do better!'),
+            'bad'       : l('You could do better!'),
+            'normal'    : l('Good job!'),
+            'good'      : l('Great result!'),
+            'excellent' : l('You rock! Excellent job!')
+        };
+
+        return phrases[grade];
+    };
 
     renderAuthorActivations = () => {
         const {
@@ -54,13 +84,14 @@ export default class ActivationPage extends React.Component {
 
                     <Grid className='ActivationPage__author-activations-grid'>
                     {
-                        authorActivations.map((authorActivation, i) =>
+                        authorActivations.map(authorActivation =>
                             <Cell
                                 key    = {authorActivation.id}
                                 align  = 'stretch'
                                 col    = {3}
                                 phone  = {2}
-                                tablet = {3}>
+                                tablet = {3}
+                            >
                                 <QuizTile
                                     id                = {authorActivation.id}
                                     name              = {authorActivation.name}
@@ -81,7 +112,6 @@ export default class ActivationPage extends React.Component {
         }
 
         return null;
-
     };
 
     renderSimilarActivations = () => {
@@ -102,13 +132,14 @@ export default class ActivationPage extends React.Component {
 
                     <Grid className='ActivationPage__similar-activations-grid'>
                     {
-                        similarActivations.map((similarActivation, i) =>
+                        similarActivations.map(similarActivation =>
                             <Cell
                                 key    = {similarActivation.id}
                                 align  = 'stretch'
                                 col    = {3}
                                 phone  = {2}
-                                tablet = {3}>
+                                tablet = {3}
+                            >
                                 <QuizTile
                                     id                = {similarActivation.id}
                                     name              = {similarActivation.name}
@@ -134,17 +165,13 @@ export default class ActivationPage extends React.Component {
     renderContent = () => {
         const {
             activation,
-            authorActivations,
-            similarActivations,
             isLoading,
             showUserResult,
             onPass,
             onShare,
             onShareResult,
-            onStopSharing,
             onFillProfile,
             onSponsoredClick,
-            onActivationClick,
             onViewAnswers
         } = this.props;
 
@@ -159,7 +186,7 @@ export default class ActivationPage extends React.Component {
             isSponsored
         } = activation;
 
-        const {l, ngettext, humanizeDuration} = this.context.i18n;
+        const { l, ngettext, humanizeDuration } = this.context.i18n;
 
         if (isLoading) {
             return <Spinner className='ActivationPage__spinner' />;
@@ -207,32 +234,38 @@ export default class ActivationPage extends React.Component {
                                 </span>
 
                                 <span className='ActivationPage__time-to-pass'>
-                                    { humanizeDuration(timeToPass, 'second') }
+                                    {humanizeDuration(timeToPass, 'second')}
                                 </span>
                             </div>
                             <div className='ActivationPage__actions'>
                                 {
                                     !showUserResult
-                                    ? <Button
-                                        ripple    = {true}
-                                        raised    = {!isSponsored}
-                                        onClick   = {onPass.bind(null, activation)}
-                                        className = 'ActivationPage__btn ActivationPage__pass-btn'>
+                                    ? (
+                                        <Button
+                                            ripple
+                                            raised    = {!isSponsored}
+                                            onClick   = {onPass.bind(null, activation)}
+                                            className = 'ActivationPage__btn ActivationPage__pass-btn'
+                                        >
                                         {l('Pass the test')}
-                                    </Button>
+                                        </Button>
+                                    )
                                     : null
                                 }
 
                                 {
                                     isSponsored
-                                    ? <Button
-                                        colored   = {true}
-                                        ripple    = {true}
-                                        onClick   = {onSponsoredClick.bind(null, activation, this.sponsoredButtonLabel)}
-                                        className = 'ActivationPage__btn ActivationPage__offer-btn'
-                                        raised    = {true}>
-                                        <Icon type='gift' />  {this.sponsoredButtonLabel}
-                                    </Button>
+                                    ? (
+                                        <Button
+                                            colored
+                                            ripple
+                                            raised
+                                            onClick={onSponsoredClick.bind(null, activation, this.sponsoredButtonLabel)}
+                                            className='ActivationPage__btn ActivationPage__offer-btn'
+                                        >
+                                            <Icon type='gift' />  {this.sponsoredButtonLabel}
+                                        </Button>
+                                    )
                                     : null
                                 }
                             </div>
@@ -241,11 +274,13 @@ export default class ActivationPage extends React.Component {
                         <div className='ActivationPage__menu'>
                             {
                                 !activation.isPrivate
-                                ? <IconButton
-                                    name    = 'share'
-                                    ripple  = {true}
-                                    onClick = {onShare.bind(null, activation)}
-                                />
+                                ? (
+                                    <IconButton
+                                        ripple
+                                        name    = 'share'
+                                        onClick = {onShare.bind(null, activation)}
+                                    />
+                                )
                                 : null
                             }
                         </div>
@@ -253,67 +288,72 @@ export default class ActivationPage extends React.Component {
 
                     {
                         showUserResult
-                        ? <div className={'ActivationPage__results-container ' + userQuizSession.grade}>
-                            <div className='ActivationPage__overlay'>
-                                <div className='ActivationPage__results-text'>
-                                    <h4 className='ActivationPage__greeting'>
-                                        {this.getGreetingPhrase(userQuizSession.grade)}
-                                    </h4>
-                                    <div className='ActivationPage__score'>
-                                        {userQuizSession.score}%
-                                    </div>
-                                    <div className='ActivationPage__points'>
-                                        ({
-                                            sprintf(
-                                                ngettext(
-                                                    '%s of %s point',
-                                                    '%s of %s points',
-                                                    userQuizSession.maxPoints
-                                                ),
-                                                userQuizSession.gainedPoints,
-                                                userQuizSession.maxPoints
-                                            )
-                                        })
-                                    </div>
-                                </div>
-                                <div className='ActivationPage__results-actions'>
-                                    <Button
-                                        ripple    = {true}
-                                        onClick   = {onShareResult.bind(null, activation)}
-                                        className = 'ActivationPage__result-share-btn'
-                                        raised    = {true}>
-                                        {l('Share result with friends')}
-                                    </Button>
-
-                                    {
-                                        userQuizSession.canViewAnswers
-                                        ? <Button
-                                            ripple    = {true}
-                                            onClick   = {onViewAnswers.bind(null, activation)}
-                                            className = 'ActivationPage__result-answers-btn'>
-                                            {l('View my answers')}
-                                        </Button>
-                                        : null
-                                    }
-
-                                    {
-                                        activation.category === 'VACANCY'
-                                        ? <div>
-                                            <Button
-                                                ripple    = {true}
-                                                onClick   = {onFillProfile.bind(null, activation)}
-                                                className = 'ActivationPage__fill-profile-btn'>
-                                                {l('Fill in your resume')}
-                                            </Button>
-                                            <div className='ActivationPage__tip'>
-                                                {l('Filled profiles receive 70% more views')}
-                                            </div>
+                        ?
+                            <div className={cx('ActivationPage__results-container', userQuizSession.grade)}>
+                                <div className='ActivationPage__overlay'>
+                                    <div className='ActivationPage__results-text'>
+                                        <h4 className='ActivationPage__greeting'>
+                                            {this.getGreetingPhrase(userQuizSession.grade)}
+                                        </h4>
+                                        <div className='ActivationPage__score'>
+                                            {userQuizSession.score}%
                                         </div>
-                                        : null
-                                    }
+                                        <div className='ActivationPage__points'>
+                                            ({
+                                                sprintf(
+                                                    ngettext(
+                                                        '%s of %s point',
+                                                        '%s of %s points',
+                                                        userQuizSession.maxPoints
+                                                    ),
+                                                    userQuizSession.gainedPoints,
+                                                    userQuizSession.maxPoints
+                                                )
+                                            })
+                                        </div>
+                                    </div>
+                                    <div className='ActivationPage__results-actions'>
+                                        <Button
+                                            ripple
+                                            raised
+                                            onClick   = {onShareResult.bind(null, activation)}
+                                            className = 'ActivationPage__result-share-btn'
+                                        >
+                                            {l('Share result with friends')}
+                                        </Button>
+
+                                        {
+                                            userQuizSession.canViewAnswers
+                                            ?
+                                                <Button
+                                                    ripple
+                                                    onClick   = {onViewAnswers.bind(null, activation)}
+                                                    className = 'ActivationPage__result-answers-btn'
+                                                >
+                                                    {l('View my answers')}
+                                                </Button>
+                                            : null
+                                        }
+
+                                        {
+                                            activation.category === 'VACANCY'
+                                            ? <div>
+                                                <Button
+                                                    ripple
+                                                    onClick   = {onFillProfile.bind(null, activation)}
+                                                    className = 'ActivationPage__fill-profile-btn'
+                                                >
+                                                    {l('Fill in your resume')}
+                                                </Button>
+                                                <div className='ActivationPage__tip'>
+                                                    {l('Filled profiles receive 70% more views')}
+                                                </div>
+                                            </div>
+                                            : null
+                                        }
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         : null
                     }
 
@@ -343,8 +383,6 @@ export default class ActivationPage extends React.Component {
             isLoading,
             isLoggingIn,
             isEmbedded,
-            userQuizSession,
-            onShare,
             onLoginDialogClose,
             onStopSharing,
             onGoBack
@@ -387,19 +425,5 @@ export default class ActivationPage extends React.Component {
                 </div>
             </div>
         );
-    }
-
-    getGreetingPhrase = (grade) => {
-        const { l } = this.context.i18n;
-
-        const phrases = {
-            'verybad'   : l('You could do better!'),
-            'bad'       : l('You could do better!'),
-            'normal'    : l('Good job!'),
-            'good'      : l('Great result!'),
-            'excellent' : l('You rock! Excellent job!')
-        };
-
-        return phrases[grade];
     }
 }

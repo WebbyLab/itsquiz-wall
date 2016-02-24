@@ -1,21 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 import cx                              from 'classnames';
 
-if ( process.env.BROWSER ) {
+if (process.env.BROWSER) {
     require('./QuizCard.less');
 }
 
 import { Card, CardTitle, CardActions } from 'react-mdl/lib/Card';
 import Button                           from 'react-mdl/lib/Button';
 import IconButton                       from 'react-mdl/lib/IconButton';
-import Icon                             from 'react-mdl/lib/Icon';
 import MdiIcon                          from './Icon.jsx';
 
 import { sprintf } from '../utils';
 
 export default class QuizCard extends Component {
-    static contextTypes = { i18n: PropTypes.object };
-
     static propTypes = {
         id                : PropTypes.string,
         name              : PropTypes.string,
@@ -25,8 +22,15 @@ export default class QuizCard extends Component {
         pictureURL        : PropTypes.string,
         author            : PropTypes.object,
         isSponsored       : PropTypes.bool,
+        className         : PropTypes.string,
+        category          : PropTypes.string,
+        isPassed          : PropTypes.bool,
+        userQuizSession   : PropTypes.object,
+        onShare           : PropTypes.func,
         onClick           : PropTypes.func
     };
+
+    static contextTypes = { i18n: PropTypes.object };
 
     handleClick = (e) => {
         e.preventDefault();
@@ -79,7 +83,8 @@ export default class QuizCard extends Component {
                                 href={`/activations/${id}`}
                                 className='QuizCard__name'
                                 onClick={this.handleClick}
-                                title={name}>
+                                title={name}
+                            >
                                 {name}
                             </a>
 
@@ -93,7 +98,8 @@ export default class QuizCard extends Component {
                 <div
                     className='QuizCard__media'
                     onClick={onClick}
-                    style={{background: `url(${pictureURL}) center / cover`}}>
+                    style={{ background: `url(${pictureURL}) center / cover` }}
+                >
                     {
                         isPassed
                         ? <div className='QuizCard__overlay'>
@@ -125,7 +131,7 @@ export default class QuizCard extends Component {
                                 }
                             </span>
                             <span className='QuizCard__span-divider'>•</span>
-                            <span>{ humanizeDuration(timeToPass, 'second') }</span>
+                            <span>{humanizeDuration(timeToPass, 'second')}</span>
                         </div>
                     }
 
@@ -133,23 +139,25 @@ export default class QuizCard extends Component {
                 </div>
 
                 <CardActions
-                    border={true}
-                    className='QuizCard__actions'>
+                    border
+                    className='QuizCard__actions'
+                >
                     <div>
                         <IconButton
+                            colored
                             className = 'QuizCard__share-button'
-                            colored   = {true}
                             name      = 'share'
                             onClick   = {onShare}
                         />
                     </div>
 
                     <Button
+                        colored
+                        ripple
                         className = 'QuizCard__more-button'
                         raised    = {isSponsored}
-                        colored   = {true}
-                        ripple    = {true}
-                        onClick   = {onClick}>
+                        onClick   = {onClick}
+                    >
                         {l('View details')}
                     </Button>
                 </CardActions>

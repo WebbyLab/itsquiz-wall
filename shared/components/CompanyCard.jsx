@@ -1,9 +1,16 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import Button from 'react-mdl/lib/Button';
 
 export class CompanyCard extends Component {
+    static propTypes = {
+        companyName : PropTypes.string,
+        country     : PropTypes.string,
+        city        : PropTypes.string,
+        onClick     : PropTypes.string
+    };
+
     render() {
-        const { id, pictureURL, companyName, country, city, onClick } = this.props;
+        const { companyName, country, city, onClick } = this.props;
 
         return (
             <div clasName='CompanyCard'>

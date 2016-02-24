@@ -2,7 +2,7 @@ import Promise     from 'bluebird';
 import geoip       from 'geoip-lite';
 import strformat   from 'strformat';
 
-import clientConfig                     from '../etc/client-config.json';
+import clientConfig            from '../etc/client-config.json';
 import { getSupportedLocales } from '../shared/utils';
 
 export function fetchComponentsData(dispatch, components, params, query) {
@@ -78,16 +78,16 @@ export function makeRedirectUrl({ originalUrl }) {
 
 export function detectLocale(req) {
     // Take locale passed by user
-    const passedLocale = ( req.query.locale || req.cookies.locale || '' ).toLowerCase();
+    const passedLocale = (req.query.locale || req.cookies.locale || '').toLowerCase();
 
-    if ( getSupportedLocales().indexOf(passedLocale) >= 0 ) {
+    if (getSupportedLocales().indexOf(passedLocale) >= 0) {
         return passedLocale;
     }
 
     // Detect locale by ip
     const ip = req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || req.connection.remoteAddress;
     const geo = geoip.lookup(ip);
-    const country = ( geo && geo.country );
+    const country = (geo && geo.country);
 
     return {
         UA: 'uk',

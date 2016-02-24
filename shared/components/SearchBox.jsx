@@ -1,25 +1,23 @@
-'use strict';
-
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx                            from 'classnames';
 
-if ( process.env.BROWSER ) {
-    require('./SearchBox.less');
-}
-
-import IconButton from 'react-mdl/lib/IconButton';
 import Icon       from 'react-mdl/lib/Icon';
 import Textfield  from 'react-mdl/lib/Textfield';
+
+if (process.env.BROWSER) {
+    require('./SearchBox.less');
+}
 
 const ENTER_KEY = 13;
 
 export default class SearchBox extends Component {
-    static contextTypes = { i18n: PropTypes.object };
 
     static propTypes = {
         search   : PropTypes.string,
         onSearch : PropTypes.func
     };
+
+    static contextTypes = { i18n: PropTypes.object };
 
     state = {
         isFocused: false
@@ -31,14 +29,32 @@ export default class SearchBox extends Component {
         }
     };
 
-    handleSearchChange = (value) => {
+    handleSearchChange = (e) => {
+        const value = e.target.value;
+
         if (!value) {
             this.props.onSearch(value);
         }
     };
 
+    handleBoxClick = () => {
+        this._input.focus();
+    };
+
+    handleFocus = () => {
+        this.setState({
+            isFocused: true
+        });
+    };
+
+    handleBlur = () => {
+        this.setState({
+            isFocused: false
+        });
+    };
+
     render() {
-        const { search, onSearch } = this.props;
+        const { search } = this.props;
         const { l } = this.context.i18n;
 
         const rootClassNames = cx('SearchBox', {
@@ -49,34 +65,35 @@ export default class SearchBox extends Component {
             <div className={rootClassNames}>
                 <div
                     className='SearchBox__box'
-                    onClick={() => this.refs.input.focus()}>
+                    onClick={this.handleBoxClick}
+                >
                     <Icon name='search' className='SearchBox__search-icon'/>
 
                     <input
                         className    = 'SearchBox__input'
                         type         = 'text'
-                        ref          = 'input'
+                        ref          = {ref => this._input = ref}
                         placeholder  = {l('Search')}
                         defaultValue = {search}
-                        onChange     = {(e) => this.handleSearchChange(e.target.value)}
+                        onChange     = {this.handleSearchChange}
                         onKeyDown    = {this.handleKeyDown}
-                        onFocus      = { () => this.setState( { isFocused: true } ) }
-                        onBlur       = { () => this.setState( { isFocused: false } ) }
+                        onFocus      = {this.handleFocus}
+                        onBlur       = {this.handleBlur}
                     />
                 </div>
 
                 <Textfield
+                    expandable
                     className      = 'SearchBox__input-expandable'
                     type           = 'text'
                     placeholder    = {l('Search')}
                     label          = {'ololo'}
                     defaultValue   = {search}
-                    expandable     = {true}
                     expandableIcon = 'search'
                     onChange       = {this.handleSearchChange}
                     onKeyDown      = {this.handleKeyDown}
-                    onFocus        = { () => this.setState( { isFocused: true } ) }
-                    onBlur         = { () => this.setState( { isFocused: false } ) }
+                    onFocus        = {this.handleFocus}
+                    onBlur         = {this.handleBlur}
                 />
             </div>
         );

@@ -1,18 +1,16 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 
-import IconButton from 'react-mdl/lib/IconButton';
-
-import SearchBox from './SearchBox.jsx';
 import AppBar    from './AppBar.jsx';
 
-if ( process.env.BROWSER ) {
+if (process.env.BROWSER) {
     require('./AppBarWithBackground.less');
 }
 
 export default class AppBarWithBackground extends Component {
     static propTypes = {
         backgroundURL : PropTypes.string,
-        height        : PropTypes.number
+        height        : PropTypes.number,
+        onLogin       : PropTypes.func
     };
 
     static defaultProps = {
@@ -21,7 +19,7 @@ export default class AppBarWithBackground extends Component {
     };
 
     render() {
-        const { backgroundURL, height, onSearch, onLogin } = this.props;
+        const { backgroundURL, height, onLogin } = this.props;
 
         const appBarStyle = {
             background: `url(${backgroundURL}) center / cover`

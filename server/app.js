@@ -1,4 +1,4 @@
-import express from 'express';
+import express      from 'express';
 import cookieParser from 'cookie-parser';
 
 import React                     from 'react';
@@ -43,7 +43,7 @@ app.use((req, res) => {
     }
 
     // If user is authenticated redirect him to the wall embedded into the main app
-    if ( req.cookies.authenticated && !req.url.match('embed') ) {
+    if (req.cookies.authenticated && !req.url.match('embed')) {
         const redirectUrl = makeRedirectUrl({ originalUrl: req.url });
 
         return res.redirect(302, redirectUrl);
@@ -115,20 +115,20 @@ function renderHTML({ componentHTML, initialState, metaData, config }) {
             <link rel="shortcut icon" href="/static/favicon.ico"/>
             <title>Quiz Wall</title>
 
-            <meta name="description" content="${escapeHTML( metaData.description )}">
-            <meta property="og:title" content="${escapeHTML( metaData.title )}" />
-            <meta property="og:site_name" content="${escapeHTML( metaData.siteName )}"/>
-            <meta property="og:image" content="${escapeHTML( metaData.image )}" />
-            <meta property="og:description" content="${escapeHTML( metaData.description )}" />
+            <meta name="description" content="${escapeHTML(metaData.description)}">
+            <meta property="og:title" content="${escapeHTML(metaData.title)}" />
+            <meta property="og:site_name" content="${escapeHTML(metaData.siteName)}"/>
+            <meta property="og:image" content="${escapeHTML(metaData.image)}" />
+            <meta property="og:description" content="${escapeHTML(metaData.description)}" />
             <meta property="og:locale" content="en_US" />
             <meta property="og:locale:alternate" content="ru_RU" />
             <meta property="og:locale:alternate" content="uk_UA" />
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:site" content="@itsquizcom" />
-            <meta name="twitter:title" content="${escapeHTML( metaData.title )}" />
-            <meta name="twitter:description" content="${escapeHTML( metaData.description )}" />
-            <meta name="twitter:image" content="${escapeHTML( metaData.image )}" />
-            <meta property="fb:app_id" content="${escapeHTML( config.facebookAppId )}" />
+            <meta name="twitter:title" content="${escapeHTML(metaData.title)}" />
+            <meta name="twitter:description" content="${escapeHTML(metaData.description)}" />
+            <meta name="twitter:image" content="${escapeHTML(metaData.image)}" />
+            <meta property="fb:app_id" content="${escapeHTML(config.facebookAppId)}" />
 
             <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">

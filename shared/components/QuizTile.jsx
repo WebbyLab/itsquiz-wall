@@ -1,30 +1,24 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 
-if ( process.env.BROWSER ) {
+import { Card, CardTitle, CardActions } from 'react-mdl/lib/Card';
+
+if (process.env.BROWSER) {
     require('./QuizTile.less');
 }
 
-import {
-    Card,
-    CardTitle,
-    CardActions
-} from 'react-mdl/lib/Card';
-
-import Button     from 'react-mdl/lib/Button';
-import IconButton from 'react-mdl/lib/IconButton';
-import Icon       from 'react-mdl/lib/Icon';
-
 export default class QuizTile extends Component {
-    static contextTypes = { i18n: PropTypes.object };
-
     static propTypes = {
         id                : PropTypes.string,
         name              : PropTypes.string,
         message           : PropTypes.string,
         pictureURL        : PropTypes.string,
         author            : PropTypes.object,
+        userQuizSession   : PropTypes.object,
+        isPassed          : PropTypes.bool,
         onClick           : PropTypes.func
     };
+
+    static contextTypes = { i18n: PropTypes.object };
 
     handleClick = (e) => {
         e.preventDefault();
@@ -33,12 +27,12 @@ export default class QuizTile extends Component {
 
     render() {
         const { id, name, pictureURL, author, userQuizSession, isPassed, onClick } = this.props;
-        const { l } = this.context.i18n;
 
         return (
             <Card className='QuizTile' shadow={1}>
                 <CardTitle
-                    className='QuizTile__title'>
+                    className='QuizTile__title'
+                >
                     <img src={pictureURL} width='100%' onClick={onClick}/>
                     {
                         isPassed
@@ -56,7 +50,8 @@ export default class QuizTile extends Component {
                         href={`/activations/${id}`}
                         title={name}
                         className='QuizTile__name'
-                        onClick={this.handleClick}>
+                        onClick={this.handleClick}
+                    >
                         {name}
                     </a>
 
@@ -68,4 +63,3 @@ export default class QuizTile extends Component {
         );
     }
 }
-

@@ -1,16 +1,23 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import MainLayout from '../../components/layouts/MainLayout.jsx';
 
-import {footerLinks} from '../../config';
-import { sendEvent } from '../../utils/googleAnalytics';
+import { sendEvent }   from '../../utils/googleAnalytics';
 
 export default class MainLayoutContainer extends Component {
+    static propTypes = {
+        history   : PropTypes.object,
+        dispatch  : PropTypes.func,
+        location  : PropTypes.object,
+        params    : PropTypes.object,
+        children  : PropTypes.object
+    };
+
     state = {
         isWelcomeScreenShown: false
     };
 
-    componentDidMount() {
+    componentWillMount() {
         const skipWelcomeScreen = localStorage.getItem('skipWelcomeScreen');
         const { skipWelcomeDialog, ref } = this.props.location.query;
 
@@ -34,14 +41,18 @@ export default class MainLayoutContainer extends Component {
 
     render() {
         const { isWelcomeScreenShown } = this.state;
-        const isEmbedded = this.props.location.query.embed;
+
+        const { location, children } = this.props;
+
+        const isEmbedded = location.query.embed;
 
         return (
             <MainLayout
                 showWelcomeScreen={!isEmbedded && isWelcomeScreenShown}
                 onWelcomeScreenDismiss={this.handleWelcomeScreenDismiss}
-                showFooter={!isEmbedded}>
-                {this.props.children}
+                showFooter={!isEmbedded}
+            >
+                {children}
             </MainLayout>
         );
     }

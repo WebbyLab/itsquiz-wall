@@ -16,9 +16,9 @@ export default class BasicSharePage extends React.Component {
 
         return (
             <div className='BasicSharePage' style={{ height: 0 }}>
-                <h1 itemprop="name">{title}</h1>
-                <img src={picture} itemprop="image"/>
-                <p itemprop="description">{text}</p>
+                <h1 itemProp='name'>{title}</h1>
+                <img src={picture} itemProp='image'/>
+                <p itemProp='description'>{text}</p>
             </div>
         );
     }

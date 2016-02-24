@@ -9,6 +9,7 @@ import { sendEvent } from '../utils/googleAnalytics';
 export default class ShareDialogContainer extends Component {
 
     static propTypes = {
+        title          : PropTypes.string,
         isOpen         : PropTypes.bool.isRequired,
         twitterMessage : PropTypes.string,
         linkToShare    : PropTypes.string.isRequired,

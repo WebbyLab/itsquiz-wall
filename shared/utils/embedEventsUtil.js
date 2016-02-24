@@ -15,6 +15,8 @@ export default class EmbedEventsUtil {
 
             return this.events[type] ? this.events[type](...args) : null;
         }
+
+        return;
     };
 
     subscribe(events) {

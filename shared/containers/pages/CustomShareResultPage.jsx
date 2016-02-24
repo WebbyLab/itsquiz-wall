@@ -1,5 +1,3 @@
-'use strict';
-
 import React, { Component, PropTypes } from 'react';
 import strformat                       from 'strformat';
 
@@ -9,6 +7,12 @@ import { customShareInfo } from '../../config';
 import { sendEvent }       from '../../utils/googleAnalytics';
 
 class CustomShareResultPageContainer extends Component {
+    static propTypes = {
+        history           : PropTypes.object,
+        location          : PropTypes.object,
+        params            : PropTypes.object
+    };
+
     componentDidMount() {
         const { key } = this.props.params;
 
@@ -19,7 +23,7 @@ class CustomShareResultPageContainer extends Component {
                 ...this.props.location.query
             });
         } else {
-            this.props.history.replaceState(null, `/activations`, {
+            this.props.history.replaceState(null, '/activations', {
                 ...this.props.location.query
             });
         }
@@ -27,7 +31,9 @@ class CustomShareResultPageContainer extends Component {
 
     render() {
         const { key } = this.props.params;
+
         const shareInfo = customShareInfo && customShareInfo[key] ? customShareInfo[key] : {};
+
         const { query } = this.props.location;
 
         return (
@@ -38,14 +44,6 @@ class CustomShareResultPageContainer extends Component {
             />
         );
     }
-}
-
-function mapStateToProps({ currentActivation: {activation, authorActivations, isLoading} }) {
-    return {
-        activation,
-        authorActivations,
-        isLoading
-    };
 }
 
 export default CustomShareResultPageContainer;

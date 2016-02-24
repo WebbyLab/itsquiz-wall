@@ -1,23 +1,19 @@
-'use strict';
-
-if ( process.env.BROWSER ) {
-    require('./Dialog.less');
-}
-
 import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
 import ReactModal from 'react-modal';
 
+if (process.env.BROWSER) {
+    require('./Dialog.less');
+}
+
 export default class Dialog extends Component {
     static propTypes = {
         title          : PropTypes.string,
         isOpen         : PropTypes.bool,
+        children       : PropTypes.any,
+        className      : PropTypes.string,
         onRequestClose : PropTypes.func
-    };
-
-    static defaultProps = {
-        className: ''
     };
 
     render() {
@@ -33,12 +29,15 @@ export default class Dialog extends Component {
             }
         };
 
+        const classes = cx('Dialog', className);
+
         return (
             <ReactModal
-                className      = {cx('Dialog', className)}
+                className      = {classes}
                 isOpen         = {isOpen}
                 style          = {styles}
-                onRequestClose = {onRequestClose}>
+                onRequestClose = {onRequestClose}
+            >
                     {
                         title
                         ? <h1 className = 'Dialog__title'>{title}</h1>

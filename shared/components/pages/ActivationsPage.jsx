@@ -13,22 +13,41 @@ import ShareDialog from '../../containers/ShareDialog.jsx';
 import LoginDialog from '../../containers/LoginDialog.jsx';
 import Icon        from '../Icon.jsx';
 
-if ( process.env.BROWSER ) {
+if (process.env.BROWSER) {
     require('./ActivationsPage.less');
 }
 
 const CATEGORIES = ['ALL', 'VACANCY', 'EDUCATION', 'ENTERTAINMENT', 'SPECIAL'];
 
 export default class ActivationsPage extends React.Component {
+    static propTypes = {
+        activations            : React.PropTypes.arrayOf(React.PropTypes.object),
+        search                 : React.PropTypes.string,
+        totalActivationsAmount : React.PropTypes.number,
+        sortType               : React.PropTypes.string,
+        selectedCategory       : React.PropTypes.string,
+        linkToShare            : React.PropTypes.string,
+        isLoading              : React.PropTypes.bool,
+        isEmpty                : React.PropTypes.bool,
+        isSharing              : React.PropTypes.bool,
+        isEmbedded             : React.PropTypes.bool,
+        isLoggingIn            : React.PropTypes.bool,
+        onSearch               : React.PropTypes.func,
+        onSpecialsSubscribe    : React.PropTypes.func,
+        onChangeSortType       : React.PropTypes.func,
+        onTabChange            : React.PropTypes.func,
+        onLoginClose           : React.PropTypes.func,
+        onStopSharing          : React.PropTypes.func,
+        onItemClick            : React.PropTypes.func,
+        onSubscribe            : React.PropTypes.func,
+        onShare                : React.PropTypes.func,
+        onItemRenderRequest    : React.PropTypes.func
+    };
+
     static contextTypes = { i18n: React.PropTypes.object };
 
-    static propTypes = {
-        activations : React.PropTypes.arrayOf(React.PropTypes.object),
-        search      : React.PropTypes.string,
-        onItemClick : React.PropTypes.func,
-        onSubscribe : React.PropTypes.func,
-        onShare     : React.PropTypes.func,
-        onSearch    : React.PropTypes.func
+    handleTabChange = (index) => {
+        this.props.onTabChange(CATEGORIES[index]);
     };
 
     renderQuizItem = (index, key) => {
@@ -68,8 +87,6 @@ export default class ActivationsPage extends React.Component {
     };
 
     renderQuizItemsGrid = (items, ref) => {
-        const { l } = this.context.i18n;
-
         return (
             <div className='ActivationsPage__grid-container'>
                 <div className='ActivationsPage__grid' ref={ref}>
@@ -87,10 +104,7 @@ export default class ActivationsPage extends React.Component {
             totalActivationsAmount,
             search,
             isLoading,
-            isEmpty,
-            onItemClick,
-            onSubscribe,
-            onShare
+            isEmpty
         } = this.props;
 
         if (isLoading) {
@@ -147,7 +161,6 @@ export default class ActivationsPage extends React.Component {
             onSearch,
             onSpecialsSubscribe,
             onChangeSortType,
-            onTabChange,
             onLoginClose,
             onStopSharing
         } = this.props;
@@ -175,22 +188,23 @@ export default class ActivationsPage extends React.Component {
 
                 <div className='ActivationsPage__header'>
                     <AppBar
+                        displaySearch
                         title         = {l('Quizzes')}
                         search        = {search}
                         className     = 'ActivationsPage__app-bar'
                         fixOnScroll   = {false}
                         scrollOffset  = {65}
-                        displaySearch = {true}
                         onSearch      = {onSearch}
                     />
 
                     <div className='ActivationsPage__toolbar-container'>
                         <div className='ActivationsPage__toolbar'>
                             <Tabs
-                                ripple    = {true}
+                                ripple
                                 activeTab = {selectedCategory ? CATEGORIES.indexOf(selectedCategory) : 0}
                                 className = 'ActivationsPage__tabs'
-                                onChange  = {(index) => onTabChange(CATEGORIES[index])}>
+                                onChange  = {this.handleTabChange}
+                            >
                                 <Tab href='/activations'>
                                     {l('All tests')}
                                 </Tab>
@@ -211,7 +225,8 @@ export default class ActivationsPage extends React.Component {
                             <select
                                 value={sortType}
                                 onChange={onChangeSortType}
-                                className='ActivationPage__select'>
+                                className='ActivationPage__select'
+                            >
                                 <option value='new'>
                                     {l('Newest first')}
                                 </option>
@@ -227,12 +242,15 @@ export default class ActivationsPage extends React.Component {
                 <div className='ActivationsPage__content'>
                     {
                         selectedCategory === 'SPECIAL' && !isEmbedded
-                        ? <Button colored raised ripple
-                            className='ActivationsPage__subscribe-btn'
-                            onClick={onSpecialsSubscribe}>
-                            {l('I want to receive new special offers')}
-                        </Button>
-                        : null
+                        ?
+                            <Button colored raised ripple
+                                className='ActivationsPage__subscribe-btn'
+                                onClick={onSpecialsSubscribe}
+                            >
+                                {l('I want to receive new special offers')}
+                            </Button>
+                        :
+                            null
 
                     }
 

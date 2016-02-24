@@ -30,11 +30,11 @@ export default function currentActivation(state = DEFAULT_STATE, action) {
         case LOAD_ACTIVATION_SUCCESS: {
             const openedActivation = apiResponseFormatter.formatActivation(action.activation, action.author);
 
-            const otherAuthorActivations = action.authorActivations.filter( authorActivation =>
+            const otherAuthorActivations = action.authorActivations.filter(authorActivation =>
                 authorActivation.id !== openedActivation.id
             );
 
-            const authorActivations = otherAuthorActivations.map( authorActivation =>
+            const authorActivations = otherAuthorActivations.map(authorActivation =>
                 apiResponseFormatter.formatActivation(authorActivation)
             );
 

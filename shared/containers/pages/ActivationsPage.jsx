@@ -1,15 +1,11 @@
-'use strict';
+import React, { Component, PropTypes } from 'react';
+import { connect }                     from 'react-redux';
 
-import React, {Component, PropTypes} from 'react';
-import { connect }                   from 'react-redux';
-import strformat                     from 'strformat';
-import debounce                      from 'lodash/function/debounce';
-
-import { loadActivations, searchActivations } from '../../actions/activations';
-import connectDataFetchers                    from '../../lib/connectDataFetchers.jsx';
-import EmbedEvents                            from '../../utils/EmbedEventsUtil';
-import config                                 from '../../config';
-import { sendEvent }                          from '../../utils/googleAnalytics';
+import { loadActivations } from '../../actions/activations';
+import connectDataFetchers from '../../lib/connectDataFetchers.jsx';
+import EmbedEvents         from '../../utils/EmbedEventsUtil';
+import config              from '../../config';
+import { sendEvent }       from '../../utils/googleAnalytics';
 
 import ActivationsPage from '../../components/pages/ActivationsPage.jsx';
 
@@ -18,6 +14,20 @@ const embedEvents = new EmbedEvents({
 });
 
 class ActivationsPageContainer extends Component {
+    static propTypes = {
+        history   : PropTypes.object,
+        dispatch  : PropTypes.func,
+        location  : PropTypes.object,
+        params    : PropTypes.object,
+
+        totalActivationsAmount : PropTypes.number,
+        search                 : PropTypes.string,
+        category               : PropTypes.string,
+        sortType               : PropTypes.string,
+        activations            : PropTypes.arrayOf(PropTypes.object),
+        isLoading              : PropTypes.bool
+    };
+
     static contextTypes = { i18n: PropTypes.object };
 
     state = {
@@ -25,6 +35,30 @@ class ActivationsPageContainer extends Component {
         isSharing   : false,
         isLoggingIn : false
     };
+
+    componentDidMount() {
+        embedEvents.subscribe({
+            'SEARCH_QUIZ_WALL' : this.handleSearch
+        });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        const currentQuery = this.props.location.query;
+        const nextQuery = nextProps.location.query;
+
+        const needToReloadData = currentQuery.search !== nextQuery.search
+            || currentQuery.category !== nextQuery.category
+            || currentQuery.sortType !== nextQuery.sortType;
+
+
+        if (needToReloadData) {
+            this.props.dispatch(loadActivations(nextProps.params, nextQuery));
+        }
+    }
+
+    componentWillUnmount() {
+        embedEvents.unsubscribe();
+    }
 
     handleQuizCardClick = (activation) => {
         this.props.history.pushState(null, `/activations/${activation.id}`, {
@@ -100,35 +134,9 @@ class ActivationsPageContainer extends Component {
         const { activations, totalActivationsAmount } = this.props;
 
         if (index + 1 < totalActivationsAmount && index + 1 >= activations.length) {
-            this.props.dispatch( loadActivations(this.props.params, this.props.location.query, activations.length) );
+            this.props.dispatch(loadActivations(this.props.params, this.props.location.query, activations.length));
         }
     };
-
-    componentDidMount() {
-        embedEvents.subscribe({
-            'SEARCH_QUIZ_WALL' : this.handleSearch
-        });
-    }
-
-    componentWillReceiveProps(nextProps) {
-        console.log('componentWillReceiveProps', nextProps.activations);
-        const currentQuery = this.props.location.query;
-        const nextQuery = nextProps.location.query;
-
-        const needToReloadData = currentQuery.search !== nextQuery.search
-            || currentQuery.category !== nextQuery.category
-            || currentQuery.sortType !== nextQuery.sortType;
-
-        console.log(currentQuery.search, nextQuery.search);
-
-        if (needToReloadData) {
-            this.props.dispatch( loadActivations(nextProps.params, nextQuery) );
-        }
-    }
-
-    componentWillUnmount() {
-        embedEvents.unsubscribe();
-    }
 
     render() {
         return (
@@ -174,4 +182,3 @@ function mapStateToProps({ activations }) {
 export default connect(mapStateToProps)(
     connectDataFetchers(ActivationsPageContainer, [ loadActivations ])
 );
-

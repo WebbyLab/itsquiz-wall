@@ -1,7 +1,5 @@
-'use strict';
-
-import React     from 'react';
-import { Route, Redirect, IndexRoute } from 'react-router';
+import React               from 'react';
+import { Route, Redirect } from 'react-router';
 
 import App from './containers/App.jsx';
 
@@ -11,8 +9,6 @@ import ActivationsPageContainer       from './containers/pages/ActivationsPage.j
 import ActivationPageContainer        from './containers/pages/ActivationPage.jsx';
 import ShareResultPageContainer       from './containers/pages/ShareResultPage.jsx';
 import CustomShareResultPageContainer from './containers/pages/CustomShareResultPage.jsx';
-import UsersPageContainer             from './containers/pages/UsersPage.jsx';
-import UserPageContainer              from './containers/pages/UserPage.jsx';
 
 export default (
     <Route component={App} >
@@ -25,9 +21,6 @@ export default (
 
             <Route component={ShareResultPageContainer} path='/result/:id/:userId' />
             <Route component={CustomShareResultPageContainer} path='/share/:key' />
-
-            <Route component={UsersPageContainer} path='/users' />
-            <Route component={UserPageContainer} path='/users/:id' />
 
             <Redirect from='*' to='/activations' />
         </Route>

@@ -7,16 +7,12 @@ export const LOAD_ACTIVATIONS_REQUEST    = 'LOAD_ACTIVATIONS_REQUEST';
 const LIMIT_PER_QUERY = 24;
 
 export function loadActivations(params = {}, query = {}, offset = 0) {
-    console.log('loadActivations', query);
-
     return (dispatch) => {
         dispatch({
             type      : LOAD_ACTIVATIONS_REQUEST,
             category  : query.category,
             sortType  : query.sortType
         });
-
-        console.log('dispatch');
 
         return api.activations.list({
             offset,
@@ -29,7 +25,6 @@ export function loadActivations(params = {}, query = {}, offset = 0) {
             assigneeId  : query.assigneeId || ''
 
         }).then(({ data, linked }) => {
-            console.log('then', data);
             dispatch({
                 offset,
                 type        : LOAD_ACTIVATIONS_SUCCESS,
@@ -53,10 +48,10 @@ export function loadActivation(params = {}, query = {}) {
     return dispatch => {
         dispatch({ type : LOAD_ACTIVATION_REQUEST, activationId : params.id });
 
-        return api.activations.show(params.id, { assigneeId, include: 'users' }).then( response => {
+        return api.activations.show(params.id, { assigneeId, include: 'users' }).then(response => {
             const userId = response.data.links.owner.id;
 
-            return api.activations.list({ userId, assigneeId }).then( response2 => {
+            return api.activations.list({ userId, assigneeId }).then(response2 => {
                 dispatch({
                     type              : LOAD_ACTIVATION_SUCCESS,
                     activation        : response.data,
@@ -64,7 +59,7 @@ export function loadActivation(params = {}, query = {}) {
                     authorActivations : response2.data.entities
                 });
             });
-        }).catch( error => {
+        }).catch(error => {
             dispatch({
                 type: LOAD_ACTIVATION_FAIL,
                 error
@@ -84,14 +79,14 @@ export function loadSimilarActivations(params = {}, query = {}) {
     return dispatch => {
         dispatch({ type : LOAD_SIMILAR_ACTIVATIONS_REQUEST });
 
-        return api.activations.list({ similarTo, assigneeId, limit: 8, include: 'users' }).then( ({ data, linked }) => {
+        return api.activations.list({ similarTo, assigneeId, limit: 8, include: 'users' }).then(({ data, linked }) => {
             dispatch({
                 similarTo,
                 type         : LOAD_SIMILAR_ACTIVATIONS_SUCCESS,
                 users        : linked.users,
                 activations  : data.entities
             });
-        }).catch( error => {
+        }).catch(error => {
             dispatch({
                 type: LOAD_SIMILAR_ACTIVATIONS_FAIL,
                 error
