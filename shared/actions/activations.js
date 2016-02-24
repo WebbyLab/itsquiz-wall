@@ -28,6 +28,9 @@ export function loadActivations(params = {}, query = {}, offset = 0) {
         }).then(({ data, linked }) => {
             dispatch({
                 offset,
+                category    : query.category || 'ALL',
+                sortType    : query.sortType || 'new',
+                search      : query.search || '',
                 type        : LOAD_ACTIVATIONS_SUCCESS,
                 activations : data.entities,
                 totalAmount : data.total,
