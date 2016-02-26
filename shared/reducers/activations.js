@@ -38,7 +38,7 @@ export default function activations(state = DEFAULT_STATE, action) {
 
             const entitiesByCategory = {
                 ...entitiesByCategory,
-                [state.category]: loadedActivations
+                [action.category]: loadedActivations
             };
 
             return {
@@ -60,6 +60,7 @@ export default function activations(state = DEFAULT_STATE, action) {
             return {
                 ...state,
                 isLoading,
+                search             : action.search,
                 entitiesByCategory : isSortTypeChanged || isSearchChanged ? {} : state.entitiesByCategory,
                 category           : action.category,
                 sortType           : action.sortType

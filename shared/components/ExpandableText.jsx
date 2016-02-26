@@ -2,7 +2,9 @@ import React, { Component, PropTypes } from 'react';
 
 import Button from 'react-mdl/lib/Button';
 
-import './ExpandableText.less';
+if (process.env.BROWSER) {
+    require('./ExpandableText.less');
+}
 
 const MAX_CHAR_NUMBER = 300;
 
@@ -20,14 +22,10 @@ export default class ExpandableText extends Component {
 
     handleClick = () => {
         if (!this.state.expanded) {
-            this.textBlock.classList.remove('minimized');
-
             this.setState({
                 expanded: true
             });
         } else {
-            this.textBlock.classList.add('minimized');
-
             this.setState({
                 expanded: false
             });
@@ -44,9 +42,17 @@ export default class ExpandableText extends Component {
                 text.length > MAX_CHAR_NUMBER
                 ?
                     <div>
-                        <p className='ExpandableText__text minimized' ref={c => this.textBlock = c}>
-                            {text}
-                        </p>
+                        {
+                            !this.state.expanded
+                            ?
+                                <p className='ExpandableText__text minimized' ref={c => this.textBlock = c}>
+                                    {text}
+                                </p>
+                            :
+                                <p className='ExpandableText__text' ref={c => this.textBlock = c}>
+                                    {text}
+                                </p>
+                        }
                         <Button
                             colored
                             ripple
@@ -54,12 +60,12 @@ export default class ExpandableText extends Component {
                             onClick   = {this.handleClick}
                         >
                             {
-                            this.state.expanded
-                            ?
-                                l('Minimize')
-                            :
-                                l('Expand')
-                            }
+                                this.state.expanded
+                                ?
+                                    l('Minimize')
+                                :
+                                    l('Expand')
+                                }
                         </Button>
                     </div>
                 :
