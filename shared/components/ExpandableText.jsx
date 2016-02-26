@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
+import cx from 'classnames';
+
 import Button from 'react-mdl/lib/Button';
 
 if (process.env.BROWSER) {
@@ -21,20 +23,19 @@ export default class ExpandableText extends Component {
     };
 
     handleClick = () => {
-        if (!this.state.expanded) {
-            this.setState({
-                expanded: true
-            });
-        } else {
-            this.setState({
-                expanded: false
-            });
-        }
+        this.setState({
+            expanded: !this.state.expanded
+        });
     };
 
     render() {
         const { l } = this.context.i18n;
+
         const { text } = this.props;
+
+        const classes = cx('ExpandableText__text', {
+            'minimized': !this.state.expanded
+        });
 
         return (
             <div className='ExpandableText'>
@@ -42,17 +43,9 @@ export default class ExpandableText extends Component {
                 text.length > MAX_CHAR_NUMBER
                 ?
                     <div>
-                        {
-                            !this.state.expanded
-                            ?
-                                <p className='ExpandableText__text minimized' ref={c => this.textBlock = c}>
-                                    {text}
-                                </p>
-                            :
-                                <p className='ExpandableText__text' ref={c => this.textBlock = c}>
-                                    {text}
-                                </p>
-                        }
+                        <p className={classes} ref={c => this.textBlock = c}>
+                            {text}
+                        </p>
                         <Button
                             colored
                             ripple
@@ -65,7 +58,7 @@ export default class ExpandableText extends Component {
                                     l('Minimize')
                                 :
                                     l('Expand')
-                                }
+                            }
                         </Button>
                     </div>
                 :
