@@ -191,24 +191,6 @@
 
     .ActivationPage__author {
         margin-top: 10px;
-
-    }
-
-    .ActivationPage__details {
-        padding-top: 24px;
-        padding-left: 24px;
-        padding-right: 24px;
-        font-weight: 200;
-
-
-        @media @phone {
-            margin-top: 20px;
-            padding: 16px;
-        }
-
-        .ActivationPage__message {
-            white-space: pre-wrap;
-        }
     }
 }
 
@@ -337,6 +319,10 @@
 .ActivationPage__similar-activations-grid {
     box-sizing: border-box;
     width: 100%;
+
+    .mdl-cell {
+        height: 100% !important;
+    }
 }
 
 .ActivationPage__author-activations,
