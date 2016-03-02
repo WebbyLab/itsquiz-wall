@@ -398,7 +398,8 @@ export default class ActivationPage extends React.Component {
                 <ShareDialog
                     title          = {l('Share')}
                     isOpen         = {!!sharingLink}
-                    twitterMessage = {showUserResult
+                    twitterMessage = {
+                        showUserResult
                         ? sprintf(l('My result is %d%%'), activation.userQuizSession.score)
                         : l('Check out this test')
                     }
@@ -412,7 +413,7 @@ export default class ActivationPage extends React.Component {
                 />
 
                 <AppBarWithBackground
-                    backgroundURL    = {activation.backgroundURL}
+                    backgroundURL    = {activation.author ? activation.author.backgroundURL : ''}
                     displayRightMenu = {!isEmbedded}
                     rightIconName    = 'arrow_back'
                     onRightIconClick = {onGoBack}

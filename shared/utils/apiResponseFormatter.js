@@ -20,7 +20,6 @@ export default {
             isPassed             : activation.assigneeQuizSession && activation.assigneeQuizSession.finishedAt,
             userQuizSession      : this.formatUserQuizSession(activation.assigneeQuizSession),
             pictureURL           : activation.pictureURL,
-            backgroundURL        : activation.backgroundURL || this._getBackgpoundURLById(activation.id),
             tags                 : activation.tags,
             timeToPass           : activation.timeToPass,
             author               : author ? this.formatUserInfo(author) : {}
@@ -29,27 +28,29 @@ export default {
 
     formatUserInfo(user) {
         return {
-            id          : user.id,
-            isTrusted   : user.isTrusted,
-            type        : user.type,
-            fullName    : this._getUserFullName(user),
-            avatar      : user.image
+            id            : user.id,
+            isTrusted     : user.isTrusted,
+            type          : user.type,
+            fullName      : this._getUserFullName(user),
+            avatar        : user.image,
+            backgroundURL : user.backgroundURL
         };
     },
 
     formatAuthorProfileData(user) {
         return {
-            id          : user.id,
-            country     : user.country,
-            city        : user.city,
-            industry    : user.industry,
-            isTrusted   : user.isTrusted,
-            type        : user.type,
-            firstName   : user.firstName,
-            secondName  : user.secondName,
-            lastName    : user.lastName,
-            companyName : user.companyName,
-            pictureURL  : user.image
+            id            : user.id,
+            country       : user.country,
+            city          : user.city,
+            industry      : user.industry,
+            isTrusted     : user.isTrusted,
+            type          : user.type,
+            firstName     : user.firstName,
+            secondName    : user.secondName,
+            lastName      : user.lastName,
+            companyName   : user.companyName,
+            pictureURL    : user.image,
+            backgroundURL : user.backgroundURL
         };
     },
 
