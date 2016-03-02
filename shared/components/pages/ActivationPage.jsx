@@ -12,7 +12,6 @@ import Icon                 from '../Icon.jsx';
 import ShareDialog          from '../../containers/ShareDialog.jsx';
 import LoginDialog          from '../../containers/LoginDialog.jsx';
 import AppBarWithBackground from '../AppBarWithBackground.jsx';
-import GoogleAd             from '../../containers/GoogleAd.jsx';
 import ExpandableText       from '../ExpandableText.jsx';
 
 import { sprintf } from '../../utils';
@@ -360,10 +359,6 @@ export default class ActivationPage extends React.Component {
 
                     <div className='ActivationPage__details'>
                         <ExpandableText text={activation.message} />
-                    </div>
-
-                    <div className='ActivationPage__ad'>
-                        <GoogleAd type='activationPage' />
                     </div>
                 </Card>
 
