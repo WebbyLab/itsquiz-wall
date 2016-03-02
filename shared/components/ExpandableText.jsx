@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react';
 
 import cx from 'classnames';
 
-import Button from 'react-mdl/lib/Button';
+import Button   from 'react-mdl/lib/Button';
+import Markdown from './Markdown.jsx';
 
 if (process.env.BROWSER) {
     require('./ExpandableText.less');
@@ -43,9 +44,9 @@ export default class ExpandableText extends Component {
                 text.length > MAX_CHAR_NUMBER
                 ?
                     <div>
-                        <p className={classes} ref={c => this.textBlock = c}>
-                            {text}
-                        </p>
+                        <div className={classes}>
+                            <Markdown source={text} />
+                        </div>
                         <Button
                             colored
                             ripple
@@ -62,9 +63,9 @@ export default class ExpandableText extends Component {
                         </Button>
                     </div>
                 :
-                    <p className='ExpandableText_text'>
-                        {text}
-                    </p>
+                    <div className='ExpandableText_text'>
+                        <Markdown source={text} />
+                    </div>
             }
             </div>
         );
