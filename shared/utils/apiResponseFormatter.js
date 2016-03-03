@@ -76,8 +76,14 @@ export default {
         };
     },
 
-    _getUserFullName(user) {
-        return user.type === 'COMPANY' ? user.companyName : `${user.firstName} ${user.secondName}`;
+    _getUserFullName({ firstName, secondName, ...user }) {
+        if (user.type === 'COMPANY') {
+            return user.companyName;
+        }
+
+        return firstName || secondName
+            ? `${firstName}  ${secondName}`
+            : 'It`s quiz user';
     },
 
     _getResultGrade(score) {
