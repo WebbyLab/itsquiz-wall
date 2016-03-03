@@ -4,7 +4,9 @@
 
 import React, { Component, PropTypes } from 'react';
 
-const MarkdownIt = require('markdown-it');
+import preset from './preset.js';
+
+import MarkdownIt from 'markdown-it';
 
 class Markdown extends Component {
 
@@ -17,7 +19,8 @@ class Markdown extends Component {
     };
 
     componentWillMount() {
-        this.md = new MarkdownIt('zero').set({ linkify: true }).enable(['link', 'list', 'emphasis']);
+        this.md = new MarkdownIt();
+        this.md.configure(preset).enable('linkify').enable(['link', 'list', 'emphasis']);
     }
 
     getMarkdownMarkup = () => {

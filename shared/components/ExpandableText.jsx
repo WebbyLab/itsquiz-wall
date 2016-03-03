@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
 import Button   from 'react-mdl/lib/Button';
-import Markdown from './Markdown.jsx';
+import Markdown from './markdown/Markdown.jsx';
 
 if (process.env.BROWSER) {
     require('./ExpandableText.less');
