@@ -1,11 +1,9 @@
 @import "../assets/media.less";
 
-@line-height: 24px;
+@line-height: 22px;
 
 .ExpandableText {
-    padding-top: 24px;
-    padding-left: 24px;
-    padding-right: 24px;
+    padding: 24px;
     font-weight: 200;
 
     @media @phone {
@@ -15,8 +13,11 @@
 }
 
 .ExpandableText__text {
-    white-space: pre-wrap;
-    line-height: @line-height;
+    p {
+        white-space: pre-wrap;
+        line-height: @line-height;
+        margin-bottom: @line-height;
+    }
 
     &.minimized {
         height: @line-height * 3;
