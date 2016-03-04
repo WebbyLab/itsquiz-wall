@@ -67,10 +67,6 @@ class ActivationsPageContainer extends Component {
         });
 
         sendEvent('activation card', 'view details', activation.name);
-
-        embedEvents.send({
-            type : 'ACTIVATION_CLICK'
-        });
     };
 
     handleSearch = (searchText) => {
