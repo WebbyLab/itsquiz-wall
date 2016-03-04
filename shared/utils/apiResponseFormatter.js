@@ -1,7 +1,3 @@
-import { backgroundImagesPrefix } from '../config';
-
-const NUMBER_OF_BACKGROUNDS = 12;
-
 export default {
     formatActivation(activation, author) {
         return {
@@ -76,8 +72,14 @@ export default {
         };
     },
 
-    _getUserFullName(user) {
-        return user.type === 'COMPANY' ? user.companyName : `${user.firstName} ${user.secondName}`;
+    _getUserFullName({ firstName, secondName, ...user }) {
+        if (user.type === 'COMPANY') {
+            return user.companyName;
+        }
+
+        return firstName || secondName
+            ? `${firstName}  ${secondName}`
+            : 'It`s quiz user';
     },
 
     _getResultGrade(score) {
@@ -98,12 +100,5 @@ export default {
         }
 
         return 'verybad';
-    },
-
-    _getBackgpoundURLById(id) {
-        const number = parseInt(id, 16);
-        const backgroundNumber = number % NUMBER_OF_BACKGROUNDS + 1;
-
-        return `${backgroundImagesPrefix}${backgroundNumber}.jpg`;
     }
 };
