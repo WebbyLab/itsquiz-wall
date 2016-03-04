@@ -4,7 +4,7 @@
 
 import React, { Component, PropTypes } from 'react';
 
-import preset from './preset.js';
+import { activationDescriptionPreset } from './Markdown/presets.js';
 
 import MarkdownIt from 'markdown-it';
 
@@ -20,7 +20,7 @@ class Markdown extends Component {
 
     componentWillMount() {
         this.md = new MarkdownIt();
-        this.md.configure(preset).enable('linkify').enable(['link', 'list', 'emphasis']);
+        this.md.configure(activationDescriptionPreset).enable('linkify').enable(['link', 'list', 'emphasis']);
     }
 
     getMarkdownMarkup = () => {
@@ -32,11 +32,7 @@ class Markdown extends Component {
     };
 
     render() {
-        return (
-            <div
-                dangerouslySetInnerHTML={this.getMarkdownMarkup()}
-            />
-        );
+        return <div dangerouslySetInnerHTML={this.getMarkdownMarkup()} />;
     }
 }
 

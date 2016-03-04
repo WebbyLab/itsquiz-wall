@@ -1,18 +1,17 @@
-export default {
+export const activationDescriptionPreset =  {
     options: {
-        html       : false,
-        xhtmlOut   : false,
-        breaks     : false,
-        langPrefix : 'language-',
-        linkify    : true,
-        typographer: false,
-        quotes     : '\u201c\u201d\u2018\u2019',
-        highlight  : null,
-        maxNesting : 20
+        html        : false,
+        xhtmlOut    : false,
+        breaks      : false,
+        langPrefix  : 'language-',
+        linkify     : true,
+        typographer : false,
+        quotes      : '\u201c\u201d\u2018\u2019',
+        highlight   : null,
+        maxNesting  : 20
     },
 
     components: {
-
         core: {
             rules: [
                 'normalize',
