@@ -1,7 +1,3 @@
-import { backgroundImagesPrefix } from '../config';
-
-const NUMBER_OF_BACKGROUNDS = 12;
-
 export default {
     formatActivation(activation, author) {
         return {
@@ -104,12 +100,5 @@ export default {
         }
 
         return 'verybad';
-    },
-
-    _getBackgpoundURLById(id) {
-        const number = parseInt(id, 16);
-        const backgroundNumber = number % NUMBER_OF_BACKGROUNDS + 1;
-
-        return `${backgroundImagesPrefix}${backgroundNumber}.jpg`;
     }
 };
