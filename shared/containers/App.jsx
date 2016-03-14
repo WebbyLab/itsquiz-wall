@@ -1,16 +1,23 @@
 import React, { Component, PropTypes } from 'react';
 
+import EmbedEvents              from '../utils/EmbedEventsUtil';
+import config                   from '../config';
 import { initialize, navigate } from '../utils/googleAnalytics';
 
 if (process.env.BROWSER) {
     require('../assets');
 }
 
+const embedEvents = new EmbedEvents({
+    embedOrigin: config.embedOrigin
+});
+
 export default class App extends Component {
     static propTypes = {
         location : PropTypes.object,
         routes   : PropTypes.array,
-        children : PropTypes.object
+        children : PropTypes.object,
+        history  : PropTypes.object
     };
 
     componentDidMount() {
@@ -26,6 +33,23 @@ export default class App extends Component {
             navigate({
                 page  : nextProps.location.pathname,
                 title : nextProps.routes[nextProps.routes.length - 1].path
+            });
+        }
+
+        if (this.props.location.query.embed && (this.props.location.pathname !== nextProps.location.pathname)
+            || (this.props.location.query !== nextProps.location.query)) {
+            const pathname = nextProps.location.pathname;
+            const {
+                embed,
+                assigneeId,
+                locale,
+                ...query
+            } = nextProps.location.query;
+            const quizWallEmbedURL = this.props.history.createHref(pathname, query);
+
+            embedEvents.send({
+                type : 'PATH_CHANGED',
+                quizWallEmbedURL
             });
         }
     }
