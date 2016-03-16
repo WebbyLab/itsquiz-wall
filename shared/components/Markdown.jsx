@@ -11,7 +11,7 @@ import { activationDescriptionPreset } from './Markdown/presets.js';
 
 import MarkdownIt from 'markdown-it';
 
-const MAX_LINK_LENGTH = 25;
+const MAX_LINK_LENGTH = 35;
 
 class Markdown extends Component {
 

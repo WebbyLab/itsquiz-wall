@@ -63,7 +63,7 @@ export default class ExpandableText extends Component {
                         </Button>
                     </div>
                 :
-                    <div className='ExpandableText_text'>
+                    <div className='ExpandableText__text'>
                         <Markdown source={text} />
                     </div>
             }
