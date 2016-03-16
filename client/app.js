@@ -1,5 +1,3 @@
-import 'babel-core/polyfill';
-
 const DEFAULT_LOCALE = 'en';
 
 import React from 'react';
