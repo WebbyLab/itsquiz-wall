@@ -91,6 +91,7 @@ export function detectLocale(req) {
 
     return {
         UA: 'uk',
-        RU: 'ru'
+        RU: 'ru',
+        TR: 'tr'
     }[country] || 'en';
 }
