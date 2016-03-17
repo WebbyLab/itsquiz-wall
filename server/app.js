@@ -22,11 +22,13 @@ import clientConfig from '../etc/client-config.json';
 import ruLocaleData from '../public/static/lang/ru.json';
 import ukLocaleData from '../public/static/lang/uk.json';
 import enLocaleData from '../public/static/lang/en.json';
+import zh_cnLocaleData from  '../public/static/lang/zh_cn.json';
 
 const i18nToolsRegistry = {
     ru: new i18n.Tools({ localeData: ruLocaleData, locale: 'ru' }),
     en: new i18n.Tools({ localeData: enLocaleData, locale: 'en' }),
-    uk: new i18n.Tools({ localeData: ukLocaleData, locale: 'uk' })
+    uk: new i18n.Tools({ localeData: ukLocaleData, locale: 'uk' }),
+    zh_cn:new i18n.Tools({ localeData: zh_cnLocaleData, locale: 'zh_cn'})
 };
 
 const app = express();
