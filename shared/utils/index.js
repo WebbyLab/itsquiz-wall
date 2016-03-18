@@ -1,7 +1,7 @@
 import Jed from 'jed';
 
 export function getSupportedLocales() {
-    return ['ru', 'en', 'uk','zh_cn'];
+    return ['ru', 'en', 'uk', 'zhcn'];
 }
 
 export function sprintf(text, ...params) {
