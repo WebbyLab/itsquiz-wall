@@ -11,6 +11,7 @@ xgettext -kl --files-from="${ROOT_DIR}/list" --language=JavaScript --from-code=U
 xgettext -kl --files-from="${ROOT_DIR}/list" --language=JavaScript --from-code=UTF-8 -j -o "${ROOT_DIR}/lang/ru.po";
 xgettext -kl --files-from="${ROOT_DIR}/list" --language=JavaScript --from-code=UTF-8 -j -o "${ROOT_DIR}/lang/uk.po";
 xgettext -kl --files-from="${ROOT_DIR}/list" --language=JavaScript --from-code=UTF-8 -j -o "${ROOT_DIR}/lang/tr.po";
+xgettext -kl --files-from="${ROOT_DIR}/list" --language=JavaScript --from-code=UTF-8 -j -o "${ROOT_DIR}/lang/zh_cn.po";
 
 rm -rf "${ROOT_DIR}/src_es5";
 rm -rf "${ROOT_DIR}/list";
