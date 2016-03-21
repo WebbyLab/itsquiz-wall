@@ -23,14 +23,12 @@ import ruLocaleData from '../public/static/lang/ru.json';
 import ukLocaleData from '../public/static/lang/uk.json';
 import enLocaleData from '../public/static/lang/en.json';
 import trLocaleData from '../public/static/lang/tr.json';
-import zhcnLocaleData from  '../public/static/lang/zh_cn.json';
 
 const i18nToolsRegistry = {
     ru   : new i18n.Tools({ localeData: ruLocaleData, locale: 'ru' }),
     en   : new i18n.Tools({ localeData: enLocaleData, locale: 'en' }),
     uk   : new i18n.Tools({ localeData: ukLocaleData, locale: 'uk' }),
-    tr   : new i18n.Tools({ localeData: trLocaleData, locale: 'tr' }),
-    zhcn : new i18n.Tools({ localeData: zhcnLocaleData, locale: 'zhcn' })
+    tr   : new i18n.Tools({ localeData: trLocaleData, locale: 'tr' })
 };
 
 const app = express();
