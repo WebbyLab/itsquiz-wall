@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import cx from 'classnames';
+import cx                              from 'classnames';
 
 import ReactModal from 'react-modal';
 
