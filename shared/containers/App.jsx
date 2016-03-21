@@ -29,15 +29,18 @@ export default class App extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.props.location.pathname !== nextProps.location.pathname) {
+        const isEmbed = Boolean(this.props.location.query.embed);
+        const isPathnameChanged = this.props.location.pathname !== nextProps.location.pathname;
+        const isQueryChanged = this.props.location.query !== nextProps.location.query;
+
+        if (isPathnameChanged) {
             navigate({
                 page  : nextProps.location.pathname,
                 title : nextProps.routes[nextProps.routes.length - 1].path
             });
         }
 
-        if (this.props.location.query.embed && (this.props.location.pathname !== nextProps.location.pathname)
-            || (this.props.location.query !== nextProps.location.query)) {
+        if (isEmbed && (isPathnameChanged || isQueryChanged)) {
             const pathname = nextProps.location.pathname;
             const {
                 embed,
@@ -45,11 +48,11 @@ export default class App extends Component {
                 locale,
                 ...query
             } = nextProps.location.query;
-            const quizWallEmbedURL = this.props.history.createHref(pathname, query);
+            const quizWallEmbedPath = this.props.history.createHref(pathname, query);
 
             embedEvents.send({
                 type : 'PATH_CHANGED',
-                quizWallEmbedURL
+                quizWallEmbedPath
             });
         }
     }

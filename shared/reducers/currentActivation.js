@@ -1,4 +1,4 @@
-import apiResponseFormatter from '../utils/apiResponseFormatter';
+import * as apiResponseFormatter from '../utils/apiResponseFormatter';
 
 import {
     LOAD_ACTIVATION_REQUEST,
