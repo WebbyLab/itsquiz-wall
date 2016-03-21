@@ -205,19 +205,11 @@ export default class ActivationsPage extends React.Component {
                                 className = 'ActivationsPage__tabs'
                                 onChange  = {this.handleTabChange}
                             >
-                                <Tab href='/activations'>
-                                    {l('All tests')}
-                                </Tab>
-                                <Tab href='/activations?category=vacancy'>
-                                    {l('Vacancies')}
-                                </Tab>
-                                <Tab href='/activations?category=education'>
-                                    {l('Education')}
-                                </Tab>
-                                <Tab href='/activations?category=entertainment'>
-                                    {l('Entertainment')}
-                                </Tab>
-                                <Tab href='/activations?category=special' className='ActivationsPage__special-tab'>
+                                <Tab> {l('All tests')} </Tab>
+                                <Tab> {l('Vacancies')} </Tab>
+                                <Tab> {l('Education')} </Tab>
+                                <Tab> {l('Entertainment')} </Tab>
+                                <Tab className='ActivationsPage__special-tab'>
                                     <Icon type='gift' />  {l('Special offer')}
                                 </Tab>
                             </Tabs>
