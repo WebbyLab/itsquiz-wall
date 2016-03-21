@@ -29,18 +29,18 @@ export default class App extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        const isEmbed = this.props.location.query.embed;
-        const hasPathnameChanged = this.props.location.pathname !== nextProps.location.pathname;
-        const hasQueryChanged = this.props.location.query !== nextProps.location.query;
+        const isEmbed = Boolean(this.props.location.query.embed);
+        const isPathnameChanged = this.props.location.pathname !== nextProps.location.pathname;
+        const isQueryChanged = this.props.location.query !== nextProps.location.query;
 
-        if (hasPathnameChanged) {
+        if (isPathnameChanged) {
             navigate({
                 page  : nextProps.location.pathname,
                 title : nextProps.routes[nextProps.routes.length - 1].path
             });
         }
 
-        if (isEmbed && hasPathnameChanged || hasQueryChanged) {
+        if (isEmbed && (isPathnameChanged || isQueryChanged)) {
             const pathname = nextProps.location.pathname;
             const {
                 embed,
