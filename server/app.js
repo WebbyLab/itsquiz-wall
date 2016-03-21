@@ -102,7 +102,10 @@ app.use((req, res) => {
                 res.cookie('locale', locale, { maxAge: 900000 });
                 res.end(html);
             })
-            .catch(err => res.end(err.message));
+            .catch(err => {
+                console.log(err.stack);
+                res.end(err.message);
+            });
         }
     });
 });
