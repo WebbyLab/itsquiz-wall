@@ -33,11 +33,6 @@ export default class App extends Component {
         const isPathnameChanged = this.props.location.pathname !== nextProps.location.pathname;
         const isQueryChanged = this.props.location.query !== nextProps.location.query;
 
-        console.log('this.props.location.pathname', this.props.location.pathname);
-        console.log('nextProps.location.pathname', nextProps.location.pathname);
-        console.log('this.props.location.query', this.props.location.query);
-        console.log('nextProps.location.query', nextProps.location.query);
-
         if (isPathnameChanged) {
             navigate({
                 page  : nextProps.location.pathname,
@@ -46,8 +41,6 @@ export default class App extends Component {
         }
 
         if (isEmbed && (isPathnameChanged || isQueryChanged)) {
-            console.log('isEmbed && (isPathnameChanged || isQueryChanged) true');
-
             const pathname = nextProps.location.pathname;
             const {
                 embed,
