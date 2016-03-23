@@ -31,6 +31,7 @@ export default class ActivationPage extends React.Component {
         isLoading          : React.PropTypes.bool,
         isLoggingIn        : React.PropTypes.bool,
         isEmbedded         : React.PropTypes.bool,
+        dueTime            : React.PropTypes.string,
         onPass             : React.PropTypes.func,
         onShare            : React.PropTypes.func,
         onLoginDialogClose : React.PropTypes.func,
@@ -185,10 +186,11 @@ export default class ActivationPage extends React.Component {
             author,
             isSponsored,
             canAssigneePass,
-            numberOfTriesLeft
+            numberOfTriesLeft,
+            dueTime
         } = activation;
 
-        const { l, ngettext, humanizeDuration } = this.context.i18n;
+        const { l, ngettext, humanizeDuration, getTimeFromNow } = this.context.i18n;
 
         if (isLoading) {
             return <Spinner className='ActivationPage__spinner' />;
@@ -238,7 +240,22 @@ export default class ActivationPage extends React.Component {
                                 <span className='ActivationPage__time-to-pass'>
                                     {humanizeDuration(timeToPass, 'second')}
                                 </span>
+
+                                {
+                                    dueTime
+                                    ?   (
+                                        <span className='ActivationPage__expires'>
+                                            <span className='ActivationPage__span-divider'>
+                                                •
+                                            </span>
+                                            <span>{l('expires ')}{getTimeFromNow(dueTime)}</span>
+
+                                        </span>
+                                    )
+                                    : null
+                                }
                             </div>
+
                             <div className='ActivationPage__actions'>
                                 {
                                     canAssigneePass
