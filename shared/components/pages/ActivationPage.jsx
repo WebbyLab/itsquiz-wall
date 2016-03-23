@@ -183,7 +183,9 @@ export default class ActivationPage extends React.Component {
             numberOfQuestions,
             timeToPass,
             author,
-            isSponsored
+            isSponsored,
+            canAssigneePass,
+            numberOfTriesLeft
         } = activation;
 
         const { l, ngettext, humanizeDuration } = this.context.i18n;
@@ -239,16 +241,27 @@ export default class ActivationPage extends React.Component {
                             </div>
                             <div className='ActivationPage__actions'>
                                 {
-                                    !showUserResult
+                                    canAssigneePass
                                     ? (
-                                        <Button
-                                            ripple
-                                            raised    = {!isSponsored}
-                                            onClick   = {onPass.bind(null, activation)}
-                                            className = 'ActivationPage__btn ActivationPage__pass-btn'
-                                        >
-                                        {l('Pass the test')}
-                                        </Button>
+                                        <div className='ActivationPage__pass-btn-wrapper'>
+                                            <Button
+                                                ripple
+                                                raised    = {!isSponsored}
+                                                onClick   = {onPass.bind(null, activation)}
+                                                className = 'ActivationPage__btn ActivationPage__pass-btn'
+                                            >
+                                            {l('Pass the test')}
+                                            </Button>
+                                            {
+                                                numberOfTriesLeft
+                                                ?
+                                                    <div className='ActivationPage__number-of-tries'>
+                                                        {l('Number of tries left: ')}{numberOfTriesLeft}
+                                                    </div>
+                                                :
+                                                    null
+                                            }
+                                        </div>
                                     )
                                     : null
                                 }
