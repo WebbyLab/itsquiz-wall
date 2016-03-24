@@ -62,6 +62,29 @@ export default class WelcomeDialog extends Component {
         const { currentSlide, needToSkip } = this.state;
 
         const slides = [
+            <div key={0} className='WelcomeDialog__slide'>
+                <div className='WelcomeDialog__slide-image'>
+                    <img src='/static/images/welcome/07.png' />
+                </div>
+
+                <div className='WelcomeDialog__slide-content'>
+                    <h1>Хочешь стать участником iForum 2016?</h1>
+                    <p>
+                        It's quiz проводит розыгрыш билетов на самое крупное интернет-событие года
+                        <a href='http://2016.iforum.ua/' target='_blank'> iForum 2016</a>, который пройдет 20 апреля
+                        в Киеве.
+                    </p>
+                    <Button
+                        colored
+                        raised
+                        href='/promo/iforum-2016?skipWelcomeDialog=true'
+                        target='_blank'
+                        className='WelcomeDialog__btn'
+                    >
+                        {l('Learn more')}
+                    </Button>
+                </div>
+            </div>,
             <div key={1} className='WelcomeDialog__slide'>
                 <div className='WelcomeDialog__slide-image'>
                     <img src='/static/images/welcome/01.png' />

@@ -16,16 +16,26 @@ const MAX_LINK_LENGTH = 35;
 class Markdown extends Component {
 
     static propTypes = {
-        source : PropTypes.string.isRequired
-    };
-
-    static defaultProps = {
-        source : 'Nothing to view'
+        source : PropTypes.string.isRequired,
+        preset : PropTypes.oneOf([ 'activationDescription' ])
     };
 
     componentWillMount() {
         this.md = new MarkdownIt();
-        this.md.configure(activationDescriptionPreset).enable('linkify').enable(['link', 'list', 'emphasis']);
+
+        const { preset } = this.props;
+
+        switch (preset) {
+            case 'activationDescription': {
+                this.md.configure(activationDescriptionPreset).enable('linkify').enable(['link', 'list', 'emphasis']);
+
+                break;
+            }
+
+            default: {
+                this.md.enable('linkify');
+            }
+        }
 
         const customRenderer = (tokens, idx, options, env, self) => self.renderToken(tokens, idx, options);
         const defaultRender = this.md.renderer.rules.link_open || customRenderer;

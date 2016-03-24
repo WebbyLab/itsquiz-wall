@@ -14,7 +14,9 @@ const MAX_CHAR_NUMBER = 300;
 export default class ExpandableText extends Component {
 
     static propTypes = {
-        text: PropTypes.string
+        text              : PropTypes.string,
+        markdownPreset    : PropTypes.string,
+        isMarkdownEnabled : PropTypes.bool
     };
 
     static contextTypes = { i18n: React.PropTypes.object };
@@ -29,10 +31,18 @@ export default class ExpandableText extends Component {
         });
     };
 
+    renderedText = () => {
+        const { text, markdownPreset, isMarkdownEnabled } = this.props;
+
+        return isMarkdownEnabled
+            ? <Markdown preset={markdownPreset} source={text} />
+            : <p>{text}</p>;
+    }
+
     render() {
         const { l } = this.context.i18n;
 
-        const { text } = this.props;
+        const { text, markdownPreset } = this.props;
 
         const classes = cx('ExpandableText__text', {
             'minimized': !this.state.expanded
@@ -45,7 +55,7 @@ export default class ExpandableText extends Component {
                 ?
                     <div>
                         <div className={classes}>
-                            <Markdown source={text} />
+                            <Markdown preset={markdownPreset} source={text} />
                         </div>
                         <Button
                             colored
@@ -64,7 +74,7 @@ export default class ExpandableText extends Component {
                     </div>
                 :
                     <div className='ExpandableText__text'>
-                        <Markdown source={text} />
+                        <Markdown preset={markdownPreset} source={text} />
                     </div>
             }
             </div>

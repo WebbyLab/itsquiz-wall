@@ -9,6 +9,7 @@ import ActivationsPageContainer       from './containers/pages/ActivationsPage.j
 import ActivationPageContainer        from './containers/pages/ActivationPage.jsx';
 import ShareResultPageContainer       from './containers/pages/ShareResultPage.jsx';
 import CustomShareResultPageContainer from './containers/pages/CustomShareResultPage.jsx';
+import PromoPageContainer             from './containers/pages/PromoPage.jsx';
 
 export default (
     <Route component={App} >
@@ -21,6 +22,8 @@ export default (
 
             <Route component={ShareResultPageContainer} path='/result/:id/:userId' />
             <Route component={CustomShareResultPageContainer} path='/share/:key' />
+
+            <Route component={PromoPageContainer} path='/promo/:key' />
 
             <Redirect from='*' to='/activations' />
         </Route>

@@ -39,7 +39,9 @@ module.exports = {
             { test: /\.jsx$/, loader: "react-hot!babel!eslint-loader", exclude: [/node_modules/, /public/] },
             { test: /\.js$/, loader: "babel!eslint-loader", exclude: [/node_modules/, /public/] },
 
-            { test: /\.json$/, loader: "json-loader"}
+            { test: /\.json$/, loader: "json-loader" },
+
+            { test: /\.txt$/, loader: "raw-loader" }
         ]
     },
     eslint: {

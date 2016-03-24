@@ -358,7 +358,11 @@ export default class ActivationPage extends React.Component {
                     }
 
                     <div className='ActivationPage__details'>
-                        <ExpandableText text={activation.message} />
+                        <ExpandableText
+                            isMarkdownEnabled
+                            text={activation.message}
+                            markdownPreset='activationDescription'
+                        />
                     </div>
                 </Card>
 

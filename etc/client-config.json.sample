@@ -33,6 +33,13 @@
             "redirectRoute": "/activations"
         }
     },
+    "promos": {
+        "iforum-2016": {
+            "name": "Выиграй билеты на iforum 2016",
+            "desciption": "Itsquiz разыгрывает 3 билета на главное интернет-событие года. Создай тест на тему `интернет-технологии` и получи билет бесплатно!",
+            "image": "/static/images/promo/iforum-2016.png"
+        }
+    },
     "ads": {
         "activationPage": {
             "client": "XXX",
