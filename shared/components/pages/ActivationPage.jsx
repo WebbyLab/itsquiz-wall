@@ -201,6 +201,8 @@ export default class ActivationPage extends React.Component {
             'ActivationPage__activation--passed': showUserResult
         });
 
+        const passInfoClasses = cx('ActivationPage__pass-info', { 'ActivationPage__pass-info--expires': dueTime });
+
         return (
             <div className={classes}>
                 <Card className='ActivationPage__paper' shadow={1}>
@@ -223,7 +225,7 @@ export default class ActivationPage extends React.Component {
                                 {author.fullName}
                             </div>
 
-                            <div className='ActivationPage__pass-info'>
+                            <div className={passInfoClasses}>
                                 <span className='ActivationPage__number-of-questions'>
                                     {
                                         sprintf(
