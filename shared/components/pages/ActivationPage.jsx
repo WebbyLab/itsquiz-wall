@@ -192,6 +192,8 @@ export default class ActivationPage extends React.Component {
 
         const { l, ngettext, humanizeDuration, getTimeFromNow } = this.context.i18n;
 
+        const isPassingBtnAvailable = (typeof canAssigneePass === 'undefined') ? true : canAssigneePass;
+
         if (isLoading) {
             return <Spinner className='ActivationPage__spinner' />;
         }
@@ -260,7 +262,7 @@ export default class ActivationPage extends React.Component {
 
                             <div className='ActivationPage__actions'>
                                 {
-                                    canAssigneePass
+                                    isPassingBtnAvailable
                                     ? (
                                         <div className='ActivationPage__pass-btn-wrapper'>
                                             <Button
