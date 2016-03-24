@@ -68,11 +68,12 @@ export default class WelcomeDialog extends Component {
                 </div>
 
                 <div className='WelcomeDialog__slide-content'>
-                    <h1>Хочешь стать участником iForum 2016?</h1>
+                    <h1>Хочешь на iForum 2016?</h1>
                     <p>
-                        It's quiz проводит розыгрыш билетов на самое крупное интернет-событие года
-                        <a href='http://2016.iforum.ua/' target='_blank'> iForum 2016</a>, который пройдет 20 апреля
-                        в Киеве.
+                        It's quiz розыгрывает билеты на главное интернет-событие года -
+                        <a href='http://2016.iforum.ua/' target='_blank'> iForum 2016</a>. Все просто:
+                        создай тест и <b>выиграй билет</b>! Всем участникам дарим скидку 20% на покупку билета
+                        и 10$ на бонусный счет в It’s quiz.
                     </p>
                     <Button
                         colored
