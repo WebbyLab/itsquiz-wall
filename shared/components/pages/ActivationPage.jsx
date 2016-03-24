@@ -250,7 +250,7 @@ export default class ActivationPage extends React.Component {
                                             <span className='ActivationPage__span-divider'>
                                                 •
                                             </span>
-                                            <span>{l('expires ')}{getTimeFromNow(dueTime)}</span>
+                                            <span>{sprintf(l('expires %s'), getTimeFromNow(dueTime))}</span>
 
                                         </span>
                                     )
@@ -275,7 +275,13 @@ export default class ActivationPage extends React.Component {
                                                 numberOfTriesLeft
                                                 ?
                                                     <div className='ActivationPage__number-of-tries'>
-                                                        {l('Number of tries left: ')}{numberOfTriesLeft}
+                                                        {
+                                                            sprintf(
+                                                                ngettext('You have %d try left',
+                                                                    'You have %d tries left', numberOfTriesLeft),
+                                                                numberOfTriesLeft
+                                                            )
+                                                        }
                                                     </div>
                                                 :
                                                     null
