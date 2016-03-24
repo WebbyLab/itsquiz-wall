@@ -62,6 +62,22 @@ export function getMetaDataFromState({ route, state, lang = 'en', params = {}, q
         }
     }
 
+    if (route === '/promo/:key') {
+        const { promos } = clientConfig;
+        const { key } = params;
+
+        if (key && promos && promos[key]) {
+            const { title, image, description } = promos[key];
+
+            return {
+                image,
+                title,
+                description,
+                siteName : 'It\'s quiz'
+            };
+        }
+    }
+
     return {
         title       : 'Quiz Wall',
         siteName    : 'It\'s quiz',
