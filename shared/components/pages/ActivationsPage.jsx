@@ -17,7 +17,7 @@ if (process.env.BROWSER) {
     require('./ActivationsPage.less');
 }
 
-const CATEGORIES = ['ALL', 'VACANCY', 'EDUCATION', 'ENTERTAINMENT', 'SPECIAL'];
+const CATEGORIES = ['ALL', 'VACANCY', 'EDUCATION', 'ENTERTAINMENT', 'IFORUM'];
 
 export default class ActivationsPage extends React.Component {
     static propTypes = {
@@ -210,7 +210,7 @@ export default class ActivationsPage extends React.Component {
                                 <Tab> {l('Education')} </Tab>
                                 <Tab> {l('Entertainment')} </Tab>
                                 <Tab className='ActivationsPage__special-tab'>
-                                    <Icon type='gift' />  {l('Special offer')}
+                                    <Icon type='ticket' />  IFORUM
                                 </Tab>
                             </Tabs>
 
@@ -233,13 +233,17 @@ export default class ActivationsPage extends React.Component {
 
                 <div className='ActivationsPage__content'>
                     {
-                        selectedCategory === 'SPECIAL' && !isEmbedded
+                        selectedCategory === 'IFORUM'
                         ?
-                            <Button colored raised ripple
+                            <Button
+                                colored
+                                raised
+                                ripple
                                 className='ActivationsPage__subscribe-btn'
-                                onClick={onSpecialsSubscribe}
+                                href='/promo/iforum-2016?skipWelcomeDialog=true'
+                                target='_blank'
                             >
-                                {l('I want to receive new special offers')}
+                                Хочу билет на iForum
                             </Button>
                         :
                             null

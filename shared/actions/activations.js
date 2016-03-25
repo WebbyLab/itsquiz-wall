@@ -15,13 +15,14 @@ export function loadActivations(params = {}, query = {}, offset = 0) {
             search    : query.search || ''
         });
 
+        const isIforumCampaign = query.category === 'IFORUM';
+
         return api.activations.list({
             offset,
             include     : 'users',
             limit       : LIMIT_PER_QUERY,
-            search      : query.search || '',
-            category    : query.category !== 'SPECIAL' ? query.category : '',
-            isSponsored : query.category === 'SPECIAL' ? true : '',
+            search      : isIforumCampaign ? `iforum ${query.search}` : query.search,
+            category    : isIforumCampaign ? '' : query.category,
             sortBy      : query.sortType || '',
             assigneeId  : query.assigneeId || ''
 
