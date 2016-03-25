@@ -159,7 +159,6 @@ export default class ActivationsPage extends React.Component {
             isLoading,
             linkToShare,
             onSearch,
-            onSpecialsSubscribe,
             onChangeSortType,
             onLoginClose,
             onStopSharing
