@@ -168,6 +168,7 @@ export default class ActivationPage extends React.Component {
             activation,
             isLoading,
             showUserResult,
+            isEmbedded,
             onPass,
             onShare,
             onShareResult,
@@ -192,7 +193,7 @@ export default class ActivationPage extends React.Component {
 
         const { l, ngettext, humanizeDuration, getTimeFromNow } = this.context.i18n;
 
-        const isPassingBtnAvailable = (typeof canAssigneePass === 'undefined') ? true : canAssigneePass;
+        const isPassingBtnAvailable = isEmbedded ? canAssigneePass : true;
 
         if (isLoading) {
             return <Spinner className='ActivationPage__spinner' />;
