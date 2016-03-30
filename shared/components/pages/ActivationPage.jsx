@@ -272,7 +272,7 @@ export default class ActivationPage extends React.Component {
                                                 onClick   = {onPass.bind(null, activation)}
                                                 className = 'ActivationPage__btn ActivationPage__pass-btn'
                                             >
-                                            {l('Pass the test')}
+                                                {l('Pass the test')}
                                             </Button>
                                             {
                                                 numberOfTriesLeft
