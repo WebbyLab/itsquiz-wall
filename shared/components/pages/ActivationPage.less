@@ -155,6 +155,22 @@
                 font-weight: 400;
             }
 
+            .ActivationPage__pass-info--expires {
+                @media @phone {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+
+            .ActivationPage__expires {
+                @media @phone {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+
             .ActivationPage__actions {
                 position: absolute;
                 display: flex;
@@ -178,6 +194,13 @@
             .ActivationPage__btn {
                 background-color: @green-app;
                 color: @white-darker;
+            }
+
+            .ActivationPage__number-of-tries {
+                color: @secondary-text-color;
+                font-size: 12px;
+                margin-top: 8px;
+                text-align: center;
             }
         }
     }

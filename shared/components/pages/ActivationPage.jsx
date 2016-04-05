@@ -31,6 +31,7 @@ export default class ActivationPage extends React.Component {
         isLoading          : React.PropTypes.bool,
         isLoggingIn        : React.PropTypes.bool,
         isEmbedded         : React.PropTypes.bool,
+        dueTime            : React.PropTypes.string,
         onPass             : React.PropTypes.func,
         onShare            : React.PropTypes.func,
         onLoginDialogClose : React.PropTypes.func,
@@ -167,6 +168,7 @@ export default class ActivationPage extends React.Component {
             activation,
             isLoading,
             showUserResult,
+            isEmbedded,
             onPass,
             onShare,
             onShareResult,
@@ -183,10 +185,15 @@ export default class ActivationPage extends React.Component {
             numberOfQuestions,
             timeToPass,
             author,
-            isSponsored
+            isSponsored,
+            canAssigneePass,
+            numberOfTriesLeft,
+            dueTime
         } = activation;
 
-        const { l, ngettext, humanizeDuration } = this.context.i18n;
+        const { l, ngettext, humanizeDuration, getTimeFromNow } = this.context.i18n;
+
+        const isPassingBtnAvailable = isEmbedded ? canAssigneePass : true;
 
         if (isLoading) {
             return <Spinner className='ActivationPage__spinner' />;
@@ -196,6 +203,8 @@ export default class ActivationPage extends React.Component {
             'ActivationPage__activation--sponsored': isSponsored,
             'ActivationPage__activation--passed': showUserResult
         });
+
+        const passInfoClasses = cx('ActivationPage__pass-info', { 'ActivationPage__pass-info--expires': dueTime });
 
         return (
             <div className={classes}>
@@ -219,7 +228,7 @@ export default class ActivationPage extends React.Component {
                                 {author.fullName}
                             </div>
 
-                            <div className='ActivationPage__pass-info'>
+                            <div className={passInfoClasses}>
                                 <span className='ActivationPage__number-of-questions'>
                                     {
                                         sprintf(
@@ -236,19 +245,51 @@ export default class ActivationPage extends React.Component {
                                 <span className='ActivationPage__time-to-pass'>
                                     {humanizeDuration(timeToPass, 'second')}
                                 </span>
+
+                                {
+                                    dueTime
+                                    ?   (
+                                        <span className='ActivationPage__expires'>
+                                            <span className='ActivationPage__span-divider'>
+                                                •
+                                            </span>
+                                            <span>{sprintf(l('expires %s'), getTimeFromNow(dueTime))}</span>
+
+                                        </span>
+                                    )
+                                    : null
+                                }
                             </div>
+
                             <div className='ActivationPage__actions'>
                                 {
-                                    !showUserResult
+                                    isPassingBtnAvailable
                                     ? (
-                                        <Button
-                                            ripple
-                                            raised    = {!isSponsored}
-                                            onClick   = {onPass.bind(null, activation)}
-                                            className = 'ActivationPage__btn ActivationPage__pass-btn'
-                                        >
-                                        {l('Pass the test')}
-                                        </Button>
+                                        <div className='ActivationPage__pass-btn-wrapper'>
+                                            <Button
+                                                ripple
+                                                raised    = {!isSponsored}
+                                                onClick   = {onPass.bind(null, activation)}
+                                                className = 'ActivationPage__btn ActivationPage__pass-btn'
+                                            >
+                                                {l('Pass the test')}
+                                            </Button>
+                                            {
+                                                numberOfTriesLeft
+                                                ?
+                                                    <div className='ActivationPage__number-of-tries'>
+                                                        {
+                                                            sprintf(
+                                                                ngettext('You have %d try left',
+                                                                    'You have %d tries left', numberOfTriesLeft),
+                                                                numberOfTriesLeft
+                                                            )
+                                                        }
+                                                    </div>
+                                                :
+                                                    null
+                                            }
+                                        </div>
                                     )
                                     : null
                                 }

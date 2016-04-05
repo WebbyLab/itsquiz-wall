@@ -17,7 +17,9 @@ export function formatActivation(activation, author) {
         pictureURL           : activation.pictureURL,
         tags                 : activation.tags,
         timeToPass           : activation.timeToPass,
-        author               : author ? formatUserInfo(author) : {}
+        author               : author ? formatUserInfo(author) : {},
+        canAssigneePass      : activation.canAssigneePass,
+        numberOfTriesLeft    : activation.numberOfTriesLeft || 0
     };
 }
 
