@@ -50,6 +50,7 @@
   },
   "devDependencies": {
     "autoprefixer-loader": "*",
+    "babel-cli": "^6.6.5",
     "babel-core": "^6.7.2",
     "babel-eslint": "^5.0.0",
     "babel-loader": "^6.2.4",
