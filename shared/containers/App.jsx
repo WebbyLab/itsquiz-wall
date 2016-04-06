@@ -26,6 +26,10 @@ export default class App extends Component {
             page  : this.props.location.pathname,
             title : this.props.routes[this.props.routes.length - 1].path
         });
+
+        embedEvents.subscribe({
+            'REDIRECT_QUIZ_WALL' : this.handleRedirect
+        });
     }
 
     componentWillReceiveProps(nextProps) {
@@ -55,6 +59,13 @@ export default class App extends Component {
                 quizWallEmbedPath
             });
         }
+    }
+
+    handleRedirect = () => {
+        this.props.history.pushState(null, `/activations`, {
+            embed      : this.props.location.query.embed,
+            assigneeId : this.props.location.query.assigneeId
+        });
     }
 
     render() {
