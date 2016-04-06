@@ -46,7 +46,9 @@ export default class ActivationsPage extends React.Component {
 
     static contextTypes = { i18n: React.PropTypes.object };
 
-    handleTabChange = (index) => {
+    handleTabClick = (index, e) => {
+        e.preventDefault();
+
         this.props.onTabChange(CATEGORIES[index]);
     };
 
@@ -203,13 +205,36 @@ export default class ActivationsPage extends React.Component {
                                 ripple
                                 activeTab = {selectedCategory ? CATEGORIES.indexOf(selectedCategory) : 0}
                                 className = 'ActivationsPage__tabs'
-                                onChange  = {this.handleTabChange}
                             >
-                                <Tab> {l('All tests')} </Tab>
-                                <Tab> {l('Vacancies')} </Tab>
-                                <Tab> {l('Education')} </Tab>
-                                <Tab> {l('Entertainment')} </Tab>
-                                <Tab className='ActivationsPage__special-tab'>
+                                <Tab
+                                    href='/activations'
+                                    onClick={this.handleTabClick.bind(null, 0)}
+                                >
+                                    {l('All tests')}
+                                </Tab>
+                                <Tab
+                                    href='/activations?category=vacancy'
+                                    onClick={this.handleTabClick.bind(null, 1)}
+                                >
+                                    {l('Vacancies')}
+                                </Tab>
+                                <Tab
+                                    href='/activations?category=education'
+                                    onClick={this.handleTabClick.bind(null, 2)}
+                                >
+                                    {l('Education')}
+                                </Tab>
+                                <Tab
+                                    href='/activations?category=entertainment'
+                                    onClick={this.handleTabClick.bind(null, 3)}
+                                >
+                                    {l('Entertainment')}
+                                </Tab>
+                                <Tab
+                                    href='/activations?category=special'
+                                    onClick={this.handleTabClick.bind(null, 4)}
+                                    className='ActivationsPage__special-tab'
+                                >
                                     <Icon type='gift' />  {l('Special offer')}
                                 </Tab>
                             </Tabs>
