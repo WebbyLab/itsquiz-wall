@@ -70,7 +70,6 @@ export default class ActivationPage extends React.Component {
         const {
             activation,
             authorActivations,
-            showUserResult,
             onActivationClick
         } = this.props;
 
@@ -100,7 +99,7 @@ export default class ActivationPage extends React.Component {
                                     numberOfQuestions = {authorActivation.numberOfQuestions}
                                     pictureURL        = {authorActivation.pictureURL}
                                     author            = {activation.author}
-                                    isPassed          = {showUserResult && authorActivation.isPassed}
+                                    isPassed          = {authorActivation.isPassed}
                                     userQuizSession   = {authorActivation.userQuizSession}
                                     onClick           = {onActivationClick.bind(null, authorActivation)}
                                 />
@@ -118,7 +117,6 @@ export default class ActivationPage extends React.Component {
     renderSimilarActivations = () => {
         const {
             similarActivations,
-            showUserResult,
             onActivationClick
         } = this.props;
 
@@ -148,7 +146,7 @@ export default class ActivationPage extends React.Component {
                                     numberOfQuestions = {similarActivation.numberOfQuestions}
                                     pictureURL        = {similarActivation.pictureURL}
                                     author            = {similarActivation.author}
-                                    isPassed          = {showUserResult && similarActivation.isPassed}
+                                    isPassed          = {similarActivation.isPassed}
                                     userQuizSession   = {similarActivation.userQuizSession}
                                     onClick           = {onActivationClick.bind(null, similarActivation)}
                                 />
