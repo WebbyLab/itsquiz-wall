@@ -17,6 +17,7 @@ class PromoPageContainer extends Component {
         switch (key) {
             case 'iforum-2016': {
                 const text = require('./PromoPage/iforum-2016.js');
+
                 return text;
             }
 

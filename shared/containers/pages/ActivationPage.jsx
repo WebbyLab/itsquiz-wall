@@ -124,7 +124,7 @@ class ActivationPageContainer extends Component {
     };
 
     handleGoBack = () => {
-        this.props.history.pushState(null, `/activations`, {
+        this.props.history.pushState(null, '/activations', {
             embed      : this.props.location.query.embed,
             assigneeId : this.props.location.query.assigneeId
         });

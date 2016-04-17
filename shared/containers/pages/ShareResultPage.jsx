@@ -20,7 +20,7 @@ class ShareResultPageContainer extends Component {
         sendEvent('share result', 'direct open', activation.name);
 
         if (activation.isPrivate) {
-            this.props.history.replaceState(null, `/activations`, {
+            this.props.history.replaceState(null, '/activations', {
                 ...this.props.location.query
             });
         } else {
