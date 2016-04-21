@@ -1,14 +1,15 @@
 #
 #  <>, YEAR,�, 2016.
 # oleg <>, 2016.
+# Oleg <CBETJIOMYP@gmail.com>, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-29 18:16+0200\n"
-"PO-Revision-Date: 2016-04-19 15:12+0300\n"
-"Last-Translator: oleg <>\n"
+"PO-Revision-Date: 2016-04-21 12:39+0300\n"
+"Last-Translator: Oleg <CBETJIOMYP@gmail.com>\n"
 "Language-Team: русский <>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
