@@ -19,7 +19,8 @@ export function formatActivation(activation, author) {
         timeToPass           : activation.timeToPass,
         author               : author ? formatUserInfo(author) : {},
         canAssigneePass      : activation.canAssigneePass,
-        numberOfTriesLeft    : activation.numberOfTriesLeft || 0
+        numberOfTriesLeft    : activation.numberOfTriesLeft || 0,
+        assessmentSystem     : activation.assessmentSystem
     };
 }
 
@@ -60,16 +61,16 @@ export function formatUserQuizSession(session) {
     const userScore = Math.ceil(+userGainedPoints * 100 / +session.maxPoints);
 
     return {
-        canViewAnswers  : session.canAssigneeViewQuestions,
-        startedAt       : session.startedAt,
-        shareResultLink : session.resultShareLink || '',
-        finishedAt      : session.finishedAt,
-        score           : userScore,
-        gainedPoints    : userGainedPoints,
-        maxPoints       : session.maxPoints,
-        status          : session.status,
-        id              : session.id,
-        grade           : _getResultGrade(userScore)
+        canViewAnswers   : session.canAssigneeViewQuestions,
+        startedAt        : session.startedAt,
+        shareResultLink  : session.resultShareLink || '',
+        finishedAt       : session.finishedAt,
+        score            : userScore,
+        gainedPoints     : userGainedPoints,
+        maxPoints        : session.maxPoints,
+        status           : session.status,
+        id               : session.id,
+        resultBackground : _getResultBackground(userScore)
     };
 }
 
@@ -83,7 +84,7 @@ function _getUserFullName({ firstName, secondName, ...user }) {
         : 'It`s quiz user';
 }
 
-function _getResultGrade(score) {
+function _getResultBackground(score) {
     if (score > 95) {
         return 'excellent';
     }

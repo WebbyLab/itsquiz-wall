@@ -226,6 +226,26 @@
     color: @white-darker;
     text-shadow: rgba(0, 0, 0, 0.3) 2px 0px 3px;
     margin-bottom: 10px;
+
+    @media @phone {
+        font-size: 16px;
+        line-height: normal;
+    }
+}
+
+.ActivationsPage__greeting-description {
+    font-size: 14px;
+    color: #fff;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    @media @phone {
+        font-size: 11px;
+    }
 }
 
 .ActivationPage__activation--sponsored {

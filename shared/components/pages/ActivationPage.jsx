@@ -13,6 +13,7 @@ import ShareDialog          from '../../containers/ShareDialog.jsx';
 import LoginDialog          from '../../containers/LoginDialog.jsx';
 import AppBarWithBackground from '../AppBarWithBackground.jsx';
 import ExpandableText       from '../ExpandableText.jsx';
+import Dialog               from '../Dialog.jsx';
 
 import { sprintf } from '../../utils';
 
@@ -46,24 +47,61 @@ export default class ActivationPage extends React.Component {
 
     static contextTypes = { i18n: React.PropTypes.object };
 
+    state = {
+        showDescription: false
+    };
+
     componentWillMount() {
         const { l } = this.context.i18n;
 
         this.sponsoredButtonLabel = Math.random() < 0.5 ? l('Contact me') : l('Get the gift');
     }
 
-    getGreetingPhrase = (grade) => {
+    handleDescriptionClick = () => {
+        this.setState({
+            showDescription: true
+        });
+    };
+
+    handleHideDescription = () => {
+        this.setState({
+            showDescription: false
+        });
+    };
+
+    getGreeting = (score) => {
         const { l } = this.context.i18n;
 
-        const phrases = {
-            'verybad'   : l('You could do better!'),
-            'bad'       : l('You could do better!'),
-            'normal'    : l('Good job!'),
-            'good'      : l('Great result!'),
-            'excellent' : l('You rock! Excellent job!')
-        };
+        const assessmentSystem = this.props.activation.assessmentSystem;
 
-        return phrases[grade];
+        if (!assessmentSystem[0]) {
+            if (score > 95) {
+                return { phrase: l('You rock! Excellent job!') };
+            }
+
+            if (score > 75) {
+                return { phrase: l('Great result!') };
+            }
+
+            if (score > 50) {
+                return { phrase: l('Good job!') };
+            }
+
+            if (score > 30) {
+                return { phrase: l('You could do better!') };
+            }
+
+            return { phrase: l('You could do better!') };
+        }
+
+        for (let i = assessmentSystem.length - 1; i >= 0; i--) {
+            if (score >= assessmentSystem[i].grade) {
+                return {
+                    phrase: assessmentSystem[i].phrase,
+                    description: assessmentSystem[i].description || ''
+                };
+            }
+        }
     };
 
     renderAuthorActivations = () => {
@@ -159,6 +197,41 @@ export default class ActivationPage extends React.Component {
         }
 
         return null;
+    };
+
+    renderGreetingPhrase = () => {
+        const { l } = this.context.i18n;
+
+        const userScore = this.props.activation.userQuizSession.score;
+        const greeting = this.getGreeting(userScore);
+
+        return (
+            <div className='ActivationsPage__greeting-wrapper'>
+                <h4 className='ActivationPage__greeting'>
+                    {greeting.phrase}
+                </h4>
+
+                {
+                    greeting.description
+                    ?
+                        <span
+                            className='ActivationsPage__greeting-description'
+                            onClick={this.handleDescriptionClick}
+                        >
+                            {l('View description')}
+                        </span>
+                    :
+                        null
+                }
+
+                <Dialog
+                    isOpen         = {this.state.showDescription}
+                    onRequestClose = {this.handleHideDescription}
+                >
+                    <p className='ActivationPage__greeting-description'>{greeting.description}</p>
+                </Dialog>
+            </div>
+        );
     };
 
     renderContent = () => {
@@ -328,12 +401,12 @@ export default class ActivationPage extends React.Component {
                     {
                         showUserResult
                         ?
-                            <div className={cx('ActivationPage__results-container', userQuizSession.grade)}>
+                            <div className={cx('ActivationPage__results-container', userQuizSession.resultBackground)}>
                                 <div className='ActivationPage__overlay'>
                                     <div className='ActivationPage__results-text'>
-                                        <h4 className='ActivationPage__greeting'>
-                                            {this.getGreetingPhrase(userQuizSession.grade)}
-                                        </h4>
+
+                                        {this.renderGreetingPhrase()}
+
                                         <div className='ActivationPage__score'>
                                             {userQuizSession.score}%
                                         </div>
