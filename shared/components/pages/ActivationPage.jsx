@@ -74,7 +74,7 @@ export default class ActivationPage extends React.Component {
 
         const assessmentSystem = this.props.activation.assessmentSystem;
 
-        if (!assessmentSystem[0]) {
+        if (assessmentSystem.length !== 0) {
             if (score > 95) {
                 return { phrase: l('You rock! Excellent job!') };
             }
