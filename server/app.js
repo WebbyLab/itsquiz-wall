@@ -124,6 +124,8 @@ function renderHTML({ componentHTML, initialState, metaData, config }) {
             <meta property="og:title" content="${escapeHTML(metaData.title)}" />
             <meta property="og:site_name" content="${escapeHTML(metaData.siteName)}"/>
             <meta property="og:image" content="${escapeHTML(metaData.image)}" />
+            <meta property="og:image:width" content="158" />
+            <meta property="og:image:height" content="158" />
             <meta property="og:description" content="${escapeHTML(metaData.description)}" />
             <meta property="og:locale" content="en_US" />
             <meta property="og:locale:alternate" content="ru_RU" />
