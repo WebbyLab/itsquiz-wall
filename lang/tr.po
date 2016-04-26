@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-21 12:38+0300\n"
-"PO-Revision-Date: 2016-04-21 12:39+0300\n"
+"POT-Creation-Date: 2016-04-26 19:58+0300\n"
+"PO-Revision-Date: 2016-04-26 20:00+0300\n"
 "Last-Translator: Oleg <CBETJIOMYP@gmail.com>\n"
 "Language-Team: русский <>\n"
 "Language: \n"
@@ -86,6 +86,7 @@ msgstr "Testi geçtiniz"
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/QuizCard.js:173
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:289
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/QuizCard.js:185
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:360
 #, javascript-format
 msgid "%d question"
 msgid_plural "%d questions"
@@ -106,6 +107,7 @@ msgstr[1] "%d sorular"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:116
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:115
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:127
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:162
 #, javascript-format
 msgid "More tests by %s"
 msgstr " %s 'den daha çok testler"
@@ -262,6 +264,7 @@ msgstr "Test'i paylaş"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:258
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:263
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:275
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:346
 msgid "private"
 msgstr "gizli"
 
@@ -283,6 +286,7 @@ msgstr "Kayıt ol / Giriş Yap"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:115
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:155
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:169
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:130
 msgid "Welcome to It's quiz!"
 msgstr "Quiz'e hoşgeldin!"
 
@@ -303,6 +307,7 @@ msgstr ""
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:172
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:151
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:186
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:147
 msgid "Learn more"
 msgstr "Daha fazlasını öğren"
 
@@ -312,6 +317,7 @@ msgstr "Daha fazlasını öğren"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:180
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:189
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:203
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:164
 msgid "Check your knowledge"
 msgstr "Bilgilerinizi kontrol edin"
 
@@ -349,6 +355,7 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:235
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:275
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:289
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:250
 msgid "Create a test"
 msgstr "Test Oluştur"
 
@@ -360,6 +367,7 @@ msgstr "Test Oluştur"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:183
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:223
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:237
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:198
 msgid "Find best ever employees"
 msgstr "En iyi çalışanları bul"
 
@@ -382,6 +390,7 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:199
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:239
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:253
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:214
 msgid "Create a vacancy"
 msgstr "Kariyer test'i oluştur"
 
@@ -397,6 +406,7 @@ msgstr "Mesajı geç"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:165
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:205
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:219
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:180
 msgid "Discover tests"
 msgstr "Testleri keşfet"
 
@@ -406,6 +416,7 @@ msgstr "Testleri keşfet"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:281
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:321
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:335
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:296
 msgid "Do not show me this message again"
 msgstr "Bu mesajı bir daha gösterma"
 
@@ -516,6 +527,7 @@ msgstr "Ekibimizle tanış"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:122
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:162
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:176
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:137
 msgid ""
 "Explore hundreds of open tests on Quiz Wall, check your knowledge, explore "
 "new topics, share your achievements with friends!"
@@ -527,6 +539,7 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:186
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:195
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:209
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:170
 msgid ""
 "Find out your language level, check knowledge of professional topics, pass "
 "entertainment tests or even find a new job! Everything absolutely free!"
@@ -540,6 +553,7 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:217
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:257
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:271
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:232
 msgid "Create your own tests!"
 msgstr "Kendi testlerini oluştur!"
 
@@ -549,6 +563,7 @@ msgstr "Kendi testlerini oluştur!"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:224
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:264
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:278
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:239
 msgid ""
 "Everyone can create a test on It's quiz! Simply add new questions, compose a "
 "quiz, activate and share with your friends!"
@@ -561,6 +576,7 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:189
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:229
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:243
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/WelcomeDialog.js:204
 msgid ""
 "Filter out candidates who don’t meet your standards before you interview "
 "them. Create test for a position, publish on Quiz Wall, enjoy interviewing "
@@ -577,6 +593,7 @@ msgstr ""
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:296
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:318
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:330
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:401
 msgid "Pass the test"
 msgstr "Testlerden geçtin"
 
@@ -616,6 +633,7 @@ msgstr "yada mail adresini kullan"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:347
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:375
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:387
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:454
 #, javascript-format
 msgid "%s of %s point"
 msgid_plural "%s of %s points"
@@ -630,6 +648,7 @@ msgstr[1] "%s arasında %s puanların"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:362
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:390
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:402
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:469
 msgid "Share result with friends"
 msgstr "Sonuçlarımı arkadaşlarımla paylaş"
 
@@ -641,6 +660,7 @@ msgstr "Sonuçlarımı arkadaşlarımla paylaş"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:371
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:399
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:411
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:478
 msgid "View my answers"
 msgstr "Cevaplarımı görüntüle"
 
@@ -659,6 +679,8 @@ msgstr "Cevaplarımı görüntüle"
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:93
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:104
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:105
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:133
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:136
 msgid "You could do better!"
 msgstr "Daha iyisini yapabilirsin"
 
@@ -670,6 +692,7 @@ msgstr "Daha iyisini yapabilirsin"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:93
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:94
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:106
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:129
 msgid "Good job!"
 msgstr "Aferin!"
 
@@ -681,6 +704,7 @@ msgstr "Aferin!"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:94
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:95
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:107
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:125
 msgid "Great result!"
 msgstr "Güzel Sonuç!"
 
@@ -692,6 +716,7 @@ msgstr "Güzel Sonuç!"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:95
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:96
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:108
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:121
 msgid "You rock! Excellent job!"
 msgstr "Harikasın! Mükkemel çalışma!"
 
@@ -704,6 +729,7 @@ msgstr "Harikasın! Mükkemel çalışma!"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:442
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:471
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:483
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:550
 msgid "Share"
 msgstr "Paylaş"
 
@@ -715,6 +741,7 @@ msgstr "Paylaş"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:444
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:473
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:485
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:552
 #, javascript-format
 msgid "My result is %d%%"
 msgstr "Benim sonuçlarım %d%%"
@@ -727,6 +754,7 @@ msgstr "Benim sonuçlarım %d%%"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:444
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:473
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:485
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:552
 msgid "Check out this test"
 msgstr "Test'ime göz at"
 
@@ -753,6 +781,7 @@ msgstr "Özel İndirimler"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:416
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:444
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:456
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:523
 msgid "Contact me"
 msgstr "Bana Ulaş"
 
@@ -781,6 +810,7 @@ msgstr "Özel teklifleri görmek istiyorum"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:416
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:444
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:456
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:523
 msgid "Get the gift"
 msgstr "Hediye kazan"
 
@@ -796,6 +826,7 @@ msgstr "Sosyal ağ hesabınızla giriş yaparak testlere devam edin"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:383
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:411
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:423
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:490
 msgid "Fill in your resume"
 msgstr "Bilgilerinizi doldurmalısınız"
 
@@ -804,6 +835,7 @@ msgstr "Bilgilerinizi doldurmalısınız"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:388
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:416
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:428
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:495
 msgid "Filled profiles receive 70% more views"
 msgstr "70%'i doldurulmuş profiller daha fazla görüntülenir"
 
@@ -811,6 +843,7 @@ msgstr "70%'i doldurulmuş profiller daha fazla görüntülenir"
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:165
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:162
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:174
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:209
 msgid "Similar tests"
 msgstr "Benzert testler"
 
@@ -849,14 +882,20 @@ msgstr "Genişlet"
 
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:300
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:312
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:383
 #, javascript-format
 msgid "expires %s"
 msgstr ""
 
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:323
 #: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:335
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:406
 #, javascript-format
 msgid "You have %d try left"
 msgid_plural "You have %d tries left"
 msgstr[0] ""
 msgstr[1] ""
+
+#: /home/oleg/work/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:263
+msgid "View description"
+msgstr ""
