@@ -226,6 +226,22 @@
     color: @white-darker;
     text-shadow: rgba(0, 0, 0, 0.3) 2px 0px 3px;
     margin-bottom: 10px;
+
+    @media @phone {
+        font-size: 25px;
+        line-height: normal;
+    }
+}
+
+.ActivationsPage__greeting-description {
+    font-size: 14px;
+    color: #fff;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 .ActivationPage__activation--sponsored {
@@ -236,7 +252,7 @@
 }
 
 .ActivationPage__score {
-    font-size: 40px;
+    font-size: 38px;
     color: @white-darker;
     text-shadow: rgba(0, 0, 0, 0.3) 2px 0px 3px;
     margin: 16px 0;
@@ -260,12 +276,20 @@
     &:hover {
         background-color: @white-dark;
     }
+
+    @media @phone {
+        width: 80%;
+    }
 }
 
 .ActivationPage__result-answers-btn {
     margin: 6px auto;
     color: @white-darker;
     display: block;
+
+    @media @phone {
+        width: 80%;
+    }
 }
 
 .ActivationPage__fill-profile-btn {
@@ -277,7 +301,11 @@
 
 .ActivationPage__results-text {
     flex: 1;
-    padding: 36px;
+    padding: 30px;
+
+    @media @phone {
+        padding: 10px 30px;
+    }
 }
 
 .ActivationPage__results-actions {
@@ -295,6 +323,10 @@
     left: 0;
     align-items: center;
     display: flex;
+
+    @media @phone {
+        flex-direction: column;
+    }
 }
 
 .ActivationPage__tip {
@@ -329,6 +361,11 @@
 
     &.excellent {
         background-image: url('/static/images/resultBackgrounds/excellent.png');
+    }
+
+    @media @phone {
+        min-height: 300px;
+        text-align: center;
     }
 }
 
