@@ -271,6 +271,9 @@
          "You have %d try left": [
             "",
             "You have %d tries left"
+         ],
+         "View description": [
+            ""
          ]
       }
    }
