@@ -226,9 +226,13 @@
     color: @white-darker;
     text-shadow: rgba(0, 0, 0, 0.3) 2px 0px 3px;
     margin-bottom: 10px;
+    // max-width added for transposition of long words
+    max-width: 350px;
+    word-wrap: break-word;
 
     @media @phone {
-        font-size: 25px;
+        max-width: 280px;
+        font-size: 20px;
         line-height: normal;
     }
 }
