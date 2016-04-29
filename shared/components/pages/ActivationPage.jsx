@@ -230,8 +230,8 @@ export default class ActivationPage extends React.Component {
 
         const isPassingBtnAvailable = isEmbedded ? canAssigneePass : true;
 
-        const greeting = showUserResult ? this.getGreeting(userQuizSession.score).phrase : null;
-        const greetingDescription = showUserResult ? this.getGreeting(userQuizSession.score).description : false;
+        const greeting = showUserResult ? this.getGreeting(userQuizSession.score).phrase : '';
+        const greetingDescription = showUserResult ? this.getGreeting(userQuizSession.score).description : '';
 
         if (isLoading) {
             return <Spinner className='ActivationPage__spinner' />;
@@ -441,7 +441,7 @@ export default class ActivationPage extends React.Component {
                     <div className='ActivationPage__details'>
                         <ExpandableText
                             isMarkdownEnabled
-                            text={greetingDescription ? greetingDescription : activation.message}
+                            text={greetingDescription || activation.message}
                             markdownPreset='activationDescription'
                         />
                     </div>
