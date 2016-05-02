@@ -226,7 +226,7 @@ export default class ActivationPage extends React.Component {
             dueTime
         } = activation;
 
-        const { l, ngettext, humanizeDuration, getTimeFromNow } = this.context.i18n;
+        const { l, nl, humanizeDuration, getTimeFromNow } = this.context.i18n;
 
         const isPassingBtnAvailable = isEmbedded ? canAssigneePass : true;
 
@@ -270,7 +270,7 @@ export default class ActivationPage extends React.Component {
                                 <span className='ActivationPage__number-of-questions'>
                                     {
                                         sprintf(
-                                            ngettext('%d question', '%d questions', numberOfQuestions),
+                                            nl('%d question', '%d questions', numberOfQuestions),
                                             numberOfQuestions
                                         )
                                     }
@@ -318,7 +318,7 @@ export default class ActivationPage extends React.Component {
                                                     <div className='ActivationPage__number-of-tries'>
                                                         {
                                                             sprintf(
-                                                                ngettext('You have %d try left',
+                                                                nl('You have %d try left',
                                                                     'You have %d tries left', numberOfTriesLeft),
                                                                 numberOfTriesLeft
                                                             )
@@ -382,7 +382,7 @@ export default class ActivationPage extends React.Component {
                                         <div className='ActivationPage__points'>
                                             ({
                                                 sprintf(
-                                                    ngettext(
+                                                    nl(
                                                         '%s of %s point',
                                                         '%s of %s points',
                                                         userQuizSession.maxPoints

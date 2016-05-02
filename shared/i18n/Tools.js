@@ -8,12 +8,16 @@ export default class Tools {
         this.locale = locale;
     }
 
-    l = (text) => {
-        return this.jed.gettext(text);
+    l = (text, context) => {
+        return context
+            ? this.jed.pgettext(context, text)
+            : this.jed.gettext(text);
     }
 
-    ngettext = (singular, plural, amount) => {
-        return this.jed.ngettext(singular, plural, amount);
+    nl = (singular, plural, amount, context) => {
+        return context
+            ? this.jed.npgettext(context, singular, plural, amount)
+            : this.jed.ngettext(singular, plural, amount);
     }
 
     getLocale = () => {
@@ -32,10 +36,10 @@ export default class Tools {
         const duration = moment.duration(time, unit);
 
         const hours = duration.hours();
-        const hoursString = hours ? sprintf(this.ngettext('%d hour', '%d hours', hours), hours) : '';
+        const hoursString = hours ? sprintf(this.nl('%d hour', '%d hours', hours), hours) : '';
 
         const minutes = duration.minutes();
-        const minutesString = minutes ? sprintf(this.ngettext('%d minute', '%d minutes', minutes), minutes) : '';
+        const minutesString = minutes ? sprintf(this.nl('%d minute', '%d minutes', minutes), minutes) : '';
 
         return `${hoursString} ${minutesString}`;
     }
