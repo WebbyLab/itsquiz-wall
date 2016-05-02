@@ -67,7 +67,7 @@ export default class QuizCard extends Component {
             onShare
         } = this.props;
 
-        const { l, ngettext, humanizeDuration } = this.context.i18n;
+        const { l, nl, humanizeDuration } = this.context.i18n;
 
         const classes = cx('QuizCard', className, {
             'QuizCard--sponsored': isSponsored
@@ -125,7 +125,7 @@ export default class QuizCard extends Component {
                             <span>
                                 {
                                     sprintf(
-                                        ngettext('%d question', '%d questions', numberOfQuestions),
+                                        nl('%d question', '%d questions', numberOfQuestions),
                                         numberOfQuestions
                                     )
                                 }
