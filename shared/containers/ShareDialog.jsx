@@ -3,11 +3,10 @@ import React, { Component, PropTypes } from 'react';
 import ShareDialog from '../components/ShareDialog.jsx';
 
 import { facebookAppId } from '../config';
-
+// import { getLocale } from '../i18n/Tools';
 import { sendEvent } from '../utils/googleAnalytics';
 
 export default class ShareDialogContainer extends Component {
-
     static propTypes = {
         title          : PropTypes.string,
         isOpen         : PropTypes.bool.isRequired,
@@ -16,12 +15,20 @@ export default class ShareDialogContainer extends Component {
         onRequestClose : PropTypes.func
     };
 
+    static contextTypes = { i18n: PropTypes.object };
+
     static defaultProps = {
         twitterMessage : ''
     };
 
     handleShare = (type) => {
-        const { linkToShare, twitterMessage } = this.props;
+        const { getLocale } = this.context.i18n;
+        const { twitterMessage } = this.props;
+        let { linkToShare } = this.props;
+
+        const currentLocale = getLocale() !== 'tr' ? getLocale() : 'en';
+
+        linkToShare += `/${currentLocale}`;
 
         const linksHash = {
             'google': `https://plus.google.com/share?url=${linkToShare}`,
