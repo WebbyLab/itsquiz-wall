@@ -13,7 +13,6 @@ import ShareDialog          from '../../containers/ShareDialog.jsx';
 import LoginDialog          from '../../containers/LoginDialog.jsx';
 import AppBarWithBackground from '../AppBarWithBackground.jsx';
 import ExpandableText       from '../ExpandableText.jsx';
-import Dialog               from '../Dialog.jsx';
 
 import { sprintf } from '../../utils';
 
@@ -199,41 +198,6 @@ export default class ActivationPage extends React.Component {
         return null;
     };
 
-    renderGreetingPhrase = () => {
-        const { l } = this.context.i18n;
-
-        const userScore = this.props.activation.userQuizSession.score;
-        const greeting = this.getGreeting(userScore);
-
-        return (
-            <div className='ActivationsPage__greeting-wrapper'>
-                <h4 className='ActivationPage__greeting'>
-                    {greeting.phrase}
-                </h4>
-
-                {
-                    greeting.description
-                    ?
-                        <span
-                            className='ActivationsPage__greeting-description'
-                            onClick={this.handleDescriptionClick}
-                        >
-                            {l('View description')}
-                        </span>
-                    :
-                        null
-                }
-
-                <Dialog
-                    isOpen         = {this.state.showDescription}
-                    onRequestClose = {this.handleHideDescription}
-                >
-                    <p className='ActivationPage__greeting-description'>{greeting.description}</p>
-                </Dialog>
-            </div>
-        );
-    };
-
     renderContent = () => {
         const {
             activation,
@@ -262,9 +226,12 @@ export default class ActivationPage extends React.Component {
             dueTime
         } = activation;
 
-        const { l, ngettext, humanizeDuration, getTimeFromNow } = this.context.i18n;
+        const { l, nl, humanizeDuration, getTimeFromNow } = this.context.i18n;
 
         const isPassingBtnAvailable = isEmbedded ? canAssigneePass : true;
+
+        const greeting = showUserResult ? this.getGreeting(userQuizSession.score).phrase : '';
+        const greetingDescription = showUserResult ? this.getGreeting(userQuizSession.score).description : '';
 
         if (isLoading) {
             return <Spinner className='ActivationPage__spinner' />;
@@ -303,7 +270,7 @@ export default class ActivationPage extends React.Component {
                                 <span className='ActivationPage__number-of-questions'>
                                     {
                                         sprintf(
-                                            ngettext('%d question', '%d questions', numberOfQuestions),
+                                            nl('%d question', '%d questions', numberOfQuestions),
                                             numberOfQuestions
                                         )
                                     }
@@ -351,7 +318,7 @@ export default class ActivationPage extends React.Component {
                                                     <div className='ActivationPage__number-of-tries'>
                                                         {
                                                             sprintf(
-                                                                ngettext('You have %d try left',
+                                                                nl('You have %d try left',
                                                                     'You have %d tries left', numberOfTriesLeft),
                                                                 numberOfTriesLeft
                                                             )
@@ -405,7 +372,9 @@ export default class ActivationPage extends React.Component {
                                 <div className='ActivationPage__overlay'>
                                     <div className='ActivationPage__results-text'>
 
-                                        {this.renderGreetingPhrase()}
+                                        <h4 className='ActivationPage__greeting'>
+                                            {greeting}
+                                        </h4>
 
                                         <div className='ActivationPage__score'>
                                             {userQuizSession.score}%
@@ -413,7 +382,7 @@ export default class ActivationPage extends React.Component {
                                         <div className='ActivationPage__points'>
                                             ({
                                                 sprintf(
-                                                    ngettext(
+                                                    nl(
                                                         '%s of %s point',
                                                         '%s of %s points',
                                                         userQuizSession.maxPoints
@@ -472,7 +441,7 @@ export default class ActivationPage extends React.Component {
                     <div className='ActivationPage__details'>
                         <ExpandableText
                             isMarkdownEnabled
-                            text={activation.message}
+                            text={greetingDescription || activation.message}
                             markdownPreset='activationDescription'
                         />
                     </div>
