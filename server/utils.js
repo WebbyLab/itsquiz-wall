@@ -40,10 +40,6 @@ export function getMetaDataFromState({ route, state, lang = 'en', params = {}, q
 
         const lang = params.lang || 'en';
 
-        console.log('lang', lang);
-        console.log('params', params);
-        console.log('params.lang', params.lang);
-
         let title = strformat(sharePhrases[lang], { name, score: userQuizSession.score });
         let greetingDescription = '';
 

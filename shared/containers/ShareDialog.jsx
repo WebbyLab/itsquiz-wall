@@ -23,14 +23,12 @@ export default class ShareDialogContainer extends Component {
 
     handleShare = (type) => {
         const { getLocale } = this.context.i18n;
-
         const { twitterMessage } = this.props;
         let { linkToShare } = this.props;
 
         const currentLocale = getLocale() !== 'tr' ? getLocale() : 'en';
 
         linkToShare += `/${currentLocale}`;
-        console.log('linkToShare', linkToShare);
 
         const linksHash = {
             'google': `https://plus.google.com/share?url=${linkToShare}`,
