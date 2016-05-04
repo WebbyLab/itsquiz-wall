@@ -29,12 +29,14 @@ export function getMetaDataFromState({ route, state, lang = 'en', params = {}, q
         };
     }
 
-    if (route === '/result/:id/:userId' && state.currentActivation.activation) {
+    if (route === '/result/:id/:userId/:lang' && state.currentActivation.activation) {
         let sharePhrases = {
             ru: 'Я сдал тест "{name}" на {score}%',
             uk: 'Я склав тест "{name}" на {score}%',
             en: 'I have passed test "{name}" and gained {score}%'
         };
+
+        console.log('route', route);
 
         const { name, pictureURL, message, userQuizSession, assessmentSystem } = state.currentActivation.activation;
 
