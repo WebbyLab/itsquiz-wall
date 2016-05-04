@@ -17,7 +17,7 @@ export function fetchComponentsData(dispatch, components, params, query) {
     return Promise.all(promises);
 }
 
-export function getMetaDataFromState({ route, state, lang = 'en', params = {}, query = {} }) {
+export function getMetaDataFromState({ route, state, params = {}, query = {} }) {
     if (route === '/activations/:id') {
         const { name, message, pictureURL } = state.currentActivation.activation;
 
