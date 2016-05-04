@@ -36,13 +36,9 @@ export function getMetaDataFromState({ route, state, lang = 'en', params = {}, q
             en: 'I have passed test "{name}" and gained {score}%'
         };
 
-        console.log('route', route);
-        console.log('params', params);
-
         const { name, pictureURL, message, userQuizSession, assessmentSystem } = state.currentActivation.activation;
 
-        console.log('assessmentSystem', assessmentSystem);
-        console.log('lang', lang);
+        const lang = params.lang || 'en';
 
         let title = strformat(sharePhrases[lang], { name, score: userQuizSession.score });
         let greetingDescription = '';
@@ -59,9 +55,6 @@ export function getMetaDataFromState({ route, state, lang = 'en', params = {}, q
             title = strformat(sharePhrases[lang], { name, score: userQuizSession.score, greeting: greeting.phrase });
             greetingDescription = greeting.description;
         }
-
-        console.log('title', title);
-        console.log('greetingDescription', greetingDescription);
 
         return {
             title,
