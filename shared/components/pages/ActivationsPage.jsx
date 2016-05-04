@@ -174,6 +174,8 @@ export default class ActivationsPage extends React.Component {
             'ActivationsPage--loading'  : isLoading
         });
 
+        console.log('ActivationsPage test console.log');
+
         return (
             <div className={classes}>
                 <ShareDialog
