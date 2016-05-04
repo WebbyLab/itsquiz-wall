@@ -30,19 +30,41 @@ export function getMetaDataFromState({ route, state, lang = 'en', params = {}, q
     }
 
     if (route === '/result/:id/:userId' && state.currentActivation.activation) {
-        const sharePhrases = {
+        let sharePhrases = {
             ru: 'Я сдал тест "{name}" на {score}%',
             uk: 'Я склав тест "{name}" на {score}%',
             en: 'I have passed test "{name}" and gained {score}%'
         };
 
-        const { name, pictureURL, message, userQuizSession } = state.currentActivation.activation;
+        const { name, pictureURL, message, userQuizSession, assessmentSystem } = state.currentActivation.activation;
+
+        console.log('assessmentSystem', assessmentSystem);
+        console.log('lang', lang);
+
+        let title = strformat(sharePhrases[lang], { name, score: userQuizSession.score });
+        let greetingDescription = '';
+
+        if (assessmentSystem.length) {
+            const greeting = _getGreeting(assessmentSystem, userQuizSession.score);
+
+            sharePhrases = {
+                ru: 'Я сдал тест "{name}" на {score}%. Мой результат: "{greeting}"',
+                uk: 'Я склав тест "{name}" на {score}%. Мій результат: "{greeting}"',
+                en: 'I have passed test "{name}" and gained {score}%. My result is: "{greeting}"'
+            };
+
+            title = strformat(sharePhrases[lang], { name, score: userQuizSession.score, greeting: greeting.phrase });
+            greetingDescription = greeting.description;
+        }
+
+        console.log('title', title);
+        console.log('greetingDescription', greetingDescription);
 
         return {
-            title       : strformat(sharePhrases[lang], { name, score: userQuizSession.score }),
+            title,
             siteName    : "It's quiz",
             image       : pictureURL ? pictureURL.replace('svg', 'png') : '',
-            description : message
+            description : greetingDescription || message
         };
     }
 
@@ -110,4 +132,15 @@ export function detectLocale(req) {
         RU: 'ru',
         TR: 'tr'
     }[country] || 'en';
+}
+
+function _getGreeting(assessmentSystem, score) {
+    for (let i = assessmentSystem.length - 1; i >= 0; i--) {
+        if (score >= assessmentSystem[i].grade) {
+            return {
+                phrase: assessmentSystem[i].phrase,
+                description: assessmentSystem[i].description || ''
+            };
+        }
+    }
 }
