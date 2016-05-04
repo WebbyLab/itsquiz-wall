@@ -37,6 +37,7 @@ export function getMetaDataFromState({ route, state, lang = 'en', params = {}, q
         };
 
         console.log('route', route);
+        console.log('params', params);
 
         const { name, pictureURL, message, userQuizSession, assessmentSystem } = state.currentActivation.activation;
 
