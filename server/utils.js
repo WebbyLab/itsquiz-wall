@@ -29,7 +29,10 @@ export function getMetaDataFromState({ route, state, params = {}, query = {} }) 
         };
     }
 
+    console.log('route', route);
+
     if (route === '/result/:id/:userId/:lang/:date' && state.currentActivation.activation) {
+        console.log('route === route');
         let sharePhrases = {
             ru: 'Я сдал тест "{name}" на {score}%',
             uk: 'Я склав тест "{name}" на {score}%',
