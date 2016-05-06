@@ -29,6 +29,7 @@ export function getMetaDataFromState({ route, state, params = {}, query = {} }) 
         };
     }
 
+    console.log('getMetaDataFromState !!!');
     console.log('route', route);
 
     if (route === '/result/:id/:userId/:lang/:date' && state.currentActivation.activation) {
