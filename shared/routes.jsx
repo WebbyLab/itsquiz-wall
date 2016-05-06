@@ -20,7 +20,7 @@ export default (
             <Route component={ActivationsPageContainer} path='/activations' />
             <Route component={ActivationPageContainer} path='/activations/:id' />
 
-            <Route component={ShareResultPageContainer} path='/result/:id/:userId/:lang' />
+            <Route component={ShareResultPageContainer} path='/result/:id/:userId/:lang/:date' />
             <Route component={CustomShareResultPageContainer} path='/share/:key' />
 
             <Route component={PromoPageContainer} path='/promo/:key' />
