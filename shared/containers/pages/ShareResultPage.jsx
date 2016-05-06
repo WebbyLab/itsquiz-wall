@@ -31,7 +31,6 @@ class ShareResultPageContainer extends Component {
     }
 
     render() {
-        console.log('_________ShareResultPageContainer__________');
         return (
             <div />
         );

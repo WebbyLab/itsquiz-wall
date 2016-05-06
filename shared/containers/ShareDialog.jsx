@@ -28,9 +28,6 @@ export default class ShareDialogContainer extends Component {
 
         const currentLocale = getLocale() !== 'tr' ? getLocale() : 'en';
         const date = +new Date();
-        // console.log('date', date);
-
-        // const date = Math.random().toString(36).substring(7);
 
         // Date parameter is added here to create unique link (resolves facebook cashing problem)
         linkToShare += `/${currentLocale}?date=${date}`;
