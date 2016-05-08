@@ -26,4 +26,3 @@ msgmerge --backup=off -U "${ROOT_DIR}/lang/tr.po" "${ROOT_DIR}/lang/messages.pot
 # Cleanup
 rm -rf "${ROOT_DIR}/src_es5";
 rm -rf "${ROOT_DIR}/list";
-rm "${ROOT_DIR}/lang/messages.pot";
