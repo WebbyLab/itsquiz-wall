@@ -1,8 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 
 import ShareDialog from '../components/ShareDialog.jsx';
+import config      from '../config';
+import EmbedEvents from '../utils/EmbedEventsUtil';
 
-import { facebookAppId } from '../config';
+const facebookAppId = config.facebookAppId;
+
+const embedEvents = new EmbedEvents({
+    embedOrigin: config.embedOrigin
+});
+
 // import { getLocale } from '../i18n/Tools';
 import { sendEvent } from '../utils/googleAnalytics';
 
@@ -43,6 +50,11 @@ export default class ShareDialogContainer extends Component {
 
         this.openLinkInPopup(linksHash[type]);
 
+        embedEvents.send({
+            type : 'SHARE_RESULT',
+            socialNetwork: type
+        });
+
         sendEvent('activation', 'share', type);
     };
 
@@ -63,4 +75,3 @@ export default class ShareDialogContainer extends Component {
         );
     }
 }
-

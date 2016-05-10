@@ -65,7 +65,7 @@ export default class ApiClient {
         };
 
         if (method !== 'get' && method !== 'head') {
-            init.body = body;
+            init.body = JSON.stringify(body);
         }
 
         return fetch(`${this.prefix}/${urlWithQuery}`, init).then(res => {
