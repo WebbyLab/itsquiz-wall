@@ -34,6 +34,7 @@ export default class ActivationPage extends React.Component {
         dueTime            : React.PropTypes.string,
         onPass             : React.PropTypes.func,
         onShare            : React.PropTypes.func,
+        onShareComplete    : React.PropTypes.func,
         onLoginDialogClose : React.PropTypes.func,
         onStopSharing      : React.PropTypes.func,
         onGoBack           : React.PropTypes.func,
@@ -482,6 +483,7 @@ export default class ActivationPage extends React.Component {
                         ? sprintf(l('My result is %d%%'), activation.userQuizSession.score)
                         : l('Check out this test')
                     }
+                    onShare        = {this.props.onShareComplete}
                     linkToShare    = {sharingLink}
                     onRequestClose = {onStopSharing}
                 />

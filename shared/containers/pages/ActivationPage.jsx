@@ -155,6 +155,14 @@ class ActivationPageContainer extends Component {
         sendEvent('activation', 'share result', activation.name);
     };
 
+    handleShareComplete = (activation, { socialNetwork }) => {
+        embedEvents.send({
+            type : 'SHARE_RESULT',
+            activationId: activation.id,
+            socialNetwork
+        });
+    };
+
     handleStopSharing = () => {
         this.setState({
             sharingLink : ''
@@ -192,6 +200,7 @@ class ActivationPageContainer extends Component {
                 onGoBack           = {this.handleGoBack}
                 onShare            = {this.handleShare}
                 onShareResult      = {this.handleShareResult}
+                onShareComplete    = {this.handleShareComplete.bind(this, activation)}
                 onStopSharing      = {this.handleStopSharing}
                 onLoginDialogClose = {this.handleLoginClose}
             />
