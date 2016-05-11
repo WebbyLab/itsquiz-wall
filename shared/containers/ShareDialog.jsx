@@ -1,9 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import ShareDialog from '../components/ShareDialog.jsx';
-import config      from '../config';
-
-const facebookAppId = config.facebookAppId;
+import { facebookAppId } from '../config';
 
 // import { getLocale } from '../i18n/Tools';
 import { sendEvent } from '../utils/googleAnalytics';
