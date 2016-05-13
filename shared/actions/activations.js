@@ -46,11 +46,18 @@ export const LOAD_ACTIVATION_FAIL    = 'LOAD_ACTIVATION_FAIL';
 
 export function loadActivation(params = {}, query = {}) {
     const assigneeId = query.assigneeId || params.userId || '';
+    const reqObject = {
+        assigneeId,
+        include: 'users'
+    };
+
+    if (query.fromdigest) reqObject.fromdigest = 1;
+    if (query.userId) reqObject.userid = query.userId;
 
     return dispatch => {
         dispatch({ type : LOAD_ACTIVATION_REQUEST, activationId : params.id });
 
-        return api.activations.show(params.id, { assigneeId, include: 'users' }).then(response => {
+        return api.activations.show(params.id, reqObject).then(response => {
             const userId = response.data.links.owner.id;
 
             return api.activations.list({ userId, assigneeId }).then(response2 => {
