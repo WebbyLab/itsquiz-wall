@@ -50,7 +50,12 @@ export function loadActivation(params = {}, query = {}) {
     return dispatch => {
         dispatch({ type : LOAD_ACTIVATION_REQUEST, activationId : params.id });
 
-        return api.activations.show(params.id, { assigneeId, include: 'users' }).then(response => {
+        return api.activations.show(params.id, {
+            assigneeId,
+            include: 'users',
+            fromdigest: query.fromdigest,
+            userfromemail: query.userId
+        }).then(response => {
             const userId = response.data.links.owner.id;
 
             return api.activations.list({ userId, assigneeId }).then(response2 => {
