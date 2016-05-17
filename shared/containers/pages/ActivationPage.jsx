@@ -6,6 +6,8 @@ import connectDataFetchers                        from '../../lib/connectDataFet
 import EmbedEvents                                from '../../utils/EmbedEventsUtil';
 import config                                     from '../../config';
 import { sendEvent }                              from '../../utils/googleAnalytics';
+import { makeSlug }                               from '../../utils/urlUtil';
+
 
 import ActivationPage from '../../components/pages/ActivationPage.jsx';
 
@@ -131,7 +133,7 @@ class ActivationPageContainer extends Component {
     };
 
     handleActivationClick = (activation) => {
-        this.props.history.pushState(null, `/activations/${activation.id}`, {
+        this.props.history.pushState(null, `/activations/${activation.id}/${makeSlug(activation.name)}`, {
             embed      : this.props.location.query.embed,
             assigneeId : this.props.location.query.assigneeId
         });

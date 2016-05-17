@@ -15,6 +15,7 @@ import { fetchComponentsData,
 import routes         from '../shared/routes.jsx';
 import configureStore from '../shared/store/configureStore';
 import i18n           from '../shared/i18n';
+import { makeSlug }   from '../shared/utils/urlUtil';
 
 import clientConfig from '../etc/client-config.json';
 
@@ -74,15 +75,8 @@ app.use((req, res) => {
                 renderProps.location.query
             )
             .then(() => {
-                const componentHTML = ReactDOM.renderToString(
-                    <Provider store={store}>
-                        <i18n.Provider i18n={i18nTools}>
-                            <RoutingContext {...renderProps}/>
-                        </i18n.Provider>
-                    </Provider>
-                );
-
                 const initialState = store.getState();
+
                 const metaData = getMetaDataFromState({
                     params : renderProps.params,
                     query  : renderProps.location.query,
@@ -91,16 +85,44 @@ app.use((req, res) => {
                     state  : initialState
                 });
 
-                return renderHTML({
+                if (metaData.type === 'ACTIVATION') {
+                    const activationId = renderProps.params.id;
+                    const expectedUrl =  `/activations/${activationId}/${makeSlug(metaData.title)}`;
+
+                    if (!req.url.endsWith(expectedUrl)) {
+                        // TODO optimize. There is no need to fetch similar tests and tests from the same author
+                        return {
+                            isRedirect : true,
+                            redirectUrl: expectedUrl
+                        };
+                    }
+                }
+
+                const componentHTML = ReactDOM.renderToString(
+                    <Provider store={store}>
+                        <i18n.Provider i18n={i18nTools}>
+                            <RoutingContext {...renderProps}/>
+                        </i18n.Provider>
+                    </Provider>
+                );
+
+                const html = renderHTML({
                     componentHTML,
                     initialState,
                     metaData,
                     config : clientConfig
                 });
+
+                return { html };
             })
-            .then(html => {
+            .then(({ isRedirect, redirectUrl, html }) => {
                 res.cookie('locale', locale, { maxAge: 900000 });
-                res.end(html);
+
+                if (isRedirect) {
+                    res.redirect(301, redirectUrl);
+                } else {
+                    res.end(html);
+                }
             })
             .catch(err => {
                 console.log(err.stack);

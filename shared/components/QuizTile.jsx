@@ -6,6 +6,8 @@ if (process.env.BROWSER) {
     require('./QuizTile.less');
 }
 
+import { makeSlug } from '../utils/urlUtil';
+
 export default class QuizTile extends Component {
     static propTypes = {
         id                : PropTypes.string,
@@ -47,7 +49,7 @@ export default class QuizTile extends Component {
 
                 <CardActions className='QuizTile__text'>
                     <a
-                        href={`/activations/${id}`}
+                        href={`/activations/${id}/${makeSlug(name)}`}
                         title={name}
                         className='QuizTile__name'
                         onClick={this.handleClick}

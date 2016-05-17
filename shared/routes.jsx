@@ -18,7 +18,10 @@ export default (
             <Redirect from='/kmda/start' to='/activations?search=english' />
 
             <Route component={ActivationsPageContainer} path='/activations' />
+
             <Route component={ActivationPageContainer} path='/activations/:id' />
+            <Route component={ActivationPageContainer} path='/activations/:id/:title' />
+
 
             <Route component={ShareResultPageContainer} path='/result/:id/:userId/:lang' />
             <Route component={CustomShareResultPageContainer} path='/share/:key' />

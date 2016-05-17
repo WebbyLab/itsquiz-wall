@@ -5,6 +5,8 @@ if (process.env.BROWSER) {
     require('./QuizCard.less');
 }
 
+import { makeSlug } from '../utils/urlUtil';
+
 import { Card, CardTitle, CardActions } from 'react-mdl/lib/Card';
 import Button                           from 'react-mdl/lib/Button';
 import IconButton                       from 'react-mdl/lib/IconButton';
@@ -73,6 +75,7 @@ export default class QuizCard extends Component {
             'QuizCard--sponsored': isSponsored
         });
 
+
         return (
             <Card shadow={1} className={classes}>
                 <CardTitle className='QuizCard__head'>
@@ -80,7 +83,7 @@ export default class QuizCard extends Component {
                         <img className='QuizCard__avatar' src={author.avatar} />
                         <div className='QuizCard__name-author'>
                             <a
-                                href={`/activations/${id}`}
+                                href={`/activations/${id}/${makeSlug(name)}`}
                                 className='QuizCard__name'
                                 onClick={this.handleClick}
                                 title={name}

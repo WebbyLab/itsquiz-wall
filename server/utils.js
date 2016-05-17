@@ -18,10 +18,11 @@ export function fetchComponentsData(dispatch, components, params, query) {
 }
 
 export function getMetaDataFromState({ route, state, params = {}, query = {} }) {
-    if (route === '/activations/:id') {
+    if (route === '/activations/:id' || route === '/activations/:id/:title') {
         const { name, message, pictureURL } = state.currentActivation.activation;
 
         return {
+            type        : 'ACTIVATION',
             title       : name,
             siteName    : "It's quiz",
             image       : pictureURL ? pictureURL.replace('svg', 'png') : '',
@@ -57,6 +58,7 @@ export function getMetaDataFromState({ route, state, params = {}, query = {} }) 
         }
 
         return {
+            type        : 'RESULT',
             title,
             siteName    : "It's quiz",
             image       : pictureURL ? pictureURL.replace('svg', 'png') : '',
@@ -72,6 +74,7 @@ export function getMetaDataFromState({ route, state, params = {}, query = {} }) 
             const { title, pictureURL, description } = customShareInfo[key];
 
             return {
+                type        : 'SHARE',
                 title       : strformat(title, query),
                 siteName    : 'It\'s quiz',
                 image       : pictureURL,
@@ -88,6 +91,7 @@ export function getMetaDataFromState({ route, state, params = {}, query = {} }) 
             const { title, image, description } = promos[key];
 
             return {
+                type     : 'PROMO',
                 image,
                 title,
                 description,
@@ -97,6 +101,7 @@ export function getMetaDataFromState({ route, state, params = {}, query = {} }) 
     }
 
     return {
+        type        : 'MAIN',
         title       : 'Quiz Wall',
         siteName    : 'It\'s quiz',
         image       : 'http://app.itsquiz.com/be/static/images/logo.png',
