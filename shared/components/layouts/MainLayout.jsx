@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import WelcomeDialog from '../../containers/WelcomeDialog.jsx';
+// import WelcomeDialog from '../../containers/WelcomeDialog.jsx';
 import Footer        from '../../containers/Footer.jsx';
 
 if (process.env.BROWSER) {
@@ -18,15 +18,16 @@ export default class MainLayout extends Component {
     };
 
     render() {
-        const { showWelcomeScreen, showFooter, children, onWelcomeScreenDismiss } = this.props;
+        // const { showWelcomeScreen, showFooter, children, onWelcomeScreenDismiss } = this.props;
+        const { showFooter, children } = this.props;
 
         return (
             <div className='MainLayout'>
                 <div className='MainLayout__content'>
-                    <WelcomeDialog
+                    {/* <WelcomeDialog
                         isOpen={showWelcomeScreen}
                         onDismiss={onWelcomeScreenDismiss}
-                    />
+                    />*/}
                     {children}
                 </div>
 

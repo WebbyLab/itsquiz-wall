@@ -53,7 +53,7 @@ export function loadActivation(params = {}, query = {}) {
         return api.activations.show(params.id, {
             assigneeId,
             include: 'users',
-            fromdigest: query.fromdigest,
+            digest: query.digest,
             userfromemail: query.userId
         }).then(response => {
             const userId = response.data.links.owner.id;
