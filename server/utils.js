@@ -17,7 +17,7 @@ export function fetchComponentsData(dispatch, components, params, query) {
     return Promise.all(promises);
 }
 
-export function getMetaDataFromState({ route, state, params = {}, query = {} }) {
+export function getMetaDataFromState({ route, state, params = {}, query = {}, lang }) {
     if (route === '/activations/:id' || route === '/activations/:id/:title') {
         const { name, message, pictureURL } = state.currentActivation.activation;
 
@@ -30,7 +30,7 @@ export function getMetaDataFromState({ route, state, params = {}, query = {} }) 
         };
     }
 
-    if (route === '/result/:id/:userId/:lang' && state.currentActivation.activation) {
+    if (route === '/result/:id/:userId' && state.currentActivation.activation) {
         let sharePhrases = {
             ru: 'Я сдал тест "{name}" на {score}%',
             uk: 'Я склав тест "{name}" на {score}%',
@@ -38,8 +38,6 @@ export function getMetaDataFromState({ route, state, params = {}, query = {} }) 
         };
 
         const { name, pictureURL, message, userQuizSession, assessmentSystem } = state.currentActivation.activation;
-
-        const lang = params.lang || 'en';
 
         let title = strformat(sharePhrases[lang], { name, score: userQuizSession.score });
         let greetingDescription = '';

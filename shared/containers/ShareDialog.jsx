@@ -31,7 +31,7 @@ export default class ShareDialogContainer extends Component {
         const date = +new Date();
 
         // Date parameter is added here to create unique link (resolves facebook cashing problem)
-        linkToShare += `/${currentLocale}?date=${date}`;
+        linkToShare += `?locale=${currentLocale}&date=${date}`;
 
         const linksHash = {
             'google': `https://plus.google.com/share?url=${linkToShare}`,

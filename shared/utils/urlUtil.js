@@ -1,4 +1,4 @@
-export function makeSlug(name) {
+export function makeSlug(name = '') {
     const cleanName = name.replace(/[\-\s]+/g, '-')
                .replace(/[^0-9a-zа-яїі\-]/gi, '')
                .toLowerCase();
