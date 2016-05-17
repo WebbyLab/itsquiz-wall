@@ -20,7 +20,8 @@ export function formatActivation(activation, author) {
         author               : author ? formatUserInfo(author) : {},
         canAssigneePass      : activation.canAssigneePass,
         numberOfTriesLeft    : activation.numberOfTriesLeft || 0,
-        assessmentSystem     : activation.assessmentSystem
+        assessmentSystemId   : activation.assessmentSystemId,
+        assessmentSystemType : activation.assessmentSystemType
     };
 }
 

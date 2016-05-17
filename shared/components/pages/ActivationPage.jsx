@@ -72,7 +72,7 @@ export default class ActivationPage extends React.Component {
     getGreeting = (score) => {
         const { l } = this.context.i18n;
 
-        const assessmentSystem = this.props.activation.assessmentSystem;
+        const assessmentSystem = this.props.assessmentSystem;
 
         if (assessmentSystem.length === 0) {
             if (score > 95) {

@@ -8,6 +8,7 @@ import config                                     from '../../config';
 import { sendEvent }                              from '../../utils/googleAnalytics';
 import { makeSlug }                               from '../../utils/urlUtil';
 
+import standardAssessmentSystems from '../../utils/LocaleUtil/assessmentSystems.json';
 
 import ActivationPage from '../../components/pages/ActivationPage.jsx';
 
@@ -31,8 +32,9 @@ class ActivationPageContainer extends Component {
     static contextTypes = { i18n: PropTypes.object };
 
     state = {
-        sharingLink     : '',
-        isLoggingIn     : false
+        sharingLink      : '',
+        isLoggingIn      : false,
+        assessmentSYstem : []
     };
 
     componentWillMount() {
@@ -54,6 +56,10 @@ class ActivationPageContainer extends Component {
         if (this.props.params.id !== nextProps.params.id) {
             this.props.dispatch(loadActivation(nextProps.params, nextProps.location.query));
             this.props.dispatch(loadSimilarActivations(nextProps.params, nextProps.location.query));
+        }
+
+        if (nextProps.activation.assessmentSystemType === 'GLOBAL') {
+            this._prepareAssessmentSystem(nextProps.activation);
         }
     }
 
@@ -177,6 +183,19 @@ class ActivationPageContainer extends Component {
         });
     };
 
+    _prepareAssessmentSystem = (activation) => {
+        const { getLocale } = this.context.i18n;
+        const localizedStandardSystems = standardAssessmentSystems[getLocale().toUpperCase()];
+
+        for (const standardSystemName in localizedStandardSystems) {
+            if (localizedStandardSystems[standardSystemName].id === activation.assessmentSystemId) {
+                this.setState({
+                    assessmentSystem: localizedStandardSystems[standardSystemName]
+                });
+            }
+        }
+    };
+
     render() {
         const { activation, authorActivations, similarActivations, isLoading } = this.props;
         const { sharingLink, isLoggingIn } = this.state;
@@ -192,7 +211,7 @@ class ActivationPageContainer extends Component {
                 isEmbedded         = {Boolean(embed)}
                 isLoggingIn        = {isLoggingIn}
                 showUserResult     = {activation.isPassed && assigneeId}
-
+                assessmentSystem   = {this.state.assessmentSystem}
                 onPass             = {this.handlePassActivationClick}
                 onSponsoredClick   = {this.handleSponsoredClick}
                 onSubscribe        = {this.handleSubscribeClick}
