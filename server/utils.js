@@ -37,21 +37,17 @@ export function getMetaDataFromState({ route, state, params = {}, query = {}, la
         let greeting;
 
         if (activation.assessmentSystemType === 'GLOBAL') {
-            console.log('GLOBAL');
             const localizedStandardSystems = standardAssessmentSystems[lang.toUpperCase()];
 
             for (const standardSystemName in localizedStandardSystems) {
                 if (localizedStandardSystems[standardSystemName].id === activation.assessmentSystemId) {
-                    greeting = _getGreeting(localizedStandardSystems[standardSystemName], userQuizSession.score);
+                    greeting = _getGreeting(localizedStandardSystems[standardSystemName].assessmentSystem,
+                        userQuizSession.score);
                 }
             }
         } else {
-            console.log('USER');
-
             greeting = _getGreeting(state.currentAssessmentSystem.assessmentSystem, userQuizSession.score);
         }
-
-        console.log('greeting', greeting);
 
         const sharePhrases = {
             ru: 'Я сдал тест "{name}" на {score}%. Мой результат: "{greeting}"',
@@ -140,13 +136,8 @@ export function detectLocale(req) {
     }[country] || 'en';
 }
 
-function _getGreeting(system, score) {
-    console.log('_getGreeting');
-    console.log('assessmentSystem', assessmentSystem);
-    console.log('score', score);
-    const assessmentSystem = system.assessmentSystem;
+function _getGreeting(assessmentSystem, score) {
     for (let i = assessmentSystem.length - 1; i >= 0; i--) {
-        console.log('assessmentSystem[i]', assessmentSystem[i]);
         if (score >= assessmentSystem[i].grade) {
             return {
                 phrase: assessmentSystem[i].phrase,
