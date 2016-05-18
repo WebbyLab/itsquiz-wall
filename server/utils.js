@@ -140,10 +140,11 @@ export function detectLocale(req) {
     }[country] || 'en';
 }
 
-function _getGreeting(assessmentSystem, score) {
+function _getGreeting(system, score) {
     console.log('_getGreeting');
     console.log('assessmentSystem', assessmentSystem);
     console.log('score', score);
+    const assessmentSystem = system.assessmentSystem;
     for (let i = assessmentSystem.length - 1; i >= 0; i--) {
         console.log('assessmentSystem[i]', assessmentSystem[i]);
         if (score >= assessmentSystem[i].grade) {
