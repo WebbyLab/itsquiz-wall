@@ -60,9 +60,11 @@ app.use((req, res) => {
     match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
         if (req.url === '/') {
             res.redirect(302, '/activations');
+            return;
         }
         if (redirectLocation) {
             res.redirect(301, redirectLocation.pathname + redirectLocation.search);
+            return;
         } else if (error) {
             res.send(500, error.message);
         } else if (!renderProps) {
