@@ -257,5 +257,5 @@ function mapStateToProps({ currentActivation: { activation, authorActivations,
 }
 
 export default connect(mapStateToProps)(
-    connectDataFetchers(ActivationPageContainer, [loadActivation, loadSimilarActivations])
+    connectDataFetchers(ActivationPageContainer, [loadActivation, loadSimilarActivations, loadAssessmentSystem])
 );
