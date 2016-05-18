@@ -2,6 +2,7 @@
     "apiPrefix": "http://app.itsquiz.com/api/v1",
     "backgroundImagesPrefix": "http://app.itsquiz.com/be/static/images/backgrounds/",
     "staticUrl": "http://localhost:8050",
+    "landingURL": "http://itsquiz.com/",
     "loginUrl": "http://app.itsquiz.com/{lang}/login",
     "embedOrigin": "http://app.itsquiz.com/",
     "socialAuthURL": "http://app.itsquiz.com/api/v1/auth/{socialType}?lang={lang}&continue={continueRoute}",
