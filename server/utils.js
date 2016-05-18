@@ -142,7 +142,10 @@ export function detectLocale(req) {
 
 function _getGreeting(assessmentSystem, score) {
     console.log('_getGreeting');
+    console.log('assessmentSystem', assessmentSystem);
+    console.log('score', score);
     for (let i = assessmentSystem.length - 1; i >= 0; i--) {
+        console.log('assessmentSystem[i]', assessmentSystem[i]);
         if (score >= assessmentSystem[i].grade) {
             return {
                 phrase: assessmentSystem[i].phrase,
