@@ -2,8 +2,9 @@ import Promise     from 'bluebird';
 import geoip       from 'geoip-lite';
 import strformat   from 'strformat';
 
-import clientConfig            from '../etc/client-config.json';
-import { getSupportedLocales } from '../shared/utils';
+import clientConfig              from '../etc/client-config.json';
+import { getSupportedLocales }   from '../shared/utils';
+import standardAssessmentSystems from '../shared/utils/LocaleUtil/assessmentSystems.json';
 
 export function fetchComponentsData(dispatch, components, params, query) {
     const promises = components.map(current => {
@@ -31,29 +32,31 @@ export function getMetaDataFromState({ route, state, params = {}, query = {}, la
     }
 
     if (route === '/result/:id/:userId' && state.currentActivation.activation) {
-        let sharePhrases = {
-            ru: 'Я сдал тест "{name}" на {score}%',
-            uk: 'Я склав тест "{name}" на {score}%',
-            en: 'I have passed test "{name}" and gained {score}%'
+        const activation = state.currentActivation.activation;
+        let greeting;
+
+        if (activation.assessmentSystemType === 'GLOBAL') {
+            const localizedStandardSystems = standardAssessmentSystems[lang.toUpperCase()];
+
+            for (const standardSystemName in localizedStandardSystems) {
+                if (localizedStandardSystems[standardSystemName].id === activation.assessmentSystemId) {
+                    greeting = _getGreeting(localizedStandardSystems[standardSystemName], userQuizSession.score);
+                }
+            }
+        } else {
+            greeting = _getGreeting(state.currentAssessmentSystem.assessmentSystem, userQuizSession.score);
+        }
+
+        const sharePhrases = {
+            ru: 'Я сдал тест "{name}" на {score}%. Мой результат: "{greeting}"',
+            uk: 'Я склав тест "{name}" на {score}%. Мій результат: "{greeting}"',
+            en: 'I have passed test "{name}" and gained {score}%. My result is: "{greeting}"'
         };
 
-        const { name, pictureURL, message, userQuizSession, assessmentSystem } = state.currentActivation.activation;
+        const { name, pictureURL, message, userQuizSession } = state.currentActivation.activation;
 
-        let title = strformat(sharePhrases[lang], { name, score: userQuizSession.score });
-        let greetingDescription = '';
-
-        if (assessmentSystem.length) {
-            const greeting = _getGreeting(assessmentSystem, userQuizSession.score);
-
-            sharePhrases = {
-                ru: 'Я сдал тест "{name}" на {score}%. Мой результат: "{greeting}"',
-                uk: 'Я склав тест "{name}" на {score}%. Мій результат: "{greeting}"',
-                en: 'I have passed test "{name}" and gained {score}%. My result is: "{greeting}"'
-            };
-
-            title = strformat(sharePhrases[lang], { name, score: userQuizSession.score, greeting: greeting.phrase });
-            greetingDescription = greeting.description;
-        }
+        const title = strformat(sharePhrases[lang], { name, score: userQuizSession.score, greeting: greeting.phrase });
+        const greetingDescription = greeting.description || '';
 
         return {
             type        : 'RESULT',
