@@ -35,6 +35,8 @@ export function getMetaDataFromState({ route, state, params = {}, query = {}, la
         const activation = state.currentActivation.activation;
         let greeting;
 
+        console.log('activation', activation);
+
         if (activation.assessmentSystemType === 'GLOBAL') {
             const localizedStandardSystems = standardAssessmentSystems[lang.toUpperCase()];
 
@@ -46,6 +48,8 @@ export function getMetaDataFromState({ route, state, params = {}, query = {}, la
         } else {
             greeting = _getGreeting(state.currentAssessmentSystem.assessmentSystem, userQuizSession.score);
         }
+
+        console.log('greeting', greeting);
 
         const sharePhrases = {
             ru: 'Я сдал тест "{name}" на {score}%. Мой результат: "{greeting}"',
