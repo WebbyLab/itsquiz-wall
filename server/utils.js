@@ -36,9 +36,8 @@ export function getMetaDataFromState({ route, state, params = {}, query = {}, la
         const { name, pictureURL, message, userQuizSession } = state.currentActivation.activation;
         let greeting;
 
-        console.log('activation', activation);
-
         if (activation.assessmentSystemType === 'GLOBAL') {
+            console.log('GLOBAL');
             const localizedStandardSystems = standardAssessmentSystems[lang.toUpperCase()];
 
             for (const standardSystemName in localizedStandardSystems) {
@@ -47,6 +46,8 @@ export function getMetaDataFromState({ route, state, params = {}, query = {}, la
                 }
             }
         } else {
+            console.log('USER');
+
             greeting = _getGreeting(state.currentAssessmentSystem.assessmentSystem, userQuizSession.score);
         }
 
@@ -140,6 +141,7 @@ export function detectLocale(req) {
 }
 
 function _getGreeting(assessmentSystem, score) {
+    console.log('_getGreeting');
     for (let i = assessmentSystem.length - 1; i >= 0; i--) {
         if (score >= assessmentSystem[i].grade) {
             return {
