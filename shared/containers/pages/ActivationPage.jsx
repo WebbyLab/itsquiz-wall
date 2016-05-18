@@ -59,8 +59,11 @@ class ActivationPageContainer extends Component {
             this.props.dispatch(loadSimilarActivations(nextProps.params, nextProps.location.query));
         }
 
-        if (this.props.activation.assessmentSystemId !== nextProps.activation.assessmentSystemId) {
-            this._prepareAssessmentSystem(nextProps.activation);
+        if (nextProps.activation.assessmentSystemId
+            && this.props.activation.assessmentSystemId !== nextProps.activation.assessmentSystemId) {
+            const { getLocale } = this.context.i18n;
+
+            this.props.dispatch(loadAssessmentSystem(nextProps.activation, getLocale().toUpperCase()));
         }
 
         if (nextProps.customAssessmentSystem.length
