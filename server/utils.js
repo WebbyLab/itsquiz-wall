@@ -46,6 +46,7 @@ export function getMetaDataFromState({ route, state, params = {}, query = {}, la
                 }
             }
         } else {
+            console.log('state.currentAssessmentSystem', state.currentAssessmentSystem);
             greeting = _getGreeting(state.currentAssessmentSystem.assessmentSystem, userQuizSession.score);
         }
 
@@ -138,6 +139,7 @@ export function detectLocale(req) {
 
 function _getGreeting(assessmentSystem, score) {
     for (let i = assessmentSystem.length - 1; i >= 0; i--) {
+        console.log('assessmentSystem[i]', assessmentSystem[i]);
         if (score >= assessmentSystem[i].grade) {
             return {
                 phrase: assessmentSystem[i].phrase,
