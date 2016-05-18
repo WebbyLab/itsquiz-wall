@@ -115,14 +115,14 @@ export default class AppBar extends Component {
                         rightIconName
                             ? <IconButton name={rightIconName} onClick={onRightIconClick} />
                             : <a
-                                href      = {config.landingURL}
-                                className = 'brand-container'
+                                href   = {config.landingURL}
+                                target = '_blank'
                               >
                                 <img
+                                    alt='Testing platform'
                                     width='40px'
                                     height='40px'
                                     src={LOGO_SRC}
-                                    className='AppBar__logo'
                                 />
                             </a>
                     }
