@@ -59,8 +59,11 @@ class ActivationPageContainer extends Component {
             this.props.dispatch(loadSimilarActivations(nextProps.params, nextProps.location.query));
         }
 
-        if (this.props.activation.assessmentSystemId !== nextProps.activation.assessmentSystemId) {
-            this._prepareAssessmentSystem(nextProps.activation);
+        if (nextProps.activation.assessmentSystemId
+            && this.props.activation.assessmentSystemId !== nextProps.activation.assessmentSystemId) {
+            const { getLocale } = this.context.i18n;
+
+            this.props.dispatch(loadAssessmentSystem(nextProps.activation, getLocale().toUpperCase()));
         }
 
         if (nextProps.customAssessmentSystem.length
@@ -191,30 +194,10 @@ class ActivationPageContainer extends Component {
         });
     };
 
-    _prepareAssessmentSystem = (activation) => {
-        const { getLocale } = this.context.i18n;
-
-        if (activation.assessmentSystemType === 'GLOBAL') {
-            const localizedStandardSystems = standardAssessmentSystems[getLocale().toUpperCase()];
-
-            for (const standardSystemName in localizedStandardSystems) {
-                if (localizedStandardSystems[standardSystemName].id === activation.assessmentSystemId) {
-                    this.setState({
-                        currentAssessmentSystem : localizedStandardSystems[standardSystemName].assessmentSystem
-                    });
-                }
-            }
-        } else {
-            this.props.dispatch(loadAssessmentSystem(activation.assessmentSystemId));
-        }
-    };
-
     render() {
         const { activation, authorActivations, similarActivations, isLoading } = this.props;
         const { sharingLink, isLoggingIn } = this.state;
         const { embed, assigneeId } = this.props.location.query;
-
-        console.log('this.state.currentAssessmentSystem', this.state.currentAssessmentSystem);
 
         return (
             <ActivationPage
@@ -256,5 +239,5 @@ function mapStateToProps({ currentActivation: { activation, authorActivations,
 }
 
 export default connect(mapStateToProps)(
-    connectDataFetchers(ActivationPageContainer, [loadActivation, loadSimilarActivations])
+    connectDataFetchers(ActivationPageContainer, [loadActivation, loadSimilarActivations, loadAssessmentSystem])
 );

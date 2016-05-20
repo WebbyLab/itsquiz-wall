@@ -33,6 +33,7 @@ export function getMetaDataFromState({ route, state, params = {}, query = {}, la
 
     if (route === '/result/:id/:userId' && state.currentActivation.activation) {
         const activation = state.currentActivation.activation;
+        const { name, pictureURL, message, userQuizSession } = state.currentActivation.activation;
         let greeting;
 
         if (activation.assessmentSystemType === 'GLOBAL') {
@@ -52,8 +53,6 @@ export function getMetaDataFromState({ route, state, params = {}, query = {}, la
             uk: 'Я склав тест "{name}" на {score}%. Мій результат: "{greeting}"',
             en: 'I have passed test "{name}" and gained {score}%. My result is: "{greeting}"'
         };
-
-        const { name, pictureURL, message, userQuizSession } = state.currentActivation.activation;
 
         const title = strformat(sharePhrases[lang], { name, score: userQuizSession.score, greeting: greeting.phrase });
         const greetingDescription = greeting.description || '';
