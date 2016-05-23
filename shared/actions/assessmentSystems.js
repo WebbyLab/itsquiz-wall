@@ -8,7 +8,7 @@ export const LOAD_ASSESSMENT_SYSTEM_FAIL    = 'LOAD_ASSESSMENT_SYSTEM_FAIL';
 export function loadAssessmentSystem(activation, lang) {
     return (dispatch) => {
         if (activation.assessmentSystemType === 'GLOBAL') {
-            const localizedStandardSystems = standardAssessmentSystems[lang];
+            const localizedStandardSystems = standardAssessmentSystems[lang.toUpperCase()];
 
             for (const standardSystemName in localizedStandardSystems) {
                 if (localizedStandardSystems[standardSystemName].id === activation.assessmentSystemId) {

@@ -1,12 +1,14 @@
 import api from '../apiSingleton';
 
+import { loadAssessmentSystem } from './assessmentSystems';
+
 export const LOAD_ACTIVATIONS_SUCCESS    = 'LOAD_ACTIVATIONS_SUCCESS';
 export const LOAD_ACTIVATIONS_FAIL       = 'LOAD_ACTIVATIONS_FAIL';
 export const LOAD_ACTIVATIONS_REQUEST    = 'LOAD_ACTIVATIONS_REQUEST';
 
 const LIMIT_PER_QUERY = 24;
 
-export function loadActivations(params = {}, query = {}, offset = 0) {
+export function loadActivations({ params = {}, query = {} }, offset = 0) {
     return (dispatch) => {
         dispatch({
             type      : LOAD_ACTIVATIONS_REQUEST,
@@ -44,7 +46,7 @@ export const LOAD_ACTIVATION_REQUEST = 'LOAD_ACTIVATION_REQUEST';
 export const LOAD_ACTIVATION_SUCCESS = 'LOAD_ACTIVATION_SUCCESS';
 export const LOAD_ACTIVATION_FAIL    = 'LOAD_ACTIVATION_FAIL';
 
-export function loadActivation(params = {}, query = {}) {
+export function loadActivation({ params = {}, query = {}, lang }) {
     const assigneeId = query.assigneeId || params.userId || '';
 
     return dispatch => {
@@ -56,6 +58,10 @@ export function loadActivation(params = {}, query = {}) {
             digest: query.digest,
             userfromemail: query.userId
         }).then(response => {
+            if (response.data.isPassed && assigneeId) {
+                loadAssessmentSystem(response.data, lang);
+            }
+
             const userId = response.data.links.owner.id;
 
             return api.activations.list({ userId, assigneeId }).then(response2 => {
@@ -79,7 +85,7 @@ export const LOAD_SIMILAR_ACTIVATIONS_REQUEST = 'LOAD_SIMILAR_ACTIVATIONS_REQUES
 export const LOAD_SIMILAR_ACTIVATIONS_SUCCESS = 'LOAD_SIMILAR_ACTIVATIONS_SUCCESS';
 export const LOAD_SIMILAR_ACTIVATIONS_FAIL    = 'LOAD_SIMILAR_ACTIVATIONS_FAIL';
 
-export function loadSimilarActivations(params = {}, query = {}) {
+export function loadSimilarActivations({ params = {}, query = {} }) {
     const assigneeId = query.assigneeId || params.userId || '';
     const similarTo = params.id;
 

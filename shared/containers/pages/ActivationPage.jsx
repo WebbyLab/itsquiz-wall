@@ -9,8 +9,6 @@ import config                                     from '../../config';
 import { sendEvent }                              from '../../utils/googleAnalytics';
 import { makeSlug }                               from '../../utils/urlUtil';
 
-import standardAssessmentSystems from '../../utils/LocaleUtil/assessmentSystems.json';
-
 import ActivationPage from '../../components/pages/ActivationPage.jsx';
 
 const embedEvents = new EmbedEvents({
@@ -59,12 +57,12 @@ class ActivationPageContainer extends Component {
             this.props.dispatch(loadSimilarActivations(nextProps.params, nextProps.location.query));
         }
 
-        if (nextProps.activation.assessmentSystemId
+/*        if (nextProps.activation.assessmentSystemId
             && this.props.activation.assessmentSystemId !== nextProps.activation.assessmentSystemId) {
             const { getLocale } = this.context.i18n;
 
             this.props.dispatch(loadAssessmentSystem(nextProps.activation, getLocale().toUpperCase()));
-        }
+        }*/
 
         if (nextProps.customAssessmentSystem.length
             && nextProps.customAssessmentSystem !== this.props.customAssessmentSystem) {
@@ -239,5 +237,5 @@ function mapStateToProps({ currentActivation: { activation, authorActivations,
 }
 
 export default connect(mapStateToProps)(
-    connectDataFetchers(ActivationPageContainer, [loadActivation, loadSimilarActivations, loadAssessmentSystem])
+    connectDataFetchers(ActivationPageContainer, [loadActivation, loadSimilarActivations])
 );
