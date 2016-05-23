@@ -1,5 +1,6 @@
 import express      from 'express';
 import cookieParser from 'cookie-parser';
+import querystring  from 'querystring';
 
 import React                     from 'react';
 import ReactDOM                  from 'react-dom/server';
@@ -87,10 +88,14 @@ app.use((req, res) => {
 
                 if (metaData.type === 'ACTIVATION') {
                     const activationId = renderProps.params.id;
-                    const expectedUrl =  `/activations/${activationId}/${makeSlug(metaData.title)}`;
+                    const expectedPath =  `/activations/${activationId}/${makeSlug(metaData.title)}`;
 
-                    if (!req.url.endsWith(expectedUrl)) {
+                    if (!req.path.endsWith(expectedPath)) {
                         // TODO optimize. There is no need to fetch similar tests and tests from the same author
+                        const expectedUrl = Object.keys(req.query).length
+                            ? `${expectedPath}?${querystring.stringify(req.query)}`
+                            : expectedPath;
+
                         return {
                             isRedirect : true,
                             redirectUrl: expectedUrl
