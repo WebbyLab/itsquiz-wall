@@ -2,12 +2,14 @@ import React, { Component, PropTypes } from 'react';
 import { connect }                     from 'react-redux';
 
 import { loadActivation, loadSimilarActivations } from '../../actions/activations';
+import { loadAssessmentSystem }                   from '../../actions/assessmentSystems';
 import connectDataFetchers                        from '../../lib/connectDataFetchers.jsx';
 import EmbedEvents                                from '../../utils/EmbedEventsUtil';
 import config                                     from '../../config';
 import { sendEvent }                              from '../../utils/googleAnalytics';
 import { makeSlug }                               from '../../utils/urlUtil';
 
+import standardAssessmentSystems from '../../utils/LocaleUtil/assessmentSystems.json';
 
 import ActivationPage from '../../components/pages/ActivationPage.jsx';
 
@@ -17,22 +19,23 @@ const embedEvents = new EmbedEvents({
 
 class ActivationPageContainer extends Component {
     static propTypes = {
-        history   : PropTypes.object,
-        dispatch  : PropTypes.func,
-        location  : PropTypes.object,
-        params    : PropTypes.object,
-
-        activation         : PropTypes.object,
-        authorActivations  : PropTypes.array,
-        similarActivations : PropTypes.array,
-        isLoading          : PropTypes.bool
+        history                : PropTypes.object,
+        dispatch               : PropTypes.func,
+        location               : PropTypes.object,
+        params                 : PropTypes.object,
+        customAssessmentSystem : PropTypes.array,
+        activation             : PropTypes.object,
+        authorActivations      : PropTypes.array,
+        similarActivations     : PropTypes.array,
+        isLoading              : PropTypes.bool
     };
 
     static contextTypes = { i18n: PropTypes.object };
 
     state = {
-        sharingLink     : '',
-        isLoggingIn     : false
+        sharingLink      : '',
+        isLoggingIn      : false,
+        currentAssessmentSystem: []
     };
 
     componentWillMount() {
@@ -54,6 +57,20 @@ class ActivationPageContainer extends Component {
         if (this.props.params.id !== nextProps.params.id) {
             this.props.dispatch(loadActivation(nextProps.params, nextProps.location.query));
             this.props.dispatch(loadSimilarActivations(nextProps.params, nextProps.location.query));
+        }
+
+        if (nextProps.activation.assessmentSystemId
+            && this.props.activation.assessmentSystemId !== nextProps.activation.assessmentSystemId) {
+            const { getLocale } = this.context.i18n;
+
+            this.props.dispatch(loadAssessmentSystem(nextProps.activation, getLocale().toUpperCase()));
+        }
+
+        if (nextProps.customAssessmentSystem.length
+            && nextProps.customAssessmentSystem !== this.props.customAssessmentSystem) {
+            this.setState({
+                currentAssessmentSystem: nextProps.customAssessmentSystem
+            });
         }
     }
 
@@ -192,7 +209,7 @@ class ActivationPageContainer extends Component {
                 isEmbedded         = {Boolean(embed)}
                 isLoggingIn        = {isLoggingIn}
                 showUserResult     = {activation.isPassed && assigneeId}
-
+                assessmentSystem   = {this.state.currentAssessmentSystem}
                 onPass             = {this.handlePassActivationClick}
                 onSponsoredClick   = {this.handleSponsoredClick}
                 onSubscribe        = {this.handleSubscribeClick}
@@ -210,15 +227,17 @@ class ActivationPageContainer extends Component {
     }
 }
 
-function mapStateToProps({ currentActivation: { activation, authorActivations, similarActivations, isLoading } }) {
+function mapStateToProps({ currentActivation: { activation, authorActivations,
+ similarActivations, isLoading }, currentAssessmentSystem : { assessmentSystem } }) {
     return {
         activation,
         authorActivations,
         similarActivations,
-        isLoading
+        isLoading,
+        customAssessmentSystem: assessmentSystem
     };
 }
 
 export default connect(mapStateToProps)(
-    connectDataFetchers(ActivationPageContainer, [loadActivation, loadSimilarActivations])
+    connectDataFetchers(ActivationPageContainer, [loadActivation, loadSimilarActivations, loadAssessmentSystem])
 );

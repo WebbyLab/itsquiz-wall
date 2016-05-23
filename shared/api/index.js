@@ -1,6 +1,7 @@
-import ApiClient      from './ApiClient';
-import ActivationsAPI from './Activations';
-import UsersAPI       from './Users';
+import ApiClient            from './ApiClient';
+import ActivationsAPI       from './Activations';
+import UsersAPI             from './Users';
+import AssessmentSystemsAPI from './AssessmentSystems';
 
 export default function ({ apiPrefix } = {}) {
     if (!apiPrefix) {
@@ -10,7 +11,8 @@ export default function ({ apiPrefix } = {}) {
     const api = new ApiClient({ prefix: apiPrefix });
 
     return {
-        activations : new ActivationsAPI({ apiClient: api }),
-        users       : new UsersAPI({ apiClient: api })
+        activations       : new ActivationsAPI({ apiClient: api }),
+        users             : new UsersAPI({ apiClient: api }),
+        assessmentSystems : new AssessmentSystemsAPI({ apiClient: api })
     };
 }
