@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import cx                              from 'classnames';
 
+import config         from '../config';
 import SearchBox      from './SearchBox.jsx';
 import LanguageSwitch from '../containers/LanguageSwitch.jsx';
 import LoginDialog    from '../containers/LoginDialog.jsx';
@@ -113,12 +114,17 @@ export default class AppBar extends Component {
                     {
                         rightIconName
                             ? <IconButton name={rightIconName} onClick={onRightIconClick} />
-                            : <img
-                                width='40px'
-                                height='40px'
-                                src={LOGO_SRC}
-                                className='AppBar__logo'
-                              />
+                            : <a
+                                href   = {config.landingURL}
+                                target = '_blank'
+                              >
+                                <img
+                                    alt='Testing platform'
+                                    width='40px'
+                                    height='40px'
+                                    src={LOGO_SRC}
+                                />
+                            </a>
                     }
 
                     <h2 className='AppBar__title'> {title} </h2>

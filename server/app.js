@@ -1,5 +1,6 @@
 import express      from 'express';
 import cookieParser from 'cookie-parser';
+import querystring  from 'querystring';
 
 import React                     from 'react';
 import ReactDOM                  from 'react-dom/server';
@@ -59,10 +60,10 @@ app.use((req, res) => {
 
     match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
         if (req.url === '/') {
-            res.redirect(302, '/activations');
+            return res.redirect(302, '/activations');
         }
         if (redirectLocation) {
-            res.redirect(301, redirectLocation.pathname + redirectLocation.search);
+            return res.redirect(301, redirectLocation.pathname + redirectLocation.search);
         } else if (error) {
             res.send(500, error.message);
         } else if (!renderProps) {
@@ -89,10 +90,14 @@ app.use((req, res) => {
 
                 if (metaData.type === 'ACTIVATION') {
                     const activationId = renderProps.params.id;
-                    const expectedUrl =  `/activations/${activationId}/${makeSlug(metaData.title)}`;
+                    const expectedPath =  `/activations/${activationId}/${makeSlug(metaData.title)}`;
 
-                    if (!req.url.endsWith(expectedUrl)) {
+                    if (!req.path.endsWith(expectedPath)) {
                         // TODO optimize. There is no need to fetch similar tests and tests from the same author
+                        const expectedUrl = Object.keys(req.query).length
+                            ? `${expectedPath}?${querystring.stringify(req.query)}`
+                            : expectedPath;
+
                         return {
                             isRedirect : true,
                             redirectUrl: expectedUrl
@@ -142,7 +147,7 @@ function renderHTML({ componentHTML, initialState, metaData, config }) {
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="shortcut icon" href="/static/favicon.ico"/>
-            <title>Quiz Wall</title>
+            <title>${escapeHTML(metaData.title)} - itsquiz.com</title>
 
             <meta name="description" content="${escapeHTML(metaData.description)}">
             <meta property="og:title" content="${escapeHTML(metaData.title)}" />
