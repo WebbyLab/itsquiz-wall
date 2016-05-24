@@ -60,7 +60,7 @@ export function loadActivation({ params = {}, query = {}, locale }) {
         }).then(response => {
             let assessmentSystemPromise;
 
-            if (response.data.assigneeQuizSession.finishedAt && assigneeId) {
+            if (assigneeId) {
                 assessmentSystemPromise = loadAssessmentSystem(response.data, locale)(dispatch);
             }
 
@@ -75,7 +75,7 @@ export function loadActivation({ params = {}, query = {}, locale }) {
                 });
             });
 
-            return Promise.all(assessmentSystemPromise, activationPromise);
+            return Promise.all([assessmentSystemPromise, activationPromise]);
         }).catch(error => {
             dispatch({
                 type: LOAD_ACTIVATION_FAIL,
