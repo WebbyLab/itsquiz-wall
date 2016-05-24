@@ -79,8 +79,6 @@ app.use((req, res) => {
             .then(() => {
                 const initialState = store.getState();
 
-                console.log('initialState', initialState);
-
                 const metaData = getMetaDataFromState({
                     params : renderProps.params,
                     query  : renderProps.location.query,
