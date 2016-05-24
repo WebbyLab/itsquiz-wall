@@ -49,6 +49,8 @@ export const LOAD_ACTIVATION_FAIL    = 'LOAD_ACTIVATION_FAIL';
 export function loadActivation({ params = {}, query = {}, locale }) {
     const assigneeId = query.assigneeId || params.userId || '';
 
+    console.log('params', params);
+
     return dispatch => {
         dispatch({ type : LOAD_ACTIVATION_REQUEST, activationId : params.id });
 
@@ -58,11 +60,13 @@ export function loadActivation({ params = {}, query = {}, locale }) {
             digest: query.digest,
             userfromemail: query.userId
         }).then(response => {
-            let assessmentSystemPromise;
+            console.log('response.data', response.data);
 
-            if (response.data.assigneeQuizSession.finishedAt && assigneeId) {
-                assessmentSystemPromise = loadAssessmentSystem(response.data, locale)(dispatch);
-            }
+            // if (response.data.assigneeQuizSession.finishedAt && assigneeId) {
+            const assessmentSystemPromise = loadAssessmentSystem(response.data, locale)(dispatch);
+            // }
+
+            // console.log('assessmentSystemPromise', assessmentSystemPromise);
 
             const userId = response.data.links.owner.id;
 
