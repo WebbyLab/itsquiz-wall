@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { connect }                     from 'react-redux';
 
 import { loadActivation, loadSimilarActivations } from '../../actions/activations';
-import { loadAssessmentSystem }                   from '../../actions/assessmentSystems';
 import connectDataFetchers                        from '../../lib/connectDataFetchers.jsx';
 import EmbedEvents                                from '../../utils/EmbedEventsUtil';
 import config                                     from '../../config';
@@ -53,16 +52,11 @@ class ActivationPageContainer extends Component {
         }
 
         if (this.props.params.id !== nextProps.params.id) {
-            this.props.dispatch(loadActivation(nextProps.params, nextProps.location.query));
-            this.props.dispatch(loadSimilarActivations(nextProps.params, nextProps.location.query));
-        }
-
-/*        if (nextProps.activation.assessmentSystemId
-            && this.props.activation.assessmentSystemId !== nextProps.activation.assessmentSystemId) {
             const { getLocale } = this.context.i18n;
 
-            this.props.dispatch(loadAssessmentSystem(nextProps.activation, getLocale().toUpperCase()));
-        }*/
+            this.props.dispatch(loadActivation(nextProps.params, nextProps.location.query, getLocale()));
+            this.props.dispatch(loadSimilarActivations(nextProps.params, nextProps.location.query));
+        }
 
         if (nextProps.customAssessmentSystem.length
             && nextProps.customAssessmentSystem !== this.props.customAssessmentSystem) {

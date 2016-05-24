@@ -10,7 +10,7 @@ export function fetchComponentsData({ dispatch, components, params, query, local
         const component = current.WrappedComponent ? current.WrappedComponent : current;
 
         return component.fetchData
-            ? component.fetchData(dispatch, params, query, locale)
+            ? component.fetchData({ dispatch, params, query, locale })
             : null;
     });
 

@@ -46,7 +46,7 @@ export const LOAD_ACTIVATION_REQUEST = 'LOAD_ACTIVATION_REQUEST';
 export const LOAD_ACTIVATION_SUCCESS = 'LOAD_ACTIVATION_SUCCESS';
 export const LOAD_ACTIVATION_FAIL    = 'LOAD_ACTIVATION_FAIL';
 
-export function loadActivation({ params = {}, query = {}, lang }) {
+export function loadActivation({ params = {}, query = {}, locale }) {
     const assigneeId = query.assigneeId || params.userId || '';
 
     return dispatch => {
@@ -58,8 +58,8 @@ export function loadActivation({ params = {}, query = {}, lang }) {
             digest: query.digest,
             userfromemail: query.userId
         }).then(response => {
-            if (response.data.isPassed && assigneeId) {
-                loadAssessmentSystem(response.data, lang);
+            if (response.data.assigneeQuizSession.finishedAt && assigneeId) {
+                loadAssessmentSystem(response.data, locale)(dispatch);
             }
 
             const userId = response.data.links.owner.id;

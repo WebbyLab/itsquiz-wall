@@ -5,10 +5,10 @@ import standardAssessmentSystems from '../utils/LocaleUtil/assessmentSystems.jso
 export const LOAD_ASSESSMENT_SYSTEM_SUCCESS = 'LOAD_ASSESSMENT_SYSTEM_SUCCESS';
 export const LOAD_ASSESSMENT_SYSTEM_FAIL    = 'LOAD_ASSESSMENT_SYSTEM_FAIL';
 
-export function loadAssessmentSystem(activation, lang) {
+export function loadAssessmentSystem(activation, locale) {
     return (dispatch) => {
         if (activation.assessmentSystemType === 'GLOBAL') {
-            const localizedStandardSystems = standardAssessmentSystems[lang.toUpperCase()];
+            const localizedStandardSystems = standardAssessmentSystems[locale.toUpperCase()];
 
             for (const standardSystemName in localizedStandardSystems) {
                 if (localizedStandardSystems[standardSystemName].id === activation.assessmentSystemId) {

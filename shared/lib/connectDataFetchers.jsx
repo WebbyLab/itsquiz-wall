@@ -9,21 +9,21 @@ export default function connectDataFetchers(Component, actionCreators) {
             location : React.PropTypes.object.isRequired
         };
 
-        static fetchData(dispatch, params = {}, query = {}, lang) {
+        static fetchData({ dispatch, params = {}, query = {}, locale }) {
             return Promise.all(
-                actionCreators.map(actionCreator => dispatch(actionCreator({ params, query, lang })))
+                actionCreators.map(actionCreator => dispatch(actionCreator({ params, query, locale })))
             );
         }
 
         componentDidMount() {
             const locale = this.context.i18n ? this.context.i18n.getLocale() : 'en';
 
-            DataFetchersWrapper.fetchData(
-                this.props.dispatch,
-                this.props.params,
-                this.props.location.query,
-                locale
-            );
+            DataFetchersWrapper.fetchData({
+                locale,
+                dispatch: this.props.dispatch,
+                params: this.props.params,
+                query: this.props.location.query
+            });
         }
 
         render() {
