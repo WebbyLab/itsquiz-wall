@@ -8,7 +8,7 @@ export const LOAD_ACTIVATIONS_REQUEST    = 'LOAD_ACTIVATIONS_REQUEST';
 
 const LIMIT_PER_QUERY = 24;
 
-export function loadActivations({ params = {}, query = {} }, offset = 0) {
+export function loadActivations({ params = {}, query = {}, offset = 0 }) {
     return (dispatch) => {
         dispatch({
             type      : LOAD_ACTIVATIONS_REQUEST,
