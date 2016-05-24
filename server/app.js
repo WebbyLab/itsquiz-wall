@@ -69,12 +69,13 @@ app.use((req, res) => {
         } else if (!renderProps) {
             res.send(404, 'Not found');
         } else {
-            fetchComponentsData(
-                store.dispatch,
-                renderProps.components,
-                renderProps.params,
-                renderProps.location.query
-            )
+            fetchComponentsData({
+                locale,
+                dispatch   : store.dispatch,
+                components : renderProps.components,
+                params     : renderProps.params,
+                query      : renderProps.location.query
+            })
             .then(() => {
                 const initialState = store.getState();
 

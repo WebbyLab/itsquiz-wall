@@ -4,14 +4,13 @@ import strformat   from 'strformat';
 
 import clientConfig              from '../etc/client-config.json';
 import { getSupportedLocales }   from '../shared/utils';
-import standardAssessmentSystems from '../shared/utils/LocaleUtil/assessmentSystems.json';
 
-export function fetchComponentsData(dispatch, components, params, query) {
+export function fetchComponentsData({ dispatch, components, params, query, locale }) {
     const promises = components.map(current => {
         const component = current.WrappedComponent ? current.WrappedComponent : current;
 
         return component.fetchData
-            ? component.fetchData(dispatch, params, query)
+            ? component.fetchData({ dispatch, params, query, locale })
             : null;
     });
 
@@ -32,21 +31,9 @@ export function getMetaDataFromState({ route, state, params = {}, query = {}, la
     }
 
     if (route === '/result/:id/:userId' && state.currentActivation.activation) {
-        const activation = state.currentActivation.activation;
         const { name, pictureURL, message, userQuizSession } = state.currentActivation.activation;
-        let greeting;
 
-        if (activation.assessmentSystemType === 'GLOBAL') {
-            const localizedStandardSystems = standardAssessmentSystems[lang.toUpperCase()];
-
-            for (const standardSystemName in localizedStandardSystems) {
-                if (localizedStandardSystems[standardSystemName].id === activation.assessmentSystemId) {
-                    greeting = _getGreeting(localizedStandardSystems[standardSystemName], userQuizSession.score);
-                }
-            }
-        } else {
-            greeting = _getGreeting(state.currentAssessmentSystem.assessmentSystem, userQuizSession.score);
-        }
+        const greeting = _getGreeting(state.currentAssessmentSystem.assessmentSystem, userQuizSession.score);
 
         const sharePhrases = {
             ru: 'Я сдал тест "{name}" на {score}%. Мой результат: "{greeting}"',
