@@ -16,13 +16,13 @@ export default function connectDataFetchers(Component, actionCreators) {
         }
 
         componentDidMount() {
-            const { getLocale } = this.context.i18n;
+            const locale = this.context.i18n ? this.context.i18n.getLocale() : 'en';
 
             DataFetchersWrapper.fetchData(
                 this.props.dispatch,
                 this.props.params,
                 this.props.location.query,
-                getLocale()
+                locale
             );
         }
 

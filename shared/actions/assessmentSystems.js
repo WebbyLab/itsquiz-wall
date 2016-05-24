@@ -16,6 +16,7 @@ export function loadAssessmentSystem(activation, lang) {
                         type             : LOAD_ASSESSMENT_SYSTEM_SUCCESS,
                         assessmentSystem : localizedStandardSystems[standardSystemName].assessmentSystem
                     });
+                    break;
                 }
             }
         } else {
