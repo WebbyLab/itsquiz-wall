@@ -58,13 +58,15 @@ export function loadActivation({ params = {}, query = {}, locale }) {
             digest: query.digest,
             userfromemail: query.userId
         }).then(response => {
+            let assessmentSystemPromise;
+
             if (response.data.assigneeQuizSession.finishedAt && assigneeId) {
-                loadAssessmentSystem(response.data, locale)(dispatch);
+                assessmentSystemPromise = loadAssessmentSystem(response.data, locale)(dispatch);
             }
 
             const userId = response.data.links.owner.id;
 
-            return api.activations.list({ userId, assigneeId }).then(response2 => {
+            const activationPromise = api.activations.list({ userId, assigneeId }).then(response2 => {
                 dispatch({
                     type              : LOAD_ACTIVATION_SUCCESS,
                     activation        : response.data,
@@ -72,6 +74,8 @@ export function loadActivation({ params = {}, query = {}, locale }) {
                     authorActivations : response2.data.entities
                 });
             });
+
+            return Promise.all(assessmentSystemPromise, activationPromise);
         }).catch(error => {
             dispatch({
                 type: LOAD_ACTIVATION_FAIL,

@@ -20,9 +20,9 @@ export default function connectDataFetchers(Component, actionCreators) {
 
             DataFetchersWrapper.fetchData({
                 locale,
-                dispatch: this.props.dispatch,
-                params: this.props.params,
-                query: this.props.location.query
+                dispatch : this.props.dispatch,
+                params   : this.props.params,
+                query    : this.props.location.query
             });
         }
 
