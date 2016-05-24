@@ -31,8 +31,6 @@ export function getMetaDataFromState({ route, state, params = {}, query = {}, la
     }
 
     if (route === '/result/:id/:userId' && state.currentActivation.activation) {
-        console.log('state.currentAssessmentSystem.assessmentSystem', state.currentAssessmentSystem.assessmentSystem);
-
         const { name, pictureURL, message, userQuizSession } = state.currentActivation.activation;
 
         const greeting = _getGreeting(state.currentAssessmentSystem.assessmentSystem, userQuizSession.score);
