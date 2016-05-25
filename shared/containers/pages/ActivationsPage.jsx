@@ -136,9 +136,9 @@ class ActivationsPageContainer extends Component {
 
         if (index + 1 < totalActivationsAmount && index + 1 >= activations.length) {
             this.props.dispatch(loadActivations({
-                params: this.props.params,
-                query: this.props.location.query,
-                offset: activations.length
+                params : this.props.params,
+                query  : this.props.location.query,
+                offset : activations.length
             }));
         }
     };

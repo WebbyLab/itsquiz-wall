@@ -55,9 +55,9 @@ class ActivationPageContainer extends Component {
             const { getLocale } = this.context.i18n;
 
             this.props.dispatch(loadActivation({
-                params: nextProps.params,
-                query: nextProps.location.query,
-                locale: getLocale()
+                params : nextProps.params,
+                query  : nextProps.location.query,
+                locale : getLocale()
             }));
 
             this.props.dispatch(loadSimilarActivations({ params: nextProps.params, query: nextProps.location.query }));
