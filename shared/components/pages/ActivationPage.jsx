@@ -13,6 +13,7 @@ import ShareDialog          from '../../containers/ShareDialog.jsx';
 import LoginDialog          from '../../containers/LoginDialog.jsx';
 import AppBarWithBackground from '../AppBarWithBackground.jsx';
 import ExpandableText       from '../ExpandableText.jsx';
+import SignIcon             from '../../components/base/Icon.jsx';
 
 import { sprintf } from '../../utils';
 
@@ -224,7 +225,8 @@ export default class ActivationPage extends React.Component {
             isSponsored,
             canAssigneePass,
             numberOfTriesLeft,
-            dueTime
+            dueTime,
+            canAssigneeViewQuestions
         } = activation;
 
         const { l, nl, humanizeDuration, getTimeFromNow } = this.context.i18n;
@@ -298,6 +300,17 @@ export default class ActivationPage extends React.Component {
                                     )
                                     : null
                                 }
+
+                                <div className='ActivationPage__answers-view-ability'>
+                                    <SignIcon
+                                        title={canAssigneeViewQuestions
+                                            ? l('Users can view their answers')
+                                            : l('Users can not view their answers')}
+                                        type='view'
+                                        size={16}
+                                        className={canAssigneeViewQuestions ? 'on' : 'off'}
+                                    />
+                                </div>
                             </div>
 
                             <div className='ActivationPage__actions'>
