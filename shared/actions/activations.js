@@ -61,7 +61,7 @@ export function loadActivation({ params = {}, query = {}, locale }) {
             let assessmentSystemPromise;
 
             if (assigneeId) {
-                assessmentSystemPromise = loadAssessmentSystem(response.data, locale)(dispatch);
+                assessmentSystemPromise = dispatch(loadAssessmentSystem(response.data, locale));
             }
 
             const userId = response.data.links.owner.id;
