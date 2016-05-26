@@ -149,7 +149,6 @@ export default class WelcomeDialog extends Component {
         return (
             <div className='WelcomeDialog'>
                 <Dialog
-                    className = 'WelcomeDialog__dialog'
                     onRequestClose={this.handleClose}
                     {...this.props}
                 >

@@ -1,6 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import cx                              from 'classnames';
-
 import ReactModal from 'react-modal';
 
 if (process.env.BROWSER) {
@@ -12,12 +10,11 @@ export default class Dialog extends Component {
         title          : PropTypes.string,
         isOpen         : PropTypes.bool,
         children       : PropTypes.any,
-        className      : PropTypes.string,
         onRequestClose : PropTypes.func
     };
 
     render() {
-        const { isOpen, title, children, className, onRequestClose } = this.props;
+        const { isOpen, title, children, onRequestClose } = this.props;
 
         const styles = {
             overlay : {
@@ -29,11 +26,8 @@ export default class Dialog extends Component {
             }
         };
 
-        const classes = cx('Dialog', className);
-
         return (
             <ReactModal
-                className      = {classes}
                 isOpen         = {isOpen}
                 style          = {styles}
                 onRequestClose = {onRequestClose}

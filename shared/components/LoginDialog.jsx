@@ -25,8 +25,7 @@ export default class LoginDialog extends Component {
         return (
             <div className='LoginDialog'>
                 <Dialog
-                    className = 'LoginDialog__dialog'
-                    title     = {title}
+                    title = {title}
                     {...this.props}
                 >
                     <h4 className='LoginDialog__title'>

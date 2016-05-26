@@ -23,7 +23,6 @@ export default class ShareDialog extends Component {
         return (
             <div className='ShareDialog'>
                 <Dialog
-                    className = 'ShareDialog__dialog'
                     title     = {title}
                     {...this.props}
                 >
