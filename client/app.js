@@ -16,13 +16,22 @@ const initialState = window.__INITIAL_STATE__ || {};
 const store = configureStore(initialState);
 const locale = cookie.parse(document.cookie).locale || DEFAULT_LOCALE;
 
-fetch(`/static/lang/${locale}.json`).then(res => {
-    if (res.status >= 400) {
-        throw new Error('Bad response from server');
-    }
+function loadLocale(localeToLoad) {
+    // if (localeToLoad === 'en') {
+    //     // No need to load as UI already in English
+    //     return Promise.resolve({ domain: 'messages', 'locale_data': { 'messages': { } } });
+    // }
 
-    return res.json();
-}).then(localeData => {
+    return fetch(`/static/lang/${localeToLoad}.json`).then(res => {
+        if (res.status >= 400) {
+            throw new Error('Bad response from server');
+        }
+
+        return res.json();
+    });
+}
+
+loadLocale(locale).then(localeData => {
     const i18nTools = new i18n.Tools({ localeData, locale });
 
     ReactDOM.render(
