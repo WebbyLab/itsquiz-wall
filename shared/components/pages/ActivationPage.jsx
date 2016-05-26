@@ -307,13 +307,13 @@ export default class ActivationPage extends React.Component {
                                             : l('Users can not view their answers')}
                                         type='eye'
                                         size={16}
-                                        className={canAssigneeViewQuestions ? 'on' : 'off'}
+                                        mode={canAssigneeViewQuestions ? 'on' : 'off'}
                                     />
                                     <Icon
                                         title={l('Users can contact the author')}
                                         type='message'
                                         size={16}
-                                        className={'on'}
+                                        mode={'on'}
                                     />
                                 </div>
                             </div>
