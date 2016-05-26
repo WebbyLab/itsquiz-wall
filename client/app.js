@@ -17,11 +17,13 @@ const store = configureStore(initialState);
 const locale = cookie.parse(document.cookie).locale || DEFAULT_LOCALE;
 
 function loadLocale(localeToLoad) {
-    // if (localeToLoad === 'en') {
-    //     // No need to load as UI already in English
-    //     return Promise.resolve({ domain: 'messages', 'locale_data': { 'messages': { } } });
-    // }
+    if (localeToLoad === 'en') {
+        // No need to load as UI already in English
+        return Promise.resolve({});
+    }
 
+
+    // "": { "domain": "messages", "lang": "" }
     return fetch(`/static/lang/${localeToLoad}.json`).then(res => {
         if (res.status >= 400) {
             throw new Error('Bad response from server');
