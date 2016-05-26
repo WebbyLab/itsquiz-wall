@@ -51,18 +51,7 @@ class ActivationPageContainer extends Component {
             sendEvent('activation', 'view', nextProps.activation.name);
         }
 
-        if (this.props.params.id !== nextProps.params.id) {
-            const { getLocale } = this.context.i18n;
-
-            this.props.dispatch(loadActivation({
-                params : nextProps.params,
-                query  : nextProps.location.query,
-                locale : getLocale()
-            }));
-
-            this.props.dispatch(loadSimilarActivations({ params: nextProps.params, query: nextProps.location.query }));
-        }
-
+        // WTF: why do we copy customAssessmentSystem to state?
         if (nextProps.customAssessmentSystem.length
             && nextProps.customAssessmentSystem !== this.props.customAssessmentSystem) {
             this.setState({

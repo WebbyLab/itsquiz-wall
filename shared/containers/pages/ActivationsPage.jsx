@@ -43,20 +43,6 @@ class ActivationsPageContainer extends Component {
         });
     }
 
-    componentWillReceiveProps(nextProps) {
-        const currentQuery = this.props.location.query;
-        const nextQuery = nextProps.location.query;
-
-        const needToReloadData = currentQuery.search !== nextQuery.search
-            || currentQuery.category !== nextQuery.category
-            || currentQuery.sortType !== nextQuery.sortType;
-
-
-        if (needToReloadData) {
-            this.props.dispatch(loadActivations({ params: nextProps.params, query: nextQuery }));
-        }
-    }
-
     componentWillUnmount() {
         embedEvents.unsubscribe();
     }
