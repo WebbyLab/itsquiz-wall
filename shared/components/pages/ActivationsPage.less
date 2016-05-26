@@ -107,6 +107,21 @@
     display: none;
 }
 
+.ActivationsPage__tab-text {
+    @media @phone {
+        display: none;
+    }
+}
+
+.ActivationsPage__tab-icon {
+    display: none;
+    font-size: 18px;
+
+    @media @phone {
+        display: inline-block;
+    }
+}
+
 .ActivationsPage__list {
     width: 100%;
     max-width: 1200px;
@@ -204,6 +219,11 @@
     }
 
     &::-ms-expand { display: none; }
+
+    @media @phone {
+        display: none;
+        font-size: 11px;
+    }
 }
 
 .ActivationsPage__loading-next-spinner-container {
