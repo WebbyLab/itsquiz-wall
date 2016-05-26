@@ -13,7 +13,6 @@ import ShareDialog          from '../../containers/ShareDialog.jsx';
 import LoginDialog          from '../../containers/LoginDialog.jsx';
 import AppBarWithBackground from '../AppBarWithBackground.jsx';
 import ExpandableText       from '../ExpandableText.jsx';
-import SignIcon             from '../../components/base/Icon.jsx';
 
 import { sprintf } from '../../utils';
 
@@ -302,13 +301,19 @@ export default class ActivationPage extends React.Component {
                                 }
 
                                 <div className='ActivationPage__answers-view-ability'>
-                                    <SignIcon
+                                    <Icon
                                         title={canAssigneeViewQuestions
                                             ? l('Users can view their answers')
                                             : l('Users can not view their answers')}
-                                        type='view'
+                                        type='eye'
                                         size={16}
                                         className={canAssigneeViewQuestions ? 'on' : 'off'}
+                                    />
+                                    <Icon
+                                        title={l('Users can contact the author')}
+                                        type='message'
+                                        size={16}
+                                        className={'on'}
                                     />
                                 </div>
                             </div>
