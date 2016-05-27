@@ -115,7 +115,7 @@ export default class AppBar extends Component {
                         rightIconName
                             ? <IconButton name={rightIconName} onClick={onRightIconClick} />
                             : <a
-                                href   = {config.landingURL}
+                                href   = {config.landingUrl}
                                 target = '_blank'
                               >
                                 <img
