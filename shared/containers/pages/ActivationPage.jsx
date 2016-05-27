@@ -54,8 +54,13 @@ class ActivationPageContainer extends Component {
         if (this.props.params.id !== nextProps.params.id) {
             const { getLocale } = this.context.i18n;
 
-            this.props.dispatch(loadActivation(nextProps.params, nextProps.location.query, getLocale()));
-            this.props.dispatch(loadSimilarActivations(nextProps.params, nextProps.location.query));
+            this.props.dispatch(loadActivation({
+                params : nextProps.params,
+                query  : nextProps.location.query,
+                locale : getLocale()
+            }));
+
+            this.props.dispatch(loadSimilarActivations({ params: nextProps.params, query: nextProps.location.query }));
         }
 
         if (nextProps.customAssessmentSystem.length

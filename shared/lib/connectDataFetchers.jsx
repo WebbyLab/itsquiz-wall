@@ -1,8 +1,10 @@
-import React   from 'react';
+import React, { PropTypes } from 'react';
 import Promise from 'bluebird';
 
 export default function connectDataFetchers(Component, actionCreators) {
     return class DataFetchersWrapper extends React.Component {
+        static contextTypes = { i18n: PropTypes.object };
+
         static propTypes = {
             dispatch : React.PropTypes.func.isRequired,
             params   : React.PropTypes.object.isRequired,
