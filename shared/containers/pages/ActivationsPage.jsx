@@ -53,7 +53,7 @@ class ActivationsPageContainer extends Component {
 
 
         if (needToReloadData) {
-            this.props.dispatch(loadActivations(nextProps.params, nextQuery));
+            this.props.dispatch(loadActivations({ params: nextProps.params, query: nextQuery }));
         }
     }
 
@@ -135,7 +135,11 @@ class ActivationsPageContainer extends Component {
         const { activations, totalActivationsAmount } = this.props;
 
         if (index + 1 < totalActivationsAmount && index + 1 >= activations.length) {
-            this.props.dispatch(loadActivations(this.props.params, this.props.location.query, activations.length));
+            this.props.dispatch(loadActivations({
+                params : this.props.params,
+                query  : this.props.location.query,
+                offset : activations.length
+            }));
         }
     };
 
