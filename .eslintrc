@@ -2,7 +2,12 @@
     "parser": "babel-eslint",
 
     "plugins": [
-        "react"
+        "react",
+        "no-require-lodash",
+        "prefer-spread",
+        "jquery",
+        "fetch",
+        "require-in-package"
     ],
 
     "env": {
@@ -33,6 +38,13 @@
     },
 
     "rules":{
+        // New
+        "no-useless-escape": 2,
+        "no-duplicate-imports": 2,
+        "newline-before-return": 2,
+        "no-useless-rename": 0,
+        "object-property-newline": [2, { "allowMultiplePropertiesPerLine": true }],
+        "no-useless-computed-key": 2,
         // Possible errors
         "comma-dangle": [2, "never"],
         "no-cond-assign": [2, "always"],
@@ -158,17 +170,18 @@
         "func-style": [2, "declaration"],
         "indent": [2, 4, { "SwitchCase": 1 }],
         "jsx-quotes": [2, "prefer-single"],
-        // "key-spacing": [2, {
-        //     "singleLine": {
-        //         "beforeColon": false,
-        //         "afterColon": true
-        //     },
-        //     "multiLine": {
-        //         "beforeColon": true,
-        //         "afterColon": true,
-        //         "align": "colon"
-        //     }
-        // }],
+
+        #  "key-spacing": [2, {
+        #      "singleLine": {
+        #          "beforeColon": false,
+        #          "afterColon": true
+        #      },
+        #      "multiLine": {
+        #          "beforeColon": true,
+        #          "afterColon": true,
+        #          "align": "colon"
+        #      }
+        #  }],
         "linebreak-style": [2, "unix"],
         "max-len": [2, 120, 4, {
             "ignoreUrls": true,
@@ -248,7 +261,55 @@
         // Legacy
         "max-depth": [0, 4],
         "max-params": [2, 4],
-        "no-bitwise": 2
+        "no-bitwise": 2,
+
+        // no require lodash
+        "no-require-lodash/no-require-lodash": 2,
+
+        // prefer spread
+        "prefer-spread/prefer-object-spread": [2, "includeNearEquivalents"],
+
+        // fetch
+        fetch/no-jquery: 2,
+        fetch/no-xhr: 2,
+
+        // require-in-package
+        "require-in-package/require-in-package": 2,
+
+        // jquery
+        "jquery/no-ajax": 2,
+        "jquery/no-attr": 2,
+        "jquery/no-bind": 2,
+        "jquery/no-class": 2,
+        "jquery/no-clone": 2,
+        "jquery/no-closest": 2,
+        "jquery/no-css": 2,
+        "jquery/no-data": 2,
+        "jquery/no-deferred": 2,
+        "jquery/no-delegate": 2,
+        "jquery/no-each": 2,
+        "jquery/no-filter": 2,
+        "jquery/no-find": 2,
+        "jquery/no-global-eval": 2,
+        "jquery/no-has": 2,
+        "jquery/no-html": 2,
+        "jquery/no-in-array": 2,
+        "jquery/no-is": 2,
+        "jquery/no-map": 2,
+        "jquery/no-merge": 2,
+        "jquery/no-param": 2,
+        "jquery/no-parent": 2,
+        "jquery/no-parents": 2,
+        "jquery/no-prop": 2,
+        "jquery/no-proxy": 2,
+        "jquery/no-serialize": 2,
+        "jquery/no-sizzle": 2,
+        "jquery/no-text": 2,
+        "jquery/no-trigger": 2,
+        "jquery/no-trim": 2,
+        "jquery/no-val": 2,
+        "jquery/no-wrap": 2
+
     },
 
      "globals":{
