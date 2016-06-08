@@ -11,7 +11,8 @@ import escapeHTML                from 'lodash/string/escape';
 import { fetchComponentsData,
          getMetaDataFromState,
          makeRedirectUrl,
-         detectLocale } from './utils';
+         detectLocale,
+         detectIsIOSDevice } from './utils';
 
 import routes         from '../shared/routes.jsx';
 import configureStore from '../shared/store/configureStore';
@@ -141,7 +142,7 @@ app.use((req, res) => {
 function renderHTML({ componentHTML, initialState, metaData, config }) {
     return `
         <!DOCTYPE html>
-        <html>
+        <html ${detectIsIOSDevice() ? "style='height:100%; overflow: auto; -webkit-overflow-scrolling: touch;'" : null}>
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -211,7 +212,7 @@ function renderHTML({ componentHTML, initialState, metaData, config }) {
             </noscript>
             <!-- /Yandex.Metrika counter -->
         </head>
-        <body>
+        <body ${detectIsIOSDevice() ? "style='height:100%; overflow: auto; -webkit-overflow-scrolling: touch;'" : null}>
         <div id="react-view">${componentHTML}</div>
           <script type="application/javascript">
             window.__CONFIG__ = ${JSON.stringify(config)};
