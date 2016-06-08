@@ -1,17 +1,13 @@
+import querystring  from 'querystring';
+
 import express      from 'express';
 import cookieParser from 'cookie-parser';
-import querystring  from 'querystring';
 
 import React                     from 'react';
 import ReactDOM                  from 'react-dom/server';
 import { Provider }              from 'react-redux';
 import { RoutingContext, match } from 'react-router';
 import escapeHTML                from 'lodash/string/escape';
-
-import { fetchComponentsData,
-         getMetaDataFromState,
-         makeRedirectUrl,
-         detectLocale } from './utils';
 
 import routes         from '../shared/routes.jsx';
 import configureStore from '../shared/store/configureStore';
@@ -20,18 +16,24 @@ import { makeSlug }   from '../shared/utils/urlUtil';
 
 import clientConfig from '../etc/client-config.json';
 
-// Initializa localization
 import ruLocaleData from '../public/static/lang/ru.json';
 import ukLocaleData from '../public/static/lang/uk.json';
 import enLocaleData from '../public/static/lang/en.json';
 import trLocaleData from '../public/static/lang/tr.json';
 
+import { fetchComponentsData,
+         getMetaDataFromState,
+         makeRedirectUrl,
+         detectLocale } from './utils';
+
+// Initializa localization
 const i18nToolsRegistry = {
     ru   : new i18n.Tools({ localeData: ruLocaleData, locale: 'ru' }),
     en   : new i18n.Tools({ localeData: enLocaleData, locale: 'en' }),
     uk   : new i18n.Tools({ localeData: ukLocaleData, locale: 'uk' }),
     tr   : new i18n.Tools({ localeData: trLocaleData, locale: 'tr' })
 };
+
 
 const app = express();
 
