@@ -1,6 +1,7 @@
 /*
     eslint
         import/no-commonjs: 0
+        import/no-unresolved: 0
 */
 
 if (process.env.BROWSER) {

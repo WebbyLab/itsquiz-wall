@@ -14,7 +14,7 @@ import configureStore from '../shared/store/configureStore';
 import i18n           from '../shared/i18n';
 import { makeSlug }   from '../shared/utils/urlUtil';
 
-import clientConfig from '../etc/client-config.json';
+import clientConfig from '../shared/config';
 
 import ruLocaleData from '../public/static/lang/ru.json';
 import ukLocaleData from '../public/static/lang/uk.json';
