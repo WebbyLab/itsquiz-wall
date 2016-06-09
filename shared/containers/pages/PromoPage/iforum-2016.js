@@ -1,6 +1,7 @@
 /*
     eslint
         max-len: 0
+        import/no-commonjs: 0
 */
 
 module.exports =

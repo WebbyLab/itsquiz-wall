@@ -7,7 +7,7 @@
         "prefer-spread",
         "jquery",
         "fetch",
-        "require-in-package"
+        "import"
     ],
 
     "env": {
@@ -273,9 +273,6 @@
         fetch/no-jquery: 2,
         fetch/no-xhr: 2,
 
-        // require-in-package
-        "require-in-package/require-in-package": 2,
-
         // jquery
         "jquery/no-ajax": 2,
         "jquery/no-attr": 2,
@@ -308,7 +305,18 @@
         "jquery/no-trigger": 2,
         "jquery/no-trim": 2,
         "jquery/no-val": 2,
-        "jquery/no-wrap": 2
+        "jquery/no-wrap": 2,
+
+        // import
+        "import/no-unresolved": 2,
+        "import/export": 2,
+        "import/no-extraneous-dependencies": 2,
+        "import/no-mutable-exports": 2,
+        "import/no-commonjs": 2,
+        "import/no-duplicates": 2,
+        "import/imports-first": 2,
+        "import/order": [2, {"groups": ["builtin", "external", "internal",  "parent", "sibling", "index" ]}],
+        "import/newline-after-import": 2
 
     },
 

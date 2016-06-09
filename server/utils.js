@@ -3,7 +3,7 @@ import geoip       from 'geoip-lite';
 import strformat   from 'strformat';
 import bowser      from 'bowser';
 
-import clientConfig              from '../etc/client-config.json';
+import clientConfig              from '../shared/config';
 import { getSupportedLocales }   from '../shared/utils';
 
 export function fetchComponentsData({ dispatch, components, params, query, locale }) {
