@@ -3,7 +3,11 @@ import { connect }                     from 'react-redux';
 
 import { loadActivation, loadSimilarActivations } from '../../actions/activations';
 import connectDataFetchers                        from '../../lib/connectDataFetchers.jsx';
+<<<<<<< HEAD
+import EmbedEvents                                from '../../utils/embedEventsUtil';
+=======
 import EmbedEvents                                from '../../utils/EmbedEventsUtil';
+>>>>>>> 595d95e18dbd841421c5770e0341b6598bc9976d
 import config                                     from '../../config';
 import { sendEvent }                              from '../../utils/googleAnalytics';
 import { makeSlug }                               from '../../utils/urlUtil';

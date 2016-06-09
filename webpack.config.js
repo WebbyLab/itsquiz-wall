@@ -45,6 +45,11 @@ module.exports = {
         ]
     },
     eslint: {
+<<<<<<< HEAD
+        configFile: '.eslintrc',
+        fix :true
+=======
         configFile: '.eslintrc'
+>>>>>>> 595d95e18dbd841421c5770e0341b6598bc9976d
     }
 };

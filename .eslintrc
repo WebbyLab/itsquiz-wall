@@ -192,7 +192,11 @@
         "no-array-constructor": 2,
         "no-lonely-if": 2,
         "no-mixed-spaces-and-tabs": 2,
+<<<<<<< HEAD
+        # "no-multiple-empty-lines": [2, { "max": 2, "maxEOF": 1 }],
+=======
         "no-multiple-empty-lines": [2, { "max": 2, "maxEOF": 1 }],
+>>>>>>> 595d95e18dbd841421c5770e0341b6598bc9976d
         "no-nested-ternary": 2,
         "no-new-object": 2,
         "no-spaced-func": 2,
@@ -314,7 +318,11 @@
         "import/no-mutable-exports": 2,
         "import/no-commonjs": 2,
         "import/no-duplicates": 2,
+<<<<<<< HEAD
+        #"import/imports-first": 2,
+=======
         "import/imports-first": 2,
+>>>>>>> 595d95e18dbd841421c5770e0341b6598bc9976d
         "import/order": [2, {"groups": ["builtin", "external", "internal",  "parent", "sibling", "index" ]}],
         "import/newline-after-import": 2
 
