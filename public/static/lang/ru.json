@@ -1,0 +1,287 @@
+{
+   "domain": "messages",
+   "locale_data": {
+      "messages": {
+         "": {
+            "domain": "messages",
+            "plural_forms": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);",
+            "lang": ""
+         },
+         "View details": [
+            "Детальнее"
+         ],
+         "FREE": [
+            "Бесплатно"
+         ],
+         " question": [
+            " вопрос",
+            " вопроса",
+            " вопросов"
+         ],
+         " minute": [
+            "",
+            " minutes",
+            " минуты"
+         ],
+         "Pass this test": [
+            "Сдать этот тест"
+         ],
+         "%d question": [
+            "%d вопрос",
+            "%d вопроса",
+            "%d вопросов"
+         ],
+         "More tests by %s": [
+            "Еще тесты от %s"
+         ],
+         "Quizzes": [
+            "Тесты"
+         ],
+         "Search": [
+            "Поиск"
+         ],
+         "%d hour": [
+            "%d час",
+            "%d часа",
+            "%d часов"
+         ],
+         "%d minute": [
+            "%d минута",
+            "%d минуты",
+            "%d минут"
+         ],
+         "All tests": [
+            "Все тесты"
+         ],
+         "Vacancies": [
+            "Вакансии"
+         ],
+         "Education": [
+            "Образование"
+         ],
+         "Entertainment": [
+            "Развлечения"
+         ],
+         "Sorry, we couldn't find any tests for ": [
+            "К сожалению, по вашему запросу тестов не найдено "
+         ],
+         "There are no activations in this category yet": [
+            "В этой категории тестов пока что нет"
+         ],
+         "Share test": [
+            "Поделиться тестом"
+         ],
+         "private": [
+            "приватный"
+         ],
+         "Sign in": [
+            "Войти"
+         ],
+         "Sign up / Sign in": [
+            "Регистрация / Вход"
+         ],
+         "Welcome to It's quiz!": [
+            "Добро пожаловать в It's quiz!"
+         ],
+         "Cloud platform for knowledge monitoring, creating quizzes, tests and questionnaires, search and identification of talented people": [
+            "Облачная платформа для мониторинга знаний, создания тестов, опросов и анкет, поиска и выявления талантливых людей"
+         ],
+         "Learn more": [
+            "Узнать больше"
+         ],
+         "Check your knowledge": [
+            "Проверьте свои знания"
+         ],
+         "Explore hundreds of open tests on Quiz Wall, check your knowledge, explore new topics, share your achievements with friends": [
+            "Исследуйте сотни тестов, проверьте свои знания, изучайте новые темы, делитесь своими достижениями с друзьями"
+         ],
+         "You can create a test": [
+            "Вы можете создать тест"
+         ],
+         "Everyone can create a test on It's quiz! Simply add new questions, compose a quiz and share with your friends!": [
+            "Каждый может создать тест на It's quiz! Просто добавьте новые вопросы, составьте из них тест и поделитесь им с друзьями."
+         ],
+         "Create a test": [
+            "Создать тест"
+         ],
+         "Find best ever employees": [
+            "Найдите лучших сотрудников"
+         ],
+         "Filter out candidates who don’t meet your standards before you interview them. Create test for a position, publish on Quiz Wall, enjoy interviewing only the best.": [
+            "Отсейте кандидатов которые не отвечают вашим требованиям, прежде чем пригласить их на собеседование. Создайте тест на вакансию, опубликуйте на стене, собеседуйте наилучших."
+         ],
+         "Create a vacancy": [
+            "Создать вакансию"
+         ],
+         "Skip this message": [
+            "Пропустить это сообщение"
+         ],
+         "Discover tests": [
+            "Исследовать тесты"
+         ],
+         "Do not show me this message again": [
+            "Больше не показывать это сообщение"
+         ],
+         "Share this test": [
+            "Поделиться тестом"
+         ],
+         "Share this page": [
+            "Поделиться страницей"
+         ],
+         "Keep in touch": [
+            "Оставайтесь на связи"
+         ],
+         "Twitter": [
+            "Twitter"
+         ],
+         "Facebook": [
+            "Facebook"
+         ],
+         "Videos on Youtube": [
+            "Видео на Youtube"
+         ],
+         "Support": [
+            "Помощь"
+         ],
+         "Support page": [
+            "Поддержка"
+         ],
+         "Suggest an idea": [
+            "Предложить идею"
+         ],
+         "Need help?": [
+            "Нужна помощь?"
+         ],
+         "Do you like It's quiz?": [
+            "Понравился It's quiz?"
+         ],
+         "Read more": [
+            "Узнать больше"
+         ],
+         "Meet our team": [
+            "Наша команда"
+         ],
+         "Explore hundreds of open tests on Quiz Wall, check your knowledge, explore new topics, share your achievements with friends!": [
+            "Проверьте свои профессиональные знания, определите уровень владения иностранными языками, пройдите развлекательные тесты, найдите новую работу!"
+         ],
+         "Find out your language level, check knowledge of professional topics, pass entertainment tests or even find a new job! Everything absolutely free!": [
+            "Изучайте новые темы, расширяйте кругозор, набирайтесь опыта, делитесь своими достижениями в социальных сетях!"
+         ],
+         "Create your own tests!": [
+            "Создайте свои собственные тесты!"
+         ],
+         "Everyone can create a test on It's quiz! Simply add new questions, compose a quiz, activate and share with your friends!": [
+            "Каждый может создать тест на It's quiz! Просто добавьте новые вопросы, составьте из них тест, активируйте и поделитесь им с друзьями!"
+         ],
+         "Filter out candidates who don’t meet your standards before you interview them. Create test for a position, publish on Quiz Wall, enjoy interviewing only the best!": [
+            "Создайте тест для вакансии, публикуйте его на стене. Протестируйте профессиональные знания соискателя, прежде чем пригласить на собеседование. Собеседуйте лучших!"
+         ],
+         "Pass the test": [
+            "Пройти тест"
+         ],
+         "Use this offer": [
+            "Воспользоваться данным предложением"
+         ],
+         "Special proposition!": [
+            "Специальное предложение!"
+         ],
+         "Sign in with your social network account": [
+            "Войдите с помощью акаунта социальной сети"
+         ],
+         "or use your e-mail": [
+            "или используйте ваш e-mail"
+         ],
+         "%s of %s point": [
+            "%s из %s балла",
+            "%s из %s баллов",
+            "%s из %s баллов"
+         ],
+         "Share result with friends": [
+            "Поделиться результатом с друзьями"
+         ],
+         "View my answers": [
+            "Просмотреть мои ответы"
+         ],
+         "You could do better!": [
+            "Вы могли бы сдать лучше!"
+         ],
+         "Good job!": [
+            "Хорошая работа!"
+         ],
+         "Great result!": [
+            "Прекрасный результат!"
+         ],
+         "You rock! Excellent job!": [
+            "Вау! Отличная работа!"
+         ],
+         "Share": [
+            "Поделиться"
+         ],
+         "My result is %d%%": [
+            "Мой результат %d%%"
+         ],
+         "Check out this test": [
+            "Зацените тест"
+         ],
+         "Weeks of English language!": [
+            "Недели английского языка!"
+         ],
+         "In the next 2 weeks you can get gifts from our friends - exclusive discounts on courses of English language!": [
+            "В течение двух недель действуют эксклюзивные скидки на курсы английского языка от наших партнеров!"
+         ],
+         "Get exclusive discount": [
+            "Получить скидку"
+         ],
+         "Contact me": [
+            "Свяжитесь со мной"
+         ],
+         "Special offer": [
+            "Акции"
+         ],
+         "I want to receive new special offers": [
+            "Я хочу получать новые специальные предложения"
+         ],
+         "Get the gift": [
+            "Получить подарок"
+         ],
+         "Sign in with your social network account to continue": [
+            "Для продолжения войдите с помощью аккаунта социальной сети"
+         ],
+         "Fill in your resume": [
+            "Заполните свой профиль"
+         ],
+         "Filled profiles receive 70% more views": [
+            "Заполненный профиль просматривают на 70% чаще"
+         ],
+         "Similar tests": [
+            "Похожие тесты"
+         ],
+         "Newest first": [
+            "По дате добавления"
+         ],
+         "Popular first": [
+            "Самые популярные"
+         ],
+         "Vacancy": [
+            "Вакансии"
+         ],
+         "Minimize": [
+            "Свернуть"
+         ],
+         "Expand": [
+            "Развернуть"
+         ],
+         "expires %s": [
+            "истекает %s"
+         ],
+         "You have %d try left": [
+            "У вас осталась %d попытка",
+            "У вас осталось %d попытки",
+            "У вас осталось %d попыток"
+         ],
+         "View description": [
+            "Посмотреть описание"
+         ]
+      }
+   }
+}

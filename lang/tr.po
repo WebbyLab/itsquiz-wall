@@ -1,0 +1,339 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Oleg <CBETJIOMYP@gmail.com>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-08 12:19+0300\n"
+"PO-Revision-Date: 2016-04-26 20:00+0300\n"
+"Last-Translator: Oleg <CBETJIOMYP@gmail.com>\n"
+"Language-Team: русский <>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Gtranslator 2.91.6\n"
+
+msgid "Sign up / Sign in"
+msgstr "Kayıt ol / Giriş Yap"
+
+msgid "Minimize"
+msgstr "Küçült"
+
+msgid "Expand"
+msgstr "Genişlet"
+
+msgid "Share this page"
+msgstr "Bu sayfayı paylaş"
+
+msgid "Keep in touch"
+msgstr "İletişimde kalalım"
+
+msgid "Twitter"
+msgstr "Twitter"
+
+msgid "Facebook"
+msgstr "Facebook"
+
+msgid "Videos on Youtube"
+msgstr "Youtube videoları"
+
+msgid "Support"
+msgstr "Destek"
+
+msgid "Support page"
+msgstr "Destek sayfası"
+
+msgid "Suggest an idea"
+msgstr "Öneride bulunabilirsin"
+
+msgid "Need help?"
+msgstr "Yardım gerekli mi?"
+
+msgid "Do you like It's quiz?"
+msgstr "Quiz'i sevdin mi?"
+
+msgid "Read more"
+msgstr "Daha fazlasını göster"
+
+msgid "Meet our team"
+msgstr "Ekibimizle tanış"
+
+msgid "Sign in with your social network account to continue"
+msgstr "Sosyal ağ hesabınızla giriş yaparak testlere devam edin"
+
+msgid "or use your e-mail"
+msgstr "yada mail adresini kullan"
+
+msgid "You rock! Excellent job!"
+msgstr "Harikasın! Mükkemel çalışma!"
+
+msgid "Great result!"
+msgstr "Güzel Sonuç!"
+
+msgid "Good job!"
+msgstr "Aferin!"
+
+msgid "You could do better!"
+msgstr "Daha iyisini yapabilirsin"
+
+#, javascript-format
+msgid "More tests by %s"
+msgstr " %s 'den daha çok testler"
+
+msgid "Similar tests"
+msgstr "Benzert testler"
+
+msgid "private"
+msgstr "gizli"
+
+#, javascript-format
+msgid "%d question"
+msgid_plural "%d questions"
+msgstr[0] "%d soru"
+msgstr[1] "%d sorular"
+
+#, javascript-format
+msgid "expires %s"
+msgstr ""
+
+msgid "Pass the test"
+msgstr "Testlerden geçtin"
+
+#, javascript-format
+msgid "You have %d try left"
+msgid_plural "You have %d tries left"
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid "%s of %s point"
+msgid_plural "%s of %s points"
+msgstr[0] "%s arasında %s puanın"
+msgstr[1] "%s arasında %s puanların"
+
+msgid "Share result with friends"
+msgstr "Sonuçlarımı arkadaşlarımla paylaş"
+
+msgid "View my answers"
+msgstr "Cevaplarımı görüntüle"
+
+msgid "Fill in your resume"
+msgstr "Bilgilerinizi doldurmalısınız"
+
+msgid "Filled profiles receive 70% more views"
+msgstr "70%'i doldurulmuş profiller daha fazla görüntülenir"
+
+msgid "Contact me"
+msgstr "Bana Ulaş"
+
+msgid "Get the gift"
+msgstr "Hediye kazan"
+
+msgid "Share"
+msgstr "Paylaş"
+
+#, javascript-format
+msgid "My result is %d%%"
+msgstr "Benim sonuçlarım %d%%"
+
+msgid "Check out this test"
+msgstr "Test'ime göz at"
+
+msgid "Sorry, we couldn't find any tests for "
+msgstr "Maalesef sizin için herhangi bir test bulamadık"
+
+msgid "There are no activations in this category yet"
+msgstr "Bu kategoride aktivasyonlar henüz bulunmamaktadır"
+
+msgid "Share this test"
+msgstr "Bu test'i paylaş"
+
+msgid "Quizzes"
+msgstr "Quizzes"
+
+msgid "All tests"
+msgstr "Bütün testler"
+
+msgid "Vacancies"
+msgstr "Kariyer"
+
+msgid "Education"
+msgstr "Eğitim"
+
+msgid "Entertainment"
+msgstr "Eğlence"
+
+msgid "Special offer"
+msgstr "Özel Teklif"
+
+msgid "Newest first"
+msgstr "Önce Yeniler"
+
+msgid "Popular first"
+msgstr "Önce Popüler"
+
+msgid "I want to receive new special offers"
+msgstr "Özel teklifleri görmek istiyorum"
+
+msgid "Vacancy"
+msgstr "Kariyer"
+
+msgid "Special proposition!"
+msgstr "Özel öneriler!"
+
+msgid "View details"
+msgstr "Detayları görüntüle"
+
+msgid "Search"
+msgstr "Arama"
+
+msgid "Welcome to It's quiz!"
+msgstr "Quiz'e hoşgeldin!"
+
+msgid ""
+"Explore hundreds of open tests on Quiz Wall, check your knowledge, explore "
+"new topics, share your achievements with friends!"
+msgstr ""
+"Quiz üzerinde yüzlerce yeni test'e ulaşabilir, bilginizi sınayabilir, yeni "
+"konular keşfedip, arkadaşlarınızla başarılarınızı paylaşabilirsiniz!"
+
+msgid "Learn more"
+msgstr "Daha fazlasını öğren"
+
+msgid "Check your knowledge"
+msgstr "Bilgilerinizi kontrol edin"
+
+msgid ""
+"Find out your language level, check knowledge of professional topics, pass "
+"entertainment tests or even find a new job! Everything absolutely free!"
+msgstr ""
+"Mesleki konularda dil seviyenizi ölçebilir aynı zamanda eğlenebilirsiniz, "
+"Hepsi tamamen ücretsiz"
+
+msgid "Discover tests"
+msgstr "Testleri keşfet"
+
+msgid "Find best ever employees"
+msgstr "En iyi çalışanları bul"
+
+msgid ""
+"Filter out candidates who don’t meet your standards before you interview "
+"them. Create test for a position, publish on Quiz Wall, enjoy interviewing "
+"only the best!"
+msgstr ""
+"İş görüşmeleri öncesi Sınav testleri yayınlayarak iş mülakatlarını öncesi "
+"görüşmeleri filtrelemenize olanak sağlar.."
+
+msgid "Create a vacancy"
+msgstr "Kariyer test'i oluştur"
+
+msgid "Create your own tests!"
+msgstr "Kendi testlerini oluştur!"
+
+msgid ""
+"Everyone can create a test on It's quiz! Simply add new questions, compose a "
+"quiz, activate and share with your friends!"
+msgstr ""
+"Herkes rahatlıkla kendi test'ini quiz ile oluşturabilir! Kolay bir şekilde "
+"yeni sorular ekleyebilir arkadaşlarınızla paylaşabilirisinz!"
+
+msgid "Create a test"
+msgstr "Test Oluştur"
+
+msgid "Do not show me this message again"
+msgstr "Bu mesajı bir daha gösterma"
+
+#, javascript-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d saat"
+msgstr[1] "%d saatler"
+
+#, javascript-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d dakika"
+msgstr[1] "%d dakikalar"
+
+#~ msgid "FREE"
+#~ msgstr "BEDAVA"
+
+#~ msgid " question"
+#~ msgid_plural " questions"
+#~ msgstr[0] "soru"
+#~ msgstr[1] "sorular"
+
+#~ msgid " minute"
+#~ msgid_plural " minutes"
+#~ msgstr[0] "dakika"
+#~ msgstr[1] "dakilar"
+
+#~ msgid "Pass this test"
+#~ msgstr "Testi geçtiniz"
+
+#~ msgid "Share test"
+#~ msgstr "Test'i paylaş"
+
+#~ msgid "Sign in"
+#~ msgstr "Kayıt Ol"
+
+#~ msgid ""
+#~ "Cloud platform for knowledge monitoring, creating quizzes, tests and "
+#~ "questionnaires, search and identification of talented people"
+#~ msgstr ""
+#~ "Bilgi seviyelerini izlemek için oluşturulmuş bulut platformu,sınavlar,"
+#~ "testler anketler yetenekli insanlara ulaşmanıza yardımcı olur.."
+
+#~ msgid ""
+#~ "Explore hundreds of open tests on Quiz Wall, check your knowledge, "
+#~ "explore new topics, share your achievements with friends"
+#~ msgstr ""
+#~ "Quiz için oluşturulmuş yüzlerce test arasından, bilginizi kontrol etmek, "
+#~ "yeni konular keşfetmek ve arkadaşlarınızla başarılarınızı paylaşmak"
+
+#~ msgid "You can create a test"
+#~ msgstr "Test oluşturabilirsin"
+
+#~ msgid ""
+#~ "Everyone can create a test on It's quiz! Simply add new questions, "
+#~ "compose a quiz and share with your friends!"
+#~ msgstr ""
+#~ "Herkes rahatlıkla kendi test'ini quiz ile oluşturabilir! Kolay bir "
+#~ "şekilde yeni sorular ekleyebilir arkadaşlarınızla paylaşabilirisinz!"
+
+#~ msgid ""
+#~ "Filter out candidates who don’t meet your standards before you interview "
+#~ "them. Create test for a position, publish on Quiz Wall, enjoy "
+#~ "interviewing only the best."
+#~ msgstr ""
+#~ "İş görüşmeleri öncesi Sınav testleri yayınlayarak iş mülakatlarını öncesi "
+#~ "görüşmeleri filtrelemenize olanak sağlar.."
+
+#~ msgid "Skip this message"
+#~ msgstr "Mesajı geç"
+
+#~ msgid "Use this offer"
+#~ msgstr "Teklifi kullan"
+
+#~ msgid "Sign in with your social network account"
+#~ msgstr "Sosyal ağ hesaplarınla oturum aç"
+
+#~ msgid "Weeks of English language!"
+#~ msgstr "İngilizce dil haftası !"
+
+#~ msgid ""
+#~ "In the next 2 weeks you can get gifts from our friends - exclusive "
+#~ "discounts on courses of English language!"
+#~ msgstr ""
+#~ "İngilizce dil kurslarında Özel Fırsatlar - Önümüzdeki 2 hafta "
+#~ "arkadaşlarınıza hediyeler verebilirsiniz!"
+
+#~ msgid "Get exclusive discount"
+#~ msgstr "Özel İndirimler"

@@ -1,0 +1,264 @@
+{
+   "domain": "messages",
+   "locale_data": {
+      "messages": {
+         "": {
+            "domain": "messages",
+            "plural_forms": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);",
+            "lang": ""
+         },
+         "View details": [
+            "查看详情"
+         ],
+         "FREE": [
+            "免费"
+         ],
+         " minute": [
+            "",
+            "",
+            " 分钟"
+         ],
+         "Pass this test": [
+            "通过测试"
+         ],
+         "%d question": [
+            "%d 问题",
+            "%d 问题",
+            "%d 问题"
+         ],
+         "More tests by %s": [
+            "%s的更多测试"
+         ],
+         "Quizzes": [
+            "测验"
+         ],
+         "Search": [
+            "搜索"
+         ],
+         "%d hour": [
+            "%d 小时",
+            "%d 小时",
+            "%d 小时"
+         ],
+         "%d minute": [
+            "%d 分钟",
+            "%d 分钟",
+            "%d 分钟"
+         ],
+         "All tests": [
+            "所有的测试"
+         ],
+         "Vacancies": [
+            "工作机会"
+         ],
+         "Education": [
+            "教育"
+         ],
+         "Entertainment": [
+            "娱乐"
+         ],
+         "Sorry, we couldn't find any tests for ": [
+            "抱歉,，我们找不到有关的测试"
+         ],
+         "There are no activations in this category yet": [
+            "还没有关于这个类别的有用的测试"
+         ],
+         "Share test": [
+            "分享测试"
+         ],
+         "private": [
+            "保密"
+         ],
+         "Sign in": [
+            "登录"
+         ],
+         "Sign up / Sign in": [
+            "注册 / 登录"
+         ],
+         "Welcome to It's quiz!": [
+            "欢迎来到 It's quiz!"
+         ],
+         "Cloud platform for knowledge monitoring, creating quizzes, tests and questionnaires, search and identification of talented people": [
+            "一个检测知识，创造测试，测验和问卷，搜索和定位天才的云平台"
+         ],
+         "Learn more": [
+            "学习更多"
+         ],
+         "Check your knowledge": [
+            "检测你的知识"
+         ],
+         "Explore hundreds of open tests on Quiz Wall, check your knowledge, explore new topics, share your achievements with friends": [
+            "在测试墙探索成千上万的开放测试，检测你的知识，探索新的主题，和朋友们分享你的成果"
+         ],
+         "You can create a test": [
+            "你可以创建一个测试"
+         ],
+         "Everyone can create a test on It's quiz! Simply add new questions, compose a quiz and share with your friends!": [
+            "每个人都能在It's quiz上创建测试！简单地新增问题，组成测试并分享给你的朋友们！"
+         ],
+         "Create a test": [
+            "创建一个测试"
+         ],
+         "Find best ever employees": [
+            "找到曾经最好的员工"
+         ],
+         "Filter out candidates who don’t meet your standards before you interview them. Create test for a position, publish on Quiz Wall, enjoy interviewing only the best.": [
+            "为岗位创建一个测试，并发布在测试墙，在面试之前过滤掉不符合你标准的候选人，享受面试吧，完美！"
+         ],
+         "Create a vacancy": [
+            "创建一个工作机会"
+         ],
+         "Skip this message": [
+            "跳过此条信息"
+         ],
+         "Discover tests": [
+            "寻找测试"
+         ],
+         "Do not show me this message again": [
+            "不再显示此条信息"
+         ],
+         "Share this test": [
+            "分享这个测试"
+         ],
+         "Share this page": [
+            "分享这个页面"
+         ],
+         "Keep in touch": [
+            "保持联系"
+         ],
+         "Twitter": [
+            "Twitter"
+         ],
+         "Facebook": [
+            "Facebook"
+         ],
+         "Videos on Youtube": [
+            "Youtube上的视频"
+         ],
+         "Support": [
+            "支持"
+         ],
+         "Support page": [
+            "支持页面"
+         ],
+         "Suggest an idea": [
+            "提个意见"
+         ],
+         "Need help?": [
+            "需要帮助么?"
+         ],
+         "Do you like It's quiz?": [
+            "你喜欢 It's quiz?"
+         ],
+         "Read more": [
+            "更多"
+         ],
+         "Meet our team": [
+            "见见我们的团队"
+         ],
+         "Explore hundreds of open tests on Quiz Wall, check your knowledge, explore new topics, share your achievements with friends!": [
+            "在测试墙探索成千上万的开放测试，检测你的知识，探索新的主题，和朋友们分享你的成果!"
+         ],
+         "Find out your language level, check knowledge of professional topics, pass entertainment tests or even find a new job! Everything absolutely free!": [
+            "找到你语言能力的定位，检测专业知识，通过愉快的测试，甚至找到一个新的工作!一切都是免费的！"
+         ],
+         "Create your own tests!": [
+            "创建属于你自己的测试!"
+         ],
+         "Everyone can create a test on It's quiz! Simply add new questions, compose a quiz, activate and share with your friends!": [
+            "每个人都能在It's quiz上创建测试，简单地添加新的问题，组成测验，分享给你的朋友们!"
+         ],
+         "Filter out candidates who don’t meet your standards before you interview them. Create test for a position, publish on Quiz Wall, enjoy interviewing only the best!": [
+            "为岗位创建一个测试，并发布在测试墙，在面试之前过滤掉不符合你标准的候选人，享受面试吧，完美!"
+         ],
+         "Pass the test": [
+            "通过测试"
+         ],
+         "Use this offer": [
+            "采用这个建议"
+         ],
+         "Special proposition!": [
+            "特别的礼品!"
+         ],
+         "Sign in with your social network account": [
+            "通过你的社交账号登录"
+         ],
+         "or use your e-mail": [
+            "或者使用的邮箱"
+         ],
+         "%s of %s point": [
+            "%s 在 %s 点",
+            "%s 在 %s 点"
+         ],
+         "Share result with friends": [
+            "和朋友一起分享成绩"
+         ],
+         "View my answers": [
+            "查看我的回答"
+         ],
+         "You could do better!": [
+            "你可以做得更好!"
+         ],
+         "Good job!": [
+            "真棒！"
+         ],
+         "Great result!": [
+            "很好的成绩！"
+         ],
+         "You rock! Excellent job!": [
+            "简直 完美！"
+         ],
+         "Share": [
+            "分享"
+         ],
+         "My result is %d%%": [
+            "我的成绩是%d%%"
+         ],
+         "Check out this test": [
+            "检查这次测试"
+         ],
+         "Get exclusive discount": [
+            "获取独有的折扣"
+         ],
+         "Contact me": [
+            "联系我"
+         ],
+         "Special offer": [
+            "特别的礼物"
+         ],
+         "I want to receive new special offers": [
+            "我想收到特别的礼物"
+         ],
+         "Get the gift": [
+            "领取礼品"
+         ],
+         "Sign in with your social network account to continue": [
+            "通过你的社交账号登录然后继续"
+         ],
+         "Fill in your resume": [
+            "完善你的简历"
+         ],
+         "Filled profiles receive 70% more views": [
+            "完善个人信息可以得到70%以上的浏览"
+         ],
+         "Similar tests": [
+            "相似的测试"
+         ],
+         "Newest first": [
+            "最新的"
+         ],
+         "Popular first": [
+            "最火的"
+         ],
+         "Vacancy": [
+            "工作机会"
+         ],
+         "Minimize": [
+            "关闭"
+         ],
+         "Expand": [
+            "展开"
+         ]
+      }
+   }
+}
