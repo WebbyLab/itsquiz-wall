@@ -143,7 +143,7 @@ app.use((req, res) => {
 function renderHTML({ componentHTML, initialState, metaData, config }) {
     return `
         <!DOCTYPE html>
-        <html ${detectIsIOSDevice() ? "style='height:100%; overflow: auto; -webkit-overflow-scrolling: touch;'" : null}>
+        <html ${detectIsIOSDevice() ? "style='height:100%; overflow: auto; -webkit-overflow-scrolling: touch;'" : ''}>
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -213,7 +213,7 @@ function renderHTML({ componentHTML, initialState, metaData, config }) {
             </noscript>
             <!-- /Yandex.Metrika counter -->
         </head>
-        <body ${detectIsIOSDevice() ? "style='height:100%; overflow: auto; -webkit-overflow-scrolling: touch;'" : null}>
+        <body ${detectIsIOSDevice() ? "style='height:100%; overflow: auto; -webkit-overflow-scrolling: touch;'" : ''}>
         <div id="react-view">${componentHTML}</div>
           <script type="application/javascript">
             window.__CONFIG__ = ${JSON.stringify(config)};
