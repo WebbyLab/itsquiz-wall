@@ -274,7 +274,7 @@
         fetch/no-xhr: 2,
 
         // jquery
-        "jquery/no-ajax": 2,
+        "jquery/no-ajax": 0,
         "jquery/no-attr": 2,
         "jquery/no-bind": 2,
         "jquery/no-class": 2,
