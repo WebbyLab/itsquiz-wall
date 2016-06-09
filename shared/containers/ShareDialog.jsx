@@ -23,15 +23,15 @@ export default class ShareDialogContainer extends Component {
     };
 
     handleShare = (type) => {
-        const { getLocale } = this.context.i18n;
+        // const { getLocale } = this.context.i18n;
         const { twitterMessage } = this.props;
-        let { linkToShare } = this.props;
+        const { linkToShare } = this.props;
 
-        const currentLocale = getLocale() !== 'tr' ? getLocale() : 'en';
-        const date = +new Date();
+        // const currentLocale = getLocale() !== 'tr' ? getLocale() : 'en';
+        // const date = +new Date();
 
-        // Date parameter is added here to create unique link (resolves facebook cashing problem)
-        linkToShare += `?locale=${currentLocale}&date=${date}`;
+        // // Date parameter is added here to create unique link (resolves facebook cashing problem)
+        // linkToShare += `?locale=${currentLocale}&date=${date}`;
 
         const linksHash = {
             'google': `https://plus.google.com/share?url=${linkToShare}`,

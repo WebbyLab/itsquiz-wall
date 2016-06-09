@@ -84,7 +84,7 @@ app.use((req, res) => {
                 const metaData = getMetaDataFromState({
                     params : renderProps.params,
                     query  : renderProps.location.query,
-                    lang   : locale,
+                    lang   : req.url,
                     route  : renderProps.routes[renderProps.routes.length - 1].path,
                     state  : initialState
                 });
@@ -157,8 +157,8 @@ function renderHTML({ componentHTML, initialState, metaData, config }) {
             <meta property="og:image:width" content="158" />
             <meta property="og:image:height" content="158" />
             <meta property="og:description" content="${escapeHTML(metaData.description)}" />
-            <meta property="og:locale" content="en_US" />
-            <meta property="og:locale:alternate" content="ru_RU" />
+            <meta property="og:locale" content="ru_RU" />
+            <meta property="og:locale:alternate" content="en_EN" />
             <meta property="og:locale:alternate" content="uk_UA" />
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:site" content="@itsquizcom" />

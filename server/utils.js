@@ -30,6 +30,8 @@ export function getMetaDataFromState({ route, state, params = {}, query = {}, la
         };
     }
 
+    console.log('lang', lang);
+
     if (route === '/result/:id/:userId' && state.currentActivation.activation) {
         const { name, pictureURL, message, userQuizSession } = state.currentActivation.activation;
 
