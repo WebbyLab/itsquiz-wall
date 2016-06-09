@@ -5,11 +5,16 @@ if (process.env.BROWSER) {
     require('./QuizCard.less');
 }
 
+<<<<<<< HEAD
 
+=======
+import { makeSlug } from '../utils/urlUtil';
+>>>>>>> 595d95e18dbd841421c5770e0341b6598bc9976d
 
 import { Card, CardTitle, CardActions } from 'react-mdl/lib/Card';
 import Button                           from 'react-mdl/lib/Button';
 import IconButton                       from 'react-mdl/lib/IconButton';
+<<<<<<< HEAD
 
 
 
@@ -20,6 +25,12 @@ import { makeSlug } from '../utils/urlUtil';
 
 import MdiIcon                          from './Icon.jsx';
 
+=======
+import MdiIcon                          from './Icon.jsx';
+
+import { sprintf } from '../utils';
+
+>>>>>>> 595d95e18dbd841421c5770e0341b6598bc9976d
 export default class QuizCard extends Component {
     static propTypes = {
         id                : PropTypes.string,

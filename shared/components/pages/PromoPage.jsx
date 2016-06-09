@@ -1,9 +1,15 @@
 import React from 'react';
 
+<<<<<<< HEAD
 import { Card } from 'react-mdl/lib/Card';
 
 import Markdown from '../Markdown.jsx';
 
+=======
+import Markdown from '../Markdown.jsx';
+
+import { Card } from 'react-mdl/lib/Card';
+>>>>>>> 595d95e18dbd841421c5770e0341b6598bc9976d
 
 if (process.env.BROWSER) {
     require('./PromoPage.less');

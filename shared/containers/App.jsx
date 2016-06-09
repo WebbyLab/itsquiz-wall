@@ -1,6 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 
+<<<<<<< HEAD
 import EmbedEvents              from '../utils/embedEventsUtil';
+=======
+import EmbedEvents              from '../utils/EmbedEventsUtil';
+>>>>>>> 595d95e18dbd841421c5770e0341b6598bc9976d
 import config                   from '../config';
 import { initialize, navigate } from '../utils/googleAnalytics';
 
@@ -47,6 +51,12 @@ export default class App extends Component {
         if (isEmbed && (isPathnameChanged || isQueryChanged)) {
             const pathname = nextProps.location.pathname;
             const {
+<<<<<<< HEAD
+=======
+                embed,
+                assigneeId,
+                locale,
+>>>>>>> 595d95e18dbd841421c5770e0341b6598bc9976d
                 ...query
             } = nextProps.location.query;
             const quizWallEmbedPath = this.props.history.createHref(pathname, query);

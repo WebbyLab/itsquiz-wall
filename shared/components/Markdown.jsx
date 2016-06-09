@@ -7,11 +7,17 @@
 
 import React, { Component, PropTypes } from 'react';
 
+<<<<<<< HEAD
 import MarkdownIt from 'markdown-it';
 
 import { activationDescriptionPreset } from './Markdown/presets.js';
 
 
+=======
+import { activationDescriptionPreset } from './Markdown/presets.js';
+
+import MarkdownIt from 'markdown-it';
+>>>>>>> 595d95e18dbd841421c5770e0341b6598bc9976d
 
 const MAX_LINK_LENGTH = 35;
 

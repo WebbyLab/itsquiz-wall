@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import cx                              from 'classnames';
+<<<<<<< HEAD
 import IconButton from 'react-mdl/lib/IconButton';
 import config         from '../config';
 import LoginDialog    from '../containers/LoginDialog.jsx';
@@ -9,6 +10,15 @@ import SearchBox      from './SearchBox.jsx';
 
 
 
+=======
+
+import config         from '../config';
+import SearchBox      from './SearchBox.jsx';
+import LanguageSwitch from '../containers/LanguageSwitch.jsx';
+import LoginDialog    from '../containers/LoginDialog.jsx';
+
+import IconButton from 'react-mdl/lib/IconButton';
+>>>>>>> 595d95e18dbd841421c5770e0341b6598bc9976d
 
 if (process.env.BROWSER) {
     require('./AppBar.less');

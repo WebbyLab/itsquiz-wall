@@ -14,7 +14,11 @@
     "nodemon": "nodemon server/runner.js",
     "webpack-devserver": "webpack-dev-server --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 8050 --host 0.0.0.0",
     "extract_lang": "./bin/extract_lang.sh",
+<<<<<<< HEAD
     "lint": "eslint --fix shared client server",
+=======
+    "lint": "eslint shared client server",
+>>>>>>> 595d95e18dbd841421c5770e0341b6598bc9976d
     "test": "npm run lint",
     "po2json": "./bin/po2json.sh",
     "stop": "cross-env NODE_ENV='production' pm2 delete itsquiz-wall -s &> /dev/null"
