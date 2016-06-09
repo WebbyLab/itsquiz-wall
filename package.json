@@ -9,15 +9,15 @@
   },
   "private": true,
   "scripts": {
-    "build": "NODE_ENV='production' webpack -p",
-    "start": "NODE_ENV='production' pm2 start server/runner.js --name itsquiz-wall",
+    "build": "cross-env NODE_ENV='production' webpack -p",
+    "start": "cross-env NODE_ENV='production' pm2 start server/runner.js --name itsquiz-wall",
     "nodemon": "nodemon server/runner.js",
     "webpack-devserver": "webpack-dev-server --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 8050 --host 0.0.0.0",
     "extract_lang": "./bin/extract_lang.sh",
     "lint": "eslint shared client server",
     "test": "npm run lint",
     "po2json": "./bin/po2json.sh",
-    "stop": "NODE_ENV='production' pm2 delete itsquiz-wall -s &> /dev/null"
+    "stop": "cross-env NODE_ENV='production' pm2 delete itsquiz-wall -s &> /dev/null"
   },
   "dependencies": {
     "babel-eslint": "^6.0.4",
@@ -27,6 +27,7 @@
     "classnames": "^2.1.5",
     "cookie": "^0.2.3",
     "cookie-parser": "^1.4.0",
+    "cross-env": "^1.0.8",
     "express": "^4.13.3",
     "geoip-lite": "^1.1.6",
     "history": "^1.13.1",
