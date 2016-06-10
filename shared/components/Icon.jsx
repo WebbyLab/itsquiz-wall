@@ -7,8 +7,8 @@ if (process.env.BROWSER) {
 
 export default class Icon extends Component {
     static propTypes = {
-        type      : PropTypes.string.isRequired,
-        mode      : PropTypes.string
+        type : PropTypes.string.isRequired,
+        mode : PropTypes.oneOf(['on', 'off'])
     };
 
     render() {
