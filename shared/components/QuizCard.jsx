@@ -1,18 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 import cx                              from 'classnames';
 
+import IconButton                       from 'react-mdl/lib/IconButton';
+import { Card, CardTitle, CardActions } from 'react-mdl/lib/Card';
+import Button                           from 'react-mdl/lib/Button';
+
+import { makeSlug } from '../utils/urlUtil';
+import { sprintf }  from '../utils';
+
+import MdiIcon from './Icon.jsx';
+
 if (process.env.BROWSER) {
     require('./QuizCard.less');
 }
-
-import { makeSlug } from '../utils/urlUtil';
-
-import { Card, CardTitle, CardActions } from 'react-mdl/lib/Card';
-import Button                           from 'react-mdl/lib/Button';
-import IconButton                       from 'react-mdl/lib/IconButton';
-import MdiIcon                          from './Icon.jsx';
-
-import { sprintf } from '../utils';
 
 export default class QuizCard extends Component {
     static propTypes = {

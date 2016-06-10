@@ -2,11 +2,11 @@ import React, { Component, PropTypes } from 'react';
 
 import { Card, CardTitle, CardActions } from 'react-mdl/lib/Card';
 
+import { makeSlug } from '../utils/urlUtil';
+
 if (process.env.BROWSER) {
     require('./QuizTile.less');
 }
-
-import { makeSlug } from '../utils/urlUtil';
 
 export default class QuizTile extends Component {
     static propTypes = {

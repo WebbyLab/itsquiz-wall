@@ -7,9 +7,9 @@
 
 import React, { Component, PropTypes } from 'react';
 
-import { activationDescriptionPreset } from './Markdown/presets.js';
-
 import MarkdownIt from 'markdown-it';
+
+import { activationDescriptionPreset } from './Markdown/presets.js';
 
 const MAX_LINK_LENGTH = 35;
 
