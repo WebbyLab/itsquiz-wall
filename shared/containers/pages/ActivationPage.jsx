@@ -31,8 +31,7 @@ class ActivationPageContainer extends Component {
 
     state = {
         sharingLink      : '',
-        isLoggingIn      : false,
-        currentAssessmentSystem: []
+        isLoggingIn      : false
     };
 
     componentWillMount() {
@@ -49,14 +48,6 @@ class ActivationPageContainer extends Component {
                 sendEvent('sponsored activation', 'view', nextProps.activation.name);
             }
             sendEvent('activation', 'view', nextProps.activation.name);
-        }
-
-        // WTF: why do we copy customAssessmentSystem to state?
-        if (nextProps.customAssessmentSystem.length
-            && nextProps.customAssessmentSystem !== this.props.customAssessmentSystem) {
-            this.setState({
-                currentAssessmentSystem: nextProps.customAssessmentSystem
-            });
         }
     }
 
@@ -181,7 +172,13 @@ class ActivationPageContainer extends Component {
     };
 
     render() {
-        const { activation, authorActivations, similarActivations, isLoading } = this.props;
+        const {
+            activation,
+            authorActivations,
+            similarActivations,
+            isLoading,
+            customAssessmentSystem
+        } = this.props;
         const { sharingLink, isLoggingIn } = this.state;
         const { embed, assigneeId } = this.props.location.query;
 
@@ -189,13 +186,13 @@ class ActivationPageContainer extends Component {
             <ActivationPage
                 activation         = {activation}
                 authorActivations  = {authorActivations}
-                similarActivations  = {similarActivations}
+                similarActivations = {similarActivations}
                 sharingLink        = {sharingLink}
                 isLoading          = {isLoading}
                 isEmbedded         = {Boolean(embed)}
                 isLoggingIn        = {isLoggingIn}
                 showUserResult     = {activation.isPassed && assigneeId}
-                assessmentSystem   = {this.state.currentAssessmentSystem}
+                assessmentSystem   = {customAssessmentSystem}
                 onPass             = {this.handlePassActivationClick}
                 onSponsoredClick   = {this.handleSponsoredClick}
                 onSubscribe        = {this.handleSubscribeClick}
