@@ -3,18 +3,25 @@ import cx                              from 'classnames';
 
 export default class Icon extends Component {
     static propTypes = {
-        type      : PropTypes.string.isRequired,
-        className : PropTypes.string
+        type : PropTypes.string.isRequired,
+        mode : PropTypes.oneOf(['on', 'off'])
     };
 
     render() {
-        const { type, className, ...otherProps } = this.props;
+        const { type, mode, ...otherProps } = this.props;
+
+        const classes = {
+            on  : 'Icon-on',
+            off : 'Icon-off'
+        };
 
         return (
-            <i
-                {...otherProps}
-                className={cx(`Icon mdi mdi-${type}`, className)}
-            />
+            <div className='Icon'>
+                <i
+                    {...otherProps}
+                    className={cx(`Icon mdi mdi-${type}`, classes[mode])}
+                />
+            </div>
         );
     }
 }
