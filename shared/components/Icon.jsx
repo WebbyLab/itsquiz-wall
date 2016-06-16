@@ -1,10 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import cx                              from 'classnames';
 
-if (process.env.BROWSER) {
-    require('./Icon.less');
-}
-
 export default class Icon extends Component {
     static propTypes = {
         type : PropTypes.string.isRequired,
