@@ -2,14 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import { connect }                     from 'react-redux';
 
 import { loadActivation, loadSimilarActivations } from '../../actions/activations';
-import { loadAssessmentSystem }                   from '../../actions/assessmentSystems';
 import connectDataFetchers                        from '../../lib/connectDataFetchers.jsx';
 import EmbedEvents                                from '../../utils/EmbedEventsUtil';
 import config                                     from '../../config';
 import { sendEvent }                              from '../../utils/googleAnalytics';
 import { makeSlug }                               from '../../utils/urlUtil';
-
-import standardAssessmentSystems from '../../utils/LocaleUtil/assessmentSystems.json';
 
 import ActivationPage from '../../components/pages/ActivationPage.jsx';
 
@@ -34,8 +31,7 @@ class ActivationPageContainer extends Component {
 
     state = {
         sharingLink      : '',
-        isLoggingIn      : false,
-        currentAssessmentSystem: []
+        isLoggingIn      : false
     };
 
     componentWillMount() {
@@ -52,25 +48,6 @@ class ActivationPageContainer extends Component {
                 sendEvent('sponsored activation', 'view', nextProps.activation.name);
             }
             sendEvent('activation', 'view', nextProps.activation.name);
-        }
-
-        if (this.props.params.id !== nextProps.params.id) {
-            this.props.dispatch(loadActivation(nextProps.params, nextProps.location.query));
-            this.props.dispatch(loadSimilarActivations(nextProps.params, nextProps.location.query));
-        }
-
-        if (nextProps.activation.assessmentSystemId
-            && this.props.activation.assessmentSystemId !== nextProps.activation.assessmentSystemId) {
-            const { getLocale } = this.context.i18n;
-
-            this.props.dispatch(loadAssessmentSystem(nextProps.activation, getLocale().toUpperCase()));
-        }
-
-        if (nextProps.customAssessmentSystem.length
-            && nextProps.customAssessmentSystem !== this.props.customAssessmentSystem) {
-            this.setState({
-                currentAssessmentSystem: nextProps.customAssessmentSystem
-            });
         }
     }
 
@@ -195,7 +172,13 @@ class ActivationPageContainer extends Component {
     };
 
     render() {
-        const { activation, authorActivations, similarActivations, isLoading } = this.props;
+        const {
+            activation,
+            authorActivations,
+            similarActivations,
+            isLoading,
+            customAssessmentSystem
+        } = this.props;
         const { sharingLink, isLoggingIn } = this.state;
         const { embed, assigneeId } = this.props.location.query;
 
@@ -203,13 +186,13 @@ class ActivationPageContainer extends Component {
             <ActivationPage
                 activation         = {activation}
                 authorActivations  = {authorActivations}
-                similarActivations  = {similarActivations}
+                similarActivations = {similarActivations}
                 sharingLink        = {sharingLink}
                 isLoading          = {isLoading}
                 isEmbedded         = {Boolean(embed)}
                 isLoggingIn        = {isLoggingIn}
                 showUserResult     = {activation.isPassed && assigneeId}
-                assessmentSystem   = {this.state.currentAssessmentSystem}
+                assessmentSystem   = {customAssessmentSystem}
                 onPass             = {this.handlePassActivationClick}
                 onSponsoredClick   = {this.handleSponsoredClick}
                 onSubscribe        = {this.handleSubscribeClick}
@@ -239,5 +222,5 @@ function mapStateToProps({ currentActivation: { activation, authorActivations,
 }
 
 export default connect(mapStateToProps)(
-    connectDataFetchers(ActivationPageContainer, [loadActivation, loadSimilarActivations, loadAssessmentSystem])
+    connectDataFetchers(ActivationPageContainer, [loadActivation, loadSimilarActivations])
 );

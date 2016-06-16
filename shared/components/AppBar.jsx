@@ -1,12 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import cx                              from 'classnames';
 
-import config         from '../config';
-import SearchBox      from './SearchBox.jsx';
+import IconButton from 'react-mdl/lib/IconButton';
+
+import config  from '../config';
+
 import LanguageSwitch from '../containers/LanguageSwitch.jsx';
 import LoginDialog    from '../containers/LoginDialog.jsx';
-
-import IconButton from 'react-mdl/lib/IconButton';
+import SearchBox      from './SearchBox.jsx';
 
 if (process.env.BROWSER) {
     require('./AppBar.less');
@@ -115,7 +116,7 @@ export default class AppBar extends Component {
                         rightIconName
                             ? <IconButton name={rightIconName} onClick={onRightIconClick} />
                             : <a
-                                href   = {config.landingURL}
+                                href   = {config.landingUrl}
                                 target = '_blank'
                               >
                                 <img

@@ -2,7 +2,11 @@
     "parser": "babel-eslint",
 
     "plugins": [
-        "react"
+        "react",
+        "no-require-lodash",
+        "prefer-spread",
+        "fetch",
+        "import"
     ],
 
     "env": {
@@ -33,6 +37,13 @@
     },
 
     "rules":{
+        // New
+        "no-useless-escape": 2,
+        "no-duplicate-imports": 2,
+        "newline-before-return": 2,
+        "no-useless-rename": 0,
+        "object-property-newline": [2, { "allowMultiplePropertiesPerLine": true }],
+        "no-useless-computed-key": 2,
         // Possible errors
         "comma-dangle": [2, "never"],
         "no-cond-assign": [2, "always"],
@@ -158,17 +169,18 @@
         "func-style": [2, "declaration"],
         "indent": [2, 4, { "SwitchCase": 1 }],
         "jsx-quotes": [2, "prefer-single"],
-        // "key-spacing": [2, {
-        //     "singleLine": {
-        //         "beforeColon": false,
-        //         "afterColon": true
-        //     },
-        //     "multiLine": {
-        //         "beforeColon": true,
-        //         "afterColon": true,
-        //         "align": "colon"
-        //     }
-        // }],
+
+        #  "key-spacing": [2, {
+        #      "singleLine": {
+        #          "beforeColon": false,
+        #          "afterColon": true
+        #      },
+        #      "multiLine": {
+        #          "beforeColon": true,
+        #          "afterColon": true,
+        #          "align": "colon"
+        #      }
+        #  }],
         "linebreak-style": [2, "unix"],
         "max-len": [2, 120, 4, {
             "ignoreUrls": true,
@@ -248,7 +260,29 @@
         // Legacy
         "max-depth": [0, 4],
         "max-params": [2, 4],
-        "no-bitwise": 2
+        "no-bitwise": 2,
+
+        // no require lodash
+        "no-require-lodash/no-require-lodash": 2,
+
+        // prefer spread
+        "prefer-spread/prefer-object-spread": [2, "includeNearEquivalents"],
+
+        // fetch
+        fetch/no-jquery: 2,
+        fetch/no-xhr: 2,
+
+        // import
+        "import/no-unresolved": 2,
+        "import/export": 2,
+        "import/no-extraneous-dependencies": 2,
+        "import/no-mutable-exports": 2,
+        "import/no-commonjs": 2,
+        "import/no-duplicates": 2,
+        "import/imports-first": 2,
+        "import/order": [2, {"groups": ["builtin", "external", "internal",  "parent", "sibling", "index" ]}],
+        "import/newline-after-import": 2
+
     },
 
      "globals":{

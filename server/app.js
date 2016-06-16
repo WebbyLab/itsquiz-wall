@@ -1,6 +1,7 @@
+import querystring  from 'querystring';
+
 import express      from 'express';
 import cookieParser from 'cookie-parser';
-import querystring  from 'querystring';
 
 import React                     from 'react';
 import ReactDOM                  from 'react-dom/server';
@@ -8,24 +9,25 @@ import { Provider }              from 'react-redux';
 import { RoutingContext, match } from 'react-router';
 import escapeHTML                from 'lodash/string/escape';
 
-import { fetchComponentsData,
-         getMetaDataFromState,
-         makeRedirectUrl,
-         detectLocale } from './utils';
-
 import routes         from '../shared/routes.jsx';
 import configureStore from '../shared/store/configureStore';
 import i18n           from '../shared/i18n';
 import { makeSlug }   from '../shared/utils/urlUtil';
 
-import clientConfig from '../etc/client-config.json';
+import clientConfig from '../shared/config';
 
-// Initializa localization
 import ruLocaleData from '../public/static/lang/ru.json';
 import ukLocaleData from '../public/static/lang/uk.json';
 import enLocaleData from '../public/static/lang/en.json';
 import trLocaleData from '../public/static/lang/tr.json';
 
+import { fetchComponentsData,
+         getMetaDataFromState,
+         makeRedirectUrl,
+         detectLocale,
+         detectIsIOSDevice } from './utils';
+
+// Initializa localization
 const i18nToolsRegistry = {
     ru   : new i18n.Tools({ localeData: ruLocaleData, locale: 'ru' }),
     en   : new i18n.Tools({ localeData: enLocaleData, locale: 'en' }),
@@ -69,12 +71,13 @@ app.use((req, res) => {
         } else if (!renderProps) {
             res.send(404, 'Not found');
         } else {
-            fetchComponentsData(
-                store.dispatch,
-                renderProps.components,
-                renderProps.params,
-                renderProps.location.query
-            )
+            fetchComponentsData({
+                locale,
+                dispatch   : store.dispatch,
+                components : renderProps.components,
+                params     : renderProps.params,
+                query      : renderProps.location.query
+            })
             .then(() => {
                 const initialState = store.getState();
 
@@ -140,7 +143,7 @@ app.use((req, res) => {
 function renderHTML({ componentHTML, initialState, metaData, config }) {
     return `
         <!DOCTYPE html>
-        <html>
+        <html ${detectIsIOSDevice() ? "style='height:100%; overflow: auto; -webkit-overflow-scrolling: touch;'" : ''}>
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -210,7 +213,7 @@ function renderHTML({ componentHTML, initialState, metaData, config }) {
             </noscript>
             <!-- /Yandex.Metrika counter -->
         </head>
-        <body>
+        <body ${detectIsIOSDevice() ? "style='height:100%; overflow: auto; -webkit-overflow-scrolling: touch;'" : ''}>
         <div id="react-view">${componentHTML}</div>
           <script type="application/javascript">
             window.__CONFIG__ = ${JSON.stringify(config)};

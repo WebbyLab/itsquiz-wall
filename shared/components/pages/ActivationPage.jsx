@@ -32,6 +32,7 @@ export default class ActivationPage extends React.Component {
         isLoggingIn        : React.PropTypes.bool,
         isEmbedded         : React.PropTypes.bool,
         dueTime            : React.PropTypes.string,
+        assessmentSystem   : React.PropTypes.array,
         onPass             : React.PropTypes.func,
         onShare            : React.PropTypes.func,
         onShareComplete    : React.PropTypes.func,

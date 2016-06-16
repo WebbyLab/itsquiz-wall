@@ -43,20 +43,6 @@ class ActivationsPageContainer extends Component {
         });
     }
 
-    componentWillReceiveProps(nextProps) {
-        const currentQuery = this.props.location.query;
-        const nextQuery = nextProps.location.query;
-
-        const needToReloadData = currentQuery.search !== nextQuery.search
-            || currentQuery.category !== nextQuery.category
-            || currentQuery.sortType !== nextQuery.sortType;
-
-
-        if (needToReloadData) {
-            this.props.dispatch(loadActivations(nextProps.params, nextQuery));
-        }
-    }
-
     componentWillUnmount() {
         embedEvents.unsubscribe();
     }
@@ -135,7 +121,11 @@ class ActivationsPageContainer extends Component {
         const { activations, totalActivationsAmount } = this.props;
 
         if (index + 1 < totalActivationsAmount && index + 1 >= activations.length) {
-            this.props.dispatch(loadActivations(this.props.params, this.props.location.query, activations.length));
+            this.props.dispatch(loadActivations({
+                params : this.props.params,
+                query  : this.props.location.query,
+                offset : activations.length
+            }));
         }
     };
 

@@ -207,33 +207,41 @@ export default class ActivationsPage extends React.Component {
                                 className = 'ActivationsPage__tabs'
                             >
                                 <Tab
-                                    href='/activations'
-                                    onClick={this.handleTabClick.bind(null, 0)}
+                                    className = 'ActivationsPage__all-tab'
+                                    href      = '/activations'
+                                    onClick   = {this.handleTabClick.bind(null, 0)}
                                 >
-                                    {l('All tests')}
+                                    <span className='ActivationsPage__tab-text'>{l('All tests')}</span>
+                                    <Icon className='ActivationsPage__tab-icon' type='star-circle' />
                                 </Tab>
                                 <Tab
-                                    href='/activations?category=vacancy'
-                                    onClick={this.handleTabClick.bind(null, 1)}
+                                    className = 'ActivationsPage__vacancy-tab'
+                                    href      = '/activations?category=vacancy'
+                                    onClick   = {this.handleTabClick.bind(null, 1)}
                                 >
-                                    {l('Vacancies')}
+                                    <span className='ActivationsPage__tab-text'>{l('Vacancies')}</span>
+                                    <Icon className='ActivationsPage__tab-icon' type='briefcase' />
                                 </Tab>
                                 <Tab
-                                    href='/activations?category=education'
-                                    onClick={this.handleTabClick.bind(null, 2)}
+                                    className = 'ActivationsPage__education-tab'
+                                    href      = '/activations?category=education'
+                                    onClick   = {this.handleTabClick.bind(null, 2)}
                                 >
-                                    {l('Education')}
+                                    <span className='ActivationsPage__tab-text'>{l('Education')}</span>
+                                    <Icon className='ActivationsPage__tab-icon' type='school' />
                                 </Tab>
                                 <Tab
-                                    href='/activations?category=entertainment'
-                                    onClick={this.handleTabClick.bind(null, 3)}
+                                    className = 'ActivationsPage__entertainment-tab'
+                                    href      = '/activations?category=entertainment'
+                                    onClick   = {this.handleTabClick.bind(null, 3)}
                                 >
-                                    {l('Entertainment')}
+                                    <span className='ActivationsPage__tab-text'>{l('Entertainment')}</span>
+                                    <Icon className='ActivationsPage__tab-icon' type='google-controller' />
                                 </Tab>
                                 <Tab
-                                    href='/activations?category=special'
-                                    onClick={this.handleTabClick.bind(null, 4)}
-                                    className='ActivationsPage__special-tab'
+                                    className = 'ActivationsPage__special-tab'
+                                    href      = '/activations?category=special'
+                                    onClick   = {this.handleTabClick.bind(null, 4)}
                                 >
                                     <Icon type='gift' />  {l('Special offer')}
                                 </Tab>
