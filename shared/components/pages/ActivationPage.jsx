@@ -247,6 +247,11 @@ export default class ActivationPage extends React.Component {
 
         const passInfoClasses = cx('ActivationPage__pass-info', { 'ActivationPage__pass-info--expires': dueTime });
 
+        const settingsIconsClasses = cx('indented', {
+            'on'  : canAssigneeViewQuestions,
+            'off' : !canAssigneeViewQuestions
+        });
+
         return (
             <div className={classes}>
                 <Card className='ActivationPage__paper' shadow={1}>
@@ -301,20 +306,19 @@ export default class ActivationPage extends React.Component {
                                     : null
                                 }
 
-                                <div className='ActivationPage__answers-view-ability'>
+                                <div className='ActivationPage__settings-icons'>
                                     <Icon
                                         title={canAssigneeViewQuestions
                                             ? l('You can view their answers')
                                             : l('You can not view their answers')}
                                         type='eye'
                                         size={16}
-                                        mode={canAssigneeViewQuestions ? 'on' : 'off'}
+                                        className={settingsIconsClasses}
                                     />
                                     <Icon
                                         title={l('You can contact the author')}
                                         type='message'
                                         size={16}
-                                        mode={'on'}
                                     />
                                 </div>
                             </div>
