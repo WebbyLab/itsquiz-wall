@@ -310,13 +310,13 @@ export default class ActivationPage extends React.Component {
                                     <Icon
                                         title={canAssigneeViewQuestions
                                             ? l('You can view answers')
-                                            : l('You can\'t view answers')}
+                                            : l('Author disallowed to view answers')}
                                         type='eye'
                                         size={16}
                                         className={settingsIconsClasses}
                                     />
                                     <Icon
-                                        title={l('You can contact author')}
+                                        title={l('You can contact the author')}
                                         type='message'
                                         size={16}
                                     />
