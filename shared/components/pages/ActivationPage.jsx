@@ -304,14 +304,14 @@ export default class ActivationPage extends React.Component {
                                 <div className='ActivationPage__answers-view-ability'>
                                     <Icon
                                         title={canAssigneeViewQuestions
-                                            ? l('Users can view their answers')
-                                            : l('Users can not view their answers')}
+                                            ? l('You can view their answers')
+                                            : l('You can not view their answers')}
                                         type='eye'
                                         size={16}
                                         mode={canAssigneeViewQuestions ? 'on' : 'off'}
                                     />
                                     <Icon
-                                        title={l('Users can contact the author')}
+                                        title={l('You can contact the author')}
                                         type='message'
                                         size={16}
                                         mode={'on'}
