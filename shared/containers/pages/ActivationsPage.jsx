@@ -129,6 +129,19 @@ class ActivationsPageContainer extends Component {
         }
     };
 
+    handleAuthorAvatarClick = (authorId) => {
+        const isEmbedded = this.props.location.query.embed;
+
+        if (isEmbedded) {
+            embedEvents.send({
+                authorId,
+                type : 'VIEW_AUTHOR_PROFILE'
+            });
+        } else {
+            this.setState({ isLoggingIn: true });
+        }
+    }
+
     render() {
         return (
             <ActivationsPage
@@ -152,6 +165,7 @@ class ActivationsPageContainer extends Component {
                 onItemRenderRequest    = {this.handleItemRenderRequest}
                 onChangeSortType       = {this.handleChangeSortType}
                 onStopSharing          = {this.handleStopSharing}
+                onAuthorAvatarClick    = {this.handleAuthorAvatarClick}
             />
         );
     }
