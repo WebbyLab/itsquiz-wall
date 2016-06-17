@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Oleg <CBETJIOMYP@gmail.com>, 2016.
+# oleg <oleg>, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-08 12:19+0300\n"
-"PO-Revision-Date: 2016-04-26 20:00+0300\n"
-"Last-Translator: Oleg <CBETJIOMYP@gmail.com>\n"
+"POT-Creation-Date: 2016-06-17 16:31+0300\n"
+"PO-Revision-Date: 2016-06-17 16:35+0300\n"
+"Last-Translator: oleg <oleg>\n"
 "Language-Team: русский <>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -23,53 +24,66 @@ msgstr ""
 msgid "Sign up / Sign in"
 msgstr "Реєстрація / Вхід"
 
+msgid "Search"
+msgstr "Пошук"
+
 msgid "Minimize"
 msgstr "Згорнути"
 
 msgid "Expand"
 msgstr "Розгорнути"
 
-msgid "Share this page"
-msgstr "Поділитися сторінкою"
+msgid "Education"
+msgstr "Освіта"
 
-msgid "Keep in touch"
-msgstr "Залишайтеся на зв'язку"
+msgid "Entertainment"
+msgstr "Розваги"
 
-msgid "Twitter"
-msgstr "Twitter"
+msgid "Vacancy"
+msgstr "Вакансії"
 
-msgid "Facebook"
-msgstr "Facebook"
+msgid "Special proposition!"
+msgstr "Спеціальна пропозиція!"
 
-msgid "Videos on Youtube"
-msgstr "Відео на Youtube"
+#, javascript-format
+msgid "%d question"
+msgid_plural "%d questions"
+msgstr[0] "%d питання"
+msgstr[1] "%d питання"
+msgstr[2] "%d питань"
 
-msgid "Support"
-msgstr "Допомога"
+msgid "View details"
+msgstr "Докладніше"
 
-msgid "Support page"
-msgstr "Підтримка"
+msgid "Sorry, we couldn't find any tests for "
+msgstr "На жаль, по вашому запиту тестів не знайдено"
 
-msgid "Suggest an idea"
-msgstr "Запропонувати ідею"
+msgid "There are no activations in this category yet"
+msgstr "У цій категорії тестів поки що немає"
 
-msgid "Need help?"
-msgstr "Потрібна допомога?"
+msgid "Share this test"
+msgstr "Поділитися тестом"
 
-msgid "Do you like It's quiz?"
-msgstr "Сподобався It's quiz?"
+msgid "Quizzes"
+msgstr "Тести"
 
-msgid "Read more"
-msgstr "Дізнатися більше"
+msgid "All tests"
+msgstr "Всі тести"
 
-msgid "Meet our team"
-msgstr "Наша команда"
+msgid "Vacancies"
+msgstr "Вакансії"
 
-msgid "Sign in with your social network account to continue"
-msgstr "Для продовження увійдіть за допомогою аккаунта соціальної мережі"
+msgid "Special offer"
+msgstr "Акції"
 
-msgid "or use your e-mail"
-msgstr "або використовуйте ваш e-mail"
+msgid "Newest first"
+msgstr "За датою створення"
+
+msgid "Popular first"
+msgstr "Найпопулярніші"
+
+msgid "I want to receive new special offers"
+msgstr "Я хочу отримувати нові спеціальні пропозиції"
 
 msgid "You rock! Excellent job!"
 msgstr "Вау! Відмінна робота!"
@@ -94,15 +108,17 @@ msgid "private"
 msgstr "приватний"
 
 #, javascript-format
-msgid "%d question"
-msgid_plural "%d questions"
-msgstr[0] "%d питання"
-msgstr[1] "%d питання"
-msgstr[2] "%d питань"
-
-#, javascript-format
 msgid "expires %s"
 msgstr "завершиться %s"
+
+msgid "You can view answers"
+msgstr "Ви можете дивитися відповіді"
+
+msgid "Author disallowed to view answers"
+msgstr "Автор заборонив перегляд відповідей"
+
+msgid "You can contact the author"
+msgstr "Ви можете зв'язатися з автором"
 
 msgid "Pass the test"
 msgstr "Скласти тест"
@@ -149,53 +165,47 @@ msgstr "Мій результат %d%%"
 msgid "Check out this test"
 msgstr "Зацініть тест"
 
-msgid "Sorry, we couldn't find any tests for "
-msgstr "На жаль, по вашому запиту тестів не знайдено"
+msgid "Share this page"
+msgstr "Поділитися сторінкою"
 
-msgid "There are no activations in this category yet"
-msgstr "У цій категорії тестів поки що немає"
+msgid "Keep in touch"
+msgstr "Залишайтеся на зв'язку"
 
-msgid "Share this test"
-msgstr "Поділитися тестом"
+msgid "Twitter"
+msgstr "Twitter"
 
-msgid "Quizzes"
-msgstr "Тести"
+msgid "Facebook"
+msgstr "Facebook"
 
-msgid "All tests"
-msgstr "Всі тести"
+msgid "Videos on Youtube"
+msgstr "Відео на Youtube"
 
-msgid "Vacancies"
-msgstr "Вакансії"
+msgid "Support"
+msgstr "Допомога"
 
-msgid "Education"
-msgstr "Освіта"
+msgid "Support page"
+msgstr "Підтримка"
 
-msgid "Entertainment"
-msgstr "Розваги"
+msgid "Suggest an idea"
+msgstr "Запропонувати ідею"
 
-msgid "Special offer"
-msgstr "Акції"
+msgid "Need help?"
+msgstr "Потрібна допомога?"
 
-msgid "Newest first"
-msgstr "За датою створення"
+msgid "Do you like It's quiz?"
+msgstr "Сподобався It's quiz?"
 
-msgid "Popular first"
-msgstr "Найпопулярніші"
+msgid "About testing platform"
+msgstr "Про нас"
 
-msgid "I want to receive new special offers"
-msgstr "Я хочу отримувати нові спеціальні пропозиції"
+msgid "Meet our team"
+msgstr "Наша команда"
 
-msgid "Vacancy"
-msgstr "Вакансії"
+msgid "Sign in with your social network account to continue"
+msgstr "Для продовження увійдіть за допомогою аккаунта соціальної мережі"
 
-msgid "Special proposition!"
-msgstr "Спеціальна пропозиція!"
-
-msgid "View details"
-msgstr "Докладніше"
-
-msgid "Search"
-msgstr "Пошук"
+msgid "or use your e-mail"
+msgstr "або використовуйте ваш e-mail"
 
 msgid "Welcome to It's quiz!"
 msgstr "Ласкаво просимо до It's quiz!"
@@ -268,6 +278,9 @@ msgstr[0] "%d хвилина"
 msgstr[1] "%d хвилини"
 msgstr[2] "%d хвилин"
 
+#~ msgid "Read more"
+#~ msgstr "Дізнатися більше"
+
 #~ msgid "FREE"
 #~ msgstr "Безкоштовно"
 
@@ -299,9 +312,6 @@ msgstr[2] "%d хвилин"
 #~ msgstr ""
 #~ "Дослідіть сотні тестів, перевірте свої знання, вивчайте нові теми, "
 #~ "діліться своїми досягненнями з друзями"
-
-#~ msgid "You can create a test"
-#~ msgstr "Ви можете створити тест"
 
 #~ msgid ""
 #~ "Everyone can create a test on It's quiz! Simply add new questions, "

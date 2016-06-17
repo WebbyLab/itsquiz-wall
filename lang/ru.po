@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Oleg <CBETJIOMYP@gmail.com>, 2016.
+# oleg <oleg>, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-08 12:19+0300\n"
-"PO-Revision-Date: 2016-04-26 20:00+0300\n"
-"Last-Translator: Oleg <CBETJIOMYP@gmail.com>\n"
+"POT-Creation-Date: 2016-06-17 16:31+0300\n"
+"PO-Revision-Date: 2016-06-17 16:35+0300\n"
+"Last-Translator: oleg <oleg>\n"
 "Language-Team: русский <>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -23,53 +24,66 @@ msgstr ""
 msgid "Sign up / Sign in"
 msgstr "Регистрация / Вход"
 
+msgid "Search"
+msgstr "Поиск"
+
 msgid "Minimize"
 msgstr "Свернуть"
 
 msgid "Expand"
 msgstr "Развернуть"
 
-msgid "Share this page"
-msgstr "Поделиться страницей"
+msgid "Education"
+msgstr "Образование"
 
-msgid "Keep in touch"
-msgstr "Оставайтесь на связи"
+msgid "Entertainment"
+msgstr "Развлечения"
 
-msgid "Twitter"
-msgstr "Twitter"
+msgid "Vacancy"
+msgstr "Вакансии"
 
-msgid "Facebook"
-msgstr "Facebook"
+msgid "Special proposition!"
+msgstr "Специальное предложение!"
 
-msgid "Videos on Youtube"
-msgstr "Видео на Youtube"
+#, javascript-format
+msgid "%d question"
+msgid_plural "%d questions"
+msgstr[0] "%d вопрос"
+msgstr[1] "%d вопроса"
+msgstr[2] "%d вопросов"
 
-msgid "Support"
-msgstr "Помощь"
+msgid "View details"
+msgstr "Детальнее"
 
-msgid "Support page"
-msgstr "Поддержка"
+msgid "Sorry, we couldn't find any tests for "
+msgstr "К сожалению, по вашему запросу тестов не найдено "
 
-msgid "Suggest an idea"
-msgstr "Предложить идею"
+msgid "There are no activations in this category yet"
+msgstr "В этой категории тестов пока что нет"
 
-msgid "Need help?"
-msgstr "Нужна помощь?"
+msgid "Share this test"
+msgstr "Поделиться тестом"
 
-msgid "Do you like It's quiz?"
-msgstr "Понравился It's quiz?"
+msgid "Quizzes"
+msgstr "Тесты"
 
-msgid "Read more"
-msgstr "Узнать больше"
+msgid "All tests"
+msgstr "Все тесты"
 
-msgid "Meet our team"
-msgstr "Наша команда"
+msgid "Vacancies"
+msgstr "Вакансии"
 
-msgid "Sign in with your social network account to continue"
-msgstr "Для продолжения войдите с помощью аккаунта социальной сети"
+msgid "Special offer"
+msgstr "Акции"
 
-msgid "or use your e-mail"
-msgstr "или используйте ваш e-mail"
+msgid "Newest first"
+msgstr "По дате добавления"
+
+msgid "Popular first"
+msgstr "Самые популярные"
+
+msgid "I want to receive new special offers"
+msgstr "Я хочу получать новые специальные предложения"
 
 msgid "You rock! Excellent job!"
 msgstr "Вау! Отличная работа!"
@@ -94,15 +108,17 @@ msgid "private"
 msgstr "приватный"
 
 #, javascript-format
-msgid "%d question"
-msgid_plural "%d questions"
-msgstr[0] "%d вопрос"
-msgstr[1] "%d вопроса"
-msgstr[2] "%d вопросов"
-
-#, javascript-format
 msgid "expires %s"
 msgstr "истекает %s"
+
+msgid "You can view answers"
+msgstr "Вы можете смотреть ответы"
+
+msgid "Author disallowed to view answers"
+msgstr "Автор запретил просмотр ответов"
+
+msgid "You can contact the author"
+msgstr "Вы можете связаться с автором"
 
 msgid "Pass the test"
 msgstr "Пройти тест"
@@ -149,53 +165,47 @@ msgstr "Мой результат %d%%"
 msgid "Check out this test"
 msgstr "Зацените тест"
 
-msgid "Sorry, we couldn't find any tests for "
-msgstr "К сожалению, по вашему запросу тестов не найдено "
+msgid "Share this page"
+msgstr "Поделиться страницей"
 
-msgid "There are no activations in this category yet"
-msgstr "В этой категории тестов пока что нет"
+msgid "Keep in touch"
+msgstr "Оставайтесь на связи"
 
-msgid "Share this test"
-msgstr "Поделиться тестом"
+msgid "Twitter"
+msgstr "Twitter"
 
-msgid "Quizzes"
-msgstr "Тесты"
+msgid "Facebook"
+msgstr "Facebook"
 
-msgid "All tests"
-msgstr "Все тесты"
+msgid "Videos on Youtube"
+msgstr "Видео на Youtube"
 
-msgid "Vacancies"
-msgstr "Вакансии"
+msgid "Support"
+msgstr "Помощь"
 
-msgid "Education"
-msgstr "Образование"
+msgid "Support page"
+msgstr "Поддержка"
 
-msgid "Entertainment"
-msgstr "Развлечения"
+msgid "Suggest an idea"
+msgstr "Предложить идею"
 
-msgid "Special offer"
-msgstr "Акции"
+msgid "Need help?"
+msgstr "Нужна помощь?"
 
-msgid "Newest first"
-msgstr "По дате добавления"
+msgid "Do you like It's quiz?"
+msgstr "Понравился It's quiz?"
 
-msgid "Popular first"
-msgstr "Самые популярные"
+msgid "About testing platform"
+msgstr "О нас"
 
-msgid "I want to receive new special offers"
-msgstr "Я хочу получать новые специальные предложения"
+msgid "Meet our team"
+msgstr "Наша команда"
 
-msgid "Vacancy"
-msgstr "Вакансии"
+msgid "Sign in with your social network account to continue"
+msgstr "Для продолжения войдите с помощью аккаунта социальной сети"
 
-msgid "Special proposition!"
-msgstr "Специальное предложение!"
-
-msgid "View details"
-msgstr "Детальнее"
-
-msgid "Search"
-msgstr "Поиск"
+msgid "or use your e-mail"
+msgstr "или используйте ваш e-mail"
 
 msgid "Welcome to It's quiz!"
 msgstr "Добро пожаловать в It's quiz!"
@@ -268,6 +278,9 @@ msgstr[0] "%d минута"
 msgstr[1] "%d минуты"
 msgstr[2] "%d минут"
 
+#~ msgid "Read more"
+#~ msgstr "Узнать больше"
+
 #~ msgid "FREE"
 #~ msgstr "Бесплатно"
 
@@ -299,9 +312,6 @@ msgstr[2] "%d минут"
 #~ msgstr ""
 #~ "Исследуйте сотни тестов, проверьте свои знания, изучайте новые темы, "
 #~ "делитесь своими достижениями с друзьями"
-
-#~ msgid "You can create a test"
-#~ msgstr "Вы можете создать тест"
 
 #~ msgid ""
 #~ "Everyone can create a test on It's quiz! Simply add new questions, "
