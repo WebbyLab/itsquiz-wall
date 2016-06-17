@@ -309,14 +309,14 @@ export default class ActivationPage extends React.Component {
                                 <div className='ActivationPage__settings-icons'>
                                     <Icon
                                         title={canAssigneeViewQuestions
-                                            ? l('You can view their answers')
-                                            : l('You can not view their answers')}
+                                            ? l('You can view answers')
+                                            : l('You can\'t view answers')}
                                         type='eye'
                                         size={16}
                                         className={settingsIconsClasses}
                                     />
                                     <Icon
-                                        title={l('You can contact the author')}
+                                        title={l('You can contact author')}
                                         type='message'
                                         size={16}
                                     />
