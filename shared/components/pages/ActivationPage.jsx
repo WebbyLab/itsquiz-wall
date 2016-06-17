@@ -247,9 +247,9 @@ export default class ActivationPage extends React.Component {
 
         const passInfoClasses = cx('ActivationPage__pass-info', { 'ActivationPage__pass-info--expires': dueTime });
 
-        const settingsIconsClasses = cx('ActivationPage__settings--indented', {
-            'ActivationPage__settings--on'  : canAssigneeViewQuestions,
-            'ActivationPage__settings--off' : !canAssigneeViewQuestions
+        const settingsIconsClasses = cx('ActivationPage__settings-icons--indented', {
+            'ActivationPage__settings-icons--on'  : canAssigneeViewQuestions,
+            'ActivationPage__settings-icons--off' : !canAssigneeViewQuestions
         });
 
         return (
