@@ -41,7 +41,8 @@ export default class ActivationsPage extends React.Component {
         onItemClick            : React.PropTypes.func,
         onSubscribe            : React.PropTypes.func,
         onShare                : React.PropTypes.func,
-        onItemRenderRequest    : React.PropTypes.func
+        onItemRenderRequest    : React.PropTypes.func,
+        onAuthorAvatarClick    : React.PropTypes.func
     };
 
     static contextTypes = { i18n: React.PropTypes.object };
@@ -53,7 +54,13 @@ export default class ActivationsPage extends React.Component {
     };
 
     renderQuizItem = (index, key) => {
-        const { onShare, onItemClick, onItemRenderRequest, activations } = this.props;
+        const {
+            activations,
+            onShare,
+            onItemClick,
+            onAuthorAvatarClick,
+            onItemRenderRequest
+        } = this.props;
 
         const activation = activations[index];
 
@@ -69,21 +76,22 @@ export default class ActivationsPage extends React.Component {
 
         return (
             <QuizCard
-                id                = {activation.id}
-                key               = {key}
-                className         = 'ActivationsPage__quiz-card'
-                name              = {activation.name}
-                message           = {activation.message}
-                numberOfQuestions = {activation.numberOfQuestions}
-                timeToPass        = {activation.timeToPass}
-                userQuizSession   = {activation.userQuizSession}
-                pictureURL        = {activation.pictureURL}
-                author            = {activation.author}
-                category          = {activation.category}
-                isSponsored       = {activation.isSponsored}
-                isPassed          = {activation.isPassed}
-                onShare           = {onShare.bind(this, activation)}
-                onClick           = {onItemClick.bind(this, activation)}
+                id                  = {activation.id}
+                key                 = {key}
+                className           = 'ActivationsPage__quiz-card'
+                name                = {activation.name}
+                message             = {activation.message}
+                numberOfQuestions   = {activation.numberOfQuestions}
+                timeToPass          = {activation.timeToPass}
+                userQuizSession     = {activation.userQuizSession}
+                pictureURL          = {activation.pictureURL}
+                author              = {activation.author}
+                category            = {activation.category}
+                isSponsored         = {activation.isSponsored}
+                isPassed            = {activation.isPassed}
+                onShare             = {onShare.bind(this, activation)}
+                onClick             = {onItemClick.bind(this, activation)}
+                onAuthorAvatarClick = {onAuthorAvatarClick}
             />
         );
     };

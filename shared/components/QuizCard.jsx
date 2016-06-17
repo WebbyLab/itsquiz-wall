@@ -16,20 +16,21 @@ if (process.env.BROWSER) {
 
 export default class QuizCard extends Component {
     static propTypes = {
-        id                : PropTypes.string,
-        name              : PropTypes.string,
-        message           : PropTypes.string,
-        timeToPass        : PropTypes.number,
-        numberOfQuestions : PropTypes.number,
-        pictureURL        : PropTypes.string,
-        author            : PropTypes.object,
-        isSponsored       : PropTypes.bool,
-        className         : PropTypes.string,
-        category          : PropTypes.string,
-        isPassed          : PropTypes.bool,
-        userQuizSession   : PropTypes.object,
-        onShare           : PropTypes.func,
-        onClick           : PropTypes.func
+        id                  : PropTypes.string,
+        name                : PropTypes.string,
+        message             : PropTypes.string,
+        timeToPass          : PropTypes.number,
+        numberOfQuestions   : PropTypes.number,
+        pictureURL          : PropTypes.string,
+        author              : PropTypes.object,
+        isSponsored         : PropTypes.bool,
+        className           : PropTypes.string,
+        category            : PropTypes.string,
+        isPassed            : PropTypes.bool,
+        userQuizSession     : PropTypes.object,
+        onShare             : PropTypes.func,
+        onAuthorAvatarClick : PropTypes.func,
+        onClick             : PropTypes.func
     };
 
     static contextTypes = { i18n: PropTypes.object };
@@ -66,7 +67,8 @@ export default class QuizCard extends Component {
             isPassed,
             userQuizSession,
             onClick,
-            onShare
+            onShare,
+            onAuthorAvatarClick
         } = this.props;
 
         const { l, nl, humanizeDuration } = this.context.i18n;
@@ -75,12 +77,15 @@ export default class QuizCard extends Component {
             'QuizCard--sponsored': isSponsored
         });
 
-
         return (
             <Card shadow={1} className={classes}>
                 <CardTitle className='QuizCard__head'>
                     <div className='QuizCard__info'>
-                        <img className='QuizCard__avatar' src={author.avatar} />
+                        <img
+                            className='QuizCard__avatar'
+                            src={author.avatar}
+                            onClick={onAuthorAvatarClick.bind(null, author.id)}
+                        />
                         <div className='QuizCard__name-author'>
                             <a
                                 href={`/activations/${id}/${makeSlug(name)}`}
