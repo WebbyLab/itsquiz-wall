@@ -20,6 +20,10 @@ export default class App extends Component {
         history  : PropTypes.object
     };
 
+    componentWillMount() {
+        this.appContainerHeight = 0;
+    }
+
     componentDidMount() {
         initialize();
         navigate({
@@ -31,11 +35,13 @@ export default class App extends Component {
             'REDIRECT_QUIZ_WALL' : this.handleRedirect
         });
 
-        const appContainerHeight = document.getElementById('app-view').offsetHeight;
+        this.appContainerHeight = document.getElementById('app-view').scrollHeight;
+
+        // console.log('appContainerHeight', appContainerHeight);
 
         embedEvents.send({
             type : 'IFRAME_HEIGHT_CALCULATED',
-            iframeHeight: appContainerHeight
+            iframeHeight: this.appContainerHeight
         });
     }
 
@@ -49,6 +55,11 @@ export default class App extends Component {
                 page  : nextProps.location.pathname,
                 title : nextProps.routes[nextProps.routes.length - 1].path
             });
+            console.log('PATHNAME_CHANGED');
+            embedEvents.send({
+                type : 'IFRAME_HEIGHT_CALCULATED',
+                iframeHeight: null
+            });
         }
 
         if (isEmbed && (isPathnameChanged || isQueryChanged)) {
@@ -61,6 +72,20 @@ export default class App extends Component {
                 type : 'PATH_CHANGED',
                 quizWallEmbedPath
             });
+        }
+    }
+
+    componentDidUpdate() {
+        const nextHeightOfAppContainer = document.getElementById('app-view').scrollHeight;
+        console.log('nextHeightOfAppContainer', nextHeightOfAppContainer);
+
+        if (nextHeightOfAppContainer !== this.appContainerHeight) {
+            embedEvents.send({
+                type : 'IFRAME_HEIGHT_CALCULATED',
+                iframeHeight: nextHeightOfAppContainer
+            });
+
+            this.appContainerHeight = nextHeightOfAppContainer;
         }
     }
 
