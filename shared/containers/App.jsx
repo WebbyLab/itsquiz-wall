@@ -30,6 +30,13 @@ export default class App extends Component {
         embedEvents.subscribe({
             'REDIRECT_QUIZ_WALL' : this.handleRedirect
         });
+
+        const appContainerHeight = document.getElementById('app-view').offsetHeight;
+
+        embedEvents.send({
+            type : 'IFRAME_HEIGHT_CALCULATED',
+            iframeHeight: appContainerHeight
+        });
     }
 
     componentWillReceiveProps(nextProps) {
