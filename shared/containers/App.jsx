@@ -3,10 +3,13 @@ import React, { Component, PropTypes } from 'react';
 import EmbedEvents              from '../utils/EmbedEventsUtil';
 import config                   from '../config';
 import { initialize, navigate } from '../utils/googleAnalytics';
+import isIOSDevice              from '../utils/isIOSDevice';
 
 if (process.env.BROWSER) {
     require('../assets');
 }
+
+const TIMER_DELAY = 1000;
 
 const embedEvents = new EmbedEvents({
     embedOrigin: config.embedOrigin
@@ -20,6 +23,12 @@ export default class App extends Component {
         history  : PropTypes.object
     };
 
+    componentWillMount() {
+        this.appContainerHeight = 0;
+
+        clearInterval(this.iframeHeightCalcTimer);
+    }
+
     componentDidMount() {
         initialize();
         navigate({
@@ -30,6 +39,12 @@ export default class App extends Component {
         embedEvents.subscribe({
             'REDIRECT_QUIZ_WALL' : this.handleRedirect
         });
+
+        if (isIOSDevice()) {
+            this.appContainerHeight = this.getContainerHeight();
+
+            this.sendIframeHeightEvent(this.appContainerHeight);
+        }
     }
 
     componentWillReceiveProps(nextProps) {
@@ -42,6 +57,8 @@ export default class App extends Component {
                 page  : nextProps.location.pathname,
                 title : nextProps.routes[nextProps.routes.length - 1].path
             });
+
+            this.sendIframeHeightEvent();
         }
 
         if (isEmbed && (isPathnameChanged || isQueryChanged)) {
@@ -57,10 +74,47 @@ export default class App extends Component {
         }
     }
 
+    componentDidUpdate() {
+        if (isIOSDevice()) {
+            const nextHeightOfAppContainer = this.getContainerHeight();
+
+            if (nextHeightOfAppContainer !== this.appContainerHeight) {
+                this.sendIframeHeightEvent(nextHeightOfAppContainer);
+
+                this.appContainerHeight = nextHeightOfAppContainer;
+            } else {
+                console.log('else');
+                this.iframeHeightCalcTimer = setTimeout(() => {
+                    const newHeightOfAppContainer = this.getContainerHeight();
+                    console.log('newHeightOfAppContainer', newHeightOfAppContainer);
+
+                    this.sendIframeHeightEvent(newHeightOfAppContainer);
+
+                    this.appContainerHeight = newHeightOfAppContainer;
+                }, TIMER_DELAY);
+            }
+        }
+    }
+
+    componentWillUnmount() {
+        this.appContainerHeight = null;
+    }
+
     handleRedirect = () => {
         this.props.history.pushState(null, '/activations', {
             embed      : this.props.location.query.embed,
             assigneeId : this.props.location.query.assigneeId
+        });
+    };
+
+    getContainerHeight = () => {
+        return document.getElementById('app-view').scrollHeight;
+    };
+
+    sendIframeHeightEvent = (height = 0) => {
+        embedEvents.send({
+            type         : 'IFRAME_HEIGHT_CALCULATED',
+            iframeHeight : height
         });
     }
 

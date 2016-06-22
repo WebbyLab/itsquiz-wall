@@ -24,8 +24,7 @@ import trLocaleData from '../public/static/lang/tr.json';
 import { fetchComponentsData,
          getMetaDataFromState,
          makeRedirectUrl,
-         detectLocale,
-         detectIsIOSDevice } from './utils';
+         detectLocale } from './utils';
 
 // Initializa localization
 const i18nToolsRegistry = {
@@ -143,7 +142,7 @@ app.use((req, res) => {
 function renderHTML({ componentHTML, initialState, metaData, config }) {
     return `
         <!DOCTYPE html>
-        <html ${detectIsIOSDevice() ? "style='height:100%; overflow: auto; -webkit-overflow-scrolling: touch;'" : ''}>
+        <html>
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -213,7 +212,7 @@ function renderHTML({ componentHTML, initialState, metaData, config }) {
             </noscript>
             <!-- /Yandex.Metrika counter -->
         </head>
-        <body ${detectIsIOSDevice() ? "style='height:100%; overflow: auto; -webkit-overflow-scrolling: touch;'" : ''}>
+        <body>
         <div id="react-view">${componentHTML}</div>
           <script type="application/javascript">
             window.__CONFIG__ = ${JSON.stringify(config)};
