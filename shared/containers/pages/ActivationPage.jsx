@@ -42,6 +42,16 @@ class ActivationPageContainer extends Component {
         }
     }
 
+/*    componentDidMount() {
+        this.contentWrapperHeight = document.querySelector('.ActivationPage').offsetHeight;
+
+        embedEvents.send({
+            type : 'IFRAME_HEIGHT_CALCULATED',
+            iframeHeight: this.contentWrapperHeight
+        });
+        console.log('activation page height', document.querySelector('.ActivationPage').offsetHeight);
+    }*/
+
     componentWillReceiveProps(nextProps) {
         if (this.props.isLoading && !nextProps.isLoading && nextProps.activation) {
             if (nextProps.activation.isSponsored) {
@@ -51,6 +61,21 @@ class ActivationPageContainer extends Component {
         }
     }
 
+/*    componentDidUpdate() {
+        const nextHeightOfContentWrapper = document.querySelector('.ActivationPage').offsetHeight;
+
+        if (nextHeightOfContentWrapper !== this.contentWrapperHeight) {
+            embedEvents.send({
+                type : 'IFRAME_HEIGHT_CALCULATED',
+                iframeHeight: nextHeightOfContentWrapper
+            });
+
+            this.contentWrapperHeight = nextHeightOfContentWrapper;
+        }
+
+        console.log('activation page height', document.querySelector('.ActivationPage').offsetHeight);
+    }
+*/
     handlePassActivationClick = (activation) => {
         const isEmbedded = this.props.location.query.embed;
         const { actionId, isSponsored, name } = activation;
@@ -181,6 +206,8 @@ class ActivationPageContainer extends Component {
         } = this.props;
         const { sharingLink, isLoggingIn } = this.state;
         const { embed, assigneeId } = this.props.location.query;
+
+        console.log('activation', activation);
 
         return (
             <ActivationPage

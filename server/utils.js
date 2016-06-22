@@ -1,7 +1,6 @@
 import Promise     from 'bluebird';
 import geoip       from 'geoip-lite';
 import strformat   from 'strformat';
-import bowser      from 'bowser';
 
 import clientConfig              from '../shared/config';
 import { getSupportedLocales }   from '../shared/utils';
@@ -121,14 +120,6 @@ export function detectLocale(req) {
         RU: 'ru',
         TR: 'tr'
     }[country] || 'en';
-}
-
-export function detectIsIOSDevice() {
-    if (bowser.ios) {
-        return true;
-    }
-
-    return false;
 }
 
 function _getGreeting(assessmentSystem, score) {

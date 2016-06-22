@@ -1,15 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 
-import bowser from 'bowser';
-
-
 import EmbedEvents              from '../utils/EmbedEventsUtil';
 import config                   from '../config';
 import { initialize, navigate } from '../utils/googleAnalytics';
+import isIOSDevice              from '../utils/isIOSDevice';
 
 if (process.env.BROWSER) {
     require('../assets');
 }
+
+const TIMER_DELAY = 1000;
 
 const embedEvents = new EmbedEvents({
     embedOrigin: config.embedOrigin
@@ -25,6 +25,8 @@ export default class App extends Component {
 
     componentWillMount() {
         this.appContainerHeight = 0;
+
+        clearInterval(this.iframeHeightCalcTimer);
     }
 
     componentDidMount() {
@@ -38,14 +40,11 @@ export default class App extends Component {
             'REDIRECT_QUIZ_WALL' : this.handleRedirect
         });
 
-        this.appContainerHeight = document.getElementById('app-view').scrollHeight;
+        if (isIOSDevice()) {
+            this.appContainerHeight = this.getContainerHeight();
 
-        // console.log('appContainerHeight', appContainerHeight);
-
-        embedEvents.send({
-            type : 'IFRAME_HEIGHT_CALCULATED',
-            iframeHeight: this.appContainerHeight
-        });
+            this.sendIframeHeightEvent(this.appContainerHeight);
+        }
     }
 
     componentWillReceiveProps(nextProps) {
@@ -59,17 +58,7 @@ export default class App extends Component {
                 title : nextProps.routes[nextProps.routes.length - 1].path
             });
 
-
-            if (bowser.ios) {
-                // Page reload is used here to correctly recalculate height of iframe.
-                // It shold be done in componentDidUpdate, but it doesn't work that way
-                window.location.reload();
-            }
-
-            embedEvents.send({
-                type : 'IFRAME_HEIGHT_CALCULATED',
-                iframeHeight: null
-            });
+            this.sendIframeHeightEvent();
         }
 
         if (isEmbed && (isPathnameChanged || isQueryChanged)) {
@@ -86,15 +75,24 @@ export default class App extends Component {
     }
 
     componentDidUpdate() {
-        const nextHeightOfAppContainer = document.getElementById('app-view').scrollHeight;
+        if (isIOSDevice()) {
+            const nextHeightOfAppContainer = this.getContainerHeight();
 
-        if (nextHeightOfAppContainer !== this.appContainerHeight) {
-            embedEvents.send({
-                type : 'IFRAME_HEIGHT_CALCULATED',
-                iframeHeight: nextHeightOfAppContainer
-            });
+            if (nextHeightOfAppContainer !== this.appContainerHeight) {
+                this.sendIframeHeightEvent(nextHeightOfAppContainer);
 
-            this.appContainerHeight = nextHeightOfAppContainer;
+                this.appContainerHeight = nextHeightOfAppContainer;
+            } else {
+                console.log('else');
+                this.iframeHeightCalcTimer = setTimeout(() => {
+                    const newHeightOfAppContainer = this.getContainerHeight();
+                    console.log('newHeightOfAppContainer', newHeightOfAppContainer);
+
+                    this.sendIframeHeightEvent(newHeightOfAppContainer);
+
+                    this.appContainerHeight = newHeightOfAppContainer;
+                }, TIMER_DELAY);
+            }
         }
     }
 
@@ -107,9 +105,22 @@ export default class App extends Component {
             embed      : this.props.location.query.embed,
             assigneeId : this.props.location.query.assigneeId
         });
+    };
+
+    getContainerHeight = () => {
+        return document.getElementById('app-view').scrollHeight;
+    };
+
+    sendIframeHeightEvent = (height = 0) => {
+        embedEvents.send({
+            type         : 'IFRAME_HEIGHT_CALCULATED',
+            iframeHeight : height
+        });
     }
 
     render() {
+        console.log('isIOSDevice()', isIOSDevice());
+
         return (
             <div id='app-view'>
                 {this.props.children}

@@ -41,7 +41,30 @@ class ActivationsPageContainer extends Component {
         embedEvents.subscribe({
             'SEARCH_QUIZ_WALL' : this.handleSearch
         });
+
+/*        this.contentWrapperHeight = document.querySelector('.ActivationsPage').offsetHeight;
+
+        embedEvents.send({
+            type : 'IFRAME_HEIGHT_CALCULATED',
+            iframeHeight: this.contentWrapperHeight
+        });
+
+        console.log('activationS page height', document.querySelector('.ActivationsPage').offsetHeight);
+*/
     }
+
+/*    componentDidUpdate() {
+        const nextHeightOfContentWrapper = document.querySelector('.ActivationsPage').offsetHeight;
+
+        if (nextHeightOfContentWrapper !== this.contentWrapperHeight) {
+            embedEvents.send({
+                type : 'IFRAME_HEIGHT_CALCULATED',
+                iframeHeight: nextHeightOfContentWrapper
+            });
+
+            this.contentWrapperHeight = nextHeightOfContentWrapper;
+        }
+    }*/
 
     componentWillUnmount() {
         embedEvents.unsubscribe();
