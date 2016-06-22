@@ -119,8 +119,6 @@ export default class App extends Component {
     }
 
     render() {
-        console.log('isIOSDevice()', isIOSDevice());
-
         return (
             <div id='app-view'>
                 {this.props.children}
