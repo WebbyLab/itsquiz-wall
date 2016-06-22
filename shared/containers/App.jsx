@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 
+import bowser from 'bowser';
+
+
 import EmbedEvents              from '../utils/EmbedEventsUtil';
 import config                   from '../config';
 import { initialize, navigate } from '../utils/googleAnalytics';
@@ -55,7 +58,14 @@ export default class App extends Component {
                 page  : nextProps.location.pathname,
                 title : nextProps.routes[nextProps.routes.length - 1].path
             });
-            console.log('PATHNAME_CHANGED');
+
+
+            if (bowser.ios) {
+                // Page reload is used here to correctly recalculate height of iframe.
+                // It shold be done in componentDidUpdate, but it doesn't work that way
+                window.location.reload();
+            }
+
             embedEvents.send({
                 type : 'IFRAME_HEIGHT_CALCULATED',
                 iframeHeight: null
@@ -77,7 +87,6 @@ export default class App extends Component {
 
     componentDidUpdate() {
         const nextHeightOfAppContainer = document.getElementById('app-view').scrollHeight;
-        console.log('nextHeightOfAppContainer', nextHeightOfAppContainer);
 
         if (nextHeightOfAppContainer !== this.appContainerHeight) {
             embedEvents.send({
@@ -87,6 +96,10 @@ export default class App extends Component {
 
             this.appContainerHeight = nextHeightOfAppContainer;
         }
+    }
+
+    componentWillUnmount() {
+        this.appContainerHeight = null;
     }
 
     handleRedirect = () => {
