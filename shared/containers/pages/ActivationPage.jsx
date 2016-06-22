@@ -182,8 +182,6 @@ class ActivationPageContainer extends Component {
         const { sharingLink, isLoggingIn } = this.state;
         const { embed, assigneeId } = this.props.location.query;
 
-        console.log('activation', activation);
-
         return (
             <ActivationPage
                 activation         = {activation}
