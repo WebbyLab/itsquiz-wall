@@ -3,9 +3,7 @@ import React, { Component, PropTypes } from 'react';
 // import WelcomeDialog from '../../containers/WelcomeDialog.jsx';
 import Footer        from '../../containers/Footer.jsx';
 
-if (process.env.BROWSER) {
-    require('./MainLayout.less');
-}
+import './MainLayout.less';
 
 export default class MainLayout extends Component {
 

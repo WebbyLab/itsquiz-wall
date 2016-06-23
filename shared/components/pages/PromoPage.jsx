@@ -4,9 +4,7 @@ import { Card } from 'react-mdl/lib/Card';
 
 import Markdown from '../Markdown.jsx';
 
-if (process.env.BROWSER) {
-    require('./PromoPage.less');
-}
+import './PromoPage.less';
 
 export default class PromoPage extends React.Component {
     static propTypes = {

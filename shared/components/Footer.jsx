@@ -2,9 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 import ShareDialog from '../containers/ShareDialog.jsx';
 
-if (process.env.BROWSER) {
-    require('./Footer.less');
-}
+import './Footer.less';
 
 export default class Footer extends Component {
     static propTypes = {

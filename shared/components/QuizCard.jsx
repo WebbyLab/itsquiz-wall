@@ -10,9 +10,7 @@ import { sprintf }  from '../utils';
 
 import MdiIcon from './Icon.jsx';
 
-if (process.env.BROWSER) {
-    require('./QuizCard.less');
-}
+import './QuizCard.less';
 
 export default class QuizCard extends Component {
     static propTypes = {

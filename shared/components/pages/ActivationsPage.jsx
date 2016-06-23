@@ -13,9 +13,7 @@ import ShareDialog from '../../containers/ShareDialog.jsx';
 import LoginDialog from '../../containers/LoginDialog.jsx';
 import Icon        from '../Icon.jsx';
 
-if (process.env.BROWSER) {
-    require('./ActivationsPage.less');
-}
+import './ActivationsPage.less';
 
 const CATEGORIES = ['ALL', 'VACANCY', 'EDUCATION', 'ENTERTAINMENT', 'SPECIAL'];
 

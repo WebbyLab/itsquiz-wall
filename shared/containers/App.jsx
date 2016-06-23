@@ -83,10 +83,8 @@ export default class App extends Component {
 
                 this.appContainerHeight = nextHeightOfAppContainer;
             } else {
-                console.log('else');
                 this.iframeHeightCalcTimer = setTimeout(() => {
                     const newHeightOfAppContainer = this.getContainerHeight();
-                    console.log('newHeightOfAppContainer', newHeightOfAppContainer);
 
                     this.sendIframeHeightEvent(newHeightOfAppContainer);
 

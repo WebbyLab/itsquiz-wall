@@ -3,9 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import Dialog from './Dialog.jsx';
 import Icon   from './Icon.jsx';
 
-if (process.env.BROWSER) {
-    require('./LoginDialog.less');
-}
+import './LoginDialog.less';
 
 export default class LoginDialog extends Component {
     static propTypes = {

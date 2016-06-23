@@ -16,9 +16,7 @@ import ExpandableText       from '../ExpandableText.jsx';
 
 import { sprintf } from '../../utils';
 
-if (process.env.BROWSER) {
-    require('./ActivationPage.less');
-}
+import './ActivationPage.less';
 
 export default class ActivationPage extends React.Component {
     static propTypes = {
