@@ -4,9 +4,7 @@ import { Card, CardTitle, CardActions } from 'react-mdl/lib/Card';
 
 import { makeSlug } from '../utils/urlUtil';
 
-if (process.env.BROWSER) {
-    require('./QuizTile.less');
-}
+import './QuizTile.less';
 
 export default class QuizTile extends Component {
     static propTypes = {

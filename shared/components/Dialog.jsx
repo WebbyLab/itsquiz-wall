@@ -1,9 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import ReactModal from 'react-modal';
 
-if (process.env.BROWSER) {
-    require('./Dialog.less');
-}
+import './Dialog.less';
+
 
 export default class Dialog extends Component {
     static propTypes = {

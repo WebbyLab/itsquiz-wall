@@ -4,9 +4,7 @@ import cx                            from 'classnames';
 import Icon       from 'react-mdl/lib/Icon';
 import Textfield  from 'react-mdl/lib/Textfield';
 
-if (process.env.BROWSER) {
-    require('./SearchBox.less');
-}
+import './SearchBox.less';
 
 const ENTER_KEY = 13;
 

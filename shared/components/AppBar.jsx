@@ -9,9 +9,7 @@ import LanguageSwitch from '../containers/LanguageSwitch.jsx';
 import LoginDialog    from '../containers/LoginDialog.jsx';
 import SearchBox      from './SearchBox.jsx';
 
-if (process.env.BROWSER) {
-    require('./AppBar.less');
-}
+import './AppBar.less';
 
 const LOGO_SRC = '/static/logo.png';
 

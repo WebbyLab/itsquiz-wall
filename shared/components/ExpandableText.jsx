@@ -5,9 +5,7 @@ import cx from 'classnames';
 import Button   from 'react-mdl/lib/Button';
 import Markdown from './Markdown.jsx';
 
-if (process.env.BROWSER) {
-    require('./ExpandableText.less');
-}
+import './ExpandableText.less';
 
 const MAX_CHAR_NUMBER = 300;
 

@@ -1,13 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 
-import Dialog      from './Dialog.jsx';
 import Button      from 'react-mdl/lib/Button';
 import IconButton  from 'react-mdl/lib/IconButton';
 import Checkbox    from 'react-mdl/lib/Checkbox';
 
-if (process.env.BROWSER) {
-    require('./WelcomeDialog.less');
-}
+import Dialog from './Dialog.jsx';
+
+import './WelcomeDialog.less';
 
 export default class WelcomeDialog extends Component {
     static propTypes = {

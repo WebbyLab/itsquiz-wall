@@ -3,9 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import Dialog    from './Dialog.jsx';
 import Icon      from './Icon.jsx';
 
-if (process.env.BROWSER) {
-    require('./ShareDialog.less');
-}
+import './ShareDialog.less';
 
 export default class ShareDialog extends Component {
     static propTypes = {

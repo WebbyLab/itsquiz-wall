@@ -1,10 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 
-import AppBar    from './AppBar.jsx';
+import AppBar from './AppBar.jsx';
 
-if (process.env.BROWSER) {
-    require('./AppBarWithBackground.less');
-}
+import './AppBarWithBackground.less';
 
 export default class AppBarWithBackground extends Component {
     static propTypes = {

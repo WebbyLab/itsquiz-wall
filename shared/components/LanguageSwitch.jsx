@@ -1,9 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import cx                              from 'classnames';
 
-if (process.env.BROWSER) {
-    require('./LanguageSwitch.less');
-}
+import './LanguageSwitch.less';
 
 export default class LanguageSwitch extends Component {
     static propTypes = {
