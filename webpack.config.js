@@ -12,7 +12,8 @@ module.exports = {
                 NODE_ENV: JSON.stringify( process.env.NODE_ENV || 'development' )
             }
         }),
-        new ExtractTextPlugin("[name].css")
+        new ExtractTextPlugin("[name].css"),
+        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /ru|en|uk|tr/)
     ],
     output: {
         path: __dirname + '/public/static/build/',
