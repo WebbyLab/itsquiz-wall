@@ -60,7 +60,8 @@ export default class ApiClient {
             method,
             headers: {
                 Accept: 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-real-ip': this.XRealIP
             }
         };
 
@@ -85,5 +86,9 @@ export default class ApiClient {
 
     setAuthToken(authToken) {
         this.authToken = authToken;
+    }
+
+    setXRealIP(XRealIP) {
+        this.XRealIP = XRealIP;
     }
 }

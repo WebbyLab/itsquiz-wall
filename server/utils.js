@@ -102,6 +102,10 @@ export function makeRedirectUrl({ originalUrl }) {
     return `${UIWallPath}${originalUrl}`;
 }
 
+export function getIp(req) {
+    return req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || req.connection.remoteAddress;
+}
+
 export function detectLocale(req) {
     // Take locale passed by user
     const passedLocale = (req.query.locale || req.cookies.locale || '').toLowerCase();
@@ -111,7 +115,7 @@ export function detectLocale(req) {
     }
 
     // Detect locale by ip
-    const ip = req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || req.connection.remoteAddress;
+    const ip = getIp(req);
     const geo = geoip.lookup(ip);
     const country = (geo && geo.country);
 

@@ -12,6 +12,7 @@ import escapeHTML                from 'lodash/string/escape';
 import routes         from '../shared/routes.jsx';
 import configureStore from '../shared/store/configureStore';
 import i18n           from '../shared/i18n';
+import api            from '../shared/apiSingleton';
 import { makeSlug }   from '../shared/utils/urlUtil';
 
 import clientConfig from '../shared/config';
@@ -24,7 +25,8 @@ import trLocaleData from '../public/static/lang/tr.json';
 import { fetchComponentsData,
          getMetaDataFromState,
          makeRedirectUrl,
-         detectLocale } from './utils';
+         detectLocale,
+         getIp } from './utils';
 
 // Initializa localization
 const i18nToolsRegistry = {
@@ -55,6 +57,9 @@ app.use((req, res) => {
     }
 
     const locale = detectLocale(req);
+    const ip     = getIp(req);
+
+    api.apiClient.setXRealIP(ip);
     const store = configureStore();
 
     const i18nTools = i18nToolsRegistry[locale];
