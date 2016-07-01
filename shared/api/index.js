@@ -11,6 +11,7 @@ export default function ({ apiPrefix } = {}) {
     const api = new ApiClient({ prefix: apiPrefix });
 
     return {
+        apiClient         : api,
         activations       : new ActivationsAPI({ apiClient: api }),
         users             : new UsersAPI({ apiClient: api }),
         assessmentSystems : new AssessmentSystemsAPI({ apiClient: api })
