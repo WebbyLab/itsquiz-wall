@@ -13,8 +13,10 @@ import PromoPageContainer             from './containers/pages/PromoPage.jsx';
 
 export default (
     <Route component={App} >
+        <Redirect from='/' to='/activations' />
+        <Redirect from='' to='/activations' />
+
         <Route component={MainLayout} path='/'>
-            <Redirect from='/' to='/activations' />
             <Redirect from='/kmda/start' to='/activations?search=english' />
 
             <Route component={ActivationsPageContainer} path='/activations' />
@@ -28,7 +30,6 @@ export default (
 
             <Route component={PromoPageContainer} path='/promo/:key' />
 
-            <Redirect from='*' to='/activations' />
         </Route>
     </Route>
 );

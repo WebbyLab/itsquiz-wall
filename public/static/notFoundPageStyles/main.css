@@ -1,0 +1,24 @@
+.NotFoundPage {
+    min-height: 100vh;
+    background-color: #eaeaea;
+}
+
+.toolbar {
+    min-height: 65px;
+    width: 100%;
+    border-radius: 0;
+    padding: 16px;
+}
+
+.image {
+    max-width: 100%;
+    display: block;
+    height: auto;
+    margin: 0 auto;
+}
+
+.text {
+    font-size: 20px;
+    text-align: center;
+    color: rgba(0,0,0,.26);
+}
