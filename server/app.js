@@ -28,6 +28,8 @@ import { fetchComponentsData,
          detectLocale,
          getIp } from './utils';
 
+import send404 from './render404Html';
+
 // Initializa localization
 const i18nToolsRegistry = {
     ru   : new i18n.Tools({ localeData: ruLocaleData, locale: 'ru' }),
@@ -73,7 +75,9 @@ app.use((req, res) => {
         } else if (error) {
             res.send(500, error.message);
         } else if (!renderProps) {
-            res.send(404, 'Not found');
+            send404(res, i18nTools);
+
+            return;
         } else {
             fetchComponentsData({
                 locale,
@@ -94,6 +98,11 @@ app.use((req, res) => {
                 });
 
                 if (metaData.type === 'ACTIVATION') {
+                    if (!metaData.title) {
+                        send404(res, i18nTools);
+
+                        Promise.reject({});
+                    }
                     const activationId = renderProps.params.id;
                     const expectedPath =  `/activations/${activationId}/${makeSlug(metaData.title)}`;
 
