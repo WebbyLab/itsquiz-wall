@@ -181,7 +181,7 @@
         #          "align": "colon"
         #      }
         #  }],
-        "linebreak-style": [2, "unix"],
+        #"linebreak-style": [2, "unix"],
         "max-len": [2, 120, 4, {
             "ignoreUrls": true,
             "ignoreComments": false
