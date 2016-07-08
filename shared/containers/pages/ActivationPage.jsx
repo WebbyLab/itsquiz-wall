@@ -42,6 +42,12 @@ class ActivationPageContainer extends Component {
         }
     }
 
+    componentDidMount() {
+        embedEvents.subscribe({
+            'SEARCH_QUIZ_WALL' : this.handleSearch
+        });
+    }
+
     componentWillReceiveProps(nextProps) {
         if (this.props.isLoading && !nextProps.isLoading && nextProps.activation) {
             if (nextProps.activation.isSponsored) {
@@ -50,6 +56,15 @@ class ActivationPageContainer extends Component {
             sendEvent('activation', 'view', nextProps.activation.name);
         }
     }
+
+    handleSearch = (searchText) => {
+        this.props.history.pushState(null, '/activations', {
+            ...this.props.location.query,
+            search : searchText || undefined
+        });
+
+        sendEvent('activation page', 'search');
+    };
 
     handlePassActivationClick = (activation) => {
         const isEmbedded = this.props.location.query.embed;
