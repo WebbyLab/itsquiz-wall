@@ -21,8 +21,8 @@ import './ActivationPage.less';
 export default class ActivationPage extends React.Component {
     static propTypes = {
         activation         : React.PropTypes.object,
-        authorActivations  : React.PropTypes.array(React.PropTypes.object),
-        similarActivations : React.PropTypes.array(React.PropTypes.object),
+        authorActivations  : React.PropTypes.arrayOf(React.PropTypes.object),
+        similarActivations : React.PropTypes.arrayOf(React.PropTypes.object),
         showUserResult     : React.PropTypes.bool,
         sharingLink        : React.PropTypes.string,
         userQuizSession    : React.PropTypes.object,
@@ -136,7 +136,7 @@ export default class ActivationPage extends React.Component {
                                     numberOfQuestions = {authorActivation.numberOfQuestions}
                                     pictureURL        = {authorActivation.pictureURL}
                                     author            = {activation.author}
-                                    isPassed          = {authorActivation.isPassed}
+                                    isPassed          = {Boolean(authorActivation.isPassed)}
                                     userQuizSession   = {authorActivation.userQuizSession}
                                     onClick           = {onActivationClick.bind(null, authorActivation)}
                                 />

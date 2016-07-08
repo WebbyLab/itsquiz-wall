@@ -140,7 +140,7 @@ class ActivationsPageContainer extends Component {
         } else {
             this.setState({ isLoggingIn: true });
         }
-    }
+    };
 
     render() {
         return (
@@ -153,7 +153,7 @@ class ActivationsPageContainer extends Component {
                 selectedCategory       = {this.props.category}
                 isSharing              = {this.state.isSharing}
                 isLoggingIn            = {this.state.isLoggingIn}
-                isEmbedded             = {this.props.location.query.embed}
+                isEmbedded             = {Boolean(this.props.location.query.embed)}
                 isLoading              = {this.props.isLoading}
                 isEmpty                = {this.props.activations.length === 0}
                 onItemClick            = {this.handleQuizCardClick}
