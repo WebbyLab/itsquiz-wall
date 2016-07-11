@@ -191,7 +191,7 @@ class ActivationPageContainer extends Component {
                 isLoading          = {isLoading}
                 isEmbedded         = {Boolean(embed)}
                 isLoggingIn        = {isLoggingIn}
-                showUserResult     = {activation.isPassed && assigneeId}
+                showUserResult     = {Boolean(activation.isPassed && assigneeId)}
                 assessmentSystem   = {customAssessmentSystem}
                 onPass             = {this.handlePassActivationClick}
                 onSponsoredClick   = {this.handleSponsoredClick}

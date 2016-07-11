@@ -86,7 +86,7 @@ export default class ActivationsPage extends React.Component {
                 author              = {activation.author}
                 category            = {activation.category}
                 isSponsored         = {activation.isSponsored}
-                isPassed            = {activation.isPassed}
+                isPassed            = {Boolean(activation.isPassed)}
                 onShare             = {onShare.bind(this, activation)}
                 onClick             = {onItemClick.bind(this, activation)}
                 onAuthorAvatarClick = {onAuthorAvatarClick}
