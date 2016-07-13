@@ -325,56 +325,58 @@ export default class ActivationPage extends React.Component {
                                 }
                             </div>
 
-                            <div className='ActivationPage__author-name'>
-                                {author.fullName}
-                            </div>
+                            <div className='ActivationPage__quiz_summary'>
+                                <div className='ActivationPage__author-name'>
+                                    {author.fullName}
+                                </div>
 
-                            <div className={passInfoClasses}>
-                                <span className='ActivationPage__number-of-questions'>
+                                <div className={passInfoClasses}>
+                                    <span className='ActivationPage__number-of-questions'>
+                                        {
+                                            sprintf(
+                                                nl('%d question', '%d questions', numberOfQuestions),
+                                                numberOfQuestions
+                                            )
+                                        }
+                                    </span>
+
+                                    <span className='ActivationPage__span-divider'>
+                                        •
+                                    </span>
+
+                                    <span className='ActivationPage__time-to-pass'>
+                                        {humanizeDuration(timeToPass, 'second')}
+                                    </span>
+
                                     {
-                                        sprintf(
-                                            nl('%d question', '%d questions', numberOfQuestions),
-                                            numberOfQuestions
-                                        )
-                                    }
-                                </span>
+                                        dueTime
+                                        ?   (
+                                            <span className='ActivationPage__expires'>
+                                                <span className='ActivationPage__span-divider'>
+                                                    •
+                                                </span>
+                                                <span>{sprintf(l('expires %s'), getTimeFromNow(dueTime))}</span>
 
-                                <span className='ActivationPage__span-divider'>
-                                    •
-                                </span>
-
-                                <span className='ActivationPage__time-to-pass'>
-                                    {humanizeDuration(timeToPass, 'second')}
-                                </span>
-
-                                {
-                                    dueTime
-                                    ?   (
-                                        <span className='ActivationPage__expires'>
-                                            <span className='ActivationPage__span-divider'>
-                                                •
                                             </span>
-                                            <span>{sprintf(l('expires %s'), getTimeFromNow(dueTime))}</span>
+                                        )
+                                        : null
+                                    }
 
-                                        </span>
-                                    )
-                                    : null
-                                }
-
-                                <div className='ActivationPage__settings-icons'>
-                                    <Icon
-                                        title={canAssigneeViewQuestions
-                                            ? l('You can view answers')
-                                            : l('Author disallowed to view answers')}
-                                        type='eye'
-                                        size={16}
-                                        className={settingsIconsClasses}
-                                    />
-                                    <Icon
-                                        title={l('You can contact the author')}
-                                        type='message'
-                                        size={16}
-                                    />
+                                    <div className='ActivationPage__settings-icons'>
+                                        <Icon
+                                            title={canAssigneeViewQuestions
+                                                ? l('You can view answers')
+                                                : l('Author disallowed to view answers')}
+                                            type='eye'
+                                            size={16}
+                                            className={settingsIconsClasses}
+                                        />
+                                        <Icon
+                                            title={l('You can contact the author')}
+                                            type='message'
+                                            size={16}
+                                        />
+                                    </div>
                                 </div>
                             </div>
 
@@ -397,18 +399,18 @@ export default class ActivationPage extends React.Component {
 
                                 {
                                     isPassingBtnAvailable && !userQuizSession
-                                    ? this.renderPassButton()
-                                    : null
+                                    ?
+                                        this.renderPassButton()
+                                    :
+                                        <Button
+                                            ripple
+                                            raised
+                                            onClick   = {onShareResult.bind(null, activation)}
+                                            className = 'ActivationPage__result-share-btn'
+                                        >
+                                            {l('Share result with friends')}
+                                        </Button>
                                 }
-
-                                <Button
-                                    ripple
-                                    raised
-                                    onClick   = {onShareResult.bind(null, activation)}
-                                    className = 'ActivationPage__result-share-btn'
-                                >
-                                    {l('Share result with friends')}
-                                </Button>
                             </div>
                         </div>
 

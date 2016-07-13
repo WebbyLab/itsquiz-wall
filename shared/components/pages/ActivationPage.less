@@ -133,6 +133,12 @@
                 }
             }
 
+            .ActivationPage__quiz_summary {
+                @media @phone {
+                    display: none;
+                }
+            }
+
             .ActivationPage__author-name {
                 margin-top: 5px;
                 font-weight: bold;
@@ -289,12 +295,13 @@
 }
 
 .ActivationPage__result-share-btn {
-    background-color: @white-darker;
+    background-color: @green-app;
+    color: @white-darker;
     display: block;
     margin: 6px auto;
 
     &:hover {
-        background-color: @white-dark;
+        background-color: @green-app;
     }
 
     @media @phone {
@@ -385,7 +392,7 @@
     }
 
     @media @phone {
-        min-height: 300px;
+        min-height: 700px;
         text-align: center;
     }
 
