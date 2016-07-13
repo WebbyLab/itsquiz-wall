@@ -333,6 +333,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    flex-shrink: 2;
 }
 
 .ActivationPage__overlay {
@@ -386,6 +387,20 @@
     @media @phone {
         min-height: 300px;
         text-align: center;
+    }
+
+    .ActivationPage__pass-btn-wrapper {
+        margin: 0px auto;
+
+        .ActivationPage__pass-btn-already-passed {
+            background-color: @white-darker !important;
+
+            @media @phone {
+                order: 2;
+                margin-right: 0;
+                margin-top: 10px;
+            }
+        }
     }
 }
 
