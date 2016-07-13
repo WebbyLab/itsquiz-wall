@@ -38,6 +38,10 @@
     position: absolute;
     top: 16px;
     right: 16px;
+
+    @media @phone {
+        display: none;
+    }
 }
 
 .ActivationPage__spinner {
@@ -96,6 +100,28 @@
             height: 150px;
             border-radius: 150px;
             flex-shrink: 0;
+
+            @media @phone {
+                display: none;
+            }
+        }
+
+        .ActivationPage__head-mobile {
+            display: none;
+
+            @media @phone {
+                display: block;
+            }
+
+            .ActivationPage__circle-result {
+                .ScoreCircle {
+                    margin: 0px auto;
+                }
+            }
+
+            .ActivationPage__result-share {
+                margin-top: 25px;
+            }
         }
 
         .ActivationPage__info {
@@ -107,30 +133,11 @@
             height: 150px;
 
             @media @phone {
+                display: none;
                 margin-left: 0;
                 height: auto;
                 margin-top: 24px;
                 align-items: center;
-            }
-
-            .ActivationPage__heading {
-                width: calc(~"100% - 40px");
-
-                .ActivationPage__name {
-                    font-size: 25px;
-                    font-weight: 300;
-
-                    @media @phone {
-                        width: 100%;
-                        text-align: center;
-                    }
-                }
-
-                @media @phone {
-                    width: 100%;
-                    text-align: center;
-                    margin-bottom: 10px;
-                }
             }
 
             .ActivationPage__quiz_summary {
@@ -315,7 +322,7 @@
     display: block;
 
     @media @phone {
-        width: 80%;
+        // width: 80%;
     }
 }
 
@@ -340,7 +347,11 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    flex-shrink: 2;
+    margin-left: 190px;
+
+    @media @phone {
+        margin-left: 0px;
+    }
 }
 
 .ActivationPage__overlay {
@@ -392,7 +403,7 @@
     }
 
     @media @phone {
-        min-height: 700px;
+        min-height: 300px;
         text-align: center;
     }
 

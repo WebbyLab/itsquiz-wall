@@ -13,6 +13,7 @@ import ShareDialog          from '../../containers/ShareDialog.jsx';
 import LoginDialog          from '../../containers/LoginDialog.jsx';
 import AppBarWithBackground from '../AppBarWithBackground.jsx';
 import ExpandableText       from '../ExpandableText.jsx';
+import ScoreCircle          from '../../containers/other/ScoreCircle.jsx';
 
 import { sprintf } from '../../utils';
 
@@ -312,6 +313,24 @@ export default class ActivationPage extends React.Component {
                 <Card className='ActivationPage__paper' shadow={1}>
                     <CardTitle className='ActivationPage__head'>
                         <img className='ActivationPage__picture' src={pictureURL} />
+                        <div className='ActivationPage__head-mobile'>
+                            <div className='ActivationPage__circle-result'>
+                                <ScoreCircle
+                                    value={userQuizSession.score}
+                                    size={200}
+                                />
+                            </div>
+                            <div className='ActivationPage__result-share'>
+                                <Button
+                                    ripple
+                                    raised
+                                    onClick   = {onShareResult.bind(null, activation)}
+                                    className = 'ActivationPage__result-share-btn'
+                                >
+                                    {l('Share result')}
+                                </Button>
+                            </div>
+                        </div>
                         <div className='ActivationPage__info'>
                             <div className='ActivationPage__heading'>
                                 <span className='ActivationPage__name'>{name}</span>
