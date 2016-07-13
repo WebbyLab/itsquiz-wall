@@ -38,6 +38,10 @@
     position: absolute;
     top: 16px;
     right: 16px;
+
+    @media @phone {
+        display: none;
+    }
 }
 
 .ActivationPage__spinner {
@@ -96,6 +100,28 @@
             height: 150px;
             border-radius: 150px;
             flex-shrink: 0;
+
+            @media @phone {
+                display: none;
+            }
+        }
+
+        .ActivationPage__head-mobile {
+            display: none;
+
+            @media @phone {
+                display: block;
+            }
+
+            .ActivationPage__circle-result {
+                .ScoreCircle {
+                    margin: 0px auto;
+                }
+            }
+
+            .ActivationPage__result-share {
+                margin-top: 25px;
+            }
         }
 
         .ActivationPage__info {
@@ -107,29 +133,16 @@
             height: 150px;
 
             @media @phone {
+                display: none;
                 margin-left: 0;
                 height: auto;
                 margin-top: 24px;
                 align-items: center;
             }
 
-            .ActivationPage__heading {
-                width: calc(~"100% - 40px");
-
-                .ActivationPage__name {
-                    font-size: 25px;
-                    font-weight: 300;
-
-                    @media @phone {
-                        width: 100%;
-                        text-align: center;
-                    }
-                }
-
+            .ActivationPage__quiz_summary {
                 @media @phone {
-                    width: 100%;
-                    text-align: center;
-                    margin-bottom: 10px;
+                    display: none;
                 }
             }
 
@@ -289,12 +302,13 @@
 }
 
 .ActivationPage__result-share-btn {
-    background-color: @white-darker;
+    background-color: @green-app;
+    color: @white-darker;
     display: block;
     margin: 6px auto;
 
     &:hover {
-        background-color: @white-dark;
+        background-color: @green-app;
     }
 
     @media @phone {
@@ -308,7 +322,7 @@
     display: block;
 
     @media @phone {
-        width: 80%;
+        // width: 80%;
     }
 }
 
@@ -333,6 +347,13 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    margin-left: 190px;
+    margin-top: 82px;
+
+    @media @phone {
+        margin-left: 0px;
+        margin-top: 0px;
+    }
 }
 
 .ActivationPage__overlay {
@@ -386,6 +407,20 @@
     @media @phone {
         min-height: 300px;
         text-align: center;
+    }
+
+    .ActivationPage__pass-btn-wrapper {
+        margin: 0px auto;
+
+        .ActivationPage__pass-btn-already-passed {
+            background-color: @white-darker !important;
+
+            @media @phone {
+                order: 2;
+                margin-right: 0;
+                margin-top: 10px;
+            }
+        }
     }
 }
 
