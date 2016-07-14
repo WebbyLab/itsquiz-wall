@@ -40,6 +40,18 @@
     right: 16px;
 }
 
+.ActivationPage__menu--mobile {
+    display: none;
+
+    @media @phone {
+        display: block;
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        color: @white-darker;
+    }
+}
+
 .ActivationPage__spinner {
     margin-top: 30px;
 }
@@ -73,6 +85,10 @@
     margin: 8px;
     margin-top: 150px;
     width: calc(~"100% - 32px");
+
+    @media @phone {
+        margin-top: 65px;
+    }
 
     .ActivationPage__actions {
         margin: 16px 0;
@@ -382,6 +398,18 @@
     margin-bottom: 16px;
 }
 
+.ActivationPage_score--circle {
+    display: none;
+
+    .ScoreCircle {
+        margin: 0px auto;
+    }
+
+    @media @phone {
+        display: block;
+    }
+}
+
 .ActivationPage__greeting {
     margin-top: 5px;
     color: @white-darker;
@@ -392,9 +420,11 @@
     word-wrap: break-word;
 
     @media @phone {
+        margin-top: 15px;
         max-width: 280px;
         font-size: 20px;
         line-height: normal;
+        font-size: 18px;
     }
 }
 
@@ -421,6 +451,10 @@
     color: @white-darker;
     text-shadow: rgba(0, 0, 0, 0.3) 2px 0px 3px;
     margin: 16px 0;
+
+    @media @phone {
+        display: none;
+    }
 }
 
 .ActivationPage__points {
@@ -444,10 +478,36 @@
     }
 }
 
+.ActivationPage__result-share-btn--mobile {
+    display: none;
+
+    @media @phone {
+        display: block;
+        background-color: @green-app;
+        color: @white-darker;
+        margin: 0px auto;
+        margin-top: 35px;
+
+        &:hover {
+            background-color: @green-app;
+        }
+    }
+}
+
 .ActivationPage__result-answers-btn {
     margin: 6px auto;
     color: @white-darker;
     display: block;
+}
+
+.ActivationPage__result-answers-btn--mobile {
+    margin: 6px auto;
+    color: @white-darker;
+    display: none;
+
+    @media @phone {
+        display: block;
+    }
 }
 
 .ActivationPage__fill-profile-btn {
@@ -476,6 +536,7 @@
     margin-left: 165px;
 
     @media @phone {
+        display: none;
         margin-left: 0px;
     }
 }
@@ -529,7 +590,7 @@
     }
 
     @media @phone {
-        min-height: 300px;
+        min-height: 469px;
         text-align: center;
     }
 }
@@ -561,6 +622,25 @@
     .ActivationPage__pass-btn {
         background-color: @white-darker;
     }
+
+    @media @phone {
+        display: none;
+    }
+}
+
+.ActivationPage__pass-btn-wrapper-passed--mobile {
+    display: none;
+
+    @media @phone {
+        background-color: @white-darker;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 150px;
+        margin: 0px auto;
+        margin-top: 10px;
+    }
 }
 
 .ActivationPage__activation--sponsored {
@@ -574,6 +654,30 @@
             order: 2;
             margin-right: 0;
             margin-top: 10px;
+        }
+    }
+}
+
+.ActivationPage__proposed-activations {
+    background-color: rgba(0, 0, 0, 0);
+    position: fixed;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    height: 420px;
+    z-index: 2;
+    justify-content: space-between;
+
+    @media @phone {
+        display: none;
+    }
+
+    .ActivationPage__proposed-activation {
+        .QuizTile {
+            height: 100%;
         }
     }
 }

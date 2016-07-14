@@ -13,6 +13,7 @@ import ShareDialog          from '../../containers/ShareDialog.jsx';
 import LoginDialog          from '../../containers/LoginDialog.jsx';
 import AppBarWithBackground from '../AppBarWithBackground.jsx';
 import ExpandableText       from '../ExpandableText.jsx';
+import ScoreCircle          from '../other/ScoreCircle.jsx';
 
 import { sprintf } from '../../utils';
 
@@ -102,6 +103,46 @@ export default class ActivationPage extends React.Component {
             }
         }
     };
+
+    renderProposedActivations = () => {
+        const {
+            similarActivations,
+            authorActivations,
+            onActivationClick
+        } = this.props;
+
+        if (authorActivations && authorActivations.length || similarActivations && similarActivations.length) {
+            const proposedActivations =
+                (similarActivations || []).concat(authorActivations || []).filter(item => {
+                    return !item.userQuizSession;
+                }).slice(0, 2);
+
+            return (
+                <div className='ActivationPage__proposed-activations'>
+                    {
+                        proposedActivations.map(proposedActivation =>
+                            <div
+                                className = 'ActivationPage__proposed-activation'
+                                key       = {proposedActivation.id}
+                            >
+                                <QuizTile
+                                    id                = {proposedActivation.id}
+                                    name              = {proposedActivation.name}
+                                    timeToPass        = {proposedActivation.timeToPass}
+                                    numberOfQuestions = {proposedActivation.numberOfQuestions}
+                                    pictureURL        = {proposedActivation.pictureURL}
+                                    author            = {proposedActivation.author}
+                                    isPassed          = {Boolean(proposedActivation.isPassed)}
+                                    userQuizSession   = {proposedActivation.userQuizSession}
+                                    onClick           = {onActivationClick.bind(null, proposedActivation)}
+                                />
+                            </div>
+                        )
+                    }
+                </div>
+            );
+        }
+    }
 
     renderAuthorActivations = () => {
         const {
@@ -416,7 +457,36 @@ export default class ActivationPage extends React.Component {
                         ?
                             <div className={cx('ActivationPage__results-container', userQuizSession.resultBackground)}>
                                 <div className='ActivationPage__overlay'>
+                                    <div className='ActivationPage__menu--mobile'>
+                                        {
+                                            !activation.isPrivate
+                                            ? (
+                                                <IconButton
+                                                    ripple
+                                                    name    = 'share'
+                                                    onClick = {onShare.bind(null, activation)}
+                                                />
+                                            )
+                                            : null
+                                        }
+                                    </div>
                                     <div className='ActivationPage__results-text'>
+
+                                        <div className='ActivationPage_score--circle'>
+                                            <ScoreCircle
+                                                value={userQuizSession.score}
+                                                size ={200}
+                                            />
+                                        </div>
+
+                                        <Button
+                                            ripple
+                                            raised
+                                            onClick   = {onShareResult.bind(null, activation)}
+                                            className = 'ActivationPage__result-share-btn--mobile'
+                                        >
+                                            {l('Share result')}
+                                        </Button>
 
                                         <h4 className='ActivationPage__greeting'>
                                             {greeting}
@@ -425,6 +495,7 @@ export default class ActivationPage extends React.Component {
                                         <div className='ActivationPage__score'>
                                             {userQuizSession.score}%
                                         </div>
+
                                         <div className='ActivationPage__points'>
                                             ({
                                                 sprintf(
@@ -438,7 +509,61 @@ export default class ActivationPage extends React.Component {
                                                 )
                                             })
                                         </div>
+
+                                        {
+                                            userQuizSession.canViewAnswers
+                                            ?
+                                                <Button
+                                                    ripple
+                                                    onClick   = {onViewAnswers.bind(null, activation)}
+                                                    className = 'ActivationPage__result-answers-btn--mobile'
+                                                >
+                                                    {l('View my answers')}
+                                                </Button>
+                                            : null
+                                        }
+
+                                        {
+                                            isPassingBtnAvailable
+                                            ? (
+                                                <div className='ActivationPage__pass-btn-wrapper-passed--mobile'>
+                                                    <Button
+                                                        ripple
+                                                        raised    = {!isSponsored}
+                                                        onClick   = {onPass.bind(null, activation)}
+                                                        className = 'ActivationPage__btn ActivationPage__pass-btn'
+                                                    >
+                                                        {
+                                                            userQuizSession.gainedPoints === userQuizSession.maxPoints
+                                                            ?
+                                                                l('Pass the test')
+                                                            :
+                                                                l('Improve result')
+                                                        }
+                                                    </Button>
+                                                    {
+                                                        numberOfTriesLeft
+                                                        ?
+                                                            <div className='ActivationPage__number-of-tries'>
+                                                                {
+                                                                    sprintf(
+                                                                        nl(
+                                                                            'You have %d try left',
+                                                                            'You have %d tries left',
+                                                                            numberOfTriesLeft),
+                                                                        numberOfTriesLeft
+                                                                    )
+                                                                }
+                                                            </div>
+                                                        :
+                                                            null
+                                                    }
+                                                </div>
+                                            )
+                                            : null
+                                        }
                                     </div>
+
                                     <div className='ActivationPage__results-actions'>
                                         {
                                             isPassingBtnAvailable
@@ -479,7 +604,6 @@ export default class ActivationPage extends React.Component {
                                             )
                                             : null
                                         }
-
 
                                         {
                                             userQuizSession.canViewAnswers
@@ -578,6 +702,8 @@ export default class ActivationPage extends React.Component {
                     title            = {activation.name}
                     height           = {200}
                 />
+
+                {this.renderProposedActivations()}
 
                 <div className='ActivationPage__content'>
                     {this.renderContent()}
