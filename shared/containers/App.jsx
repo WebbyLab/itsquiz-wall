@@ -63,8 +63,18 @@ export default class App extends Component {
 
         if (isEmbed && (isPathnameChanged || isQueryChanged)) {
             const pathname = nextProps.location.pathname;
-            const { category } = nextProps.location.query;
-            const query = category ? { category } : null;
+            const { category, search } = nextProps.location.query;
+
+            const query = {};
+
+            if (category) {
+                query.category = category;
+            }
+
+            if (search) {
+                query.search = search;
+            }
+
             const quizWallEmbedPath = this.props.history.createHref(pathname, query);
 
             embedEvents.send({
@@ -99,10 +109,16 @@ export default class App extends Component {
     }
 
     handleRedirect = () => {
-        this.props.history.pushState(null, '/activations', {
+        const newState = {
             embed      : this.props.location.query.embed,
             assigneeId : this.props.location.query.assigneeId
-        });
+        };
+
+        if (this.props.location.query.search) {
+            newState.search = this.props.location.query.search;
+        }
+
+        this.props.history.pushState(null, '/activations', newState);
     };
 
     getContainerHeight = () => {

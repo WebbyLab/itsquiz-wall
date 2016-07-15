@@ -48,7 +48,8 @@ export default class ActivationPage extends React.Component {
     static contextTypes = { i18n: React.PropTypes.object };
 
     state = {
-        showDescription: false
+        showDescription: false,
+        proposedActivationsVisibility: 'hidden'
     };
 
     componentWillMount() {
@@ -151,19 +152,19 @@ export default class ActivationPage extends React.Component {
         }
 
         if (authorActivations && authorActivations.length || similarActivations && similarActivations.length) {
-            const allProposedActivations =
-                (similarActivations || []).concat(authorActivations || []).filter(item => {
-                    return !item.userQuizSession;
-                });
-
-            const proposedActivationsIndexes =
-                this.getRandomNumbers(0, allProposedActivations.length, 2);
-
-            const proposedActivations = allProposedActivations.filter((item, index) =>
-                proposedActivationsIndexes.indexOf(index) !== -1
-            );
-
             if (this.state.proposedActivationsVisibility !== 'visible') {
+                const allProposedActivations =
+                    (similarActivations || []).concat(authorActivations || []).filter(item => {
+                        return !item.userQuizSession;
+                    });
+
+                const proposedActivationsIndexes =
+                    this.getRandomNumbers(0, allProposedActivations.length, 2);
+
+                this.proposedActivations = allProposedActivations.filter((item, index) =>
+                    proposedActivationsIndexes.indexOf(index) !== -1
+                );
+
                 this.delayRenderProposedActivations();
             }
 
@@ -173,7 +174,7 @@ export default class ActivationPage extends React.Component {
                         this.state.proposedActivationsVisibility || 'hidden'}`}
                 >
                     {
-                        proposedActivations.map(proposedActivation =>
+                        this.proposedActivations.map(proposedActivation =>
                             <div
                                 className = 'ActivationPage__proposed-activation'
                                 key       = {proposedActivation.id}
