@@ -463,6 +463,18 @@
     color: @white-darker;
 
     @media @phone {
+        display: none;
+    }
+}
+
+.ActivationPage__points--mobile {
+    font-size: 12px;
+    text-shadow: rgba(0, 0, 0, 0.3) 2px 0px 3px;
+    color: @white-darker;
+    display: none;
+
+    @media @phone {
+        display: block;
         margin-top: 10px;
     }
 }
@@ -674,6 +686,18 @@
     height: 420px;
     z-index: 2;
     justify-content: space-between;
+    transition: right 0.3s ease-in-out;
+    right: -150px;
+
+
+    &--hidden {
+        &:extend(.ActivationPage__proposed-activations all);
+    }
+
+    &--visible {
+        &:extend(.ActivationPage__proposed-activations all);
+        right: 0px;
+    }
 
     @media @phone {
         display: none;

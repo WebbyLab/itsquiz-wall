@@ -104,12 +104,25 @@ export default class ActivationPage extends React.Component {
         }
     };
 
+    dalayRenderProposedActivations = () => {
+        setTimeout(() => {
+            this.setState({
+                proposedActivationsVisibility: 'visible'
+            });
+        }, 1000);
+    }
+
     renderProposedActivations = () => {
         const {
+            activation,
             similarActivations,
             authorActivations,
             onActivationClick
         } = this.props;
+
+        if (!activation.userQuizSession) {
+            return;
+        }
 
         if (authorActivations && authorActivations.length || similarActivations && similarActivations.length) {
             const proposedActivations =
@@ -117,8 +130,12 @@ export default class ActivationPage extends React.Component {
                     return !item.userQuizSession;
                 }).slice(0, 2);
 
+            this.dalayRenderProposedActivations();
+
             return (
-                <div className='ActivationPage__proposed-activations'>
+                <div
+                    className={`ActivationPage__proposed-activations--${this.state.proposedActivationsVisibility || 'hidden'}`}
+                >
                     {
                         proposedActivations.map(proposedActivation =>
                             <div
@@ -479,7 +496,7 @@ export default class ActivationPage extends React.Component {
                                             />
                                         </div>
 
-                                        <div className='ActivationPage__points'>
+                                        <div className='ActivationPage__points--mobile'>
                                             ({
                                                 sprintf(
                                                     nl(
@@ -508,6 +525,20 @@ export default class ActivationPage extends React.Component {
 
                                         <div className='ActivationPage__score'>
                                             {userQuizSession.score}%
+                                        </div>
+
+                                        <div className='ActivationPage__points'>
+                                            ({
+                                                sprintf(
+                                                    nl(
+                                                        '%s of %s point',
+                                                        '%s of %s points',
+                                                        userQuizSession.maxPoints
+                                                    ),
+                                                    userQuizSession.gainedPoints,
+                                                    userQuizSession.maxPoints
+                                                )
+                                            })
                                         </div>
 
                                         {
