@@ -185,7 +185,13 @@ export default class ActivationPage extends React.Component {
                                     timeToPass        = {proposedActivation.timeToPass}
                                     numberOfQuestions = {proposedActivation.numberOfQuestions}
                                     pictureURL        = {proposedActivation.pictureURL}
-                                    author            = {proposedActivation.author}
+                                    author            = {
+                                        proposedActivation.author.fullName
+                                        ?
+                                            proposedActivation.author
+                                        :
+                                            activation.author
+                                    }
                                     isPassed          = {Boolean(proposedActivation.isPassed)}
                                     userQuizSession   = {proposedActivation.userQuizSession}
                                     onClick           = {onActivationClick.bind(null, proposedActivation)}
