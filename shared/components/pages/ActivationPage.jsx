@@ -57,6 +57,12 @@ export default class ActivationPage extends React.Component {
         this.sponsoredButtonLabel = Math.random() < 0.5 ? l('Contact me') : l('Get the gift');
     }
 
+    componentWillReceiveProps() {
+        this.setState({
+            proposedActivationsVisibility: 'hidden'
+        });
+    }
+
     handleDescriptionClick = () => {
         this.setState({
             showDescription: true
@@ -104,7 +110,27 @@ export default class ActivationPage extends React.Component {
         }
     };
 
-    dalayRenderProposedActivations = () => {
+    getRandomNumbers = (min, max, amount) => {
+        if (amount < 1) {
+            return;
+        }
+
+        const result = [ Math.floor(Math.random() * (max - min)) + min ];
+
+        while (result.length !== amount) {
+            const randomNumber = Math.floor(Math.random() * (max - min)) + min;
+
+            if (result.indexOf(randomNumber) !== -1) {
+                continue;
+            }
+
+            result.push(randomNumber);
+        }
+
+        return result;
+    }
+
+    delayRenderProposedActivations = () => {
         setTimeout(() => {
             this.setState({
                 proposedActivationsVisibility: 'visible'
@@ -125,16 +151,26 @@ export default class ActivationPage extends React.Component {
         }
 
         if (authorActivations && authorActivations.length || similarActivations && similarActivations.length) {
-            const proposedActivations =
+            const allProposedActivations =
                 (similarActivations || []).concat(authorActivations || []).filter(item => {
                     return !item.userQuizSession;
-                }).slice(0, 2);
+                });
 
-            this.dalayRenderProposedActivations();
+            const proposedActivationsIndexes =
+                this.getRandomNumbers(0, allProposedActivations.length, 2);
+
+            const proposedActivations = allProposedActivations.filter((item, index) =>
+                proposedActivationsIndexes.indexOf(index) !== -1
+            );
+
+            if (this.state.proposedActivationsVisibility !== 'visible') {
+                this.delayRenderProposedActivations();
+            }
 
             return (
                 <div
-                    className={`ActivationPage__proposed-activations--${this.state.proposedActivationsVisibility || 'hidden'}`}
+                    className={`ActivationPage__proposed-activations--${
+                        this.state.proposedActivationsVisibility || 'hidden'}`}
                 >
                     {
                         proposedActivations.map(proposedActivation =>
