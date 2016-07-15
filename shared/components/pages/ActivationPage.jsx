@@ -163,16 +163,15 @@ export default class ActivationPage extends React.Component {
                     return;
                 }
 
+                const numberOfProposedActivations = allProposedActivations.length === 1 ? 1 : 2;
                 const proposedActivationsIndexes =
-                    this.getRandomNumbers(0, allProposedActivations.length, 2);
+                    this.getRandomNumbers(0, allProposedActivations.length, numberOfProposedActivations);
 
                 this.proposedActivations = allProposedActivations.filter((item, index) =>
                     proposedActivationsIndexes.indexOf(index) !== -1
                 );
 
-                if (this.state.wasDelayed) {
-                    this.delayRenderProposedActivations();
-                }
+                this.delayRenderProposedActivations();
             }
 
             return (
