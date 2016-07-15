@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-17 16:31+0300\n"
-"PO-Revision-Date: 2016-06-17 16:35+0300\n"
+"POT-Creation-Date: 2016-07-15 16:39+0300\n"
+"PO-Revision-Date: 2016-07-15 16:41+0300\n"
 "Last-Translator: oleg <oleg>\n"
 "Language-Team: русский <>\n"
 "Language: \n"
@@ -20,6 +20,9 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Gtranslator 2.91.6\n"
+
+msgid "The page you are looking for cannot be found"
+msgstr "Страница которую вы ищете не может быть найдена"
 
 msgid "Sign up / Sign in"
 msgstr "Регистрация / Вход"
@@ -120,6 +123,9 @@ msgstr "Автор запретил просмотр ответов"
 msgid "You can contact the author"
 msgstr "Вы можете связаться с автором"
 
+msgid "Share result with friends"
+msgstr "Поделиться результатом с друзьями"
+
 msgid "Pass the test"
 msgstr "Пройти тест"
 
@@ -137,11 +143,14 @@ msgstr[0] "%s из %s балла"
 msgstr[1] "%s из %s баллов"
 msgstr[2] "%s из %s баллов"
 
-msgid "Share result with friends"
-msgstr "Поделиться результатом с друзьями"
+msgid "Share result"
+msgstr "Поделиться результатом"
 
 msgid "View my answers"
 msgstr "Просмотреть мои ответы"
+
+msgid "Improve result"
+msgstr "Улучшить результат"
 
 msgid "Fill in your resume"
 msgstr "Заполните свой профиль"
@@ -292,9 +301,6 @@ msgstr[2] "%d минут"
 
 #~ msgid "Pass this test"
 #~ msgstr "Сдать этот тест"
-
-#~ msgid "Share test"
-#~ msgstr "Поделиться тестом"
 
 #~ msgid "Sign in"
 #~ msgstr "Войти"
