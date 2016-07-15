@@ -7,6 +7,9 @@
             "plural_forms": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);",
             "lang": ""
          },
+         "The page you are looking for cannot be found": [
+            "Страница которую вы ищете не может быть найдена"
+         ],
          "Sign up / Sign in": [
             "Регистрация / Вход"
          ],
@@ -102,6 +105,9 @@
          "You can contact the author": [
             "Вы можете связаться с автором"
          ],
+         "Share result with friends": [
+            "Поделиться результатом с друзьями"
+         ],
          "Pass the test": [
             "Пройти тест"
          ],
@@ -115,11 +121,14 @@
             "%s из %s баллов",
             "%s из %s баллов"
          ],
-         "Share result with friends": [
-            "Поделиться результатом с друзьями"
+         "Share result": [
+            "Поделиться результатом"
          ],
          "View my answers": [
             "Просмотреть мои ответы"
+         ],
+         "Improve result": [
+            "Улучшить результат"
          ],
          "Fill in your resume": [
             "Заполните свой профиль"
