@@ -479,23 +479,6 @@ export default class ActivationPage extends React.Component {
                                             />
                                         </div>
 
-                                        <Button
-                                            ripple
-                                            raised
-                                            onClick   = {onShareResult.bind(null, activation)}
-                                            className = 'ActivationPage__result-share-btn--mobile'
-                                        >
-                                            {l('Share result')}
-                                        </Button>
-
-                                        <h4 className='ActivationPage__greeting'>
-                                            {greeting}
-                                        </h4>
-
-                                        <div className='ActivationPage__score'>
-                                            {userQuizSession.score}%
-                                        </div>
-
                                         <div className='ActivationPage__points'>
                                             ({
                                                 sprintf(
@@ -508,6 +491,23 @@ export default class ActivationPage extends React.Component {
                                                     userQuizSession.maxPoints
                                                 )
                                             })
+                                        </div>
+
+                                        <h4 className='ActivationPage__greeting'>
+                                            {greeting}
+                                        </h4>
+
+                                        <Button
+                                            ripple
+                                            raised
+                                            onClick   = {onShareResult.bind(null, activation)}
+                                            className = 'ActivationPage__result-share-btn--mobile'
+                                        >
+                                            {l('Share result')}
+                                        </Button>
+
+                                        <div className='ActivationPage__score'>
+                                            {userQuizSession.score}%
                                         </div>
 
                                         {
