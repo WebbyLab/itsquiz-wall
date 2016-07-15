@@ -48,13 +48,20 @@ export default class ActivationPage extends React.Component {
     static contextTypes = { i18n: React.PropTypes.object };
 
     state = {
-        showDescription: false
+        showDescription: false,
+        proposedActivationsVisibility: 'hidden'
     };
 
     componentWillMount() {
         const { l } = this.context.i18n;
 
         this.sponsoredButtonLabel = Math.random() < 0.5 ? l('Contact me') : l('Get the gift');
+    }
+
+    componentWillReceiveProps() {
+        this.setState({
+            proposedActivationsVisibility: 'hidden'
+        });
     }
 
     handleDescriptionClick = () => {
@@ -104,7 +111,27 @@ export default class ActivationPage extends React.Component {
         }
     };
 
-    dalayRenderProposedActivations = () => {
+    getRandomNumbers = (min, max, amount) => {
+        if (amount < 1) {
+            return;
+        }
+
+        const result = [ Math.floor(Math.random() * (max - min)) + min ];
+
+        while (result.length !== amount) {
+            const randomNumber = Math.floor(Math.random() * (max - min)) + min;
+
+            if (result.indexOf(randomNumber) !== -1) {
+                continue;
+            }
+
+            result.push(randomNumber);
+        }
+
+        return result;
+    }
+
+    delayRenderProposedActivations = () => {
         setTimeout(() => {
             this.setState({
                 proposedActivationsVisibility: 'visible'
@@ -125,19 +152,29 @@ export default class ActivationPage extends React.Component {
         }
 
         if (authorActivations && authorActivations.length || similarActivations && similarActivations.length) {
-            const proposedActivations =
-                (similarActivations || []).concat(authorActivations || []).filter(item => {
-                    return !item.userQuizSession;
-                }).slice(0, 2);
+            if (this.state.proposedActivationsVisibility !== 'visible') {
+                const allProposedActivations =
+                    (similarActivations || []).concat(authorActivations || []).filter(item => {
+                        return !item.userQuizSession;
+                    });
 
-            this.dalayRenderProposedActivations();
+                const proposedActivationsIndexes =
+                    this.getRandomNumbers(0, allProposedActivations.length, 2);
+
+                this.proposedActivations = allProposedActivations.filter((item, index) =>
+                    proposedActivationsIndexes.indexOf(index) !== -1
+                );
+
+                this.delayRenderProposedActivations();
+            }
 
             return (
                 <div
-                    className={`ActivationPage__proposed-activations--${this.state.proposedActivationsVisibility || 'hidden'}`}
+                    className={`ActivationPage__proposed-activations--${
+                        this.state.proposedActivationsVisibility || 'hidden'}`}
                 >
                     {
-                        proposedActivations.map(proposedActivation =>
+                        this.proposedActivations.map(proposedActivation =>
                             <div
                                 className = 'ActivationPage__proposed-activation'
                                 key       = {proposedActivation.id}
@@ -148,7 +185,13 @@ export default class ActivationPage extends React.Component {
                                     timeToPass        = {proposedActivation.timeToPass}
                                     numberOfQuestions = {proposedActivation.numberOfQuestions}
                                     pictureURL        = {proposedActivation.pictureURL}
-                                    author            = {proposedActivation.author}
+                                    author            = {
+                                        proposedActivation.author.fullName
+                                        ?
+                                            proposedActivation.author
+                                        :
+                                            activation.author
+                                    }
                                     isPassed          = {Boolean(proposedActivation.isPassed)}
                                     userQuizSession   = {proposedActivation.userQuizSession}
                                     onClick           = {onActivationClick.bind(null, proposedActivation)}
