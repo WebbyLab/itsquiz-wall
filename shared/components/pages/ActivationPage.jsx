@@ -48,9 +48,10 @@ export default class ActivationPage extends React.Component {
     static contextTypes = { i18n: React.PropTypes.object };
 
     state = {
-        showDescription: false,
-        proposedActivationsVisibility: 'hidden',
-        isChangingActivation: false
+        showDescription               : false,
+        proposedActivationsVisibility : 'hidden',
+        isChangingActivation          : false,
+        proposedActivations           : []
     };
 
     componentWillMount() {
@@ -93,8 +94,6 @@ export default class ActivationPage extends React.Component {
 
     componentWillUnmount() {
         this.timer.stopInterval();
-        delete this.timer;
-        delete this.proposedActivations;
     }
 
     handleDescriptionClick = () => {
@@ -249,9 +248,7 @@ export default class ActivationPage extends React.Component {
 
     renderProposedActivations = () => {
         const {
-            activation,
-            similarActivations,
-            authorActivations
+            activation
         } = this.props;
 
         if (!activation.userQuizSession) {
