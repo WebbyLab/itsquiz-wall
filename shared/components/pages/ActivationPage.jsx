@@ -80,11 +80,14 @@ export default class ActivationPage extends React.Component {
         };
 
         this.timer.startInterval();
+
+        this.generateProposedActivations();
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.activation.id !== this.props.activation.id) {
             this.timer.resetInterval();
+            this.delayRenderProposedActivations();
         }
     }
 
@@ -194,6 +197,8 @@ export default class ActivationPage extends React.Component {
                 isChangingActivation: false
             });
 
+            this.generateProposedActivations();
+
             setTimeout(() => {
                 this.setState({
                     proposedActivationsVisibility: 'visible'
@@ -202,7 +207,7 @@ export default class ActivationPage extends React.Component {
         }, 500);
     }
 
-    renderProposedActivations = () => {
+    generateProposedActivations = () => {
         const {
             activation,
             similarActivations,
@@ -233,18 +238,42 @@ export default class ActivationPage extends React.Component {
                 const proposedActivationsIndexes =
                     this.getRandomNumbers(0, allProposedActivations.length, numberOfProposedActivations);
 
-                this.proposedActivations = allProposedActivations.filter((item, index) =>
-                    proposedActivationsIndexes.indexOf(index) !== -1
-                );
-            }
+                const proposedActivations = proposedActivationsIndexes.map(index => allProposedActivations[index]);
 
+                this.setState({
+                    proposedActivations
+                });
+            }
+        }
+    }
+
+    renderProposedActivations = () => {
+        const {
+            activation,
+            similarActivations,
+            authorActivations
+        } = this.props;
+
+        if (!activation.userQuizSession) {
+            return;
+        }
+
+        const {
+            proposedActivations
+        } = this.state;
+
+        if (!proposedActivations) {
+            return;
+        }
+
+        if (authorActivations && authorActivations.length || similarActivations && similarActivations.length) {
             return (
                 <div
                     className={`ActivationPage__proposed-activations--${
                         this.state.proposedActivationsVisibility || 'hidden'}`}
                 >
                     {
-                        this.proposedActivations.map(proposedActivation =>
+                        proposedActivations.map(proposedActivation =>
                             <div
                                 className = 'ActivationPage__proposed-activation'
                                 key       = {proposedActivation.id}
