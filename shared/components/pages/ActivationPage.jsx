@@ -266,41 +266,39 @@ export default class ActivationPage extends React.Component {
             return;
         }
 
-        if (authorActivations && authorActivations.length || similarActivations && similarActivations.length) {
-            return (
-                <div
-                    className={`ActivationPage__proposed-activations--${
-                        this.state.proposedActivationsVisibility || 'hidden'}`}
-                >
-                    {
-                        proposedActivations.map(proposedActivation =>
-                            <div
-                                className = 'ActivationPage__proposed-activation'
-                                key       = {proposedActivation.id}
-                            >
-                                <QuizTile
-                                    id                = {proposedActivation.id}
-                                    name              = {proposedActivation.name}
-                                    timeToPass        = {proposedActivation.timeToPass}
-                                    numberOfQuestions = {proposedActivation.numberOfQuestions}
-                                    pictureURL        = {proposedActivation.pictureURL}
-                                    author            = {
-                                        proposedActivation.author.fullName
-                                        ?
-                                            proposedActivation.author
-                                        :
-                                            activation.author
-                                    }
-                                    isPassed          = {Boolean(proposedActivation.isPassed)}
-                                    userQuizSession   = {proposedActivation.userQuizSession}
-                                    onClick           = {this.handleActivationClick.bind(null, proposedActivation)}
-                                />
-                            </div>
-                        )
-                    }
-                </div>
-            );
-        }
+        return (
+            <div
+                className={`ActivationPage__proposed-activations--${
+                    this.state.proposedActivationsVisibility || 'hidden'}`}
+            >
+                {
+                    proposedActivations.map(proposedActivation =>
+                        <div
+                            className = 'ActivationPage__proposed-activation'
+                            key       = {proposedActivation.id}
+                        >
+                            <QuizTile
+                                id                = {proposedActivation.id}
+                                name              = {proposedActivation.name}
+                                timeToPass        = {proposedActivation.timeToPass}
+                                numberOfQuestions = {proposedActivation.numberOfQuestions}
+                                pictureURL        = {proposedActivation.pictureURL}
+                                author            = {
+                                    proposedActivation.author.fullName
+                                    ?
+                                        proposedActivation.author
+                                    :
+                                        activation.author
+                                }
+                                isPassed          = {Boolean(proposedActivation.isPassed)}
+                                userQuizSession   = {proposedActivation.userQuizSession}
+                                onClick           = {this.handleActivationClick.bind(null, proposedActivation)}
+                            />
+                        </div>
+                    )
+                }
+            </div>
+        );
     }
 
     renderAuthorActivations = () => {
