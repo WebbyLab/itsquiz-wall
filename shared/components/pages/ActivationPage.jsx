@@ -134,7 +134,8 @@ export default class ActivationPage extends React.Component {
     delayRenderProposedActivations = () => {
         setTimeout(() => {
             this.setState({
-                proposedActivationsVisibility: 'visible'
+                proposedActivationsVisibility: 'visible',
+                wasDelayed: true
             });
         }, 1000);
     }
@@ -158,8 +159,13 @@ export default class ActivationPage extends React.Component {
                         return !item.userQuizSession;
                     });
 
+                if (!allProposedActivations.length) {
+                    return;
+                }
+
+                const numberOfProposedActivations = allProposedActivations.length === 1 ? 1 : 2;
                 const proposedActivationsIndexes =
-                    this.getRandomNumbers(0, allProposedActivations.length, 2);
+                    this.getRandomNumbers(0, allProposedActivations.length, numberOfProposedActivations);
 
                 this.proposedActivations = allProposedActivations.filter((item, index) =>
                     proposedActivationsIndexes.indexOf(index) !== -1
