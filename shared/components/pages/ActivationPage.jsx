@@ -57,7 +57,9 @@ export default class ActivationPage extends React.Component {
         const { l } = this.context.i18n;
 
         this.sponsoredButtonLabel = Math.random() < 0.5 ? l('Contact me') : l('Get the gift');
+    }
 
+    componentDidMount() {
         this.delayRenderProposedActivations();
 
         const self = this;
