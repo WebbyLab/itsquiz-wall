@@ -364,7 +364,7 @@ export default class ActivationPage extends React.Component {
         });
 
         const resultsContainerClasses = showUserResult
-            ? cx('ActivationPage__results-container', userQuizSession.resultBackground, {'survey' : isSurvey })
+            ? cx('ActivationPage__results-container', userQuizSession.resultBackground, { 'survey' : isSurvey })
             : '';
 
         return (
