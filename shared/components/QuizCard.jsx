@@ -22,6 +22,7 @@ export default class QuizCard extends Component {
         pictureURL          : PropTypes.string,
         author              : PropTypes.object,
         isSponsored         : PropTypes.bool,
+        isSurvey            : PropTypes.bool,
         className           : PropTypes.string,
         category            : PropTypes.string,
         isPassed            : PropTypes.bool,
@@ -63,6 +64,7 @@ export default class QuizCard extends Component {
             author,
             isSponsored,
             isPassed,
+            isSurvey,
             userQuizSession,
             onClick,
             onShare,
@@ -73,6 +75,10 @@ export default class QuizCard extends Component {
 
         const classes = cx('QuizCard', className, {
             'QuizCard--sponsored': isSponsored
+        });
+
+        const classesForActionBlock = cx('QuizCard__actions', {
+            'QuizCard__actions--survey': isSurvey
         });
 
         return (
@@ -109,9 +115,15 @@ export default class QuizCard extends Component {
                     {
                         isPassed
                         ? <div className='QuizCard__overlay'>
-                            <span className='QuizCard__user-score'>
-                                {userQuizSession.score}%
-                            </span>
+                            {
+                                !isSurvey
+                                ?
+                                    <span className='QuizCard__user-score'>
+                                        {userQuizSession.score}%
+                                    </span>
+                                :
+                                    <MdiIcon type='check' className='QuizCard__survey--passed' />
+                            }
                         </div>
                         : null
                     }
@@ -146,16 +158,22 @@ export default class QuizCard extends Component {
 
                 <CardActions
                     border
-                    className='QuizCard__actions'
+                    className={classesForActionBlock}
                 >
-                    <div>
-                        <IconButton
-                            colored
-                            className = 'QuizCard__share-button'
-                            name      = 'share'
-                            onClick   = {onShare}
-                        />
-                    </div>
+                    {
+                        !isSurvey
+                        ?
+                            <div>
+                                <IconButton
+                                    colored
+                                    className = 'QuizCard__share-button'
+                                    name      = 'share'
+                                    onClick   = {onShare}
+                                />
+                            </div>
+                        :
+                            null
+                    }
 
                     <Button
                         colored

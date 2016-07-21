@@ -25,6 +25,7 @@ export default class ActivationPage extends React.Component {
         authorActivations  : React.PropTypes.arrayOf(React.PropTypes.object),
         similarActivations : React.PropTypes.arrayOf(React.PropTypes.object),
         showUserResult     : React.PropTypes.bool,
+        isSurvey           : React.PropTypes.bool,
         sharingLink        : React.PropTypes.string,
         userQuizSession    : React.PropTypes.object,
         isLoading          : React.PropTypes.bool,
@@ -118,10 +119,14 @@ export default class ActivationPage extends React.Component {
         this.changeProposedActivations();
     };
 
-    getGreeting = (score) => {
+    getGreeting = () => {
         const { l } = this.context.i18n;
+        const { activation, assessmentSystem, isSurvey } = this.props;
+        const score = activation.userQuizSession.score;
 
-        const assessmentSystem = this.props.assessmentSystem;
+        if (isSurvey) {
+            return { phrase: l('Thank you for your answers!') };
+        }
 
         if (assessmentSystem.length === 0) {
             if (score > 95) {
@@ -159,7 +164,7 @@ export default class ActivationPage extends React.Component {
         rand = Math.round(rand);
 
         return rand;
-    }
+    };
 
     getRandomNumbers = (min, max, amount) => {
         if (amount < 1) {
@@ -179,7 +184,7 @@ export default class ActivationPage extends React.Component {
         }
 
         return result;
-    }
+    };
 
     changeProposedActivations = () => {
         this.setState({
@@ -204,7 +209,7 @@ export default class ActivationPage extends React.Component {
                 });
             }, 500);
         }, 500);
-    }
+    };
 
     generateProposedActivations = () => {
         const {
@@ -296,7 +301,7 @@ export default class ActivationPage extends React.Component {
                 }
             </div>
         );
-    }
+    };
 
     renderAuthorActivations = () => {
         const {
@@ -397,6 +402,7 @@ export default class ActivationPage extends React.Component {
             isLoading,
             showUserResult,
             isEmbedded,
+            isSurvey,
             onPass,
             onShare,
             onShareResult,
@@ -424,8 +430,8 @@ export default class ActivationPage extends React.Component {
 
         const isPassingBtnAvailable = isEmbedded ? canAssigneePass : true;
 
-        const greeting = showUserResult ? this.getGreeting(userQuizSession.score).phrase : '';
-        const greetingDescription = showUserResult ? this.getGreeting(userQuizSession.score).description : '';
+        const greeting = showUserResult ? this.getGreeting().phrase : '';
+        const greetingDescription = showUserResult ? this.getGreeting().description : '';
 
         if (isLoading) {
             return <Spinner className='ActivationPage__spinner' />;
@@ -442,6 +448,10 @@ export default class ActivationPage extends React.Component {
             'ActivationPage__settings-icons--on'  : canAssigneeViewQuestions,
             'ActivationPage__settings-icons--off' : !canAssigneeViewQuestions
         });
+
+        const resultsContainerClasses = showUserResult
+            ? cx('ActivationPage__results-container', userQuizSession.resultBackground, { 'survey' : isSurvey })
+            : '';
 
         return (
             <div className={classes}>
@@ -523,7 +533,7 @@ export default class ActivationPage extends React.Component {
 
                             <div className='ActivationPage__actions'>
                                 {
-                                    showUserResult
+                                    showUserResult && !isSurvey
                                     ?
                                         <Button
                                             ripple
@@ -591,7 +601,7 @@ export default class ActivationPage extends React.Component {
 
                         <div className='ActivationPage__menu'>
                             {
-                                !activation.isPrivate
+                                !activation.isPrivate && !isSurvey
                                 ? (
                                     <IconButton
                                         ripple
@@ -607,11 +617,11 @@ export default class ActivationPage extends React.Component {
                     {
                         showUserResult
                         ?
-                            <div className={cx('ActivationPage__results-container', userQuizSession.resultBackground)}>
+                            <div className={resultsContainerClasses}>
                                 <div className='ActivationPage__overlay'>
                                     <div className='ActivationPage__menu--mobile'>
                                         {
-                                            !activation.isPrivate
+                                            !activation.isPrivate && !isSurvey
                                             ? (
                                                 <IconButton
                                                     ripple
@@ -624,57 +634,89 @@ export default class ActivationPage extends React.Component {
                                     </div>
                                     <div className='ActivationPage__results-text'>
 
-                                        <div className='ActivationPage_score--circle'>
-                                            <ScoreCircle
-                                                value={userQuizSession.score}
-                                                size ={200}
-                                            />
-                                        </div>
+                                        {
+                                            !isSurvey
+                                            ?
 
-                                        <div className='ActivationPage__points--mobile'>
-                                            ({
-                                                sprintf(
-                                                    nl(
-                                                        '%s of %s point',
-                                                        '%s of %s points',
-                                                        userQuizSession.maxPoints
-                                                    ),
-                                                    userQuizSession.gainedPoints,
-                                                    userQuizSession.maxPoints
-                                                )
-                                            })
-                                        </div>
+                                                <div className='ActivationPage_score--circle'>
+                                                    <ScoreCircle
+                                                        value={userQuizSession.score}
+                                                        size ={200}
+                                                    />
+                                                </div>
+                                            :
+                                                null
+                                        }
+
+                                        {
+                                            !isSurvey
+                                            ?
+                                                <div className='ActivationPage__points--mobile'>
+                                                    ({
+                                                        sprintf(
+                                                            nl(
+                                                                '%s of %s point',
+                                                                '%s of %s points',
+                                                                userQuizSession.maxPoints
+                                                            ),
+                                                            userQuizSession.gainedPoints,
+                                                            userQuizSession.maxPoints
+                                                        )
+                                                    })
+                                                </div>
+                                            :
+                                                null
+                                        }
+
 
                                         <h4 className='ActivationPage__greeting'>
                                             {greeting}
                                         </h4>
 
-                                        <Button
-                                            ripple
-                                            raised
-                                            onClick   = {onShareResult.bind(null, activation)}
-                                            className = 'ActivationPage__result-share-btn--mobile'
-                                        >
-                                            {l('Share result')}
-                                        </Button>
+                                        {
+                                            !isSurvey
+                                            ?
+                                                <Button
+                                                    ripple
+                                                    raised
+                                                    onClick   = {onShareResult.bind(null, activation)}
+                                                    className = 'ActivationPage__result-share-btn--mobile'
+                                                >
+                                                    {l('Share result')}
+                                                </Button>
+                                            :
+                                                null
+                                        }
 
-                                        <div className='ActivationPage__score'>
-                                            {userQuizSession.score}%
-                                        </div>
+                                        {
+                                            !isSurvey
+                                            ?
+                                                <div className='ActivationPage__score'>
+                                                    {userQuizSession.score}%
+                                                </div>
+                                            :
+                                                null
+                                        }
 
-                                        <div className='ActivationPage__points'>
-                                            ({
-                                                sprintf(
-                                                    nl(
-                                                        '%s of %s point',
-                                                        '%s of %s points',
-                                                        userQuizSession.maxPoints
-                                                    ),
-                                                    userQuizSession.gainedPoints,
-                                                    userQuizSession.maxPoints
-                                                )
-                                            })
-                                        </div>
+                                        {
+                                            !isSurvey
+                                            ?
+                                                <div className='ActivationPage__points'>
+                                                    ({
+                                                        sprintf(
+                                                            nl(
+                                                                '%s of %s point',
+                                                                '%s of %s points',
+                                                                userQuizSession.maxPoints
+                                                            ),
+                                                            userQuizSession.gainedPoints,
+                                                            userQuizSession.maxPoints
+                                                        )
+                                                    })
+                                                </div>
+                                            :
+                                                null
+                                        }
 
                                         {
                                             userQuizSession.canViewAnswers
