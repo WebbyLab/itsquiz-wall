@@ -38,7 +38,7 @@ export default class QuizTile extends Component {
             onClick
         } = this.props;
 
-        const isSurvey = userQuizSession ? Boolean(userQuizSession.maxPoints === 0) : false;
+        const isSurvey = userQuizSession ? userQuizSession.maxPoints === 0 : false;
 
         return (
             <Card className='QuizTile' shadow={1}>

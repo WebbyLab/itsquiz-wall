@@ -62,7 +62,7 @@ export default class ActivationsPage extends React.Component {
 
         const activation = activations[index];
 
-        const isSurvey = activation.userQuizSession ? Boolean(activation.userQuizSession.maxPoints === 0) : false;
+        const isSurvey = activation.userQuizSession ? activation.userQuizSession.maxPoints === 0 : false;
 
         onItemRenderRequest(index);
 
