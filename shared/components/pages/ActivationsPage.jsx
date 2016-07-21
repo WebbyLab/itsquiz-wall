@@ -62,6 +62,8 @@ export default class ActivationsPage extends React.Component {
 
         const activation = activations[index];
 
+        const isSurvey = activation.userQuizSession ? Boolean(activation.userQuizSession.maxPoints === 0) : false;
+
         onItemRenderRequest(index);
 
         if (!activation) {
@@ -87,6 +89,7 @@ export default class ActivationsPage extends React.Component {
                 category            = {activation.category}
                 isSponsored         = {activation.isSponsored}
                 isPassed            = {Boolean(activation.isPassed)}
+                isSurvey            = {isSurvey}
                 onShare             = {onShare.bind(this, activation)}
                 onClick             = {onItemClick.bind(this, activation)}
                 onAuthorAvatarClick = {onAuthorAvatarClick}

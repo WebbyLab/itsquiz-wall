@@ -197,6 +197,8 @@ class ActivationPageContainer extends Component {
         const { sharingLink, isLoggingIn } = this.state;
         const { embed, assigneeId } = this.props.location.query;
 
+        const isSurvey = activation.userQuizSession ? Boolean(activation.userQuizSession.maxPoints === 0) : false;
+
         return (
             <ActivationPage
                 activation         = {activation}
@@ -208,6 +210,7 @@ class ActivationPageContainer extends Component {
                 isLoggingIn        = {isLoggingIn}
                 showUserResult     = {Boolean(activation.isPassed && assigneeId)}
                 assessmentSystem   = {customAssessmentSystem}
+                isSurvey           = {isSurvey}
                 onPass             = {this.handlePassActivationClick}
                 onSponsoredClick   = {this.handleSponsoredClick}
                 onSubscribe        = {this.handleSubscribeClick}
