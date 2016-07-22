@@ -28,12 +28,13 @@ export function formatActivation(activation, author) {
 
 export function formatUserInfo(user) {
     return {
-        id            : user.id,
-        isTrusted     : user.isTrusted,
-        type          : user.type,
-        fullName      : _getUserFullName(user),
-        avatar        : user.image,
-        backgroundURL : user.backgroundURL
+        id              : user.id,
+        isTrusted       : user.isTrusted,
+        type            : user.type,
+        fullName        : _getUserFullName(user),
+        avatar          : user.image,
+        minimizedAvatar : user.minimizedImage,
+        backgroundURL   : user.backgroundURL
     };
 }
 
