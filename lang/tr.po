@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-15 16:39+0300\n"
+"POT-Creation-Date: 2016-07-22 17:17+0300\n"
 "PO-Revision-Date: 2016-04-26 20:00+0300\n"
 "Last-Translator: Oleg <CBETJIOMYP@gmail.com>\n"
 "Language-Team: русский <>\n"
@@ -85,6 +85,9 @@ msgstr "Önce Popüler"
 
 msgid "I want to receive new special offers"
 msgstr "Özel teklifleri görmek istiyorum"
+
+msgid "Thank you for your answers!"
+msgstr ""
 
 msgid "You rock! Excellent job!"
 msgstr "Harikasın! Mükkemel çalışma!"
