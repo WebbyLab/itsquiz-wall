@@ -2,6 +2,8 @@ import Promise     from 'bluebird';
 import geoip       from 'geoip-lite';
 import strformat   from 'strformat';
 
+import webpackAssets from '../etc/webpack-assets.json';
+
 import clientConfig              from '../shared/config';
 import { getSupportedLocales }   from '../shared/utils';
 
@@ -124,6 +126,13 @@ export function detectLocale(req) {
         RU: 'ru',
         TR: 'tr'
     }[country] || 'en';
+}
+
+export function getAssetsPaths() {
+    return {
+        js:  webpackAssets.main.js,
+        css: webpackAssets.main.css
+    };
 }
 
 function _getGreeting(assessmentSystem, score) {
