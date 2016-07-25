@@ -27,13 +27,19 @@ export function formatActivation(activation, author) {
 }
 
 export function formatUserInfo(user) {
+    let minimizedAvatar = user.minimizedImage;
+
+    if (isAvatarCustom(user.image) && !isAvatarCustom(user.minimizedImage)) {
+        minimizedAvatar = user.image;
+    }
+
     return {
+        minimizedAvatar,
         id              : user.id,
         isTrusted       : user.isTrusted,
         type            : user.type,
         fullName        : _getUserFullName(user),
         avatar          : user.image,
-        minimizedAvatar : user.minimizedImage,
         backgroundURL   : user.backgroundURL
     };
 }
@@ -105,4 +111,12 @@ function _getResultBackground(score) {
     }
 
     return 'verybad';
+}
+
+function isAvatarCustom(avatar) {
+    if (avatar.indexOf('profile') !== -1 || avatar.indexOf('companyProfile') !== -1) {
+        return false;
+    }
+
+    return true;
 }
