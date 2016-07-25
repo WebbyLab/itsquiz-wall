@@ -16,7 +16,10 @@ export class CompanyCard extends Component {
             <div clasName='CompanyCard'>
                 Company {companyName} from {country} {city}
 
-                <Button colored={true} onClick={onClick}>
+                <Button
+                    colored
+                    onClick={onClick}
+                >
                     View details
                 </Button>
             </div>
