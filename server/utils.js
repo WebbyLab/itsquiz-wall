@@ -1,3 +1,5 @@
+/* eslint import/no-unresolved: 0*/
+
 import Promise     from 'bluebird';
 import geoip       from 'geoip-lite';
 import strformat   from 'strformat';
