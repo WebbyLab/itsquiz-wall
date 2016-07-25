@@ -114,9 +114,5 @@ function _getResultBackground(score) {
 }
 
 function isAvatarCustom(avatar) {
-    if (avatar.includes('profile') || avatar.includes('companyProfile')) {
-        return true;
-    }
-
-    return false;
+    return avatar.includes('profile') || avatar.includes('companyProfile');
 }
