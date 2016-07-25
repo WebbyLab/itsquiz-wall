@@ -62,8 +62,6 @@ export default class ActivationPage extends React.Component {
     }
 
     componentDidMount() {
-        this.delayRenderProposedActivations();
-
         const self = this;
 
         this.timer = {
@@ -84,6 +82,8 @@ export default class ActivationPage extends React.Component {
         this.timer.startInterval();
 
         this.generateProposedActivations();
+
+        this.delayRenderProposedActivations();
     }
 
     componentWillReceiveProps(nextProps) {
@@ -95,6 +95,7 @@ export default class ActivationPage extends React.Component {
 
     componentWillUnmount() {
         this.timer.stopInterval();
+        delete this.timer;
     }
 
     handleDescriptionClick = () => {
