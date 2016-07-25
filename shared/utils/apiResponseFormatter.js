@@ -67,16 +67,18 @@ export function formatUserQuizSession(session) {
     }
 
     return {
-        canViewAnswers   : session.canAssigneeViewQuestions,
-        startedAt        : session.startedAt,
-        shareResultLink  : session.resultShareLink || '',
-        finishedAt       : session.finishedAt,
-        score            : userScore,
-        gainedPoints     : userGainedPoints,
-        maxPoints        : session.maxPoints,
-        status           : session.status,
-        id               : session.id,
-        resultBackground : _getResultBackground(userScore)
+        canViewAnswers          : session.canAssigneeViewQuestions,
+        startedAt               : session.startedAt,
+        shareResultLink         : session.resultShareLink || '',
+        finishedAt              : session.finishedAt,
+        score                   : userScore,
+        gainedPoints            : userGainedPoints,
+        maxPoints               : session.maxPoints,
+        status                  : session.status,
+        id                      : session.id,
+        resultBackground        : _getResultBackground(userScore),
+        answeredQuestionsNumber : session.numberOfAnsweredQuestions,
+        totalQuestionsNumber    : session.questions.length
     };
 }
 

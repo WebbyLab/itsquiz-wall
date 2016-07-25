@@ -186,6 +186,20 @@ export default class ActivationPage extends React.Component {
         return result;
     };
 
+    getStatisticsForSurvey = () => {
+        const { activation } = this.props;
+        const { l } = this.context.i18n;
+
+        if (!activation.userQuizSession) return null;
+
+        return (
+            <div className='ActivationPage__survey-statistics'>
+                {sprintf(l('(%d of %d answered)'), activation.userQuizSession.answeredQuestionsNumber,
+                    activation.userQuizSession.totalQuestionsNumber)}
+            </div>
+        );
+    };
+
     changeProposedActivations = () => {
         this.setState({
             proposedActivationsVisibility: 'hidden',
@@ -249,7 +263,7 @@ export default class ActivationPage extends React.Component {
                 });
             }
         }
-    }
+    };
 
     renderProposedActivations = () => {
         const {
@@ -695,7 +709,7 @@ export default class ActivationPage extends React.Component {
                                                     {userQuizSession.score}%
                                                 </div>
                                             :
-                                                null
+                                                this.getStatisticsForSurvey()
                                         }
 
                                         {
