@@ -4,6 +4,8 @@ import { Card, CardTitle, CardActions } from 'react-mdl/lib/Card';
 
 import { makeSlug } from '../utils/urlUtil';
 
+import MdiIcon from './Icon.jsx';
+
 import './QuizTile.less';
 
 export default class QuizTile extends Component {
@@ -26,7 +28,17 @@ export default class QuizTile extends Component {
     };
 
     render() {
-        const { id, name, pictureURL, author, userQuizSession, isPassed, onClick } = this.props;
+        const {
+            id,
+            name,
+            pictureURL,
+            author,
+            userQuizSession,
+            isPassed,
+            onClick
+        } = this.props;
+
+        const isSurvey = userQuizSession ? userQuizSession.maxPoints === 0 : false;
 
         return (
             <Card className='QuizTile' shadow={1}>
@@ -37,9 +49,15 @@ export default class QuizTile extends Component {
                     {
                         isPassed
                         ? <div className='QuizTile__overlay' onClick={onClick}>
-                            <span className='QuizTile__user-score'>
-                                {userQuizSession.score}%
-                            </span>
+                            {
+                                !isSurvey
+                                ?
+                                    <span className='QuizTile__user-score'>
+                                        {userQuizSession.score}%
+                                    </span>
+                                :
+                                    <MdiIcon type='check' className='QuizTile__survey--passed' />
+                            }
                         </div>
                         : null
                     }

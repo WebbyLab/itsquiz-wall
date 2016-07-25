@@ -67,7 +67,11 @@ export function formatUserQuizSession(session) {
     }
 
     const userGainedPoints = Math.ceil(+session.gainedPoints * 100) / 100 || 0;
-    const userScore = Math.ceil(+userGainedPoints * 100 / +session.maxPoints);
+    let userScore = 0;
+
+    if (+session.maxPoints > 0) {
+        userScore = Math.ceil(+userGainedPoints * 100 / +session.maxPoints);
+    }
 
     return {
         canViewAnswers   : session.canAssigneeViewQuestions,

@@ -1,7 +1,13 @@
+/*eslint-disable */
 global.Promise = require('bluebird'); // for node 0.10
 
-var webpack = require('webpack');
+var path                 = require('path');
+
+var webpack           = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var AssetsPlugin      = require('assets-webpack-plugin');
+
+var buildHash = process.env.NODE_ENV === "production" ? "[hash]" : "dev";
 
 module.exports = {
     entry: "./client/app.js",
@@ -13,12 +19,13 @@ module.exports = {
             }
         }),
         new ExtractTextPlugin("[name].css"),
-        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /ru|en|uk|tr/)
+        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /ru|en|uk|tr/),
+        new AssetsPlugin({path: path.join(__dirname, 'etc')})
     ],
     output: {
-        path: __dirname + '/public/static/build/',
+        path: path.join(__dirname, "/public/static/build/", buildHash),
         filename: "main.js",
-        publicPath: "static/build/"
+        publicPath: "static/build/" + buildHash + "/"
     },
     module: {
         loaders: [

@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 
-import { ads } from '../config.js';
-
 import GoogleAd from 'react-google-ad';
+
+import { ads } from '../config.js';
 
 export default class GoogleAdContainer extends Component {
     static propTypes = {

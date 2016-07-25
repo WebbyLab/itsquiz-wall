@@ -13,6 +13,7 @@ import './AppBar.less';
 
 const LOGO_SRC = '/static/logo.png';
 
+
 export default class AppBar extends Component {
     static propTypes = {
         className        : PropTypes.string,

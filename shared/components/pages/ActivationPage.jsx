@@ -25,6 +25,7 @@ export default class ActivationPage extends React.Component {
         authorActivations  : React.PropTypes.arrayOf(React.PropTypes.object),
         similarActivations : React.PropTypes.arrayOf(React.PropTypes.object),
         showUserResult     : React.PropTypes.bool,
+        isSurvey           : React.PropTypes.bool,
         sharingLink        : React.PropTypes.string,
         userQuizSession    : React.PropTypes.object,
         isLoading          : React.PropTypes.bool,
@@ -48,8 +49,10 @@ export default class ActivationPage extends React.Component {
     static contextTypes = { i18n: React.PropTypes.object };
 
     state = {
-        showDescription: false,
-        proposedActivationsVisibility: 'hidden'
+        showDescription               : false,
+        proposedActivationsVisibility : 'hidden',
+        isChangingActivation          : false,
+        proposedActivations           : []
     };
 
     componentWillMount() {
@@ -58,10 +61,40 @@ export default class ActivationPage extends React.Component {
         this.sponsoredButtonLabel = Math.random() < 0.5 ? l('Contact me') : l('Get the gift');
     }
 
-    componentWillReceiveProps() {
-        this.setState({
-            proposedActivationsVisibility: 'hidden'
-        });
+    componentDidMount() {
+        this.delayRenderProposedActivations();
+
+        const self = this;
+
+        this.timer = {
+            interval: null,
+            period: 10 * 1000,
+            startInterval() {
+                this.interval = setInterval(self.changeProposedActivations, this.period);
+            },
+            resetInterval() {
+                clearInterval(this.interval);
+                this.interval = setInterval(self.changeProposedActivations, this.period);
+            },
+            stopInterval() {
+                clearInterval(this.interval);
+            }
+        };
+
+        this.timer.startInterval();
+
+        this.generateProposedActivations();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.activation.id !== this.props.activation.id) {
+            this.timer.resetInterval();
+            this.delayRenderProposedActivations();
+        }
+    }
+
+    componentWillUnmount() {
+        this.timer.stopInterval();
     }
 
     handleDescriptionClick = () => {
@@ -76,10 +109,24 @@ export default class ActivationPage extends React.Component {
         });
     };
 
-    getGreeting = (score) => {
-        const { l } = this.context.i18n;
+    handleActivationClick = (activation) => {
+        const {
+            onActivationClick
+        } = this.props;
 
-        const assessmentSystem = this.props.assessmentSystem;
+        onActivationClick(activation);
+
+        this.changeProposedActivations();
+    };
+
+    getGreeting = () => {
+        const { l } = this.context.i18n;
+        const { activation, assessmentSystem, isSurvey } = this.props;
+        const score = activation.userQuizSession.score;
+
+        if (isSurvey) {
+            return { phrase: l('Thank you for your answers!') };
+        }
 
         if (assessmentSystem.length === 0) {
             if (score > 95) {
@@ -111,15 +158,23 @@ export default class ActivationPage extends React.Component {
         }
     };
 
+    getRandomInteger = (min, max) => {
+        let rand = min - 0.5 + Math.random() * (max - min + 1);
+
+        rand = Math.round(rand);
+
+        return rand;
+    };
+
     getRandomNumbers = (min, max, amount) => {
         if (amount < 1) {
             return;
         }
 
-        const result = [ Math.floor(Math.random() * (max - min)) + min ];
+        const result = [];
 
         while (result.length !== amount) {
-            const randomNumber = Math.floor(Math.random() * (max - min)) + min;
+            const randomNumber = this.getRandomInteger(min, max - 1);
 
             if (result.indexOf(randomNumber) !== -1) {
                 continue;
@@ -129,23 +184,38 @@ export default class ActivationPage extends React.Component {
         }
 
         return result;
-    }
+    };
+
+    changeProposedActivations = () => {
+        this.setState({
+            proposedActivationsVisibility: 'hidden',
+            isChangingActivation: true
+        });
+
+        this.delayRenderProposedActivations();
+    };
 
     delayRenderProposedActivations = () => {
         setTimeout(() => {
             this.setState({
-                proposedActivationsVisibility: 'visible',
-                wasDelayed: true
+                isChangingActivation: false
             });
-        }, 1000);
-    }
 
-    renderProposedActivations = () => {
+            this.generateProposedActivations();
+
+            setTimeout(() => {
+                this.setState({
+                    proposedActivationsVisibility: 'visible'
+                });
+            }, 500);
+        }, 500);
+    };
+
+    generateProposedActivations = () => {
         const {
             activation,
             similarActivations,
-            authorActivations,
-            onActivationClick
+            authorActivations
         } = this.props;
 
         if (!activation.userQuizSession) {
@@ -153,11 +223,16 @@ export default class ActivationPage extends React.Component {
         }
 
         if (authorActivations && authorActivations.length || similarActivations && similarActivations.length) {
-            if (this.state.proposedActivationsVisibility !== 'visible') {
-                const allProposedActivations =
-                    (similarActivations || []).concat(authorActivations || []).filter(item => {
+            if (this.state.proposedActivationsVisibility === 'hidden' && !this.state.isChangingActivation) {
+                let allProposedActivations = (similarActivations || []).filter(item => {
+                    return !item.userQuizSession;
+                });
+
+                if (allProposedActivations.length < 2) {
+                    allProposedActivations = allProposedActivations.concat((authorActivations || []).filter(item => {
                         return !item.userQuizSession;
-                    });
+                    }));
+                }
 
                 if (!allProposedActivations.length) {
                     return;
@@ -167,54 +242,71 @@ export default class ActivationPage extends React.Component {
                 const proposedActivationsIndexes =
                     this.getRandomNumbers(0, allProposedActivations.length, numberOfProposedActivations);
 
-                this.proposedActivations = allProposedActivations.filter((item, index) =>
-                    proposedActivationsIndexes.indexOf(index) !== -1
-                );
+                const proposedActivations = proposedActivationsIndexes.map(index => allProposedActivations[index]);
 
-                this.delayRenderProposedActivations();
+                this.setState({
+                    proposedActivations
+                });
             }
-
-            return (
-                <div
-                    className={`ActivationPage__proposed-activations--${
-                        this.state.proposedActivationsVisibility || 'hidden'}`}
-                >
-                    {
-                        this.proposedActivations.map(proposedActivation =>
-                            <div
-                                className = 'ActivationPage__proposed-activation'
-                                key       = {proposedActivation.id}
-                            >
-                                <QuizTile
-                                    id                = {proposedActivation.id}
-                                    name              = {proposedActivation.name}
-                                    timeToPass        = {proposedActivation.timeToPass}
-                                    numberOfQuestions = {proposedActivation.numberOfQuestions}
-                                    pictureURL        = {proposedActivation.pictureURL}
-                                    author            = {
-                                        proposedActivation.author.fullName
-                                        ?
-                                            proposedActivation.author
-                                        :
-                                            activation.author
-                                    }
-                                    isPassed          = {Boolean(proposedActivation.isPassed)}
-                                    userQuizSession   = {proposedActivation.userQuizSession}
-                                    onClick           = {onActivationClick.bind(null, proposedActivation)}
-                                />
-                            </div>
-                        )
-                    }
-                </div>
-            );
         }
     }
+
+    renderProposedActivations = () => {
+        const {
+            activation
+        } = this.props;
+
+        if (!activation.userQuizSession) {
+            return;
+        }
+
+        const {
+            proposedActivations
+        } = this.state;
+
+        if (!proposedActivations) {
+            return;
+        }
+
+        return (
+            <div
+                className={`ActivationPage__proposed-activations--${
+                    this.state.proposedActivationsVisibility || 'hidden'}`}
+            >
+                {
+                    proposedActivations.map(proposedActivation =>
+                        <div
+                            className = 'ActivationPage__proposed-activation'
+                            key       = {proposedActivation.id}
+                        >
+                            <QuizTile
+                                id                = {proposedActivation.id}
+                                name              = {proposedActivation.name}
+                                timeToPass        = {proposedActivation.timeToPass}
+                                numberOfQuestions = {proposedActivation.numberOfQuestions}
+                                pictureURL        = {proposedActivation.pictureURL}
+                                author            = {
+                                    proposedActivation.author.fullName
+                                    ?
+                                        proposedActivation.author
+                                    :
+                                        activation.author
+                                }
+                                isPassed          = {Boolean(proposedActivation.isPassed)}
+                                userQuizSession   = {proposedActivation.userQuizSession}
+                                onClick           = {this.handleActivationClick.bind(null, proposedActivation)}
+                            />
+                        </div>
+                    )
+                }
+            </div>
+        );
+    };
 
     renderAuthorActivations = () => {
         const {
             activation,
-            authorActivations,
-            onActivationClick
+            authorActivations
         } = this.props;
 
         const { l } = this.context.i18n;
@@ -245,7 +337,7 @@ export default class ActivationPage extends React.Component {
                                     author            = {activation.author}
                                     isPassed          = {Boolean(authorActivation.isPassed)}
                                     userQuizSession   = {authorActivation.userQuizSession}
-                                    onClick           = {onActivationClick.bind(null, authorActivation)}
+                                    onClick           = {this.handleActivationClick.bind(null, authorActivation)}
                                 />
                             </Cell>
                         )
@@ -260,8 +352,7 @@ export default class ActivationPage extends React.Component {
 
     renderSimilarActivations = () => {
         const {
-            similarActivations,
-            onActivationClick
+            similarActivations
         } = this.props;
 
         const { l } = this.context.i18n;
@@ -292,7 +383,7 @@ export default class ActivationPage extends React.Component {
                                     author            = {similarActivation.author}
                                     isPassed          = {similarActivation.isPassed}
                                     userQuizSession   = {similarActivation.userQuizSession}
-                                    onClick           = {onActivationClick.bind(null, similarActivation)}
+                                    onClick           = {this.handleActivationClick.bind(null, similarActivation)}
                                 />
                             </Cell>
                         )
@@ -311,6 +402,7 @@ export default class ActivationPage extends React.Component {
             isLoading,
             showUserResult,
             isEmbedded,
+            isSurvey,
             onPass,
             onShare,
             onShareResult,
@@ -338,8 +430,8 @@ export default class ActivationPage extends React.Component {
 
         const isPassingBtnAvailable = isEmbedded ? canAssigneePass : true;
 
-        const greeting = showUserResult ? this.getGreeting(userQuizSession.score).phrase : '';
-        const greetingDescription = showUserResult ? this.getGreeting(userQuizSession.score).description : '';
+        const greeting = showUserResult ? this.getGreeting().phrase : '';
+        const greetingDescription = showUserResult ? this.getGreeting().description : '';
 
         if (isLoading) {
             return <Spinner className='ActivationPage__spinner' />;
@@ -356,6 +448,10 @@ export default class ActivationPage extends React.Component {
             'ActivationPage__settings-icons--on'  : canAssigneeViewQuestions,
             'ActivationPage__settings-icons--off' : !canAssigneeViewQuestions
         });
+
+        const resultsContainerClasses = showUserResult
+            ? cx('ActivationPage__results-container', userQuizSession.resultBackground, { 'survey' : isSurvey })
+            : '';
 
         return (
             <div className={classes}>
@@ -437,7 +533,7 @@ export default class ActivationPage extends React.Component {
 
                             <div className='ActivationPage__actions'>
                                 {
-                                    showUserResult
+                                    showUserResult && !isSurvey
                                     ?
                                         <Button
                                             ripple
@@ -505,7 +601,7 @@ export default class ActivationPage extends React.Component {
 
                         <div className='ActivationPage__menu'>
                             {
-                                !activation.isPrivate
+                                !activation.isPrivate && !isSurvey
                                 ? (
                                     <IconButton
                                         ripple
@@ -521,11 +617,11 @@ export default class ActivationPage extends React.Component {
                     {
                         showUserResult
                         ?
-                            <div className={cx('ActivationPage__results-container', userQuizSession.resultBackground)}>
+                            <div className={resultsContainerClasses}>
                                 <div className='ActivationPage__overlay'>
                                     <div className='ActivationPage__menu--mobile'>
                                         {
-                                            !activation.isPrivate
+                                            !activation.isPrivate && !isSurvey
                                             ? (
                                                 <IconButton
                                                     ripple
@@ -538,57 +634,89 @@ export default class ActivationPage extends React.Component {
                                     </div>
                                     <div className='ActivationPage__results-text'>
 
-                                        <div className='ActivationPage_score--circle'>
-                                            <ScoreCircle
-                                                value={userQuizSession.score}
-                                                size ={200}
-                                            />
-                                        </div>
+                                        {
+                                            !isSurvey
+                                            ?
 
-                                        <div className='ActivationPage__points--mobile'>
-                                            ({
-                                                sprintf(
-                                                    nl(
-                                                        '%s of %s point',
-                                                        '%s of %s points',
-                                                        userQuizSession.maxPoints
-                                                    ),
-                                                    userQuizSession.gainedPoints,
-                                                    userQuizSession.maxPoints
-                                                )
-                                            })
-                                        </div>
+                                                <div className='ActivationPage_score--circle'>
+                                                    <ScoreCircle
+                                                        value={userQuizSession.score}
+                                                        size ={200}
+                                                    />
+                                                </div>
+                                            :
+                                                null
+                                        }
+
+                                        {
+                                            !isSurvey
+                                            ?
+                                                <div className='ActivationPage__points--mobile'>
+                                                    ({
+                                                        sprintf(
+                                                            nl(
+                                                                '%s of %s point',
+                                                                '%s of %s points',
+                                                                userQuizSession.maxPoints
+                                                            ),
+                                                            userQuizSession.gainedPoints,
+                                                            userQuizSession.maxPoints
+                                                        )
+                                                    })
+                                                </div>
+                                            :
+                                                null
+                                        }
+
 
                                         <h4 className='ActivationPage__greeting'>
                                             {greeting}
                                         </h4>
 
-                                        <Button
-                                            ripple
-                                            raised
-                                            onClick   = {onShareResult.bind(null, activation)}
-                                            className = 'ActivationPage__result-share-btn--mobile'
-                                        >
-                                            {l('Share result')}
-                                        </Button>
+                                        {
+                                            !isSurvey
+                                            ?
+                                                <Button
+                                                    ripple
+                                                    raised
+                                                    onClick   = {onShareResult.bind(null, activation)}
+                                                    className = 'ActivationPage__result-share-btn--mobile'
+                                                >
+                                                    {l('Share result')}
+                                                </Button>
+                                            :
+                                                null
+                                        }
 
-                                        <div className='ActivationPage__score'>
-                                            {userQuizSession.score}%
-                                        </div>
+                                        {
+                                            !isSurvey
+                                            ?
+                                                <div className='ActivationPage__score'>
+                                                    {userQuizSession.score}%
+                                                </div>
+                                            :
+                                                null
+                                        }
 
-                                        <div className='ActivationPage__points'>
-                                            ({
-                                                sprintf(
-                                                    nl(
-                                                        '%s of %s point',
-                                                        '%s of %s points',
-                                                        userQuizSession.maxPoints
-                                                    ),
-                                                    userQuizSession.gainedPoints,
-                                                    userQuizSession.maxPoints
-                                                )
-                                            })
-                                        </div>
+                                        {
+                                            !isSurvey
+                                            ?
+                                                <div className='ActivationPage__points'>
+                                                    ({
+                                                        sprintf(
+                                                            nl(
+                                                                '%s of %s point',
+                                                                '%s of %s points',
+                                                                userQuizSession.maxPoints
+                                                            ),
+                                                            userQuizSession.gainedPoints,
+                                                            userQuizSession.maxPoints
+                                                        )
+                                                    })
+                                                </div>
+                                            :
+                                                null
+                                        }
 
                                         {
                                             userQuizSession.canViewAnswers
