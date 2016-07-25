@@ -63,7 +63,7 @@ export default class App extends Component {
 
         if (isEmbed && (isPathnameChanged || isQueryChanged)) {
             const pathname = nextProps.location.pathname;
-            const { category, search } = nextProps.location.query;
+            const { category, search, sortType } = nextProps.location.query;
 
             const query = {};
 
@@ -73,6 +73,10 @@ export default class App extends Component {
 
             if (search) {
                 query.search = search;
+            }
+
+            if (sortType) {
+                query.sortType = sortType;
             }
 
             const quizWallEmbedPath = this.props.history.createHref(pathname, query);
