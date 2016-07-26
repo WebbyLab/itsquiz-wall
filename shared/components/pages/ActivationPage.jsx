@@ -250,7 +250,21 @@ export default class ActivationPage extends React.Component {
                 });
             }
         }
-    }
+    };
+
+    renderStatisticsForSurvey = () => {
+        const { activation } = this.props;
+        const { l } = this.context.i18n;
+
+        if (!activation.userQuizSession) return null;
+
+        return (
+            <div className='ActivationPage__survey-statistics'>
+                {sprintf(l('(%d of %d answered)'), activation.userQuizSession.answeredQuestionsNumber,
+                    activation.userQuizSession.totalQuestionsNumber)}
+            </div>
+        );
+    };
 
     renderProposedActivations = () => {
         const {
@@ -696,7 +710,7 @@ export default class ActivationPage extends React.Component {
                                                     {userQuizSession.score}%
                                                 </div>
                                             :
-                                                null
+                                                this.renderStatisticsForSurvey()
                                         }
 
                                         {
