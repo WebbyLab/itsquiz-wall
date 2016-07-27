@@ -81,8 +81,6 @@ export default class ActivationPage extends React.Component {
 
         this.timer.startInterval();
 
-        this.generateProposedActivations();
-
         this.delayRenderProposedActivations();
     }
 
