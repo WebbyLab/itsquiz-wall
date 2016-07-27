@@ -87,6 +87,9 @@
          "You could do better!": [
             "Вы могли бы сдать лучше!"
          ],
+         "(%d of %d answered)": [
+            "(Отвечено %d с %d)"
+         ],
          "More tests by %s": [
             "Еще тесты от %s"
          ],

@@ -86,6 +86,9 @@
          "You could do better!": [
             "Daha iyisini yapabilirsin"
          ],
+         "(%d of %d answered)": [
+            ""
+         ],
          "More tests by %s": [
             " %s 'den daha çok testler"
          ],

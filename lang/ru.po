@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-22 17:17+0300\n"
-"PO-Revision-Date: 2016-07-22 17:18+0300\n"
+"POT-Creation-Date: 2016-07-27 10:24+0300\n"
+"PO-Revision-Date: 2016-07-27 10:26+0300\n"
 "Last-Translator: oleg <oleg>\n"
 "Language-Team: русский <>\n"
 "Language: \n"
@@ -102,6 +102,10 @@ msgstr "Хорошая работа!"
 
 msgid "You could do better!"
 msgstr "Вы могли бы сдать лучше!"
+
+#, javascript-format
+msgid "(%d of %d answered)"
+msgstr "(Отвечено %d с %d)"
 
 #, javascript-format
 msgid "More tests by %s"
