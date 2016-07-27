@@ -27,19 +27,19 @@ export function formatActivation(activation, author) {
 }
 
 export function formatUserInfo(user) {
-    let minimizedAvatar = user.minimizedImage;
+    let smallAvatarUrl = user.smallAvatarUrl;
 
-    if (isAvatarCustom(user.image) && !isAvatarCustom(user.minimizedImage)) {
-        minimizedAvatar = user.image;
+    if (!isAvatarStandard(user.avatarUrl) && isAvatarStandard(user.smallAvatarUrl)) {
+        smallAvatarUrl = user.avatarUrl;
     }
 
     return {
-        minimizedAvatar,
+        smallAvatarUrl,
         id              : user.id,
         isTrusted       : user.isTrusted,
         type            : user.type,
         fullName        : _getUserFullName(user),
-        avatar          : user.image,
+        avatar          : user.avatarUrl,
         backgroundURL   : user.backgroundURL
     };
 }
@@ -56,7 +56,7 @@ export function formatAuthorProfileData(user) {
         secondName    : user.secondName,
         lastName      : user.lastName,
         companyName   : user.companyName,
-        pictureURL    : user.image,
+        pictureURL    : user.avatarUrl,
         backgroundURL : user.backgroundURL
     };
 }
@@ -117,6 +117,6 @@ function _getResultBackground(score) {
     return 'verybad';
 }
 
-function isAvatarCustom(avatar) {
+function isAvatarStandard(avatar) {
     return avatar.includes('profile') || avatar.includes('companyProfile');
 }

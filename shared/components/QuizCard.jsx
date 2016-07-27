@@ -87,7 +87,7 @@ export default class QuizCard extends Component {
                     <div className='QuizCard__info'>
                         <img
                             className='QuizCard__avatar'
-                            src={author.minimizedAvatar}
+                            src={author.smallAvatarUrl}
                             onClick={onAuthorAvatarClick.bind(null, author.id)}
                         />
                         <div className='QuizCard__name-author'>
