@@ -21,39 +21,34 @@ import './ActivationPage.less';
 
 export default class ActivationPage extends React.Component {
     static propTypes = {
-        activation         : React.PropTypes.object,
-        authorActivations  : React.PropTypes.arrayOf(React.PropTypes.object),
-        similarActivations : React.PropTypes.arrayOf(React.PropTypes.object),
-        showUserResult     : React.PropTypes.bool,
-        isSurvey           : React.PropTypes.bool,
-        sharingLink        : React.PropTypes.string,
-        userQuizSession    : React.PropTypes.object,
-        isLoading          : React.PropTypes.bool,
-        isLoggingIn        : React.PropTypes.bool,
-        isEmbedded         : React.PropTypes.bool,
-        dueTime            : React.PropTypes.string,
-        assessmentSystem   : React.PropTypes.array,
-        onPass             : React.PropTypes.func,
-        onShare            : React.PropTypes.func,
-        onShareComplete    : React.PropTypes.func,
-        onLoginDialogClose : React.PropTypes.func,
-        onStopSharing      : React.PropTypes.func,
-        onGoBack           : React.PropTypes.func,
-        onShareResult      : React.PropTypes.func,
-        onFillProfile      : React.PropTypes.func,
-        onSponsoredClick   : React.PropTypes.func,
-        onViewAnswers      : React.PropTypes.func,
-        onActivationClick  : React.PropTypes.func
+        activation                   : React.PropTypes.object,
+        authorActivations            : React.PropTypes.arrayOf(React.PropTypes.object),
+        similarActivations           : React.PropTypes.arrayOf(React.PropTypes.object),
+        proposedActivations          : React.PropTypes.arrayOf(React.PropTypes.object),
+        showUserResult               : React.PropTypes.bool,
+        isSurvey                     : React.PropTypes.bool,
+        sharingLink                  : React.PropTypes.string,
+        userQuizSession              : React.PropTypes.object,
+        isLoading                    : React.PropTypes.bool,
+        isLoggingIn                  : React.PropTypes.bool,
+        isEmbedded                   : React.PropTypes.bool,
+        isShowingProposedActivations : React.PropTypes.bool,
+        dueTime                      : React.PropTypes.string,
+        assessmentSystem             : React.PropTypes.array,
+        onPass                       : React.PropTypes.func,
+        onShare                      : React.PropTypes.func,
+        onShareComplete              : React.PropTypes.func,
+        onLoginDialogClose           : React.PropTypes.func,
+        onStopSharing                : React.PropTypes.func,
+        onGoBack                     : React.PropTypes.func,
+        onShareResult                : React.PropTypes.func,
+        onFillProfile                : React.PropTypes.func,
+        onSponsoredClick             : React.PropTypes.func,
+        onViewAnswers                : React.PropTypes.func,
+        onActivationClick            : React.PropTypes.func
     };
 
     static contextTypes = { i18n: React.PropTypes.object };
-
-    state = {
-        showDescription               : false,
-        proposedActivationsVisibility : 'hidden',
-        isChangingActivation          : false,
-        proposedActivations           : []
-    };
 
     componentWillMount() {
         const { l } = this.context.i18n;
@@ -61,61 +56,8 @@ export default class ActivationPage extends React.Component {
         this.sponsoredButtonLabel = Math.random() < 0.5 ? l('Contact me') : l('Get the gift');
     }
 
-    componentDidMount() {
-        const self = this;
-
-        this.timer = {
-            interval: null,
-            period: 10 * 1000,
-            startInterval() {
-                this.interval = setInterval(self.changeProposedActivations, this.period);
-            },
-            resetInterval() {
-                clearInterval(this.interval);
-                this.interval = setInterval(self.changeProposedActivations, this.period);
-            },
-            stopInterval() {
-                clearInterval(this.interval);
-            }
-        };
-
-        this.timer.startInterval();
-
-        this.delayRenderProposedActivations();
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.activation.id !== this.props.activation.id) {
-            this.timer.resetInterval();
-            this.delayRenderProposedActivations();
-        }
-    }
-
-    componentWillUnmount() {
-        this.timer.stopInterval();
-        delete this.timer;
-    }
-
-    handleDescriptionClick = () => {
-        this.setState({
-            showDescription: true
-        });
-    };
-
-    handleHideDescription = () => {
-        this.setState({
-            showDescription: false
-        });
-    };
-
     handleActivationClick = (activation) => {
-        const {
-            onActivationClick
-        } = this.props;
-
-        onActivationClick(activation);
-
-        this.changeProposedActivations();
+        this.props.onActivationClick(activation);
     };
 
     getGreeting = () => {
@@ -157,99 +99,6 @@ export default class ActivationPage extends React.Component {
         }
     };
 
-    getRandomInteger = (min, max) => {
-        let rand = min - 0.5 + Math.random() * (max - min + 1);
-
-        rand = Math.round(rand);
-
-        return rand;
-    };
-
-    getRandomNumbers = (min, max, amount) => {
-        if (amount < 1) {
-            return;
-        }
-
-        const result = [];
-
-        while (result.length !== amount) {
-            const randomNumber = this.getRandomInteger(min, max - 1);
-
-            if (result.indexOf(randomNumber) !== -1) {
-                continue;
-            }
-
-            result.push(randomNumber);
-        }
-
-        return result;
-    };
-
-    changeProposedActivations = () => {
-        this.setState({
-            proposedActivationsVisibility: 'hidden',
-            isChangingActivation: true
-        });
-
-        this.delayRenderProposedActivations();
-    };
-
-    delayRenderProposedActivations = () => {
-        setTimeout(() => {
-            this.setState({
-                isChangingActivation: false
-            });
-
-            this.generateProposedActivations();
-
-            setTimeout(() => {
-                this.setState({
-                    proposedActivationsVisibility: 'visible'
-                });
-            }, 500);
-        }, 500);
-    };
-
-    generateProposedActivations = () => {
-        const {
-            activation,
-            similarActivations,
-            authorActivations
-        } = this.props;
-
-        if (!activation.userQuizSession) {
-            return;
-        }
-
-        if (authorActivations && authorActivations.length || similarActivations && similarActivations.length) {
-            if (this.state.proposedActivationsVisibility === 'hidden' && !this.state.isChangingActivation) {
-                let allProposedActivations = (similarActivations || []).filter(item => {
-                    return !item.userQuizSession;
-                });
-
-                if (allProposedActivations.length < 2) {
-                    allProposedActivations = allProposedActivations.concat((authorActivations || []).filter(item => {
-                        return !item.userQuizSession;
-                    }));
-                }
-
-                if (!allProposedActivations.length) {
-                    return;
-                }
-
-                const numberOfProposedActivations = allProposedActivations.length === 1 ? 1 : 2;
-                const proposedActivationsIndexes =
-                    this.getRandomNumbers(0, allProposedActivations.length, numberOfProposedActivations);
-
-                const proposedActivations = proposedActivationsIndexes.map(index => allProposedActivations[index]);
-
-                this.setState({
-                    proposedActivations
-                });
-            }
-        }
-    };
-
     renderStatisticsForSurvey = () => {
         const { activation } = this.props;
         const { l } = this.context.i18n;
@@ -265,29 +114,17 @@ export default class ActivationPage extends React.Component {
     };
 
     renderProposedActivations = () => {
-        const {
-            activation
-        } = this.props;
-
-        if (!activation.userQuizSession) {
-            return;
-        }
-
-        const {
-            proposedActivations
-        } = this.state;
-
-        if (!proposedActivations) {
+        if (!this.props.proposedActivations) {
             return;
         }
 
         return (
             <div
                 className={`ActivationPage__proposed-activations--${
-                    this.state.proposedActivationsVisibility || 'hidden'}`}
+                    this.props.isShowingProposedActivations ? 'visible' : 'hidden'}`}
             >
                 {
-                    proposedActivations.map(proposedActivation =>
+                    this.props.proposedActivations.map(proposedActivation =>
                         <div
                             className = 'ActivationPage__proposed-activation'
                             key       = {proposedActivation.id}
@@ -303,7 +140,7 @@ export default class ActivationPage extends React.Component {
                                     ?
                                         proposedActivation.author
                                     :
-                                        activation.author
+                                        this.props.activation.author
                                 }
                                 isPassed          = {Boolean(proposedActivation.isPassed)}
                                 userQuizSession   = {proposedActivation.userQuizSession}
