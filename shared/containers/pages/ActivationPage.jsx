@@ -55,8 +55,15 @@ class ActivationPageContainer extends Component {
             'SEARCH_QUIZ_WALL' : this.handleSearch
         });
 
-        console.log('componentDidMount');
         this.generateProposedActivations({
+            activation,
+            similarActivations,
+            authorActivations
+        });
+
+        this.timer = this.createTimer(10 * 1000);
+
+        this.timer.start({
             activation,
             similarActivations,
             authorActivations
@@ -78,13 +85,24 @@ class ActivationPageContainer extends Component {
         }
 
         if (activation.id !== this.props.activation.id) {
-            console.log('componentWillReceiveProps');
             this.generateProposedActivations({
                 activation,
                 similarActivations,
                 authorActivations
             });
+
+            this.timer.restart({
+                activation,
+                similarActivations,
+                authorActivations
+            });
         }
+    }
+
+    componentWillUnmount() {
+        this.timer.stop();
+
+        delete this.timer;
     }
 
     handleSearch = (searchText) => {
@@ -238,15 +256,12 @@ class ActivationPageContainer extends Component {
     };
 
     generateProposedActivations = ({ activation, similarActivations, authorActivations }) => {
-        if (!activation || !activation.userQuizSession || !similarActivations || !authorActivations) {
+        if (!activation || !activation.userQuizSession || !similarActivations || !authorActivations
+            || similarActivations.length + authorActivations.length === 0) {
             return;
         }
 
         const amount = 2;
-
-        if (similarActivations.length + authorActivations.length < amount) {
-            return;
-        }
 
         const candidatesForPropose = similarActivations.length >= amount
             ? similarActivations
@@ -285,7 +300,24 @@ class ActivationPageContainer extends Component {
                 proposedActivations,
                 isShowingProposedActivations: true
             });
-        }, 1000);
+        }, 500);
+    }
+
+    createTimer = (period) => {
+        const self = this;
+
+        return {
+            start(data) {
+                this.interval = setInterval(self.generateProposedActivations.bind(self, data), period);
+            },
+            restart(data) {
+                this.stop();
+                this.start(data);
+            },
+            stop() {
+                clearInterval(this.interval);
+            }
+        };
     }
 
     isArraysEqual(array1, array2) {
