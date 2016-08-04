@@ -186,7 +186,6 @@ function renderHTML({ componentHTML, initialState, metaData, config }) {
             <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.cyan-pink.min.css" />
             <link rel="stylesheet" href="//cdn.materialdesignicons.com/1.2.65/css/materialdesignicons.min.css">
             <link rel="stylesheet" href="${config.staticUrl}/${getAssetsPaths().css}">
-            <script async src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
             <script>
                 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -234,6 +233,7 @@ function renderHTML({ componentHTML, initialState, metaData, config }) {
             window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
           </script>
 
+          <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
           <script type="application/javascript" src="${config.staticUrl}/${getAssetsPaths().js}"></script>
         </body>
         </html>
