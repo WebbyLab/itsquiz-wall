@@ -3,7 +3,8 @@ import * as apiResponseFormatter from '../utils/apiResponseFormatter';
 import {
     LOAD_ACTIVATION_REQUEST,
     LOAD_ACTIVATION_SUCCESS,
-    LOAD_SIMILAR_ACTIVATIONS_SUCCESS
+    LOAD_SIMILAR_ACTIVATIONS_SUCCESS,
+    LOAD_ACTIVATIONS_REQUEST
 } from '../actions/activations';
 
 const DEFAULT_STATE = {
@@ -56,6 +57,15 @@ export default function currentActivation(state = DEFAULT_STATE, action) {
             return {
                 ...state,
                 similarActivations
+            };
+        }
+
+        // react on other reducers actions
+
+        case LOAD_ACTIVATIONS_REQUEST: {
+            return {
+                ...state,
+                ...DEFAULT_STATE
             };
         }
 
