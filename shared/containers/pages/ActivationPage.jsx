@@ -51,10 +51,6 @@ class ActivationPageContainer extends Component {
             authorActivations
         } = this.props;
 
-        embedEvents.subscribe({
-            'SEARCH_QUIZ_WALL' : this.handleSearch
-        });
-
         this.generateProposedActivations({
             activation,
             similarActivations,
@@ -104,15 +100,6 @@ class ActivationPageContainer extends Component {
 
         delete this.timer;
     }
-
-    handleSearch = (searchText) => {
-        this.props.history.pushState(null, '/activations', {
-            ...this.props.location.query,
-            search : searchText || undefined
-        });
-
-        sendEvent('activation page', 'search');
-    };
 
     handlePassActivationClick = (activation) => {
         const isEmbedded = this.props.location.query.embed;
