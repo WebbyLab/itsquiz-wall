@@ -80,7 +80,7 @@ export default class App extends Component {
             }
 
             const quizWallEmbedPath = this.props.history.createHref(pathname, query);
-            console.log('quizWallEmbedPath', quizWallEmbedPath);
+
             embedEvents.send({
                 type : 'PATH_CHANGED',
                 quizWallEmbedPath
