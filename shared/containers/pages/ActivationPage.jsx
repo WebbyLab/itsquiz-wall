@@ -258,14 +258,18 @@ class ActivationPageContainer extends Component {
     generateProposedActivations = ({ activation, similarActivations, authorActivations }) => {
         if (!activation || !activation.userQuizSession || !similarActivations || !authorActivations
             || similarActivations.length + authorActivations.length === 0) {
+            this.hideProposedActivations();
+
             return;
         }
 
         const amount = 2;
 
-        const candidatesForPropose = similarActivations.length >= amount
+        let candidatesForPropose = similarActivations.length >= amount
             ? similarActivations
-            : similarActivations.concat(authorActivations).filter(item => !item.userQuizSession);
+            : similarActivations.concat(authorActivations);
+
+        candidatesForPropose = candidatesForPropose.filter(item => !item.userQuizSession);
 
         if (candidatesForPropose.length === 0) {
             return;
@@ -299,6 +303,18 @@ class ActivationPageContainer extends Component {
             this.setState({
                 proposedActivations,
                 isShowingProposedActivations: true
+            });
+        }, 500);
+    }
+
+    hideProposedActivations = () => {
+        this.setState({
+            isShowingProposedActivations: false
+        });
+
+        setTimeout(() => {
+            this.setState({
+                proposedActivations: []
             });
         }, 500);
     }
