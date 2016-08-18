@@ -45,7 +45,9 @@ export function getMetaDataFromState({ route, state, params = {}, query = {}, la
             en: 'I have passed test "{name}" and gained {score}%. My result is: "{greeting}"'
         };
 
-        const title = strformat(sharePhrases[lang], { name, score: accountQuizSession.score, greeting: greeting.phrase });
+        const title = strformat(sharePhrases[lang], {
+            name, score: accountQuizSession.score, greeting: greeting.phrase
+        });
         const greetingDescription = greeting.description || '';
 
         return {
