@@ -6,18 +6,18 @@ export function formatActivation(activation, author) {
         publicLink               : activation.publicLink,
         actionId                 : activation.links ? activation.links.action.id : '',
         numberOfQuestions        : activation.numberOfQuestions,
-        numberOfUsersPassed      : activation.numberOfPeople,
+        numberOfAccountsPassed      : activation.numberOfPeople,
         dueTime                  : activation.dueTime,
         message                  : activation.message,
         category                 : activation.category,
         isSponsored              : activation.isSponsored,
         isPrivate                : activation.isPublic === false,
         isPassed                 : activation.assigneeQuizSession && activation.assigneeQuizSession.finishedAt,
-        userQuizSession          : formatUserQuizSession(activation.assigneeQuizSession),
+        accountQuizSession          : formatAccountQuizSession(activation.assigneeQuizSession),
         pictureURL               : activation.pictureURL,
         tags                     : activation.tags,
         timeToPass               : activation.timeToPass,
-        author                   : author ? formatUserInfo(author) : {},
+        author                   : author ? formatAccountInfo(author) : {},
         canAssigneePass          : activation.canAssigneePass,
         numberOfTriesLeft        : activation.numberOfTriesLeft || 0,
         assessmentSystemId       : activation.assessmentSystemId,
@@ -26,51 +26,51 @@ export function formatActivation(activation, author) {
     };
 }
 
-export function formatUserInfo(user) {
-    let smallAvatarUrl = user.smallAvatarUrl;
+export function formatAccountInfo(account) {
+    let smallAvatarUrl = account.smallAvatarUrl;
 
-    if (!isAvatarStandard(user.avatarUrl) && isAvatarStandard(user.smallAvatarUrl)) {
-        smallAvatarUrl = user.avatarUrl;
+    if (!isAvatarStandard(account.avatarUrl) && isAvatarStandard(account.smallAvatarUrl)) {
+        smallAvatarUrl = account.avatarUrl;
     }
 
     return {
         smallAvatarUrl,
-        id              : user.id,
-        isTrusted       : user.isTrusted,
-        type            : user.type,
-        fullName        : _getUserFullName(user),
-        avatar          : user.avatarUrl,
-        backgroundURL   : user.backgroundURL
+        id              : account.id,
+        isTrusted       : account.isTrusted,
+        type            : account.type,
+        fullName        : _getAccountFullName(account),
+        avatar          : account.avatarUrl,
+        backgroundURL   : account.backgroundURL
     };
 }
 
-export function formatAuthorProfileData(user) {
+export function formatAuthorProfileData(account) {
     return {
-        id            : user.id,
-        country       : user.country,
-        city          : user.city,
-        industry      : user.industry,
-        isTrusted     : user.isTrusted,
-        type          : user.type,
-        firstName     : user.firstName,
-        secondName    : user.secondName,
-        lastName      : user.lastName,
-        companyName   : user.companyName,
-        pictureURL    : user.avatarUrl,
-        backgroundURL : user.backgroundURL
+        id            : account.id,
+        country       : account.country,
+        city          : account.city,
+        industry      : account.industry,
+        isTrusted     : account.isTrusted,
+        type          : account.type,
+        firstName     : account.firstName,
+        secondName    : account.secondName,
+        lastName      : account.lastName,
+        companyName   : account.companyName,
+        pictureURL    : account.avatarUrl,
+        backgroundURL : account.backgroundURL
     };
 }
 
-export function formatUserQuizSession(session) {
+export function formatAccountQuizSession(session) {
     if (!session || !session.createdAt) {
         return null;
     }
 
-    const userGainedPoints = Math.ceil(+session.gainedPoints * 100) / 100 || 0;
-    let userScore = 0;
+    const accountGainedPoints = Math.ceil(+session.gainedPoints * 100) / 100 || 0;
+    let accountScore = 0;
 
     if (+session.maxPoints > 0) {
-        userScore = Math.ceil(+userGainedPoints * 100 / +session.maxPoints);
+        accountScore = Math.ceil(+accountGainedPoints * 100 / +session.maxPoints);
     }
 
     return {
@@ -78,25 +78,25 @@ export function formatUserQuizSession(session) {
         startedAt               : session.startedAt,
         shareResultLink         : session.resultShareLink || '',
         finishedAt              : session.finishedAt,
-        score                   : userScore,
-        gainedPoints            : userGainedPoints,
+        score                   : accountScore,
+        gainedPoints            : accountGainedPoints,
         maxPoints               : session.maxPoints,
         status                  : session.status,
         id                      : session.id,
-        resultBackground        : _getResultBackground(userScore),
+        resultBackground        : _getResultBackground(accountScore),
         answeredQuestionsNumber : session.numberOfAnsweredQuestions,
         totalQuestionsNumber    : session.questions.length
     };
 }
 
-function _getUserFullName({ firstName, secondName, ...user }) {
-    if (user.type === 'COMPANY') {
-        return user.companyName;
+function _getAccountFullName({ firstName, secondName, ...account }) {
+    if (account.type === 'COMPANY') {
+        return account.companyName;
     }
 
     return firstName || secondName
         ? `${firstName}  ${secondName}`
-        : 'It`s quiz user';
+        : 'It`s quiz account';
 }
 
 function _getResultBackground(score) {

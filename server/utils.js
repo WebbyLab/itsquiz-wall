@@ -34,10 +34,10 @@ export function getMetaDataFromState({ route, state, params = {}, query = {}, la
         };
     }
 
-    if (route === '/result/:id/:userId' && state.currentActivation.activation) {
-        const { name, pictureURL, message, userQuizSession } = state.currentActivation.activation;
+    if (route === '/result/:id/:accountId' && state.currentActivation.activation) {
+        const { name, pictureURL, message, accountQuizSession } = state.currentActivation.activation;
 
-        const greeting = _getGreeting(state.currentAssessmentSystem.assessmentSystem, userQuizSession.score);
+        const greeting = _getGreeting(state.currentAssessmentSystem.assessmentSystem, accountQuizSession.score);
 
         const sharePhrases = {
             ru: 'Я сдал тест "{name}" на {score}%. Мой результат: "{greeting}"',
@@ -45,7 +45,7 @@ export function getMetaDataFromState({ route, state, params = {}, query = {}, la
             en: 'I have passed test "{name}" and gained {score}%. My result is: "{greeting}"'
         };
 
-        const title = strformat(sharePhrases[lang], { name, score: userQuizSession.score, greeting: greeting.phrase });
+        const title = strformat(sharePhrases[lang], { name, score: accountQuizSession.score, greeting: greeting.phrase });
         const greetingDescription = greeting.description || '';
 
         return {
@@ -111,7 +111,7 @@ export function getIp(req) {
 }
 
 export function detectLocale(req) {
-    // Take locale passed by user
+    // Take locale passed by account
     const passedLocale = (req.query.locale || req.cookies.locale || '').toLowerCase();
 
     if (getSupportedLocales().indexOf(passedLocale) >= 0) {

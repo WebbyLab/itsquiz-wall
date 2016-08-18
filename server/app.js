@@ -52,7 +52,7 @@ app.use((req, res) => {
         return res.redirect(302, noLangUrl);
     }
 
-    // If user is authenticated redirect him to the wall embedded into the main app
+    // If account is authenticated redirect him to the wall embedded into the main app
     if (req.cookies.authenticated && !req.url.match('embed')) {
         const redirectUrl = makeRedirectUrl({ originalUrl: req.url });
 

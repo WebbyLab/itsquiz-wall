@@ -19,9 +19,9 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Gtranslator 2.91.6\n"
 
-#: /Users/koorchik/work/itsquiz/itsquiz-wall/bin/../src_es5/components/QuizCard.js:106
-#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/QuizCard.js:114
-#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/QuizCard.js:113
+#: /Accounts/koorchik/work/itsquiz/itsquiz-wall/bin/../src_es5/components/QuizCard.js:106
+#: /Accounts/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/QuizCard.js:114
+#: /Accounts/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/QuizCard.js:113
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:112
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:114
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/QuizCard.js:149
@@ -33,25 +33,25 @@ msgstr ""
 msgid "View details"
 msgstr "查看详情"
 
-#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:118
-#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:145
+#: /Accounts/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:118
+#: /Accounts/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:145
 msgid "FREE"
 msgstr "免费"
 
-#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:123
+#: /Accounts/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:123
 msgid " question"
 msgid_plural " questions"
 msgstr[0] "问题"
 msgstr[1] "问题"
 
-#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:125
+#: /Accounts/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:125
 msgid " minute"
 msgid_plural " minutes"
 msgstr[0] "分钟"
 msgstr[1] "分钟"
 
-#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:133
-#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:154
+#: /Accounts/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:133
+#: /Accounts/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:154
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:143
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:174
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:184
@@ -60,8 +60,8 @@ msgstr[1] "分钟"
 msgid "Pass this test"
 msgstr "通过测试"
 
-#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:123
-#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:126
+#: /Accounts/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:123
+#: /Accounts/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:126
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:119
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:150
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:160
@@ -85,7 +85,7 @@ msgid_plural "%d questions"
 msgstr[0] "%d 问题"
 msgstr[1] "%d 问题"
 
-#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:172
+#: /Accounts/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:172
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:161
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:201
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationPage.js:211
@@ -101,7 +101,7 @@ msgstr[1] "%d 问题"
 msgid "More tests by %s"
 msgstr "%s的更多测试"
 
-#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:62
+#: /Accounts/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:62
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:77
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:161
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/pages/ActivationsPage.js:162
@@ -115,7 +115,7 @@ msgstr "%s的更多测试"
 msgid "Quizzes"
 msgstr "小测验"
 
-#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/SearchBox.js:99
+#: /Accounts/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/components/SearchBox.js:99
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/SearchBox.js:99
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/SearchBox.js:116
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/components/SearchBox.js:112
@@ -123,7 +123,7 @@ msgstr "小测验"
 msgid "Search"
 msgstr "搜索"
 
-#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/i18n/Tools.js:49
+#: /Accounts/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/i18n/Tools.js:49
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/i18n/Tools.js:49
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/i18n/Tools.js:53
 #, javascript-format
@@ -132,7 +132,7 @@ msgid_plural "%d hours"
 msgstr[0] "%d 小时"
 msgstr[1] "%d 小时"
 
-#: /Users/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/i18n/Tools.js:52
+#: /Accounts/katerynaporshnieva/Documents/work/itsquiz/itsquiz-wall/bin/../src_es5/i18n/Tools.js:52
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/i18n/Tools.js:52
 #: /home/oleg/work/iq/itsquiz-wall/bin/../src_es5/i18n/Tools.js:56
 #, javascript-format

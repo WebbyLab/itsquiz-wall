@@ -62,7 +62,7 @@ export default class ActivationsPage extends React.Component {
 
         const activation = activations[index];
 
-        const isSurvey = activation.userQuizSession ? activation.userQuizSession.maxPoints === 0 : false;
+        const isSurvey = activation.accountQuizSession ? activation.accountQuizSession.maxPoints === 0 : false;
 
         onItemRenderRequest(index);
 
@@ -83,7 +83,7 @@ export default class ActivationsPage extends React.Component {
                 message             = {activation.message}
                 numberOfQuestions   = {activation.numberOfQuestions}
                 timeToPass          = {activation.timeToPass}
-                userQuizSession     = {activation.userQuizSession}
+                accountQuizSession     = {activation.accountQuizSession}
                 pictureURL          = {activation.pictureURL}
                 author              = {activation.author}
                 category            = {activation.category}

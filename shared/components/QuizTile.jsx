@@ -15,7 +15,7 @@ export default class QuizTile extends Component {
         message           : PropTypes.string,
         pictureURL        : PropTypes.string,
         author            : PropTypes.object,
-        userQuizSession   : PropTypes.object,
+        accountQuizSession   : PropTypes.object,
         isPassed          : PropTypes.bool,
         onClick           : PropTypes.func
     };
@@ -33,12 +33,12 @@ export default class QuizTile extends Component {
             name,
             pictureURL,
             author,
-            userQuizSession,
+            accountQuizSession,
             isPassed,
             onClick
         } = this.props;
 
-        const isSurvey = userQuizSession ? userQuizSession.maxPoints === 0 : false;
+        const isSurvey = accountQuizSession ? accountQuizSession.maxPoints === 0 : false;
 
         return (
             <Card className='QuizTile' shadow={1}>
@@ -52,8 +52,8 @@ export default class QuizTile extends Component {
                             {
                                 !isSurvey
                                 ?
-                                    <span className='QuizTile__user-score'>
-                                        {userQuizSession.score}%
+                                    <span className='QuizTile__account-score'>
+                                        {accountQuizSession.score}%
                                     </span>
                                 :
                                     <MdiIcon type='check' className='QuizTile__survey--passed' />

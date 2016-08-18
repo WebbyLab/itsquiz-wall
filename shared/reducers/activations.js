@@ -19,7 +19,7 @@ export default function activations(state = DEFAULT_STATE, action) {
     switch (action.type) {
         case LOAD_ACTIVATIONS_SUCCESS: {
             const newActivations = action.activations.map(activation => {
-                const author = action.users.find(user => user.id === activation.links.owner.id);
+                const author = action.accounts.find(account => account.id === activation.links.owner.id);
 
                 return apiResponseFormatter.formatActivation(activation, author);
             });
