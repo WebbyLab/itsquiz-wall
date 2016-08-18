@@ -96,7 +96,7 @@ function _getAccountFullName({ firstName, secondName, ...account }) {
 
     return firstName || secondName
         ? `${firstName}  ${secondName}`
-        : 'It`s quiz account';
+        : 'It`s quiz user';
 }
 
 function _getResultBackground(score) {
