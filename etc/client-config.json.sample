@@ -1,51 +1,52 @@
 {
-    "apiPrefix": "http://app.itsquiz.com/api/v1",
-    "backgroundImagesPrefix": "http://app.itsquiz.com/be/static/images/backgrounds/",
+    "apiPrefix": "http://localhost:8080/api/v1",
+    "backgroundImagesPrefix": "http://app.qas.itsquiz.com/be/static/images/backgrounds/",
     "staticUrl": "http://localhost:8050",
-    "landingURL": "http://itsquiz.com/",
-    "loginUrl": "http://app.itsquiz.com/{lang}/login",
-    "embedOrigin": "http://app.itsquiz.com/",
-    "socialAuthURL": "http://app.itsquiz.com/api/v1/auth/{socialType}?lang={lang}&continue={continueRoute}",
-    "emailAuthURL": "http://app.itsquiz.com/{lang}/login?opened=true&continue={continueRoute}",
+    "landingURL": "http://localhost:3002/",
+    "loginUrl": "http://localhost:8090/{lang}/login",
+    "embedOrigin": "http://localhost:8090",
+    "socialAuthURL": "http://localhost:8080/api/v1/auth/{socialType}?lang={lang}&continue={continueRoute}&ref={ref}",
+    "emailAuthURL": "http://localhost:8090/{lang}/login?opened=true&continue={continueRoute}&ref={ref}",
     "facebookAppId": "XXX",
+    "quizWallEmbedURL": "http://localhost:3001/{path}",
     "gaTrackingCode": "XXX",
-    "quizwallShareLink": "http://itsquiz.com/activations",
+    "quizwallShareLink": "http://itsquiz.com/{lang}/activations",
     "welcomeLinks": {
-        "createTest": "http://app.itsquiz.com/{lang}/login?continue=%2Fquestions",
-        "aboutItsquiz": "http://itsquiz.com/about/",
-        "discoverTests": "http://itsquiz.com/activations?skipWelcomeDialog=true",
-        "englishCampaign": "http://itsquiz.com/activations?skipWelcomeDialog=true&search=специальное+предложение"
+       "createTest": "http://localhost:8080/{lang}/login?continue=%2Fquestions",
+       "aboutItsquiz": "http://itsquiz.com/about/",
+       "discoverTests": "http://localhost:3001/{lang}/activations?skipWelcomeDialog=true",
+       "englishCampaign": "http://itsquiz.com/activations?skipWelcomeDialog=true&search=специальное+предложение"
     },
     "footerLinks": {
-        "twitter": "http://twitter.com/itsquizcom",
-        "facebook": "https://www.facebook.com/itsquiz",
-        "youtube": "https://www.youtube.com/channel/UClU6b5mtTVPPAv_L9dUzl_g",
-        "supportPage": "http://itsquiz.userecho.com/",
-        "suggestIdea": "http://itsquiz.userecho.com/",
-        "aboutItsquiz": "http://itsquiz.com/about/",
-        "ourTeam": "http://itsquiz.com/about/#team",
-        "helpMe": "mailto:support@itsquiz.com"
+       "twitter": "http://twitter.com/itsquizcom",
+       "facebook": "https://www.facebook.com/itsquiz",
+       "youtube": "https://www.youtube.com/channel/UClU6b5mtTVPPAv_L9dUzl_g",
+       "supportPage": "http://itsquiz.userecho.com/",
+       "suggestIdea": "http://itsquiz.userecho.com/",
+       "aboutItsquiz": "http://itsquiz.com/about/",
+       "ourTeam": "http://itsquiz.com/about/#team",
+       "helpMe": "mailto:support@itsquiz.com"
     },
     "customShareInfo": {
-        "my": {
-            "title": "I passed test {name} and gained {score}%",
-            "description": "{author} : {description}",
-            "pictureURL": "",
-            "redirectRoute": "/activations"
-        }
+       "my": {
+           "title": "I passed test {name} and gained {score}%",
+           "description": "{author} : {description}",
+           "pictureURL": "",
+           "redirectRoute": "/activations"
+       }
     },
     "promos": {
-        "iforum-2016": {
-            "name": "Получи билеты на iForum 2016!",
-            "desciption": "It's quiz розыгрывает билеты на главное интернет-событие года. Создай тест на тему `интернет-технологии` и получи билет бесплатно! It's quiz - это облачная платформа для тестирования и проверки знаний.",
-            "image": "/static/images/promo/iforum-2016.png"
-        }
+       "iforum-2016": {
+           "name": "Получи билеты на iForum 2016!",
+           "desciption": "It's quiz розыгрывает билеты на главное интернет-событие года. Создай тест на тему `интернет-технологии` и получи билет бесплатно! It's quiz - это облачная платформа для тестирования и проверки знаний.",
+           "image": "/static/images/promo/iforum-2016.png"
+       }
     },
     "ads": {
         "activationPage": {
-            "client": "XXX",
-            "slot": "XXX",
-            "format": "auto"
+           "client": "XXX",
+           "slot": "XXX",
+           "format": "auto"
         }
     }
 }
