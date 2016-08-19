@@ -35,35 +35,35 @@ export default class LoginDialog extends Component {
                             className='LoginDialog__button LoginDialog__button--facebook'
                             onClick={onSocialLogin.bind(null, 'facebook')}
                         >
-                            <Icon type='facebook' className='LoginDialog__icon'/>
+                            <Icon type='facebook' className='LoginDialog__icon' />
                         </div>
 
                         <div
                             className='LoginDialog__button LoginDialog__button--google'
                             onClick={onSocialLogin.bind(null, 'google')}
                         >
-                            <Icon type='google-plus' className='LoginDialog__icon'/>
+                            <Icon type='google-plus' className='LoginDialog__icon' />
                         </div>
 
                         <div
                             className='LoginDialog__button LoginDialog__button--vkontakte'
                             onClick={onSocialLogin.bind(null, 'vkontakte')}
                         >
-                            <Icon type='vk' className='LoginDialog__icon'/>
+                            <Icon type='vk' className='LoginDialog__icon' />
                         </div>
 
                         <div
                             className='LoginDialog__button LoginDialog__button--linkedin'
                             onClick={onSocialLogin.bind(null, 'linkedin')}
                         >
-                            <Icon type='linkedin' className='LoginDialog__icon'/>
+                            <Icon type='linkedin' className='LoginDialog__icon' />
                         </div>
 
                         <div
                             className='LoginDialog__button LoginDialog__button--github'
                             onClick={onSocialLogin.bind(null, 'github')}
                         >
-                            <Icon type='github-circle' className='LoginDialog__icon'/>
+                            <Icon type='github-circle' className='LoginDialog__icon' />
                         </div>
                     </div>
 

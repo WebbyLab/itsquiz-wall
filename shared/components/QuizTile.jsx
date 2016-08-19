@@ -45,7 +45,7 @@ export default class QuizTile extends Component {
                 <CardTitle
                     className='QuizTile__title'
                 >
-                    <img src={pictureURL} width='100%' onClick={onClick}/>
+                    <img src={pictureURL} width='100%' onClick={onClick} />
                     {
                         isPassed
                         ? <div className='QuizTile__overlay' onClick={onClick}>

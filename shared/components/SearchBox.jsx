@@ -65,7 +65,7 @@ export default class SearchBox extends Component {
                     className='SearchBox__box'
                     onClick={this.handleBoxClick}
                 >
-                    <Icon name='search' className='SearchBox__search-icon'/>
+                    <Icon name='search' className='SearchBox__search-icon' />
 
                     <input
                         className    = 'SearchBox__input'

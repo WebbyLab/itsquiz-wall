@@ -123,7 +123,7 @@ app.use((req, res) => {
                 const componentHTML = ReactDOM.renderToString(
                     <Provider store={store}>
                         <i18n.Provider i18n={i18nTools}>
-                            <RoutingContext {...renderProps}/>
+                            <RoutingContext {...renderProps} />
                         </i18n.Provider>
                     </Provider>
                 );
