@@ -25,10 +25,10 @@ export default class ActivationPage extends React.Component {
         authorActivations            : React.PropTypes.arrayOf(React.PropTypes.object),
         similarActivations           : React.PropTypes.arrayOf(React.PropTypes.object),
         proposedActivations          : React.PropTypes.arrayOf(React.PropTypes.object),
-        showUserResult               : React.PropTypes.bool,
+        showAccountResult               : React.PropTypes.bool,
         isSurvey                     : React.PropTypes.bool,
         sharingLink                  : React.PropTypes.string,
-        userQuizSession              : React.PropTypes.object,
+        accountQuizSession              : React.PropTypes.object,
         isLoading                    : React.PropTypes.bool,
         isLoggingIn                  : React.PropTypes.bool,
         isEmbedded                   : React.PropTypes.bool,
@@ -63,7 +63,7 @@ export default class ActivationPage extends React.Component {
     getGreeting = () => {
         const { l } = this.context.i18n;
         const { activation, assessmentSystem, isSurvey } = this.props;
-        const score = activation.userQuizSession.score;
+        const score = activation.accountQuizSession.score;
 
         if (isSurvey) {
             return { phrase: l('Thank you for your answers!') };
@@ -103,12 +103,12 @@ export default class ActivationPage extends React.Component {
         const { activation } = this.props;
         const { l } = this.context.i18n;
 
-        if (!activation.userQuizSession) return null;
+        if (!activation.accountQuizSession) return null;
 
         return (
             <div className='ActivationPage__survey-statistics'>
-                {sprintf(l('(%d of %d answered)'), activation.userQuizSession.answeredQuestionsNumber,
-                    activation.userQuizSession.totalQuestionsNumber)}
+                {sprintf(l('(%d of %d answered)'), activation.accountQuizSession.answeredQuestionsNumber,
+                    activation.accountQuizSession.totalQuestionsNumber)}
             </div>
         );
     };
@@ -143,7 +143,7 @@ export default class ActivationPage extends React.Component {
                                         this.props.activation.author
                                 }
                                 isPassed          = {Boolean(proposedActivation.isPassed)}
-                                userQuizSession   = {proposedActivation.userQuizSession}
+                                accountQuizSession   = {proposedActivation.accountQuizSession}
                                 onClick           = {this.handleActivationClick.bind(null, proposedActivation)}
                             />
                         </div>
@@ -186,7 +186,7 @@ export default class ActivationPage extends React.Component {
                                     pictureURL        = {authorActivation.pictureURL}
                                     author            = {activation.author}
                                     isPassed          = {Boolean(authorActivation.isPassed)}
-                                    userQuizSession   = {authorActivation.userQuizSession}
+                                    accountQuizSession   = {authorActivation.accountQuizSession}
                                     onClick           = {this.handleActivationClick.bind(null, authorActivation)}
                                 />
                             </Cell>
@@ -232,7 +232,7 @@ export default class ActivationPage extends React.Component {
                                     pictureURL        = {similarActivation.pictureURL}
                                     author            = {similarActivation.author}
                                     isPassed          = {similarActivation.isPassed}
-                                    userQuizSession   = {similarActivation.userQuizSession}
+                                    accountQuizSession   = {similarActivation.accountQuizSession}
                                     onClick           = {this.handleActivationClick.bind(null, similarActivation)}
                                 />
                             </Cell>
@@ -250,7 +250,7 @@ export default class ActivationPage extends React.Component {
         const {
             activation,
             isLoading,
-            showUserResult,
+            showAccountResult,
             isEmbedded,
             isSurvey,
             onPass,
@@ -265,7 +265,7 @@ export default class ActivationPage extends React.Component {
             pictureURL,
             name,
             isPrivate,
-            userQuizSession,
+            accountQuizSession,
             numberOfQuestions,
             timeToPass,
             author,
@@ -280,8 +280,8 @@ export default class ActivationPage extends React.Component {
 
         const isPassingBtnAvailable = isEmbedded ? canAssigneePass : true;
 
-        const greeting = showUserResult ? this.getGreeting().phrase : '';
-        const greetingDescription = showUserResult ? this.getGreeting().description : '';
+        const greeting = showAccountResult ? this.getGreeting().phrase : '';
+        const greetingDescription = showAccountResult ? this.getGreeting().description : '';
 
         if (isLoading) {
             return <Spinner className='ActivationPage__spinner' />;
@@ -289,7 +289,7 @@ export default class ActivationPage extends React.Component {
 
         const classes = cx('ActivationPage__activation', {
             'ActivationPage__activation--sponsored': isSponsored,
-            'ActivationPage__activation--passed': showUserResult
+            'ActivationPage__activation--passed': showAccountResult
         });
 
         const passInfoClasses = cx('ActivationPage__pass-info', { 'ActivationPage__pass-info--expires': dueTime });
@@ -299,15 +299,15 @@ export default class ActivationPage extends React.Component {
             'ActivationPage__settings-icons--off' : !canAssigneeViewQuestions
         });
 
-        const resultsContainerClasses = showUserResult
-            ? cx('ActivationPage__results-container', userQuizSession.resultBackground, { 'survey' : isSurvey })
+        const resultsContainerClasses = showAccountResult
+            ? cx('ActivationPage__results-container', accountQuizSession.resultBackground, { 'survey' : isSurvey })
             : '';
 
         return (
             <div className={classes}>
                 <Card className='ActivationPage__paper' shadow={1}>
                     <CardTitle className={
-                        showUserResult
+                        showAccountResult
                         ?
                             'ActivationPage__head--passed'
                         :
@@ -382,7 +382,7 @@ export default class ActivationPage extends React.Component {
 
                             <div className='ActivationPage__actions'>
                                 {
-                                    showUserResult && !isSurvey
+                                    showAccountResult && !isSurvey
                                     ?
                                         <Button
                                             ripple
@@ -397,7 +397,7 @@ export default class ActivationPage extends React.Component {
                                 }
 
                                 {
-                                    !showUserResult && isPassingBtnAvailable
+                                    !showAccountResult && isPassingBtnAvailable
                                     ?
                                         <div className='ActivationPage__pass-btn-wrapper'>
                                             <Button
@@ -464,7 +464,7 @@ export default class ActivationPage extends React.Component {
                     </CardTitle>
 
                     {
-                        showUserResult
+                        showAccountResult
                         ?
                             <div className={resultsContainerClasses}>
                                 <div className='ActivationPage__overlay'>
@@ -489,7 +489,7 @@ export default class ActivationPage extends React.Component {
 
                                                 <div className='ActivationPage_score--circle'>
                                                     <ScoreCircle
-                                                        value={userQuizSession.score}
+                                                        value={accountQuizSession.score}
                                                         size ={200}
                                                     />
                                                 </div>
@@ -506,10 +506,10 @@ export default class ActivationPage extends React.Component {
                                                             nl(
                                                                 '%s of %s point',
                                                                 '%s of %s points',
-                                                                userQuizSession.maxPoints
+                                                                accountQuizSession.maxPoints
                                                             ),
-                                                            userQuizSession.gainedPoints,
-                                                            userQuizSession.maxPoints
+                                                            accountQuizSession.gainedPoints,
+                                                            accountQuizSession.maxPoints
                                                         )
                                                     })
                                                 </div>
@@ -541,7 +541,7 @@ export default class ActivationPage extends React.Component {
                                             !isSurvey
                                             ?
                                                 <div className='ActivationPage__score'>
-                                                    {userQuizSession.score}%
+                                                    {accountQuizSession.score}%
                                                 </div>
                                             :
                                                 this.renderStatisticsForSurvey()
@@ -556,10 +556,10 @@ export default class ActivationPage extends React.Component {
                                                             nl(
                                                                 '%s of %s point',
                                                                 '%s of %s points',
-                                                                userQuizSession.maxPoints
+                                                                accountQuizSession.maxPoints
                                                             ),
-                                                            userQuizSession.gainedPoints,
-                                                            userQuizSession.maxPoints
+                                                            accountQuizSession.gainedPoints,
+                                                            accountQuizSession.maxPoints
                                                         )
                                                     })
                                                 </div>
@@ -568,7 +568,7 @@ export default class ActivationPage extends React.Component {
                                         }
 
                                         {
-                                            userQuizSession.canViewAnswers
+                                            accountQuizSession.canViewAnswers
                                             ?
                                                 <Button
                                                     ripple
@@ -591,7 +591,8 @@ export default class ActivationPage extends React.Component {
                                                         className = 'ActivationPage__btn ActivationPage__pass-btn'
                                                     >
                                                         {
-                                                            userQuizSession.gainedPoints === userQuizSession.maxPoints
+                                                            accountQuizSession.gainedPoints
+                                                                === accountQuizSession.maxPoints
                                                             ?
                                                                 l('Pass the test')
                                                             :
@@ -633,7 +634,8 @@ export default class ActivationPage extends React.Component {
                                                         className = 'ActivationPage__btn ActivationPage__pass-btn'
                                                     >
                                                         {
-                                                            userQuizSession.gainedPoints === userQuizSession.maxPoints
+                                                            accountQuizSession.gainedPoints
+                                                                === accountQuizSession.maxPoints
                                                             ?
                                                                 l('Pass the test')
                                                             :
@@ -663,7 +665,7 @@ export default class ActivationPage extends React.Component {
                                         }
 
                                         {
-                                            userQuizSession.canViewAnswers
+                                            accountQuizSession.canViewAnswers
                                             ?
                                                 <Button
                                                     ripple
@@ -716,7 +718,7 @@ export default class ActivationPage extends React.Component {
         const { l } = this.context.i18n;
         const {
             activation,
-            showUserResult,
+            showAccountResult,
             sharingLink,
             isLoading,
             isLoggingIn,
@@ -737,8 +739,8 @@ export default class ActivationPage extends React.Component {
                     title          = {l('Share')}
                     isOpen         = {!!sharingLink}
                     twitterMessage = {
-                        showUserResult
-                        ? sprintf(l('My result is %d%%'), activation.userQuizSession.score)
+                        showAccountResult
+                        ? sprintf(l('My result is %d%%'), activation.accountQuizSession.score)
                         : l('Check out this test')
                     }
                     onShare        = {this.props.onShareComplete}

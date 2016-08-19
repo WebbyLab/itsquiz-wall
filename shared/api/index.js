@@ -1,6 +1,6 @@
 import ApiClient            from './ApiClient';
 import ActivationsAPI       from './Activations';
-import UsersAPI             from './Users';
+import AccountsAPI          from './Accounts';
 import AssessmentSystemsAPI from './AssessmentSystems';
 
 export default function ({ apiPrefix } = {}) {
@@ -13,7 +13,7 @@ export default function ({ apiPrefix } = {}) {
     return {
         apiClient         : api,
         activations       : new ActivationsAPI({ apiClient: api }),
-        users             : new UsersAPI({ apiClient: api }),
+        accounts             : new AccountsAPI({ apiClient: api }),
         assessmentSystems : new AssessmentSystemsAPI({ apiClient: api })
     };
 }

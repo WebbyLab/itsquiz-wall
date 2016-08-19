@@ -26,7 +26,7 @@ export default class QuizCard extends Component {
         className           : PropTypes.string,
         category            : PropTypes.string,
         isPassed            : PropTypes.bool,
-        userQuizSession     : PropTypes.object,
+        accountQuizSession     : PropTypes.object,
         onShare             : PropTypes.func,
         onAuthorAvatarClick : PropTypes.func,
         onClick             : PropTypes.func
@@ -65,7 +65,7 @@ export default class QuizCard extends Component {
             isSponsored,
             isPassed,
             isSurvey,
-            userQuizSession,
+            accountQuizSession,
             onClick,
             onShare,
             onAuthorAvatarClick
@@ -118,8 +118,8 @@ export default class QuizCard extends Component {
                             {
                                 !isSurvey
                                 ?
-                                    <span className='QuizCard__user-score'>
-                                        {userQuizSession.score}%
+                                    <span className='QuizCard__account-score'>
+                                        {accountQuizSession.score}%
                                     </span>
                                 :
                                     <MdiIcon type='check' className='QuizCard__survey--passed' />

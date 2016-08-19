@@ -37,9 +37,9 @@ class ActivationPageContainer extends Component {
     };
 
     componentWillMount() {
-        const { id, userId } = this.props.params;
+        const { id, accountId } = this.props.params;
 
-        if (userId) {
+        if (accountId) {
             this.props.history.replaceState(null, `/activations/${id}`);
         }
     }
@@ -124,7 +124,7 @@ class ActivationPageContainer extends Component {
         const isEmbedded = this.props.location.query.embed;
 
         if (isEmbedded && activation.isPassed) {
-            const quizSessionId = activation.userQuizSession.id;
+            const quizSessionId = activation.accountQuizSession.id;
 
             embedEvents.send({
                 type : 'VIEW_ANSWERS',
@@ -192,7 +192,7 @@ class ActivationPageContainer extends Component {
 
     handleShareResult = (activation) => {
         this.setState({
-            sharingLink : activation.userQuizSession.shareResultLink
+            sharingLink : activation.accountQuizSession.shareResultLink
         });
 
         sendEvent('activation', 'share result', activation.name);
@@ -243,7 +243,7 @@ class ActivationPageContainer extends Component {
     };
 
     generateProposedActivations = ({ activation, similarActivations, authorActivations }) => {
-        if (!activation || !activation.userQuizSession || !similarActivations || !authorActivations
+        if (!activation || !activation.accountQuizSession || !similarActivations || !authorActivations
             || similarActivations.length + authorActivations.length === 0) {
             this.hideProposedActivations();
 
@@ -256,7 +256,7 @@ class ActivationPageContainer extends Component {
             ? similarActivations
             : similarActivations.concat(authorActivations);
 
-        candidatesForPropose = candidatesForPropose.filter(item => !item.userQuizSession);
+        candidatesForPropose = candidatesForPropose.filter(item => !item.accountQuizSession);
 
         if (candidatesForPropose.length === 0) {
             return;
@@ -345,7 +345,7 @@ class ActivationPageContainer extends Component {
 
         const { embed, assigneeId } = this.props.location.query;
 
-        const isSurvey = activation.userQuizSession ? Boolean(activation.userQuizSession.maxPoints === 0) : false;
+        const isSurvey = activation.accountQuizSession ? Boolean(activation.accountQuizSession.maxPoints === 0) : false;
 
         return (
             <ActivationPage
@@ -356,7 +356,7 @@ class ActivationPageContainer extends Component {
                 isLoading                    = {isLoading}
                 isEmbedded                   = {Boolean(embed)}
                 isLoggingIn                  = {isLoggingIn}
-                showUserResult               = {Boolean(activation.isPassed && assigneeId)}
+                showAccountResult               = {Boolean(activation.isPassed && assigneeId)}
                 assessmentSystem             = {customAssessmentSystem}
                 proposedActivations          = {proposedActivations}
                 isSurvey                     = {isSurvey}

@@ -49,7 +49,7 @@ export default function currentActivation(state = DEFAULT_STATE, action) {
 
         case LOAD_SIMILAR_ACTIVATIONS_SUCCESS: {
             const similarActivations = action.activations.map(activation => {
-                const author = action.users.find(user => user.id === activation.links.owner.id);
+                const author = action.accounts.find(account => account.id === activation.links.owner.id);
 
                 return apiResponseFormatter.formatActivation(activation, author);
             });
