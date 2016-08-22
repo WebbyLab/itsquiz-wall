@@ -74,7 +74,7 @@
     "eslint-config-webbylab": "github:webbylab/eslint-config-webbylab",
     "eslint-loader": "^1.3.0",
     "eslint-plugin-fetch": "0.0.1",
-    "eslint-plugin-import": "^1.8.1",
+    "eslint-plugin-import": "^1.14.0",
     "eslint-plugin-jquery": "^0.6.0",
     "eslint-plugin-no-require-lodash": "^1.1.0",
     "eslint-plugin-prefer-spread": "^1.0.3",
