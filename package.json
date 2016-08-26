@@ -20,6 +20,9 @@
     "po2json": "./bin/po2json.sh",
     "stop": "cross-env NODE_ENV='production' pm2 delete itsquiz-wall -s &> /dev/null"
   },
+  "engines": {
+     "node": ">=6.0.0"
+  },
   "dependencies": {
     "babel-eslint": "^6.0.4",
     "babel-polyfill": "^6.7.2",
