@@ -8,3 +8,4 @@ notifications:
     on_start: "never"
 node_js:
   - "5.0"
+  - "6.4"
