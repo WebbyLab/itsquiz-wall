@@ -8,7 +8,6 @@ import { footerLinks, quizwallShareLink } from '../config';
 import { sendEvent } from '../utils/googleAnalytics';
 
 export default class FooterContainer extends Component {
-
     static contextTypes = { i18n: PropTypes.object };
 
     state = {

@@ -3,7 +3,6 @@ const G = 1;
 const B = 2;
 
 class ColorUtil {
-
     constructor(colorcodes) {
         this.colors = [];
         this.setGradientColors(colorcodes);
@@ -41,11 +40,13 @@ class ColorUtil {
     }
 
     getColorCodeByPercent(percent) {
-        const percentPerPart  = 100 / (this.colors.length - 1);
+        const numberOfColors = this.colors.length;
+
+        const percentPerPart  = 100 / (numberOfColors - 1);
         const startColorIndex = parseInt(percent / percentPerPart, 10);
         const percentFromPart = (percent % percentPerPart) / percentPerPart;
         const startColor      = this.colors[startColorIndex];
-        const endColor        = startColorIndex === this.colors.length - 1
+        const endColor        = startColorIndex === numberOfColors - 1
                                     ? this.colors[startColorIndex]
                                     : this.colors[startColorIndex + 1];
 

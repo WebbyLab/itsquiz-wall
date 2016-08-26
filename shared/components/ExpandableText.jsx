@@ -10,7 +10,6 @@ import './ExpandableText.less';
 const MAX_CHAR_NUMBER = 300;
 
 export default class ExpandableText extends Component {
-
     static propTypes = {
         text              : PropTypes.string,
         markdownPreset    : PropTypes.string,

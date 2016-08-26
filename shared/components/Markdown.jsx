@@ -14,7 +14,6 @@ import { activationDescriptionPreset } from './Markdown/presets.js';
 const MAX_LINK_LENGTH = 35;
 
 class Markdown extends Component {
-
     static propTypes = {
         source : PropTypes.string.isRequired,
         preset : PropTypes.oneOf([ 'activationDescription' ])
@@ -38,9 +37,11 @@ class Markdown extends Component {
         }
 
         const customRenderer = (tokens, idx, options, env, self) => self.renderToken(tokens, idx, options);
-        const defaultRender = this.md.renderer.rules.link_open || customRenderer;
+        const rules = this.md.renderer.rules;
 
-        this.md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
+        const defaultRender = rules.link_open || customRenderer;
+
+        rules.link_open = (tokens, idx, options, env, self) => {
             const newTokens = tokens;
             const aIndex = newTokens[idx].attrIndex('target');
 

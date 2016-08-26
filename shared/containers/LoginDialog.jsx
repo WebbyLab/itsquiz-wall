@@ -9,7 +9,6 @@ import { socialAuthURL, emailAuthURL } from '../config';
 import { sendEvent } from '../utils/googleAnalytics';
 
 export default class LoginDialogContainer extends Component {
-
     static propTypes = {
         isOpen         : PropTypes.bool.isRequired,
         onRequestClose : PropTypes.func
@@ -69,4 +68,3 @@ export default class LoginDialogContainer extends Component {
         );
     }
 }
-

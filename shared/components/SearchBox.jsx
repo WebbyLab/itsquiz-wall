@@ -9,7 +9,6 @@ import './SearchBox.less';
 const ENTER_KEY = 13;
 
 export default class SearchBox extends Component {
-
     static propTypes = {
         search   : PropTypes.string,
         onSearch : PropTypes.func
@@ -97,4 +96,3 @@ export default class SearchBox extends Component {
         );
     }
 }
-

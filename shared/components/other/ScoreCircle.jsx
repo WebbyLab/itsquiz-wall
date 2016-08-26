@@ -15,7 +15,6 @@ const GREEN = '#47D62A';
 const PURPLE = '#00bcd4';
 
 class ScoreCircle extends Component {
-
     static propTypes = {
         value : PropTypes.number,
         size  : PropTypes.number
@@ -27,7 +26,9 @@ class ScoreCircle extends Component {
 
     componentDidMount() {
         this.colorUtil = new ColorUtil([RED, ORANGE, GREEN]);
-        this.scoreColor = '#FFF' || this.colorUtil.getColorCodeByPercent(this.props.value ? this.props.value : 0);
+        const { value } = this.props;
+
+        this.scoreColor = '#FFF' || this.colorUtil.getColorCodeByPercent(value ? value : 0);
 
         this.circle =  new ProgressBar.Circle(`#score-${this.id}`, {
             color: '#FCB03C',
@@ -35,7 +36,7 @@ class ScoreCircle extends Component {
             trailWidth: 1,
             duration: 1500,
             text: {
-                value: `${this.props.value}%`,
+                value: `${value}%`,
                 color: this.scoreColor
             },
             step: (state, shape) => {
@@ -45,7 +46,7 @@ class ScoreCircle extends Component {
             }
         });
 
-        this.circle.animate(this.props.value / 100, {
+        this.circle.animate(value / 100, {
             from: { color: PURPLE },
             to: { color: this.scoreColor }
         });
@@ -56,11 +57,12 @@ class ScoreCircle extends Component {
     }
 
     componentDidUpdate() {
+        const { value } = this.props;
         const prevScoreColor = this.scoreColor;
 
-        this.scoreColor = this.colorUtil.getColorCodeByPercent(this.props.value ? this.props.value : 0);
+        this.scoreColor = this.colorUtil.getColorCodeByPercent(value ? value : 0);
 
-        this.circle.animate(this.props.value / 100, {
+        this.circle.animate(value / 100, {
             from : { color: prevScoreColor },
             to   : { color: this.scoreColor }
         });
@@ -71,10 +73,12 @@ class ScoreCircle extends Component {
     }
 
     render() {
+        const { size } = this.props;
+
         const style = {
-            width    : this.props.size,
-            height   : this.props.size,
-            fontSize : this.props.size / 3
+            width    : size,
+            height   : size,
+            fontSize : size / 3
         };
 
         return (

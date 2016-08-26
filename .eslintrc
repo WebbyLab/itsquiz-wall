@@ -1,7 +1,7 @@
 {
     "extends": "webbylab",
     "rules": {
-        "webbylab/no-then": 0, // Temporary disable
-        "webbylab/no-window": 0 // Temporary disable
+        "more/no-then": 0, // Temporary disable
+        "more/no-window": 0, // Temporary disable
     }
 }

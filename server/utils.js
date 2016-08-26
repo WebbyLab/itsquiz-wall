@@ -22,6 +22,7 @@ export function fetchComponentsData({ dispatch, components, params, query, local
 }
 
 export function getMetaDataFromState({ route, state, params = {}, query = {}, lang }) {
+    /* eslint more/no-duplicated-chains: 0 */
     if (route === '/activations/:id' || route === '/activations/:id/:title') {
         const { name, message, pictureURL } = state.currentActivation.activation;
 

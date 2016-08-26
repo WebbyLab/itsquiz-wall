@@ -6,7 +6,6 @@ import Footer        from '../../containers/Footer.jsx';
 import './MainLayout.less';
 
 export default class MainLayout extends Component {
-
     static propTypes = {
         showWelcomeScreen      : PropTypes.bool,
         showFooter             : PropTypes.bool,

@@ -31,9 +31,11 @@ export default class App extends Component {
 
     componentDidMount() {
         initialize();
+        const routes = this.props.routes;
+
         navigate({
             page  : this.props.location.pathname,
-            title : this.props.routes[this.props.routes.length - 1].path
+            title : routes[routes.length - 1].path
         });
 
         embedEvents.subscribe({
@@ -48,13 +50,17 @@ export default class App extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        const isEmbed = Boolean(this.props.location.query.embed);
-        const isPathnameChanged = this.props.location.pathname !== nextProps.location.pathname;
-        const isQueryChanged = this.props.location.query !== nextProps.location.query;
+        const currentLocation = this.props.location;
+        const nextLocation = nextProps.location;
+
+        const isEmbed = Boolean(currentLocation.query.embed);
+
+        const isPathnameChanged = currentLocation.pathname !== nextLocation.pathname;
+        const isQueryChanged = currentLocation.query !== nextLocation.query;
 
         if (isPathnameChanged) {
             navigate({
-                page  : nextProps.location.pathname,
+                page  : nextLocation.pathname,
                 title : nextProps.routes[nextProps.routes.length - 1].path
             });
 
@@ -62,8 +68,8 @@ export default class App extends Component {
         }
 
         if (isEmbed && (isPathnameChanged || isQueryChanged)) {
-            const pathname = nextProps.location.pathname;
-            const { category, search, sortType } = nextProps.location.query;
+            const pathname = nextLocation.pathname;
+            const { category, search, sortType } = nextLocation.query;
 
             const query = {};
 
@@ -113,13 +119,15 @@ export default class App extends Component {
     }
 
     handleRedirect = () => {
+        const { query } = this.props.location;
+
         const newState = {
-            embed      : this.props.location.query.embed,
-            assigneeId : this.props.location.query.assigneeId
+            embed      : query.embed,
+            assigneeId : query.assigneeId
         };
 
-        if (this.props.location.query.search) {
-            newState.search = this.props.location.query.search;
+        if (query.search) {
+            newState.search = query.search;
         }
 
         this.props.history.pushState(null, '/activations', newState);
