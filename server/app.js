@@ -2,6 +2,7 @@ import querystring  from 'querystring';
 
 import express      from 'express';
 import cookieParser from 'cookie-parser';
+import serializeJs  from 'serialize-javascript';
 
 import React                     from 'react';
 import ReactDOM                  from 'react-dom/server';
@@ -229,8 +230,8 @@ function renderHTML({ componentHTML, initialState, metaData, config }) {
         <body>
         <div id="react-view">${componentHTML}</div>
           <script type="application/javascript">
-            window.__CONFIG__ = ${JSON.stringify(config)};
-            window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
+            window.__CONFIG__ = ${serializeJs(config)};
+            window.__INITIAL_STATE__ = ${serializeJs(initialState)};
           </script>
 
           <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
