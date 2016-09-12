@@ -1,5 +1,5 @@
 import api                  from '../apiSingleton';
-import apiResponseFormatter from '../utils/apiResponseFormatter';
+import { apiResponseFormatter } from '../utils/apiResponseFormatter';
 
 export const LOAD_ACCOUNTS_SUCCESS = 'LOAD_ACCOUNTS_SUCCESS';
 
@@ -20,11 +20,13 @@ export function loadAccounts() {
 export const LOAD_ACCOUNT_SUCCESS = 'LOAD_ACCOUNT_SUCCESS';
 export const LOAD_ACCOUNT_FAIL    = 'LOAD_ACCOUNT_FAIL';
 export const LOAD_ACCOUNT_REQUEST = 'LOAD_ACCOUNT_REQUEST';
+export const SET_SESSION_TYPE = 'SET_SESSION_TYPE';
 
 export function loadAccount({ id }) {
     return (dispatch) => {
         return api.accounts.show(id).then((response) => {
-            const account = apiResponseFormatter.formatAuthorProfileData(response.data);
+            // console.log('response', response);
+            const account = apiResponseFormatter(response.data);
 
             dispatch({
                 type: LOAD_ACCOUNT_SUCCESS,
@@ -35,6 +37,15 @@ export function loadAccount({ id }) {
                 type: LOAD_ACCOUNT_FAIL,
                 error
             });
+        });
+    };
+}
+
+export function loadAccountType({ query }) {
+    return (dispatch) => {
+        dispatch({
+            type: SET_SESSION_TYPE,
+            isOrganization: query.isOrganization === 'true'
         });
     };
 }

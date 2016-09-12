@@ -1,5 +1,6 @@
 import {
-    LOAD_ACCOUNT_SUCCESS
+    LOAD_ACCOUNT_SUCCESS,
+    SET_SESSION_TYPE
 } from '../actions/accounts';
 
 export default function currentAccount(state = {}, action) {
@@ -10,6 +11,11 @@ export default function currentAccount(state = {}, action) {
     switch (action.type) {
         case LOAD_ACCOUNT_SUCCESS:
             return action.account;
+        case SET_SESSION_TYPE:
+            return {
+                ...state,
+                isOrganization: action.isOrganization
+            };
         default:
             return state;
     }
