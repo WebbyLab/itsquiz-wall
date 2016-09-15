@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect }                     from 'react-redux';
 
 import { loadActivation, loadSimilarActivations } from '../../actions/activations';
+import { loadAccountType }                        from '../../actions/accounts';
 import connectDataFetchers                        from '../../lib/connectDataFetchers.jsx';
 import EmbedEvents                                from '../../utils/EmbedEventsUtil';
 import config                                     from '../../config';
@@ -24,7 +25,8 @@ class ActivationPageContainer extends Component {
         activation             : PropTypes.object,
         authorActivations      : PropTypes.array,
         similarActivations     : PropTypes.array,
-        isLoading              : PropTypes.bool
+        isLoading              : PropTypes.bool,
+        isOrganization         : PropTypes.bool
     };
 
     static contextTypes = { i18n: PropTypes.object };
@@ -333,7 +335,8 @@ class ActivationPageContainer extends Component {
             authorActivations,
             similarActivations,
             isLoading,
-            customAssessmentSystem
+            customAssessmentSystem,
+            isOrganization
         } = this.props;
 
         const {
@@ -356,11 +359,12 @@ class ActivationPageContainer extends Component {
                 isLoading                    = {isLoading}
                 isEmbedded                   = {Boolean(embed)}
                 isLoggingIn                  = {isLoggingIn}
-                showAccountResult               = {Boolean(activation.isPassed && assigneeId)}
+                showAccountResult            = {Boolean(activation.isPassed && assigneeId)}
                 assessmentSystem             = {customAssessmentSystem}
                 proposedActivations          = {proposedActivations}
                 isSurvey                     = {isSurvey}
                 isShowingProposedActivations = {isShowingProposedActivations}
+                isOrganization               = {isOrganization}
                 onPass                       = {this.handlePassActivationClick}
                 onSponsoredClick             = {this.handleSponsoredClick}
                 onSubscribe                  = {this.handleSubscribeClick}
@@ -378,9 +382,13 @@ class ActivationPageContainer extends Component {
     }
 }
 
-function mapStateToProps({ currentActivation: { activation, authorActivations,
- similarActivations, isLoading }, currentAssessmentSystem : { assessmentSystem } }) {
+function mapStateToProps({
+    currentActivation       : { activation, authorActivations, similarActivations, isLoading },
+    currentAssessmentSystem : { assessmentSystem },
+    currentAccount          : { isOrganization }
+}) {
     return {
+        isOrganization,
         activation,
         authorActivations,
         similarActivations,
@@ -390,5 +398,5 @@ function mapStateToProps({ currentActivation: { activation, authorActivations,
 }
 
 export default connect(mapStateToProps)(
-    connectDataFetchers(ActivationPageContainer, [loadActivation, loadSimilarActivations])
+    connectDataFetchers(ActivationPageContainer, [loadActivation, loadSimilarActivations, loadAccountType])
 );

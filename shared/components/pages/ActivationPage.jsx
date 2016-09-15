@@ -33,6 +33,7 @@ export default class ActivationPage extends React.Component {
         isLoggingIn                  : React.PropTypes.bool,
         isEmbedded                   : React.PropTypes.bool,
         isShowingProposedActivations : React.PropTypes.bool,
+        isOrganization               : React.PropTypes.bool,
         dueTime                      : React.PropTypes.string,
         assessmentSystem             : React.PropTypes.array,
         onPass                       : React.PropTypes.func,
@@ -725,7 +726,8 @@ export default class ActivationPage extends React.Component {
             isEmbedded,
             onLoginDialogClose,
             onStopSharing,
-            onGoBack
+            onGoBack,
+            isOrganization
         } = this.props;
 
         const classes = cx('ActivationPage', {
@@ -760,6 +762,7 @@ export default class ActivationPage extends React.Component {
                     onRightIconClick = {onGoBack}
                     title            = {activation.name}
                     height           = {200}
+                    isOrganization   = {isOrganization}
                 />
 
                 {this.renderProposedActivations()}

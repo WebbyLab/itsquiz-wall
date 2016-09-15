@@ -8,7 +8,8 @@ export default class AppBarWithBackground extends Component {
     static propTypes = {
         backgroundURL : PropTypes.string,
         height        : PropTypes.number,
-        onLogin       : PropTypes.func
+        onLogin       : PropTypes.func,
+        isOrganization: PropTypes.bool
     };
 
     static defaultProps = {
@@ -17,7 +18,7 @@ export default class AppBarWithBackground extends Component {
     };
 
     render() {
-        const { backgroundURL, height, onLogin } = this.props;
+        const { backgroundURL, height, onLogin, isOrganization } = this.props;
 
         const appBarStyle = {
             background: `url(${backgroundURL}) center / cover`
@@ -30,10 +31,10 @@ export default class AppBarWithBackground extends Component {
                     displaySearch={false}
                     scrollOffset={height / 2}
                     onLogin={onLogin}
+                    isOrganization={isOrganization}
                     {...this.props}
                 />
             </div>
         );
     }
 }
-

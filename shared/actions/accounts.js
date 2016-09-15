@@ -20,6 +20,7 @@ export function loadAccounts() {
 export const LOAD_ACCOUNT_SUCCESS = 'LOAD_ACCOUNT_SUCCESS';
 export const LOAD_ACCOUNT_FAIL    = 'LOAD_ACCOUNT_FAIL';
 export const LOAD_ACCOUNT_REQUEST = 'LOAD_ACCOUNT_REQUEST';
+export const SET_SESSION_TYPE = 'SET_SESSION_TYPE';
 
 export function loadAccount({ id }) {
     return (dispatch) => {
@@ -35,6 +36,15 @@ export function loadAccount({ id }) {
                 type: LOAD_ACCOUNT_FAIL,
                 error
             });
+        });
+    };
+}
+
+export function loadAccountType({ query }) {
+    return (dispatch) => {
+        dispatch({
+            type: SET_SESSION_TYPE,
+            isOrganization: query.isOrganization === 'true'
         });
     };
 }

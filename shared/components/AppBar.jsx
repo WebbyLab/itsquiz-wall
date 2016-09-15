@@ -21,6 +21,7 @@ export default class AppBar extends Component {
         search           : PropTypes.string,
         displayRightMenu : PropTypes.bool,
         displaySearch    : PropTypes.bool,
+        isOrganization   : PropTypes.bool,
         rightIconName    : PropTypes.string,
         fixOnScroll      : PropTypes.bool,
         scrollOffset     : PropTypes.number,
@@ -90,7 +91,8 @@ export default class AppBar extends Component {
             displayRightMenu,
             rightIconName,
             onRightIconClick,
-            onSearch
+            onSearch,
+            isOrganization
         } = this.props;
 
         const { l } = this.context.i18n;
@@ -109,26 +111,31 @@ export default class AppBar extends Component {
                     isOpen={isLoggingIn}
                     onRequestClose={this.handleLoginDialogClose}
                 />
+                {
+                    !isOrganization
+                    ?
+                        <div className='AppBar__left'>
+                            {
+                                rightIconName
+                                    ? <IconButton name={rightIconName} onClick={onRightIconClick} />
+                                    : <a
+                                        href   = {config.landingUrl}
+                                        target = '_blank'
+                                      >
+                                        <img
+                                            alt='Testing platform'
+                                            width='40px'
+                                            height='40px'
+                                            src={LOGO_SRC}
+                                        />
+                                    </a>
+                            }
 
-                <div className='AppBar__left'>
-                    {
-                        rightIconName
-                            ? <IconButton name={rightIconName} onClick={onRightIconClick} />
-                            : <a
-                                href   = {config.landingUrl}
-                                target = '_blank'
-                              >
-                                <img
-                                    alt='Testing platform'
-                                    width='40px'
-                                    height='40px'
-                                    src={LOGO_SRC}
-                                />
-                            </a>
-                    }
-
-                    <h2 className='AppBar__title'> {title} </h2>
-                </div>
+                            <h2 className='AppBar__title'> {title} </h2>
+                        </div>
+                    :
+                        null
+                }
                 {
                     displaySearch
                         ? <div className='AppBar__center'>
