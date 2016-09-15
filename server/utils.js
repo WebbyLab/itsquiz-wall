@@ -133,12 +133,6 @@ export function detectLocale(req) {
     }[country] || 'en';
 }
 
-export function isAccountOrganization(req) {
-    const isOrganization = req.query.locale;
-
-    return isOrganization;
-}
-
 export function getAssetsPaths() {
     return {
         js:  webpackAssets.main.js,

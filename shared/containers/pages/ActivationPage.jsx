@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect }                     from 'react-redux';
 
 import { loadActivation, loadSimilarActivations } from '../../actions/activations';
-import { loadAccountType }                            from '../../actions/accounts';
+import { loadAccountType }                        from '../../actions/accounts';
 import connectDataFetchers                        from '../../lib/connectDataFetchers.jsx';
 import EmbedEvents                                from '../../utils/EmbedEventsUtil';
 import config                                     from '../../config';
@@ -382,10 +382,11 @@ class ActivationPageContainer extends Component {
     }
 }
 
-function mapStateToProps({ currentActivation: { activation, authorActivations,
- similarActivations, isLoading },
- currentAssessmentSystem : { assessmentSystem },
- currentAccount : { isOrganization } }) {
+function mapStateToProps({
+    currentActivation       : { activation, authorActivations, similarActivations, isLoading },
+    currentAssessmentSystem : { assessmentSystem },
+    currentAccount          : { isOrganization }
+}) {
     return {
         isOrganization,
         activation,

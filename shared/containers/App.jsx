@@ -39,7 +39,7 @@ export default class App extends Component {
         });
 
         embedEvents.subscribe({
-            'REDIRECT_QUIZ_WALL'  : this.handleRedirect
+            'REDIRECT_QUIZ_WALL' : this.handleRedirect
         });
 
         if (isIOSDevice()) {
@@ -116,10 +116,6 @@ export default class App extends Component {
 
     componentWillUnmount() {
         this.appContainerHeight = null;
-    }
-
-    handleGetAccountId = (data) => {
-        console.log('data from iframe', data);
     }
 
     handleRedirect = () => {

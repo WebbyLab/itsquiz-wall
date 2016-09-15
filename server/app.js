@@ -59,8 +59,8 @@ app.use((req, res) => {
         return res.redirect(302, redirectUrl);
     }
 
-    const locale         = detectLocale(req);
-    const ip             = getIp(req);
+    const locale = detectLocale(req);
+    const ip     = getIp(req);
 
     api.apiClient.setXRealIP(ip);
     const store = configureStore();

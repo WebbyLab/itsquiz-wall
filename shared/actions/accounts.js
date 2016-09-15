@@ -25,7 +25,6 @@ export const SET_SESSION_TYPE = 'SET_SESSION_TYPE';
 export function loadAccount({ id }) {
     return (dispatch) => {
         return api.accounts.show(id).then((response) => {
-            // console.log('response', response);
             const account = apiResponseFormatter(response.data);
 
             dispatch({
