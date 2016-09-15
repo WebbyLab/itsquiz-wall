@@ -1,5 +1,5 @@
 import api                  from '../apiSingleton';
-import { apiResponseFormatter } from '../utils/apiResponseFormatter';
+import apiResponseFormatter from '../utils/apiResponseFormatter';
 
 export const LOAD_ACCOUNTS_SUCCESS = 'LOAD_ACCOUNTS_SUCCESS';
 
@@ -25,7 +25,7 @@ export const SET_SESSION_TYPE = 'SET_SESSION_TYPE';
 export function loadAccount({ id }) {
     return (dispatch) => {
         return api.accounts.show(id).then((response) => {
-            const account = apiResponseFormatter(response.data);
+            const account = apiResponseFormatter.formatAuthorProfileData(response.data);
 
             dispatch({
                 type: LOAD_ACCOUNT_SUCCESS,
