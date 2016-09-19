@@ -58,6 +58,7 @@ export function loadActivation({ params = {}, query = {}, locale }) {
             digest: query.digest,
             accountfromemail: query.accountId
         }).then(response => {
+            console.log('loadActivation response', response);
             let assessmentSystemPromise;
 
             if (assigneeId) {
