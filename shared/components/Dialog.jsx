@@ -31,12 +31,12 @@ export default class Dialog extends Component {
                 style          = {styles}
                 onRequestClose = {onRequestClose}
             >
-                    {
-                        title
-                        ? <h1 className = 'Dialog__title'>{title}</h1>
-                        : null
-                    }
-                    {children}
+                {
+                    title
+                    ? <h1 className = 'Dialog__title'>{title}</h1>
+                    : null
+                }
+                {children}
             </ReactModal>
         );
     }

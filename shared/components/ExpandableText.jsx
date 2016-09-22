@@ -47,33 +47,33 @@ export default class ExpandableText extends Component {
 
         return (
             <div className='ExpandableText'>
-            {
-                text.length > MAX_CHAR_NUMBER
-                ?
-                    <div>
-                        <div className={classes}>
+                {
+                    text.length > MAX_CHAR_NUMBER
+                    ?
+                        <div>
+                            <div className={classes}>
+                                <Markdown preset={markdownPreset} source={text} />
+                            </div>
+                            <Button
+                                colored
+                                ripple
+                                className = 'ExpandableText__expand-button'
+                                onClick   = {this.handleClick}
+                            >
+                                {
+                                    this.state.expanded
+                                    ?
+                                        l('Minimize')
+                                    :
+                                        l('Expand')
+                                }
+                            </Button>
+                        </div>
+                    :
+                        <div className='ExpandableText__text'>
                             <Markdown preset={markdownPreset} source={text} />
                         </div>
-                        <Button
-                            colored
-                            ripple
-                            className = 'ExpandableText__expand-button'
-                            onClick   = {this.handleClick}
-                        >
-                            {
-                                this.state.expanded
-                                ?
-                                    l('Minimize')
-                                :
-                                    l('Expand')
-                            }
-                        </Button>
-                    </div>
-                :
-                    <div className='ExpandableText__text'>
-                        <Markdown preset={markdownPreset} source={text} />
-                    </div>
-            }
+                }
             </div>
         );
     }

@@ -47,7 +47,7 @@ export const LOAD_ACTIVATION_SUCCESS = 'LOAD_ACTIVATION_SUCCESS';
 export const LOAD_ACTIVATION_FAIL    = 'LOAD_ACTIVATION_FAIL';
 
 export function loadActivation({ params = {}, query = {}, locale }) {
-    const assigneeId = query.assigneeId || params.accountId || '';
+    const assigneeId = params.accountId || query.assigneeId || '';
 
     return dispatch => {
         dispatch({ type : LOAD_ACTIVATION_REQUEST, activationId : params.id });
