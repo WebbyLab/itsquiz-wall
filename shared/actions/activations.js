@@ -47,10 +47,12 @@ export const LOAD_ACTIVATION_SUCCESS = 'LOAD_ACTIVATION_SUCCESS';
 export const LOAD_ACTIVATION_FAIL    = 'LOAD_ACTIVATION_FAIL';
 
 export function loadActivation({ params = {}, query = {}, locale }) {
-    const assigneeId = query.assigneeId || params.accountId || '';
+    const assigneeId = params.accountId || query.assigneeId || '';
 
     console.log('query.assigneeId', query.assigneeId);
+    console.log('query', query);
     console.log('params.accountId', params.accountId);
+    console.log('params', params);
     console.log('assigneeId', assigneeId);
 
     return dispatch => {
