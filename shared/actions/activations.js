@@ -58,7 +58,7 @@ export function loadActivation({ params = {}, query = {}, locale }) {
             digest: query.digest,
             accountfromemail: query.accountId
         }).then(response => {
-            console.log('loadActivation response', response);
+            console.log('_______ RESPONSE_ACT _________', response.data.assigneeQuizSession);
             let assessmentSystemPromise;
 
             if (assigneeId) {
