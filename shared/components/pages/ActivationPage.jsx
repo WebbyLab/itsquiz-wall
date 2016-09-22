@@ -170,29 +170,29 @@ export default class ActivationPage extends React.Component {
                     </div>
 
                     <Grid className='ActivationPage__author-activations-grid'>
-                    {
-                        authorActivations.map(authorActivation =>
-                            <Cell
-                                key    = {authorActivation.id}
-                                align  = 'stretch'
-                                col    = {3}
-                                phone  = {2}
-                                tablet = {3}
-                            >
-                                <QuizTile
-                                    id                = {authorActivation.id}
-                                    name              = {authorActivation.name}
-                                    timeToPass        = {authorActivation.timeToPass}
-                                    numberOfQuestions = {authorActivation.numberOfQuestions}
-                                    pictureURL        = {authorActivation.pictureURL}
-                                    author            = {activation.author}
-                                    isPassed          = {Boolean(authorActivation.isPassed)}
-                                    accountQuizSession   = {authorActivation.accountQuizSession}
-                                    onClick           = {this.handleActivationClick.bind(null, authorActivation)}
-                                />
-                            </Cell>
-                        )
-                    }
+                        {
+                            authorActivations.map(authorActivation =>
+                                <Cell
+                                    key    = {authorActivation.id}
+                                    align  = 'stretch'
+                                    col    = {3}
+                                    phone  = {2}
+                                    tablet = {3}
+                                >
+                                    <QuizTile
+                                        id                = {authorActivation.id}
+                                        name              = {authorActivation.name}
+                                        timeToPass        = {authorActivation.timeToPass}
+                                        numberOfQuestions = {authorActivation.numberOfQuestions}
+                                        pictureURL        = {authorActivation.pictureURL}
+                                        author            = {activation.author}
+                                        isPassed          = {Boolean(authorActivation.isPassed)}
+                                        accountQuizSession   = {authorActivation.accountQuizSession}
+                                        onClick           = {this.handleActivationClick.bind(null, authorActivation)}
+                                    />
+                                </Cell>
+                            )
+                        }
                     </Grid>
                 </div>
             );
@@ -216,29 +216,29 @@ export default class ActivationPage extends React.Component {
                     </div>
 
                     <Grid className='ActivationPage__similar-activations-grid'>
-                    {
-                        similarActivations.map(similarActivation =>
-                            <Cell
-                                key    = {similarActivation.id}
-                                align  = 'stretch'
-                                col    = {3}
-                                phone  = {2}
-                                tablet = {3}
-                            >
-                                <QuizTile
-                                    id                = {similarActivation.id}
-                                    name              = {similarActivation.name}
-                                    timeToPass        = {similarActivation.timeToPass}
-                                    numberOfQuestions = {similarActivation.numberOfQuestions}
-                                    pictureURL        = {similarActivation.pictureURL}
-                                    author            = {similarActivation.author}
-                                    isPassed          = {similarActivation.isPassed}
-                                    accountQuizSession   = {similarActivation.accountQuizSession}
-                                    onClick           = {this.handleActivationClick.bind(null, similarActivation)}
-                                />
-                            </Cell>
-                        )
-                    }
+                        {
+                            similarActivations.map(similarActivation =>
+                                <Cell
+                                    key    = {similarActivation.id}
+                                    align  = 'stretch'
+                                    col    = {3}
+                                    phone  = {2}
+                                    tablet = {3}
+                                >
+                                    <QuizTile
+                                        id                = {similarActivation.id}
+                                        name              = {similarActivation.name}
+                                        timeToPass        = {similarActivation.timeToPass}
+                                        numberOfQuestions = {similarActivation.numberOfQuestions}
+                                        pictureURL        = {similarActivation.pictureURL}
+                                        author            = {similarActivation.author}
+                                        isPassed          = {similarActivation.isPassed}
+                                        accountQuizSession   = {similarActivation.accountQuizSession}
+                                        onClick           = {this.handleActivationClick.bind(null, similarActivation)}
+                                    />
+                                </Cell>
+                            )
+                        }
                     </Grid>
                 </div>
             );
