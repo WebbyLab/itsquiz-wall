@@ -343,8 +343,6 @@ class ActivationPageContainer extends Component {
             isShowingProposedActivations
         } = this.state;
 
-        console.log('sharingLink', sharingLink);
-
         const { embed, assigneeId } = this.props.location.query;
 
         const isSurvey = activation.accountQuizSession ? Boolean(activation.accountQuizSession.maxPoints === 0) : false;

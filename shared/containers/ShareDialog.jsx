@@ -27,8 +27,6 @@ export default class ShareDialogContainer extends Component {
         const { twitterMessage } = this.props;
         let { linkToShare } = this.props;
 
-        console.log('linkToShare', linkToShare);
-
         const currentLocale = getLocale() !== 'tr' ? getLocale() : 'en';
         const date = +new Date();
 

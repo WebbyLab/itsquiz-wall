@@ -17,18 +17,13 @@ class ShareResultPageContainer extends Component {
         const { id } = this.props.params;
         const { activation } = this.props;
 
-        console.log('activation', activation);
-        console.log('this.props.history', this.props.history);
-
         sendEvent('share result', 'direct open', activation.name);
 
         if (activation.isPrivate) {
-            console.log('activation.isPrivate', activation.isPrivate);
             this.props.history.replaceState(null, '/activations', {
                 ...this.props.location.query
             });
         } else {
-            console.log('ELSE');
             this.props.history.replaceState(null, `/activations/${id}`, {
                 ...this.props.location.query
             });

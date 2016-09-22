@@ -49,12 +49,6 @@ export const LOAD_ACTIVATION_FAIL    = 'LOAD_ACTIVATION_FAIL';
 export function loadActivation({ params = {}, query = {}, locale }) {
     const assigneeId = params.accountId || query.assigneeId || '';
 
-    console.log('query.assigneeId', query.assigneeId);
-    console.log('query', query);
-    console.log('params.accountId', params.accountId);
-    console.log('params', params);
-    console.log('assigneeId', assigneeId);
-
     return dispatch => {
         dispatch({ type : LOAD_ACTIVATION_REQUEST, activationId : params.id });
 
@@ -64,7 +58,6 @@ export function loadActivation({ params = {}, query = {}, locale }) {
             digest: query.digest,
             accountfromemail: query.accountId
         }).then(response => {
-            console.log('_______ RESPONSE_ACT _________', response.data.assigneeQuizSession);
             let assessmentSystemPromise;
 
             if (assigneeId) {
