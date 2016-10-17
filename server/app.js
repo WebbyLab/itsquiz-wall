@@ -144,7 +144,7 @@ app.use((req, res) => {
                 if (isRedirect) {
                     res.redirect(301, redirectUrl);
                 } else {
-                    res.setHeader("Content-Type", "text/html");
+                    res.setHeader('Content-Type', 'text/html');
                     res.end(html);
                 }
             })
