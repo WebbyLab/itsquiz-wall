@@ -140,10 +140,11 @@ app.use((req, res) => {
             })
             .then(({ isRedirect, redirectUrl, html }) => {
                 res.cookie('locale', locale, { maxAge: 900000 });
-
+                     
                 if (isRedirect) {
                     res.redirect(301, redirectUrl);
                 } else {
+                    res.setHeader("Content-Type", "text/html");
                     res.end(html);
                 }
             })
