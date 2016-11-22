@@ -8,7 +8,6 @@ import {
 const DEFAULT_STATE = {
     entitiesByCategory: {},
     totalActivationsAmount: 0,
-    isLoadingNextActivations: false,
     isLoading : true,
     category : 'all',
     search: '',
@@ -27,7 +26,7 @@ export default function activations(state = DEFAULT_STATE, action) {
             const loadedActivations = state.entitiesByCategory[action.category]
                 ? state.entitiesByCategory[action.category].slice(0)
                 : [];
-
+                console.log('action', action);
             for (let i = 0; i < newActivations.length; i++) {
                 if (action.offset + i < loadedActivations.length) {
                     loadedActivations[action.offset + i] = newActivations[i];
@@ -37,7 +36,7 @@ export default function activations(state = DEFAULT_STATE, action) {
             }
 
             const entitiesByCategory = {
-                ...entitiesByCategory,
+                ...state.entitiesByCategory,
                 [action.category]: loadedActivations
             };
 

@@ -2,8 +2,20 @@ import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import rootReducer from '../reducers';
 
+const loggerMiddleware = store => next => action => {
+    console.log('prev state', store.getState());
+
+    console.log('action', action);
+
+    const result = next(action);
+
+    console.log('next state', store.getState());
+
+    return result;
+};
+
 const createStoreWithMiddleware = applyMiddleware(
-    thunkMiddleware
+    thunkMiddleware,
     // loggerMiddleware
 )(createStore);
 

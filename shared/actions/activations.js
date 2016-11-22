@@ -8,6 +8,11 @@ export const LOAD_ACTIVATIONS_REQUEST    = 'LOAD_ACTIVATIONS_REQUEST';
 
 const LIMIT_PER_QUERY = 24;
 
+import { normalize, Schema, arrayOf } from 'normalizr';
+
+const activation = new Schema('activations');
+const owner = new Schema('owners');
+
 export function loadActivations({ query = {}, offset = 0 }) {
     return (dispatch) => {
         dispatch({
@@ -27,7 +32,15 @@ export function loadActivations({ query = {}, offset = 0 }) {
             sortBy      : query.sortType || '',
             assigneeId  : query.assigneeId || ''
 
-        }).then(({ data, linked }) => {
+        }).then((response) => {
+            console.log('response', response);
+
+            // response = normalize(response, article);
+            const normalizedActivations = normalize(response.data.entities, arrayOf(activation));
+            console.log('normalizedActivations', normalizedActivations);
+            const normalizedOwners = normalize(response.linked.accounts, arrayOf(owner));
+            console.log('normalizedOwners', normalizedOwners);
+            const { data, linked } = response;
             dispatch({
                 offset,
                 category    : query.category || 'ALL',
@@ -36,7 +49,7 @@ export function loadActivations({ query = {}, offset = 0 }) {
                 type        : LOAD_ACTIVATIONS_SUCCESS,
                 activations : data.entities,
                 totalAmount : data.total,
-                accounts       : linked.accounts
+                accounts    : linked.accounts
             });
         });
     };
@@ -58,6 +71,7 @@ export function loadActivation({ params = {}, query = {}, locale }) {
             digest: query.digest,
             accountfromemail: query.accountId
         }).then(response => {
+            console.log('response for one activation', response);
             let assessmentSystemPromise;
 
             if (assigneeId) {
@@ -66,12 +80,12 @@ export function loadActivation({ params = {}, query = {}, locale }) {
 
             const accountId = response.data.links.owner.id;
 
-            const activationPromise = api.activations.list({ accountId, assigneeId }).then(response2 => {
+            const activationPromise = api.activations.list({ accountId, assigneeId }).then(authorActivationsReponse => {
                 dispatch({
                     type              : LOAD_ACTIVATION_SUCCESS,
                     activation        : response.data,
                     author            : response.linked.accounts.find(account => account.id === accountId),
-                    authorActivations : response2.data.entities
+                    authorActivations : authorActivationsReponse.data.entities
                 });
             });
 
