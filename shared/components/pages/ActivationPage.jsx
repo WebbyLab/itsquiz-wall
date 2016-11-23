@@ -307,13 +307,7 @@ export default class ActivationPage extends React.Component {
         return (
             <div className={classes}>
                 <Card className='ActivationPage__paper' shadow={1}>
-                    <CardTitle className={
-                        showAccountResult
-                        ?
-                            'ActivationPage__head--passed'
-                        :
-                            'ActivationPage__head'
-                    }>
+                    <CardTitle className={showAccountResult ? 'ActivationPage__head--passed' : 'ActivationPage__head'}>
                         <img className='ActivationPage__picture' src={pictureURL} />
                         <div className='ActivationPage__info'>
                             <div className='ActivationPage__heading'>
