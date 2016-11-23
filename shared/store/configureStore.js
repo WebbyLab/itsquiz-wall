@@ -2,12 +2,12 @@ import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import rootReducer from '../reducers';
 
-const loggerMiddleware = store => next => action => {
+const loggerMiddleware = store => next => action => { //eslint-disable-line
     console.log('prev state', store.getState());
 
     console.log('action', action);
 
-    const result = next(action);
+    const result = next(action); //eslint-disable-line
 
     console.log('next state', store.getState());
 
@@ -15,7 +15,7 @@ const loggerMiddleware = store => next => action => {
 };
 
 const createStoreWithMiddleware = applyMiddleware(
-    thunkMiddleware,
+    thunkMiddleware
     // loggerMiddleware
 )(createStore);
 

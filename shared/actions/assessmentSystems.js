@@ -24,6 +24,7 @@ export function loadAssessmentSystem(activation, locale) {
             return api.assessmentSystems.show(
                 activation.assessmentSystemId
             ).then((response) => {
+                console.log('response', response);
                 dispatch({
                     type             : LOAD_ASSESSMENT_SYSTEM_SUCCESS,
                     assessmentSystem : response.assessmentSystem

@@ -1,3 +1,5 @@
+import { normalize, Schema, arrayOf } from 'normalizr';
+
 import api from '../apiSingleton';
 
 import { loadAssessmentSystem } from './assessmentSystems';
@@ -8,10 +10,9 @@ export const LOAD_ACTIVATIONS_REQUEST    = 'LOAD_ACTIVATIONS_REQUEST';
 
 const LIMIT_PER_QUERY = 24;
 
-import { normalize, Schema, arrayOf } from 'normalizr';
 
 const activation = new Schema('activations');
-const owner = new Schema('owners');
+const author = new Schema('authors');
 
 export function loadActivations({ query = {}, offset = 0 }) {
     return (dispatch) => {
@@ -37,20 +38,37 @@ export function loadActivations({ query = {}, offset = 0 }) {
 
             // response = normalize(response, article);
             const normalizedActivations = normalize(response.data.entities, arrayOf(activation));
+
             console.log('normalizedActivations', normalizedActivations);
-            const normalizedOwners = normalize(response.linked.accounts, arrayOf(owner));
-            console.log('normalizedOwners', normalizedOwners);
-            const { data, linked } = response;
+
+            const normalizedAuthors = normalize(response.linked.accounts, arrayOf(author));
+
+            console.log('normalizedAuthors', normalizedAuthors);
+
+            const { data } = response;
+
             dispatch({
                 offset,
+                type        : LOAD_ACTIVATIONS_SUCCESS,
                 category    : query.category || 'ALL',
                 sortType    : query.sortType || 'new',
                 search      : query.search || '',
-                type        : LOAD_ACTIVATIONS_SUCCESS,
-                activations : data.entities,
                 totalAmount : data.total,
-                accounts    : linked.accounts
+                entities    : {
+                    activations : normalizedActivations,
+                    authors     : normalizedAuthors
+                }
             });
+            // dispatch({
+            //     offset,
+            //     type        : LOAD_ACTIVATIONS_SUCCESS,
+            //     category    : query.category || 'ALL',
+            //     sortType    : query.sortType || 'new',
+            //     search      : query.search || '',
+            //     activations : normalizedActivations,
+            //     totalAmount : data.total,
+            //     accounts    : normalizedAuthors
+            // });
         });
     };
 }
