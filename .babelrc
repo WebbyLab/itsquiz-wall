@@ -12,12 +12,13 @@
   "env": {
       "node": {
         "plugins": [
-          [
-            "babel-plugin-transform-require-ignore",
-            {
-              "extensions": [".less", ".css"]
-            }
-          ]
+            [
+                "babel-plugin-transform-require-ignore",
+                {
+                    "extensions": [".less", ".css"]
+                }
+            ],
+            "react-hot-loader/babel"
         ]
       }
     }
