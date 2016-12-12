@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect }                     from 'react-redux';
 
+import Dialog from '../../components/Dialog.jsx';
+
 import { loadActivation, loadSimilarActivations } from '../../actions/activations';
 import { loadAccountType }                        from '../../actions/accounts';
 import connectDataFetchers                        from '../../lib/connectDataFetchers.jsx';
@@ -35,7 +37,8 @@ class ActivationPageContainer extends Component {
         proposedActivations          : [],
         sharingLink                  : '',
         isShowingProposedActivations : false,
-        isLoggingIn                  : false
+        isLoggingIn                  : false,
+        isAvailable                  : true
     };
 
     componentWillMount() {
@@ -104,6 +107,14 @@ class ActivationPageContainer extends Component {
     }
 
     handlePassActivationClick = (activation) => {
+        if (activation.passingsLeft === 0) {
+            this.setState({
+                isAvailable: false
+            });
+
+            return;
+        }
+
         const isEmbedded = this.props.location.query.embed;
         const { actionId, isSponsored, name } = activation;
 
@@ -219,6 +230,12 @@ class ActivationPageContainer extends Component {
             isLoggingIn : false
         });
     };
+
+    handleCloseMessageNotAvailable = () => {
+        this.setState({
+            isAvailable: true
+        });
+    }
 
     getRandomInteger = (min, max) => {
         return Math.round(min - 0.5 + Math.random() * (max - min + 1));
@@ -343,7 +360,8 @@ class ActivationPageContainer extends Component {
             sharingLink,
             proposedActivations,
             isLoggingIn,
-            isShowingProposedActivations
+            isShowingProposedActivations,
+            isAvailable
         } = this.state;
 
         const { embed, assigneeId } = this.props.location.query;
@@ -365,6 +383,7 @@ class ActivationPageContainer extends Component {
                 isSurvey                     = {isSurvey}
                 isShowingProposedActivations = {isShowingProposedActivations}
                 isOrganization               = {isOrganization}
+                isAvailable                  = {isAvailable}
                 onPass                       = {this.handlePassActivationClick}
                 onSponsoredClick             = {this.handleSponsoredClick}
                 onSubscribe                  = {this.handleSubscribeClick}
@@ -377,6 +396,7 @@ class ActivationPageContainer extends Component {
                 onShareComplete              = {this.handleShareComplete.bind(this, activation)}
                 onStopSharing                = {this.handleStopSharing}
                 onLoginDialogClose           = {this.handleLoginClose}
+                onCloseMessageNotAvailable   = {this.handleCloseMessageNotAvailable}
             />
         );
     }

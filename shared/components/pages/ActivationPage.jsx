@@ -15,6 +15,8 @@ import AppBarWithBackground from '../AppBarWithBackground.jsx';
 import ExpandableText       from '../ExpandableText.jsx';
 import ScoreCircle          from '../other/ScoreCircle.jsx';
 
+import Dialog from '../Dialog.jsx';
+
 import { sprintf } from '../../utils';
 
 import './ActivationPage.less';
@@ -34,6 +36,7 @@ export default class ActivationPage extends React.Component {
         isEmbedded                   : React.PropTypes.bool,
         isShowingProposedActivations : React.PropTypes.bool,
         isOrganization               : React.PropTypes.bool,
+        isAvailable                  : React.PropTypes.bool,
         dueTime                      : React.PropTypes.string,
         assessmentSystem             : React.PropTypes.array,
         onPass                       : React.PropTypes.func,
@@ -46,7 +49,8 @@ export default class ActivationPage extends React.Component {
         onFillProfile                : React.PropTypes.func,
         onSponsoredClick             : React.PropTypes.func,
         onViewAnswers                : React.PropTypes.func,
-        onActivationClick            : React.PropTypes.func
+        onActivationClick            : React.PropTypes.func,
+        onCloseMessageNotAvailable   : React.PropTypes.func
     };
 
     static contextTypes = { i18n: React.PropTypes.object };
@@ -381,7 +385,6 @@ export default class ActivationPage extends React.Component {
                                     />
                                 </div>
                             </div>
-
                             <div className='ActivationPage__actions'>
                                 {
                                     showAccountResult && !isSurvey
@@ -725,10 +728,12 @@ export default class ActivationPage extends React.Component {
             isLoading,
             isLoggingIn,
             isEmbedded,
+            isOrganization,
+            isAvailable,
             onLoginDialogClose,
             onStopSharing,
             onGoBack,
-            isOrganization
+            onCloseMessageNotAvailable
         } = this.props;
 
         const classes = cx('ActivationPage', {
@@ -765,6 +770,22 @@ export default class ActivationPage extends React.Component {
                     height           = {200}
                     isOrganization   = {isOrganization}
                 />
+
+                {
+                    <Dialog
+                        title=''
+                        onRequestClose={onCloseMessageNotAvailable}
+                        isOpen={!isAvailable}
+                    >
+                        <div
+                            style={{
+                                fontSize: '20px'
+                            }}
+                        >
+                            {l('Unfortunately, this quiz is not available. Author will be informed.')}
+                        </div>
+                    </Dialog>
+                }
 
                 {this.renderProposedActivations()}
 
