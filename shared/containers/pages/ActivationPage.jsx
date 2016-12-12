@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect }                     from 'react-redux';
 
-import Dialog from '../../components/Dialog.jsx';
-
 import { loadActivation, loadSimilarActivations } from '../../actions/activations';
 import { loadAccountType }                        from '../../actions/accounts';
 import connectDataFetchers                        from '../../lib/connectDataFetchers.jsx';
