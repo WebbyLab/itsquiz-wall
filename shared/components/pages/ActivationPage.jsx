@@ -14,8 +14,7 @@ import LoginDialog          from '../../containers/LoginDialog.jsx';
 import AppBarWithBackground from '../AppBarWithBackground.jsx';
 import ExpandableText       from '../ExpandableText.jsx';
 import ScoreCircle          from '../other/ScoreCircle.jsx';
-
-import Dialog from '../Dialog.jsx';
+import Dialog               from '../Dialog.jsx';
 
 import { sprintf } from '../../utils';
 
