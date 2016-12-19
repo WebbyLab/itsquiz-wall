@@ -27,6 +27,8 @@ export default class LoginDialogContainer extends Component {
 
         sendEvent('login dialog', 'login', type);
 
+        console.log('window.location', window.location);
+
         const redirectURL = strformat(socialAuthURL, {
             lang: getLocale().toUpperCase(),
             continueRoute: escapeHTML(`/quizwall${window.location.pathname + window.location.search}`),
@@ -44,7 +46,7 @@ export default class LoginDialogContainer extends Component {
 
         const redirectURL = strformat(emailAuthURL, {
             lang: getLocale().toLowerCase(),
-            continueRoute: escapeHTML(`/quizwall${window.location.pathname}`),
+            continueRoute: escapeHTML(`/quizwall${window.location.pathname + window.location.search}`),
             ref: localStorage.getItem('ref') || ''
         });
 

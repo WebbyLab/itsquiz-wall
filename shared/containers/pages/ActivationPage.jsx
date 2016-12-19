@@ -336,7 +336,8 @@ class ActivationPageContainer extends Component {
             similarActivations,
             isLoading,
             customAssessmentSystem,
-            isOrganization
+            isOrganization,
+            location
         } = this.props;
 
         const {
@@ -346,9 +347,10 @@ class ActivationPageContainer extends Component {
             isShowingProposedActivations
         } = this.state;
 
-        const { embed, assigneeId } = this.props.location.query;
+        const { embed, assigneeId, hideLeftMenu } = location.query;
 
         const isSurvey = activation.accountQuizSession ? Boolean(activation.accountQuizSession.maxPoints === 0) : false;
+        const hideGoBackBtn = Boolean(hideLeftMenu);
 
         return (
             <ActivationPage
@@ -365,6 +367,7 @@ class ActivationPageContainer extends Component {
                 isSurvey                     = {isSurvey}
                 isShowingProposedActivations = {isShowingProposedActivations}
                 isOrganization               = {isOrganization}
+                hideGoBackBtn                = {hideGoBackBtn}
                 onPass                       = {this.handlePassActivationClick}
                 onSponsoredClick             = {this.handleSponsoredClick}
                 onSubscribe                  = {this.handleSubscribeClick}

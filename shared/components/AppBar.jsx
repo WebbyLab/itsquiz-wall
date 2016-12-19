@@ -19,11 +19,12 @@ export default class AppBar extends Component {
         className        : PropTypes.string,
         title            : PropTypes.string,
         search           : PropTypes.string,
+        rightIconName    : PropTypes.string,
         displayRightMenu : PropTypes.bool,
         displaySearch    : PropTypes.bool,
         isOrganization   : PropTypes.bool,
-        rightIconName    : PropTypes.string,
         fixOnScroll      : PropTypes.bool,
+        hideGoBackBtn    : PropTypes.bool,
         scrollOffset     : PropTypes.number,
         onRightIconClick : PropTypes.func,
         onSearch         : PropTypes.func
@@ -90,6 +91,7 @@ export default class AppBar extends Component {
             displaySearch,
             displayRightMenu,
             rightIconName,
+            hideGoBackBtn,
             onRightIconClick,
             onSearch,
             isOrganization
@@ -112,7 +114,7 @@ export default class AppBar extends Component {
                     onRequestClose={this.handleLoginDialogClose}
                 />
                 {
-                    !isOrganization
+                    !isOrganization && !hideGoBackBtn
                     ?
                         <div className='AppBar__left'>
                             {
