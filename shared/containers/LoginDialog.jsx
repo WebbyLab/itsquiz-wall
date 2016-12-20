@@ -44,7 +44,7 @@ export default class LoginDialogContainer extends Component {
 
         const redirectURL = strformat(emailAuthURL, {
             lang: getLocale().toLowerCase(),
-            continueRoute: escapeHTML(`/quizwall${window.location.pathname}`),
+            continueRoute: escapeHTML(`/quizwall${window.location.pathname + window.location.search}`),
             ref: localStorage.getItem('ref') || ''
         });
 

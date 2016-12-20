@@ -25,15 +25,16 @@ export default class ActivationPage extends React.Component {
         authorActivations            : React.PropTypes.arrayOf(React.PropTypes.object),
         similarActivations           : React.PropTypes.arrayOf(React.PropTypes.object),
         proposedActivations          : React.PropTypes.arrayOf(React.PropTypes.object),
-        showAccountResult               : React.PropTypes.bool,
+        showAccountResult            : React.PropTypes.bool,
         isSurvey                     : React.PropTypes.bool,
         sharingLink                  : React.PropTypes.string,
-        accountQuizSession              : React.PropTypes.object,
+        accountQuizSession           : React.PropTypes.object,
         isLoading                    : React.PropTypes.bool,
         isLoggingIn                  : React.PropTypes.bool,
         isEmbedded                   : React.PropTypes.bool,
         isShowingProposedActivations : React.PropTypes.bool,
         isOrganization               : React.PropTypes.bool,
+        hideGoBackBtn                : React.PropTypes.bool,
         dueTime                      : React.PropTypes.string,
         assessmentSystem             : React.PropTypes.array,
         onPass                       : React.PropTypes.func,
@@ -725,10 +726,11 @@ export default class ActivationPage extends React.Component {
             isLoading,
             isLoggingIn,
             isEmbedded,
+            isOrganization,
+            hideGoBackBtn,
             onLoginDialogClose,
             onStopSharing,
-            onGoBack,
-            isOrganization
+            onGoBack
         } = this.props;
 
         const classes = cx('ActivationPage', {
@@ -760,10 +762,11 @@ export default class ActivationPage extends React.Component {
                     backgroundURL    = {activation.author ? activation.author.backgroundURL : ''}
                     displayRightMenu = {!isEmbedded}
                     rightIconName    = 'arrow_back'
-                    onRightIconClick = {onGoBack}
                     title            = {activation.name}
                     height           = {200}
                     isOrganization   = {isOrganization}
+                    hideGoBackBtn    = {hideGoBackBtn}
+                    onRightIconClick = {onGoBack}
                 />
 
                 {this.renderProposedActivations()}
