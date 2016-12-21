@@ -14,6 +14,7 @@ import LoginDialog          from '../../containers/LoginDialog.jsx';
 import AppBarWithBackground from '../AppBarWithBackground.jsx';
 import ExpandableText       from '../ExpandableText.jsx';
 import ScoreCircle          from '../other/ScoreCircle.jsx';
+import Dialog               from '../Dialog.jsx';
 
 import { sprintf } from '../../utils';
 
@@ -34,6 +35,7 @@ export default class ActivationPage extends React.Component {
         isEmbedded                   : React.PropTypes.bool,
         isShowingProposedActivations : React.PropTypes.bool,
         isOrganization               : React.PropTypes.bool,
+        isAvailable                  : React.PropTypes.bool,
         hideGoBackBtn                : React.PropTypes.bool,
         dueTime                      : React.PropTypes.string,
         assessmentSystem             : React.PropTypes.array,
@@ -47,7 +49,8 @@ export default class ActivationPage extends React.Component {
         onFillProfile                : React.PropTypes.func,
         onSponsoredClick             : React.PropTypes.func,
         onViewAnswers                : React.PropTypes.func,
-        onActivationClick            : React.PropTypes.func
+        onActivationClick            : React.PropTypes.func,
+        onCloseMessageNotAvailable   : React.PropTypes.func
     };
 
     static contextTypes = { i18n: React.PropTypes.object };
@@ -382,7 +385,6 @@ export default class ActivationPage extends React.Component {
                                     />
                                 </div>
                             </div>
-
                             <div className='ActivationPage__actions'>
                                 {
                                     showAccountResult && !isSurvey
@@ -727,6 +729,8 @@ export default class ActivationPage extends React.Component {
             isLoggingIn,
             isEmbedded,
             isOrganization,
+            isAvailable,
+            onCloseMessageNotAvailable,
             hideGoBackBtn,
             onLoginDialogClose,
             onStopSharing,
@@ -768,6 +772,22 @@ export default class ActivationPage extends React.Component {
                     hideGoBackBtn    = {hideGoBackBtn}
                     onRightIconClick = {onGoBack}
                 />
+
+                {
+                    <Dialog
+                        title=''
+                        onRequestClose={onCloseMessageNotAvailable}
+                        isOpen={!isAvailable}
+                    >
+                        <div
+                            style={{
+                                fontSize: '20px'
+                            }}
+                        >
+                            {l('Unfortunately, this quiz is not available. Author will be informed.')}
+                        </div>
+                    </Dialog>
+                }
 
                 {this.renderProposedActivations()}
 

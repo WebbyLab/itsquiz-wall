@@ -22,7 +22,8 @@ export function formatActivation(activation, author) {
         numberOfTriesLeft        : activation.numberOfTriesLeft || 0,
         assessmentSystemId       : activation.assessmentSystemId,
         assessmentSystemType     : activation.assessmentSystemType,
-        canAssigneeViewQuestions : activation.canAssigneeViewQuestions
+        canAssigneeViewQuestions : activation.canAssigneeViewQuestions,
+        passingsLeft             : activation.passingsLeft
     };
 }
 

@@ -15,6 +15,7 @@ const embedEvents = new EmbedEvents({
     embedOrigin: config.embedOrigin
 });
 
+
 class ActivationPageContainer extends Component {
     static propTypes = {
         history                : PropTypes.object,
@@ -35,7 +36,8 @@ class ActivationPageContainer extends Component {
         proposedActivations          : [],
         sharingLink                  : '',
         isShowingProposedActivations : false,
-        isLoggingIn                  : false
+        isLoggingIn                  : false,
+        isAvailable                  : true
     };
 
     componentWillMount() {
@@ -104,6 +106,14 @@ class ActivationPageContainer extends Component {
     }
 
     handlePassActivationClick = (activation) => {
+        if (activation.passingsLeft === 0) {
+            this.setState({
+                isAvailable: false
+            });
+
+            return;
+        }
+
         const isEmbedded = this.props.location.query.embed;
         const { actionId, isSponsored, name } = activation;
 
@@ -219,6 +229,12 @@ class ActivationPageContainer extends Component {
             isLoggingIn : false
         });
     };
+
+    handleCloseMessageNotAvailable = () => {
+        this.setState({
+            isAvailable: true
+        });
+    }
 
     getRandomInteger = (min, max) => {
         return Math.round(min - 0.5 + Math.random() * (max - min + 1));
@@ -336,21 +352,20 @@ class ActivationPageContainer extends Component {
             similarActivations,
             isLoading,
             customAssessmentSystem,
-            isOrganization,
-            location
+            isOrganization
         } = this.props;
 
         const {
             sharingLink,
             proposedActivations,
             isLoggingIn,
-            isShowingProposedActivations
+            isShowingProposedActivations,
+            isAvailable
         } = this.state;
 
-        const { embed, assigneeId, hideLeftMenu } = location.query;
+        const { embed, assigneeId } = this.props.location.query;
 
         const isSurvey = activation.accountQuizSession ? Boolean(activation.accountQuizSession.maxPoints === 0) : false;
-        const hideGoBackBtn = Boolean(hideLeftMenu);
 
         return (
             <ActivationPage
@@ -367,7 +382,7 @@ class ActivationPageContainer extends Component {
                 isSurvey                     = {isSurvey}
                 isShowingProposedActivations = {isShowingProposedActivations}
                 isOrganization               = {isOrganization}
-                hideGoBackBtn                = {hideGoBackBtn}
+                isAvailable                  = {isAvailable}
                 onPass                       = {this.handlePassActivationClick}
                 onSponsoredClick             = {this.handleSponsoredClick}
                 onSubscribe                  = {this.handleSubscribeClick}
@@ -380,6 +395,7 @@ class ActivationPageContainer extends Component {
                 onShareComplete              = {this.handleShareComplete.bind(this, activation)}
                 onStopSharing                = {this.handleStopSharing}
                 onLoginDialogClose           = {this.handleLoginClose}
+                onCloseMessageNotAvailable   = {this.handleCloseMessageNotAvailable}
             />
         );
     }
