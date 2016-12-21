@@ -15,6 +15,7 @@ const embedEvents = new EmbedEvents({
     embedOrigin: config.embedOrigin
 });
 
+
 class ActivationPageContainer extends Component {
     static propTypes = {
         history                : PropTypes.object,
