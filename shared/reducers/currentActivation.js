@@ -14,8 +14,7 @@ const DEFAULT_STATE = {
     similarActications: [],
     isLoadingActivation : true,
     isLoadingAuthorActivations: true,
-    isAllAuthorActivationsLoaded: false,
-    authorId: ''
+    isAllAuthorActivationsLoaded: false
 };
 
 export default function currentActivation(state = DEFAULT_STATE, action) {
@@ -39,8 +38,7 @@ export default function currentActivation(state = DEFAULT_STATE, action) {
                 ...state,
                 activation : apiResponseFormatter.formatActivation(action.activation, action.author),
                 isLoadingActivation : false,
-                isAllAuthorActivationsLoaded: false,
-                authorId: action.author.id
+                isAllAuthorActivationsLoaded: false
             };
         }
 

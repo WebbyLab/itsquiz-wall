@@ -105,9 +105,9 @@ export function loadSimilarActivations({ params = {}, query = {} }) {
         }).then(({ data, linked }) => {
             dispatch({
                 similarTo,
-                type         : LOAD_SIMILAR_ACTIVATIONS_SUCCESS,
-                accounts        : linked.accounts,
-                activations  : data.entities
+                type        : LOAD_SIMILAR_ACTIVATIONS_SUCCESS,
+                accounts    : linked.accounts,
+                activations : data.entities
             });
         }).catch(error => {
             dispatch({
@@ -131,7 +131,7 @@ export function loadAuthorActivations(params) {
     } = params;
 
     return (dispatch, getState) => {
-        const authorId = accountId || getState().currentActivation.authorId;
+        const authorId = accountId || getState().currentActivation.author.id;
         const activationId = openedActivationId || getState().currentActivation.activation.id;
 
         return api.activations.list({ accountId: authorId, assigneeId, limit }).then((response) => {
