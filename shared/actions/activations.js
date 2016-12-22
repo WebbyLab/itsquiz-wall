@@ -68,9 +68,9 @@ export function loadActivation({ params = {}, query = {}, locale }) {
             }));
 
             const activationPromise = dispatch({
-                type              : LOAD_ACTIVATION_SUCCESS,
-                activation        : response.data,
-                author            : response.linked.accounts.find(account => account.id === accountId)
+                type       : LOAD_ACTIVATION_SUCCESS,
+                activation : response.data,
+                author     : response.linked.accounts.find(account => account.id === accountId)
             });
 
             let assessmentSystemPromise;
