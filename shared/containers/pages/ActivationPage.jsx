@@ -402,7 +402,7 @@ class ActivationPageContainer extends Component {
 }
 
 function mapStateToProps({
-    currentActivation       : { activation, authorActivations, similarActivations, isLoading },
+    currentActivation       : { activation, authorActivations, similarActivations, isLoadingActivation },
     currentAssessmentSystem : { assessmentSystem },
     currentAccount          : { isOrganization }
 }) {
@@ -411,7 +411,7 @@ function mapStateToProps({
         activation,
         authorActivations,
         similarActivations,
-        isLoading,
+        isLoading: isLoadingActivation,
         customAssessmentSystem: assessmentSystem
     };
 }

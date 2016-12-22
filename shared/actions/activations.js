@@ -58,22 +58,21 @@ export function loadActivation({ params = {}, query = {}, locale }) {
             digest: query.digest,
             accountfromemail: query.accountId
         }).then(response => {
+            const accountId = response.data.links.owner.id;
+
+            dispatch(loadAuthorActivations({ accountId, assigneeId, openedActivationId: response.data.id }));
+
+            const activationPromise = dispatch({
+                type              : LOAD_ACTIVATION_SUCCESS,
+                activation        : response.data,
+                author            : response.linked.accounts.find(account => account.id === accountId)
+            });
+
             let assessmentSystemPromise;
 
             if (assigneeId) {
                 assessmentSystemPromise = dispatch(loadAssessmentSystem(response.data, locale));
             }
-
-            const accountId = response.data.links.owner.id;
-
-            const activationPromise = api.activations.list({ accountId, assigneeId }).then(response2 => {
-                dispatch({
-                    type              : LOAD_ACTIVATION_SUCCESS,
-                    activation        : response.data,
-                    author            : response.linked.accounts.find(account => account.id === accountId),
-                    authorActivations : response2.data.entities
-                });
-            });
 
             return Promise.all([assessmentSystemPromise, activationPromise]);
         }).catch(error => {
@@ -108,6 +107,26 @@ export function loadSimilarActivations({ params = {}, query = {} }) {
         }).catch(error => {
             dispatch({
                 type: LOAD_SIMILAR_ACTIVATIONS_FAIL,
+                error
+            });
+        });
+    };
+}
+
+export const LOAD_AUTHOR_ACTIVATIONS_SUCCESS = 'LOAD_AUTHOR_ACTIVATIONS_SUCCESS';
+export const LOAD_AUTHOR_ACTIVATIONS_FAIL    = 'LOAD_AUTHOR_ACTIVATIONS_FAIL';
+
+function loadAuthorActivations({ accountId, assigneeId, openedActivationId }) {
+    return dispatch => {
+        return api.activations.list({ accountId, assigneeId }).then((response) => {
+            dispatch({
+                openedActivationId,
+                type              : LOAD_AUTHOR_ACTIVATIONS_SUCCESS,
+                authorActivations : response.data.entities
+            });
+        }).catch(error => {
+            dispatch({
+                type: LOAD_AUTHOR_ACTIVATIONS_FAIL,
                 error
             });
         });
