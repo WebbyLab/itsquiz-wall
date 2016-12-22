@@ -131,7 +131,7 @@ export function loadAuthorActivations(params) {
     } = params;
 
     return (dispatch, getState) => {
-        const authorId = accountId || getState().currentActivation.author.id;
+        const authorId = accountId || getState().currentActivation.activation.author.id;
         const activationId = openedActivationId || getState().currentActivation.activation.id;
 
         return api.activations.list({ accountId: authorId, assigneeId, limit }).then((response) => {
