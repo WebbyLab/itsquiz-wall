@@ -1,7 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { connect }                     from 'react-redux';
+import { bindActionCreators }          from 'redux';
 
-import { loadActivation, loadSimilarActivations } from '../../actions/activations';
+import {
+    loadActivation,
+    loadSimilarActivations,
+    loadAuthorActivations
+} from '../../actions/activations';
+
 import { loadAccountType }                        from '../../actions/accounts';
 import connectDataFetchers                        from '../../lib/connectDataFetchers.jsx';
 import EmbedEvents                                from '../../utils/EmbedEventsUtil';
@@ -18,16 +24,19 @@ const embedEvents = new EmbedEvents({
 
 class ActivationPageContainer extends Component {
     static propTypes = {
-        history                : PropTypes.object,
-        dispatch               : PropTypes.func,
-        location               : PropTypes.object,
-        params                 : PropTypes.object,
-        customAssessmentSystem : PropTypes.array,
-        activation             : PropTypes.object,
-        authorActivations      : PropTypes.array,
-        similarActivations     : PropTypes.array,
-        isLoading              : PropTypes.bool,
-        isOrganization         : PropTypes.bool
+        history                        : PropTypes.object,
+        location                       : PropTypes.object,
+        params                         : PropTypes.object,
+        activation                     : PropTypes.object,
+        customAssessmentSystem         : PropTypes.array,
+        authorActivations              : PropTypes.array,
+        similarActivations             : PropTypes.array,
+        isLoading                      : PropTypes.bool,
+        isLoadingAuthorActivations     : PropTypes.bool,
+        isAllAuthorActivationsLoaded   : PropTypes.bool,
+        isOrganization                 : PropTypes.bool,
+        handleLoadAllAuthorActivations : PropTypes.func,
+        dispatch                       : PropTypes.func
     };
 
     static contextTypes = { i18n: PropTypes.object };
@@ -234,7 +243,11 @@ class ActivationPageContainer extends Component {
         this.setState({
             isAvailable: true
         });
-    }
+    };
+
+    handleLoadAllAuthorActivations = () => {
+        this.props.dispatch(loadAuthorActivations({ isAllActivationsLoaded: true }));
+    };
 
     getRandomInteger = (min, max) => {
         return Math.round(min - 0.5 + Math.random() * (max - min + 1));
@@ -352,7 +365,9 @@ class ActivationPageContainer extends Component {
             similarActivations,
             isLoading,
             customAssessmentSystem,
-            isOrganization
+            isOrganization,
+            isAllAuthorActivationsLoaded,
+            isLoadingAuthorActivations
         } = this.props;
 
         const {
@@ -374,6 +389,7 @@ class ActivationPageContainer extends Component {
                 similarActivations           = {similarActivations}
                 sharingLink                  = {sharingLink}
                 isLoading                    = {isLoading}
+                isLoadingAuthorActivations   = {isLoadingAuthorActivations}
                 isEmbedded                   = {Boolean(embed)}
                 isLoggingIn                  = {isLoggingIn}
                 showAccountResult            = {Boolean(activation.isPassed && assigneeId)}
@@ -383,6 +399,7 @@ class ActivationPageContainer extends Component {
                 isShowingProposedActivations = {isShowingProposedActivations}
                 isOrganization               = {isOrganization}
                 isAvailable                  = {isAvailable}
+                isAllAuthorActivationsLoaded = {isAllAuthorActivationsLoaded}
                 onPass                       = {this.handlePassActivationClick}
                 onSponsoredClick             = {this.handleSponsoredClick}
                 onSubscribe                  = {this.handleSubscribeClick}
@@ -396,13 +413,21 @@ class ActivationPageContainer extends Component {
                 onStopSharing                = {this.handleStopSharing}
                 onLoginDialogClose           = {this.handleLoginClose}
                 onCloseMessageNotAvailable   = {this.handleCloseMessageNotAvailable}
+                onLoadAllAuthorActivations   = {this.handleLoadAllAuthorActivations}
             />
         );
     }
 }
 
 function mapStateToProps({
-    currentActivation       : { activation, authorActivations, similarActivations, isLoadingActivation },
+    currentActivation : {
+        activation,
+        authorActivations,
+        similarActivations,
+        isLoadingActivation,
+        isLoadingAuthorActivations,
+        isAllAuthorActivationsLoaded
+    },
     currentAssessmentSystem : { assessmentSystem },
     currentAccount          : { isOrganization }
 }) {
@@ -411,6 +436,8 @@ function mapStateToProps({
         activation,
         authorActivations,
         similarActivations,
+        isAllAuthorActivationsLoaded,
+        isLoadingAuthorActivations,
         isLoading: isLoadingActivation,
         customAssessmentSystem: assessmentSystem
     };

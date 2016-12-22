@@ -13,11 +13,12 @@ const DEFAULT_STATE = {
     authorActivations: [],
     similarActications: [],
     isLoadingActivation : true,
-    isLoadingAuthorActivations: true
+    isLoadingAuthorActivations: true,
+    isAllAuthorActivationsLoaded: false,
+    authorId: ''
 };
 
 export default function currentActivation(state = DEFAULT_STATE, action) {
-    console.log('action', action);
     // TODO normalize data. in currentActivation save only id. It will allow:
     // 1. Intant activation loading from activations list
     // 2. No activations blinking while you switch between them. From loaded activation to not loaded one.
@@ -37,7 +38,9 @@ export default function currentActivation(state = DEFAULT_STATE, action) {
             return {
                 ...state,
                 activation : apiResponseFormatter.formatActivation(action.activation, action.author),
-                isLoadingActivation : false
+                isLoadingActivation : false,
+                isAllAuthorActivationsLoaded: false,
+                authorId: action.author.id
             };
         }
 
@@ -53,7 +56,8 @@ export default function currentActivation(state = DEFAULT_STATE, action) {
             return {
                 ...state,
                 authorActivations,
-                isLoadingAuthorActivations : false
+                isLoadingAuthorActivations : false,
+                isAllAuthorActivationsLoaded: action.isAllActivationsLoaded
             };
         }
 

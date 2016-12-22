@@ -60,7 +60,12 @@ export function loadActivation({ params = {}, query = {}, locale }) {
         }).then(response => {
             const accountId = response.data.links.owner.id;
 
-            dispatch(loadAuthorActivations({ accountId, assigneeId, openedActivationId: response.data.id }));
+            const authorActivationsPromise = dispatch(loadAuthorActivations({
+                accountId,
+                assigneeId,
+                openedActivationId: response.data.id,
+                limit: 8
+            }));
 
             const activationPromise = dispatch({
                 type              : LOAD_ACTIVATION_SUCCESS,
@@ -74,7 +79,7 @@ export function loadActivation({ params = {}, query = {}, locale }) {
                 assessmentSystemPromise = dispatch(loadAssessmentSystem(response.data, locale));
             }
 
-            return Promise.all([assessmentSystemPromise, activationPromise]);
+            return Promise.all([assessmentSystemPromise, activationPromise, authorActivationsPromise]);
         }).catch(error => {
             dispatch({
                 type: LOAD_ACTIVATION_FAIL,
@@ -116,13 +121,25 @@ export function loadSimilarActivations({ params = {}, query = {} }) {
 export const LOAD_AUTHOR_ACTIVATIONS_SUCCESS = 'LOAD_AUTHOR_ACTIVATIONS_SUCCESS';
 export const LOAD_AUTHOR_ACTIVATIONS_FAIL    = 'LOAD_AUTHOR_ACTIVATIONS_FAIL';
 
-function loadAuthorActivations({ accountId, assigneeId, openedActivationId }) {
-    return dispatch => {
-        return api.activations.list({ accountId, assigneeId }).then((response) => {
+export function loadAuthorActivations(params) {
+    const {
+        accountId = '',
+        assigneeId = '',
+        openedActivationId = '',
+        limit = 0,
+        isAllActivationsLoaded = false
+    } = params;
+
+    return (dispatch, getState) => {
+        const authorId = accountId || getState().currentActivation.authorId;
+        const activationId = openedActivationId || getState().currentActivation.activation.id;
+
+        return api.activations.list({ accountId: authorId, assigneeId, limit }).then((response) => {
             dispatch({
-                openedActivationId,
-                type              : LOAD_AUTHOR_ACTIVATIONS_SUCCESS,
-                authorActivations : response.data.entities
+                isAllActivationsLoaded,
+                type               : LOAD_AUTHOR_ACTIVATIONS_SUCCESS,
+                openedActivationId : activationId,
+                authorActivations  : response.data.entities
             });
         }).catch(error => {
             dispatch({
