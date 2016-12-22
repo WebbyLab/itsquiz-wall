@@ -4,14 +4,17 @@ import {
     LOAD_ACTIVATION_REQUEST,
     LOAD_ACTIVATION_SUCCESS,
     LOAD_SIMILAR_ACTIVATIONS_SUCCESS,
-    LOAD_ACTIVATIONS_REQUEST
+    LOAD_ACTIVATIONS_REQUEST,
+    LOAD_AUTHOR_ACTIVATIONS_SUCCESS
 } from '../actions/activations';
 
 const DEFAULT_STATE = {
     activation : {},
     authorActivations: [],
     similarActications: [],
-    isLoading : true
+    isLoadingActivation : true,
+    isLoadingAuthorActivations: true,
+    isAllAuthorActivationsLoaded: false
 };
 
 export default function currentActivation(state = DEFAULT_STATE, action) {
@@ -20,19 +23,28 @@ export default function currentActivation(state = DEFAULT_STATE, action) {
     // 2. No activations blinking while you switch between them. From loaded activation to not loaded one.
     switch (action.type) {
         case LOAD_ACTIVATION_REQUEST: {
+            const isLoading = state.activation.id !== action.activationId;
+
             return {
                 ...state,
                 activation : state.activation,
-                isLoading : state.activation.id !== action.activationId,
-                authorActivations : state.authorActivations
+                isLoadingActivation : isLoading,
+                isLoadingAuthorActivations : isLoading
             };
         }
 
         case LOAD_ACTIVATION_SUCCESS: {
-            const openedActivation = apiResponseFormatter.formatActivation(action.activation, action.author);
+            return {
+                ...state,
+                activation : apiResponseFormatter.formatActivation(action.activation, action.author),
+                isLoadingActivation : false,
+                isAllAuthorActivationsLoaded: false
+            };
+        }
 
+        case LOAD_AUTHOR_ACTIVATIONS_SUCCESS: {
             const otherAuthorActivations = action.authorActivations.filter(authorActivation =>
-                authorActivation.id !== openedActivation.id
+               authorActivation.id !== action.openedActivationId
             );
 
             const authorActivations = otherAuthorActivations.map(authorActivation =>
@@ -42,8 +54,8 @@ export default function currentActivation(state = DEFAULT_STATE, action) {
             return {
                 ...state,
                 authorActivations,
-                activation : openedActivation,
-                isLoading : false
+                isLoadingAuthorActivations : false,
+                isAllAuthorActivationsLoaded: action.isAllActivationsLoaded
             };
         }
 

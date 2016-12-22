@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import cx    from 'classnames';
 
 import { Card, CardTitle } from 'react-mdl/lib/Card';
@@ -22,38 +22,41 @@ import './ActivationPage.less';
 
 export default class ActivationPage extends React.Component {
     static propTypes = {
-        activation                   : React.PropTypes.object,
-        authorActivations            : React.PropTypes.arrayOf(React.PropTypes.object),
-        similarActivations           : React.PropTypes.arrayOf(React.PropTypes.object),
-        proposedActivations          : React.PropTypes.arrayOf(React.PropTypes.object),
-        showAccountResult            : React.PropTypes.bool,
-        isSurvey                     : React.PropTypes.bool,
-        sharingLink                  : React.PropTypes.string,
-        accountQuizSession           : React.PropTypes.object,
-        isLoading                    : React.PropTypes.bool,
-        isLoggingIn                  : React.PropTypes.bool,
-        isEmbedded                   : React.PropTypes.bool,
-        isShowingProposedActivations : React.PropTypes.bool,
-        isOrganization               : React.PropTypes.bool,
-        isAvailable                  : React.PropTypes.bool,
-        hideGoBackBtn                : React.PropTypes.bool,
-        dueTime                      : React.PropTypes.string,
-        assessmentSystem             : React.PropTypes.array,
-        onPass                       : React.PropTypes.func,
-        onShare                      : React.PropTypes.func,
-        onShareComplete              : React.PropTypes.func,
-        onLoginDialogClose           : React.PropTypes.func,
-        onStopSharing                : React.PropTypes.func,
-        onGoBack                     : React.PropTypes.func,
-        onShareResult                : React.PropTypes.func,
-        onFillProfile                : React.PropTypes.func,
-        onSponsoredClick             : React.PropTypes.func,
-        onViewAnswers                : React.PropTypes.func,
-        onActivationClick            : React.PropTypes.func,
-        onCloseMessageNotAvailable   : React.PropTypes.func
+        activation                   : PropTypes.object,
+        authorActivations            : PropTypes.arrayOf(PropTypes.object),
+        similarActivations           : PropTypes.arrayOf(PropTypes.object),
+        proposedActivations          : PropTypes.arrayOf(PropTypes.object),
+        showAccountResult            : PropTypes.bool,
+        isSurvey                     : PropTypes.bool,
+        isAllAuthorActivationsLoaded : PropTypes.bool,
+        sharingLink                  : PropTypes.string,
+        accountQuizSession           : PropTypes.object,
+        isLoading                    : PropTypes.bool,
+        isLoggingIn                  : PropTypes.bool,
+        isEmbedded                   : PropTypes.bool,
+        isShowingProposedActivations : PropTypes.bool,
+        isOrganization               : PropTypes.bool,
+        isAvailable                  : PropTypes.bool,
+        hideGoBackBtn                : PropTypes.bool,
+        isLoadingAuthorActivations   : PropTypes.bool,
+        dueTime                      : PropTypes.string,
+        assessmentSystem             : PropTypes.array,
+        onPass                       : PropTypes.func,
+        onShare                      : PropTypes.func,
+        onShareComplete              : PropTypes.func,
+        onLoginDialogClose           : PropTypes.func,
+        onStopSharing                : PropTypes.func,
+        onGoBack                     : PropTypes.func,
+        onShareResult                : PropTypes.func,
+        onFillProfile                : PropTypes.func,
+        onSponsoredClick             : PropTypes.func,
+        onViewAnswers                : PropTypes.func,
+        onActivationClick            : PropTypes.func,
+        onLoadAllAuthorActivations   : PropTypes.func,
+        onCloseMessageNotAvailable   : PropTypes.func
     };
 
-    static contextTypes = { i18n: React.PropTypes.object };
+    static contextTypes = { i18n: PropTypes.object };
 
     componentWillMount() {
         const { l } = this.context.i18n;
@@ -161,7 +164,10 @@ export default class ActivationPage extends React.Component {
     renderAuthorActivations = () => {
         const {
             activation,
-            authorActivations
+            authorActivations,
+            isAllAuthorActivationsLoaded,
+            isLoadingAuthorActivations,
+            onLoadAllAuthorActivations
         } = this.props;
 
         const { l } = this.context.i18n;
@@ -198,6 +204,27 @@ export default class ActivationPage extends React.Component {
                             )
                         }
                     </Grid>
+
+                    {
+                        isLoadingAuthorActivations
+                        ?
+                            <Spinner className='ActivationPage__author-activations-spinner' />
+                        :
+                            null
+                    }
+
+                    {
+                        !isAllAuthorActivationsLoaded
+                        ?
+                            <Button ripple raised
+                                className = 'ActivationPage__load-more-btn'
+                                onClick   = {onLoadAllAuthorActivations}
+                            >
+                                {l('Load more')}
+                            </Button>
+                        :
+                            null
+                    }
                 </div>
             );
         }

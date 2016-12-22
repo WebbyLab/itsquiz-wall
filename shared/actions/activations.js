@@ -58,24 +58,28 @@ export function loadActivation({ params = {}, query = {}, locale }) {
             digest: query.digest,
             accountfromemail: query.accountId
         }).then(response => {
+            const accountId = response.data.links.owner.id;
+
+            const authorActivationsPromise = dispatch(loadAuthorActivations({
+                accountId,
+                assigneeId,
+                openedActivationId: response.data.id,
+                limit: 8
+            }));
+
+            const activationPromise = dispatch({
+                type       : LOAD_ACTIVATION_SUCCESS,
+                activation : response.data,
+                author     : response.linked.accounts.find(account => account.id === accountId)
+            });
+
             let assessmentSystemPromise;
 
             if (assigneeId) {
                 assessmentSystemPromise = dispatch(loadAssessmentSystem(response.data, locale));
             }
 
-            const accountId = response.data.links.owner.id;
-
-            const activationPromise = api.activations.list({ accountId, assigneeId }).then(response2 => {
-                dispatch({
-                    type              : LOAD_ACTIVATION_SUCCESS,
-                    activation        : response.data,
-                    author            : response.linked.accounts.find(account => account.id === accountId),
-                    authorActivations : response2.data.entities
-                });
-            });
-
-            return Promise.all([assessmentSystemPromise, activationPromise]);
+            return Promise.all([assessmentSystemPromise, activationPromise, authorActivationsPromise]);
         }).catch(error => {
             dispatch({
                 type: LOAD_ACTIVATION_FAIL,
@@ -101,13 +105,45 @@ export function loadSimilarActivations({ params = {}, query = {} }) {
         }).then(({ data, linked }) => {
             dispatch({
                 similarTo,
-                type         : LOAD_SIMILAR_ACTIVATIONS_SUCCESS,
-                accounts        : linked.accounts,
-                activations  : data.entities
+                type        : LOAD_SIMILAR_ACTIVATIONS_SUCCESS,
+                accounts    : linked.accounts,
+                activations : data.entities
             });
         }).catch(error => {
             dispatch({
                 type: LOAD_SIMILAR_ACTIVATIONS_FAIL,
+                error
+            });
+        });
+    };
+}
+
+export const LOAD_AUTHOR_ACTIVATIONS_SUCCESS = 'LOAD_AUTHOR_ACTIVATIONS_SUCCESS';
+export const LOAD_AUTHOR_ACTIVATIONS_FAIL    = 'LOAD_AUTHOR_ACTIVATIONS_FAIL';
+
+export function loadAuthorActivations(params) {
+    const {
+        accountId = '',
+        assigneeId = '',
+        openedActivationId = '',
+        limit = 0,
+        isAllActivationsLoaded = false
+    } = params;
+
+    return (dispatch, getState) => {
+        const authorId = accountId || getState().currentActivation.activation.author.id;
+        const activationId = openedActivationId || getState().currentActivation.activation.id;
+
+        return api.activations.list({ accountId: authorId, assigneeId, limit }).then((response) => {
+            dispatch({
+                isAllActivationsLoaded,
+                type               : LOAD_AUTHOR_ACTIVATIONS_SUCCESS,
+                openedActivationId : activationId,
+                authorActivations  : response.data.entities
+            });
+        }).catch(error => {
+            dispatch({
+                type: LOAD_AUTHOR_ACTIVATIONS_FAIL,
                 error
             });
         });
