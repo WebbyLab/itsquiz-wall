@@ -377,7 +377,7 @@ class ActivationPageContainer extends Component {
             isAvailable
         } = this.state;
 
-        const { embed, assigneeId } = this.props.location.query;
+        const { embed, assigneeId, hideLeftMenu } = this.props.location.query;
 
         const isSurvey = activation.accountQuizSession ? Boolean(activation.accountQuizSession.maxPoints === 0) : false;
 
@@ -390,6 +390,7 @@ class ActivationPageContainer extends Component {
                 isLoading                    = {isLoading}
                 isLoadingAuthorActivations   = {isLoadingAuthorActivations}
                 isEmbedded                   = {Boolean(embed)}
+                hideGoBackBtn                = {Boolean(hideLeftMenu)}
                 isLoggingIn                  = {isLoggingIn}
                 showAccountResult            = {Boolean(activation.isPassed && assigneeId)}
                 assessmentSystem             = {customAssessmentSystem}
