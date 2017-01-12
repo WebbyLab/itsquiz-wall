@@ -7,7 +7,8 @@
 
 import React, { Component, PropTypes } from 'react';
 
-import MarkdownIt from 'markdown-it';
+import MarkdownIt   from 'markdown-it';
+import sanitizeHtml from 'sanitize-html';
 
 import { activationDescriptionPreset } from './Markdown/presets.js';
 
@@ -65,7 +66,7 @@ class Markdown extends Component {
     }
 
     getMarkdownMarkup = () => {
-        const renderedMarkdown = this.md.render(this.props.source);
+        const renderedMarkdown = this.md.render(sanitizeHtml(this.props.source));
 
         return {
             __html : renderedMarkdown
