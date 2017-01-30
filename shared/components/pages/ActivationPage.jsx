@@ -294,6 +294,7 @@ export default class ActivationPage extends React.Component {
         } = this.props;
 
         const {
+            id,
             pictureURL,
             name,
             isPrivate,
@@ -440,6 +441,13 @@ export default class ActivationPage extends React.Component {
                                             >
                                                 {l('Pass the test')}
                                             </Button>
+                                            <a
+                                                className='ActivationPage__telegram-link'
+                                                href={`https://telegram.me/ItsQuizBot?start=${id}`}
+                                                target='_blank'
+                                            >
+                                                {l('pass via Telegram')}
+                                            </a>
                                             {
                                                 numberOfTriesLeft
                                                 ?
@@ -631,6 +639,13 @@ export default class ActivationPage extends React.Component {
                                                                 l('Improve result')
                                                         }
                                                     </Button>
+                                                    <a
+                                                        className='ActivationPage__telegram-link'
+                                                        href={`https://telegram.me/ItsQuizBot?start=${id}`}
+                                                        target='_blank'
+                                                    >
+                                                        {l('pass via Telegram')}
+                                                    </a>
                                                     {
                                                         numberOfTriesLeft
                                                         ?
@@ -674,6 +689,13 @@ export default class ActivationPage extends React.Component {
                                                                 l('Improve result')
                                                         }
                                                     </Button>
+                                                    <a
+                                                        className='ActivationPage__telegram-link'
+                                                        href={`https://telegram.me/ItsQuizBot?start=${id}`}
+                                                        target='_blank'
+                                                    >
+                                                        {l('pass via Telegram')}
+                                                    </a>
                                                     {
                                                         numberOfTriesLeft
                                                         ?
