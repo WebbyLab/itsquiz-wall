@@ -12,6 +12,7 @@ export function formatActivation(activation, author) {
         category                 : activation.category,
         isSponsored              : activation.isSponsored,
         isPrivate                : activation.isPublic === false,
+        canPassViaChat           : activation.canPassViaChat,
         isPassed                 : activation.assigneeQuizSession && activation.assigneeQuizSession.finishedAt,
         accountQuizSession          : formatAccountQuizSession(activation.assigneeQuizSession),
         pictureURL               : activation.pictureURL,

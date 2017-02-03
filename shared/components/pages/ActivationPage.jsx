@@ -298,6 +298,7 @@ export default class ActivationPage extends React.Component {
             pictureURL,
             name,
             isPrivate,
+            canPassViaChat,
             accountQuizSession,
             numberOfQuestions,
             timeToPass,
@@ -441,13 +442,19 @@ export default class ActivationPage extends React.Component {
                                             >
                                                 {l('Pass the test')}
                                             </Button>
-                                            <a
-                                                className='ActivationPage__telegram-link'
-                                                href={`https://telegram.me/ItsQuizBot?start=${id}`}
-                                                target='_blank'
-                                            >
-                                                {l('pass via Telegram')}
-                                            </a>
+                                            {
+                                                canPassViaChat
+                                                ?
+                                                    <a
+                                                        className='ActivationPage__telegram-link'
+                                                        href={`https://telegram.me/ItsQuizBot?start=${id}`}
+                                                        target='_blank'
+                                                    >
+                                                        {l('pass via Telegram')}
+                                                    </a>
+                                                :
+                                                    null
+                                            }
                                             {
                                                 numberOfTriesLeft
                                                 ?
@@ -639,13 +646,19 @@ export default class ActivationPage extends React.Component {
                                                                 l('Improve result')
                                                         }
                                                     </Button>
-                                                    <a
-                                                        className='ActivationPage__telegram-link'
-                                                        href={`https://telegram.me/ItsQuizBot?start=${id}`}
-                                                        target='_blank'
-                                                    >
-                                                        {l('pass via Telegram')}
-                                                    </a>
+                                                    {
+                                                        canPassViaChat
+                                                        ?
+                                                            <a
+                                                                className='ActivationPage__telegram-link'
+                                                                href={`https://telegram.me/ItsQuizBot?start=${id}`}
+                                                                target='_blank'
+                                                            >
+                                                                {l('pass via Telegram')}
+                                                            </a>
+                                                        :
+                                                            null
+                                                    }
                                                     {
                                                         numberOfTriesLeft
                                                         ?
@@ -689,13 +702,19 @@ export default class ActivationPage extends React.Component {
                                                                 l('Improve result')
                                                         }
                                                     </Button>
-                                                    <a
-                                                        className='ActivationPage__telegram-link'
-                                                        href={`https://telegram.me/ItsQuizBot?start=${id}`}
-                                                        target='_blank'
-                                                    >
-                                                        {l('pass via Telegram')}
-                                                    </a>
+                                                    {
+                                                        canPassViaChat
+                                                        ?
+                                                            <a
+                                                                className='ActivationPage__telegram-link'
+                                                                href={`https://telegram.me/ItsQuizBot?start=${id}`}
+                                                                target='_blank'
+                                                            >
+                                                                {l('pass via Telegram')}
+                                                            </a>
+                                                        :
+                                                            null
+                                                    }
                                                     {
                                                         numberOfTriesLeft
                                                         ?
