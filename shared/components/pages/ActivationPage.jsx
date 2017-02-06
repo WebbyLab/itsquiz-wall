@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
-import cx    from 'classnames';
+import cx from 'classnames';
+
+import { sendEvent } from '../../utils/googleAnalytics';
 
 import { Card, CardTitle } from 'react-mdl/lib/Card';
 import Grid, { Cell }      from 'react-mdl/lib/Grid';
@@ -66,6 +68,10 @@ export default class ActivationPage extends React.Component {
 
     handleActivationClick = (activation) => {
         this.props.onActivationClick(activation);
+    };
+
+    handlePassViaTelegram = () => {
+        sendEvent('Activation Page', 'Pass via Telegram');
     };
 
     getGreeting = () => {
@@ -449,6 +455,7 @@ export default class ActivationPage extends React.Component {
                                                         className='ActivationPage__telegram-link'
                                                         href={`https://telegram.me/ItsQuizBot?start=${id}`}
                                                         target='_blank'
+                                                        onClick={this.handlePassViaTelegram}
                                                     >
                                                         {l('pass via Telegram')}
                                                     </a>

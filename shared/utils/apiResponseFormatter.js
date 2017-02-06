@@ -68,11 +68,11 @@ export function formatAccountQuizSession(session) {
         return null;
     }
 
-    const accountGainedPoints = Math.ceil(+session.gainedPoints * 100) / 100 || 0;
+    const accountGainedPoints = Math.round(+session.gainedPoints * 100) / 100 || 0;
     let accountScore = 0;
 
     if (+session.maxPoints > 0) {
-        accountScore = Math.ceil(+accountGainedPoints * 100 / +session.maxPoints);
+        accountScore = Math.round(+accountGainedPoints * 100 / +session.maxPoints);
     }
 
     return {

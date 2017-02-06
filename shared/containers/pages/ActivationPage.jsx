@@ -7,12 +7,12 @@ import {
     loadAuthorActivations
 } from '../../actions/activations';
 
-import { loadAccountType }                        from '../../actions/accounts';
-import connectDataFetchers                        from '../../lib/connectDataFetchers.jsx';
-import EmbedEvents                                from '../../utils/EmbedEventsUtil';
-import config                                     from '../../config';
-import { sendEvent }                              from '../../utils/googleAnalytics';
-import { makeSlug }                               from '../../utils/urlUtil';
+import { loadAccountType } from '../../actions/accounts';
+import connectDataFetchers from '../../lib/connectDataFetchers.jsx';
+import EmbedEvents         from '../../utils/EmbedEventsUtil';
+import config              from '../../config';
+import { sendEvent }       from '../../utils/googleAnalytics';
+import { makeSlug }        from '../../utils/urlUtil';
 
 import ActivationPage from '../../components/pages/ActivationPage.jsx';
 
