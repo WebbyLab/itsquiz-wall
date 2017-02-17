@@ -1,8 +1,7 @@
 /* eslint import/no-unresolved: 0*/
 
-import Promise     from 'bluebird';
-import geoip       from 'geoip-lite';
-import strformat   from 'strformat';
+import Promise   from 'bluebird';
+import strformat from 'strformat';
 
 import webpackAssets from '../etc/webpack-assets.json';
 
@@ -115,22 +114,21 @@ export function getIp(req) {
 
 export function detectLocale(req) {
     // Take locale passed by account
-    const passedLocale = (req.query.locale || '').toLowerCase();
+    const passedLocale = (req.query.locale || req.cookies.locale || '').toLowerCase();
 
-    if (getSupportedLocales().indexOf(passedLocale) >= 0) {
+    if (getSupportedLocales().includes(passedLocale)) {
         return passedLocale;
     }
 
-    // Detect locale by ip
-    const ip = getIp(req);
-    const geo = geoip.lookup(ip);
-    const country = (geo && geo.country);
+    // Take locale from browser language
+    const rawLocale = navigator.language || navigator.userLanguage;
+    const locale = rawLocale.slice(0, 2).toLowerCase();
 
-    return {
-        UA: 'uk',
-        RU: 'ru',
-        TR: 'tr'
-    }[country] || 'en';
+    if (getSupportedLocales().includes(locale)) {
+        return locale;
+    }
+
+    return 'en';
 }
 
 export function getAssetsPaths() {
