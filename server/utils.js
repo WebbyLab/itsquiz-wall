@@ -2,6 +2,7 @@
 
 import Promise   from 'bluebird';
 import strformat from 'strformat';
+import satelize from 'satelize';
 
 import webpackAssets from '../etc/webpack-assets.json';
 
@@ -120,15 +121,48 @@ export function detectLocale(req) {
         return passedLocale;
     }
 
-    // Take locale from browser language
-    const rawLocale = window.navigator.language || window.navigator.userLanguage;
-    const locale = rawLocale.slice(0, 2).toLowerCase();
+    // // Take locale from browser language
+    // const rawLocale = window.navigator.language || window.navigator.userLanguage;
+    // const locale = rawLocale.slice(0, 2).toLowerCase();
+    //
+    // if (getSupportedLocales().includes(locale)) {
+    //     return locale;
+    // }
+    //
+    // return 'en';
 
-    if (getSupportedLocales().includes(locale)) {
-        return locale;
-    }
+    const ip = getIp(req);
 
-    return 'en';
+    let locale = 'en';
+
+    satelize.satelize({ ip }, (err, payload) => {
+        if (err) {
+            console.error(`Error during language detection by IP: ${err}`);
+
+            return;
+        }
+        console.log('payload', payload);
+        const countryCode = payload.country_code;
+
+        locale = {
+            UA: 'uk',
+            RU: 'ru',
+            TR: 'tr'
+        }[countryCode] || 'en';
+    });
+
+    console.log('locale', locale);
+
+    return locale;
+
+    // const geo = geoip.lookup(ip);
+    // const country = (geo && geo.country);
+    //
+    // return {
+    //     UA: 'uk',
+    //     RU: 'ru',
+    //     TR: 'tr'
+    // }[country] || 'en';
 }
 
 export function getAssetsPaths() {
