@@ -352,7 +352,7 @@ export default class ActivationPage extends React.Component {
                             'ActivationPage__head--passed'
                         :
                             'ActivationPage__head'
-                    }
+                        }
                     >
                         <img className='ActivationPage__picture' src={pictureURL} />
                         <div className='ActivationPage__info'>

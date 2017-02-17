@@ -121,7 +121,7 @@ export function detectLocale(req) {
     }
 
     // Take locale from browser language
-    const rawLocale = navigator.language || navigator.userLanguage;
+    const rawLocale = window.navigator.language || window.navigator.userLanguage;
     const locale = rawLocale.slice(0, 2).toLowerCase();
 
     if (getSupportedLocales().includes(locale)) {
