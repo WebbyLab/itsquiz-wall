@@ -115,7 +115,7 @@ export function getIp(req) {
 
 export function detectLocale(req) {
     // Take locale passed by account
-    const passedLocale = (req.query.locale || req.cookies.locale || '').toLowerCase();
+    const passedLocale = (req.query.locale || '').toLowerCase();
     console.log('req.query.locale', req.query.locale);
     console.log('req.cookies.locale', req.cookies.locale);
 
