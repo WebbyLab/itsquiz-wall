@@ -116,6 +116,8 @@ export function getIp(req) {
 export function detectLocale(req) {
     // Take locale passed by account
     const passedLocale = (req.query.locale || req.cookies.locale || '').toLowerCase();
+    console.log('req.query.locale', req.query.locale);
+    console.log('req.cookies.locale', req.cookies.locale);
 
     if (getSupportedLocales().indexOf(passedLocale) >= 0) {
         return passedLocale;
@@ -125,6 +127,9 @@ export function detectLocale(req) {
     const ip = getIp(req);
     const geo = geoip.lookup(ip);
     const country = (geo && geo.country);
+
+    console.log('ip', ip);
+    console.log('country', country);
 
     return {
         UA: 'uk',
