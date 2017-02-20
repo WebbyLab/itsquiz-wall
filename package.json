@@ -34,7 +34,7 @@
     "cookie-parser": "^1.4.0",
     "cross-env": "^1.0.8",
     "express": "^4.13.3",
-    "geoip-lite": "^1.1.6",
+    "geoip-lite": "^1.1.9",
     "history": "^1.13.1",
     "isomorphic-fetch": "^2.2.0",
     "jed": "^1.1.0",
