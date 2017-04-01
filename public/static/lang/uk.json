@@ -5,157 +5,16 @@
          "": {
             "domain": "messages",
             "plural_forms": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);",
-            "lang": ""
+            "lang": "uk"
          },
-         "The page you are looking for cannot be found": [
-            "Сторінка яку ви шукаєте не може бути знайдена"
-         ],
          "Sign up / Sign in": [
             "Реєстрація / Вхід"
-         ],
-         "Search": [
-            "Пошук"
          ],
          "Minimize": [
             "Згорнути"
          ],
          "Expand": [
             "Розгорнути"
-         ],
-         "Education": [
-            "Освіта"
-         ],
-         "Entertainment": [
-            "Розваги"
-         ],
-         "Vacancy": [
-            "Вакансії"
-         ],
-         "Special proposition!": [
-            "Спеціальна пропозиція!"
-         ],
-         "%d question": [
-            "%d питання",
-            "%d питання",
-            "%d питань"
-         ],
-         "View details": [
-            "Докладніше"
-         ],
-         "Sorry, we couldn't find any tests for ": [
-            "На жаль, по вашому запиту тестів не знайдено"
-         ],
-         "There are no activations in this category yet": [
-            "У цій категорії тестів поки що немає"
-         ],
-         "Share this test": [
-            "Поділитися тестом"
-         ],
-         "Quizzes": [
-            "Тести"
-         ],
-         "All tests": [
-            "Всі тести"
-         ],
-         "Vacancies": [
-            "Вакансії"
-         ],
-         "Special offer": [
-            "Акції"
-         ],
-         "Newest first": [
-            "За датою створення"
-         ],
-         "Popular first": [
-            "Найпопулярніші"
-         ],
-         "I want to receive new special offers": [
-            "Я хочу отримувати нові спеціальні пропозиції"
-         ],
-         "Thank you for your answers!": [
-            "Дякуємо за ваші відповіді!"
-         ],
-         "You rock! Excellent job!": [
-            "Вау! Відмінна робота!"
-         ],
-         "Great result!": [
-            "Прекрасний результат!"
-         ],
-         "Good job!": [
-            "Гарна робота!"
-         ],
-         "You could do better!": [
-            "Ви могли б скласти краще!"
-         ],
-         "(%d of %d answered)": [
-            "(Дано вiдповiдь на %d з %d)"
-         ],
-         "More tests by %s": [
-            "Більше тестів вiд %s"
-         ],
-         "Similar tests": [
-            "Схожі тести"
-         ],
-         "private": [
-            "приватний"
-         ],
-         "expires %s": [
-            "завершиться %s"
-         ],
-         "You can view answers": [
-            "Ви можете дивитися відповіді"
-         ],
-         "Author disallowed to view answers": [
-            "Автор заборонив перегляд відповідей"
-         ],
-         "You can contact the author": [
-            "Ви можете зв'язатися з автором"
-         ],
-         "Share result with friends": [
-            "Поділитися результатом з друзями"
-         ],
-         "Pass the test": [
-            "Скласти тест"
-         ],
-         "You have %d try left": [
-            "У вас залишилась %d спроба",
-            "У вас залишилось %d спроби",
-            "У вас залишилось %d спроб"
-         ],
-         "%s of %s point": [
-            "%s з %s бала",
-            "%s з %s балів",
-            "%s з %s балів"
-         ],
-         "Share result": [
-            "Поділитися результатом"
-         ],
-         "View my answers": [
-            "Переглянути мої відповіді"
-         ],
-         "Improve result": [
-            "Покращити результат"
-         ],
-         "Fill in your resume": [
-            "Заповніть свій профіль"
-         ],
-         "Filled profiles receive 70% more views": [
-            "Заповнений профіль переглядають на 70% частіше"
-         ],
-         "Contact me": [
-            "Зв'яжіться зі мною"
-         ],
-         "Get the gift": [
-            "Отримати подарунок"
-         ],
-         "Share": [
-            "Поділитися"
-         ],
-         "My result is %d%%": [
-            "Мій результат %d%%"
-         ],
-         "Check out this test": [
-            "Зацініть тест"
          ],
          "Share this page": [
             "Поділитися сторінкою"
@@ -199,6 +58,153 @@
          "or use your e-mail": [
             "або використовуйте ваш e-mail"
          ],
+         "Thank you for your answers!": [
+            "Дякуємо за ваші відповіді!"
+         ],
+         "You rock! Excellent job!": [
+            "Вау! Відмінна робота!"
+         ],
+         "Great result!": [
+            "Прекрасний результат!"
+         ],
+         "Good job!": [
+            "Гарна робота!"
+         ],
+         "You could do better!": [
+            "Ви могли б скласти краще!"
+         ],
+         "(%d of %d answered)": [
+            "(Дано вiдповiдь на %d з %d)"
+         ],
+         "More tests by %s": [
+            "Більше тестів вiд %s"
+         ],
+         "Load more": [
+            "Завантажити більше"
+         ],
+         "Similar tests": [
+            "Схожі тести"
+         ],
+         "private": [
+            "приватний"
+         ],
+         "%d question": [
+            "%d питання",
+            "%d питання",
+            "%d питань"
+         ],
+         "expires %s": [
+            "завершиться %s"
+         ],
+         "You can view answers": [
+            "Ви можете дивитися відповіді"
+         ],
+         "Author disallowed to view answers": [
+            "Автор заборонив перегляд відповідей"
+         ],
+         "You can contact the author": [
+            "Ви можете зв'язатися з автором"
+         ],
+         "Share result with friends": [
+            "Поділитися результатом з друзями"
+         ],
+         "Pass the test": [
+            "Скласти тест"
+         ],
+         "pass via Telegram": [
+            ""
+         ],
+         "You have %d try left": [
+            "У вас залишилась %d спроба",
+            "У вас залишилось %d спроби",
+            "У вас залишилось %d спроб"
+         ],
+         "%s of %s point": [
+            "%s з %s бала",
+            "%s з %s балів",
+            "%s з %s балів"
+         ],
+         "Share result": [
+            "Поділитися результатом"
+         ],
+         "View my answers": [
+            "Переглянути мої відповіді"
+         ],
+         "Improve result": [
+            "Покращити результат"
+         ],
+         "Fill in your resume": [
+            "Заповніть свій профіль"
+         ],
+         "Filled profiles receive 70% more views": [
+            "Заповнений профіль переглядають на 70% частіше"
+         ],
+         "Contact me": [
+            "Зв'яжіться зі мною"
+         ],
+         "Get the gift": [
+            "Отримати подарунок"
+         ],
+         "Share": [
+            "Поділитися"
+         ],
+         "My result is %d%%": [
+            "Мій результат %d%%"
+         ],
+         "Check out this test": [
+            "Зацініть тест"
+         ],
+         "Unfortunately, this quiz is not available. Author will be informed.": [
+            ""
+         ],
+         "Sorry, we couldn't find any tests for ": [
+            "На жаль, по вашому запиту тестів не знайдено"
+         ],
+         "There are no activations in this category yet": [
+            "У цій категорії тестів поки що немає"
+         ],
+         "Share this test": [
+            "Поділитися тестом"
+         ],
+         "Quizzes": [
+            "Тести"
+         ],
+         "All tests": [
+            "Всі тести"
+         ],
+         "Vacancies": [
+            "Вакансії"
+         ],
+         "Education": [
+            "Освіта"
+         ],
+         "Entertainment": [
+            "Розваги"
+         ],
+         "Special offer": [
+            "Акції"
+         ],
+         "Newest first": [
+            "За датою створення"
+         ],
+         "Popular first": [
+            "Найпопулярніші"
+         ],
+         "I want to receive new special offers": [
+            "Я хочу отримувати нові спеціальні пропозиції"
+         ],
+         "Vacancy": [
+            "Вакансії"
+         ],
+         "Special proposition!": [
+            "Спеціальна пропозиція!"
+         ],
+         "View details": [
+            "Докладніше"
+         ],
+         "Search": [
+            "Пошук"
+         ],
          "Welcome to It's quiz!": [
             "Ласкаво просимо до It's quiz!"
          ],
@@ -237,6 +243,9 @@
          ],
          "Do not show me this message again": [
             "Більше не показувати це повідомлення"
+         ],
+         "The page you are looking for cannot be found": [
+            "Сторінка яку ви шукаєте не може бути знайдена"
          ],
          "%d hour": [
             "%d година",

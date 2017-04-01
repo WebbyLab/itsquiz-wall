@@ -7,140 +7,14 @@
             "plural_forms": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);",
             "lang": ""
          },
-         "The page you are looking for cannot be found": [
-            ""
-         ],
          "Sign up / Sign in": [
             "Kayıt ol / Giriş Yap"
-         ],
-         "Search": [
-            "Arama"
          ],
          "Minimize": [
             "Küçült"
          ],
          "Expand": [
             "Genişlet"
-         ],
-         "Education": [
-            "Eğitim"
-         ],
-         "Entertainment": [
-            "Eğlence"
-         ],
-         "Vacancy": [
-            "Kariyer"
-         ],
-         "Special proposition!": [
-            "Özel öneriler!"
-         ],
-         "%d question": [
-            "%d soru",
-            "%d sorular"
-         ],
-         "View details": [
-            "Detayları görüntüle"
-         ],
-         "Sorry, we couldn't find any tests for ": [
-            "Maalesef sizin için herhangi bir test bulamadık"
-         ],
-         "There are no activations in this category yet": [
-            "Bu kategoride aktivasyonlar henüz bulunmamaktadır"
-         ],
-         "Share this test": [
-            "Bu test'i paylaş"
-         ],
-         "Quizzes": [
-            "Quizzes"
-         ],
-         "All tests": [
-            "Bütün testler"
-         ],
-         "Vacancies": [
-            "Kariyer"
-         ],
-         "Special offer": [
-            "Özel Teklif"
-         ],
-         "Newest first": [
-            "Önce Yeniler"
-         ],
-         "Popular first": [
-            "Önce Popüler"
-         ],
-         "I want to receive new special offers": [
-            "Özel teklifleri görmek istiyorum"
-         ],
-         "Thank you for your answers!": [
-            ""
-         ],
-         "You rock! Excellent job!": [
-            "Harikasın! Mükkemel çalışma!"
-         ],
-         "Great result!": [
-            "Güzel Sonuç!"
-         ],
-         "Good job!": [
-            "Aferin!"
-         ],
-         "You could do better!": [
-            "Daha iyisini yapabilirsin"
-         ],
-         "(%d of %d answered)": [
-            ""
-         ],
-         "More tests by %s": [
-            " %s 'den daha çok testler"
-         ],
-         "Similar tests": [
-            "Benzert testler"
-         ],
-         "private": [
-            "gizli"
-         ],
-         "expires %s": [
-            ""
-         ],
-         "Author disallowed to view answers": [
-            ""
-         ],
-         "Share result with friends": [
-            "Sonuçlarımı arkadaşlarımla paylaş"
-         ],
-         "Pass the test": [
-            "Testlerden geçtin"
-         ],
-         "You have %d try left": [
-            "",
-            "You have %d tries left"
-         ],
-         "%s of %s point": [
-            "%s arasında %s puanın",
-            "%s arasında %s puanların"
-         ],
-         "View my answers": [
-            "Cevaplarımı görüntüle"
-         ],
-         "Fill in your resume": [
-            "Bilgilerinizi doldurmalısınız"
-         ],
-         "Filled profiles receive 70% more views": [
-            "70%'i doldurulmuş profiller daha fazla görüntülenir"
-         ],
-         "Contact me": [
-            "Bana Ulaş"
-         ],
-         "Get the gift": [
-            "Hediye kazan"
-         ],
-         "Share": [
-            "Paylaş"
-         ],
-         "My result is %d%%": [
-            "Benim sonuçlarım %d%%"
-         ],
-         "Check out this test": [
-            "Test'ime göz at"
          ],
          "Share this page": [
             "Bu sayfayı paylaş"
@@ -184,6 +58,135 @@
          "or use your e-mail": [
             "yada mail adresini kullan"
          ],
+         "Thank you for your answers!": [
+            ""
+         ],
+         "You rock! Excellent job!": [
+            "Harikasın! Mükkemel çalışma!"
+         ],
+         "Great result!": [
+            "Güzel Sonuç!"
+         ],
+         "Good job!": [
+            "Aferin!"
+         ],
+         "You could do better!": [
+            "Daha iyisini yapabilirsin"
+         ],
+         "(%d of %d answered)": [
+            ""
+         ],
+         "More tests by %s": [
+            " %s 'den daha çok testler"
+         ],
+         "Similar tests": [
+            "Benzert testler"
+         ],
+         "private": [
+            "gizli"
+         ],
+         "%d question": [
+            "%d soru",
+            "%d sorular"
+         ],
+         "expires %s": [
+            ""
+         ],
+         "Author disallowed to view answers": [
+            ""
+         ],
+         "Share result with friends": [
+            "Sonuçlarımı arkadaşlarımla paylaş"
+         ],
+         "Pass the test": [
+            "Testlerden geçtin"
+         ],
+         "pass via Telegram": [
+            ""
+         ],
+         "You have %d try left": [
+            "",
+            "You have %d tries left"
+         ],
+         "%s of %s point": [
+            "%s arasında %s puanın",
+            "%s arasında %s puanların"
+         ],
+         "View my answers": [
+            "Cevaplarımı görüntüle"
+         ],
+         "Fill in your resume": [
+            "Bilgilerinizi doldurmalısınız"
+         ],
+         "Filled profiles receive 70% more views": [
+            "70%'i doldurulmuş profiller daha fazla görüntülenir"
+         ],
+         "Contact me": [
+            "Bana Ulaş"
+         ],
+         "Get the gift": [
+            "Hediye kazan"
+         ],
+         "Share": [
+            "Paylaş"
+         ],
+         "My result is %d%%": [
+            "Benim sonuçlarım %d%%"
+         ],
+         "Check out this test": [
+            "Test'ime göz at"
+         ],
+         "Unfortunately, this quiz is not available. Author will be informed.": [
+            ""
+         ],
+         "Sorry, we couldn't find any tests for ": [
+            "Maalesef sizin için herhangi bir test bulamadık"
+         ],
+         "There are no activations in this category yet": [
+            "Bu kategoride aktivasyonlar henüz bulunmamaktadır"
+         ],
+         "Share this test": [
+            "Bu test'i paylaş"
+         ],
+         "Quizzes": [
+            "Quizzes"
+         ],
+         "All tests": [
+            "Bütün testler"
+         ],
+         "Vacancies": [
+            "Kariyer"
+         ],
+         "Education": [
+            "Eğitim"
+         ],
+         "Entertainment": [
+            "Eğlence"
+         ],
+         "Special offer": [
+            "Özel Teklif"
+         ],
+         "Newest first": [
+            "Önce Yeniler"
+         ],
+         "Popular first": [
+            "Önce Popüler"
+         ],
+         "I want to receive new special offers": [
+            "Özel teklifleri görmek istiyorum"
+         ],
+         "Vacancy": [
+            "Kariyer"
+         ],
+         "Special proposition!": [
+            "Özel öneriler!"
+         ],
+         "View details": [
+            "Detayları görüntüle"
+         ],
+         "Search": [
+            "Arama"
+         ],
          "Welcome to It's quiz!": [
             "Quiz'e hoşgeldin!"
          ],
@@ -222,6 +225,9 @@
          ],
          "Do not show me this message again": [
             "Bu mesajı bir daha gösterma"
+         ],
+         "The page you are looking for cannot be found": [
+            ""
          ],
          "%d hour": [
             "%d saat",

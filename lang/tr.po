@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-27 10:24+0300\n"
+"POT-Creation-Date: 2017-04-01 12:27+0300\n"
 "PO-Revision-Date: 2016-04-26 20:00+0300\n"
 "Last-Translator: Oleg <CBETJIOMYP@gmail.com>\n"
 "Language-Team: русский <>\n"
@@ -20,14 +20,8 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Gtranslator 2.91.6\n"
 
-msgid "The page you are looking for cannot be found"
-msgstr ""
-
 msgid "Sign up / Sign in"
 msgstr "Kayıt ol / Giriş Yap"
-
-msgid "Search"
-msgstr "Arama"
 
 msgid "Minimize"
 msgstr "Küçült"
@@ -35,56 +29,47 @@ msgstr "Küçült"
 msgid "Expand"
 msgstr "Genişlet"
 
-msgid "Education"
-msgstr "Eğitim"
+msgid "Share this page"
+msgstr "Bu sayfayı paylaş"
 
-msgid "Entertainment"
-msgstr "Eğlence"
+msgid "Keep in touch"
+msgstr "İletişimde kalalım"
 
-msgid "Vacancy"
-msgstr "Kariyer"
+msgid "Twitter"
+msgstr "Twitter"
 
-msgid "Special proposition!"
-msgstr "Özel öneriler!"
+msgid "Facebook"
+msgstr "Facebook"
 
-#, javascript-format
-msgid "%d question"
-msgid_plural "%d questions"
-msgstr[0] "%d soru"
-msgstr[1] "%d sorular"
+msgid "Videos on Youtube"
+msgstr "Youtube videoları"
 
-msgid "View details"
-msgstr "Detayları görüntüle"
+msgid "Support"
+msgstr "Destek"
 
-msgid "Sorry, we couldn't find any tests for "
-msgstr "Maalesef sizin için herhangi bir test bulamadık"
+msgid "Support page"
+msgstr "Destek sayfası"
 
-msgid "There are no activations in this category yet"
-msgstr "Bu kategoride aktivasyonlar henüz bulunmamaktadır"
+msgid "Suggest an idea"
+msgstr "Öneride bulunabilirsin"
 
-msgid "Share this test"
-msgstr "Bu test'i paylaş"
+msgid "Need help?"
+msgstr "Yardım gerekli mi?"
 
-msgid "Quizzes"
-msgstr "Quizzes"
+msgid "Do you like It's quiz?"
+msgstr "Quiz'i sevdin mi?"
 
-msgid "All tests"
-msgstr "Bütün testler"
+msgid "About testing platform"
+msgstr ""
 
-msgid "Vacancies"
-msgstr "Kariyer"
+msgid "Meet our team"
+msgstr "Ekibimizle tanış"
 
-msgid "Special offer"
-msgstr "Özel Teklif"
+msgid "Sign in with your social network account to continue"
+msgstr "Sosyal ağ hesabınızla giriş yaparak testlere devam edin"
 
-msgid "Newest first"
-msgstr "Önce Yeniler"
-
-msgid "Popular first"
-msgstr "Önce Popüler"
-
-msgid "I want to receive new special offers"
-msgstr "Özel teklifleri görmek istiyorum"
+msgid "or use your e-mail"
+msgstr "yada mail adresini kullan"
 
 msgid "Thank you for your answers!"
 msgstr ""
@@ -109,11 +94,21 @@ msgstr ""
 msgid "More tests by %s"
 msgstr " %s 'den daha çok testler"
 
+#, fuzzy
+msgid "Load more"
+msgstr "Daha fazlasını göster"
+
 msgid "Similar tests"
 msgstr "Benzert testler"
 
 msgid "private"
 msgstr "gizli"
+
+#, javascript-format
+msgid "%d question"
+msgid_plural "%d questions"
+msgstr[0] "%d soru"
+msgstr[1] "%d sorular"
 
 #, javascript-format
 msgid "expires %s"
@@ -135,6 +130,9 @@ msgstr "Sonuçlarımı arkadaşlarımla paylaş"
 
 msgid "Pass the test"
 msgstr "Testlerden geçtin"
+
+msgid "pass via Telegram"
+msgstr ""
 
 #, javascript-format
 msgid "You have %d try left"
@@ -181,47 +179,56 @@ msgstr "Benim sonuçlarım %d%%"
 msgid "Check out this test"
 msgstr "Test'ime göz at"
 
-msgid "Share this page"
-msgstr "Bu sayfayı paylaş"
-
-msgid "Keep in touch"
-msgstr "İletişimde kalalım"
-
-msgid "Twitter"
-msgstr "Twitter"
-
-msgid "Facebook"
-msgstr "Facebook"
-
-msgid "Videos on Youtube"
-msgstr "Youtube videoları"
-
-msgid "Support"
-msgstr "Destek"
-
-msgid "Support page"
-msgstr "Destek sayfası"
-
-msgid "Suggest an idea"
-msgstr "Öneride bulunabilirsin"
-
-msgid "Need help?"
-msgstr "Yardım gerekli mi?"
-
-msgid "Do you like It's quiz?"
-msgstr "Quiz'i sevdin mi?"
-
-msgid "About testing platform"
+msgid "Unfortunately, this quiz is not available. Author will be informed."
 msgstr ""
 
-msgid "Meet our team"
-msgstr "Ekibimizle tanış"
+msgid "Sorry, we couldn't find any tests for "
+msgstr "Maalesef sizin için herhangi bir test bulamadık"
 
-msgid "Sign in with your social network account to continue"
-msgstr "Sosyal ağ hesabınızla giriş yaparak testlere devam edin"
+msgid "There are no activations in this category yet"
+msgstr "Bu kategoride aktivasyonlar henüz bulunmamaktadır"
 
-msgid "or use your e-mail"
-msgstr "yada mail adresini kullan"
+msgid "Share this test"
+msgstr "Bu test'i paylaş"
+
+msgid "Quizzes"
+msgstr "Quizzes"
+
+msgid "All tests"
+msgstr "Bütün testler"
+
+msgid "Vacancies"
+msgstr "Kariyer"
+
+msgid "Education"
+msgstr "Eğitim"
+
+msgid "Entertainment"
+msgstr "Eğlence"
+
+msgid "Special offer"
+msgstr "Özel Teklif"
+
+msgid "Newest first"
+msgstr "Önce Yeniler"
+
+msgid "Popular first"
+msgstr "Önce Popüler"
+
+msgid "I want to receive new special offers"
+msgstr "Özel teklifleri görmek istiyorum"
+
+msgid "Vacancy"
+msgstr "Kariyer"
+
+msgid "Special proposition!"
+msgstr "Özel öneriler!"
+
+msgid "View details"
+msgstr "Detayları görüntüle"
+
+msgid "Search"
+msgstr "Arama"
 
 msgid "Welcome to It's quiz!"
 msgstr "Quiz'e hoşgeldin!"
@@ -279,6 +286,9 @@ msgstr "Test Oluştur"
 msgid "Do not show me this message again"
 msgstr "Bu mesajı bir daha gösterma"
 
+msgid "The page you are looking for cannot be found"
+msgstr ""
+
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -290,9 +300,6 @@ msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d dakika"
 msgstr[1] "%d dakikalar"
-
-#~ msgid "Read more"
-#~ msgstr "Daha fazlasını göster"
 
 #~ msgid "FREE"
 #~ msgstr "BEDAVA"

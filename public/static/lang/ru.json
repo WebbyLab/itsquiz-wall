@@ -5,157 +5,16 @@
          "": {
             "domain": "messages",
             "plural_forms": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);",
-            "lang": ""
+            "lang": "ru"
          },
-         "The page you are looking for cannot be found": [
-            "Страница которую вы ищете не может быть найдена"
-         ],
          "Sign up / Sign in": [
             "Регистрация / Вход"
-         ],
-         "Search": [
-            "Поиск"
          ],
          "Minimize": [
             "Свернуть"
          ],
          "Expand": [
             "Развернуть"
-         ],
-         "Education": [
-            "Образование"
-         ],
-         "Entertainment": [
-            "Развлечения"
-         ],
-         "Vacancy": [
-            "Вакансии"
-         ],
-         "Special proposition!": [
-            "Специальное предложение!"
-         ],
-         "%d question": [
-            "%d вопрос",
-            "%d вопроса",
-            "%d вопросов"
-         ],
-         "View details": [
-            "Детальнее"
-         ],
-         "Sorry, we couldn't find any tests for ": [
-            "К сожалению, по вашему запросу тестов не найдено "
-         ],
-         "There are no activations in this category yet": [
-            "В этой категории тестов пока что нет"
-         ],
-         "Share this test": [
-            "Поделиться тестом"
-         ],
-         "Quizzes": [
-            "Тесты"
-         ],
-         "All tests": [
-            "Все тесты"
-         ],
-         "Vacancies": [
-            "Вакансии"
-         ],
-         "Special offer": [
-            "Акции"
-         ],
-         "Newest first": [
-            "По дате добавления"
-         ],
-         "Popular first": [
-            "Самые популярные"
-         ],
-         "I want to receive new special offers": [
-            "Я хочу получать новые специальные предложения"
-         ],
-         "Thank you for your answers!": [
-            "Спасибо за ваши ответы!"
-         ],
-         "You rock! Excellent job!": [
-            "Вау! Отличная работа!"
-         ],
-         "Great result!": [
-            "Прекрасный результат!"
-         ],
-         "Good job!": [
-            "Хорошая работа!"
-         ],
-         "You could do better!": [
-            "Вы могли бы сдать лучше!"
-         ],
-         "(%d of %d answered)": [
-            "(Отвечено %d с %d)"
-         ],
-         "More tests by %s": [
-            "Еще тесты от %s"
-         ],
-         "Similar tests": [
-            "Похожие тесты"
-         ],
-         "private": [
-            "приватный"
-         ],
-         "expires %s": [
-            "истекает %s"
-         ],
-         "You can view answers": [
-            "Вы можете смотреть ответы"
-         ],
-         "Author disallowed to view answers": [
-            "Автор запретил просмотр ответов"
-         ],
-         "You can contact the author": [
-            "Вы можете связаться с автором"
-         ],
-         "Share result with friends": [
-            "Поделиться результатом с друзьями"
-         ],
-         "Pass the test": [
-            "Пройти тест"
-         ],
-         "You have %d try left": [
-            "У вас осталась %d попытка",
-            "У вас осталось %d попытки",
-            "У вас осталось %d попыток"
-         ],
-         "%s of %s point": [
-            "%s из %s балла",
-            "%s из %s баллов",
-            "%s из %s баллов"
-         ],
-         "Share result": [
-            "Поделиться результатом"
-         ],
-         "View my answers": [
-            "Просмотреть мои ответы"
-         ],
-         "Improve result": [
-            "Улучшить результат"
-         ],
-         "Fill in your resume": [
-            "Заполните свой профиль"
-         ],
-         "Filled profiles receive 70% more views": [
-            "Заполненный профиль просматривают на 70% чаще"
-         ],
-         "Contact me": [
-            "Свяжитесь со мной"
-         ],
-         "Get the gift": [
-            "Получить подарок"
-         ],
-         "Share": [
-            "Поделиться"
-         ],
-         "My result is %d%%": [
-            "Мой результат %d%%"
-         ],
-         "Check out this test": [
-            "Зацените тест"
          ],
          "Share this page": [
             "Поделиться страницей"
@@ -199,6 +58,153 @@
          "or use your e-mail": [
             "или используйте ваш e-mail"
          ],
+         "Thank you for your answers!": [
+            "Спасибо за ваши ответы!"
+         ],
+         "You rock! Excellent job!": [
+            "Вау! Отличная работа!"
+         ],
+         "Great result!": [
+            "Прекрасный результат!"
+         ],
+         "Good job!": [
+            "Хорошая работа!"
+         ],
+         "You could do better!": [
+            "Вы могли бы сдать лучше!"
+         ],
+         "(%d of %d answered)": [
+            "(Отвечено %d с %d)"
+         ],
+         "More tests by %s": [
+            "Еще тесты от %s"
+         ],
+         "Load more": [
+            "Загрузить больше"
+         ],
+         "Similar tests": [
+            "Похожие тесты"
+         ],
+         "private": [
+            "приватный"
+         ],
+         "%d question": [
+            "%d вопрос",
+            "%d вопроса",
+            "%d вопросов"
+         ],
+         "expires %s": [
+            "истекает %s"
+         ],
+         "You can view answers": [
+            "Вы можете смотреть ответы"
+         ],
+         "Author disallowed to view answers": [
+            "Автор запретил просмотр ответов"
+         ],
+         "You can contact the author": [
+            "Вы можете связаться с автором"
+         ],
+         "Share result with friends": [
+            "Поделиться результатом с друзьями"
+         ],
+         "Pass the test": [
+            "Пройти тест"
+         ],
+         "pass via Telegram": [
+            ""
+         ],
+         "You have %d try left": [
+            "У вас осталась %d попытка",
+            "У вас осталось %d попытки",
+            "У вас осталось %d попыток"
+         ],
+         "%s of %s point": [
+            "%s из %s балла",
+            "%s из %s баллов",
+            "%s из %s баллов"
+         ],
+         "Share result": [
+            "Поделиться результатом"
+         ],
+         "View my answers": [
+            "Просмотреть мои ответы"
+         ],
+         "Improve result": [
+            "Улучшить результат"
+         ],
+         "Fill in your resume": [
+            "Заполните свой профиль"
+         ],
+         "Filled profiles receive 70% more views": [
+            "Заполненный профиль просматривают на 70% чаще"
+         ],
+         "Contact me": [
+            "Свяжитесь со мной"
+         ],
+         "Get the gift": [
+            "Получить подарок"
+         ],
+         "Share": [
+            "Поделиться"
+         ],
+         "My result is %d%%": [
+            "Мой результат %d%%"
+         ],
+         "Check out this test": [
+            "Зацените тест"
+         ],
+         "Unfortunately, this quiz is not available. Author will be informed.": [
+            ""
+         ],
+         "Sorry, we couldn't find any tests for ": [
+            "К сожалению, по вашему запросу тестов не найдено "
+         ],
+         "There are no activations in this category yet": [
+            "В этой категории тестов пока что нет"
+         ],
+         "Share this test": [
+            "Поделиться тестом"
+         ],
+         "Quizzes": [
+            "Тесты"
+         ],
+         "All tests": [
+            "Все тесты"
+         ],
+         "Vacancies": [
+            "Вакансии"
+         ],
+         "Education": [
+            "Образование"
+         ],
+         "Entertainment": [
+            "Развлечения"
+         ],
+         "Special offer": [
+            "Акции"
+         ],
+         "Newest first": [
+            "По дате добавления"
+         ],
+         "Popular first": [
+            "Самые популярные"
+         ],
+         "I want to receive new special offers": [
+            "Я хочу получать новые специальные предложения"
+         ],
+         "Vacancy": [
+            "Вакансии"
+         ],
+         "Special proposition!": [
+            "Специальное предложение!"
+         ],
+         "View details": [
+            "Детальнее"
+         ],
+         "Search": [
+            "Поиск"
+         ],
          "Welcome to It's quiz!": [
             "Добро пожаловать в It's quiz!"
          ],
@@ -237,6 +243,9 @@
          ],
          "Do not show me this message again": [
             "Больше не показывать это сообщение"
+         ],
+         "The page you are looking for cannot be found": [
+            "Страница которую вы ищете не может быть найдена"
          ],
          "%d hour": [
             "%d час",
