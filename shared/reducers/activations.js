@@ -28,7 +28,7 @@ export default function activations(state = DEFAULT_STATE, action) {
                 ? state.entitiesByCategory[action.category].slice(0)
                 : [];
 
-            for (let i = 0; i < newActivations.length; i++) {
+            for (const i in newActivations) {
                 if (action.offset + i < loadedActivations.length) {
                     loadedActivations[action.offset + i] = newActivations[i];
                 } else {
