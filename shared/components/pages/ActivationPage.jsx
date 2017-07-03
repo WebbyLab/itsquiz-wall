@@ -113,6 +113,13 @@ export default class ActivationPage extends React.Component {
         }
     };
 
+    renderAdvertisement = () => (
+        <div className='ActivationPage__advertisement-wrapper'>
+            <a href='https://ua.jooble.org' target='_blank'>jooble.org</a> Поиск работы среди вакансий всех ведущих компаний и порталов
+                по трудоустройству в Украине и за рубежом. Бесплатно, быстро и удобно. Найдите сегодня любимую работу!
+        </div>
+    );
+
     renderStatisticsForSurvey = () => {
         const { activation } = this.props;
         const { l } = this.context.i18n;
@@ -780,6 +787,13 @@ export default class ActivationPage extends React.Component {
                     }
 
                     <div className='ActivationPage__details'>
+                        {
+                            !isPrivate
+                            ?
+                                this.renderAdvertisement()
+                            :
+                                null
+                        }
                         <ExpandableText
                             isMarkdownEnabled
                             text={greetingDescription || activation.message}
