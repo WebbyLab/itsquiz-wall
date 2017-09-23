@@ -28,13 +28,13 @@ export default function activations(state = DEFAULT_STATE, action) {
                 ? state.entitiesByCategory[action.category].slice(0)
                 : [];
 
-            for (let i = 0; i < newActivations.length; i++) {
+            newActivations.foreach((value, i) => {
                 if (action.offset + i < loadedActivations.length) {
                     loadedActivations[action.offset + i] = newActivations[i];
                 } else {
                     loadedActivations.push(newActivations[i]);
                 }
-            }
+            });
 
             const entitiesByCategory = {
                 ...entitiesByCategory,
