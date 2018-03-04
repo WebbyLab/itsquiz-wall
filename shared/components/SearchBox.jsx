@@ -1,5 +1,6 @@
-import React, { Component, PropTypes } from 'react';
-import cx                            from 'classnames';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 import Icon       from 'react-mdl/lib/Icon';
 import Textfield  from 'react-mdl/lib/Textfield';

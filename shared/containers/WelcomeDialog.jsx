@@ -1,5 +1,6 @@
-import React, { Component, PropTypes } from 'react';
-import strformat                     from 'strformat';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import strformat from 'strformat';
 
 import WelcomeDialog from '../components/WelcomeDialog.jsx';
 

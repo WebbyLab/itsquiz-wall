@@ -8,7 +8,7 @@ import React                     from 'react';
 import ReactDOM                  from 'react-dom/server';
 import { Provider }              from 'react-redux';
 import { RoutingContext, match } from 'react-router';
-import escapeHTML                from 'lodash/string/escape';
+import escapeHTML                from 'lodash.escape';
 
 import routes         from '../shared/routes.jsx';
 import configureStore from '../shared/store/configureStore';

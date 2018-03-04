@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Card } from 'react-mdl/lib/Card';
 
@@ -8,9 +9,9 @@ import './PromoPage.less';
 
 export default class PromoPage extends React.Component {
     static propTypes = {
-        title   : React.PropTypes.string,
-        picture : React.PropTypes.string,
-        text    : React.PropTypes.string
+        title   : PropTypes.string,
+        picture : PropTypes.string,
+        text    : PropTypes.string
     };
 
     render() {

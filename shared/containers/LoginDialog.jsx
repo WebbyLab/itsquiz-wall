@@ -1,6 +1,7 @@
-import React, { Component, PropTypes } from 'react';
-import strformat                       from 'strformat';
-import escapeHTML                      from 'lodash/string/escape';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import strformat from 'strformat';
+import escapeHTML from 'lodash.escape';
 
 import LoginDialog from '../components/LoginDialog.jsx';
 

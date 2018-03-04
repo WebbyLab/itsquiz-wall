@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import cx from 'classnames';
 
@@ -16,7 +17,7 @@ export default class ExpandableText extends Component {
         isMarkdownEnabled : PropTypes.bool
     };
 
-    static contextTypes = { i18n: React.PropTypes.object };
+    static contextTypes = { i18n: PropTypes.object };
 
     state = {
         expanded: false

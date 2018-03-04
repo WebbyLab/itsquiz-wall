@@ -2,7 +2,8 @@
     no-param-reassign: 0
 */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import ProgressBar from 'progressbar.js';
 import ColorUtil   from '../../utils/ColorUtil';

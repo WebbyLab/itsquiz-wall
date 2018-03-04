@@ -5,7 +5,8 @@
     camelcase: 0
 */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import MarkdownIt   from 'markdown-it';
 import sanitizeHtml from 'sanitize-html';
