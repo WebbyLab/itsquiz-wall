@@ -121,6 +121,7 @@ app.use((req, res) => {
                     }
                 }
 
+                console.log('FIX THIS: ROUTING CONTEXT', RoutingContext);
                 const componentHTML = ReactDOM.renderToString(
                     <Provider store={store}>
                         <i18n.Provider i18n={i18nTools}>
