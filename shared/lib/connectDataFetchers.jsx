@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Promise from 'bluebird';
 
 let IS_FIRST_MOUNT_AFTER_LOAD = true;

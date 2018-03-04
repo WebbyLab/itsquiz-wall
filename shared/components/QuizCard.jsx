@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import cx                              from 'classnames';
 
 import IconButton                       from 'react-mdl/lib/IconButton';
@@ -26,7 +27,7 @@ export default class QuizCard extends Component {
         className           : PropTypes.string,
         category            : PropTypes.string,
         isPassed            : PropTypes.bool,
-        accountQuizSession     : PropTypes.object,
+        accountQuizSession  : PropTypes.object,
         onShare             : PropTypes.func,
         onAuthorAvatarClick : PropTypes.func,
         onClick             : PropTypes.func
