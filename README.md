@@ -8,9 +8,9 @@ Isomorphic "Quiz Wall" for itsquiz.com
 There are a lot of tutorials and boilerplates showing how to write isomorphic ReactJs applications.
 But when it comes to real world apps, you'll find that all the turorials do not cover problems that you face in productions apps.
 
-In WebbyLab, we have a lot of projects written in react and several isomorphic projects. So, it was decides to develop one of these projects on github. So, everyone can see how real-world production isomorphic app can be implmemented.
+In WebbyLab, we have a lot of projects written in react and several isomorphic projects. So, it was decided to develop one of these projects on github. So, everyone can see how real-world production isomorphic app can be implemented.
 
-**IMPORTANT**: This is producation app, and we develop it in this repo. So, it is always evolving.
+**IMPORTANT**: This is production app, and we develop it in this repo. So, it is always evolving.
 
 You can find [post from Viktor Turskyi (aka koorchik)](http://blog.koorchik.com/isomorphic-react/). Post describes all the ideas in details.
 
