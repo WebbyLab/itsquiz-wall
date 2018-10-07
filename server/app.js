@@ -229,8 +229,8 @@ function renderHTML({ componentHTML, initialState, metaData, config }) {
         <body>
         <div id="react-view">${componentHTML}</div>
           <script type="application/javascript">
-            window.__CONFIG__ = ${serializeJs(config, { isJSON: true })};
-            window.__INITIAL_STATE__ = ${serializeJs(initialState, { isJSON: true })};
+            window.__CONFIG__ = ${JSON.stringify(config, { isJSON: true })};
+            window.__INITIAL_STATE__ = ${JSON.stringify(initialState, { isJSON: true })};
           </script>
 
           <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
