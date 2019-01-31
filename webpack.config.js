@@ -5,11 +5,13 @@ var path                 = require('path');
 
 var webpack           = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var AssetsPlugin      = require('assets-webpack-plugin');
 
 var buildHash = process.env.NODE_ENV === "production" ? "[hash]" : "dev";
 
 module.exports = {
+    mode: 'production',
     entry: "./client/app.js",
     plugins: [
         new webpack.DefinePlugin({
@@ -18,7 +20,7 @@ module.exports = {
                 NODE_ENV: JSON.stringify( process.env.NODE_ENV || 'development' )
             }
         }),
-        new ExtractTextPlugin("[name].css"),
+        new MiniCssExtractPlugin("[name].css"),
         new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /ru|en|uk|tr/),
         new AssetsPlugin({path: path.join(__dirname, 'etc')})
     ],
@@ -28,14 +30,37 @@ module.exports = {
         publicPath: "static/build/" + buildHash + "/"
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader")
+                use: [
+                    {
+                      loader: MiniCssExtractPlugin.loader,
+                      options: {
+                        // you can specify a publicPath here
+                        // by default it use publicPath in webpackOptions.output
+                        // publicPath: '../'
+                      }
+                    },
+                    "css-loader",
+                    // "autoprefixer-loader"
+                  ]
             },
             {
                 test: /\.less$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader!less-loader")
+                use: [
+                    {
+                      loader: MiniCssExtractPlugin.loader,
+                      options: {
+                        // you can specify a publicPath here
+                        // by default it use publicPath in webpackOptions.output
+                        // publicPath: '../'
+                      }
+                    },
+                    "css-loader",
+                    // "autoprefixer-loader",
+                    "less-loader"
+                  ]
             },
 
             { test: /\.gif$/, loader: "url-loader?limit=10000&mimetype=image/gif" },
@@ -44,15 +69,15 @@ module.exports = {
             { test: /\.svg/, loader: "url-loader?limit=26000&mimetype=image/svg+xml" },
             { test: /\.(woff|woff2|ttf|eot)/, loader: "url-loader?limit=1" },
 
-            { test: /\.jsx$/, loader: "babel!eslint-loader", exclude: [/node_modules/, /public/] },
-            { test: /\.js$/, loader: "babel!eslint-loader", exclude: [/node_modules/, /public/] },
-
-            { test: /\.json$/, loader: "json-loader" },
+            { test: /\.jsx$/, loader: "babel-loader", exclude: [/node_modules/, /public/] },
+            { test: /\.js$/, loader: "babel-loader", exclude: [/node_modules/, /public/] },
+            // { test: /\.json$/, loader: "json-loader" },
 
             { test: /\.txt$/, loader: "raw-loader" }
         ]
-    },
-    eslint: {
-        configFile: '.eslintrc'
     }
+    // ,
+    // eslint: {
+    //     configFile: '.eslintrc'
+    // }
 };
