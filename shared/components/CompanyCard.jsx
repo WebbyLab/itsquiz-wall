@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import Button from 'react-mdl/lib/Button';
 
 export class CompanyCard extends Component {
@@ -26,4 +27,3 @@ export class CompanyCard extends Component {
         );
     }
 }
-

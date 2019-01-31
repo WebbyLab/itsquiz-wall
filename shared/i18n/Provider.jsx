@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 export default class Provider extends React.Component {
     static propTypes = {
-        i18n     : React.PropTypes.object.isRequired,
-        children : React.PropTypes.object.isRequired
+        i18n     : PropTypes.object.isRequired,
+        children : PropTypes.object.isRequired
     };
 
-    static childContextTypes = { i18n: React.PropTypes.object };
+    static childContextTypes = { i18n: PropTypes.object };
 
     getChildContext() {
         return { i18n: this.props.i18n };

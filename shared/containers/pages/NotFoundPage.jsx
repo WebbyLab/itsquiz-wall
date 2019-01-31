@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 class NotFoundPage extends Component {
     static contextTypes = { i18n: PropTypes.object };

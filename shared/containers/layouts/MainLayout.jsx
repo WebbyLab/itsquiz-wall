@@ -1,6 +1,8 @@
 /* eslint react/no-did-mount-set-state: 0 */
 
-import React, { Component, PropTypes } from 'react';
+import PropTypes from 'prop-types';
+
+import React, { Component } from 'react';
 
 import MainLayout from '../../components/layouts/MainLayout.jsx';
 

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx    from 'classnames';
 
@@ -19,31 +20,31 @@ const CATEGORIES = ['ALL', 'VACANCY', 'EDUCATION', 'ENTERTAINMENT', 'SPECIAL'];
 
 export default class ActivationsPage extends React.Component {
     static propTypes = {
-        activations            : React.PropTypes.arrayOf(React.PropTypes.object),
-        search                 : React.PropTypes.string,
-        totalActivationsAmount : React.PropTypes.number,
-        sortType               : React.PropTypes.string,
-        selectedCategory       : React.PropTypes.string,
-        linkToShare            : React.PropTypes.string,
-        isLoading              : React.PropTypes.bool,
-        isEmpty                : React.PropTypes.bool,
-        isSharing              : React.PropTypes.bool,
-        isEmbedded             : React.PropTypes.bool,
-        isLoggingIn            : React.PropTypes.bool,
-        onSearch               : React.PropTypes.func,
-        onSpecialsSubscribe    : React.PropTypes.func,
-        onChangeSortType       : React.PropTypes.func,
-        onTabChange            : React.PropTypes.func,
-        onLoginClose           : React.PropTypes.func,
-        onStopSharing          : React.PropTypes.func,
-        onItemClick            : React.PropTypes.func,
-        onSubscribe            : React.PropTypes.func,
-        onShare                : React.PropTypes.func,
-        onItemRenderRequest    : React.PropTypes.func,
-        onAuthorAvatarClick    : React.PropTypes.func
+        activations            : PropTypes.arrayOf(PropTypes.object),
+        search                 : PropTypes.string,
+        totalActivationsAmount : PropTypes.number,
+        sortType               : PropTypes.string,
+        selectedCategory       : PropTypes.string,
+        linkToShare            : PropTypes.string,
+        isLoading              : PropTypes.bool,
+        isEmpty                : PropTypes.bool,
+        isSharing              : PropTypes.bool,
+        isEmbedded             : PropTypes.bool,
+        isLoggingIn            : PropTypes.bool,
+        onSearch               : PropTypes.func,
+        onSpecialsSubscribe    : PropTypes.func,
+        onChangeSortType       : PropTypes.func,
+        onTabChange            : PropTypes.func,
+        onLoginClose           : PropTypes.func,
+        onStopSharing          : PropTypes.func,
+        onItemClick            : PropTypes.func,
+        onSubscribe            : PropTypes.func,
+        onShare                : PropTypes.func,
+        onItemRenderRequest    : PropTypes.func,
+        onAuthorAvatarClick    : PropTypes.func
     };
 
-    static contextTypes = { i18n: React.PropTypes.object };
+    static contextTypes = { i18n: PropTypes.object };
 
     handleTabClick = (index, e) => {
         e.preventDefault();

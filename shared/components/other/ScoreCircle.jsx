@@ -1,8 +1,10 @@
- /* eslint
-    no-param-reassign: 0
+/* eslint
+   no-param-reassign: 0
 */
 
-import React, { Component, PropTypes } from 'react';
+import PropTypes from 'prop-types';
+
+import React, { Component } from 'react';
 
 import ProgressBar from 'progressbar.js';
 import ColorUtil   from '../../utils/ColorUtil';

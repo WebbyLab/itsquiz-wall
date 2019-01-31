@@ -1,11 +1,13 @@
- /* eslint
-    react/no-danger: 0,
-    max-params: 0,
-    func-style: 0,
-    camelcase: 0
+/* eslint
+   react/no-danger: 0,
+   max-params: 0,
+   func-style: 0,
+   camelcase: 0
 */
 
-import React, { Component, PropTypes } from 'react';
+import PropTypes from 'prop-types';
+
+import React, { Component } from 'react';
 
 import MarkdownIt   from 'markdown-it';
 import sanitizeHtml from 'sanitize-html';
