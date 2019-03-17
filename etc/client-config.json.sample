@@ -1,20 +1,20 @@
 {
-    "apiPrefix": "https://app.itsquiz.com/api/v1",
-    "backgroundImagesPrefix": "http://app.itsquiz.com/be/static/images/backgrounds/",
-    "staticUrl": "http://localhost:8050",
-    "landingUrl": "https://itsquiz.com/",
-    "loginUrl": "https://app.itsquiz.com/{lang}/login",
-    "embedOrigin": "https://app.itsquiz.com/",
-    "socialAuthURL": "https://app.itsquiz.com/api/v1/auth/{socialType}?lang={lang}&continue={continueRoute}",
-    "emailAuthURL": "https://app.itsquiz.com/{lang}/login?opened=true&continue={continueRoute}",
-    "facebookAppId": "XXX",
-    "gaTrackingCode": "XXX",
-    "quizwallShareLink": "https://itsquiz.com/activations",
+    "apiPrefix": "{{itsquiz_app_root_url}}/api/v1",
+    "backgroundImagesPrefix": "{{itsquiz_app_root_url}}/be/static/images/backgrounds/",
+    "staticUrl": "{{itsquiz_wall_static_url}}",
+    "embedOrigin": "{{itsquiz_app_root_url}}",
+    "loginUrl": "{{itsquiz_app_root_url}}/{lang}/login",
+    "landingUrl": "{{itsquiz_landing_saas_root_url}}",
+    "socialAuthURL": "{{itsquiz_app_root_url}}/api/v1/auth/{socialType}?lang={lang}&continue={continueRoute}&ref={ref}",
+    "emailAuthURL": "{{itsquiz_app_root_url}}/{lang}/login?opened=true&continue={continueRoute}&ref={ref}",
+    "facebookAppId": "116885668658957",
+    "gaTrackingCode": "{{itsquiz_ga_tracking_identifier_wall}}",
+    "quizwallShareLink": "{{itsquiz_wall_root_url}}/activations",
     "welcomeLinks": {
-        "createTest": "https://app.itsquiz.com/{lang}/login?continue=%2Fquestions",
-        "aboutItsquiz": "https://itsquiz.com/about/",
-        "discoverTests": "https://itsquiz.com/activations?skipWelcomeDialog=true",
-        "englishCampaign": "https://itsquiz.com/activations?skipWelcomeDialog=true&search=специальное+предложение"
+        "createTest": "{{itsquiz_app_root_url}}/{lang}/login?continue=%2Fquestions",
+        "aboutItsquiz": "{{itsquiz_landing_saas_root_url}}/",
+        "discoverTests": "{{itsquiz_wall_root_url}}/activations?skipWelcomeDialog=true",
+        "englishCampaign": "https://itsquiz.com/activations?skipWelcomeDialog=true&category=SPECIAL"
     },
     "footerLinks": {
         "twitter": "https://twitter.com/itsquizcom",
@@ -22,29 +22,22 @@
         "youtube": "https://www.youtube.com/channel/UClU6b5mtTVPPAv_L9dUzl_g",
         "supportPage": "https://itsquiz.userecho.com/",
         "suggestIdea": "https://itsquiz.userecho.com/",
-        "aboutItsquiz": "https://itsquiz.com/about/",
-        "ourTeam": "https://itsquiz.com/about/#team",
+        "aboutItsquiz": "{{itsquiz_landing_saas_root_url}}/",
+        "ourTeam": "{{itsquiz_landing_saas_root_url}}/#team",
         "helpMe": "mailto:support@itsquiz.com"
     },
     "customShareInfo": {
-        "my": {
-            "title": "I passed test {name} and gained {score}%",
-            "description": "{author} : {description}",
-            "pictureURL": "",
-            "redirectRoute": "/activations"
-        }
-    },
-    "promos": {
-        "iforum-2016": {
-            "name": "Получи билеты на iForum 2016!",
-            "desciption": "It's quiz розыгрывает билеты на главное интернет-событие года. Создай тест на тему `интернет-технологии` и получи билет бесплатно! It's quiz - это облачная платформа для тестирования и проверки знаний.",
-            "image": "/static/images/promo/iforum-2016.png"
+        "kmda": {
+            "title": "Я склав тест з Англійської мови від КМДА та набрав {score} балів",
+            "description": "Безкоштовні курси англійської мови Capital English – проект Київської міської державної адміністрації та мера міста Києва Віталія Кличка спрямовані на популяризацію вивчення англійської мови серед населення.",
+            "pictureURL": "https://app.itsquiz.com/be/static/images/quizImages/55e4628dfee9bf6e141320c41452600670201.png",
+            "redirectRoute": "/activations?category=SPECIAL"
         }
     },
     "ads": {
         "activationPage": {
-            "client": "XXX",
-            "slot": "XXX",
+            "client": "ca-pub-7395474002259561",
+            "slot": "4264607333",
             "format": "auto"
         }
     }

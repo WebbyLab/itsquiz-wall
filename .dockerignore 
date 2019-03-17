@@ -1,2 +1,11 @@
-node_modules
+node_modules/
+public/static/build/
+public/static/config.js
 npm-debug.log
+src/templates/
+etc/client-config.json
+lang/*.mo
+.DS_Store
+lang/messages.pot
+etc/webpack-assets.json
+.env
