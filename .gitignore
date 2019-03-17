@@ -8,3 +8,4 @@ lang/*.mo
 .DS_Store
 lang/messages.pot
 etc/webpack-assets.json
+.env

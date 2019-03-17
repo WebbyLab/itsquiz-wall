@@ -7,5 +7,10 @@
 if (process.env.BROWSER) {
     module.exports = window.__CONFIG__;
 } else {
-    module.exports = require('../etc/client-config.json');
+    const confme = require('../lib/confme');
+
+    module.exports = confme(
+    `${__dirname}/../etc/client-config.json`,
+    `${__dirname}/../etc/client-config-schema.json`
+  );
 }

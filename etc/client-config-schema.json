@@ -1,0 +1,99 @@
+{
+  "apiPrefix": ["required", "url"],
+  "backgroundImagesPrefix": ["required", "url"],
+  "staticUrl": ["string", "url"],
+  "landingUrl": ["required", "url"],
+  "loginUrl": ["required", "url"],
+  "embedOrigin": ["required", "url"],
+  "socialAuthURL": ["required", "url"],
+  "emailAuthURL": ["required", "url"],
+  "facebookAppId": ["required", "string"],
+  "gaTrackingCode": ["required", "string"],
+  "quizwallShareLink": ["required", "url"],
+  "welcomeLinks": [
+    "required",
+    {
+      "nested_object": {
+        "createTest": ["required", "url"],
+        "aboutItsquiz": ["required", "url"],
+        "discoverTests": ["required", "url"],
+        "englishCampaign": ["required", "url"]
+      }
+    }
+  ],
+  "footerLinks": [
+    "required",
+    {
+      "nested_object": {
+        "twitter": ["required", "url"],
+        "facebook": ["required", "url"],
+        "youtube": ["required", "url"],
+        "supportPage": ["required", "url"],
+        "suggestIdea": ["required", "url"],
+        "aboutItsquiz": ["required", "url"],
+        "ourTeam": ["required", "url"],
+        "helpMe": ["required", "string"]
+      }
+    }
+  ],
+  "customShareInfo": [
+    "required",
+    {
+      "nested_object": {
+        "my": [
+          {
+            "nested_object": {
+              "title": ["required", "string"],
+              "description": ["required", "string"],
+              "pictureURL": "string",
+              "redirectRoute": ["required", "string"]
+            }
+          }
+        ],
+        "kmda": [
+          {
+            "nested_object": {
+              "title": ["required", "string"],
+              "description": ["required", "string"],
+              "pictureURL": "string",
+              "redirectRoute": ["required", "string"]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "promos": [
+    {
+      "nested_object": {
+        "iforum-2016": [
+          "required",
+          {
+            "nested_object": {
+              "name": ["required", "string"],
+              "desciption": ["required", "string"],
+              "image": ["required", "string"]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "ads": [
+    "required",
+    {
+      "nested_object": {
+        "activationPage": [
+          "required",
+          {
+            "nested_object": {
+              "client": ["required", "string"],
+              "slot": ["required", "string"],
+              "format": ["required", "string"]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
