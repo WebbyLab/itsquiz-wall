@@ -1,19 +1,19 @@
 {
-    "apiPrefix": "{{itsquiz_app_root_url}}/api/v1",
-    "backgroundImagesPrefix": "{{itsquiz_app_root_url}}/be/static/images/backgrounds/",
-    "staticUrl": "{{itsquiz_wall_static_url}}",
-    "embedOrigin": "{{itsquiz_app_root_url}}",
-    "loginUrl": "{{itsquiz_app_root_url}}/{lang}/login",
-    "landingUrl": "{{itsquiz_landing_saas_root_url}}",
-    "socialAuthURL": "{{itsquiz_app_root_url}}/api/v1/auth/{socialType}?lang={lang}&continue={continueRoute}&ref={ref}",
-    "emailAuthURL": "{{itsquiz_app_root_url}}/{lang}/login?opened=true&continue={continueRoute}&ref={ref}",
+    "apiPrefix": "{{ITSQUIZ_APP_ROOT_URL}}/api/v1",
+    "backgroundImagesPrefix": "{{ITSQUIZ_APP_ROOT_URL}}/be/static/images/backgrounds/",
+    "staticUrl": "{{ITSQUIZ_WALL_STATIC_URL}}",
+    "embedOrigin": "{{ITSQUIZ_APP_ROOT_URL}}",
+    "loginUrl": "{{ITSQUIZ_APP_ROOT_URL}}/{lang}/login",
+    "landingUrl": "{{ITSQUIZ_LANDING_SAAS_ROOT_URL}}",
+    "socialAuthURL": "{{ITSQUIZ_APP_ROOT_URL}}/api/v1/auth/{socialType}?lang={lang}&continue={continueRoute}&ref={ref}",
+    "emailAuthURL": "{{ITSQUIZ_APP_ROOT_URL}}/{lang}/login?opened=true&continue={continueRoute}&ref={ref}",
     "facebookAppId": "116885668658957",
-    "gaTrackingCode": "{{itsquiz_ga_tracking_identifier_wall}}",
-    "quizwallShareLink": "{{itsquiz_wall_root_url}}/activations",
+    "gaTrackingCode": "{{ITSQUIZ_GA_TRACKING_IDENTIFIER_WALL}}",
+    "quizwallShareLink": "{{ITSQUIZ_WALL_ROOT_URL}}/activations",
     "welcomeLinks": {
-        "createTest": "{{itsquiz_app_root_url}}/{lang}/login?continue=%2Fquestions",
-        "aboutItsquiz": "{{itsquiz_landing_saas_root_url}}/",
-        "discoverTests": "{{itsquiz_wall_root_url}}/activations?skipWelcomeDialog=true",
+        "createTest": "{{ITSQUIZ_APP_ROOT_URL}}/{lang}/login?continue=%2Fquestions",
+        "aboutItsquiz": "{{ITSQUIZ_LANDING_SAAS_ROOT_URL}}/",
+        "discoverTests": "{{ITSQUIZ_WALL_ROOT_URL}}/activations?skipWelcomeDialog=true",
         "englishCampaign": "https://itsquiz.com/activations?skipWelcomeDialog=true&category=SPECIAL"
     },
     "footerLinks": {
@@ -22,8 +22,8 @@
         "youtube": "https://www.youtube.com/channel/UClU6b5mtTVPPAv_L9dUzl_g",
         "supportPage": "https://itsquiz.userecho.com/",
         "suggestIdea": "https://itsquiz.userecho.com/",
-        "aboutItsquiz": "{{itsquiz_landing_saas_root_url}}/",
-        "ourTeam": "{{itsquiz_landing_saas_root_url}}/#team",
+        "aboutItsquiz": "{{ITSQUIZ_LANDING_SAAS_ROOT_URL}}/",
+        "ourTeam": "{{ITSQUIZ_LANDING_SAAS_ROOT_URL}}/#team",
         "helpMe": "mailto:support@itsquiz.com"
     },
     "customShareInfo": {

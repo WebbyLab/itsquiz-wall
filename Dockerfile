@@ -1,6 +1,6 @@
 FROM node:10-alpine
 
-ENV itsquiz_wall_static_url http://localhost:3001
+ENV ITSQUIZ_WALL_STATIC_URL=''
 
 RUN mkdir /app
 WORKDIR /app

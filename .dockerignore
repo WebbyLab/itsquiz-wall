@@ -1,3 +1,4 @@
+.git
 node_modules/
 public/static/build/
 public/static/config.js
@@ -9,3 +10,4 @@ lang/*.mo
 lang/messages.pot
 etc/webpack-assets.json
 .env
+docker-compose.yml

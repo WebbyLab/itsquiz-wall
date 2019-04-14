@@ -1,0 +1,9 @@
+version: "3"
+services:
+  itsquiz-wall:
+    build: .
+    ports:
+      - "3001:3001"
+    restart: "on-failure"
+    environment:
+      - ITSQUIZ_GA_TRACKING_IDENTIFIER_WALL=XXX
