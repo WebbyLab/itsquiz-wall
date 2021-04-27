@@ -31,11 +31,11 @@ module.exports = {
         loaders: [
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader")
+                loader: ExtractTextPlugin.extract( { fallback: 'style-loader', use: "css-loader!autoprefixer-loader" })
             },
             {
                 test: /\.less$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader!less-loader")
+                loader: ExtractTextPlugin.extract( { fallback: 'style-loader', use: "css-loader!autoprefixer-loader!less-loader" })
             },
 
             { test: /\.gif$/, loader: "url-loader?limit=10000&mimetype=image/gif" },
@@ -44,15 +44,12 @@ module.exports = {
             { test: /\.svg/, loader: "url-loader?limit=26000&mimetype=image/svg+xml" },
             { test: /\.(woff|woff2|ttf|eot)/, loader: "url-loader?limit=1" },
 
-            { test: /\.jsx$/, loader: "babel!eslint-loader", exclude: [/node_modules/, /public/] },
-            { test: /\.js$/, loader: "babel!eslint-loader", exclude: [/node_modules/, /public/] },
+            { test: /\.jsx$/, loader: "babel-loader!eslint-loader", exclude: [/node_modules/, /public/] },
+            { test: /\.js$/, loader: "babel-loader!eslint-loader", exclude: [/node_modules/, /public/] },
 
             { test: /\.json$/, loader: "json-loader" },
 
             { test: /\.txt$/, loader: "raw-loader" }
         ]
-    },
-    eslint: {
-        configFile: '.eslintrc'
     }
 };
