@@ -60,7 +60,7 @@
     "strformat": "0.0.7"
   },
   "devDependencies": {
-    "assets-webpack-plugin": "^3.4.0",
+    "assets-webpack-plugin": "^3.9.12",
     "autoprefixer-loader": "*",
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.2",
@@ -85,7 +85,7 @@
     "eslint-plugin-no-require-lodash": "^1.1.0",
     "eslint-plugin-prefer-spread": "^1.0.3",
     "eslint-plugin-react": "^6.1.2",
-    "extract-text-webpack-plugin": "^0.9.1",
+    "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.8.4",
     "html-loader": "^0.4.3",
     "json-loader": "^0.5.3",
@@ -98,7 +98,7 @@
     "react-hot-loader": "3.0.0-beta.6",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.6",
-    "webpack": "^1.12.4",
-    "webpack-dev-server": "^1.12.1"
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^2.11.3"
   }
 }
