@@ -38,7 +38,7 @@
     "history": "^1.13.1",
     "isomorphic-fetch": "^2.2.0",
     "jed": "^1.1.0",
-    "lodash": "^3.10.1",
+    "lodash": "^4.17.19",
     "markdown-it": "^6.0.0",
     "moment": "^2.10.6",
     "progressbar.js": "^1.0.1",
