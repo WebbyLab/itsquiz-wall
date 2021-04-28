@@ -74,7 +74,12 @@ Thanks for http://itsquiz.com (our customer) for allowing opensourcing of this a
 * WebbyLab https://webbylab.com/contacts
 * It's Quiz
 
-## RUN on Dockerfile
+## WORK on Dockerfile
 
-1. ```docker build -t itsquiz-wall .```
-2. ```docker run -dp 3001:3001 itsquiz-wall```
+1. ```docker build -t registry.gitlab.webbylab.com/itsquiz/itsquiz/apps/itsquiz-wall .```  build image
+2. ```docker push registry.gitlab.webbylab.com/itsquiz/itsquiz/apps/itsquiz-wall```        push image on remoute registry
+
+## RUN in CONTAINER
+
+1. ```npm run docker:start```                                                                             run latest version
+2. ```docker run -dp 3001:3001 registry.gitlab.webbylab.com/itsquiz/itsquiz/apps/itsquiz-wall:${x.x.x}``` run a specific tag

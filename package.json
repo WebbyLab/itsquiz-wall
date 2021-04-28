@@ -10,7 +10,8 @@
   "private": true,
   "scripts": {
     "build": "cross-env NODE_ENV='production' webpack -p",
-    "start": "cross-env NODE_ENV='production' BABEL_ENV='node' pm2 start server/runner.js --name itsquiz-wall",
+    "start": "cross-env NODE_ENV='production' BABEL_ENV='node' node server/runner.js",
+    "docker:start": "docker run -dp 3001:3001 registry.gitlab.webbylab.com/itsquiz/itsquiz/apps/itsquiz-wall",
     "nodemon": "cross-env BABEL_ENV='node' nodemon server/runner.js",
     "webpack-devserver": "webpack-dev-server --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 8050 --host 0.0.0.0",
     "extract_lang": "./bin/extract_lang.sh",
