@@ -2,7 +2,7 @@
     "PORT": "{{PORT}}",
     "apiPrefix": "{{APP_ROOT_URL}}/api/v1",
     "backgroundImagesPrefix": "{{APP_ROOT_URL}}/be/static/images/backgrounds/",
-    "staticUrl": "{{STATIC_URL}}:{{STATIC_URL_PORT}}",
+    "staticUrl": "{{STATIC_URL}}",
     "landingURL": "{{ROOT_URL}}/",
     "loginUrl": "{{APP_ROOT_URL}}/{lang}/login",
     "embedOrigin": "{{APP_ROOT_URL}}/",
