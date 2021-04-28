@@ -73,3 +73,8 @@ Thanks for http://itsquiz.com (our customer) for allowing opensourcing of this a
 
 * WebbyLab https://webbylab.com/contacts
 * It's Quiz
+
+## RUN on Dockerfile
+
+1. ```docker build -t itsquiz-wall .```
+2. ```docker run -dp 3001:3001 itsquiz-wall```
