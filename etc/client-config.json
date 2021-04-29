@@ -1,20 +1,21 @@
 {
-    "apiPrefix": "https://app.itsquiz.com/api/v1",
-    "backgroundImagesPrefix": "http://app.itsquiz.com/be/static/images/backgrounds/",
-    "staticUrl": "http://localhost:8050",
-    "landingURL": "https://itsquiz.com/",
-    "loginUrl": "https://app.itsquiz.com/{lang}/login",
-    "embedOrigin": "https://app.itsquiz.com/",
-    "socialAuthURL": "https://app.itsquiz.com/api/v1/auth/{socialType}?lang={lang}&continue={continueRoute}",
-    "emailAuthURL": "https://app.itsquiz.com/{lang}/login?opened=true&continue={continueRoute}",
-    "facebookAppId": "XXX",
-    "gaTrackingCode": "XXX",
-    "quizwallShareLink": "https://itsquiz.com/activations",
+    "PORT": "{{PORT}}",
+    "apiPrefix": "{{APP_ROOT_URL}}/api/v1",
+    "backgroundImagesPrefix": "{{APP_ROOT_URL}}/be/static/images/backgrounds/",
+    "staticUrl": "{{STATIC_URL}}",
+    "landingURL": "{{ROOT_URL}}/",
+    "loginUrl": "{{APP_ROOT_URL}}/{lang}/login",
+    "embedOrigin": "{{APP_ROOT_URL}}/",
+    "socialAuthURL": "{{APP_ROOT_URL}}/api/v1/auth/{socialType}?lang={lang}&continue={continueRoute}",
+    "emailAuthURL": "{{APP_ROOT_URL}}/{lang}/login?opened=true&continue={continueRoute}",
+    "facebookAppId": "{{FACEBOOK_APP_ID}}",
+    "gaTrackingCode": "{{GA_TRACKING_CODE}}",
+    "quizwallShareLink": "{{ROOT_URL}}/activations",
     "welcomeLinks": {
-        "createTest": "https://app.itsquiz.com/{lang}/login?continue=%2Fquestions",
-        "aboutItsquiz": "https://itsquiz.com/about/",
-        "discoverTests": "https://itsquiz.com/activations?skipWelcomeDialog=true",
-        "englishCampaign": "https://itsquiz.com/activations?skipWelcomeDialog=true&search=специальное+предложение"
+        "createTest": "{{APP_ROOT_URL}}/{lang}/login?continue=%2Fquestions",
+        "aboutItsquiz": "https://{{ROOT_URL}}/about/",
+        "discoverTests": "https://{{ROOT_URL}}/activations?skipWelcomeDialog=true",
+        "englishCampaign": "https://{{ROOT_URL}}/activations?skipWelcomeDialog=true&search=специальное+предложение"
     },
     "footerLinks": {
         "twitter": "https://twitter.com/itsquizcom",
@@ -22,8 +23,8 @@
         "youtube": "https://www.youtube.com/channel/UClU6b5mtTVPPAv_L9dUzl_g",
         "supportPage": "https://itsquiz.userecho.com/",
         "suggestIdea": "https://itsquiz.userecho.com/",
-        "aboutItsquiz": "https://itsquiz.com/about/",
-        "ourTeam": "https://itsquiz.com/about/#team",
+        "aboutItsquiz": "{{ROOT_URL}}/about/",
+        "ourTeam": "{{ROOT_URL}}/about/#team",
         "helpMe": "mailto:support@itsquiz.com"
     },
     "customShareInfo": {
