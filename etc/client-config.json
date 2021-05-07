@@ -4,18 +4,18 @@
     "backgroundImagesPrefix": "{{ITSQUIZ_APP_ROOT_URL}}/be/static/images/backgrounds/",
     "staticUrl": "{{STATIC_URL}}",
     "landingURL": "{{ROOT_URL}}/",
-    "loginUrl": "{{ITSQUIZ_APP_ROOT_URL}}/{lang}/login",
-    "embedOrigin": "{{ITSQUIZ_APP_ROOT_URL}}/",
+    "loginUrl": "{{ITSQUIZ_APP_UI_ROOT_URL}}/{lang}/login",
+    "embedOrigin": "{{ITSQUIZ_APP_UI_ROOT_URL}}/",
     "socialAuthURL": "{{ITSQUIZ_APP_ROOT_URL}}/api/v1/auth/{socialType}?lang={lang}&continue={continueRoute}",
-    "emailAuthURL": "{{ITSQUIZ_APP_ROOT_URL}}/{lang}/login?opened=true&continue={continueRoute}",
+    "emailAuthURL": "{{ITSQUIZ_APP_UI_ROOT_URL}}/{lang}/login?opened=true&continue={continueRoute}",
     "facebookAppId": "{{FACEBOOK_APP_ID}}",
     "gaTrackingCode": "{{GA_TRACKING_CODE}}",
-    "quizwallShareLink": "{{ROOT_URL}}/activations",
+    "quizwallShareLink": "{{ITSQUIZ_APP_UI_ROOT_URL}}/activations",
     "welcomeLinks": {
-        "createTest": "{{ITSQUIZ_APP_ROOT_URL}}/{lang}/login?continue=%2Fquestions",
+        "createTest": "{{ITSQUIZ_APP_UI_ROOT_URL}}/{lang}/login?continue=%2Fquestions",
         "aboutItsquiz": "https://{{ROOT_URL}}/about/",
-        "discoverTests": "https://{{ROOT_URL}}/activations?skipWelcomeDialog=true",
-        "englishCampaign": "https://{{ROOT_URL}}/activations?skipWelcomeDialog=true&search=специальное+предложение"
+        "discoverTests": "https://{{ITSQUIZ_APP_UI_ROOT_URL}}/activations?skipWelcomeDialog=true",
+        "englishCampaign": "https://{{ITSQUIZ_APP_UI_ROOT_URL}}/activations?skipWelcomeDialog=true&search=специальное+предложение"
     },
     "footerLinks": {
         "twitter": "https://twitter.com/itsquizcom",
