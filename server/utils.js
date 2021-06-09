@@ -104,7 +104,7 @@ export function getMetaDataFromState({ route, state, params = {}, query = {}, la
 }
 
 export function makeRedirectUrl({ originalUrl }) {
-    const UIWallPath = `${clientConfig.embedOrigin}/quizwall`;
+    const UIWallPath = `${clientConfig.embedOrigin}quizwall`;
 
     return `${UIWallPath}${originalUrl}`;
 }
