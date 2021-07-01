@@ -31,7 +31,7 @@ export function formatActivation(activation, author) {
 export function formatAccountInfo(account) {
     let smallAvatarUrl = account.smallAvatarUrl;
 
-    if (!isAvatarStandard(account.avatarUrl) && isAvatarStandard(account.smallAvatarUrl)) {
+    if (!isAvatarStandard(account.avatarUrl) && isAvatarStandard(account.smallAvatarUrl || '')) {
         smallAvatarUrl = account.avatarUrl;
     }
 
@@ -42,7 +42,10 @@ export function formatAccountInfo(account) {
         type            : account.type,
         fullName        : _getAccountFullName(account),
         avatar          : account.avatarUrl,
-        backgroundURL   : account.backgroundURL
+        backgroundURL   : account.backgroundURL,
+        activations     : account.links ? account.links.activations : [],
+        statusMessage   : account.statusMessage || '',
+        summary         : account.summary || ''
     };
 }
 

@@ -58,6 +58,9 @@
          "or use your e-mail": [
             "або використовуйте ваш e-mail"
          ],
+         "ORGANIZATIONS": [
+            "ОРГАНІЗАЦІЇ"
+         ],
          "Thank you for your answers!": [
             "Дякуємо за ваші відповіді!"
          ],
@@ -92,6 +95,11 @@
             "%d питання",
             "%d питання",
             "%d питань"
+         ],
+         "%d test": [
+            "%d тест",
+            "%d теста",
+            "%d тестів"
          ],
          "expires %s": [
             "завершиться %s"
@@ -156,6 +164,9 @@
          ],
          "Unfortunately, this quiz is not available. Author will be informed.": [
             ""
+         ],
+         "Users": [
+            "Користувачі"
          ],
          "Sorry, we couldn't find any tests for ": [
             "На жаль, по вашому запиту тестів не знайдено"
