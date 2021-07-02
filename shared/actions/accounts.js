@@ -22,7 +22,7 @@ export function loadAccounts({ query = {}, offset = 0 }) {
             include                : 'accounts',
             limit                  : LIMIT_PER_QUERY,
             search                 : query.search || '',
-            type                   : query.viewMode ? query.viewMode.toUpperCase(): 'ORGANIZATION',
+            type                   : query.viewMode ? query.viewMode.toUpperCase() : 'ORGANIZATION',
             sortBy                 : query.sortType || ''
         }).then(({ data }) => {
             dispatch({
