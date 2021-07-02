@@ -295,6 +295,10 @@ export default class ActivationsPage extends React.Component {
             'ActivationsPage--loading'  : isLoading
         });
 
+        const activeTab =   modeForView
+            ? VIEW_MODE_TYPES.indexOf(modeForView.toUpperCase())
+            : 0
+
         return (
             <div className={classes}>
                 <ShareDialog
@@ -324,11 +328,7 @@ export default class ActivationsPage extends React.Component {
                         <div className='ActivationsPage__toolbar'>
                             <Tabs
                                 ripple
-                                activeTab = {
-                                    modeForView
-                                    ? VIEW_MODE_TYPES.indexOf(modeForView.toUpperCase())
-                                    : 0
-                                }
+                                activeTab = {activeTab}
                                 className = 'ActivationsPage__tabs'
                             >
                                 <Tab
@@ -357,7 +357,7 @@ export default class ActivationsPage extends React.Component {
                                 </Tab>
                             </Tabs>
 
-                            {(!modeForView || (modeForView.toUpperCase() === VIEW_MODE_TYPES[2]))
+                            {(activeTab===2)
                             && <select
                                 value={sortType}
                                 onChange={onChangeSortType}
