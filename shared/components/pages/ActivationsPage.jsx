@@ -297,7 +297,7 @@ export default class ActivationsPage extends React.Component {
 
         const activeTab =   modeForView
             ? VIEW_MODE_TYPES.indexOf(modeForView.toUpperCase())
-            : 0
+            : 0;
 
         return (
             <div className={classes}>
@@ -357,7 +357,7 @@ export default class ActivationsPage extends React.Component {
                                 </Tab>
                             </Tabs>
 
-                            {(activeTab===2)
+                            {(activeTab === 2)
                             && <select
                                 value={sortType}
                                 onChange={onChangeSortType}
