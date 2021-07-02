@@ -18,12 +18,12 @@ export function loadAccounts({ query = {}, offset = 0 }) {
 
         return api.accounts.list({
             offset,
-            include     : 'accounts',
-            limit       : LIMIT_PER_QUERY,
-            search      : query.search || '',
-            type        : query.viewMode ? query.viewMode.toUpperCase() : 'ORGANIZATION',
-            sortBy      : query.sortType || ''
-
+            hasPublishedActivations: true,
+            include                : 'accounts',
+            limit                  : LIMIT_PER_QUERY,
+            search                 : query.search || '',
+            type                   : query.viewMode ? query.viewMode.toUpperCase(): 'ORGANIZATION',
+            sortBy                 : query.sortType || ''
         }).then(({ data }) => {
             dispatch({
                 offset,

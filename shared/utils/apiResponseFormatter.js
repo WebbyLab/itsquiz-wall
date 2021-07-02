@@ -95,7 +95,7 @@ export function formatAccountQuizSession(session) {
 }
 
 function _getAccountFullName({ firstName, secondName, ...account }) {
-    if (account.type === 'COMPANY') {
+    if (account.type === 'COMPANY' || account.type === 'ORGANIZATION') {
         return account.companyName;
     }
 
