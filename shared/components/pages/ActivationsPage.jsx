@@ -1,5 +1,5 @@
-import React from 'react';
-import cx    from 'classnames';
+import React         from 'react';
+import cx            from 'classnames';
 
 import { Tab, Tabs } from 'react-mdl/lib/Tabs';
 import ReactList     from 'react-list';
@@ -7,12 +7,12 @@ import { Card }      from 'react-mdl/lib/Card';
 import Spinner       from 'react-mdl/lib/Spinner';
 import Button        from 'react-mdl/lib/Button';
 
-import QuizCard    from '../QuizCard.jsx';
-import AppBar      from '../AppBar.jsx';
-import AccountCard from '../AccountCard.jsx';
-import ShareDialog from '../../containers/ShareDialog.jsx';
-import LoginDialog from '../../containers/LoginDialog.jsx';
-import Icon        from '../Icon.jsx';
+import QuizCard      from '../QuizCard.jsx';
+import AppBar        from '../AppBar.jsx';
+import AccountCard   from '../AccountCard.jsx';
+import ShareDialog   from '../../containers/ShareDialog.jsx';
+import LoginDialog   from '../../containers/LoginDialog.jsx';
+import Icon          from '../Icon.jsx';
 
 import './ActivationsPage.less';
 
@@ -90,7 +90,7 @@ export default class ActivationsPage extends React.Component {
                 message             = {activation.message}
                 numberOfQuestions   = {activation.numberOfQuestions}
                 timeToPass          = {activation.timeToPass}
-                accountQuizSession     = {activation.accountQuizSession}
+                accountQuizSession  = {activation.accountQuizSession}
                 pictureURL          = {activation.pictureURL}
                 author              = {activation.author}
                 category            = {activation.category}
@@ -263,7 +263,7 @@ export default class ActivationsPage extends React.Component {
 
     renderContent = () => {
         const { modeForView } = this.props;
-        const isRenderActivationsContent = (!modeForView || (modeForView.toUpperCase() === VIEW_MODE_TYPES[2]));
+        const isRenderActivationsContent = modeForView ? (modeForView.toUpperCase() === VIEW_MODE_TYPES[2]) : false;
 
         return isRenderActivationsContent
             ? this.renderActivationsContent()
@@ -327,7 +327,7 @@ export default class ActivationsPage extends React.Component {
                                 activeTab = {
                                     modeForView
                                     ? VIEW_MODE_TYPES.indexOf(modeForView.toUpperCase())
-                                    : 2
+                                    : 0
                                 }
                                 className = 'ActivationsPage__tabs'
                             >

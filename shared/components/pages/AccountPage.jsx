@@ -1,16 +1,18 @@
 import React, { PropTypes } from 'react';
-import cx from 'classnames';
+import cx                   from 'classnames';
 
-import { Card, CardTitle } from 'react-mdl/lib/Card';
-import Grid, { Cell }      from 'react-mdl/lib/Grid';
-import Button              from 'react-mdl/lib/Button';
-import Spinner             from 'react-mdl/lib/Spinner';
+import { Card, CardTitle }  from 'react-mdl/lib/Card';
+import Grid                 from 'react-mdl/lib/Grid';
+import Button               from 'react-mdl/lib/Button';
+import Spinner              from 'react-mdl/lib/Spinner';
 
-import QuizTile             from '../QuizTile.jsx';
+import ShareDialog          from '../../containers/ShareDialog.jsx';
+import LoginDialog          from '../../containers/LoginDialog.jsx';
 import AppBarWithBackground from '../AppBarWithBackground.jsx';
 import ExpandableText       from '../ExpandableText.jsx';
+import QuizCard             from '../QuizCard.jsx';
 
-import { sprintf } from '../../utils';
+import { sprintf }          from '../../utils';
 
 import './ActivationPage.less';
 
@@ -21,9 +23,16 @@ export default class ActivationPage extends React.Component {
         isLoading                    : PropTypes.bool,
         isLoadingAuthorActivations   : PropTypes.bool,
         isAllAuthorActivationsLoaded : PropTypes.bool,
+        isSharing                    : PropTypes.bool,
+        isLoggingIn                  : PropTypes.bool,
         onGoBack                     : PropTypes.func,
         onActivationClick            : PropTypes.func,
-        onLoadAllAuthorActivations   : PropTypes.func
+        onLoadAllAuthorActivations   : PropTypes.func,
+        onStopSharing                : PropTypes.func,
+        onShare                      : PropTypes.func,
+        onAuthorAvatarClick          : PropTypes.func,
+        onLoginClose                 : PropTypes.func,
+        linkToShare                  : PropTypes.string
     };
 
     static contextTypes = { i18n: PropTypes.object };
@@ -38,7 +47,14 @@ export default class ActivationPage extends React.Component {
             authorActivations,
             isAllAuthorActivationsLoaded,
             isLoadingAuthorActivations,
-            onLoadAllAuthorActivations
+            onLoadAllAuthorActivations,
+            isSharing,
+            linkToShare,
+            onStopSharing,
+            onShare,
+            onAuthorAvatarClick,
+            isLoggingIn,
+            onLoginClose
         } = this.props;
 
         const { l } = this.context.i18n;
@@ -46,6 +62,19 @@ export default class ActivationPage extends React.Component {
         if (authorActivations && authorActivations.length) {
             return (
                 <div className='ActivationPage__author-activations'>
+
+                    <ShareDialog
+                        title          = {l('Share this test')}
+                        isOpen         = {isSharing}
+                        linkToShare    = {linkToShare}
+                        onRequestClose = {onStopSharing}
+                    />
+
+                    <LoginDialog
+                        isOpen         = {isLoggingIn}
+                        onRequestClose = {onLoginClose}
+                    />
+
                     <div className='ActivationPage__subheader'>
                         {sprintf(l('More tests by %s'), account.fullName)}
                     </div>
@@ -53,26 +82,22 @@ export default class ActivationPage extends React.Component {
                     <Grid className='ActivationPage__author-activations-grid'>
                         {
                             authorActivations.map(authorActivation =>
-                                <Cell
-                                    key    = {authorActivation.id}
-                                    align  = 'stretch'
-                                    col    = {3}
-                                    phone  = {2}
-                                    tablet = {3}
-                                >
-                                    <QuizTile
-                                        id                = {authorActivation.id}
-                                        name              = {authorActivation.name}
-                                        timeToPass        = {authorActivation.timeToPass}
-                                        numberOfQuestions = {authorActivation.numberOfQuestions}
-                                        pictureURL        = {authorActivation.pictureURL}
-                                        author            = {account}
-                                        isPassed          = {Boolean(authorActivation.isPassed)}
-                                        accountQuizSession   = {authorActivation.accountQuizSession}
-                                        onClick           = {this.handleActivationClick.bind(null, authorActivation)}
-                                    />
-                                </Cell>
-                            )
+                                <QuizCard
+                                    id                  = {authorActivation.id}
+                                    key                 = {authorActivation.id}
+                                    author              = {account}
+                                    className           = 'ActivationsPage__quiz-card'
+                                    name                = {authorActivation.name}
+                                    message             = {authorActivation.message}
+                                    numberOfQuestions   = {authorActivation.numberOfQuestions}
+                                    timeToPass          = {authorActivation.timeToPass}
+                                    accountQuizSession  = {authorActivation.accountQuizSession}
+                                    pictureURL          = {authorActivation.pictureURL}
+                                    category            = {authorActivation.category}
+                                    onShare             = {onShare.bind(this, authorActivation)}
+                                    onClick             = {this.handleActivationClick.bind(null, authorActivation)}
+                                    onAuthorAvatarClick = {onAuthorAvatarClick}
+                                />)
                         }
                     </Grid>
 
@@ -111,7 +136,8 @@ export default class ActivationPage extends React.Component {
 
         const {
             avatar,
-            fullName
+            fullName,
+            statusMessage
         } = account;
 
         const {  nl } = this.context.i18n;
@@ -122,12 +148,16 @@ export default class ActivationPage extends React.Component {
 
         return (
             <div className='ActivationPage__activation'>
-                <Card className='ActivationPage__paper' shadow={1}>
+                <Card className='ActivationPage__paper AccountPage__paper' shadow={1}>
                     <CardTitle className='ActivationPage__head'>
                         <img className='ActivationPage__picture' src={avatar} />
                         <div className='ActivationPage__info'>
                             <div className='ActivationPage__heading'>
                                 <span className='ActivationPage__name'>{fullName}</span>
+                            </div>
+
+                            <div className='ActivationPage__author-name'>
+                                {statusMessage}
                             </div>
 
                             <div className='ActivationPage__pass-info'>
