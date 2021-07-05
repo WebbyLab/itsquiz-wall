@@ -8,13 +8,15 @@ export const CLEAR_CURRENT_ACCOUNT = 'CLEAR_CURRENT_ACCOUNT';
 const LIMIT_PER_QUERY = 24;
 
 export function loadAccounts({ query = {}, offset = 0 }) {
-    return (dispatch) => {
+    return (dispatch, getState) => {
         dispatch({
             type      : LOAD_ACCOUNTS_REQUEST,
-            viewMode  : query.viewMode || 'ORGANIZATION',
+            viewMode  : query.viewMode === 'organization' ? 'organization' : 'user',
             sortType  : query.sortType || 'new',
             search    : query.search || ''
         });
+
+        const state = getState();
 
         return api.accounts.list({
             offset,
@@ -22,7 +24,7 @@ export function loadAccounts({ query = {}, offset = 0 }) {
             include                : 'accounts',
             limit                  : LIMIT_PER_QUERY,
             search                 : query.search || '',
-            type                   : query.viewMode ? query.viewMode.toUpperCase() : 'ORGANIZATION',
+            type                   : (state.accounts.viewMode).toUpperCase(),
             sortBy                 : query.sortType || ''
         }).then(({ data }) => {
             dispatch({
@@ -31,7 +33,7 @@ export function loadAccounts({ query = {}, offset = 0 }) {
                 sortType    : query.sortType || 'new',
                 search      : query.search || '',
                 type        : LOAD_ACCOUNTS_SUCCESS,
-                viewMode    : query.viewMode,
+                viewMode    : state.accounts.viewMode,
                 totalAmount : data.total,
                 accounts    : data.entities
             });

@@ -18,7 +18,8 @@ import './ActivationsPage.less';
 
 
 // const CATEGORIES = ['ALL', 'VACANCY', 'EDUCATION', 'ENTERTAINMENT', 'SPECIAL'];
-const VIEW_MODE_TYPES = ['ORGANIZATION', 'USER', 'ACTIVATION'];
+// const VIEW_MODE_TYPES = ['ORGANIZATION', 'USER', 'ACTIVATION'];
+const VIEW_MODE_TYPES = ['USER', 'ACTIVATION'];
 
 export default class ActivationsPage extends React.Component {
     static propTypes = {
@@ -263,7 +264,7 @@ export default class ActivationsPage extends React.Component {
 
     renderContent = () => {
         const { modeForView } = this.props;
-        const isRenderActivationsContent = modeForView ? (modeForView.toUpperCase() === VIEW_MODE_TYPES[2]) : false;
+        const isRenderActivationsContent = modeForView ? (modeForView.toUpperCase() === VIEW_MODE_TYPES[1]) : false;
 
         return isRenderActivationsContent
             ? this.renderActivationsContent()
@@ -331,18 +332,18 @@ export default class ActivationsPage extends React.Component {
                                 activeTab = {activeTab}
                                 className = 'ActivationsPage__tabs'
                             >
-                                <Tab
+                                {/* <Tab
                                     className       = 'ActivationsPage__all-tab'
                                     href            = '/activations?viewMode=organization'
                                     onClick         = {this.handleTabClick.bind(null, 0)}
                                 >
                                     <span className = 'ActivationsPage__tab-text'>{l('ORGANIZATIONS')}</span>
                                     <Icon className = 'ActivationsPage__tab-icon' type = 'star-circle' />
-                                </Tab>
+                                </Tab> */}
                                 <Tab
                                     className       = 'ActivationsPage__all-tab'
                                     href            = '/activations?viewMode=user'
-                                    onClick         = {this.handleTabClick.bind(null, 1)}
+                                    onClick         = {this.handleTabClick.bind(null, 0)}
                                 >
                                     <span className = 'ActivationsPage__tab-text'>{l('Users')}</span>
                                     <Icon className = 'ActivationsPage__tab-icon' type = 'star-circle' />
@@ -350,14 +351,14 @@ export default class ActivationsPage extends React.Component {
                                 <Tab
                                     className = 'ActivationsPage__all-tab'
                                     href      = '/activations?viewMode=activation'
-                                    onClick   = {this.handleTabClick.bind(null, 2)}
+                                    onClick   = {this.handleTabClick.bind(null, 1)}
                                 >
                                     <span className='ActivationsPage__tab-text'>{l('All tests')}</span>
                                     <Icon className='ActivationsPage__tab-icon' type='star-circle' />
                                 </Tab>
                             </Tabs>
 
-                            {(activeTab === 2)
+                            {(activeTab === 1)
                             && <select
                                 value={sortType}
                                 onChange={onChangeSortType}
