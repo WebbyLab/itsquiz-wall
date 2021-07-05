@@ -133,7 +133,7 @@ class ActivationsPageContainer extends Component {
 
     handleAccountsItemRenderRequest = (index) => {
         const { accounts } = this.props;
-        const accountsToRenderByType = accounts.entitiesByType[this.props.location.query.viewMode] || [];
+        const accountsToRenderByType = accounts.entitiesByType[accounts.viewMode] || [];
 
         if (index + 1 < accounts.totalAccountsAmount && index + 1 >= accountsToRenderByType.length) {
             this.props.dispatch(loadAccounts({

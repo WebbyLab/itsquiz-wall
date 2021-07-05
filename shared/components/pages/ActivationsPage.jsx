@@ -119,11 +119,10 @@ export default class ActivationsPage extends React.Component {
         const {
             onAccountsItemClick,
             onAccountsItemRenderRequest,
-            modeForView,
             accounts
         } = this.props;
 
-        const accountsToRenderByType = accounts.entitiesByType[modeForView] || [];
+        const accountsToRenderByType = accounts.entitiesByType[accounts.viewMode] || [];
 
         const account = accountsToRenderByType[index];
 
@@ -214,11 +213,10 @@ export default class ActivationsPage extends React.Component {
 
         const {
             accounts,
-            modeForView,
             search
         } = this.props;
 
-        const accountsToRenderByType = accounts.entitiesByType[modeForView] || [];
+        const accountsToRenderByType = accounts.entitiesByType[accounts.viewMode] || [];
         const isEmpty = accountsToRenderByType.length === 0;
 
         if (accounts.isLoading) {
