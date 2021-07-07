@@ -107,6 +107,8 @@ class AccountPageContainer extends Component {
             isLoadingAuthorActivations
         } = this.props;
 
+        const { embed } = this.props.location.query;
+
         return (
             <AccountPage
                 account                      = {account}
@@ -117,6 +119,7 @@ class AccountPageContainer extends Component {
                 isSharing                    = {this.state.isSharing}
                 linkToShare                  = {this.state.linkToShare}
                 isLoggingIn                  = {this.state.isLoggingIn}
+                isEmbedded                   = {Boolean(embed)}
                 onActivationClick            = {this.handleActivationClick}
                 onGoBack                     = {this.handleGoBack}
                 onLoadAllAuthorActivations   = {this.handleLoadAllAuthorActivations}

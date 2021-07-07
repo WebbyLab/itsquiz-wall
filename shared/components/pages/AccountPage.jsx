@@ -25,6 +25,7 @@ export default class ActivationPage extends React.Component {
         isAllAuthorActivationsLoaded : PropTypes.bool,
         isSharing                    : PropTypes.bool,
         isLoggingIn                  : PropTypes.bool,
+        isEmbedded                   : PropTypes.bool,
         onGoBack                     : PropTypes.func,
         onActivationClick            : PropTypes.func,
         onLoadAllAuthorActivations   : PropTypes.func,
@@ -192,21 +193,23 @@ export default class ActivationPage extends React.Component {
         const {
             account,
             isLoading,
-            onGoBack
+            onGoBack,
+            isEmbedded
         } = this.props;
 
         const classes = cx('ActivationPage', {
-            'ActivationPage--loading'  : isLoading
+            'ActivationPage--loading'  : isLoading,
+            'ActivationPage--embedded' : isEmbedded
         });
 
         return (
             <div className={classes}>
 
                 <AppBarWithBackground
-                    displayRightMenu
                     backgroundURL    = {account ? account.backgroundURL : ''}
                     rightIconName    = 'arrow_back'
                     title            = {account.fullName}
+                    displayRightMenu = {!isEmbedded}
                     height           = {200}
                     isOrganization   = {account.type === 'ORGANIZATION'}
                     hideGoBackBtn    = {false}
