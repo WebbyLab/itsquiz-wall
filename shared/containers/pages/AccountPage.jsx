@@ -74,7 +74,10 @@ class AccountPageContainer extends Component {
     };
 
     handleActivationClick = (activation) => {
-        this.props.history.pushState(null, `/activations/${activation.id}/${makeSlug(activation.name)}`);
+        this.props.history.pushState(null, `/activations/${activation.id}/${makeSlug(activation.name)}`, {
+            embed : this.props.location.query.embed,
+            assigneeId : this.props.location.query.assigneeId
+        });
 
         sendEvent('activation', 'author activation view');
     };

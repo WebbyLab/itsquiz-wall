@@ -158,7 +158,10 @@ class ActivationsPageContainer extends Component {
     };
 
     handleAccountsItemClick = (account) => {
-        this.props.history.pushState(null, `/accounts/${account.id}`);
+        this.props.history.pushState(null, `/accounts/${account.id}`, {
+            embed : this.props.location.query.embed,
+            assigneeId : this.props.location.query.assigneeId
+        });
     }
 
     render() {
