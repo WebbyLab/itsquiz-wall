@@ -76,7 +76,7 @@ export default class ActivationPage extends React.Component {
                         onRequestClose = {onLoginClose}
                     />
 
-                    <div className='ActivationPage__subheader'>
+                    <div className='ActivationPage__subheader ActivationPage__center'>
                         {sprintf(l('More tests by %s'), account.fullName)}
                     </div>
 
