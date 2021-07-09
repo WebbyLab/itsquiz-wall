@@ -344,7 +344,7 @@ export default class ActivationsPage extends React.Component {
                                     onClick         = {this.handleTabClick.bind(null, 0)}
                                 >
                                     <span className = 'ActivationsPage__tab-text'>{l('Users')}</span>
-                                    <Icon className = 'ActivationsPage__tab-icon' type = 'star-circle' />
+                                    <Icon className = 'ActivationsPage__tab-icon' type = 'account-circle' />
                                 </Tab>
                                 <Tab
                                     className = 'ActivationsPage__all-tab'
