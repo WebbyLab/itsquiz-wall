@@ -111,6 +111,13 @@ msgstr[0] "%d soru"
 msgstr[1] "%d sorular"
 
 #, javascript-format
+msgid "%d test"
+msgid_plural "%d tests"
+msgstr[0] "%d Ölçek"
+msgstr[1] "%d Ölçek"
+msgstr[2] "%d Ölçek"
+
+#, javascript-format
 msgid "expires %s"
 msgstr ""
 

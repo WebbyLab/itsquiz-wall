@@ -112,6 +112,13 @@ msgstr[1] "%d вопроса"
 msgstr[2] "%d вопросов"
 
 #, javascript-format
+msgid "%d test"
+msgid_plural "%d tests"
+msgstr[0] "%d тест"
+msgstr[1] "%d теста"
+msgstr[2] "%d тестов"
+
+#, javascript-format
 msgid "expires %s"
 msgstr "истекает %s"
 

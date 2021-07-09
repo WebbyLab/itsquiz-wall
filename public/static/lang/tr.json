@@ -58,6 +58,9 @@
          "or use your e-mail": [
             "yada mail adresini kullan"
          ],
+         "ORGANIZATIONS": [
+            "ORGANİZASYONLAR"
+         ],
          "Thank you for your answers!": [
             ""
          ],
@@ -138,6 +141,9 @@
          ],
          "Unfortunately, this quiz is not available. Author will be informed.": [
             ""
+         ],
+         "Users": [
+            "Kullanıcılar"
          ],
          "Sorry, we couldn't find any tests for ": [
             "Maalesef sizin için herhangi bir test bulamadık"

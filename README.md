@@ -17,10 +17,9 @@ You can find [post from Viktor Turskyi (aka koorchik)](http://blog.koorchik.com/
 ## Installation (development)
 
 1. ```npm install```
-2. ```cp .env.defaults .env``` (by default connect to production REST API)
-3. ```npm run webpack-devserver``` (wait until build is ready, it will create file "etc/webpack-assets.json")
-4. ```npm run nodemon```  (in another terminal, and wait until build is ready)
-5. open http://localhost:3001
+2. ```npm run webpack-devserver``` (wait until build is ready, it will create file "etc/webpack-assets.json")
+3. ```npm run nodemon```  (in another terminal, and wait until build is ready)
+4. open http://localhost:3001
 
 ## About the application
 

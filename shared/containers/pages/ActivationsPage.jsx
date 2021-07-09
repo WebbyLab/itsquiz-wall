@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect }                     from 'react-redux';
 
 import { loadActivations } from '../../actions/activations';
+import { loadAccounts }    from '../../actions/accounts';
 import connectDataFetchers from '../../lib/connectDataFetchers.jsx';
 import EmbedEvents         from '../../utils/EmbedEventsUtil';
 import config              from '../../config';
@@ -16,6 +17,7 @@ const embedEvents = new EmbedEvents({
 
 class ActivationsPageContainer extends Component {
     static propTypes = {
+        accounts  : React.PropTypes.arrayOf(React.PropTypes.object),
         history   : PropTypes.object,
         dispatch  : PropTypes.func,
         location  : PropTypes.object,
@@ -101,13 +103,13 @@ class ActivationsPageContainer extends Component {
         });
     };
 
-    handleTabChange = (category) => {
+    handleTabChange = (viewMode) => {
         this.props.history.pushState(null, this.props.location.pathname, {
             ...this.props.location.query,
-            category : category !== 'ALL' ? category : undefined
+            viewMode
         });
 
-        sendEvent('activations page', 'category change', category);
+        sendEvent('activations page', 'category change', viewMode);
     };
 
     handleStopSharing = () => {
@@ -129,6 +131,19 @@ class ActivationsPageContainer extends Component {
         }
     };
 
+    handleAccountsItemRenderRequest = (index) => {
+        const { accounts } = this.props;
+        const accountsToRenderByType = accounts.entitiesByType[accounts.viewMode] || [];
+
+        if (index + 1 < accounts.totalAccountsAmount && index + 1 >= accountsToRenderByType.length) {
+            this.props.dispatch(loadAccounts({
+                params : this.props.params,
+                query  : this.props.location.query,
+                offset : accountsToRenderByType.length
+            }));
+        }
+    }
+
     handleAuthorAvatarClick = (authorId) => {
         const isEmbedded = this.props.location.query.embed;
 
@@ -142,36 +157,47 @@ class ActivationsPageContainer extends Component {
         }
     };
 
+    handleAccountsItemClick = (account) => {
+        this.props.history.pushState(null, `/accounts/${account.id}`, {
+            embed : this.props.location.query.embed,
+            assigneeId : this.props.location.query.assigneeId
+        });
+    }
+
     render() {
         return (
             <ActivationsPage
-                activations            = {this.props.activations}
-                totalActivationsAmount = {this.props.totalActivationsAmount}
-                search                 = {this.props.search}
-                linkToShare            = {this.state.linkToShare}
-                sortType               = {this.props.sortType}
-                selectedCategory       = {this.props.category}
-                isSharing              = {this.state.isSharing}
-                isLoggingIn            = {this.state.isLoggingIn}
-                isEmbedded             = {Boolean(this.props.location.query.embed)}
-                isLoading              = {this.props.isLoading}
-                isEmpty                = {this.props.activations.length === 0}
-                onItemClick            = {this.handleQuizCardClick}
-                onSearch               = {this.handleSearch}
-                onShare                = {this.handleShare}
-                onLoginClose           = {this.handleLoginClose}
-                onSpecialsSubscribe    = {this.handleSpecialsSubscribe}
-                onTabChange            = {this.handleTabChange}
-                onItemRenderRequest    = {this.handleItemRenderRequest}
-                onChangeSortType       = {this.handleChangeSortType}
-                onStopSharing          = {this.handleStopSharing}
-                onAuthorAvatarClick    = {this.handleAuthorAvatarClick}
+                activations                 = {this.props.activations}
+                totalActivationsAmount      = {this.props.totalActivationsAmount}
+                search                      = {this.props.search}
+                linkToShare                 = {this.state.linkToShare}
+                sortType                    = {this.props.sortType}
+                selectedCategory            = {this.props.category}
+                isSharing                   = {this.state.isSharing}
+                isLoggingIn                 = {this.state.isLoggingIn}
+                isEmbedded                  = {Boolean(this.props.location.query.embed)}
+                isLoading                   = {this.props.isLoading}
+                isEmpty                     = {this.props.activations.length === 0}
+                modeForView                 = {this.props.location.query.viewMode}
+                accounts                    = {this.props.accounts}
+                onItemClick                 = {this.handleQuizCardClick}
+                onSearch                    = {this.handleSearch}
+                onShare                     = {this.handleShare}
+                onLoginClose                = {this.handleLoginClose}
+                onSpecialsSubscribe         = {this.handleSpecialsSubscribe}
+                onTabChange                 = {this.handleTabChange}
+                onItemRenderRequest         = {this.handleItemRenderRequest}
+                onAccountsItemRenderRequest = {this.handleAccountsItemRenderRequest}
+                onAccountsItemClick         = {this.handleAccountsItemClick}
+                onChangeSortType            = {this.handleChangeSortType}
+                onStopSharing               = {this.handleStopSharing}
+                onAuthorAvatarClick         = {this.handleAuthorAvatarClick}
             />
         );
     }
 }
 
-function mapStateToProps({ activations }) {
+function mapStateToProps({ activations, accounts }) {
     const { entitiesByCategory, sortType, search, category, isLoading, totalActivationsAmount } = activations;
 
     return {
@@ -180,10 +206,11 @@ function mapStateToProps({ activations }) {
         search,
         category,
         sortType: sortType || 'new',
-        activations: entitiesByCategory[category] || []
+        activations: entitiesByCategory[category] || [],
+        accounts
     };
 }
 
 export default connect(mapStateToProps)(
-    connectDataFetchers(ActivationsPageContainer, [ loadActivations ])
+    connectDataFetchers(ActivationsPageContainer, [loadActivations, loadAccounts])
 );

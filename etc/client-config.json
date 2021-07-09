@@ -5,7 +5,7 @@
     "staticUrl": "{{STATIC_URL}}",
     "landingURL": "{{ROOT_URL}}/",
     "loginUrl": "{{ITSQUIZ_APP_UI_ROOT_URL}}/{lang}/login",
-    "embedOrigin": "{{ITSQUIZ_APP_UI_ROOT_URL}}/",
+    "embedOrigin": "{{ITSQUIZ_APP_UI_ROOT_URL}}",
     "socialAuthURL": "{{ITSQUIZ_APP_ROOT_URL}}/api/v1/auth/{socialType}?lang={lang}&continue={continueRoute}",
     "emailAuthURL": "{{ITSQUIZ_APP_UI_ROOT_URL}}/{lang}/login?opened=true&continue={continueRoute}",
     "facebookAppId": "{{FACEBOOK_APP_ID}}",
