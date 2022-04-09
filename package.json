@@ -42,7 +42,7 @@
     "jed": "^1.1.0",
     "lodash": "^3.10.1",
     "markdown-it": "^6.0.0",
-    "moment": "^2.10.6",
+    "moment": "^2.29.2",
     "progressbar.js": "^1.0.1",
     "query-string": "^3.0.0",
     "react": "^15.1.0",
