@@ -73,10 +73,15 @@ Thanks for http://itsquiz.com (our customer) for allowing opensourcing of this a
 * WebbyLab https://webbylab.com/contacts
 * It's Quiz
 
-## WORK on Dockerfile
+## WORK on Dockerfile (gitlab registry)
 
-1. ```docker build -t registry.gitlab.webbylab.com/itsquiz/itsquiz/apps/itsquiz-wall .```  build image
-2. ```docker push registry.gitlab.webbylab.com/itsquiz/itsquiz/apps/itsquiz-wall```        push image on remoute registry
+1. ```docker build -t registry.gitlab-ee.webbylab.com/itsquiz/itsquiz/apps/itsquiz-wall .```  build image
+2. ```docker push registry.gitlab-ee.webbylab.com/itsquiz/itsquiz/apps/itsquiz-wall```        push image on remoute registry
+
+## WORK on Dockerfile (cloud run registry)
+
+1. ```docker build -t europe-west3-docker.pkg.dev/itsquiz-1041/itsquiz-wall/itsquiz-wall .```  build image
+2. ```docker push europe-west3-docker.pkg.dev/itsquiz-1041/itsquiz-wall/itsquiz-wall```        push image on remoute registry
 
 ## RUN in CONTAINER
 
