@@ -122,6 +122,10 @@ class ActivationsPageContainer extends Component {
     handleItemRenderRequest = (index) => {
         const { activations, totalActivationsAmount } = this.props;
 
+        if (typeof window !== 'object') {
+            return;
+        }
+
         if (index + 1 < totalActivationsAmount && index + 1 >= activations.length) {
             this.props.dispatch(loadActivations({
                 params : this.props.params,
@@ -134,6 +138,10 @@ class ActivationsPageContainer extends Component {
     handleAccountsItemRenderRequest = (index) => {
         const { accounts } = this.props;
         const accountsToRenderByType = accounts.entitiesByType[accounts.viewMode] || [];
+
+        if (typeof window !== 'object') {
+            return;
+        }
 
         if (index + 1 < accounts.totalAccountsAmount && index + 1 >= accountsToRenderByType.length) {
             this.props.dispatch(loadAccounts({
