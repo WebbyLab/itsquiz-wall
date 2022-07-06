@@ -12,7 +12,7 @@ export function loadAccounts({ query = {}, offset = 0 }) {
         dispatch({
             type      : LOAD_ACCOUNTS_REQUEST,
             viewMode  : query.viewMode === 'organization' ? 'organization' : 'user',
-            sortType  : query.sortType || 'new',
+            sortType  : query.sortType || 'countPublishedActivations',
             search    : query.search || ''
         });
 
@@ -25,12 +25,12 @@ export function loadAccounts({ query = {}, offset = 0 }) {
             limit                  : LIMIT_PER_QUERY,
             search                 : query.search || '',
             type                   : (state.accounts.viewMode).toUpperCase(),
-            sortBy                 : query.sortType || ''
+            sortBy                 : state.accounts.sortType || ''
         }).then(({ data }) => {
             dispatch({
                 offset,
                 category    : query.category || 'ALL',
-                sortType    : query.sortType || 'new',
+                sortType    : query.sortType || 'countPublishedActivations',
                 search      : query.search || '',
                 type        : LOAD_ACCOUNTS_SUCCESS,
                 viewMode    : state.accounts.viewMode,
