@@ -149,7 +149,7 @@ app.use((req, res) => {
                 }
             })
             .catch(err => {
-                console.log(err.stack);
+                console.error(err);
                 res.end(err.message);
             });
         }

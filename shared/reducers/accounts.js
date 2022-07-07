@@ -18,8 +18,8 @@ export default function accounts(state = DEFAULT_STATE, action) {
         case LOAD_ACCOUNTS_SUCCESS: {
             const newAccounts = action.accounts.map(apiResponseFormatter.formatAccountInfo);
 
-            const loadedAccounts = state.entitiesByType[action.viewMode]
-                ? state.entitiesByType[action.viewMode].slice(0)
+            const loadedAccounts = state.entitiesByType[state.viewMode]
+                ? state.entitiesByType[state.viewMode].slice(0)
                 : [];
 
             newAccounts.forEach((newAccount, i) => {
@@ -32,7 +32,7 @@ export default function accounts(state = DEFAULT_STATE, action) {
 
             const entitiesByType = {
                 ...entitiesByType,
-                [action.viewMode]: loadedAccounts
+                [state.viewMode]: loadedAccounts
             };
 
             return {
