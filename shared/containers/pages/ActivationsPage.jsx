@@ -105,6 +105,8 @@ class ActivationsPageContainer extends Component {
 
     handleTabChange = (viewMode) => {
         this.props.history.pushState(null, this.props.location.pathname, {
+            ...this.props.location.query,
+            sortType:'',
             viewMode
         });
 
