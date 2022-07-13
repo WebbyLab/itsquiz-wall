@@ -5,6 +5,7 @@ WORKDIR /app
 COPY . .
 RUN npm install && npm run build
 
+
 ENV NODE_ENV=production
 ENV BABEL_ENV=node
 
