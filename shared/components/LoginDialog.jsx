@@ -46,13 +46,6 @@ export default class LoginDialog extends Component {
                         </div>
 
                         <div
-                            className='LoginDialog__button LoginDialog__button--vkontakte'
-                            onClick={onSocialLogin.bind(null, 'vkontakte')}
-                        >
-                            <Icon type='vk' className='LoginDialog__icon' />
-                        </div>
-
-                        <div
                             className='LoginDialog__button LoginDialog__button--linkedin'
                             onClick={onSocialLogin.bind(null, 'linkedin')}
                         >
