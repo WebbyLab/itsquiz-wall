@@ -32,25 +32,18 @@ export default class ShareDialog extends Component {
                             <Icon type='facebook' className='ShareDialog__icon' />
                         </div>
 
-                        <div
+                        {/* <div
                             className='ShareDialog__button ShareDialog__button--google'
                             onClick={onShare.bind(null, 'google')}
                         >
                             <Icon type='google-plus' className='ShareDialog__icon' />
-                        </div>
+                        </div> */}
 
                         <div
                             className='ShareDialog__button ShareDialog__button--twitter'
                             onClick={onShare.bind(null, 'twitter')}
                         >
                             <Icon type='twitter' className='ShareDialog__icon' />
-                        </div>
-
-                        <div
-                            className='ShareDialog__button ShareDialog__button--vk'
-                            onClick={onShare.bind(null, 'vk')}
-                        >
-                            <Icon type='vk' className='ShareDialog__icon' />
                         </div>
 
                         <div

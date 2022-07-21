@@ -38,8 +38,7 @@ export default class ShareDialogContainer extends Component {
             'facebook': `https://www.facebook.com/dialog/share?app_id=${facebookAppId}&display=popup`
                 + `&href=${linkToShare}&redirect_uri=${linkToShare}`,
             'twitter': `https://twitter.com/intent/tweet?text=${encodeURI(twitterMessage)}&url=${linkToShare}&via=itsquizcom`,
-            'linkedin': `https://www.linkedin.com/shareArticle?mini=true&url=${linkToShare}`,
-            'vk': `http://vk.com/share.php?url=${linkToShare}`
+            'linkedin': `https://www.linkedin.com/shareArticle?mini=true&url=${linkToShare}`
         };
 
         this.openLinkInPopup(linksHash[type]);
