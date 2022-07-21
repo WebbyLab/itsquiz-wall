@@ -180,7 +180,7 @@ export default class QuizCard extends Component {
                         ripple
                         className = 'QuizCard__more-button'
                         raised    = {isSponsored}
-                        onClick   = {onClick}
+                        onClick   = {this.handleClick}
                     >
                         {l('View details')}
                     </Button>
