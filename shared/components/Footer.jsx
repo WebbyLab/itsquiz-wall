@@ -71,7 +71,7 @@ export default class Footer extends Component {
                                 <li>
                                     <a
                                         rel='nofollow'
-                                        href={links.supportPage}
+                                        href={links.facebook}
                                         target='_blank'
                                         onClick={onLinkClick.bind(null, 'supportPage')}
                                     >
@@ -81,14 +81,14 @@ export default class Footer extends Component {
                                 <li>
                                     <a
                                         rel='nofollow'
-                                        href={links.suggestIdea}
+                                        href={links.facebook}
                                         target='_blank'
                                         onClick={onLinkClick.bind(null, 'suggestIdea')}
                                     >
                                         {l('Suggest an idea')}
                                     </a>
                                 </li>
-                                <li>
+                                {/* <li>
                                     <a
                                         rel='nofollow'
                                         href={links.helpMe}
@@ -97,14 +97,14 @@ export default class Footer extends Component {
                                     >
                                         {l('Need help?')}
                                     </a>
-                                </li>
+                                </li> */}
                             </ul>
                         </div>
 
                         <div className='Footer__menu'>
                             <h3 className='Footer__menu-header'>{l('Do you like It\'s quiz?')}</h3>
                             <ul className='Footer__menu-items'>
-                                <li>
+                                {/* <li>
                                     <a
                                         href={links.aboutItsquiz}
                                         target='_blank'
@@ -121,7 +121,7 @@ export default class Footer extends Component {
                                     >
                                         {l('Meet our team')}
                                     </a>
-                                </li>
+                                </li> */}
                                 <li>
                                     <a
                                         onClick={onShareClick}
