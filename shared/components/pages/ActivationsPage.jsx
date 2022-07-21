@@ -378,7 +378,10 @@ export default class ActivationsPage extends React.Component {
                     {
                         selectedCategory === 'SPECIAL' && !isEmbedded
                         ?
-                            <Button colored raised ripple
+                            <Button
+                                colored
+                                raised
+                                // ripple
                                 className='ActivationsPage__subscribe-btn'
                                 onClick={onSpecialsSubscribe}
                             >

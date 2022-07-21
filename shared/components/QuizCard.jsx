@@ -177,7 +177,7 @@ export default class QuizCard extends Component {
 
                     <Button
                         colored
-                        ripple
+                        // ripple
                         className = 'QuizCard__more-button'
                         raised    = {isSponsored}
                         onClick   = {this.handleClick}

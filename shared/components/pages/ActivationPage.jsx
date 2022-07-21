@@ -222,7 +222,9 @@ export default class ActivationPage extends React.Component {
                     {
                         !isAllAuthorActivationsLoaded
                         ?
-                            <Button ripple raised
+                            <Button
+                                // ripple
+                                raised
                                 className = 'ActivationPage__load-more-btn'
                                 onClick   = {onLoadAllAuthorActivations}
                             >
@@ -425,7 +427,7 @@ export default class ActivationPage extends React.Component {
                                     showAccountResult && !isSurvey
                                     ?
                                         <Button
-                                            ripple
+                                            // ripple
                                             raised
                                             onClick   = {onShareResult.bind(null, activation)}
                                             className = 'ActivationPage__result-share-btn'
@@ -441,7 +443,7 @@ export default class ActivationPage extends React.Component {
                                     ?
                                         <div className='ActivationPage__pass-btn-wrapper'>
                                             <Button
-                                                ripple
+                                                // ripple
                                                 raised    = {!isSponsored}
                                                 onClick   = {onPass.bind(null, activation)}
                                                 className = 'ActivationPage__btn ActivationPage__pass-btn'
@@ -489,7 +491,7 @@ export default class ActivationPage extends React.Component {
                                     ? (
                                         <Button
                                             colored
-                                            ripple
+                                            // ripple
                                             raised
                                             onClick={onSponsoredClick.bind(null, activation, this.sponsoredButtonLabel)}
                                             className='ActivationPage__btn ActivationPage__offer-btn'
@@ -507,7 +509,7 @@ export default class ActivationPage extends React.Component {
                                 !activation.isPrivate && !isSurvey
                                 ? (
                                     <IconButton
-                                        ripple
+                                        // ripple
                                         name    = 'share'
                                         onClick = {onShare.bind(null, activation)}
                                     />
@@ -527,7 +529,7 @@ export default class ActivationPage extends React.Component {
                                             !activation.isPrivate && !isSurvey
                                             ? (
                                                 <IconButton
-                                                    ripple
+                                                    // ripple
                                                     name    = 'share'
                                                     onClick = {onShare.bind(null, activation)}
                                                 />
@@ -580,7 +582,7 @@ export default class ActivationPage extends React.Component {
                                             !isSurvey
                                             ?
                                                 <Button
-                                                    ripple
+                                                    // ripple
                                                     raised
                                                     onClick   = {onShareResult.bind(null, activation)}
                                                     className = 'ActivationPage__result-share-btn--mobile'
@@ -625,7 +627,7 @@ export default class ActivationPage extends React.Component {
                                             accountQuizSession.canViewAnswers
                                             ?
                                                 <Button
-                                                    ripple
+                                                    // ripple
                                                     onClick   = {onViewAnswers.bind(null, activation)}
                                                     className = 'ActivationPage__result-answers-btn--mobile'
                                                 >
@@ -639,7 +641,7 @@ export default class ActivationPage extends React.Component {
                                             ? (
                                                 <div className='ActivationPage__pass-btn-wrapper-passed--mobile'>
                                                     <Button
-                                                        ripple
+                                                        // ripple
                                                         raised    = {!isSponsored}
                                                         onClick   = {onPass.bind(null, activation)}
                                                         className = 'ActivationPage__btn ActivationPage__pass-btn'
@@ -695,7 +697,7 @@ export default class ActivationPage extends React.Component {
                                             ? (
                                                 <div className='ActivationPage__pass-btn-wrapper-passed'>
                                                     <Button
-                                                        ripple
+                                                        // ripple
                                                         raised    = {!isSponsored}
                                                         onClick   = {onPass.bind(null, activation)}
                                                         className = 'ActivationPage__btn ActivationPage__pass-btn'
@@ -748,7 +750,7 @@ export default class ActivationPage extends React.Component {
                                             accountQuizSession.canViewAnswers
                                             ?
                                                 <Button
-                                                    ripple
+                                                    // ripple
                                                     onClick   = {onViewAnswers.bind(null, activation)}
                                                     className = 'ActivationPage__result-answers-btn'
                                                 >
@@ -761,7 +763,7 @@ export default class ActivationPage extends React.Component {
                                             activation.category === 'VACANCY'
                                             ? <div>
                                                 <Button
-                                                    ripple
+                                                    // ripple
                                                     onClick   = {onFillProfile.bind(null, activation)}
                                                     className = 'ActivationPage__fill-profile-btn'
                                                 >

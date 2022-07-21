@@ -56,7 +56,7 @@ export default class ExpandableText extends Component {
                             </div>
                             <Button
                                 colored
-                                ripple
+                                // ripple
                                 className = 'ExpandableText__expand-button'
                                 onClick   = {this.handleClick}
                             >

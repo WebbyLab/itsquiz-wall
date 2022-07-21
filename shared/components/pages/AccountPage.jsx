@@ -113,7 +113,9 @@ export default class ActivationPage extends React.Component {
                     {
                         !isAllAuthorActivationsLoaded
                         ?
-                            <Button ripple raised
+                            <Button
+                                // ripple
+                                raised
                                 className = 'ActivationPage__load-more-btn'
                                 onClick   = {onLoadAllAuthorActivations(account.id)}
                             >
