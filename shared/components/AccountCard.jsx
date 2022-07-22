@@ -76,7 +76,7 @@ export default class AccountCard extends Component {
                 >
                     <Button
                         colored
-                        // ripple
+                        ripple
                         className = 'QuizCard__more-button'
                         onClick   = {this.handleClick}
                     >
