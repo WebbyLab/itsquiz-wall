@@ -302,11 +302,9 @@ export default class ActivationPage extends React.Component {
         } = this.props;
 
         const {
-            id,
             pictureURL,
             name,
             isPrivate,
-            canPassViaChat,
             accountQuizSession,
             numberOfQuestions,
             timeToPass,
@@ -450,7 +448,7 @@ export default class ActivationPage extends React.Component {
                                             >
                                                 {l('Pass the test')}
                                             </Button>
-                                            {
+                                            {/* {
                                                 canPassViaChat
                                                 ?
                                                     <a
@@ -463,7 +461,7 @@ export default class ActivationPage extends React.Component {
                                                     </a>
                                                 :
                                                     null
-                                            }
+                                            } */}
                                             {
                                                 numberOfTriesLeft
                                                 ?
@@ -655,7 +653,7 @@ export default class ActivationPage extends React.Component {
                                                                 l('Improve result')
                                                         }
                                                     </Button>
-                                                    {
+                                                    {/* {
                                                         canPassViaChat
                                                         ?
                                                             <a
@@ -667,7 +665,7 @@ export default class ActivationPage extends React.Component {
                                                             </a>
                                                         :
                                                             null
-                                                    }
+                                                    } */}
                                                     {
                                                         numberOfTriesLeft
                                                         ?
@@ -711,7 +709,7 @@ export default class ActivationPage extends React.Component {
                                                                 l('Improve result')
                                                         }
                                                     </Button>
-                                                    {
+                                                    {/* {
                                                         canPassViaChat
                                                         ?
                                                             <a
@@ -723,7 +721,7 @@ export default class ActivationPage extends React.Component {
                                                             </a>
                                                         :
                                                             null
-                                                    }
+                                                    } */}
                                                     {
                                                         numberOfTriesLeft
                                                         ?
