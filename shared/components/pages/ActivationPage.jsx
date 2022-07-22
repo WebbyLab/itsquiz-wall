@@ -1,3 +1,4 @@
+/* eslint-disable max-len*/
 import React, { PropTypes } from 'react';
 import cx from 'classnames';
 
