@@ -56,6 +56,7 @@ export default class ExpandableText extends Component {
                             </div>
                             <Button
                                 colored
+                                // commenting out the prop `ripple`  that the onClick event does not work on mobile
                                 // ripple
                                 className = 'ExpandableText__expand-button'
                                 onClick   = {this.handleClick}

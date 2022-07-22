@@ -114,6 +114,7 @@ export default class ActivationPage extends React.Component {
                         !isAllAuthorActivationsLoaded
                         ?
                             <Button
+                                // commenting out the prop `ripple`  that the onClick event does not work on mobile
                                 // ripple
                                 raised
                                 className = 'ActivationPage__load-more-btn'

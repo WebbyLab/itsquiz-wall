@@ -76,6 +76,7 @@ export default class AccountCard extends Component {
                 >
                     <Button
                         colored
+                        // commenting out the prop `ripple`  that the onClick event does not work on mobile
                         // ripple
                         className = 'QuizCard__more-button'
                         onClick   = {this.handleClick}

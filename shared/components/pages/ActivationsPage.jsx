@@ -381,6 +381,7 @@ export default class ActivationsPage extends React.Component {
                             <Button
                                 colored
                                 raised
+                                // commenting out the prop `ripple`  that the onClick event does not work on mobile
                                 // ripple
                                 className='ActivationsPage__subscribe-btn'
                                 onClick={onSpecialsSubscribe}

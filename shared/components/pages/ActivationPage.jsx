@@ -223,6 +223,7 @@ export default class ActivationPage extends React.Component {
                         !isAllAuthorActivationsLoaded
                         ?
                             <Button
+                                // commenting out the prop `ripple`  that the onClick event does not work on mobile
                                 // ripple
                                 raised
                                 className = 'ActivationPage__load-more-btn'
@@ -425,6 +426,7 @@ export default class ActivationPage extends React.Component {
                                     showAccountResult && !isSurvey
                                     ?
                                         <Button
+                                            // commenting out the prop `ripple`  that the onClick event does not work on mobile
                                             // ripple
                                             raised
                                             onClick   = {onShareResult.bind(null, activation)}
@@ -441,6 +443,7 @@ export default class ActivationPage extends React.Component {
                                     ?
                                         <div className='ActivationPage__pass-btn-wrapper'>
                                             <Button
+                                                // commenting out the prop `ripple`  that the onClick event does not work on mobile
                                                 // ripple
                                                 raised    = {!isSponsored}
                                                 onClick   = {onPass.bind(null, activation)}
@@ -489,6 +492,7 @@ export default class ActivationPage extends React.Component {
                                     ? (
                                         <Button
                                             colored
+                                            // commenting out the prop `ripple`  that the onClick event does not work on mobile
                                             // ripple
                                             raised
                                             onClick={onSponsoredClick.bind(null, activation, this.sponsoredButtonLabel)}
@@ -507,6 +511,7 @@ export default class ActivationPage extends React.Component {
                                 !activation.isPrivate && !isSurvey
                                 ? (
                                     <IconButton
+                                        // commenting out the prop `ripple`  that the onClick event does not work on mobile
                                         // ripple
                                         name    = 'share'
                                         onClick = {onShare.bind(null, activation)}
@@ -527,6 +532,7 @@ export default class ActivationPage extends React.Component {
                                             !activation.isPrivate && !isSurvey
                                             ? (
                                                 <IconButton
+                                                    // commenting out the prop `ripple`  that the onClick event does not work on mobile
                                                     // ripple
                                                     name    = 'share'
                                                     onClick = {onShare.bind(null, activation)}
@@ -580,6 +586,7 @@ export default class ActivationPage extends React.Component {
                                             !isSurvey
                                             ?
                                                 <Button
+                                                    // commenting out the prop `ripple`  that the onClick event does not work on mobile
                                                     // ripple
                                                     raised
                                                     onClick   = {onShareResult.bind(null, activation)}
@@ -625,6 +632,7 @@ export default class ActivationPage extends React.Component {
                                             accountQuizSession.canViewAnswers
                                             ?
                                                 <Button
+                                                    // commenting out the prop `ripple`  that the onClick event does not work on mobile
                                                     // ripple
                                                     onClick   = {onViewAnswers.bind(null, activation)}
                                                     className = 'ActivationPage__result-answers-btn--mobile'
@@ -695,6 +703,7 @@ export default class ActivationPage extends React.Component {
                                             ? (
                                                 <div className='ActivationPage__pass-btn-wrapper-passed'>
                                                     <Button
+                                                        // commenting out the prop `ripple`  that the onClick event does not work on mobile
                                                         // ripple
                                                         raised    = {!isSponsored}
                                                         onClick   = {onPass.bind(null, activation)}
@@ -748,6 +757,7 @@ export default class ActivationPage extends React.Component {
                                             accountQuizSession.canViewAnswers
                                             ?
                                                 <Button
+                                                    // commenting out the prop `ripple`  that the onClick event does not work on mobile
                                                     // ripple
                                                     onClick   = {onViewAnswers.bind(null, activation)}
                                                     className = 'ActivationPage__result-answers-btn'
@@ -761,6 +771,7 @@ export default class ActivationPage extends React.Component {
                                             activation.category === 'VACANCY'
                                             ? <div>
                                                 <Button
+                                                    // commenting out the prop `ripple`  that the onClick event does not work on mobile
                                                     // ripple
                                                     onClick   = {onFillProfile.bind(null, activation)}
                                                     className = 'ActivationPage__fill-profile-btn'
