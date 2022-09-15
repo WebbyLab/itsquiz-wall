@@ -41,7 +41,7 @@
     "isomorphic-fetch": "^2.2.0",
     "jed": "^1.1.0",
     "lodash": "^3.10.1",
-    "markdown-it": "^6.0.0",
+    "markdown-it": "^12.3.2",
     "moment": "^2.10.6",
     "progressbar.js": "^1.0.1",
     "query-string": "^3.0.0",
